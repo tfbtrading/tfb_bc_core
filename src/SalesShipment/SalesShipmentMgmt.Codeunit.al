@@ -47,55 +47,6 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     end;
 
-    /// <summary> 
-    /// Description for GetHTMLTemplate.
-    /// </summary>
-    ///  <example></example>
-    /// <param name="TopicText">Parameter of type Text.</param>
-    /// <param name="TitleText">Parameter of type Text.</param>
-    /// <returns>Return variable "Text".</returns>
-    procedure GetHTMLTemplate(TopicText: Text; TitleText: Text): Text
-    var
-        TempBlobCU: Codeunit "Temp Blob";
-
-        HttpClient: HttpClient;
-        HttpResponseMessage: HttpResponseMessage;
-        IStream: InStream;
-        OStream: OutStream;
-        BlobText: Text;
-        urlTok: label 'https://tfbdata001.blob.core.windows.net/pubresources/emailtemplate.html';
-        HTMLBuilder: TextBuilder;
-
-
-    begin
-
-
-        HttpClient.Get(urlTok, HttpResponseMessage);
-        HttpResponseMessage.Content().ReadAs(IStream);
-        TempBlobCU.CreateOutStream(OStream);
-        CopyStream(OStream, IStream);
-
-        TempBlobCU.CreateInStream(IStream);
-
-
-        While not (IStream.EOS()) do begin
-            IStream.ReadText(BlobText);
-            HTMLBuilder.AppendLine(BlobText);
-        end;
-
-
-        HTMLBuilder.Replace('%3', TopicText);
-        HTMLBuilder.Replace('%4', TitleText);
-        Exit(HTMLBuilder.ToText())
-    end;
-
-    /// <summary> 
-    /// Description for GetHTMLTemplateActive.
-    /// </summary>
-    /// <param name="TitleText">Parameter of type Text.</param>
-    /// <param name="SubTitleText">Parameter of type Text.</param>
-    /// <returns>Return variable "Text".</returns>
-
 
     procedure GetRelatedShipmentInvoice(Invoice: Record "Sales Invoice Header"; var Shipment: Record "Sales Shipment Header"): Boolean
 
@@ -184,6 +135,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         CommEntry: Record "TFB Communication Entry";
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
+        CommonCU: CodeUnit "TFB Common Library";
 
         Line: Record "Sales Shipment Line";
         Location: Record Location;
@@ -209,14 +161,14 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         Reference2: Text;
         Text001Msg: Label 'Sending Shipment Status Request:\#1#######################2#####', Comment = '%1=Shipment No,%2=Cusomer No';
         TitleTxt: Label 'Order Status';
-        TopicTxt: Label 'Please find below our shipment status query for POD. ';
+        SubTitleTxt: Label 'Please find below our shipment status query for POD. ';
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
 
     begin
 
 
-        HTMLTemplate := GetHTMLTemplate(TopicTxt, TitleTxt);
+        HTMLTemplate := CommonCU.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
 
         CompanyInfo.Get();
@@ -267,13 +219,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
             HTMLBuilder.Append(HTMLTemplate);
-            HTMLBuilder.Replace('%1', 'Shipment Status Query');
-            GeneratedContent := GenerateShipmentStatusQueryContent(ContactName, Reference, Reference2, CustomerName);
+            //HTMLBuilder.Replace('%1', 'Shipment Status Query');
+            If GenerateShipmentStatusQueryContent(ContactName, Reference, Reference2, CustomerName, HTMLBuilder) then begin
 
-            //Check that content has been generated to send
+                //Check that content has been generated to send
 
-            If GeneratedContent <> '' then begin
-                HTMLBuilder.Replace('%2', GeneratedContent);
                 User.Get(UserSecurityId());
                 CCRecipients.Add(User."Contact Email");
 
@@ -295,7 +245,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                     Exit(True)
                 end;
-            end;
+            end
 
         end;
 
@@ -603,7 +553,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     end;
 
 
-    local procedure GenerateShipmentStatusQueryContent(ContactName: Text; Reference: Text; Reference2: Text; CustomerName: Text): Text
+    local procedure GenerateShipmentStatusQueryContent(ContactName: Text; Reference: Text; Reference2: Text; CustomerName: Text; var HTMLBuilder: TextBuilder): Boolean
 
     var
 
@@ -611,7 +561,12 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
     begin
-
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Status Update for Shipped Goods');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'Order details');
+        HTMLBuilder.Replace('%{ReferenceValue}', Reference);
 
         BodyBuilder.AppendLine(StrSubstNo('<h2>We have a customer query against shipment %1 for customer %2.</h2>', Reference, CustomerName));
         If Reference2 <> '' then
@@ -619,7 +574,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         BodyBuilder.AppendLine(StrSubstNo('<p>This email is intended for <b>%1</b>. If you have received this in error please let us know', ContactName));
         BodyBuilder.AppendLine('<br><br>');
         BodyBuilder.AppendLine(StrSubstNo('Our customer wants to know the status of the shipment and for us to provide a Proof of Delivery (POD)'));
-        Exit(BodyBuilder.ToText());
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        Exit(true);
+
     end;
 
     /// <summary> 

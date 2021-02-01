@@ -2,50 +2,20 @@ codeunit 50130 "TFB Vendor Mgmt"
 {
 
 
-    procedure GetHTMLTemplate(): Text
-
-    var
-        TempBlobCU: Codeunit "Temp Blob";
-        IStream: InStream;
-        OStream: OutStream;
-        BlobText: Text;
-        HttpClient: HttpClient;
-        HttpResponseMessage: HttpResponseMessage;
-        urlTok: label 'https://tfbdata001.blob.core.windows.net/pubresources/emailtemplate.html';
-        HTMLBuilder: TextBuilder;
-        TopicText: Text;
-
-    begin
-
-        HttpClient.Get(urlTok, HttpResponseMessage);
-        HttpResponseMessage.Content().ReadAs(IStream);
-        TempBlobCU.CreateOutStream(OStream);
-        CopyStream(OStream, IStream);
-
-        TempBlobCU.CreateInStream(IStream);
-
-        While not (IStream.EOS()) do begin
-            IStream.ReadText(BlobText);
-            HTMLBuilder.AppendLine(BlobText);
-        end;
-
-        TopicText := 'Please find below our latest information on pending orders that you have not yet indicated as being shipped and/or for which we have not received any recent invoices';
-
-        HTMLBuilder.Replace('%3', TopicText);
-        Exit(HTMLBuilder.ToText())
-    end;
-
     procedure SendOneVendorStatusEmail(VendNo: Code[20]): Boolean
 
     var
         Window: Dialog;
         Text001Msg: Label 'Sending Vendor Updates:\#1############################Msg', comment = '%1=vendor';
         Result: Boolean;
+        CommonCU: CodeUnit "TFB Common Library";
+        TitleTxt: label 'Vendor status';
+        SubtitleText: label '';
 
     begin
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', VendNo, ''));
-        Result := SendVendorStatusEmail(VendNo, GetHTMLTemplate(), true);
+        Result := SendVendorStatusEmail(VendNo, CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleText), true);
         Window.Close();
         Exit(Result);
     end;
@@ -92,8 +62,8 @@ codeunit 50130 "TFB Vendor Mgmt"
 
 
         HTMLBuilder.Append(HTMLTemplate);
-        HTMLBuilder.Replace('%1', 'Vendor status');
-        HTMLBuilder.Replace('%2', GenerateVendorOrderStatusContent(Vendor."No."));
+
+        GenerateVendorOrderStatusContent(Vendor."No.", HTMLBuilder);
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
@@ -104,7 +74,7 @@ codeunit 50130 "TFB Vendor Mgmt"
     end;
 
 
-    local procedure GenerateVendorOrderStatusContent(VendNo: Code[20]): Text
+    local procedure GenerateVendorOrderStatusContent(VendNo: Code[20]; var HTMLBuilder: TextBuilder): Boolean
 
     var
         Vendor: Record Vendor;
@@ -155,6 +125,13 @@ codeunit 50130 "TFB Vendor Mgmt"
         OrderLine.SetRange(Type, OrderLine.Type::Item);
         OrderLine.SetCurrentKey("Planned Receipt Date");
 
+
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Vendor Order Status Update');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'Vendor');
+        HTMLBuilder.Replace('%{ReferenceValue}', Vendor.Name);
         Count := 0;
 
         if OrderLine.FindSet() then begin
@@ -364,7 +341,8 @@ codeunit 50130 "TFB Vendor Mgmt"
 
         BodyBuilder.AppendLine('<hr>');
 
-        Exit(BodyBuilder.ToText());
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        Exit(true);
     end;
 
 

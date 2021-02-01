@@ -145,6 +145,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
     var
         CompanyInfo: Record "Company Information";
+        CommonCU: CodeUnit "TFB Common Library";
         Customer: Record Customer;
         ListOfCertifications: Record "TFB Vendor Certification" temporary;
         User: Record User;
@@ -165,7 +166,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
         Text001Msg: Label 'Sending Quality Documents:\#1#######################2#####', Comment = '%1=Customer No, %2=Customer Name';
         TitleTxt: Label 'Quality Documents Request';
-        TopicTxt: Label 'Please find attached the following quality documents';
+        SubTitleText: Label 'Please find attached the following quality documents';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
@@ -176,7 +177,7 @@ codeunit 50104 "TFB Quality Mgmt"
         If GatherCustomerQualityDocuments(CustomerNo, ListOfCertifications, TempBlobList) and Customer.get(CustomerNo) then begin
 
 
-            HTMLTemplate := SalesShipmentCU.GetHTMLTemplate(TopicTxt, TitleTxt);
+            HTMLTemplate := CommonCU.GetHTMLTemplateActive(TitleTxt, SubTitleText);
 
 
             CompanyInfo.Get();
@@ -193,8 +194,8 @@ codeunit 50104 "TFB Quality Mgmt"
             end;
 
             HTMLBuilder.Append(HTMLTemplate);
-            HTMLBuilder.Replace('%1', TitleTxt);
-            HTMLBuilder.Replace('%2', GenerateQualityDocumentsContent(ListOfCertifications));
+
+            GenerateQualityDocumentsContent(Customer, ListOfCertifications, HTMLBuilder);
 
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
             if ListOfCertifications.FindSet() then begin
@@ -216,7 +217,7 @@ codeunit 50104 "TFB Quality Mgmt"
     end;
 
 
-    local procedure GenerateQualityDocumentsContent(var ListOfCertifications: Record "TFB Vendor Certification" temporary): Text
+    local procedure GenerateQualityDocumentsContent(Customer: Record Customer; var ListOfCertifications: Record "TFB Vendor Certification" temporary; var HTMLBuilder: TextBuilder): Boolean
 
     var
         tdTxt: label '<td valign="top" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
@@ -225,6 +226,13 @@ codeunit 50104 "TFB Quality Mgmt"
         LineBuilder: TextBuilder;
 
     begin
+
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Updated Vendor Certifications');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'For customer');
+        HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents for items from vendors shipped to you'));
 
@@ -255,6 +263,8 @@ codeunit 50104 "TFB Quality Mgmt"
 
         else
             BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
-        Exit(BodyBuilder.ToText());
+
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        Exit(true);
     end;
 }
