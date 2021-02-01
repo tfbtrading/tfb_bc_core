@@ -1,0 +1,16 @@
+{
+    "name": "BC",
+    "description": "Hidden rules",
+    "generalAction": "Hidden",
+    "rules": [
+        {"id": "AA0214","action": "Hidden","justification": "Doesn't currently work properly"},
+        {"id": "AL0432","action": "Hidden","justification": "Events don't yet exist"},
+        {"id": "AL0603","action": "Hidden","justification": "Not way to solve this"},
+        {"id": "AL0254","action": "Hidden","justification": "Not way to solve this"},
+        {"id": "AL0604","action": "Hidden","justification": "Not way to solve this"},
+        {"id": "AW0006","action": "Hidden","justification": "Not way to solve this"}
+    ]
+
+    
+    
+}

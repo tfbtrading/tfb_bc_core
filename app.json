@@ -1,0 +1,36 @@
+{
+  "id": "e4b4c5c6-109a-4977-8893-f1502da124f5",
+  "name": "TFB Core Extension",
+  "publisher": "TFB Trading",
+  "brief": "Expansive changes specific to TFB Trading",
+  "description": "",
+  "version": "17.0.7.27",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "./TFB-Trading-_icon.jpg",
+  "features":["TranslationFile"],
+  "propagateDependencies": true,
+  "platform": "17.0.0.0",
+
+  "suppressWarnings": ["AL0432","AL0254","ÄA0217","AA0072","DOC0001"],
+  "application": "17.1.0.0",
+    "dependencies": [
+    {"id": "deb3e95e-c9f8-45e2-8036-7eebbbd50049",
+    "name": "TFB Common Logging Service",
+    "publisher": "TFB Trading",
+    "version": "17.0.1.0"} 
+  ],
+  "screenshots": [],
+  
+  "idRanges": [{
+    "from": 50100,
+    "to": 52000
+  }],
+  "runtime": "6.0",
+  "target": "Cloud",
+  "showMyCode": true,
+  "supportedLocales": ["en-AU"]
+
+}

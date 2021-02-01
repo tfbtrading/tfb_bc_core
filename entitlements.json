@@ -1,0 +1,726 @@
+﻿{
+  "MembershipEntitlements": [
+    {
+      "Id": "0d92745a-6db0-410f-b8dd-a2b995bc77ea",
+      "SetId": "TFB Core Extension",
+      "EntitlementType": 0
+    }
+  ],
+  "EntitlementSets": [
+    {
+      "SetId": "TFB Core Extension",
+      "Entitlements": [
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50106,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50122,
+          "ObjectIdRangeEnd": 50122,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50131,
+          "ObjectIdRangeEnd": 50131,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50152,
+          "ObjectIdRangeEnd": 50152,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50160,
+          "ObjectIdRangeEnd": 50160,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50170,
+          "ObjectIdRangeEnd": 50170,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50181,
+          "ObjectIdRangeEnd": 50181,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50215,
+          "ObjectIdRangeEnd": 50215,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50219,
+          "ObjectIdRangeEnd": 50219,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50224,
+          "ObjectIdRangeEnd": 50224,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50226,
+          "ObjectIdRangeEnd": 50227,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50300,
+          "ObjectIdRangeEnd": 50300,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50310,
+          "ObjectIdRangeEnd": 50310,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50312,
+          "ObjectIdRangeEnd": 50312,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50314,
+          "ObjectIdRangeEnd": 50314,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50330,
+          "ObjectIdRangeEnd": 50330,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50340,
+          "ObjectIdRangeEnd": 50340,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 0,
+          "ObjectIdRangeStart": 50345,
+          "ObjectIdRangeEnd": 50346,
+          "Read": 1,
+          "Insert": 1,
+          "Modify": 1,
+          "Delete": 1,
+          "Execute": 0
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50106,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50122,
+          "ObjectIdRangeEnd": 50122,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50131,
+          "ObjectIdRangeEnd": 50131,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50152,
+          "ObjectIdRangeEnd": 50152,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50160,
+          "ObjectIdRangeEnd": 50160,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50170,
+          "ObjectIdRangeEnd": 50170,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50181,
+          "ObjectIdRangeEnd": 50181,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50215,
+          "ObjectIdRangeEnd": 50215,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50219,
+          "ObjectIdRangeEnd": 50219,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50224,
+          "ObjectIdRangeEnd": 50224,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50226,
+          "ObjectIdRangeEnd": 50227,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50300,
+          "ObjectIdRangeEnd": 50300,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50310,
+          "ObjectIdRangeEnd": 50310,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50312,
+          "ObjectIdRangeEnd": 50312,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50314,
+          "ObjectIdRangeEnd": 50314,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50330,
+          "ObjectIdRangeEnd": 50330,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50340,
+          "ObjectIdRangeEnd": 50340,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 1,
+          "ObjectIdRangeStart": 50345,
+          "ObjectIdRangeEnd": 50346,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 3,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50100,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 3,
+          "ObjectIdRangeStart": 50123,
+          "ObjectIdRangeEnd": 50123,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 3,
+          "ObjectIdRangeStart": 50131,
+          "ObjectIdRangeEnd": 50131,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50107,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50120,
+          "ObjectIdRangeEnd": 50120,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50122,
+          "ObjectIdRangeEnd": 50122,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50130,
+          "ObjectIdRangeEnd": 50130,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50140,
+          "ObjectIdRangeEnd": 50142,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50175,
+          "ObjectIdRangeEnd": 50175,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50181,
+          "ObjectIdRangeEnd": 50181,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50200,
+          "ObjectIdRangeEnd": 50200,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50240,
+          "ObjectIdRangeEnd": 50240,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50242,
+          "ObjectIdRangeEnd": 50242,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50285,
+          "ObjectIdRangeEnd": 50285,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 5,
+          "ObjectIdRangeStart": 50304,
+          "ObjectIdRangeEnd": 50304,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50101,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50103,
+          "ObjectIdRangeEnd": 50112,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50138,
+          "ObjectIdRangeEnd": 50138,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50147,
+          "ObjectIdRangeEnd": 50147,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50151,
+          "ObjectIdRangeEnd": 50151,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50159,
+          "ObjectIdRangeEnd": 50159,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50210,
+          "ObjectIdRangeEnd": 50211,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50216,
+          "ObjectIdRangeEnd": 50216,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50225,
+          "ObjectIdRangeEnd": 50225,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50228,
+          "ObjectIdRangeEnd": 50230,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50240,
+          "ObjectIdRangeEnd": 50241,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50301,
+          "ObjectIdRangeEnd": 50303,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50311,
+          "ObjectIdRangeEnd": 50311,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50315,
+          "ObjectIdRangeEnd": 50315,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50332,
+          "ObjectIdRangeEnd": 50332,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50335,
+          "ObjectIdRangeEnd": 50335,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50341,
+          "ObjectIdRangeEnd": 50342,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 8,
+          "ObjectIdRangeStart": 50346,
+          "ObjectIdRangeEnd": 50348,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 9,
+          "ObjectIdRangeStart": 50100,
+          "ObjectIdRangeEnd": 50100,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        },
+        {
+          "ObjectType": 9,
+          "ObjectIdRangeStart": 50600,
+          "ObjectIdRangeEnd": 50600,
+          "Read": 0,
+          "Insert": 0,
+          "Modify": 0,
+          "Delete": 0,
+          "Execute": 1
+        }
+      ]
+    }
+  ]
+}
