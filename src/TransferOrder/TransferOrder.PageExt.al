@@ -6,6 +6,10 @@ pageextension 50176 "TFB Transfer Order" extends "Transfer Order" //MyTargetPage
         {
 
         }
+        modify("Receipt Date")
+        {
+            Editable = true; 
+        }
 
         addbefore(Status)
         {
