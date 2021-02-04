@@ -2,7 +2,15 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
 {
     layout
     {
-
+        addlast("Shipping and Billing")
+        {
+            field("TFB Instructions"; Rec."TFB Instructions")
+            {
+                ApplicationArea = all;
+                ToolTip = 'Specifies any specific instructions related to the blanket contract';
+                Importance = Standard;
+            }
+        }
         addbefore("Document Date")
 
         {
