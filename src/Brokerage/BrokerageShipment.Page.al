@@ -440,6 +440,8 @@ page 50229 "TFB Brokerage Shipment"
         RepSel: Record "Report Selections";
         CommEntry: Record "TFB Communication Entry";
         CompanyInfo: Record "Company Information";
+        Contract: record "TFB Brokerage Contract";
+        Contact: record Contact;
         Vendor: Record Vendor;
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
@@ -466,15 +468,21 @@ page 50229 "TFB Brokerage Shipment"
         If Not Vendor.Get(Rec."Buy From Vendor No.") then
             Error('No Vendor Record Found');
 
-        If Vendor."E-Mail" = '' then
-            Error('No Vendor Email Found');
+        If contract.get(rec."Contract No.") and contact.get(contract."Buy-from Contact No.") and (contact."E-Mail" <> '') then
+            Recipients.Add(contact."E-Mail")
+        else
+            if Vendor."E-Mail" = '' then
+                Error('No Vendor Email Found')
+            else
+                Recipients.Add(Vendor."E-Mail");
+
 
 
         CompanyInfo.Get();
 
         SubjectNameBuilder.Append(StrSubstNo('Brokerage Shipment Instruction %1 from TFB Trading', Rec."No."));
 
-        Recipients.Add(Vendor."E-Mail");
+
         Rec.SetRecFilter();
         DocumentRef.GetTable(Rec);
         TempBlob.CreateOutStream(OutStream);

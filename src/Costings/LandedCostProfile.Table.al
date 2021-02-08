@@ -280,6 +280,13 @@ table 50340 "TFB Landed Cost Profile"
     end;
 
     procedure CalculateCosts()
+
+    var
+        currency: record Currency;
+        currency2: record "Currency Amount";
+        currency3: record "Currency Exchange Rate";
+        cu: codeunit "Map Currency Exchange Rate";
+        cu2: codeunit "Additional-Currency Management";
     begin
 
         TempPerPallet := 0;
@@ -316,8 +323,12 @@ table 50340 "TFB Landed Cost Profile"
                 TempPerContainer += "Port Documents";
                 TempPerContainer += "Quarantine Fees";
                 TempPerContainer += cs."Port Cartage";
-                If "Freight Currency" <> '' then
-                    "Freight (LCY)" := "Ocean Freight" / cs."Exchange Rate"
+
+
+                If "Freight Currency" <> '' then begin
+                    currency.get("Freight Currency");
+                    "Freight (LCY)" := currency3.ExchangeAmtFCYToLCY(today, "Freight Currency", "Ocean Freight", 1);
+                end
                 else
                     "Freight (LCY)" := "Ocean Freight";
 

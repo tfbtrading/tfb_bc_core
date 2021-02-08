@@ -129,7 +129,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
         Customer.Get(SalesHeader."Sell-to Customer No.");
 
-        If Customer."TFB External No. Req." then
+        If (Customer."TFB External No. Req.") and (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
             If SalesHeader."External Document No." = '' then
                 Error('Cannot release. External Reference No. is required for customers orders');
 

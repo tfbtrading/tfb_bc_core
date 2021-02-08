@@ -62,6 +62,20 @@ page 50240 "TFB Brokerage Contract"
                     Importance = Promoted;
                     ToolTip = 'Specifies vendor name';
                 }
+                field("Buy-from Contact No."; Rec."Buy-from Contact No.")
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Vendor Contact No.';
+                    Importance = Additional;
+                    ToolTip = 'Specifies the number of contact person of the vendor''s buy-from.';
+                }
+                field("Buy-from Contact"; Rec."Buy-from Contact")
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Vendor Contact';
+                    Editable = Rec."Vendor No." <> '';
+                    ToolTip = 'Specifies the name of the person to contact about an order from this vendor.';
+                }
                 field("External Reference No."; Rec."External Reference No.")
                 {
                     ApplicationArea = All;
@@ -334,7 +348,7 @@ page 50240 "TFB Brokerage Contract"
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
         EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Contract File to Upload';
-        FileNameTxt: Label 'Contract_%1.pdf', comment='%1 = contract number';
+        FileNameTxt: Label 'Contract_%1.pdf', comment = '%1 = contract number';
         FileName: Text;
         IStream: InStream;
 

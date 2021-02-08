@@ -9,6 +9,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                 ApplicationArea = all;
                 ToolTip = 'Specifies any specific instructions related to the blanket contract';
                 Importance = Standard;
+                MultiLine = true;
             }
         }
         addbefore("Document Date")

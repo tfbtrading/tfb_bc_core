@@ -63,6 +63,53 @@ table 50219 "TFB Brokerage Contract"
             end;
 
         }
+        field(5052; "Buy-from Contact No."; Code[20])
+        {
+            Caption = 'Buy-from Contact No.';
+            TableRelation = Contact;
+
+            trigger OnLookup()
+            var
+                Cont: Record Contact;
+                ContBusinessRelation: Record "Contact Business Relation";
+            begin
+                if "Vendor No." <> '' then
+                    if Cont.Get("Buy-from Contact No.") then
+                        Cont.SetRange("Company No.", Cont."Company No.")
+                    else
+                        if ContBusinessRelation.FindByRelation(ContBusinessRelation."Link to Table"::Vendor, "Vendor No.") then
+                            Cont.SetRange("Company No.", ContBusinessRelation."Contact No.")
+                        else
+                            Cont.SetRange("No.", '');
+
+                if "Buy-from Contact No." <> '' then
+                    if Cont.Get("Buy-from Contact No.") then;
+                if PAGE.RunModal(0, Cont) = ACTION::LookupOK then begin
+                    xRec := Rec;
+                    Validate("Buy-from Contact No.", Cont."No.");
+                end;
+            end;
+        }
+        field(84; "Buy-from Contact"; Text[100])
+        {
+            Caption = 'Buy-from Contact';
+
+            trigger OnLookup()
+            var
+                Contact: Record Contact;
+            begin
+                if "Vendor No." = '' then
+                    exit;
+
+                Contact.FilterGroup(2);
+                LookupContact("Vendor No.", "Buy-from Contact No.", Contact);
+                if PAGE.RunModal(0, Contact) = ACTION::LookupOK then
+                    Validate("Buy-from Contact No.", Contact."No.");
+                Contact.FilterGroup(0);
+            end;
+
+
+        }
         field(5; "Customer No."; Code[20])
         {
             DataClassification = CustomerContent;
@@ -187,13 +234,13 @@ table 50219 "TFB Brokerage Contract"
         field(30; "Total Value"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("TFB Brokerage Contract Line".Amount where("Document No." = field("No.")));
+            CalcFormula = Sum("TFB Brokerage Contract Line".Amount where("Document No." = field("No.")));
 
         }
         field(40; "Total Brokerage"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("TFB Brokerage Contract Line"."Brokerage Fee" where("Document No." = field("No.")));
+            CalcFormula = Sum("TFB Brokerage Contract Line"."Brokerage Fee" where("Document No." = field("No.")));
 
         }
         field(50; "Container Route"; Code[20])
@@ -219,7 +266,7 @@ table 50219 "TFB Brokerage Contract"
         field(80; "No. of Shipments"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = count ("TFB Brokerage Shipment" where("Contract No." = field("No."), Status = field("Shipment Status Filter")));
+            CalcFormula = count("TFB Brokerage Shipment" where("Contract No." = field("No."), Status = field("Shipment Status Filter")));
         }
         field(90; "Shipment Status Filter"; Enum "TFB Brokerage Shipment Status")
         {
@@ -257,6 +304,18 @@ table 50219 "TFB Brokerage Contract"
         }
     }
 
+    local procedure LookupContact(VendorNo: Code[20]; ContactNo: Code[20]; var Contact: Record Contact)
+    var
+        ContactBusinessRelation: Record "Contact Business Relation";
+    begin
+        if ContactBusinessRelation.FindByRelation(ContactBusinessRelation."Link to Table"::Vendor, VendorNo) then
+            Contact.SetRange("Company No.", ContactBusinessRelation."Contact No.")
+        else
+            Contact.SetRange("Company No.", '');
+        if ContactNo <> '' then
+            if Contact.Get(ContactNo) then;
+    end;
+
     var
         SalesSetup: Record "Sales & Receivables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
@@ -292,7 +351,7 @@ table 50219 "TFB Brokerage Contract"
         if recContractLines.FindSet(true) then
             repeat
                 recContractLines.CalcLineTotals();
-                
+
             Until recContractLines.Next() = 0;
 
 
