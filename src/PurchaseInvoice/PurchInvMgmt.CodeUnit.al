@@ -32,6 +32,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
     end;
 
+
     procedure CheckAndRetrieveAssignmentLines(var Line: Record "Purchase Line"; Suppress: Boolean): Boolean
 
     var
@@ -350,7 +351,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 ICAssignmentCU.CreateRcptChargeAssgnt(Lines, ICAssignment);
                 ChargesAssigned := true;
 
-            until Lines.Next() < 1;
+            until Lines.Next() = 0;
 
             If ChargesAssigned = true then begin
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());

@@ -55,7 +55,6 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
         //Find corresponding item ledger entry
         ItemLedger.SetRange("Document No.", DocNo);
-        ItemLedger.SetRange("Document Line No.", LineNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Purchase Receipt");
 
         If ItemLedger.FindSet(false) then
