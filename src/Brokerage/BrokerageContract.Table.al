@@ -89,6 +89,40 @@ table 50219 "TFB Brokerage Contract"
                     Validate("Buy-from Contact No.", Cont."No.");
                 end;
             end;
+
+
+            trigger OnValidate()
+            var
+                ContBusinessRelation: Record "Contact Business Relation";
+                Cont: Record Contact;
+            begin
+
+
+                if "Buy-from Contact No." <> '' then
+                    if Cont.Get("Buy-from Contact No.") then
+                        Cont.CheckIfPrivacyBlockedGeneric;
+
+                if ("Buy-from Contact No." <> xRec."Buy-from Contact No.") and
+                   (xRec."Buy-from Contact No." <> '')
+                then begin
+                    if not GuiAllowed then
+                        Confirmed := true
+                    else
+                        Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Buy-from Contact No."));
+                    if not Confirmed then exit;
+
+                end;
+
+
+                if ("Vendor No." <> '') and ("Buy-from Contact No." <> '') then begin
+                    Cont.Get("Buy-from Contact No.");
+                    if ContBusinessRelation.FindByRelation(ContBusinessRelation."Link to Table"::Vendor, "Vendor No.") then
+                        if ContBusinessRelation."Contact No." <> Cont."Company No." then
+                            Error(Text038, Cont."No.", Cont.Name, "Vendor No.")
+                        else
+                            "Buy-from Contact" := Cont.Name;
+                end;
+            end;
         }
         field(84; "Buy-from Contact"; Text[100])
         {
@@ -319,6 +353,9 @@ table 50219 "TFB Brokerage Contract"
     var
         SalesSetup: Record "Sales & Receivables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        Confirmed: Boolean;
+        ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
+        Text038: Label 'Contact %1 %2 is related to a different company than vendor %3.';
 
 
     /// <summary> 
