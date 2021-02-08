@@ -10,6 +10,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                 ToolTip = 'Specifies any specific instructions related to the blanket contract';
                 Importance = Standard;
                 MultiLine = true;
+                Caption = 'Instructions';
             }
         }
         addbefore("Document Date")
@@ -48,6 +49,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                         Caption = 'Blanket Purchase Order No.';
                         Editable = False;
                         ToolTip = 'Specifies the related blanket purchase order number';
+
                     }
 
                 }

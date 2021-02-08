@@ -43,6 +43,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Shipment: Record "TFB Brokerage Shipment";
+        ShipmentRef: Text;
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
 
@@ -70,7 +71,11 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
 
         EmailID := Customer."E-Mail";
-        SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, Shipment."No."));
+        If Shipment."Customer Reference" <> '' then
+            ShipmentRef := Shipment."Customer No."
+        else
+            ShipmentRef := Shipment."No.";
+        SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, ShipmentRef));
         Recipients.Add(EmailID);
 
         HTMLBuilder.Append(HTMLTemplate);
@@ -158,10 +163,10 @@ codeunit 50242 "TFB Brokerage Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="60%">Current Info</th></thead>');
 
         FieldList.Add(Header.FieldNo("Buy From Vendor Name"));
-        FieldList.Add(Header.FieldNo("Vessel Details"));
         FieldList.Add(Header.FieldNo("Required Arrival Date"));
         FieldList.Add(Header.FieldNo("Est. Departure Date"));
         FieldList.Add(Header.FieldNo("Est. Arrival Date"));
+        FieldList.Add(Header.FieldNo("Shipping Agent Code"));
         FieldList.Add(Header.FieldNo("Vessel Details"));
         FieldList.Add(Header.FieldNo("Container No."));
         If Header."Vendor Invoice Due Date" > 0D then
@@ -188,6 +193,8 @@ codeunit 50242 "TFB Brokerage Mgmt"
             end;
 
         end;
+
+        BodyBuilder.AppendLine('<br>');
 
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
