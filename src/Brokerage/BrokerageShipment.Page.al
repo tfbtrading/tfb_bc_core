@@ -542,7 +542,7 @@ page 50229 "TFB Brokerage Shipment"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
         ReferenceBuilder.Append(StrSubstNo('Our order %1', Rec."No."));
         If Rec."Customer Reference" <> '' then
-            ReferenceBuilder.Append(StrSubstNo('and customer ref no. is %1', Rec."Customer Reference"));
+            ReferenceBuilder.Append(StrSubstNo(' and customer ref no. is %1', Rec."Customer Reference"));
         HTMLBuilder.Replace('%{ReferenceValue}', ReferenceBuilder.ToText());
         HTMLBuilder.Replace('%{AlertText}', '');
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());

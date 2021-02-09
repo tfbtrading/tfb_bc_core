@@ -857,7 +857,7 @@ page 50210 "TFB Container Entry"
 
             EmailID := Location."E-Mail";
             Recipients.Add(EmailID);
-            SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', DocNo));
+            SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
             ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
             TempBlobHTML.CreateOutStream(OutStreamHTML);
 
