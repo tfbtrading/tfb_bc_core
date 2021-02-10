@@ -822,6 +822,7 @@ page 50210 "TFB Container Entry"
         DocLines: Record "TFB ContainerContents" temporary;
         RepSel: Record "Report Selections";
         Purchase: record "Purchase Header";
+        TransferLine: record "Transfer Line";
         Location: record Location;
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
         DocMailing: codeunit "Document-Mailing";
@@ -850,45 +851,52 @@ page 50210 "TFB Container Entry"
         Purchase.SetRange("No.", Doc."Order Reference");
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
-        if Purchase.FindFirst() then begin
-
+        if not Purchase.FindFirst() then begin
+            TransferLine.SetRange("TFB Container Entry No.", Rec."No.");
+            If not TransferLine.FindFirst() then
+                exit
+            else
+                Location.Get(TransferLine."Transfer-to Code");
+        end
+        else begin
             Location.Get(Purchase."Location Code");
-            HTMLBuilder.Append(mgmt.GetHTMLTemplateActive('Container Details', 'Warehouse Instructions'));
-
-            EmailID := Location."E-Mail";
-            Recipients.Add(EmailID);
-            SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
-            ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
-            TempBlobHTML.CreateOutStream(OutStreamHTML);
-
-            Rec.SetRecFilter();
-            DocumentRef.GetTable(Rec);
-            RepSel.SetRange(Usage, RepSel.Usage::"P.Inbound.Shipment.Warehouse");
-            RepSel.SetRange("Use for Email Attachment", true);
-
-            FileName := StrSubstNo('Container No. %1 Advice.pdf', Doc."Container No.");
-            TempBlob.CreateOutStream(OutStreamReport);
-            TempBlobCOA.CreateInStream(InStreamCOA);
-
-            GetNotificationContent(HTMLBuilder, Doc);
-            OutStreamHTML.WriteText(HTMLBuilder.ToText());
-            TempBlobHTML.CreateInStream(InStreamHTML);
-            If Dialog.Confirm('Send Report instead of CoA', false) then begin
-                If RepSel.FindFirst() then
-                    If REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
-                        TempBlob.CreateInStream(InstreamReport);
-                        DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-
-                    end;
-            end
-            else begin
-
-                DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-
-            end;
         end;
 
+
+
+        HTMLBuilder.Append(mgmt.GetHTMLTemplateActive('Container Details', 'Warehouse Instructions'));
+        Recipients.Add(Location."E-Mail");
+        SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
+        ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
+        TempBlobHTML.CreateOutStream(OutStreamHTML);
+
+        Rec.SetRecFilter();
+        DocumentRef.GetTable(Rec);
+        RepSel.SetRange(Usage, RepSel.Usage::"P.Inbound.Shipment.Warehouse");
+        RepSel.SetRange("Use for Email Attachment", true);
+
+        FileName := StrSubstNo('Container No. %1 Advice.pdf', Doc."Container No.");
+        TempBlob.CreateOutStream(OutStreamReport);
+        TempBlobCOA.CreateInStream(InStreamCOA);
+
+        GetNotificationContent(HTMLBuilder, Doc);
+        OutStreamHTML.WriteText(HTMLBuilder.ToText());
+        TempBlobHTML.CreateInStream(InStreamHTML);
+        If Dialog.Confirm('Send Report instead of CoA', false) then begin
+            If RepSel.FindFirst() then
+                If REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
+                    TempBlob.CreateInStream(InstreamReport);
+                    DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
+
+                end;
+        end
+        else begin
+
+            DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
+
+        end;
     end;
+
 
     local procedure GetNotificationContent(var HTMLBuilder: TextBuilder; Doc: record "TFB Container Entry"): Boolean
 
