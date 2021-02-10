@@ -858,14 +858,11 @@ page 50210 "TFB Container Entry"
             else
                 Location.Get(TransferLine."Transfer-to Code");
         end
-        else begin
+        else
             Location.Get(Purchase."Location Code");
-        end;
-
-
 
         HTMLBuilder.Append(mgmt.GetHTMLTemplateActive('Container Details', 'Warehouse Instructions'));
-        Recipients.Add(Location."E-Mail");
+        EmailID := Location."E-Mail";
         SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
         ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
         TempBlobHTML.CreateOutStream(OutStreamHTML);
