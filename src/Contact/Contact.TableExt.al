@@ -64,10 +64,16 @@ tableextension 50110 "TFB Contact" extends Contact
             ExtendedDatatype = URL;
         }
 
-        field(50220; "TFB No. Of Tasks"; Integer)
+        field(50220; "TFB No. Of Company Tasks"; Integer)
         {
             FieldClass = FlowField;
             CalcFormula = count("To-do" where("Contact Company No." = field("Company No."), Closed = const(false), "System To-do Type" = const(Organizer)));
+            Caption = 'No. Of Tasks';
+        }
+        field(50222; "TFB No. Of Contact Tasks"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("To-do" where("Contact No." = field("No."), Closed = const(false), "System To-do Type" = const(Organizer)));
             Caption = 'No. Of Tasks';
         }
         field(50230; "TFB No. Of Individuals"; Integer)

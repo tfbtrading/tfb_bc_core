@@ -2,7 +2,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 {
     layout
     {
-        addbefore(Name)
+        addafter(Name)
         {
             Field(ToDoExists; GetTaskSymbol())
             {
@@ -84,7 +84,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
             view(ContactWithTasks)
             {
                 Caption = 'Contacts With Open Tasks';
-                Filters = where("TFB No. Of Tasks" = filter('>0'), Type = const(Company));
+                Filters = where("TFB No. Of Company Tasks" = filter('>0'), Type = const(Company));
                 SharedLayout = true;
             }
 
@@ -113,19 +113,18 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
     begin
 
-        Contact.SetLoadFields("TFB No. Of Tasks", "No.");
-        Contact.SetAutoCalcFields("TFB No. Of Tasks");
-        Rec.CalcFields("TFB No. Of Tasks");
+        Contact.SetLoadFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks", "No.");
+        Contact.SetAutoCalcFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks");
+        Rec.CalcFields("TFB No. Of Company Tasks");
         If Rec.Type = Rec.Type::Company then
-            If Rec."TFB No. Of Tasks" > 0 then
+            If Rec."TFB No. Of Company Tasks" > 0 then
                 Exit('📋')
             else
                 Exit('')
         else
-            If Contact.Get(Rec."Company No.") then
-                If Contact."TFB No. Of Tasks" > 0 then
-                    Exit('📋')
-                else
-                    Exit('');
+            If Contact."TFB No. Of Contact Tasks" > 0 then
+                Exit('📋')
+            else
+                Exit('');
     end;
 }

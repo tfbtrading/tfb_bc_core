@@ -31,7 +31,7 @@ page 50129 "TFB Cust. Cont. Stats. FactBox"
                     ApplicationArea = RelationshipMgmt;
                     ToolTip = 'Specifies the number of open opportunities involving the contact. The field is not editable.';
                 }
-                field("TFB No. Of Tasks"; Rec."TFB No. Of Tasks")
+                field("TFB No. Of Tasks"; Rec."TFB No. Of Company Tasks")
                 {
                     ApplicationArea = RelationshipMgmt;
                     ToolTip = 'Shows the total number of tasks related to this contact';

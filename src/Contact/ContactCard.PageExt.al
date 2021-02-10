@@ -2,6 +2,12 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
 {
     layout
     {
+
+        modify("No.")
+        {
+            Editable = false;
+            Importance = Additional;
+        }
         // Add changes to page layout here
         addafter("Organizational Level Code")
         {
@@ -61,6 +67,16 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
         }
         addbefore("Profile Questionnaire")
         {
+
+            part(IndividualContacts; "TFB Company Contacts Subform")
+            {
+                Caption = 'Contacts';
+                Visible = rec.type = rec.type::Company;
+                ApplicationArea = All;
+                SubPageLink = "Company No." = field("No.");
+                SubPageView = where(Type = const(Person));
+            }
+
             part(Tasks; "TFB Contact Task Subform")
             {
                 SubPageLink = "Contact Company No." = field("Company No."), "System To-do Type" = const(Organizer), Closed = const(false);

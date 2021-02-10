@@ -56,6 +56,14 @@ page 50211 "TFB Container Entry List"
                     Tooltip = 'Specifies container no';
 
                 }
+                field("LinesDesc"; LineSummary)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the lines on the order';
+                    MultiLine = false;
+                    Editable = false;
+                    Caption = 'Lines';
+                }
                 field("Quarantine Reference"; Rec."Quarantine Reference")
                 {
                     ApplicationArea = All;
@@ -188,12 +196,33 @@ page 50211 "TFB Container Entry List"
         _QtyOnOrder := ContainerContents.Quantity;
         _QtyReserved := ContainerContents."Qty Sold (Base)";
         _PercReserved := (_QtyReserved / _QtyOnOrder);
+        LineSummary := GetOrderLines();
     end;
+
+
+    Local Procedure GetOrderLines(): Text
+
+    var
+
+        LineBuilder: TextBuilder;
+
+    begin
+
+        If ContainerContents.Findset(false, false) then
+            repeat
+
+                LineBuilder.AppendLine(StrSubstNo('%1 (%2) - %3', ContainerContents."Item Description", ContainerContents."Item Code", ContainerContents.Quantity));
+
+            until ContainerContents.Next() = 0;
+        exit(LineBuilder.ToText());
+    end;
+
 
     var
         ContainerContents: Record "TFB ContainerContents" temporary;
         ContainerCU: Codeunit "TFB Container Mgmt";
         [InDataSet]
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
+        LineSummary: Text;
 
 }

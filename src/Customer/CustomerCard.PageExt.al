@@ -4,6 +4,10 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
 
     layout
     {
+        modify("Address & Contact")
+        {
+            Caption = 'Address & Primary Contact';
+        }
         addlast(Shipping)
         {
             field("TFB Reservation Strategy"; Rec."TFB Reservation Strategy")
@@ -57,21 +61,16 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
         }
         addafter("Address & Contact")
         {
-            group(RelationshipDetails)
+
+            part(IndividualContacts; "TFB Company Contacts Subform")
             {
-                Caption = 'Relationship Details';
+                Caption = 'All Contacts';
 
-                group(Status)
-                {
-                    field("TFB Contact Status"; Rec."TFB Contact Status")
-                    {
-                        ApplicationArea = All;
-                        TableRelation = "TFB Contact Status" where(Stage = const(Converted));
-                        ToolTip = 'Specifies the contact status';
-                    }
-
-                }
+                ApplicationArea = All;
+                SubPageLink = "Company No." = field("TFB Primary Contact Company ID");
+                SubPageView = where(Type = const(Person));
             }
+
         }
         addafter("Bill-to Customer No.")
         {
@@ -121,8 +120,20 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             group(CommunicationPreferences)
             {
                 ShowCaption = true;
-                Caption = 'Communication Preferences';
+                Caption = 'Relationship and Communication Details';
                 InstructionalText = 'Indicates how and when customers receive notifications';
+
+                group(Status)
+                {
+                    ShowCaption = false;
+
+                    field("TFB Contact Status"; Rec."TFB Contact Status")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the contact status';
+                    }
+
+                }
 
                 field("TFB Stock Update Recipient"; Rec."TFB Stock Update Recipient")
                 {

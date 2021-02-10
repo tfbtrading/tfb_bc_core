@@ -163,11 +163,11 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
     begin
 
-        Contact.SetLoadFields("TFB No. Of Tasks", "No.");
-        Contact.SetAutoCalcFields("TFB No. Of Tasks");
+        Contact.SetLoadFields("TFB No. Of Company Tasks", "No.");
+        Contact.SetAutoCalcFields("TFB No. Of Company Tasks");
 
         If Contact.Get(Rec."TFB Primary Contact Company ID") then
-            If Contact."TFB No. Of Tasks" > 0 then
+            If Contact."TFB No. Of Company Tasks" > 0 then
                 Exit('📋')
             else
                 Exit('');
