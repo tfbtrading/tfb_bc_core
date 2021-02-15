@@ -2,6 +2,41 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 {
     layout
     {
+        addbefore("Ongoing Sales")
+        {
+            cuegroup("Business Development")
+            {
+                Caption = 'Ongoign Business Development';
+                field("TFB Open Opportunities"; Rec."TFB Open Opportunities")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Opportunities';
+                    DrillDownPageID = Opportunities;
+                    ToolTip = 'Specifies opportunities that are still open.';
+                }
+                field("TFB Tasks"; Rec."TFB Tasks")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Tasks';
+                    DrillDownPageID = "Task List";
+                    ToolTip = 'Specifies tasks that are still open.';
+                }
+                field("TFB My Tasks"; Rec."TFB My Tasks")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'My Tasks';
+                    DrillDownPageID = "Task List";
+                    ToolTip = 'Specifies tasks that are still open.';
+                }
+                field("TFB New Contacts"; Rec."TFB New Contacts")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'New contacts';
+                    DrillDownPageID = "Contact List";
+                    ToolTip = 'Specifies recently added contacts.';
+                }
+            }
+        }
         addafter("Ongoing Sales Orders")
         {
             field("TFB Ongoing Sales Lines"; Rec."TFB Ongoing Sales Lines")
@@ -43,7 +78,15 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
     }
 
-    actions
-    {
-    }
+    trigger OnOpenPage()
+
+    var
+        UserSetup: Record "User Setup";
+
+    begin
+        If UserSetup.GetBySystemId(UserSecurityId()) then
+            Rec."TFB Salesperson Code Filter" := UserSetup."Salespers./Purch. Code";
+    end;
+
+
 }

@@ -30,6 +30,17 @@ pageextension 50177 "TFB Opportunity" extends "Opportunity Card"
             }
         }
 
+        addbefore(Control25)
+        {
+            part(Tasks; "TFB Contact Task Subform")
+            {
+                SubPageLink = "Opportunity No." = field("No."), "System To-do Type" = const(Organizer), Closed = const(false);
+                Caption = 'Active Tasks';
+                Visible = true;
+                ApplicationArea = All;
+            }
+        }
+
         movefirst(Qualification; Priority)
 
 

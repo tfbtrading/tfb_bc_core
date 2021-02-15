@@ -32,6 +32,9 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         Exit(TargetDate);
     end;
 
+    
+    
+
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeValidatePromisedReceiptDate', '', false, false)]
     local procedure OnBeforeValidatePromisedReceiptDate(var PurchaseLine: Record "Purchase Line"; CallingFieldNo: Integer; var IsHandled: Boolean; xPurchaseLine: Record "Purchase Line");

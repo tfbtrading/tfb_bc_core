@@ -72,7 +72,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         EmailID := Customer."E-Mail";
         If Shipment."Customer Reference" <> '' then
-            ShipmentRef := Shipment."Customer No."
+            ShipmentRef := Shipment."Customer Reference"
         else
             ShipmentRef := Shipment."No.";
         SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, ShipmentRef));
@@ -122,7 +122,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         LineBuilder: TextBuilder;
         ReferenceBuilder: TextBuilder;
         OrderNoTxt: label 'Our order %1', comment = 'Order No';
-        CustomerRefTxt: label 'and your ref no. is %1', comment = 'External No';
+        CustomerRefTxt: label ' and your ref no. is %1', comment = 'External No';
         VendorNoTxt: label '. Vendor invoice no. is %1', comment = 'Vendor Invoice No';
 
     begin
