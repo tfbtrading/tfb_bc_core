@@ -172,7 +172,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         PurchaseCU: CodeUnit "TFB Purchase Order Mgmt";
 
     begin
-        If (not Rec."Drop Shipment") or (Rec."Purchase Order No." = '') or (not PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.")) then
+        If (not Rec."Drop Shipment") or (not (Rec."Purchase Order No." = '')) or (not PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.")) then
             _isCoAVisible := false
         else
             if not (PurchaseCu.GetLineLotStatus(PurchaseLine) = _isTrackingReq::NotRequired) then begin

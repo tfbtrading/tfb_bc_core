@@ -6,7 +6,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
         {
             cuegroup("Business Development")
             {
-                Caption = 'Ongoign Business Development';
+                Caption = 'Ongoing Business Development';
                 field("TFB Open Opportunities"; Rec."TFB Open Opportunities")
                 {
                     ApplicationArea = Basic, Suite;
@@ -81,12 +81,23 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
     trigger OnOpenPage()
 
     var
+        SalesPerson: Record "Salesperson/Purchaser";
         UserSetup: Record "User Setup";
+        User: record User;
+        UserName: code[50];
+        USID: Guid;
 
     begin
-        If UserSetup.GetBySystemId(UserSecurityId()) then
-            Rec."TFB Salesperson Code Filter" := UserSetup."Salespers./Purch. Code";
-    end;
+        USID := Database.UserSecurityId();
 
+        User.SetRange("User Security ID", USID);
+
+        If User.FindFirst() then begin
+            UserName := User."User Name";
+            If UserSetup.Get(UserName) then
+                Rec."TFB Salesperson Code Filter" := UserSetup."Salespers./Purch. Code";
+
+        end;
+    end;
 
 }

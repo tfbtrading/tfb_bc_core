@@ -72,12 +72,21 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
     var
         SalesPerson: Record "Salesperson/Purchaser";
         UserSetup: Record "User Setup";
+        User: record User;
+        UserName: code[50];
+        USID: Guid;
 
     begin
+        USID := Database.UserSecurityId();
 
-        If UserSetup.Get(UserId) then
-            Rec."TFB SalesPerson Filter" := UserSetup."Salespers./Purch. Code";
+        User.SetRange("User Security ID", USID);
 
+        If User.FindFirst() then begin
+            UserName := User."User Name";
+            If UserSetup.Get(UserName) then
+                Rec."TFB SalesPerson Filter" := UserSetup."Salespers./Purch. Code";
+
+        end;
     end;
 
 

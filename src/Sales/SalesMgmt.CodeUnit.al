@@ -204,13 +204,11 @@ codeunit 50122 "TFB Sales Mgmt"
         LotInfo: Record "Lot No. Information";
         DateFormula: DateFormula;
         BlockDate: Date;
+        TargetDate: Date;
 
     begin
 
-        If Dialog.Confirm('Defer shipments by 1 day from today for %1?', false, ItemLedgerEntry.Description) then
-            Evaluate(DateFormula, '+1D')
-        else
-            Evaluate(DateFormula, '0D');
+
 
         LotInfo.SetRange("Item No.", ItemLedgerEntry."Item No.");
         LotInfo.SetRange("Lot No.", ItemLedgerEntry."Lot No.");
@@ -221,6 +219,10 @@ codeunit 50122 "TFB Sales Mgmt"
                 BlockDate := LotInfo."TFB Date Available" else
                 BlockDate := today();
 
+        If Dialog.Confirm('Defer shipments by 1 day from %1 for %2?', false, BlockDate, ItemLedgerEntry.Description) then
+            Evaluate(DateFormula, '+1D')
+        else
+            Evaluate(DateFormula, '0D');
 
         ResEntry.SetRange("Item No.", ItemLedgerEntry."Item No.");
         ResEntry.SetRange("Source Ref. No.", ItemLedgerEntry."Entry No.");
