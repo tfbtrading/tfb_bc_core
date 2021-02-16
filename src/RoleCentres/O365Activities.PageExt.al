@@ -95,7 +95,8 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
         If User.FindFirst() then begin
             UserName := User."User Name";
             If UserSetup.Get(UserName) then
-                Rec."TFB Salesperson Code Filter" := UserSetup."Salespers./Purch. Code";
+                Rec.SetRange("TFB Salesperson Code Filter", UserSetup."Salespers./Purch. Code");
+
 
         end;
     end;
