@@ -14,7 +14,7 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
         }
         addafter("Outstanding Quantity")
         {
-            field(_UnpostedQty; GetUnpostedQty())
+            field(_UnpostedQty; _UnpostedQty)
             {
                 ApplicationArea = All;
                 Caption = 'Blanket Qty Ordered';
@@ -41,6 +41,17 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
                     LinesPage.Run();
 
                 end;
+            }
+            field(_RemainingQty; _RemainingQty)
+            {
+                ApplicationArea = All;
+                Caption = 'Blanket Qty Ordered';
+                ToolTip = 'Specifies Quantity Ordered but not yet received';
+                Editable = false;
+                DrillDown = true;
+                Visible = Rec."Document Type" = Rec."Document Type"::"Blanket Order";
+
+
             }
 
         }
@@ -85,12 +96,16 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
 
     end;
 
-    local procedure GetUnpostedQty(): Decimal
+
+
+    trigger OnAfterGetRecord()
 
     var
-
         Line: Record "Purchase Line";
     begin
+
+        Clear(_UnpostedQty);
+        Clear(_RemainingQty);
 
         If Rec."Document Type" = Rec."Document Type"::"Blanket Order" then begin
             Line.SetRange("Blanket Order No.", Rec."Document No.");
@@ -98,11 +113,19 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
             Line.SetRange("Document Type", Line."Document Type"::Order);
 
             If Line.CalcSums("Outstanding Qty. (Base)") then
-                Exit(Line."Outstanding Qty. (Base)");
-        end
-        else
-            exit(0);
+                _UnpostedQty := Line."Outstanding Qty. (Base)";
 
 
+        end;
+
+        _UnpostedQty := Rec.Quantity - (_UnpostedQty + Rec."Quantity Received")
     end;
+
+
+
+    var
+
+        _UnpostedQty: Decimal;
+        _RemainingQty: Decimal;
+
 }

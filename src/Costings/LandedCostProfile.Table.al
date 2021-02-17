@@ -330,7 +330,7 @@ table 50340 "TFB Landed Cost Profile"
                 If Rec."Freight Currency" <> '' then begin
                     currency.get(Rec."Freight Currency");
                     currency3.GetLastestExchangeRate("Freight Currency", LatestDate, ExchRate);
-                    "Freight (LCY)" := "Ocean Freight" / ExchRate;
+                    "Freight (LCY)" := "Ocean Freight" * ExchRate;
                 end
                 else
                     "Freight (LCY)" := "Ocean Freight";
