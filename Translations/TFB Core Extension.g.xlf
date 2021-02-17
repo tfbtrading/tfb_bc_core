@@ -3,391 +3,6 @@
   <file datatype="xml" source-language="en-US" target-language="en-US" original="TFB Core Extension">
     <body>
       <group id="body">
-        <trans-unit id="Table 111198966 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. Series</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. Series - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3794489734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Buy-from Contact No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Buy-from Contact No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Buy-from Contact</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Buy-from Contact - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Customer No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Customer Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 744840891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>External Reference No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field External Reference No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1176651154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Date Signed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Date Signed - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 266343587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Crop Year</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Crop Year - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 966740350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment Terms Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Payment Terms Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 4292385700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment Terms GUID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Payment Terms GUID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3401411167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Commission Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Commission Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3557664220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Percentage %</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Percentage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 2702513056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fixed Rate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Fixed Rate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3447207777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Price Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor Price Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Status - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3561154705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Currency</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Currency - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 830213579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Value</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Total Value - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 812787422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Brokerage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Total Brokerage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 2071735474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Container Route</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Container Route - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 563380244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Shipping Method</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Shipping Method Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 3119838595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Est. Freight Per MT</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Est. Freight Per MT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 4139269975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Shipments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. of Shipments - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 2861582008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Shipment Status Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Shipment Status Filter - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - Field 1472389393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract Attach.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Contract Attach. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - FieldGroup 2253035989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select Brokerage Contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - FieldGroup DropDown - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - NamedType 2551427998" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Do you want to change %1?</source>
-          <note from="Developer" annotates="general" priority="2">%1 = a Field Caption like Currency Code</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType ConfirmChangeQst</note>
-        </trans-unit>
-        <trans-unit id="Table 111198966 - NamedType 342054122" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 %2 is related to a different company than vendor %3.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType Text038</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies no. of brokerage contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 4190130733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies customer no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Customer No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1171137197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies customer name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Customer Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1527594213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3794489734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Contact No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3794489734 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the number of contact person of the vendor's buy-from.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Contact</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1750733095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the name of the person to contact about an order from this vendor.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 744840891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies external ref. no</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control External Reference No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 266343587 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies crop year</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Crop Year - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 2071735474 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies container route</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Container Route - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3401411167 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies commission type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Commission Type - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 2702513056 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies fixed rate for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Fixed Rate - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3557664220 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies percentage commission for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Percentage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1176651154 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies date signed for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Date Signed - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 966740350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies payment terms for contract. Used to calculate defaulte due date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Payment Terms Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3561154705 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies currency for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Currency - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3447207777 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor price unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor Price Unit - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 563380244 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies shipping method code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Shipping Method Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 3119838595 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies est. freight per metric tonne</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Est. Freight Per MT - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies status of contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Status - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1472389393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract Attached</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Contract Attach. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 1472389393 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if contract is attached</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Contract Attach. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 4139269975 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies number of shipments for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control No. of Shipments - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Control 4246820665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control ContractLines - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 701918397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Upload - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 701918397 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload the contract file if it exists</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Upload - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Delete - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 2477294019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete the contract file if it exists</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Delete - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 593408208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Download contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Download - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Action 593408208 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Download the contract file if it exists</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Download - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All files (*.pdf)|*.pdf</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FilterTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 238945643" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No content</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType EmptyFileNameErr</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select Contract File to Upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileDialogTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 1845236427" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract_%1.pdf</source>
-          <note from="Developer" annotates="general" priority="2">%1 = contract number</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileNameTxt</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Document No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Document No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Item No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quantity</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Quantity - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 3555040734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Price Unit Quantity</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Pricing Unit Qty - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 1932319159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Agreed Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Agreed Price - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 537392893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total MT</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Total MT - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Amount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Amount - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 2007291986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Fee</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Brokerage Fee - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 672955408 - Field 2433814780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Qty. On Shipments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Qty. On Shipments - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 4009555772 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3643,6 +3258,391 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field Last Date/Time Modified - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 672955408 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 3555040734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Price Unit Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Pricing Unit Qty - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 1932319159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Agreed Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Agreed Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 537392893 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total MT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Total MT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 2007291986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Fee</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Brokerage Fee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 672955408 - Field 2433814780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. On Shipments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract Line - Field Qty. On Shipments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1351594800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Series</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3794489734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buy-from Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Buy-from Contact No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Buy-from Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Buy-from Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 4190130733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 744840891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Reference No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field External Reference No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1176651154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Signed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Date Signed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 266343587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Crop Year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Crop Year - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 966740350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Payment Terms Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 4292385700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Terms GUID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Payment Terms GUID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3401411167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Commission Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Commission Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3557664220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Percentage %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Percentage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 2702513056 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fixed Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Fixed Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3447207777 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Vendor Price Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3561154705 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Currency - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 830213579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Total Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 812787422 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Brokerage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Total Brokerage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 2071735474 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Container Route</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Container Route - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 563380244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Shipping Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3119838595 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Est. Freight Per MT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Est. Freight Per MT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 4139269975 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Shipments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field No. of Shipments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 2861582008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Status Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Shipment Status Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1472389393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Attach.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Contract Attach. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - FieldGroup 2253035989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Brokerage Contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - FieldGroup DropDown - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - NamedType 2551427998" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to change %1?</source>
+          <note from="Developer" annotates="general" priority="2">%1 = a Field Caption like Currency Code</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType ConfirmChangeQst</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - NamedType 342054122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 %2 is related to a different company than vendor %3.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType Text038</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies no. of brokerage contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 4190130733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies customer no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Customer No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1171137197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies customer name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Customer Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1527594213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendor no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendor name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3794489734 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3794489734 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of contact person of the vendor's buy-from.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1750733095 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the person to contact about an order from this vendor.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Buy-from Contact - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 744840891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies external ref. no</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control External Reference No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 266343587 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies crop year</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Crop Year - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 2071735474 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies container route</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Container Route - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3401411167 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies commission type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Commission Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 2702513056 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies fixed rate for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Fixed Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3557664220 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies percentage commission for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Percentage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1176651154 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies date signed for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Date Signed - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 966740350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies payment terms for contract. Used to calculate defaulte due date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Payment Terms Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3561154705 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies currency for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Currency - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3447207777 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendor price unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Vendor Price Unit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 563380244 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies shipping method code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Shipping Method Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3119838595 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies est. freight per metric tonne</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Est. Freight Per MT - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies status of contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1472389393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Contract Attach. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1472389393 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if contract is attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Contract Attach. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 4139269975 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies number of shipments for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control No. of Shipments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 4246820665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control ContractLines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 701918397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Upload - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 701918397 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload the contract file if it exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Upload - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 2477294019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Delete - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 2477294019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the contract file if it exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Delete - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 593408208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Download - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Action 593408208 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download the contract file if it exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Action Download - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All files (*.pdf)|*.pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 238945643" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No content</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType EmptyFileNameErr</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Contract File to Upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileDialogTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 1845236427" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract_%1.pdf</source>
+          <note from="Developer" annotates="general" priority="2">%1 = contract number</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileNameTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4052,81 +4052,6 @@
           <source>Show entries with missing incoming documents related to underlying general ledger</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Bank Account Part List - Action ShowIncomingDocs - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Contracts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies no. for brokerage contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 1527594213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Vendor No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Vendor Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 4190130733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies customer no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Customer No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 1171137197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies customer name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Customer Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 744840891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies external reference no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control External Reference No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies current status for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Status - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 266343587 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies crop year for contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Crop Year - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 1176651154 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies date signed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Date Signed - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 830213579 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies total value of contract. Calculated automatically.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Total Value - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 812787422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies total brokerage value of contract. Calculated automatically.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Total Brokerage - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Control 4139269975 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the no. of active shipments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control No. of Shipments - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Action 2900642736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New shipment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Action NewShipment - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1659070900 - Action 2900642736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create a new shipment against the contract</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Action NewShipment - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2568776476 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies item no. for line</source>
@@ -8108,6 +8033,91 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Purch. Order Lines - View Late Lines - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1659070900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Contracts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies no. for brokerage contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 1527594213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendor no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Vendor No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendor name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Vendor Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 4190130733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies customer no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Customer No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 1171137197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies customer name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Customer Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 744840891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies external reference no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control External Reference No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 2569633944 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the lines on the order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control LinesDesc - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 2569633944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control LinesDesc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies current status for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 266343587 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies crop year for contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Crop Year - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 1176651154 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies date signed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Date Signed - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 830213579 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies total value of contract. Calculated automatically.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Total Value - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 812787422 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies total brokerage value of contract. Calculated automatically.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control Total Brokerage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Control 4139269975 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the no. of active shipments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Control No. of Shipments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Action 2900642736 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Action NewShipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1659070900 - Action 2900642736 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create a new shipment against the contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract List - Action NewShipment - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Report 2320230120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close Out Last Used Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9683,56 +9693,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Invoice Subform - Control TFBGen. Prod. Posting Group - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Control 2482778060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Contract Details</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFBContract Details - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Control 1520385104 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Specifies start date from which goods can be shipped</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Start Date - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Control 1468961821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Specifies end date before which goods need to be shipped</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB End Date - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Control 3578572908 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Specifies if this blanket order is for a drop shipment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Blanket DropShip - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Control 3538580790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Specifies the related sales blanket order number</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Sales Blanket Order No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Blanket sales order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Opens blanket sales order if drop shipment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1432390487 - Control 3126877759 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
-          <source>Specifies the vendors order no.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control Vendor Order No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1432390487 - Control 2569633944 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
-          <source>Specifies the lines on the order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control LinesDesc - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1432390487 - Control 2569633944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
-          <source>Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control LinesDesc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="PageExtension 495061229 - Control 1784036464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1843696368">
           <source>Line Weight</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11303,6 +11263,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote - Action VendorQuote - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Control 2482778060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Contract Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFBContract Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Control 1520385104 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Specifies start date from which goods can be shipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Start Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Control 1468961821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Specifies end date before which goods need to be shipped</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB End Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Control 3578572908 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Specifies if this blanket order is for a drop shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Blanket DropShip - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Control 3538580790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Specifies the related sales blanket order number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Control TFB Sales Blanket Order No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Blanket sales order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Opens blanket sales order if drop shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1432390487 - Control 3126877759 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
+          <source>Specifies the vendors order no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control Vendor Order No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1432390487 - Control 2569633944 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
+          <source>Specifies the lines on the order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control LinesDesc - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1432390487 - Control 2569633944 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1225303959">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control LinesDesc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2173142200 - Control 191096023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
           <source>Ongoing Business Development</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11372,6 +11382,11 @@
           <source>Specifies number of containers in progress</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFBContainers In Progress - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Method 716454850 - NamedType 4034883110" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2173142200">
+          <source>&lt;-14D&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Method OnOpenPage - NamedType ExpressionTxt</note>
         </trans-unit>
         <trans-unit id="TableExtension 749713401 - Field 393647425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
           <source>No. Open Trans.</source>

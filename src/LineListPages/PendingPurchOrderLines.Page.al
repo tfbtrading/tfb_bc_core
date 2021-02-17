@@ -97,7 +97,7 @@ page 50103 "TFB Pending Purch. Order Lines"
                     ApplicationArea = All;
                     Caption = 'Container sailing date';
                     ToolTip = 'Specifies date on which purchase order departs origin if it is on a container';
-                    Visible = Rec."TFB Container Entry No." <> '';
+                    //Visible = Rec."TFB Container Entry No." <> '';
                 }
                 field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {

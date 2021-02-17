@@ -89,7 +89,7 @@ page 50147 "TFB Pending Sales Lines"
                                 Rec.ShowReservation()
                             else
                                 If Rec."Purchase Order No." <> '' then
-                                    OpenDropShipOrder();
+                                    OpenRelatedPurchaseOrder();
                     end;
                 }
 
@@ -205,7 +205,7 @@ page 50147 "TFB Pending Sales Lines"
 
                     begin
 
-                        OpenDropShipOrder();
+                        OpenRelatedPurchaseOrder();
 
                     end;
                 }
@@ -369,7 +369,7 @@ page 50147 "TFB Pending Sales Lines"
         _availability := SalesCU.GetSalesLineStatusEmoji(Rec);
     end;
 
-    local procedure OpenDropShipOrder()
+    local procedure OpenRelatedPurchaseOrder()
 
     var
         Purchase: Record "Purchase Header";
@@ -378,7 +378,12 @@ page 50147 "TFB Pending Sales Lines"
     begin
 
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
-        Purchase.SetRange("No.", Rec."Purchase Order No.");
+
+        If Rec."Drop Shipment" then
+            Purchase.SetRange("No.", Rec."Purchase Order No.")
+        else
+            if Rec."Special Order" then
+                Purchase.SetRange("No.", Rec."Special Order Purchase No.");
 
         If Purchase.FindFirst() then begin
             PurchasePage.SetRecord(Purchase);

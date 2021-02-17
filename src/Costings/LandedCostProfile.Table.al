@@ -287,6 +287,8 @@ table 50340 "TFB Landed Cost Profile"
         currency3: record "Currency Exchange Rate";
         cu: codeunit "Map Currency Exchange Rate";
         cu2: codeunit "Additional-Currency Management";
+        LatestDate: date;
+        ExchRate: Decimal;
     begin
 
         TempPerPallet := 0;
@@ -325,9 +327,10 @@ table 50340 "TFB Landed Cost Profile"
                 TempPerContainer += cs."Port Cartage";
 
 
-                If "Freight Currency" <> '' then begin
-                    currency.get("Freight Currency");
-                    "Freight (LCY)" := currency3.ExchangeAmtFCYToLCY(today, "Freight Currency", "Ocean Freight", 1);
+                If Rec."Freight Currency" <> '' then begin
+                    currency.get(Rec."Freight Currency");
+                    currency3.GetLastestExchangeRate("Freight Currency", LatestDate, ExchRate);
+                    "Freight (LCY)" := "Ocean Freight" / ExchRate;
                 end
                 else
                     "Freight (LCY)" := "Ocean Freight";

@@ -111,7 +111,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
         end;
 
-        Rec.SetRange("Recent Filter", CreateDateTime(CalcDate(ExpressionTxt, Today), 0T), CurrentDateTime);
+        Rec.SetRange("Recent Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
     end;
 
 }

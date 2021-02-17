@@ -324,7 +324,7 @@ codeunit 50122 "TFB Sales Mgmt"
                                 _availability := emojiDropShipPendingTxt;
 
                         if SalesLine."Special Order" then
-                            If SalesLine."Purchase Order No." <> '' then
+                            If SalesLine."Special Order Purchase No." <> '' then
                                 _availability := emojiSpecialTxt else
                                 _availability := emojiDropShipPendingTxt;
                     end;
