@@ -52,6 +52,14 @@ page 50241 "TFB Brokerage Contract List"
                     ApplicationArea = All;
                     Tooltip = 'Specifies external reference no.';
                 }
+                field("LinesDesc"; GetOrderLines())
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the lines on the order';
+                    MultiLine = false;
+                    Editable = false;
+                    Caption = 'Lines';
+                }
                 field("Status"; Rec."Status")
                 {
                     ApplicationArea = All;
@@ -137,4 +145,22 @@ page 50241 "TFB Brokerage Contract List"
             }
         }
     }
+
+    Local Procedure GetOrderLines(): Text
+
+    var
+        BrokerageLine: Record "TFB Brokerage Contract Line";
+        LineBuilder: TextBuilder;
+
+    begin
+
+        BrokerageLine.SetRange("Document No.", Rec."No.");
+        If BrokerageLine.Findset(false, false) then
+            repeat
+
+                LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3 at %4', BrokerageLine.Description, BrokerageLine.Quantity, BrokerageLine."Pricing Unit Qty", BrokerageLine."Agreed Price"));
+
+            until BrokerageLine.Next() = 0;
+        exit(LineBuilder.ToText());
+    end;
 }

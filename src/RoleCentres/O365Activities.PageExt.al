@@ -93,9 +93,13 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
         User: record User;
         UserName: code[50];
         USID: Guid;
-
+        ExpressionTxt: Label '<-14D>';
+        Today: date;
+        StartRange: date;
     begin
         USID := Database.UserSecurityId();
+
+
 
         User.SetRange("User Security ID", USID);
 
@@ -107,7 +111,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
         end;
 
-        Rec.SetFilter("Recent Filter", 'today-1m..');
+        Rec.SetRange("Recent Filter", CreateDateTime(CalcDate(ExpressionTxt, Today), 0T), CurrentDateTime);
     end;
 
 }
