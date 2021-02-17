@@ -11,7 +11,14 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Opportunities';
-                    DrillDownPageID = Opportunities;
+                    DrillDownPageID = "Opportunity List";
+                    ToolTip = 'Specifies opportunities that are still open.';
+                }
+                field("TFB My Opportunities"; "TFB My Opportunities")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'My Opportunities';
+                    DrillDownPageID = "Opportunity List";
                     ToolTip = 'Specifies opportunities that are still open.';
                 }
                 field("TFB Tasks"; Rec."TFB Tasks")
@@ -99,6 +106,8 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
 
         end;
+
+        Rec.SetFilter("Recent Filter", 'today-1m..');
     end;
 
 }

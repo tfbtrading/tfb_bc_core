@@ -92,6 +92,13 @@ page 50103 "TFB Pending Purch. Order Lines"
                     ApplicationArea = All;
                     Tooltip = 'Specifies description of item';
                 }
+                field(tfbSailingDate; getSailingDate())
+                {
+                    ApplicationArea = All;
+                    Caption = 'Container sailing date';
+                    ToolTip = 'Specifies date on which purchase order departs origin if it is on a container';
+                    Visible = Rec."TFB Container Entry No." <> '';
+                }
                 field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {
                     ApplicationArea = All;
@@ -229,6 +236,18 @@ page 50103 "TFB Pending Purch. Order Lines"
 
     begin
         // _PlanDayDifference := "Planned Receipt Date" - "Requested Receipt Date";
+    end;
+
+    local procedure getSailingDate(): Date
+    var
+        Container: Record "TFB Container Entry";
+
+    begin
+
+        If Container.Get(Rec."TFB Container Entry No.") then
+            Exit(Container."Est. Departure Date");
+
+
     end;
 
 

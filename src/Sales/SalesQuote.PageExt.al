@@ -61,6 +61,14 @@ pageextension 50113 "TFB Sales Quote" extends "Sales Quote" //41
 
                 }
             }
+            field("No. Printed"; Rec."No. Printed")
+            {
+                ApplicationArea = All;
+                Importance = Promoted;
+                ToolTip = 'Specifies no. of times document has been printed or emailed';
+                Style = Attention;
+                StyleExpr = Rec."No. Printed" = 0;
+            }
         }
 
 
