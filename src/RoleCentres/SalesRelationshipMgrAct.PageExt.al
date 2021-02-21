@@ -8,20 +8,59 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
             Visible = false;
         }
 
+        addbefore(Contacts)
+        {
+            cuegroup(MyActivities)
+            {
+                Caption = 'My Activities';
+
+                field("TFB My Leads"; Rec."TFB My Leads")
+                {
+                    ToolTip = 'Specifies the number of leads open';
+                    DrillDownPageId = "Contact List";
+                    ApplicationArea = RelationshipMgmt;
+                }
+                field("TFB My Prospects"; Rec."TFB My Prospects")
+                {
+                    ToolTip = 'Specifies the number of prospects open';
+                    DrillDownPageId = "Contact List";
+                    ApplicationArea = RelationshipMgmt;
+                }
+                field("TFB My Opportunities"; Rec."TFB My Opportunities")
+                {
+                    ToolTip = 'Specifies the number of opportunities open';
+                    DrillDownPageId = "Opportunity List";
+                    ApplicationArea = RelationshipMgmt;
+                }
+
+                field("TFB My Tasks"; Rec."TFB My Tasks")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    DrillDownPageID = "Task List";
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Caption = 'Open Tasks';
+                    ToolTip = 'Specifies tasks that are open.';
+                }
+                field("TFB My Interactions"; Rec."TFB My Interactions")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    Caption = 'Last 7 Days Interactions';
+                    DrillDownPageID = "Interaction Log Entries";
+
+                    ToolTip = 'Specifies recent interactions opportunities.';
+
+
+                }
+
+
+            }
+
+        }
+
         addfirst(Contacts)
         {
-            field("TFB My Leads"; Rec."TFB My Leads")
-            {
-                ToolTip = 'Specifies the number of leads open';
-                DrillDownPageId = "Contact List";
-                ApplicationArea = RelationshipMgmt;
-            }
-            field("TFB My Prospects"; Rec."TFB My Prospects")
-            {
-                ToolTip = 'Specifies the number of prospects open';
-                DrillDownPageId = "Contact List";
-                ApplicationArea = RelationshipMgmt;
-            }
+
         }
 
         addafter(Contacts)
@@ -75,18 +114,25 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
         User: record User;
         UserName: code[50];
         USID: Guid;
-
+        ExpressionTxt: Label '<-14D>';
+        Today: date;
+        StartRange: date;
     begin
         USID := Database.UserSecurityId();
+
+
 
         User.SetRange("User Security ID", USID);
 
         If User.FindFirst() then begin
             UserName := User."User Name";
             If UserSetup.Get(UserName) then
-                Rec."TFB SalesPerson Filter" := UserSetup."Salespers./Purch. Code";
+                Rec.SetRange("TFB SalesPerson Filter", UserSetup."Salespers./Purch. Code");
+
 
         end;
+
+        Rec.SetRange("Recent Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
     end;
 
 

@@ -7,12 +7,25 @@ tableextension 50119 "TFB Rel. Mgmt. Cue" extends "Relationship Mgmt. Cue"
             FieldClass = FlowField;
             CalcFormula = count("Interaction Log Entry" where(Date = filter('>today-7D')));
         }
+        field(50105; "TFB My Interactions"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Interaction Log Entry" where(Date = filter('>today-7D'), "Salesperson Code" = field("TFB SalesPerson Filter")));
+        }
         field(50110; "TFB Open Tasks"; Integer)
         {
             FieldClass = FlowField;
             CalcFormula = count("To-do" where(Closed = const(false), "System To-do Type" = const(Organizer)));
 
         }
+
+        field(50115; "TFB My Tasks"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("To-do" where(Closed = const(false), "System To-do Type" = const(Organizer), "Salesperson Code" = field("TFB SalesPerson Filter")));
+
+        }
+
         field(50120; "TFB SalesPerson Filter"; Code[20])
         {
             FieldClass = FlowFilter;
@@ -30,6 +43,18 @@ tableextension 50119 "TFB Rel. Mgmt. Cue" extends "Relationship Mgmt. Cue"
             FieldClass = FlowField;
             Caption = 'My Leads - Companies';
             CalcFormula = count(Contact where(Type = const(Company), "Salesperson Code" = field("TFB SalesPerson Filter"), "TFB Contact Stage" = const(Lead)));
+        }
+        field(50150; "TFB My Opportunities"; Integer)
+        {
+            CalcFormula = Count(Opportunity WHERE(Closed = FILTER(false), "Salesperson Code" = field("TFB SalesPerson Filter")));
+            Caption = 'Open Opportunities';
+            FieldClass = FlowField;
+        }
+
+        field(50535; "Recent Filter"; DateTime)
+        {
+            Caption = 'Recent Filter';
+            FieldClass = FlowFilter;
         }
 
     }

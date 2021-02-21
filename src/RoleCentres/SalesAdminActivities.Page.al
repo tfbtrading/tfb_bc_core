@@ -162,13 +162,32 @@ page 50110 "TFB Sales Admin Activities"
             }
 
 
-            cuegroup("My User Tasks")
+            cuegroup("TasksAndInteractions")
             {
-                Caption = 'My User Tasks';
+                Caption = 'My Tasks and Interactions';
+                field("TFB My Tasks"; Rec."TFB My Tasks")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    DrillDownPageID = "Task List";
+                    Style = Favorable;
+                    StyleExpr = TRUE;
+                    Caption = 'Relationship Tasks';
+                    ToolTip = 'Specifies tasks that are open.';
+                }
+                field("TFB My Interactions"; Rec."TFB My Interactions")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    Caption = 'Interactions';
+                    DrillDownPageID = "Interaction Log Entries";
+
+                    ToolTip = 'Specifies recent interactions opportunities.';
+
+
+                }
                 field("UserTaskManagement.GetMyPendingUserTasksCount"; UserTaskManagement.GetMyPendingUserTasksCount())
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Pending User Tasks';
+                    Caption = 'Pending Recurring Tasks';
                     Image = Checklist;
                     ToolTip = 'Specifies the number of pending tasks that are assigned to you or to a group that you are a member of.';
 
@@ -247,6 +266,14 @@ page 50110 "TFB Sales Admin Activities"
         RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
         ConfPersonalizationMgt: Codeunit "Conf./Personalization Mgt.";
         NewRecord: Boolean;
+        SalesPerson: Record "Salesperson/Purchaser";
+        UserSetup: Record "User Setup";
+        User: record User;
+        UserName: code[50];
+        USID: Guid;
+        ExpressionTxt: Label '<-14D>';
+        Today: date;
+        StartRange: date;
     begin
         Rec.Reset();
         if not Rec.Get() then begin
@@ -261,6 +288,22 @@ page 50110 "TFB Sales Admin Activities"
         Rec.SetFilter("Due Next Week Filter", '-cw+1w..+cw+1w');
         Rec.SetFilter("Overdue Filter", '..w');
         Rec.SetFilter("Workday Filter", 'w');
+
+        USID := Database.UserSecurityId();
+
+
+
+        User.SetRange("User Security ID", USID);
+
+        If User.FindFirst() then begin
+            UserName := User."User Name";
+            If UserSetup.Get(UserName) then
+                Rec.SetRange("TFB SalesPerson Filter", UserSetup."Salespers./Purch. Code");
+
+
+        end;
+
+        Rec.SetRange("Recent DateTime Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
 
         ShowProductVideosActivities := ClientTypeManagement.GetCurrentClientType() <> CLIENTTYPE::Phone;
         RoleCenterNotificationMgt.ShowNotifications();
