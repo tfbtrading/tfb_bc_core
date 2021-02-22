@@ -16,19 +16,19 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
 
                 field("TFB My Leads"; Rec."TFB My Leads")
                 {
-                    ToolTip = 'Specifies the number of leads open';
+                    ToolTip = 'Specifies the number of your own leads';
                     DrillDownPageId = "Contact List";
                     ApplicationArea = RelationshipMgmt;
                 }
                 field("TFB My Prospects"; Rec."TFB My Prospects")
                 {
-                    ToolTip = 'Specifies the number of prospects open';
+                    ToolTip = 'Specifies the number of your own prospects';
                     DrillDownPageId = "Contact List";
                     ApplicationArea = RelationshipMgmt;
                 }
                 field("TFB My Opportunities"; Rec."TFB My Opportunities")
                 {
-                    ToolTip = 'Specifies the number of opportunities open';
+                    ToolTip = 'Specifies the number of your own opportunities open';
                     DrillDownPageId = "Opportunity List";
                     ApplicationArea = RelationshipMgmt;
                 }
@@ -36,19 +36,19 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
                 field("TFB My Tasks"; Rec."TFB My Tasks")
                 {
                     ApplicationArea = RelationshipMgmt;
-                    DrillDownPageID = "Task List";
+                    DrillDownPageID = "TFB Active Task List";
                     Style = Favorable;
                     StyleExpr = TRUE;
-                    Caption = 'Open Tasks';
-                    ToolTip = 'Specifies tasks that are open.';
+
+                    ToolTip = 'Specifies your own tasks that are pending.';
                 }
                 field("TFB My Interactions"; Rec."TFB My Interactions")
                 {
                     ApplicationArea = RelationshipMgmt;
-                    Caption = 'Last 7 Days Interactions';
+
                     DrillDownPageID = "Interaction Log Entries";
 
-                    ToolTip = 'Specifies recent interactions opportunities.';
+                    ToolTip = 'Specifies recent interactions opportunities in last three days.';
 
 
                 }

@@ -168,7 +168,7 @@ page 50110 "TFB Sales Admin Activities"
                 field("TFB My Tasks"; Rec."TFB My Tasks")
                 {
                     ApplicationArea = RelationshipMgmt;
-                    DrillDownPageID = "Task List";
+                    DrillDownPageID = "TFB Active Task List";
                     Style = Favorable;
                     StyleExpr = TRUE;
                     Caption = 'Relationship Tasks';

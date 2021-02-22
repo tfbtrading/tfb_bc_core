@@ -600,6 +600,25 @@ page 50210 "TFB Container Entry"
 
                 end;
             }
+
+            action(History)
+            {
+                ApplicationArea = All;
+                Image = History;
+
+                Caption = 'History';
+                ToolTip = 'Shows the history in the change log for the container';
+
+                trigger OnAction()
+
+                var
+                    CommonCU: CodeUnit "TFB Common Library";
+                begin
+
+                    CommonCU.ShowValueHistory(Rec.RecordId());
+
+                end;
+            }
         }
 
 

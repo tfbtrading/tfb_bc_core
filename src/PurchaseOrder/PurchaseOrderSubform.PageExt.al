@@ -19,10 +19,29 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
 
                 var
 
+                    _TotalQty: Decimal;
                 begin
                     If Rec.Type = Rec.Type::Item then
                         Rec.OpenItemTrackingLines();
                 end;
+            }
+        }
+
+        addlast(Control19)
+        {
+            field(TFBTotalQty; _TotalQty)
+            {
+                Caption = 'Total Qty (Base)';
+                ToolTip = 'Specifies the total qty in base unit of measure of items on lines';
+                ApplicationArea = All;
+                Editable = false;
+            }
+            field(TFBTotalWeight; _TotalWeight)
+            {
+                Caption = 'Total Weight (net)';
+                ToolTip = 'Specifies the total weight of the order in standard weight measure';
+                ApplicationArea = All;
+                Editable = false;
             }
         }
 
@@ -144,10 +163,19 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
         _trackingEmoji := LotCU.GetEmoji(_isTrackingReq);
         CheckCoAVisibility();
         CheckCoAStatus();
-
+        UpdateTotalQty();
 
     end;
 
+    local procedure UpdateTotalQty()
+
+    begin
+        PurchaseLine.CopyFilters(Rec);
+        PurchaseLine.CalcSums("Quantity (Base)");
+        PurchaseLine.CalcSums("TFB Line Total Weight");
+        _TotalQty := PurchaseLine."Quantity (Base)";
+        _TotalWeight := PurchaseLine."TFB Line Total Weight";
+    end;
 
     var
         LotCU: Codeunit "TFB Lot Intelligence";
@@ -157,7 +185,10 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
 
         _isCoAVisible: Boolean;
         _isTrackingVisible: Boolean;
+        _TotalQty: Decimal;
+        _TotalWeight: Decimal;
         _isCoARequiredEmoji: Text;
+        PurchaseLine: record "Purchase Line";
 
     local procedure CheckCoAVisibility()
 
