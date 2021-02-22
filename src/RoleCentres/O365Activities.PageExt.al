@@ -32,7 +32,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'My Tasks';
-                    DrillDownPageID = "Task List";
+                    DrillDownPageID = "TFB Active Task List";
                     ToolTip = 'Specifies tasks that are still open.';
                 }
                 field("TFB New Contacts"; Rec."TFB New Contacts")

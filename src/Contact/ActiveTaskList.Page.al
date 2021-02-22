@@ -2,7 +2,7 @@ page 50131 "TFB Active Task List"
 {
     Caption = 'Task List';
     CardPageID = "Task Card";
-    DataCaptionExpression = Caption;
+    DataCaptionExpression = 'Active Tasks';
     Editable = false;
     PageType = List;
     SourceTable = "To-do";
@@ -119,7 +119,10 @@ page 50131 "TFB Active Task List"
 
             }
         }
+
+
     }
+
 
     actions
     {
@@ -217,6 +220,16 @@ page 50131 "TFB Active Task List"
                 end;
             }
 
+        }
+    }
+
+    views
+    {
+
+        view(Overdue)
+        {
+            Caption = 'Overdue';
+            Filters = where("Ending Date" = filter('<>'''' & <today'));
         }
     }
 

@@ -81,7 +81,7 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
                 field("TFB Open Tasks"; Rec."TFB Open Tasks")
                 {
                     ApplicationArea = RelationshipMgmt;
-                    DrillDownPageID = "Task List";
+                    DrillDownPageID = "TFB Active Task List";
                     Style = Favorable;
                     StyleExpr = TRUE;
                     Caption = 'Open Tasks';
