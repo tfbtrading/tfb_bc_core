@@ -758,6 +758,11 @@ codeunit 50304 "TFB Costing Mgmt"
         end;
     end;
 
+	internal procedure CopyCurrentCostingToPriceList(Rec: Record "Price List Header")
+	begin
+		Error('Procedure CopyCurrentCostingToPriceList not implemented.');
+	end;
+
     local procedure AddMargin(Margin: Decimal; BaseValue: Decimal): Decimal
 
     begin

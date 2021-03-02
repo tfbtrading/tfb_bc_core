@@ -109,6 +109,25 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 Importance = Standard;
                 ToolTip = 'Specifies alternative names for item';
             }
+            field("TFB Act As Generic"; Rec."TFB Act As Generic")
+            {
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies if product should act as generic item. ';
+            }
+            Group(Generic)
+            {
+                ShowCaption = false;
+                Visible = not Rec."TFB Act As Generic";
+                field("TFB Parent Generic Item Name"; Rec."TFB Parent Generic Item Name")
+                {
+                    ApplicationArea = All;
+                    Importance = Standard;
+                    ToolTip = 'Specifies parent item if item is not acting as a generic';
+
+                }
+
+            }
 
         }
         addafter("Common Item No.")

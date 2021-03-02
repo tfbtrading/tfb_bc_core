@@ -88,7 +88,7 @@ tableextension 50260 "TFB Item" extends Item
         field(50320; "TFB Out. Qty. On Sales Order"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter")));
+            CalcFormula = Sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter")));
             Caption = 'Out. Qty. on Sales Order';
 
         }
@@ -99,7 +99,53 @@ tableextension 50260 "TFB Item" extends Item
             TableRelation = "Customer Price Group";
             ValidateTableRelation = true;
             Editable = false;
+            DataClassification = CustomerContent;
         }
+
+        field(50340; "TFB Act As Generic"; Boolean)
+        {
+            Caption = 'Act as Generic Item';
+            DataClassification = CustomerContent;
+        }
+        field(50345; "TFB Generic Item ID"; Guid)
+        {
+            Caption = 'Parent Generic Item Guid';
+            DataClassification = CustomerContent;
+            TableRelation = "TFB Generic Item".SystemId where(Type = const(ItemParent));
+            ValidateTableRelation = true;
+
+            trigger OnValidate()
+
+            begin
+                If GenericItem.Get("TFB Generic Item ID") then
+                    "TFB Parent Generic Item Name" := GenericItem.Description;
+
+            end;
+        }
+        field(50346; "TFB Parent Generic Item Name"; Text[255])
+        {
+            Caption = 'Parent Generic Item Name';
+            DataClassification = CustomerContent;
+            TableRelation = "TFB Generic Item".Description where(Type = const(ItemParent));
+
+            trigger OnValidate()
+            begin
+                GenericItem.SetRange(Description, "TFB Parent Generic Item Name");
+                If GenericItem.FindFirst() then
+                    Rec."TFB Generic Item ID" := GenericItem.SystemId;
+
+            end;
+
+
+        }
+        field(50347; "TFB Generic Link Exists"; Boolean)
+        {
+            Caption = 'Generic Link Exists';
+            FieldClass = FlowField;
+            CalcFormula = exist("TFB Generic Item" where(SystemId = field(SystemId)));
+        }
+
+
 
 
     }
@@ -114,6 +160,94 @@ tableextension 50260 "TFB Item" extends Item
 
 
     }
+
+    trigger OnAfterDelete()
+
+    begin
+        If Rec."TFB Act As Generic" then
+            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+                GenericItem.Delete(false);
+            end;
+
+    end;
+
+    trigger OnInsert()
+
+    var
+        Guid: Guid;
+
+    begin
+
+        If Rec."TFB Act As Generic" then begin
+            If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+                Guid := CreateGuid();
+                GenericItem.Init();
+                GenericItem.SystemId := Guid;
+                GenericItem.Description := Rec.Description;
+                GenericItem."Item Category Id" := Rec."Item Category Id";
+                GenericItem."Item Category Code" := Rec."Item Category Code";
+
+                If Rec.Picture.Count > 0 then
+                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                GenericItem.Type := GenericItem.Type::ItemExtension;
+                If GenericItem.Insert(true, true) then begin
+                    Rec."TFB Generic Item ID" := GUID;
+                    Rec.Modify(false);
+                end;
+            end;
+        end;
+
+
+    end;
+
+    trigger OnModify()
+
+    var
+        Guid: Guid;
+
+    begin
+        If Rec."TFB Act As Generic" then begin
+            If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+                Guid := CreateGuid();
+                GenericItem.Init();
+                GenericItem.SystemId := Guid;
+                GenericItem.Description := Rec.Description;
+                GenericItem."Item Category Id" := Rec."Item Category Id";
+                GenericItem."Item Category Code" := Rec."Item Category Code";
+                If Rec.Picture.Count > 0 then
+                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                GenericItem.Type := GenericItem.Type::ItemExtension;
+                If GenericItem.Insert(true, true) then begin
+                    Rec."TFB Generic Item ID" := GUID;
+                    Rec.Modify(false);
+                end;
+            end
+            else begin
+                GenericItem.Description := Rec.Description;
+                GenericItem."Item Category Id" := Rec."Item Category Id";
+                GenericItem."Item Category Code" := Rec."Item Category Code";
+                If Rec.Picture.Count > 0 then
+                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                GenericItem.Type := GenericItem.Type::ItemExtension;
+                GenericItem.Modify(false);
+            end;
+        end;
+
+        If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then begin
+            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+                GenericItem.Delete(false);
+                clear(Guid);
+                Rec."TFB Generic Item ID" := Guid;
+                Rec."TFB Parent Generic Item Name" := '';
+            end;
+        end;
+
+    end;
+
+
+
+    var
+        GenericItem: Record "TFB Generic Item";
 
 
 }

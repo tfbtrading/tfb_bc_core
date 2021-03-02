@@ -369,4 +369,9 @@ codeunit 50140 "TFB Pricing Calculations"
 
         Exit(RatePerUnit);
     end;
+
+	internal procedure CheckPriceHealthOnPriceList(Rec: Record "Price List Header")
+	begin
+		Error('Procedure CheckPriceHealthOnPriceList not implemented.');
+	end;
 }

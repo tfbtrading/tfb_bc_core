@@ -6,6 +6,8 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
+    
+
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCopyFromItem', '', true, true)]
 
     local procedure HandleOnAfterCopyFromItem(Item: Record Item; var SalesLine: Record "Sales Line")
