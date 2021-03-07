@@ -79,7 +79,7 @@ page 50107 "TFB Vendor Certification List"
                         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
                     end;
                 }
-                field(CertificateExists; IsCertificateAvailable)
+                field(CertificateExists; CheckIfCertificateExists())
                 {
                     ApplicationArea = All;
                     Caption = 'Certificate Exists';
@@ -185,6 +185,23 @@ page 50107 "TFB Vendor Certification List"
 
             }
 
+            action("Send to Contact")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Promoted = true;
+                promotedCategory = Process;
+                PromotedOnly = true;
+                Image = SendEmailPDF;
+                ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
+
+                trigger OnAction()
+
+                begin
+                    SendSelectedDocs();
+                end;
+            }
+
 
         }
     }
@@ -227,7 +244,6 @@ page 50107 "TFB Vendor Certification List"
     begin
         DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
-        IsCertificateAvailable := CheckIfCertificateExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
 
     end;
@@ -243,6 +259,56 @@ page 50107 "TFB Vendor Certification List"
             Exit(true)
         else
             Exit(false);
+
+    end;
+
+    local procedure SendSelectedDocs()
+
+    var
+        VendorCerts: Record "TFB Vendor Certification";
+        Contact: Record Contact;
+        ContactList: Page "Contact List";
+        Recipients: List of [Text];
+
+        CLib: CodeUnit "TFB Common Library";
+        QLib: CodeUnit "TFB Quality Mgmt";
+    
+        Result: Boolean;
+        SubTitleTxt: Label '';
+        Text001Msg: Label 'Sending Vendor Certifications';
+        TitleTxt: Label 'Vendor Certifications Email';
+
+
+
+    begin
+
+        //Determine if multiple items have been selected
+
+        CurrPage.SetSelectionFilter(VendorCerts);
+
+        If VendorCerts.Count() = 0 then exit;
+
+        ContactList.LookupMode(true);
+
+        If ContactList.RunModal() = Action::LookupOK then begin
+            ContactList.getrecord(Contact);
+            Contact.SetFilter("No.", ContactList.GetSelectionFilter());
+
+            If Contact.FindSet(false, false) then
+                repeat
+                    If Contact."E-Mail" <> '' then
+                        If not Recipients.Contains(Contact."E-Mail") then
+                            Recipients.Add(Contact."E-Mail");
+
+                until Contact.Next() = 0;
+
+            If Recipients.Count > 0 then begin
+               
+                QLib.SendVendorCertificationEmail(VendorCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
+               
+            end;
+        end;
+
 
     end;
 
