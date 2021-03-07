@@ -161,6 +161,7 @@ codeunit 50104 "TFB Quality Mgmt"
         If Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, ListOfCertifications, QualityOnly) then begin
 
             Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
+            Contact.SetFilter("E-Mail", '>%1', '');
             ContactList.SetTableView(Contact);
             ContactList.LookupMode(true);
 
@@ -183,18 +184,20 @@ codeunit 50104 "TFB Quality Mgmt"
         end;
     end;
 
-    internal procedure SendVendorCertificationEmail(VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
+    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
 
     var
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         CompanyInfo: Record "Company Information";
 
-
+        PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         TempBlobList: Codeunit "Temp Blob List";
 
+
         InStream: InStream;
+        OutStream: OutStream;
         i: Integer;
 
 
@@ -213,20 +216,21 @@ codeunit 50104 "TFB Quality Mgmt"
 
         HTMLBuilder.Append(HTMLTemplate);
 
-        GenerateQualityDocumentsContent(VendorCerts, HTMLBuilder, TempBlobList);
+        GenerateQualityDocumentsContent(VendorCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if VendorCerts.FindSet() and not TempBlobList.IsEmpty() then begin
+        if VendorCerts.FindSet(false, false) then begin
 
             repeat
-                Clear(FileNameBuilder);
-                FileNameBuilder.Append(StrSubstNo('Cert %1_%2_%3.pdf', VendorCerts."Vendor Name", VendorCerts.Site, VendorCerts."Certification Type"));
-                i += 1;
-                TempBlobList.Get(i, TempBlob);
-                If TempBlob.HasValue() then begin
+                If PersBlobCU.Exists(VendorCerts."Certificate Attach.") then begin
+                    Clear(FileNameBuilder);
+                    FileNameBuilder.Append(StrSubstNo('Cert %1_%2_%3.pdf', VendorCerts."Vendor Name", VendorCerts.Site, VendorCerts."Certification Type"));
+                    TempBlob.CreateOutStream(Outstream);
+                    PersBlobCU.CopyToOutStream(VendorCerts."Certificate Attach.", OutStream);
                     TempBlob.CreateInStream(InStream);
                     EmailMessage.AddAttachment(FileNameBuilder.ToText(), 'Application/PDF', InStream);
-                end;
+                end
+
 
             until VendorCerts.Next() < 1;
         end;
@@ -237,73 +241,15 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
 
-    local procedure GenerateQualityDocumentsContent(Customer: Record Customer; var VendorCertification: Record "TFB Vendor Certification" temporary; var HTMLBuilder: TextBuilder): Boolean
-
-    var
-        tdTxt: label '<td valign="top" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
-        BodyBuilder: TextBuilder;
-        CommentBuilder: TextBuilder;
-        LineBuilder: TextBuilder;
-        TempBlob: CodeUnit "Temp Blob";
-
-    begin
-
-        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
-        HTMLBuilder.Replace('%{ExplanationValue}', 'Updated Vendor Certifications');
-        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
-        HTMLBuilder.Replace('%{DateValue}', format(today()));
-        HTMLBuilder.Replace('%{ReferenceCaption}', 'For customer');
-        HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
-
-        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents for items from vendors shipped to you'));
-
-        BodyBuilder.AppendLine('<table class="tfbdata" width="60%" cellspacing="0" cellpadding="10" border="0">');
-        BodyBuilder.AppendLine('<thead>');
-
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Vendor</th>');
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Location</th>');
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="25%">Type</th>');
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="15%">Expiry</th></thead>');
-
-        if VendorCertification.FindSet() then
-            repeat
-
-                Clear(LineBuilder);
-                Clear(CommentBuilder);
-                LineBuilder.AppendLine('<tr>');
-
-                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Vendor Name"));
-                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification.Site));
-                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Certification Type"));
-                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Expiry Date"));
-
-                LineBuilder.AppendLine('</tr>');
-                BodyBuilder.AppendLine(LineBuilder.ToText());
-                BodyBuilder.AppendLine('</table>');
-
-
-
-            until VendorCertification.Next() < 1
-
-        else
-            BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
-
-        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
-    end;
-
-
-    local procedure GenerateQualityDocumentsContent(VendorCertification: Record "TFB Vendor Certification"; var HTMLBuilder: TextBuilder; var TempBlobList: CodeUnit "Temp Blob List"): Boolean
+    local procedure GenerateQualityDocumentsContent(var VendorCertification: Record "TFB Vendor Certification"; var HTMLBuilder: TextBuilder): Boolean
 
     var
         tdTxt2: label '<td valign="top" class="tfbdata" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
         BodyBuilder: TextBuilder;
         CommentBuilder: TextBuilder;
         LineBuilder: TextBuilder;
-        TempBlob: CodeUnit "Temp Blob";
-        PersBlobCU: CodeUnit "Persistent Blob";
-        Outstream: OutStream;
-        Instream: Instream;
+        PersBlob: CodeUnit "Persistent Blob";
+
 
 
     begin
@@ -316,7 +262,7 @@ codeunit 50104 "TFB Quality Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', '');
         HTMLBuilder.Replace('%{AlertText}', '');
 
-        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents as requested</h2>'));
+        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents as requested</h2><br>'));
 
         BodyBuilder.AppendLine('<table class="tfbdata" width="100%" cellspacing="10" cellpadding="10" border="0">');
         BodyBuilder.AppendLine('<thead>');
@@ -324,9 +270,10 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Vendor</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Location</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="25%">Type</th>');
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="15%">Expiry</th></thead>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
 
-        if VendorCertification.FindSet() then begin
+        if VendorCertification.FindSet(false, false) then begin
             repeat
 
                 Clear(LineBuilder);
@@ -337,17 +284,10 @@ codeunit 50104 "TFB Quality Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt2, VendorCertification.Site));
                 LineBuilder.Append(StrSubstNo(tdTxt2, VendorCertification."Certification Type"));
                 LineBuilder.Append(StrSubstNo(tdTxt2, VendorCertification."Expiry Date"));
-
+                LineBuilder.Append(StrSubstNo(tdTxt2, PersBlob.Exists(VendorCertification."Certificate Attach.")));
                 LineBuilder.AppendLine('</tr>');
                 BodyBuilder.AppendLine(LineBuilder.ToText());
 
-                If PersBlobCU.Exists(VendorCertification."Certificate Attach.") then begin
-                    TempBlob.CreateOutStream(Outstream);
-                    PersBlobCU.CopyToOutStream(VendorCertification."Certificate Attach.", OutStream);
-                    If TempBlob.HasValue() then
-                        TempBlobList.Add(TempBlob);
-
-                end
 
 
             until VendorCertification.Next() < 1;

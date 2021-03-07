@@ -3223,6 +3223,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PDF Viewer Setup - Control Web Viewer URL - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 3454070650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 251638159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GFSI Accredited</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field GFSI Accredited - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 1123305005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Logo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Logo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 348794855 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3718,30 +3743,50 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Class - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
+        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType SubTitleTxt</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Name - Property Caption</note>
+        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sending Brokerage Update Notification:\#1############################</source>
+          <note from="Developer" annotates="general" priority="2">%1=Shipment Number</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType Text001Msg</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 3454070650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Class</source>
+        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Shipment Update</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Class - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType TitleTxt</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 251638159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>GFSI Accredited</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field GFSI Accredited - Property Caption</note>
+        <trans-unit id="Codeunit 1426794637 - Method 804022072 - NamedType 2679221408" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Shipment Update Notification %1 from TFB Trading</source>
+          <note from="Developer" annotates="general" priority="2">%1 = Shipment No.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendBrokerageUpdateNotificationEmail - NamedType SubjectTxt</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 1123305005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Logo</source>
+        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2">%1=table data html</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType tdTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 3785887881" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Our order %1</source>
+          <note from="Developer" annotates="general" priority="2">Order No</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType OrderNoTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 3192050303" size-unit="char" translate="yes" xml:space="preserve">
+          <source> and your ref no. is %1</source>
+          <note from="Developer" annotates="general" priority="2">External No</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType CustomerRefTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 623371623" size-unit="char" translate="yes" xml:space="preserve">
+          <source>. Vendor invoice no. is %1</source>
+          <note from="Developer" annotates="general" priority="2">Vendor Invoice No</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType VendorNoTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1426794637 - Method 1046075173 - NamedType 331638123" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No brokerage service item defined</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Logo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method RaiseInvoiceFromShipment - NamedType ErrorMsg</note>
         </trans-unit>
         <trans-unit id="Page 2564939306 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customers favourite items</source>
@@ -3963,71 +4008,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetSalesLineStatusEmoji - NamedType emojiNotApplicable</note>
         </trans-unit>
-        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sending Vendor Updates:\#1############################Msg</source>
-          <note from="Developer" annotates="general" priority="2">%1=vendor</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType Text001Msg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 1805593427" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType SubtitleText</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1740417769 - Method 3010399840 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
-          <note from="Developer" annotates="general" priority="2">%1=html content for tabledata</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method GenerateVendorOrderStatusContent - NamedType tdTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType SubTitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sending Brokerage Update Notification:\#1############################</source>
-          <note from="Developer" annotates="general" priority="2">%1=Shipment Number</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType Text001Msg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Shipment Update</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 804022072 - NamedType 2679221408" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Shipment Update Notification %1 from TFB Trading</source>
-          <note from="Developer" annotates="general" priority="2">%1 = Shipment No.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendBrokerageUpdateNotificationEmail - NamedType SubjectTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
-          <note from="Developer" annotates="general" priority="2">%1=table data html</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType tdTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 3785887881" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Our order %1</source>
-          <note from="Developer" annotates="general" priority="2">Order No</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType OrderNoTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 3192050303" size-unit="char" translate="yes" xml:space="preserve">
-          <source> and your ref no. is %1</source>
-          <note from="Developer" annotates="general" priority="2">External No</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType CustomerRefTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 3708188973 - NamedType 623371623" size-unit="char" translate="yes" xml:space="preserve">
-          <source>. Vendor invoice no. is %1</source>
-          <note from="Developer" annotates="general" priority="2">Vendor Invoice No</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method GenerateBrokerageUpdateContent - NamedType VendorNoTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 1426794637 - Method 1046075173 - NamedType 331638123" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No brokerage service item defined</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method RaiseInvoiceFromShipment - NamedType ErrorMsg</note>
-        </trans-unit>
         <trans-unit id="Codeunit 1605321605 - Method 1473647726 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sending Shipment Status Request:\#1#######################2#####</source>
           <note from="Developer" annotates="general" priority="2">%1=Shipment No,%2=Cusomer No</note>
@@ -4068,6 +4048,26 @@
           <note from="Developer" annotates="general" priority="2">%1=table data html</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Shipment Mgmt - Method GenerateShipmentNotificationContent2 - NamedType tdTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sending Vendor Updates:\#1############################Msg</source>
+          <note from="Developer" annotates="general" priority="2">%1=vendor</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType Text001Msg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1740417769 - Method 987465560 - NamedType 1805593427" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType SubtitleText</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1740417769 - Method 3010399840 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2">%1=html content for tabledata</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method GenerateVendorOrderStatusContent - NamedType tdTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4092,11 +4092,6 @@
           <source>Please find attached the following quality documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType SubTitleText</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 3671663517 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
-          <note from="Developer" annotates="general" priority="2">%1=Table data html content</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method GenerateQualityDocumentsContent - NamedType tdTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 2729067258 - Method 3671663517 - NamedType 1324421678" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -11988,6 +11983,146 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB PostCode - Field TFB Postcode Zone - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 95695128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Contact Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Contact Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3269800125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Pallet Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletExchange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1314643903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Pallet Acct Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 422750020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Pallet Account No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletAccountNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2350454145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Delivery Instructions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field Delivery Instructions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 844999280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Ongoing Sales Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Order Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 195244876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Posted Sales Inv. Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Pstd. Inv. Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2558051448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>CoA Required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB CoA Required - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1681660618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>CoA Alt. Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB CoA Alt. Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2678449712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Per Kg Only on Documents</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Show Per Kg Only - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1268990816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Price List Recipient</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Recipient - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1901290976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Only Provide Partial Price List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Partial - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2632500773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Hide Vendors on Price List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Hide Vendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3347019670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Stock Update Recipient</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Stock Update Recipient - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1531188592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Order Update Preference</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Order Update Preference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1543724678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>TFB Outstanding Brokerage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Outstanding Brokerage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1161532774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>External Doc. No. Required?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB External No. Req. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1697933366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Managed in Lead Management System</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Lead Mgmt System - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3149136617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>No. of Favourite Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Of Fav. Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3330935376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Date of First Sale</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of First Sale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 712303624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Date of Last Sale</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Sale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 765149023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Date of Last Open Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Open Order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 4287469792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Contact Stage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Contact Stage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 410858935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>LinkedIn page</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Linkedin Page - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2421326477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Parent Company</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Parent Company - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 998216197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Reservation Strategy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Reservation Strategy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3877483362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Company Contact ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Primary Contact Company ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1067963891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Open Task Exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Open Task Exists - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 2153334295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Fumigation Required?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12968,146 +13103,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Open Task Exists - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 95695128 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Contact Status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Contact Status - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3269800125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Pallet Exchange</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletExchange - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1314643903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Account Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Pallet Acct Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 422750020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Pallet Account No</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletAccountNo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2350454145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Delivery Instructions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field Delivery Instructions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 844999280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Ongoing Sales Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Order Lines - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 195244876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Posted Sales Inv. Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Pstd. Inv. Lines - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2558051448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>CoA Required</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB CoA Required - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1681660618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>CoA Alt. Email</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB CoA Alt. Email - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2678449712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Per Kg Only on Documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Show Per Kg Only - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1268990816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Price List Recipient</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Recipient - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1901290976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Only Provide Partial Price List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Partial - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2632500773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Hide Vendors on Price List</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Price List Hide Vendor - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3347019670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Stock Update Recipient</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Stock Update Recipient - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1531188592 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Order Update Preference</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Order Update Preference - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1543724678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>TFB Outstanding Brokerage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Outstanding Brokerage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1161532774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>External Doc. No. Required?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB External No. Req. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1697933366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Managed in Lead Management System</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Lead Mgmt System - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3149136617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>No. of Favourite Items</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Of Fav. Items - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3330935376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Date of First Sale</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of First Sale - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 712303624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Date of Last Sale</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Sale - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 765149023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Date of Last Open Order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Open Order - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 4287469792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Contact Stage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Contact Stage - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 410858935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>LinkedIn page</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Linkedin Page - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2421326477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Parent Company</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Parent Company - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 998216197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Reservation Strategy</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Reservation Strategy - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3877483362 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Company Contact ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Primary Contact Company ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 1067963891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Open Task Exists</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Open Task Exists - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Profile 3402792832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operations Manager</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13478,6 +13473,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Vendor Type - EnumValue TRADE - Property Caption</note>
         </trans-unit>
+        <trans-unit id="EnumExtension 4203453523 - EnumValue 553059709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
+          <source>Logistics Notifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue Logistics - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4203453523 - EnumValue 1483341903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
+          <source>Quality Documentation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue Quality - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 4203453523 - EnumValue 758271466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
+          <source>3PL or Supplier Question</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue SupplierQuery - Property Caption</note>
+        </trans-unit>
         <trans-unit id="EnumExtension 1092060365 - EnumValue 3677007185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Brokerage Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13497,21 +13507,6 @@
           <source>Certificate of Analysis</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Quality Communication Record - EnumValue COA - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4203453523 - EnumValue 553059709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
-          <source>Logistics Notifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue Logistics - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4203453523 - EnumValue 1483341903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
-          <source>Quality Documentation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue Quality - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 4203453523 - EnumValue 758271466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
-          <source>3PL or Supplier Question</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue SupplierQuery - Property Caption</note>
         </trans-unit>
       </group>
     </body>

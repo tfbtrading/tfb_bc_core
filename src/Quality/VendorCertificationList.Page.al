@@ -272,7 +272,7 @@ page 50107 "TFB Vendor Certification List"
 
         CLib: CodeUnit "TFB Common Library";
         QLib: CodeUnit "TFB Quality Mgmt";
-    
+
         Result: Boolean;
         SubTitleTxt: Label '';
         Text001Msg: Label 'Sending Vendor Certifications';
@@ -287,8 +287,9 @@ page 50107 "TFB Vendor Certification List"
         CurrPage.SetSelectionFilter(VendorCerts);
 
         If VendorCerts.Count() = 0 then exit;
-
+        Contact.SetFilter("E-Mail", '>%1', '');
         ContactList.LookupMode(true);
+        ContactList.SetTableView(Contact);
 
         If ContactList.RunModal() = Action::LookupOK then begin
             ContactList.getrecord(Contact);
@@ -303,9 +304,9 @@ page 50107 "TFB Vendor Certification List"
                 until Contact.Next() = 0;
 
             If Recipients.Count > 0 then begin
-               
+
                 QLib.SendVendorCertificationEmail(VendorCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
-               
+
             end;
         end;
 
