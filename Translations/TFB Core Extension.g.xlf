@@ -3223,31 +3223,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page PDF Viewer Setup - Control Web Viewer URL - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 3454070650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Class</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Class - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 251638159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>GFSI Accredited</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field GFSI Accredited - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3609889148 - Field 1123305005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Logo</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Logo - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 348794855 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3723,11 +3698,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Date Modified - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 1846567327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 936251592 - Field 2727215364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate Attach.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3742,6 +3712,36 @@
           <source>Certificate Class</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2037381601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inherent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Inherent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 2961552353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 3454070650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 251638159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GFSI Accredited</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field GFSI Accredited - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3609889148 - Field 1123305005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Logo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Logo - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
@@ -8373,11 +8373,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control EmoticonStatus - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 1527594213 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendor number</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Vendor No. - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3127187514 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies vendors name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8393,10 +8388,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2147872700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3127187514 - Control 165064666 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the class of certification</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Class - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated status of the certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2037381601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Inherent - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Control 261047940 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies who audited the site and granted certification</source>
@@ -8413,16 +8428,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Expiry Date - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate Exists</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if certificate is attached</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3127187514 - Control 285490637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Days to Expiry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8433,15 +8438,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Days To Expiry - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Calc. Status</source>
+        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attach.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the calculated status of the certification</source>
+        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if an attachment exists</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Action 721574298 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attaches a certificate (in pdf form) to vendor certfication record</source>

@@ -22,26 +22,28 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
     begin
+        If not Certificate.Inherent then
+            If Certificate."Expiry Date" > 0D then begin
 
-        If Certificate."Expiry Date" > 0D then begin
+                DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
 
-            DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
+                case DaysToExpiry of
+                    -1000 .. -1:
+                        Status := Status::Expired;
+                    0 .. 5:
+                        Status := Status::"About to Expire";
 
-            case DaysToExpiry of
-                -1000 .. -1:
-                    Status := Status::Expired;
-                0 .. 5:
-                    Status := Status::"About to Expire";
+                    6 .. 30:
+                        Status := Status::"Expiring Soon";
+                    else
+                        Status := Status::Active;
 
-                6 .. 30:
-                    Status := Status::"Expiring Soon";
-                else
-                    Status := Status::Active;
-
-            end;
-        end
+                end;
+            end
+            else
+                Status := Status::Pending
         else
-            Status := Status::Pending;
+            Status := Status::Inherent;
 
         exit(Status);
     end;
@@ -81,10 +83,12 @@ codeunit 50104 "TFB Quality Mgmt"
                 Exit('❌');
 
             status::Active:
-                Exit('✅');
+                Exit('✔️');
 
             status::Pending:
                 Exit('🕙');
+            status::Inherent:
+                Exit('🃏');
         end;
     end;
 

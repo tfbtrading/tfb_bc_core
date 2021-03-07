@@ -40,6 +40,17 @@ table 50101 "TFB Vendor Certification"
             ValidateTableRelation = true;
             NotBlank = true;
 
+            trigger OnValidate()
+
+            var
+                CertificationType: Record "TFB Certification Type";
+
+            begin
+                If CertificationType.Get(Rec."Certification Type") then
+                    If CertificationType.Class <> CertificationType.Class::Religous then
+                        Inherent := false;
+            end;
+
 
         }
         field(25; "Certification Class"; enum "TFB Certification Class")
@@ -71,15 +82,21 @@ table 50101 "TFB Vendor Certification"
         field(53; "Last Modified Date Time"; DateTime)
         {
             Editable = false;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Provided by system';
         }
         field(54; "Last Date Modified"; Date)
         {
             Editable = false;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Provided by system';
+
         }
         field(56; "Certificate"; Blob)
         {
-            ObsoleteState = pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by permanent blob';
+
 
         }
         field(57; "Certificate Attach."; BigInteger)
@@ -90,14 +107,33 @@ table 50101 "TFB Vendor Certification"
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Certification Type".Logo where(Code = field("Certification Type")));
+            CalcFormula = lookup("TFB Certification Type".Logo where(Code = field("Certification Type")));
         }
 
         field(65; "Certificate Class"; Enum "TFB Certification Class")
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Certification Type".Class where(Code = field("Certification Type")));
+            CalcFormula = lookup("TFB Certification Type".Class where(Code = field("Certification Type")));
             Editable = false;
+        }
+        field(70; Inherent; Boolean)
+        {
+            Editable = true;
+
+            trigger OnValidate()
+
+            begin
+                If Rec.Inherent then begin
+                    Rec.CalcFields("Certificate Class");
+                    If Rec."Certificate Class" = Rec."Certificate Class"::Religous then begin
+                        "Last Audit Date" := 0D;
+                        "Expiry Date" := 0D;
+                        Auditor := '';
+                    end
+                    else
+                        FieldError(Rec.Inherent, 'Only religious certifications can be inherent');
+                end;
+            end;
         }
         field(1; ID; Guid)
         {

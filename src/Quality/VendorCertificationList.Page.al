@@ -9,6 +9,7 @@ page 50107 "TFB Vendor Certification List"
     InsertAllowed = true;
     DeleteAllowed = true;
     ModifyAllowed = true;
+    DelayedInsert = true;
     PromotedActionCategories = 'New,Certificate';
 
     layout
@@ -27,12 +28,7 @@ page 50107 "TFB Vendor Certification List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies status of vendor certification';
                 }
-                field("Vendor No."; Rec."Vendor No.")
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'Specifies vendor number';
 
-                }
                 field("Vendor Name"; Rec."Vendor Name")
                 {
                     ApplicationArea = All;
@@ -47,6 +43,13 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     Tooltip = 'Specifies the certification type';
+                    Caption = 'Certification';
+
+                    trigger OnValidate()
+
+                    begin
+                        Rec.CalcFields("Certificate Class");
+                    end;
                 }
                 field("Certification Class"; Rec."Certificate Class")
                 {
@@ -55,20 +58,46 @@ page 50107 "TFB Vendor Certification List"
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
                 }
+                field(Status; CalculatedStatus)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Status';
+                    Editable = false;
+                    Tooltip = 'Specifies the calculated status of the certification';
+                    Style = Favorable;
+                    StyleExpr = CalculatedStatus = CalculatedStatus::Active;
+                }
+                field(Inherent; Rec.Inherent)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
+                    Enabled = Rec."Certification Class" = Rec."Certificate Class"::Religous;
+
+                    trigger OnValidate()
+                    begin
+                        DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
+                        IsCertificateAvailable := CheckIfCertificateExists();
+                        CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
+                    end;
+                }
                 field(Auditor; Rec.Auditor)
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
 
                     trigger OnValidate()
 
@@ -79,26 +108,24 @@ page 50107 "TFB Vendor Certification List"
                         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
                     end;
                 }
-                field(CertificateExists; CheckIfCertificateExists())
-                {
-                    ApplicationArea = All;
-                    Caption = 'Certificate Exists';
-                    ShowCaption = false;
-                    Editable = False;
-                    tooltip = 'Specifies if certificate is attached';
-                }
                 field("Days To Expiry"; DaysToExpiry)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                    BlankZero = true;
                     Caption = 'Days to Expiry';
                     Tooltip = 'Specifies the number of days until the certification expires';
                 }
-                field(Status; CalculatedStatus)
+                field(CertificateExists; CheckIfCertificateExists())
                 {
                     ApplicationArea = All;
-                    Caption = 'Calc. Status';
-                    Tooltip = 'Specifies the calculated status of the certification';
+                    Caption = 'Attach.';
+                    ShowCaption = true;
+                    Editable = False;
+                    tooltip = 'Specifies if an attachment exists';
                 }
+
+
 
             }
         }

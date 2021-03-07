@@ -59,6 +59,7 @@ table 50102 "TFB Certification Type"
     {
         fieldgroup(Brick; Code, Name, "GFSI Accredited", Logo) { }
 
+        fieldgroup(Dropdown; Code, Name, Class, "GFSI Accredited") { }
     }
 
 }
