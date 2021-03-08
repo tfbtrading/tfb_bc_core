@@ -220,7 +220,7 @@ page 50107 "TFB Vendor Certification List"
             {
                 ApplicationArea = All;
                 Visible = True;
-                Image = Delete;
+                Image = DocumentEdit;
                 Enabled = AttachmentExists;
                 ToolTip = 'Remove current attachment and replace with new file';
 
