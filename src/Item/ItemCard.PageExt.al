@@ -198,6 +198,22 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
 
             }
+
+
+        }
+
+        addafter("Item Re&ferences")
+        {
+            action("TFBGenericItem")
+            {
+                ApplicationArea = All;
+                Image = Navigate;
+                Caption = 'Generic Item';
+                ToolTip = 'Open related generic item';
+                RunObject = Page "TFB Generic Items";
+                RunPageLink = SystemId = field("TFB Generic Item ID");
+                RunPageMode = View;
+            }
         }
     }
 

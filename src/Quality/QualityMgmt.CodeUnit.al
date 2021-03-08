@@ -28,7 +28,7 @@ codeunit 50104 "TFB Quality Mgmt"
                 DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
 
                 case DaysToExpiry of
-                    -1000 .. -1:
+                    -10000 .. -1:
                         Status := Status::Expired;
                     0 .. 5:
                         Status := Status::"About to Expire";
@@ -121,11 +121,11 @@ codeunit 50104 "TFB Quality Mgmt"
         foreach VendorNo in ListOfVendors.Keys() do begin
             //Retrieve quality documentation
             VendorCertification.SetRange("Vendor No.", VendorNo);
-            VendorCertification.SetAutoCalcFields(VendorCertification."Certification Class");
+            VendorCertification.SetAutoCalcFields(VendorCertification."Certificate Class");
 
             if VendorCertification.FindSet() then
                 repeat
-                    If QualityOnly and (VendorCertification."Certification Class" = VendorCertification."Certification Class"::Quality) then begin
+                    If QualityOnly and (VendorCertification."Certificate Class"= VendorCertification."Certificate Class"::Quality) then begin
                         ListOfCertifications := VendorCertification;
                         ListOfCertifications.Insert(false);
                     end

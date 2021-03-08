@@ -99,6 +99,19 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
             }
         }
+        addafter("Item Refe&rences")
+        {
+            action("TFBGenericItem")
+            {
+                ApplicationArea = All;
+                Image = Navigate;
+                Caption = 'Generic Item';
+                ToolTip = 'Open related generic item';
+                RunObject = Page "TFB Generic Items";
+                RunPageLink = SystemId = field("TFB Generic Item ID");
+                RunPageMode = View;
+            }
+        }
         addfirst(Inventory)
         {
 
@@ -138,20 +151,20 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
         LastChangedDateVar: Date;
 
-    
+
 
     trigger OnAfterGetRecord()
 
 
     begin
 
-      
+
         Clear(SalesPriceVar);
         Clear(LastChangedDateVar);
 
-        
-        ItemMgmtCU.GetItemDynamicDetails(Rec."No.",SalesPriceVar,LastChangedDateVar);
-     
+
+        ItemMgmtCU.GetItemDynamicDetails(Rec."No.", SalesPriceVar, LastChangedDateVar);
+
 
     end;
 

@@ -204,6 +204,7 @@ tableextension 50260 "TFB Item" extends Item
 
     var
         Guid: Guid;
+        Index: Integer;
 
     begin
         If Rec."TFB Act As Generic" then begin
@@ -214,8 +215,10 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem.Description := Rec.Description;
                 GenericItem."Item Category Id" := Rec."Item Category Id";
                 GenericItem."Item Category Code" := Rec."Item Category Code";
-                If Rec.Picture.Count > 0 then
-                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                If Rec.Picture.Count > 0 then begin
+                    Index := 1;
+                    GenericItem.Picture.Insert(Rec.Picture.Item(index));
+                end;
                 GenericItem.Type := GenericItem.Type::ItemExtension;
                 If GenericItem.Insert(true, true) then begin
                     Rec."TFB Generic Item ID" := GUID;
