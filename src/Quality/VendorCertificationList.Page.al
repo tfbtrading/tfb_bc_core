@@ -9,6 +9,7 @@ page 50107 "TFB Vendor Certification List"
     InsertAllowed = true;
     DeleteAllowed = true;
     ModifyAllowed = true;
+    DelayedInsert = true;
     PromotedActionCategories = 'New,Certificate';
 
     layout
@@ -18,21 +19,7 @@ page 50107 "TFB Vendor Certification List"
             repeater(Group)
             {
 
-                field(EmoticonStatus; CalculatedEmoticonStatus)
-                {
-                    Caption = 'Status';
-                    ShowCaption = false;
-                    Width = 3;
-                    Editable = false;
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies status of vendor certification';
-                }
-                field("Vendor No."; Rec."Vendor No.")
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'Specifies vendor number';
 
-                }
                 field("Vendor Name"; Rec."Vendor Name")
                 {
                     ApplicationArea = All;
@@ -47,6 +34,13 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     Tooltip = 'Specifies the certification type';
+                    Caption = 'Certification';
+
+                    trigger OnValidate()
+
+                    begin
+                        Rec.CalcFields("Certificate Class");
+                    end;
                 }
                 field("Certification Class"; Rec."Certificate Class")
                 {
@@ -55,50 +49,89 @@ page 50107 "TFB Vendor Certification List"
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
                 }
+                field(Status; CalculatedStatus)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Status';
+                    Editable = false;
+                    Tooltip = 'Specifies the calculated status of the certification';
+                    Style = Favorable;
+                    StyleExpr = CalculatedStatus = CalculatedStatus::Active;
+                }
+                field(EmoticonStatus; CalculatedEmoticonStatus)
+                {
+
+                    ShowCaption = false;
+                    Width = 1;
+                    Editable = false;
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies status of vendor certification';
+                }
+                field(Inherent; Rec.Inherent)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
+                    Enabled = Rec."Certification Class" = Rec."Certificate Class"::Religous;
+
+                    trigger OnValidate()
+                    begin
+                        DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
+                        AttachmentExists := CheckIfAttachmentExists();
+
+                    end;
+                }
                 field(Auditor; Rec.Auditor)
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
+                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
+                    Style = Unfavorable;
+                    StyleExpr = DaysToExpiry < 30;
 
                     trigger OnValidate()
 
                     begin
                         DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
                         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
-                        IsCertificateAvailable := CheckIfCertificateExists();
-                        CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
+                        AttachmentExists := CheckIfAttachmentExists();
+
                     end;
-                }
-                field(CertificateExists; IsCertificateAvailable)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Certificate Exists';
-                    ShowCaption = false;
-                    Editable = False;
-                    tooltip = 'Specifies if certificate is attached';
                 }
                 field("Days To Expiry"; DaysToExpiry)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                    BlankZero = true;
                     Caption = 'Days to Expiry';
                     Tooltip = 'Specifies the number of days until the certification expires';
+                    Style = Unfavorable;
+                    StyleExpr = DaysToExpiry < 30;
                 }
-                field(Status; CalculatedStatus)
+                field(CertificateExists; AttachmentExists)
                 {
                     ApplicationArea = All;
-                    Caption = 'Calc. Status';
-                    Tooltip = 'Specifies the calculated status of the certification';
+                    Caption = 'Attach.';
+                    ShowCaption = true;
+                    Editable = False;
+                    tooltip = 'Specifies if an attachment exists';
+                    Style = Unfavorable;
+                    StyleExpr = (AttachmentExists = false);
                 }
+
+
 
             }
         }
@@ -130,7 +163,7 @@ page 50107 "TFB Vendor Certification List"
         area(Processing)
         {
 
-            action("Attach certificate")
+            action("Upload Attachment")
             {
 
                 ApplicationArea = All;
@@ -138,7 +171,7 @@ page 50107 "TFB Vendor Certification List"
                 Promoted = True;
                 PromotedCategory = Process;
                 Image = Import;
-                Enabled = true;
+                Enabled = (AttachmentExists = false);
                 PromotedOnly = true;
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
@@ -149,33 +182,62 @@ page 50107 "TFB Vendor Certification List"
                 end;
 
             }
-            action("Download certificate")
+            action("Download Attachment(s)")
             {
                 ApplicationArea = All;
                 Visible = True;
                 Promoted = True;
                 PromotedCategory = Process;
                 Image = SendAsPDF;
-                Enabled = IsCertificateAvailable;
+                Enabled = AttachmentExists;
                 PromotedOnly = true;
-                Caption = 'Download certificate(s)';
-                tooltip = 'Download a certificate (in pdf form) from certification record';
+
+                tooltip = 'Download one or more attachments (in pdf form) from certification record';
                 trigger OnAction()
 
                 begin
                     DownloadFile();
                 end;
             }
-            action("Remove CoA")
+
+            action("Send to Contact(s)")
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
+                Promoted = true;
+                promotedCategory = Process;
                 PromotedOnly = true;
+                Image = SendEmailPDF;
+                ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
+
+                trigger OnAction()
+
+                begin
+                    SendSelectedDocs();
+                end;
+            }
+            action("Replace File")
+            {
+                ApplicationArea = All;
+                Visible = True;
                 Image = Delete;
-                Enabled = IsCertificateAvailable;
-                ToolTip = 'Remove current certificate';
+                Enabled = AttachmentExists;
+                ToolTip = 'Remove current attachment and replace with new file';
+
+                trigger OnAction()
+
+                begin
+                    ReplaceFile();
+                end;
+
+            }
+            action("Remove File")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = Delete;
+                Enabled = AttachmentExists;
+                ToolTip = 'Remove current attachment';
 
                 trigger OnAction()
 
@@ -218,7 +280,7 @@ page 50107 "TFB Vendor Certification List"
         QualityCU: Codeunit "TFB Quality Mgmt";
         DaysToExpiry: Integer;
         CalculatedStatus: Enum "TFB Quality Certificate Status";
-        IsCertificateAvailable: Boolean;
+        AttachmentExists: Boolean;
         CalculatedEmoticonStatus: Text;
 
 
@@ -227,12 +289,11 @@ page 50107 "TFB Vendor Certification List"
     begin
         DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
-        IsCertificateAvailable := CheckIfCertificateExists();
+        AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
-
     end;
 
-    local Procedure CheckIfCertificateExists(): Boolean
+    local Procedure CheckIfAttachmentExists(): Boolean
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";
@@ -246,7 +307,85 @@ page 50107 "TFB Vendor Certification List"
 
     end;
 
+    local procedure SendSelectedDocs()
 
+    var
+        VendorCerts: Record "TFB Vendor Certification";
+        Contact: Record Contact;
+        ContactList: Page "Contact List";
+        Recipients: List of [Text];
+
+        CLib: CodeUnit "TFB Common Library";
+        QLib: CodeUnit "TFB Quality Mgmt";
+
+        Result: Boolean;
+        SubTitleTxt: Label '';
+        Text001Msg: Label 'Sending Vendor Certifications';
+        TitleTxt: Label 'Vendor Certifications Email';
+
+
+
+    begin
+
+        //Determine if multiple items have been selected
+
+        CurrPage.SetSelectionFilter(VendorCerts);
+
+        If VendorCerts.Count() = 0 then exit;
+        Contact.SetFilter("E-Mail", '>%1', '');
+        ContactList.LookupMode(true);
+        ContactList.SetTableView(Contact);
+
+        If ContactList.RunModal() = Action::LookupOK then begin
+            ContactList.getrecord(Contact);
+            Contact.SetFilter("No.", ContactList.GetSelectionFilter());
+
+            If Contact.FindSet(false, false) then
+                repeat
+                    If Contact."E-Mail" <> '' then
+                        If not Recipients.Contains(Contact."E-Mail") then
+                            Recipients.Add(Contact."E-Mail");
+
+                until Contact.Next() = 0;
+
+            If Recipients.Count > 0 then begin
+
+                QLib.SendVendorCertificationEmail(VendorCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
+
+            end;
+        end;
+
+
+    end;
+
+    local procedure ReplaceFile()
+
+    var
+
+        TempBlobCU: Codeunit "Temp Blob";
+        PersBlobCU: CodeUnit "Persistent Blob";
+        BlobKey: BigInteger;
+        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        FileDialogTxt: Label 'Select Certificate File to Upload';
+        FileName: Text;
+        InStream: InStream;
+
+    begin
+
+        PersBlobCU.Delete(Rec."Certificate Attach.");
+        TempBlobCU.CreateInStream(InStream);
+        FileName := QualityCU.GetCertificateFileName(rec);
+        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, InStream) then begin
+            BlobKey := PersBlobCU.Create();
+            If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
+                Rec."Certificate Attach." := BlobKey;
+                rec.Modify();
+                AttachmentExists := true;
+            end;
+
+        end;
+
+    end;
 
     local procedure AttachFile()
 
@@ -270,7 +409,7 @@ page 50107 "TFB Vendor Certification List"
             If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
-                IsCertificateAvailable := true;
+                AttachmentExists := true;
             end;
 
         end;
@@ -349,7 +488,7 @@ page 50107 "TFB Vendor Certification List"
     begin
 
         PersBlobCU.Delete(Rec."Certificate Attach.");
-        CheckIfCertificateExists();
+        CheckIfAttachmentExists();
 
     end;
 

@@ -130,7 +130,7 @@ tableextension 50260 "TFB Item" extends Item
 
             trigger OnValidate()
             begin
-                GenericItem.SetRange(Description, "TFB Parent Generic Item Name");
+                GenericItem.SetRange(Description, Rec."TFB Parent Generic Item Name");
                 If GenericItem.FindFirst() then
                     Rec."TFB Generic Item ID" := GenericItem.SystemId;
 
@@ -142,7 +142,7 @@ tableextension 50260 "TFB Item" extends Item
         {
             Caption = 'Generic Link Exists';
             FieldClass = FlowField;
-            CalcFormula = exist("TFB Generic Item" where(SystemId = field(SystemId)));
+            CalcFormula = exist("TFB Generic Item" where(SystemId = field("TFB Generic Item ID")));
         }
 
 
@@ -204,6 +204,7 @@ tableextension 50260 "TFB Item" extends Item
 
     var
         Guid: Guid;
+        Index: Integer;
 
     begin
         If Rec."TFB Act As Generic" then begin
@@ -214,8 +215,10 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem.Description := Rec.Description;
                 GenericItem."Item Category Id" := Rec."Item Category Id";
                 GenericItem."Item Category Code" := Rec."Item Category Code";
-                If Rec.Picture.Count > 0 then
-                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                If Rec.Picture.Count > 0 then begin
+                    Index := 1;
+                    GenericItem.Picture.Insert(Rec.Picture.Item(index));
+                end;
                 GenericItem.Type := GenericItem.Type::ItemExtension;
                 If GenericItem.Insert(true, true) then begin
                     Rec."TFB Generic Item ID" := GUID;
@@ -233,12 +236,15 @@ tableextension 50260 "TFB Item" extends Item
             end;
         end;
 
+        //Removed as this appears to delete any parent item if it was switched from generic to parent
         If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then begin
-            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
-                GenericItem.Delete(false);
-                clear(Guid);
-                Rec."TFB Generic Item ID" := Guid;
-                Rec."TFB Parent Generic Item Name" := '';
+            If GenericItem.GetBySystemId(xrec."TFB Generic Item ID") then begin
+                If GenericItem.Type = GenericItem.Type::ItemExtension then begin
+                    GenericItem.Delete(false);
+                    clear(Guid);
+                    Rec."TFB Generic Item ID" := Guid;
+                    Rec."TFB Parent Generic Item Name" := '';
+                end
             end;
         end;
 

@@ -21,4 +21,8 @@ enum 50101 "TFB Quality Certificate Status"
     {
 
     }
+    value(6; "Inherent")
+    {
+
+    }
 }

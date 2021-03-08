@@ -1,5 +1,7 @@
 pageextension 50270 "TFB Item Card" extends "Item Card"
 {
+
+
     layout
     {
         addafter(Inventory)
@@ -198,6 +200,23 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
 
             }
+
+
+        }
+
+        addafter("Item Re&ferences")
+        {
+            action("TFBGenericItem")
+            {
+                ApplicationArea = All;
+                Image = Navigate;
+                Caption = 'Generic Item';
+                ToolTip = 'Open related generic item';
+                RunObject = Page "TFB Generic Item";
+                RunPageLink = SystemId = field("TFB Generic Item ID");
+                RunPageMode = View;
+                Enabled = Rec."TFB Generic Link Exists";
+            }
         }
     }
 
@@ -222,10 +241,13 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     trigger OnAfterGetRecord()
     begin
         CheckAndUpdateDropShipDetails();
+        Rec.CalcFields(Rec."TFB Generic Link Exists");
+
     end;
 
     var
         DropShipDefault: Boolean;
+
 
     local procedure CheckAndUpdateDropShipDetails()
 

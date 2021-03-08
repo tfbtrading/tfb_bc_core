@@ -55,7 +55,20 @@ page 50134 "TFB Generic Item Picture"
 
                 trigger OnAction()
                 begin
-                    //ImportFromDevice;
+                    ImportItemPicture();
+                end;
+            }
+            action(ExportPicture)
+            {
+                ApplicationArea = All;
+                Caption = 'Export';
+                Image = Export;
+                ToolTip = 'Export a picture file.';
+                Visible = HideActions = FALSE;
+
+                trigger OnAction()
+                begin
+                    ExportItemPicture();
                 end;
             }
 
@@ -111,6 +124,69 @@ page 50134 "TFB Generic Item Picture"
     local procedure SetEditableOnPictureActions()
     begin
         DeleteExportEnabled := Rec.Picture.Count <> 0;
+    end;
+
+    local procedure ImportItemPicture()
+    var
+        Instream: Instream;
+        ImgFileName: Text;
+        ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
+
+
+    begin
+        If Rec.Picture.count > 0 then
+            If not confirm(ConfMsg) then
+                exit;
+
+        If UploadIntoStream('Import', '', 'All files (*.*)|*.*', ImgFileName, Instream) then begin
+            Clear(Rec.Picture);
+            Rec.Picture.ImportStream(Instream, ImgFileName);
+            Rec.Modify(true);
+        end;
+    end;
+
+    local procedure ExportItemPicture()
+
+    var
+        Instream: Instream;
+        Index: Integer;
+        TenantMedia: Record "Tenant Media";
+        ImgFileName: Text;
+        ConfMsg: Label 'No picture stored';
+
+
+    begin
+        If Rec.Picture.Count = 0 then
+            Error(ConfMsg);
+
+        for Index := 1 to Rec.Picture.count do begin
+            If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
+                TenantMedia.CalcFields(content);
+                If TenantMedia.Content.HasValue then begin
+                    ImgFileName := Rec.TableCaption + '_Image' + format(Index) + GetImgFileExt(TenantMedia);
+                    TenantMedia.Content.CreateInStream(Instream);
+                    DownloadFromStream(Instream, '', '', '', ImgFileName);
+
+                end;
+            end;
+        end;
+    end;
+
+    local procedure GetImgFileExt(var TenantMedia: Record "Tenant Media"): Text
+    begin
+        case TenantMedia."Mime Type" of
+            'image/jpeg':
+                exit('.jpeg');
+            'image/png':
+                exit('.png');
+            'image/bmp':
+                exit('.bmp');
+            'image/gif':
+                exit('.gif');
+            'image/tiff':
+                exit('.tiff');
+
+        end
     end;
 
     procedure IsCameraAvailable(): Boolean

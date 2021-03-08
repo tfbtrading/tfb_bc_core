@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            SetDefaultCustomerPreference();
+            SetAllItemstoGenericItem();
 
 
     end;
@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '17.0.7.6'))
+        Exit((GetInstallingVersionNo() = '17.0.8.8'))
     end;
 
 
@@ -150,6 +150,25 @@ codeunit 50103 "TFB Upgrade Mgmt"
                         Line.Modify();
                     end;
                 until Line.Next() < 1;
+    end;
+
+    local procedure SetAllItemstoGenericItem()
+    var
+        Item: Record Item;
+
+    begin
+
+        if not Item.FindSet(true, false) then exit;
+
+        repeat begin
+
+            If not IsNullGuid(Item."TFB Generic Item ID") then exit;
+
+            Item.validate("TFB Act As Generic", true);
+            Item.Modify(true);
+
+        end until Item.Next = 0;
+
     end;
 
 
