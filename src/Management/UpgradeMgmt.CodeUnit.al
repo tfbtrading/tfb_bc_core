@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '17.0.8.6'))
+        Exit((GetInstallingVersionNo() = '17.0.8.8'))
     end;
 
 
@@ -162,14 +162,13 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
         repeat begin
 
-            If Item."TFB Generic Item ID" <> '' then exit;
+            If not IsNullGuid(Item."TFB Generic Item ID") then exit;
 
             Item.validate("TFB Act As Generic", true);
             Item.Modify(true);
 
         end until Item.Next = 0;
 
-        Error('Procedure SetAllItemstoGenericItem not implemented.');
     end;
 
 

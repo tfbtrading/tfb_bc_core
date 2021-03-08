@@ -17,6 +17,7 @@ page 50132 "TFB Generic Item"
                     {
                         ApplicationArea = All;
                     }
+
                     field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
@@ -33,6 +34,24 @@ page 50132 "TFB Generic Item"
                         DrillDown = true;
                         DrillDownPageId = "Item List";
                     }
+
+                    group(FullDescription)
+                    {
+                        Caption = 'Full Description';
+                        field("Full Description"; FullDescription)
+                        {
+                            ApplicationArea = Basic, Suite;
+                            Importance = Standard;
+                            MultiLine = true;
+                            ShowCaption = false;
+                            ToolTip = 'Specifies the full description of the generic item.';
+
+                            trigger OnValidate()
+                            begin
+                                SetFullDescription(FullDescription);
+                            end;
+                        }
+                    }
                 }
                 group(Image)
                 {
@@ -44,32 +63,7 @@ page 50132 "TFB Generic Item"
                     }
                 }
             }
-            group(FurtherDetails)
-            {
-                ShowCaption = true;
-                Visible = true;
-                Caption = 'Marketing copy';
 
-
-                usercontrol(MarketingCopy; Wysiwyg)
-                {
-
-                    ApplicationArea = All;
-                    trigger ControlReady()
-                    begin
-                        CurrPage.MarketingCopy.Init();
-                        CurrPage.MarketingCopy.Load(Rec."Rich Description");
-                    end;
-
-                    trigger SaveRequested(data: Text)
-                    begin
-                        Rec."Rich Description" := data;
-                        Rec.Modify(false);
-                    end;
-                }
-
-
-            }
         }
     }
 
@@ -77,20 +71,7 @@ page 50132 "TFB Generic Item"
     {
         area(Creation)
         {
-            action(SaveCopy)
-            {
-                Image = Save;
-                Caption = 'Save marketing copy';
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ApplicationArea = All;
-                trigger OnAction()
-                begin
-                    CurrPage.MarketingCopy.RequestSave();
-                end;
 
-            }
         }
 
         area(Processing)
@@ -135,6 +116,16 @@ page 50132 "TFB Generic Item"
         }
     }
 
+    var
+        FullDescription: Text;
+
+    trigger OnAfterGetRecord()
+
+    begin
+        FullDescription := GetFullDescription();
+      
+    end;
+
     trigger OnNewRecord(BelowxRec: Boolean)
 
     begin
@@ -142,6 +133,26 @@ page 50132 "TFB Generic Item"
         if Rec.Type <> Rec.Type::ItemExtension then
             Rec.Type := Rec.Type::ItemParent;
 
+    end;
+
+    local procedure SetFullDescription(NewFullDescription: Text)
+    var
+        OutStream: OutStream;
+    begin
+        Clear(Rec."Full Description");
+        Rec."Full Description".CreateOutStream(OutStream, TEXTENCODING::UTF8);
+        OutStream.WriteText(NewFullDescription);
+        Rec.Modify(false);
+    end;
+
+    local procedure GetFullDescription(): Text
+    var
+        TypeHelper: Codeunit "Type Helper";
+        InStream: InStream;
+    begin
+        Rec.CalcFields("Full Description");
+        Rec."Full Description".CreateInStream(InStream, TEXTENCODING::UTF8);
+        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator));
     end;
 
 }

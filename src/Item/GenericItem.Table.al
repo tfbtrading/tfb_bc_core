@@ -20,10 +20,40 @@ table 50111 "TFB Generic Item"
         field(20; "Rich Description"; Text[2048])
         {
             Caption = 'Marketing Copy';
+            ObsoleteReason = 'Replaced by blob field';
+            ObsoleteState = Pending;
+
+        }
+        field(25; "Full Description"; Blob)
+        {
+            Caption = 'Full Description';
+            DataClassification = CustomerContent;
         }
         field(92; Picture; MediaSet)
         {
             Caption = 'Picture';
+
+            trigger OnValidate()
+
+            var
+                Item: Record Item;
+                Index: Integer;
+
+            begin
+
+                Item.SetRange("TFB Generic Item ID", SystemId);
+
+                If Item.FindSet(true, false) then
+                    repeat begin
+                        If Rec.Picture.Count > 0 then begin
+                            For Index := 1 to Rec.Picture.Count do
+                                Item.Picture.Insert(Rec.Picture.Item(Index));
+                            Item.Modify(true);
+                        end;
+
+                    end until Item.Next() = 0;
+
+            end;
         }
         field(5702; "Item Category Code"; Code[20])
         {
@@ -70,6 +100,15 @@ table 50111 "TFB Generic Item"
 
     }
 
+    fieldgroups
+    {
+        fieldgroup(Brick; Description, "Item Category Code", Type, "No. Of Items", Picture)
+        { }
+
+        fieldgroup(Dropdown; Description, "Item Category Code", Type, "No. Of Items")
+        { }
+    }
+
     local procedure UpdateItemCategoryCode()
     var
         ItemCategory: Record "Item Category";
@@ -80,7 +119,10 @@ table 50111 "TFB Generic Item"
         "Item Category Code" := ItemCategory.Code;
     end;
 
-    procedure UpdateItemCategoryId()
+    /// <summary>
+    /// UpdateItemCategoryId.
+    /// </summary>
+    local procedure UpdateItemCategoryId()
     var
         ItemCategory: Record "Item Category";
         GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
@@ -102,8 +144,7 @@ table 50111 "TFB Generic Item"
         "Item Category Id" := ItemCategory.SystemId;
     end;
 
-    var
-        myInt: Integer;
+
 
     trigger OnInsert()
     begin
@@ -151,6 +192,8 @@ table 50111 "TFB Generic Item"
             end;
         end;
     end;
+
+
 
 
     trigger OnRename()
@@ -225,6 +268,8 @@ table 50111 "TFB Generic Item"
 
                                             If Item.FindFirst() then begin
                                                 Item."TFB Act As Generic" := false;
+                                                Item."TFB Parent Generic Item Name" := Rec.Description;
+                                                Item."TFB Generic Item ID" := Rec.SystemId;
                                                 Item.Modify(false);
                                                 Rec.Type := NewType;
                                                 Rec.Modify(false);

@@ -107,9 +107,10 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 Image = Navigate;
                 Caption = 'Generic Item';
                 ToolTip = 'Open related generic item';
-                RunObject = Page "TFB Generic Items";
+                RunObject = Page "TFB Generic Item";
                 RunPageLink = SystemId = field("TFB Generic Item ID");
                 RunPageMode = View;
+                Enabled = Rec."TFB Generic Link Exists";
             }
         }
         addfirst(Inventory)
@@ -161,7 +162,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
         Clear(SalesPriceVar);
         Clear(LastChangedDateVar);
-
+        Rec.SetAutoCalcFields("TFB Generic Link Exists");
 
         ItemMgmtCU.GetItemDynamicDetails(Rec."No.", SalesPriceVar, LastChangedDateVar);
 
