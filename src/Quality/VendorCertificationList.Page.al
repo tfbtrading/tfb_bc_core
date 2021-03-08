@@ -85,19 +85,19 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
-                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
+                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
-                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
+                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
-                    Enabled = Rec."Certification Class" <> Rec."Certificate Class"::Religous;
+                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
                     StyleExpr = DaysToExpiry < 30;
 
