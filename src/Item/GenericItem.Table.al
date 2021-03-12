@@ -3,13 +3,14 @@ table 50111 "TFB Generic Item"
     DataClassification = CustomerContent;
     LookupPageId = "TFB Generic Items";
     DrillDownPageId = "TFB Generic Items";
+    Caption = 'Item - Generic';
 
     fields
     {
 
         field(10; "Description"; Text[255])
         {
-            Caption = 'Short Description';
+            Caption = 'Description';
         }
         field(15; Type; Enum "TFB Generic Item Type")
         {
@@ -88,6 +89,12 @@ table 50111 "TFB Generic Item"
             CalcFormula = Count(Item where("TFB Generic Item ID" = field(SystemId)));
 
         }
+        field(9010; "External ID"; Text[255])
+        {
+            Caption = 'External ID';
+
+        }
+
 
     }
 

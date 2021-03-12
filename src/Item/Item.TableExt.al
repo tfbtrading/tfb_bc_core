@@ -146,7 +146,11 @@ tableextension 50260 "TFB Item" extends Item
         }
 
 
+        field(50350; "TFB External ID"; Text[250])
+        {
+            Caption = 'External ID';
 
+        }
 
     }
     fieldgroups
