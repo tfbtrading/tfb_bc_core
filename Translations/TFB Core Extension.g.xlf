@@ -2983,71 +2983,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Customer Sales Line Buffer - Field Incoming Details - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 421897184 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Short Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 4109921066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Marketing Copy</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Rich Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 3439236327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Full Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Full Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Picture</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Category Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 2368768276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Category Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 264130340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. Of Items</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field No. Of Items - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 2591013655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Full Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control FullDescription - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 3439236327 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the full description of the generic item.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Action 1427382607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Switch to Parent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToParent - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Action 2384347012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Switch to Extension</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToExtension - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3687754660 - Field 339805095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Template Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3262,6 +3197,76 @@
           <source>Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Quality Auditor - Field Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Vendor Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2147872700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certification Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certification Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 165064666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certification Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certification Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2068121341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Site</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Site - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 261047940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Auditor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Auditor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 1041036037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Audit Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Audit Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 3142631117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiry Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Expiry Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Modified Date Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2393253273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Date Modified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Date Modified - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2727215364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate Attach.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Attach. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 1193071861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CertificationLogo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field CertificationLogo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 3692418645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 936251592 - Field 2037381601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inherent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Inherent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 998216197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reservation Strategy</source>
@@ -3678,75 +3683,140 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field Last Date/Time Modified - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor No.</source>
+        <trans-unit id="Table 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item - Generic</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Vendor No. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Name</source>
+        <trans-unit id="Table 421897184 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Vendor Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 2147872700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certification Type</source>
+        <trans-unit id="Table 421897184 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certification Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 165064666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certification Class</source>
+        <trans-unit id="Table 421897184 - Field 4109921066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marketing Copy</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certification Class - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Rich Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 2068121341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Site</source>
+        <trans-unit id="Table 421897184 - Field 3439236327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Full Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Site - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Full Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 261047940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Auditor</source>
+        <trans-unit id="Table 421897184 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Auditor - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Picture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 1041036037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Last Audit Date</source>
+        <trans-unit id="Table 421897184 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Category Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Audit Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Code - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 3142631117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Expiry Date</source>
+        <trans-unit id="Table 421897184 - Field 2368768276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Category Id</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Expiry Date - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Id - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Last Modified Date Time</source>
+        <trans-unit id="Table 421897184 - Field 264130340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Of Items</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Modified Date Time - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field No. Of Items - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 2393253273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Last Date Modified</source>
+        <trans-unit id="Table 421897184 - Field 624539404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Last Date Modified - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field External ID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 2727215364 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate Attach.</source>
+        <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Attach. - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 1193071861 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CertificationLogo</source>
+        <trans-unit id="Page 421897184 - Control 2591013655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Full Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field CertificationLogo - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control FullDescription - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 3692418645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate Class</source>
+        <trans-unit id="Page 421897184 - Control 3439236327 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the full description of the generic item.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Certificate Class - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Table 936251592 - Field 2037381601 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inherent</source>
+        <trans-unit id="Page 421897184 - Action 1427382607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Switch to Parent</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Inherent - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToParent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Action 2384347012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Switch to Extension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToExtension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1198809383 - Field 1488604235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GenericItemID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field GenericItemID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1198809383 - Field 1481661827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProductMarketSegmentID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field ProductMarketSegmentID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1198809383 - Field 3718912726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field Generic Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1198809383 - Field 3128524497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Market Segment Title</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field Market Segment Title - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1198809383 - Field 2839742689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Showcase Item ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field Showcase Item ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marketing Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field Title - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Short Description for slug</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 109055475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Of Generic Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field No. Of Generic Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 624539404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field External ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2993679784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Product Market Segment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Product Market Segment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
@@ -3963,6 +4033,36 @@
           <note from="Developer" annotates="general" priority="2">%1 = sales order number</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Purch. Inv. Mgmt - Method OnBeforeInsertInvLineFromRcptLineBeforeInsertTextLine - NamedType Text000Msg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType SubTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sending Vendor Certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType Text001Msg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Certifications Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 1111334656 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Documents Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 1111334656 - NamedType 1109119027" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please find attached the following quality documents</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType SubTitleText</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 3671663517 - NamedType 1324421678" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2">%1=Table data html content</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method GenerateQualityDocumentsContent - NamedType tdTxt2</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2381778165 - Method 2359623053 - NamedType 2433837470" size-unit="char" translate="yes" xml:space="preserve">
           <source>Do you want to change qty in associated PO?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4072,36 +4172,6 @@
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2">%1=html content for tabledata</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method GenerateVendorOrderStatusContent - NamedType tdTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType SubTitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sending Vendor Certifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType Text001Msg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Certifications Email</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 1111334656 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quality Documents Request</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 1111334656 - NamedType 1109119027" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Please find attached the following quality documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType SubTitleText</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 3671663517 - NamedType 1324421678" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
-          <note from="Developer" annotates="general" priority="2">%1=Table data html content</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method GenerateQualityDocumentsContent - NamedType tdTxt2</note>
         </trans-unit>
         <trans-unit id="Page 3724397478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Bank Account List</source>
@@ -5608,91 +5678,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Cont. Stats. FactBox - Control No. of Mailing Groups - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3921465668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the picture that has been inserted for the item.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Control Picture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Take</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Activate the camera on the device.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete the record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be replaced. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType OverrideImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Are you sure you want to delete the picture?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType DeleteImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select a picture to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType SelectPictureTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must add a description to the item before you can import a picture.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType MustSpecifyDescriptionErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be overwritten, do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No picture stored</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 864529121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Items</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 841882914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pending Purchase Order Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6827,6 +6812,171 @@
           <source>Specifies the name for the quality auditor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Auditors - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Certification List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Certificate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendors name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Vendor Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2068121341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies vendors facility that is certified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Site - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2147872700 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the certification type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2147872700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 165064666 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the class of certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Class - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the calculated status of the certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 3724896608 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies status of vendor certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control EmoticonStatus - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2037381601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Inherent - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 261047940 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies who audited the site and granted certification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Auditor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 1041036037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date on which the last audit was conducted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Last Audit Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 3142631117 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date on which the certification will expire</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Expiry Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 285490637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Days to Expiry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Days To Expiry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 285490637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of days until the certification expires</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Days To Expiry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attach.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if an attachment exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 3694725606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attaches a certificate (in pdf form) to vendor certfication record</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Upload Attachment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 2110440217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download one or more attachments (in pdf form) from certification record</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Download Attachment(s) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 3433119487 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Send to Contact(s) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 2131725342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove current attachment and replace with new file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Replace File - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 3510473988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove current attachment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Remove File - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - View 3134804177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attention Required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View AttentionRequired - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - View 1483341903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Only</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View Quality - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - View 1894876767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Religious Only</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View Religious - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType SubTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sending Vendor Certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType Text001Msg</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Certifications Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All files (*.pdf)|*.pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Certificate File to Upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileDialogTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All files (*.pdf)|*.pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select Certificate File to Upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FileDialogTxt</note>
         </trans-unit>
         <trans-unit id="Page 1016861427 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reservation Strategy List</source>
@@ -8378,170 +8528,175 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales POD FactBox - Control PODInfo - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Certification List</source>
+        <trans-unit id="Page 3921465668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Image</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
-          <source>New,Certificate</source>
+        <trans-unit id="Page 3921465668 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the picture that has been inserted for the item.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Property PromotedActionCategories</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Control Picture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendors name</source>
+        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Take</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Vendor Name - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2068121341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies vendors facility that is certified</source>
+        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activate the camera on the device.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Site - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2147872700 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the certification type</source>
+        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2147872700 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certification</source>
+        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a picture file.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Type - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 165064666 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the class of certification</source>
+        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Certification Class - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Status</source>
+        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export a picture file.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 513339096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the calculated status of the certification</source>
+        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Status - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 3724896608 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies status of vendor certification</source>
+        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the record.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control EmoticonStatus - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2037381601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification</source>
+        <trans-unit id="Page 3921465668 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be replaced. Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Inherent - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType OverrideImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 261047940 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies who audited the site and granted certification</source>
+        <trans-unit id="Page 3921465668 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete the picture?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Auditor - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType DeleteImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 1041036037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the date on which the last audit was conducted</source>
+        <trans-unit id="Page 3921465668 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select a picture to upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Last Audit Date - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType SelectPictureTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 3142631117 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the date on which the certification will expire</source>
+        <trans-unit id="Page 3921465668 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must add a description to the item before you can import a picture.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Expiry Date - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType MustSpecifyDescriptionErr</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 285490637 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Days to Expiry</source>
+        <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be overwritten, do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Days To Expiry - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 285490637 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the number of days until the certification expires</source>
+        <trans-unit id="Page 3921465668 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No picture stored</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Days To Expiry - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attach.</source>
+        <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Image</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Control 2439251631 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if an attachment exists</source>
+        <trans-unit id="Page 1042251773 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the picture that has been inserted for the item.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control CertificateExists - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Control Picture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3694725606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attaches a certificate (in pdf form) to vendor certfication record</source>
+        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Take</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Upload Attachment - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 2110440217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Download one or more attachments (in pdf form) from certification record</source>
+        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activate the camera on the device.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Download Attachment(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3433119487 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
+        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Send to Contact(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 2131725342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment and replace with new file</source>
+        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a picture file.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Replace File - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3510473988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment</source>
+        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Remove File - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - View 3134804177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attention Required</source>
+        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export a picture file.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View AttentionRequired - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - View 1483341903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quality Only</source>
+        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View Quality - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - View 1894876767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Religious Only</source>
+        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the record.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - View Religious - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+        <trans-unit id="Page 1042251773 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be replaced. Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType SubTitleTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType OverrideImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sending Vendor Certifications</source>
+        <trans-unit id="Page 1042251773 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete the picture?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType Text001Msg</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType DeleteImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Certifications Email</source>
+        <trans-unit id="Page 1042251773 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select a picture to upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method SendSelectedDocs - NamedType TitleTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType SelectPictureTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All files (*.pdf)|*.pdf</source>
+        <trans-unit id="Page 1042251773 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must add a description to the item before you can import a picture.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType MustSpecifyDescriptionErr</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select Certificate File to Upload</source>
+        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be overwritten, do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileDialogTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All files (*.pdf)|*.pdf</source>
+        <trans-unit id="Page 1042251773 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No picture stored</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select Certificate File to Upload</source>
+        <trans-unit id="Page 864529121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Items</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FileDialogTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 260491990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Product Market Segment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Product Market Seg. List - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2320230120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close Out Last Used Price</source>
@@ -12267,6 +12422,11 @@
           <source>Generic Link Exists</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Generic Link Exists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 2734349900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>External ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB External ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3647021456 - Field 1247368712 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3361278800">
           <source>CoA Attachment</source>

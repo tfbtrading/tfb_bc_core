@@ -1,8 +1,8 @@
-table 50112 "Product Market Segment"
+table 50112 "TFB Product Market Segment"
 {
     DataClassification = CustomerContent;
-    LookupPageId = "TFB Generic Items";
-    DrillDownPageId = "TFB Generic Items";
+    LookupPageId = "TFB Product Market Seg. List";
+    DrillDownPageId = "TFB Product Market Seg. List";
     Caption = 'Marketing Item';
 
     fields
@@ -49,6 +49,12 @@ table 50112 "Product Market Segment"
             Clustered = true;
         }
 
+    }
+
+    fieldgroups
+    {
+        fieldgroup(Bricks; Title, Picture, "No. Of Generic Items") { }
+        fieldgroup(Dropdown; Title, "No. Of Generic Items") { }
     }
 
 }

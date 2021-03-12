@@ -1,26 +1,48 @@
-table 50113 "TFB Generic Item Segment Tag"
+table 50113 "TFB Generic Item Market Rel."
 {
     DataClassification = CustomerContent;
 
     fields
     {
-        field(1; MyField; Integer)
+        field(1; GenericItemID; Guid)
         {
-            DataClassification = ToBeClassified;
+            TableRelation = "TFB Generic Item".SystemId;
+            ValidateTableRelation = true;
 
         }
+        field(20; ProductMarketSegmentID; Guid)
+        {
+            TableRelation = "TFB Product Market Segment".SystemId;
+            ValidateTableRelation = true;
+        }
+        field(2; "Generic Item Description"; Text[255])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("TFB Generic Item".Description where(SystemId = field(GenericItemID)));
+        }
+        field(22; "Market Segment Title"; Text[255])
+        {
+            FieldClass = FlowField;
+            CalcFormula = Lookup("TFB Product Market Segment".Title where(SystemId = field(ProductMarketSegmentID)));
+        }
+        field(30; "Showcase Item ID"; Guid)
+        {
+            TableRelation = Item.SystemId where("TFB Generic Item ID" = field(GenericItemID));
+            ValidateTableRelation = true;
+
+        }
+
     }
 
     keys
     {
-        key(PK; MyField)
+        key(PK; GenericItemID, ProductMarketSegmentID)
         {
             Clustered = true;
         }
     }
 
-    var
-        myInt: Integer;
+
 
     trigger OnInsert()
     begin
