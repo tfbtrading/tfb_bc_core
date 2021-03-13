@@ -30,7 +30,7 @@ table 50112 "TFB Product Market Segment"
         {
             Caption = 'No. Of Generic Items';
             FieldClass = FlowField;
-            CalcFormula = Count(Item where("TFB Generic Item ID" = field(SystemId)));
+            CalcFormula = Count("TFB Generic Item Market Rel." where(ProductMarketSegmentID = field(SystemId)));
 
         }
         field(9010; "External ID"; Text[255])

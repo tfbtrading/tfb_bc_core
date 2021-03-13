@@ -34,6 +34,7 @@ page 50135 "TFB Product Market Seg. List"
                 field("External ID"; Rec."External ID")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
 
 

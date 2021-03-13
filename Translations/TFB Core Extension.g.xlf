@@ -3734,7 +3734,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field External ID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Item</source>
+          <source>Item Generic</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
         </trans-unit>
@@ -3747,6 +3747,11 @@
           <source>Specifies the full description of the generic item.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 712282577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add Market Segment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Action 1427382607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Switch to Parent</source>
@@ -5677,6 +5682,171 @@
           <source>Specifies the number of mailing groups for this contact.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Cont. Stats. FactBox - Control No. of Mailing Groups - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the picture that has been inserted for the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Control Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Take</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activate the camera on the device.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a picture file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export a picture file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be replaced. Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType OverrideImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete the picture?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType DeleteImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select a picture to upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType SelectPictureTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must add a description to the item before you can import a picture.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType MustSpecifyDescriptionErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be overwritten, do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType ConfMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No picture stored</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the picture that has been inserted for the item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Control Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Take</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activate the camera on the device.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import a picture file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export a picture file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be replaced. Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType OverrideImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to delete the picture?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType DeleteImageQst</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select a picture to upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType SelectPictureTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
+          <source>You must add a description to the item before you can import a picture.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType MustSpecifyDescriptionErr</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The existing picture will be overwritten, do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType ConfMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No picture stored</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
         <trans-unit id="Page 841882914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pending Purchase Order Lines</source>
@@ -8528,175 +8698,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales POD FactBox - Control PODInfo - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3921465668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the picture that has been inserted for the item.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Control Picture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Take</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Activate the camera on the device.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action TakePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ImportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete the record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action DeletePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be replaced. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType OverrideImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Are you sure you want to delete the picture?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType DeleteImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select a picture to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType SelectPictureTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must add a description to the item before you can import a picture.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - NamedType MustSpecifyDescriptionErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be overwritten, do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 3921465668 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No picture stored</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Control 1594621544 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the picture that has been inserted for the item.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Control Picture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Take</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 3051446377 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Activate the camera on the device.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action TakePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 2864777531 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ImportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Export a picture file.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action ExportPicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Action 3119204463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Delete the record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Action DeletePicture - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be replaced. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType OverrideImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - NamedType 2865259996" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Are you sure you want to delete the picture?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType DeleteImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select a picture to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType SelectPictureTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must add a description to the item before you can import a picture.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - NamedType MustSpecifyDescriptionErr</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The existing picture will be overwritten, do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 1042251773 - Method 3313894911 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No picture stored</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
-        </trans-unit>
-        <trans-unit id="Page 864529121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Items</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 260491990 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TFB Product Market Segment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Product Market Seg. List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2611313722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected Market Segments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Segment Tags - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 2320230120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close Out Last Used Price</source>
@@ -13508,16 +13518,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Order Update Preference - EnumValue Always - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 3084867664 - EnumValue 1280508035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Parent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Generic Item Type - EnumValue ItemParent - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Enum 3084867664 - EnumValue 3531986640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Extension</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Generic Item Type - EnumValue ItemExtension - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Enum 2650066415 - EnumValue 623076767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Certificate of Analysis</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13687,6 +13687,16 @@
           <source>Trade Goods</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Vendor Type - EnumValue TRADE - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3084867664 - EnumValue 1280508035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Parent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Generic Item Type - EnumValue ItemParent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3084867664 - EnumValue 3531986640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Extension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Generic Item Type - EnumValue ItemExtension - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 4203453523 - EnumValue 553059709 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 2593693414">
           <source>Logistics Notifications</source>
