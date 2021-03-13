@@ -2,7 +2,7 @@ page 50135 "TFB Product Market Seg. List"
 {
 
     ApplicationArea = All;
-    Caption = 'TFB Product Market Segment';
+    Caption = 'Product Market Segments';
     PageType = List;
     SourceTable = "TFB Product Market Segment";
     UsageCategory = Administration;

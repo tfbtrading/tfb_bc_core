@@ -8,7 +8,6 @@ table 50113 "TFB Generic Item Market Rel."
         {
             TableRelation = "TFB Generic Item".SystemId;
             ValidateTableRelation = true;
-
         }
         field(20; ProductMarketSegmentID; Guid)
         {
@@ -25,15 +24,8 @@ table 50113 "TFB Generic Item Market Rel."
             FieldClass = FlowField;
             CalcFormula = Lookup("TFB Product Market Segment".Title where(SystemId = field(ProductMarketSegmentID)));
         }
-        field(30; "Showcase Item ID"; Guid)
-        {
-            TableRelation = Item.SystemId where("TFB Generic Item ID" = field(GenericItemID));
-            ValidateTableRelation = true;
-
-        }
 
     }
-
     keys
     {
         key(PK; GenericItemID, ProductMarketSegmentID)
@@ -42,26 +34,5 @@ table 50113 "TFB Generic Item Market Rel."
         }
     }
 
-
-
-    trigger OnInsert()
-    begin
-
-    end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
 
 }

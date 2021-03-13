@@ -70,6 +70,7 @@ page 50132 "TFB Generic Item"
                 group(VerticalStack)
                 {
                     ShowCaption = false;
+                    Caption = '';
 
                     field(MarketSegment; MarketSegment)
 
@@ -216,7 +217,7 @@ page 50132 "TFB Generic Item"
 
         If Title = '' then exit;
 
-        MarketSegmentRec.SetRange(Title, MarketSegment);
+        MarketSegmentRec.SetRange(Title, Title);
         If MarketSegmentRec.FindFirst() then begin
             If not MarketSegmentRel.get(Rec.SystemId, MarketSegmentRec.SystemId) then begin
                 MarketSegmentRel.Init();
