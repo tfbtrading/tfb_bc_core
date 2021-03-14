@@ -3,7 +3,7 @@ table 50111 "TFB Generic Item"
     DataClassification = CustomerContent;
     LookupPageId = "TFB Generic Items";
     DrillDownPageId = "TFB Generic Items";
-    Caption = 'Item - Generic';
+    Caption = 'Generic Item';
 
     fields
     {
@@ -167,6 +167,7 @@ table 50111 "TFB Generic Item"
 
     var
         Item: Record Item;
+        GenericItemMarketRel: Record "TFB Generic Item Market Rel.";
         GuidVar: Guid;
     begin
 
@@ -198,6 +199,12 @@ table 50111 "TFB Generic Item"
                         error('Items exist cannot delete parent');
             end;
         end;
+
+        GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
+        If GenericItemMarketRel.Count > 0 then
+            GenericItemMarketRel.DeleteAll(false);
+
+
     end;
 
 

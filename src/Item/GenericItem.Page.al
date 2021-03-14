@@ -1,7 +1,7 @@
 page 50132 "TFB Generic Item"
 {
 
-    Caption = 'Item Generic';
+    Caption = 'Generic Item';
     PageType = Card;
     SourceTable = "TFB Generic Item";
 
@@ -33,6 +33,13 @@ page 50132 "TFB Generic Item"
                         Editable = false;
                         DrillDown = true;
                         DrillDownPageId = "Item List";
+                    }
+                    field("External ID"; Rec."External ID")
+                    {
+                        ApplicationArea = All;
+                        Editable = true;
+                        Visible = false;
+
                     }
 
                     group(FullDescription)

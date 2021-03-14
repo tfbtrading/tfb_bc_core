@@ -29,6 +29,10 @@ page 50133 "TFB Generic Items"
                 {
                     ApplicationArea = All;
                 }
+                field("External ID"; Rec."External ID")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

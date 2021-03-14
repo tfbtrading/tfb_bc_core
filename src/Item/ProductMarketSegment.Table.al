@@ -57,4 +57,16 @@ table 50112 "TFB Product Market Segment"
         fieldgroup(Dropdown; Title, "No. Of Generic Items") { }
     }
 
+    trigger OnDelete()
+
+    var
+        GenericItemMarketRel: Record "TFB Generic Item Market Rel.";
+
+    begin
+        GenericItemMarketRel.SetRange(ProductMarketSegmentID, Rec.SystemId);
+        If GenericItemMarketRel.Count > 0 then
+            GenericItemMarketRel.DeleteAll(false);
+
+    end;
+
 }
