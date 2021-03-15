@@ -106,29 +106,30 @@ tableextension 50220 "TFB Sales & Receivables Setup" extends "Sales & Receivable
             DataClassification = CustomerContent;
             TableRelation = "TFB Contact Status".Status where(Stage = const(Prospect));
             ValidateTableRelation = true;
-              Caption = 'Prospect (New) Status Default';
+            Caption = 'Prospect (New) Status Default';
         }
         field(51100; "TFB Prospect Status - Opp"; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Contact Status".Status where(Stage = const(Prospect));
             ValidateTableRelation = true;
-               Caption = 'Prospect (Opportunity) Status Default';
+            Caption = 'Prospect (Opportunity) Status Default';
         }
         field(51110; "TFB Prospect Status - Quote"; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Contact Status".Status where(Stage = const(Prospect));
             ValidateTableRelation = true;
-                Caption = 'Prospect (Quote) Status Default';
+            Caption = 'Prospect (Quote) Status Default';
         }
-         field(51120; "TFB Converted Status"; Code[20])
+        field(51120; "TFB Converted Status"; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Contact Status".Status where(Stage = const(Converted));
             ValidateTableRelation = true;
             Caption = 'Customer/Vendor Status Default';
         }
+
     }
 
 

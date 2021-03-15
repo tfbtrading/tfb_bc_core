@@ -38,7 +38,7 @@ page 50132 "TFB Generic Item"
                     {
                         ApplicationArea = All;
                         Editable = true;
-                        Visible = false;
+                        Visible = ShowExternalIDs;
 
                     }
 
@@ -172,15 +172,20 @@ page 50132 "TFB Generic Item"
             }
         }
     }
+    var
+
 
     var
         FullDescription: Text;
         MarketSegment: Text[255];
+        ShowExternalIDs: Boolean;
+        CommonCU: CodeUnit "TFB Common Library";
 
     trigger OnAfterGetRecord()
 
     begin
         FullDescription := GetFullDescription();
+        ShowExternalIDs := CommonCU.CheckIfExternalIdsVisible();
 
     end;
 

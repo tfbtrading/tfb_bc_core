@@ -31,10 +31,22 @@ page 50133 "TFB Generic Items"
                 }
                 field("External ID"; Rec."External ID")
                 {
+                    Visible = ShowExternalIDs;
                     ApplicationArea = All;
                 }
             }
         }
     }
 
+    var
+        ShowExternalIDs: Boolean;
+        CommonCU: CodeUnit "TFB Common Library";
+
+    trigger OnAfterGetRecord()
+
+    begin
+
+        ShowExternalIDs := CommonCU.CheckIfExternalIdsVisible();
+
+    end;
 }

@@ -1,9 +1,10 @@
 page 50136 "TFB Product Market Segment"
 {
 
-    Caption = 'TFB Product Market Segment';
+    Caption = 'Product Market Segment';
     PageType = Card;
     SourceTable = "TFB Product Market Segment";
+    DataCaptionExpression = Rec.Title;
 
     layout
     {
@@ -22,11 +23,13 @@ page 50136 "TFB Product Market Segment"
                     field("External ID"; Rec."External ID")
                     {
                         ApplicationArea = All;
-                        Importance = Additional;
+                        Visible = ShowExternalIDs;
+                        Importance = Standard;
                     }
                     field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
+                        MultiLine = true;
                     }
 
                     field("No. Of Generic Items"; Rec."No. Of Generic Items")
@@ -46,8 +49,32 @@ page 50136 "TFB Product Market Segment"
                     }
                 }
             }
+            group(CriteriaGroup)
+            {
+                ShowCaption = false;
+                part(Criteria; "TFB Seg. Match Criteria Sf")
+                {
+                    ApplicationArea = All;
+
+                    SubPageLink = ProductMarketSegmentID = field(SystemId);
+                    Editable = true;
+
+                }
+            }
 
         }
     }
+
+    var
+        ShowExternalIDs: Boolean;
+        CommonCU: CodeUnit "TFB Common Library";
+
+    trigger OnAfterGetRecord()
+
+    begin
+
+        ShowExternalIDs := CommonCU.CheckIfExternalIdsVisible();
+
+    end;
 }
 

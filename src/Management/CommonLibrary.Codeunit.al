@@ -387,6 +387,19 @@ codeunit 50142 "TFB Common Library"
 
     end;
 
+    procedure CheckIfExternalIdsVisible(): Boolean
+    var
+        UserSetup: Record "User Setup";
+        User: record User;
+        UserName: code[50];
+        USID: Guid;
 
+    begin
 
+        User.Get(Database.UserSecurityId());
+        If User.FindFirst() then
+            If UserSetup.Get(User."User Name") then
+                Exit(UserSetup."TFB Show External IDs");
+
+    end;
 }

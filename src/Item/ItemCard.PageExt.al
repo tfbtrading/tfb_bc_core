@@ -103,6 +103,15 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 ToolTip = 'Specifies country from which item is purchased';
             }
         }
+        addafter("No.")
+        {
+            field("TFB Act As Generic"; Rec."TFB Act As Generic")
+            {
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies if product should act as generic item. ';
+            }
+        }
         addafter(Description)
         {
             field("TFB Alt. Names"; Rec."TFB Alt. Names")
@@ -111,19 +120,28 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 Importance = Standard;
                 ToolTip = 'Specifies alternative names for item';
             }
-            field("TFB Act As Generic"; Rec."TFB Act As Generic")
-            {
-                ApplicationArea = All;
-                Importance = Standard;
-                ToolTip = 'Specifies if product should act as generic item. ';
-            }
-            Group(Generic)
+
+            Group(GenericParent)
             {
                 ShowCaption = false;
                 Visible = not Rec."TFB Act As Generic";
                 field("TFB Parent Generic Item Name"; Rec."TFB Parent Generic Item Name")
                 {
                     ApplicationArea = All;
+                    Importance = Standard;
+                    ToolTip = 'Specifies parent item if item is not acting as a generic';
+
+                }
+
+            }
+            Group(GenericSelf)
+            {
+                ShowCaption = false;
+                Visible = Rec."TFB Act As Generic";
+                field(TFBGenericExtensionName; GetGenericExtensionName())
+                {
+                    ApplicationArea = All;
+                    Editable = Rec."TFB Generic Link Exists";
                     Importance = Standard;
                     ToolTip = 'Specifies parent item if item is not acting as a generic';
 
@@ -245,8 +263,14 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        Rec.CalcFields(Rec."TFB Generic Link Exists");
+    end;
+
     var
         DropShipDefault: Boolean;
+        GenericExtensionName: Text[255];
 
 
     local procedure CheckAndUpdateDropShipDetails()
@@ -262,6 +286,24 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
         else
             DropShipDefault := false;
 
+
+    end;
+
+    local procedure GetGenericExtensionName(): Text[255]
+
+    var
+        GenericItem: Record "TFB Generic Item";
+    begin
+        If Rec."TFB Act As Generic" = true then
+            If not IsNullGuid(Rec."TFB Generic Item ID") then
+                If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
+                    Exit(GenericItem.Description)
+                else
+                    Exit('Error-not found')
+            else
+                Exit('Pending save')
+        else
+            Exit('Not Extension');
 
     end;
 

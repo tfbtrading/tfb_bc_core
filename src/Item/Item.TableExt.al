@@ -255,6 +255,25 @@ tableextension 50260 "TFB Item" extends Item
     end;
 
 
+    trigger OnDelete()
+
+    var
+        GenericItemMarketRel: Record "TFB Generic Item Market Rel.";
+
+    begin
+
+        //Ensure removal of corresponding entries in the system
+        If Rec."TFB Act As Generic" then begin
+            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") and (GenericItem.Type = GenericItem.Type::ItemExtension) then begin
+
+                GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
+                If GenericItemMarketRel.Count > 0 then
+                    GenericItemMarketRel.DeleteAll(false);
+
+                GenericItem.Delete(false);
+            end;
+        end;
+    end;
 
     var
         GenericItem: Record "TFB Generic Item";
