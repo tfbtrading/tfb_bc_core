@@ -8913,6 +8913,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Query TFB Transfer Lines Outstanding - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Query 1450365110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Generic Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query TFB Item Generic Info - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2680367553 - Action 3026167755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2591587468">
           <source>Show Entries without Incoming Docs</source>
           <note from="Developer" annotates="general" priority="2"></note>
