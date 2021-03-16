@@ -114,13 +114,6 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
         }
         addafter(Description)
         {
-            field("TFB Alt. Names"; Rec."TFB Alt. Names")
-            {
-                ApplicationArea = All;
-                Importance = Standard;
-                ToolTip = 'Specifies alternative names for item';
-            }
-
             Group(GenericParent)
             {
                 ShowCaption = false;
@@ -140,14 +133,24 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 Visible = Rec."TFB Act As Generic";
                 field(TFBGenericExtensionName; GetGenericExtensionName())
                 {
+                    Caption = 'Generic Description';
                     ApplicationArea = All;
                     Editable = Rec."TFB Generic Link Exists";
                     Importance = Standard;
-                    ToolTip = 'Specifies parent item if item is not acting as a generic';
+                    ToolTip = 'Specifies the generic item name drawn from the generic item table';
 
                 }
 
             }
+            field("TFB Alt. Names"; Rec."TFB Alt. Names")
+            {
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies alternative names for item';
+            }
+
+
+
 
         }
         addafter("Common Item No.")

@@ -396,8 +396,7 @@ codeunit 50142 "TFB Common Library"
 
     begin
 
-        User.Get(Database.UserSecurityId());
-        If User.FindFirst() then
+        If User.Get(Database.UserSecurityId()) then
             If UserSetup.Get(User."User Name") then
                 Exit(UserSetup."TFB Show External IDs");
 

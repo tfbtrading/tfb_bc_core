@@ -20,19 +20,31 @@ page 50133 "TFB Generic Items"
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the description field';
                 }
                 field("Item Category Code"; Rec."Item Category Code")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Item Category Code field';
                 }
                 field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Type field';
                 }
                 field("External ID"; Rec."External ID")
                 {
                     Visible = ShowExternalIDs;
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the External ID field';
+                }
+                field("No. Of Items"; Rec."No. Of Items")
+                {
+                    Visible = true;
+                    ApplicationArea = All;
+                    DrillDown = true;
+                    DrillDownPageId = "Item List";
+                    ToolTip = 'Specifies the value of the No. Of Items field. Offers the ability to see the number of items assigned.';
                 }
             }
         }

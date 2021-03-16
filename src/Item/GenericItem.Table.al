@@ -30,6 +30,12 @@ table 50111 "TFB Generic Item"
             Caption = 'Full Description';
             DataClassification = CustomerContent;
         }
+        field(30; "Alternative Names"; Text[255])
+        {
+            Caption = 'Alternative Names';
+            DataClassification = CustomerContent;
+
+        }
         field(92; Picture; MediaSet)
         {
             Caption = 'Picture';

@@ -16,16 +16,27 @@ page 50132 "TFB Generic Item"
                     field("Item Category Code"; Rec."Item Category Code")
                     {
                         ApplicationArea = All;
+                        ShowMandatory = true;
+                        ToolTip = 'Specifies the value of the Item Category Code field';
                     }
 
                     field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
+                        ShowMandatory = true;
+                        ToolTip = 'Specifies the value of the Description field';
+                    }
+                    field("Alternative Names"; Rec."Alternative Names")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the alternative names that the generic item might be known by.';
+
                     }
                     field(Type; Rec.Type)
                     {
                         ApplicationArea = All;
                         Editable = false;
+                        ToolTip = 'Specifies the value of the Type field';
                     }
                     field("No. Of Items"; Rec."No. Of Items")
                     {
@@ -33,12 +44,14 @@ page 50132 "TFB Generic Item"
                         Editable = false;
                         DrillDown = true;
                         DrillDownPageId = "Item List";
+                        ToolTip = 'Specifies the value of the No. Of Items field';
                     }
                     field("External ID"; Rec."External ID")
                     {
                         ApplicationArea = All;
                         Editable = true;
                         Visible = ShowExternalIDs;
+                        ToolTip = 'Specifies the value of the External ID field';
 
                     }
 
@@ -87,6 +100,7 @@ page 50132 "TFB Generic Item"
                         Lookup = true;
                         Editable = true;
                         LookupPageId = "TFB Product Market Seg. List";
+                        ToolTip = 'Specifies the value of the Add Market Segment field';
                         trigger OnLookup(var Text: Text): Boolean
 
                         var
@@ -143,6 +157,7 @@ page 50132 "TFB Generic Item"
                 PromotedOnly = true;
                 PromotedCategory = Process;
                 Enabled = (Rec.Type = Rec.Type::ItemExtension) and (Rec.Description <> '');
+                ToolTip = 'Executes the Switch to Parent action';
 
                 trigger OnAction()
                 begin
@@ -162,6 +177,7 @@ page 50132 "TFB Generic Item"
                 PromotedOnly = true;
                 PromotedCategory = Process;
                 Enabled = (Rec.Type = Rec.Type::ItemParent) and (Rec.Description <> '');
+                ToolTip = 'Executes the Switch to Extension action';
 
                 trigger OnAction()
                 begin

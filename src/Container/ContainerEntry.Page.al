@@ -326,9 +326,10 @@ page 50210 "TFB Container Entry"
                         ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies est. depature date';
+                        Enabled = Rec."Departure Date" > 0D;
 
                     }
-                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. arrival date'; }
+                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. arrival date'; Enabled = Rec."Arrival Date" > 0D; }
                     field("Est. Clear Date"; Rec."Est. Clear Date") { ApplicationArea = All; Tooltip = 'Specifies est. clear date'; }
                     field("Est. Warehouse"; Rec."Est. Warehouse") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. date in warehouse'; }
                     field("Est. Return Cutoff"; Rec."Est. Return Cutoff") { ApplicationArea = All; Tooltip = 'Specifies return cutoff date for container'; }
