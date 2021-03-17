@@ -32,11 +32,23 @@ page 50133 "TFB Generic Items"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Type field';
                 }
+                field("Alternative Names"; Rec."Alternative Names")
+                {
+                    Visible = true;
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the alternatives names by which the product is known';
+                }
                 field("External ID"; Rec."External ID")
                 {
                     Visible = ShowExternalIDs;
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the External ID field';
+                }
+                field("Do Not Publish"; Rec."Do Not Publish")
+                {
+                    Visible = true;
+                    ApplicationArea = All;
+
                 }
                 field("No. Of Items"; Rec."No. Of Items")
                 {

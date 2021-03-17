@@ -62,6 +62,11 @@ table 50111 "TFB Generic Item"
 
             end;
         }
+        field(100;"Do Not Publish"; Boolean)
+        {
+            Caption = 'Do Not Publish';
+            
+        }
         field(5702; "Item Category Code"; Code[20])
         {
             Caption = 'Item Category Code';

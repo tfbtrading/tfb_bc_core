@@ -46,12 +46,24 @@ page 50132 "TFB Generic Item"
                         DrillDownPageId = "Item List";
                         ToolTip = 'Specifies the value of the No. Of Items field';
                     }
-                    field("External ID"; Rec."External ID")
+                    group(ExternalID)
+                    {
+                        Visible = ShowExternalIDs;
+                        ShowCaption = false;
+                        field("External ID"; Rec."External ID")
+                        {
+                            ApplicationArea = All;
+                            Editable = true;
+
+                            ToolTip = 'Specifies the value of the External ID field';
+
+                        }
+                    }
+                    field("Do Not Publish"; Rec."Do Not Publish")
                     {
                         ApplicationArea = All;
                         Editable = true;
-                        Visible = ShowExternalIDs;
-                        ToolTip = 'Specifies the value of the External ID field';
+                        ToolTip = 'Indicates whether generic item should appear in catalogues or online';
 
                     }
 

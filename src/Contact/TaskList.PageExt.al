@@ -1,12 +1,26 @@
 pageextension 50188 "TFB Task List" extends "Task List"
 {
 
-    
+
     layout
     {
         addfirst(Control1)
         {
 
+        }
+        modify(Date)
+        {
+            Caption = 'Starting Date';
+        }
+        addafter("Contact Name")
+        {
+
+            field("Ending Date"; Rec."Ending Date")
+            {
+                Visible = true;
+                Editable = false;
+                ApplicationArea = All;
+            }
         }
         movelast(Control1; Closed)
 

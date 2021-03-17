@@ -326,20 +326,50 @@ page 50210 "TFB Container Entry"
                         ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies est. depature date';
-                        Enabled = Rec."Departure Date" > 0D;
+                        Enabled = DepatureDateEnabled;
 
                     }
-                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. arrival date'; Enabled = Rec."Arrival Date" > 0D; }
-                    field("Est. Clear Date"; Rec."Est. Clear Date") { ApplicationArea = All; Tooltip = 'Specifies est. clear date'; }
-                    field("Est. Warehouse"; Rec."Est. Warehouse") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. date in warehouse'; }
+                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. arrival date'; Enabled = ArrivalDateEnabled; }
+                    field("Est. Clear Date"; Rec."Est. Clear Date") { ApplicationArea = All; Tooltip = 'Specifies est. clear date'; Enabled = ClearDateEnabled; }
+                    field("Est. Warehouse"; Rec."Est. Warehouse") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. date in warehouse'; Enabled = AvailToSellDateEnabled; }
                     field("Est. Return Cutoff"; Rec."Est. Return Cutoff") { ApplicationArea = All; Tooltip = 'Specifies return cutoff date for container'; }
                 }
                 group("Actuals")
                 {
-                    field("Departure Date"; Rec."Departure Date") { ApplicationArea = All; ToolTip = 'Specifies actual date of bill of lading'; }
-                    field("Arrival Date"; Rec."Arrival Date") { ApplicationArea = All; Tooltip = 'Specifies actual arrival date'; }
+                    field("Departure Date"; Rec."Departure Date")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies actual date of bill of lading';
 
-                    field("Clear Date"; Rec."Clear Date") { ApplicationArea = All; Tooltip = 'Specifies clearance date'; }
+                        trigger OnValidate()
+
+                        begin
+                            CheckDatesEnabled();
+                        end;
+                    }
+                    field("Arrival Date"; Rec."Arrival Date")
+                    {
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies actual arrival date';
+
+                        trigger OnValidate()
+
+                        begin
+                            CheckDatesEnabled();
+                        end;
+                    }
+
+                    field("Clear Date"; Rec."Clear Date")
+                    {
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies clearance date';
+
+                        trigger OnValidate()
+
+                        begin
+                            CheckDatesEnabled();
+                        end;
+                    }
 
                     group(Fumigation)
                     {
@@ -386,7 +416,17 @@ page 50210 "TFB Container Entry"
                         }
 
                     }
-                    field("Warehouse Date"; Rec."Warehouse Date") { ApplicationArea = All; Tooltip = 'Specifies date container is available to sell'; }
+                    field("Warehouse Date"; Rec."Warehouse Date")
+                    {
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies date container is available to sell';
+
+                        trigger OnValidate()
+
+                        begin
+                            CheckDatesEnabled();
+                        end;
+                    }
                     field("Container Returned"; Rec."Container Returned") { ApplicationArea = All; Tooltip = 'Specifies date container returned'; }
                 }
             }
@@ -634,6 +674,8 @@ page 50210 "TFB Container Entry"
 
 
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
+        ClearDateEnabled: Boolean;
+        AvailToSellDateEnabled: Boolean;
         _unpackReportAttached, isAQISRelevant, isVisible : Boolean;
 
     local procedure AttachFile()
@@ -703,6 +745,10 @@ page 50210 "TFB Container Entry"
             end;
     end;
 
+    var
+        DepatureDateEnabled: Boolean;
+        ArrivalDateEnabled: Boolean;
+
     local procedure RemoveFile()
     var
         PersistentBlob: Codeunit "Persistent Blob";
@@ -730,6 +776,7 @@ page 50210 "TFB Container Entry"
 
         UpdateReportStatus();
         UpdatePercReserved();
+        CheckDatesEnabled();
 
         CurrPage.Lines.Page.Update(false);
 
@@ -1019,5 +1066,13 @@ page 50210 "TFB Container Entry"
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         Exit(true);
 
+    end;
+
+    local procedure CheckDatesEnabled()
+    begin
+        DepatureDateEnabled := (Rec."Departure Date" = 0D);
+        ArrivalDateEnabled := (Rec."Arrival Date" = 0D);
+        ClearDateEnabled := (Rec."Clear Date" = 0D);
+        AvailToSellDateEnabled := (Rec."Warehouse Date" = 0D);
     end;
 }

@@ -2983,91 +2983,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Customer Sales Line Buffer - Field Incoming Details - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 4109921066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Marketing Copy</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Rich Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 3439236327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Full Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Full Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Picture</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Category Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 2368768276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Category Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 264130340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. Of Items</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field No. Of Items - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 624539404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>External ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field External ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Generic Item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 2591013655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Full Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control FullDescription - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 3439236327 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the full description of the generic item.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 2619367864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control VerticalStack - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 712282577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Add Market Segment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Action 1427382607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Switch to Parent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToParent - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Action 2384347012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Switch to Extension</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToExtension - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1198809383 - Field 1488604235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>GenericItemID</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3087,6 +3002,31 @@
           <source>Market Segment Title</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field Market Segment Title - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1253574205 - Field 1481661827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ProductMarketSegmentID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ProductMarketSegmentID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1253574205 - Field 162571992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemAttributeID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ItemAttributeID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1253574205 - Field 2006108605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attribute Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field Attribute Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1253574205 - Field 759567305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemAttributeValueID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ItemAttributeValueID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1253574205 - Field 2887840001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attribute Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field Attribute Value - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2993679784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Marketing Item</source>
@@ -3823,30 +3763,150 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field Last Date/Time Modified - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1253574205 - Field 1481661827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ProductMarketSegmentID</source>
+        <trans-unit id="Table 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ProductMarketSegmentID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1253574205 - Field 162571992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ItemAttributeID</source>
+        <trans-unit id="Table 421897184 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ItemAttributeID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1253574205 - Field 2006108605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attribute Name</source>
+        <trans-unit id="Table 421897184 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field Attribute Name - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Type - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1253574205 - Field 759567305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ItemAttributeValueID</source>
+        <trans-unit id="Table 421897184 - Field 4109921066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marketing Copy</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ItemAttributeValueID - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Rich Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1253574205 - Field 2887840001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attribute Value</source>
+        <trans-unit id="Table 421897184 - Field 3439236327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Full Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field Attribute Value - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Full Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 2048063077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alternative Names</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Alternative Names - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 2522536945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do Not Publish</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Do Not Publish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Category Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 2368768276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Category Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 264130340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Of Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field No. Of Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 421897184 - Field 624539404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field External ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 1037119892 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Item Category Code field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Item Category Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2048063077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the alternative names that the generic item might be known by.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Alternative Names - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Type field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 264130340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. Of Items field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control No. Of Items - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 624539404 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the External ID field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control External ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2522536945 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicates whether generic item should appear in catalogues or online</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Do Not Publish - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2591013655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Full Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control FullDescription - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 3439236327 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the full description of the generic item.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2619367864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control VerticalStack - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 712282577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add Market Segment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 712282577 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Add Market Segment field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Action 1427382607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Switch to Parent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToParent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Action 1427382607 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Switch to Parent action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToParent - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Action 2384347012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Switch to Extension</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToExtension - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Action 2384347012 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the Switch to Extension action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action SwitchToExtension - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Codeunit 1426794637 - Method 3815390087 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
@@ -5743,6 +5803,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control itemCategoryCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 668130058 - Control 4037845429 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alternative Names</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control alternativeNames - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 668130058 - Control 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Modified Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5753,20 +5818,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control externalID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 668130058 - Control 640833785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control doNotPublish - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 668130058 - Control 1463933576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 668130058 - Control 171251140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Default Dimensions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control defaultDimensions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 668130058 - Control 586070755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Variants</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control itemVariants - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 668130058 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
           <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
@@ -5867,6 +5927,36 @@
           <source>No picture stored</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Attribute Match Selection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Control 162571992 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item attribute ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control ItemAttributeID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Control 2006108605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item attribute.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Attribute Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Control 759567305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item attribute ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control ItemAttributeValueID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Control 1131619133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected Value</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Value - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 552860638 - Control 1131619133 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the item attribute.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Value - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Image</source>
@@ -8803,40 +8893,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales POD FactBox - Control PODInfo - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 552860638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attribute Match Selection</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 552860638 - Control 162571992 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item attribute ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control ItemAttributeID - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 552860638 - Control 2006108605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item attribute.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Attribute Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 552860638 - Control 759567305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item attribute ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control ItemAttributeValueID - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 552860638 - Control 1131619133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Selected Value</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Value - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 552860638 - Control 1131619133 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the item attribute.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Seg. Match Criteria Sf - Control Value - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 864529121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Items</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the description field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 1037119892 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Item Category Code field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control Item Category Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Type field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 2048063077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the alternatives names by which the product is known</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control Alternative Names - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 624539404 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the External ID field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control External ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Control 264130340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. Of Items field. Offers the ability to see the number of items assigned.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control No. Of Items - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Report 2320230120 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Close Out Last Used Price</source>
@@ -9547,6 +9637,146 @@
           <source>Show reservations for currently selected row</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Availability By Event - Action Show Reservations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2077925582 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies current qty in transit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. in Transit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 3577231717 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies qty assigned to warehouse shipments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. Assigned to ship - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 662871797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if only price on application should be shown in price list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publish POA Only - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2146749556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item should be blocked from being shown on price list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publishing Block - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 975912338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>AQIS Requirements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Quarantine - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2943376715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item requires a permit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Requires Permit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 457657158 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item required mandatory fumigation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Mandatory Fumigation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 4288373280 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item requires mandatory heat treatment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Heat Treatment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 77146067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item required a mandatory inspection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Mandatory Inspection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1348580669 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies standard estimation duration for storage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Est. Storage Duration - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2198539546 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies drop ship item availability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB DropShip Avail. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 201653293 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies estimated availability if drop ship item is not available</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB DropShip ETA - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2226684871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies country from which item is purchased</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Country/Region Purchased Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 150234495 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if product should act as generic item. </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Act As Generic - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 896862025 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies parent item if item is not acting as a generic</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Parent Generic Item Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 153321545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Generic Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFBGenericExtensionName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 153321545 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies the generic item name drawn from the generic item table</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFBGenericExtensionName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1427132437 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies alternative names for item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Alt. Names - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1059470183 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies long description for item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Long Desc. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Unit Price Per Kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Per Kg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies the per kilogram unit price based on item weight</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Per Kg - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 552635874 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if the unit price source is linked with a customer price group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1782882114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Unit Cost Per Kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1782882114 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies the unit cost per kilogram</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3907474199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Item Costings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3907474199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Open item costings list for item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3549265048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Generic Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBGenericItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3549265048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Open related generic item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBGenericItem - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Control 4039678791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Local Sales Price Per Kg</source>
@@ -12118,140 +12348,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Action UpdateContactID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2077925582 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies current qty in transit</source>
+        <trans-unit id="PageExtension 3457569809 - Change 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 126063057">
+          <source>Starting Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. in Transit - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 3577231717 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies qty assigned to warehouse shipments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. Assigned to ship - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 662871797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if only price on application should be shown in price list</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publish POA Only - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2146749556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item should be blocked from being shown on price list</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publishing Block - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 975912338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>AQIS Requirements</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Quarantine - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2943376715 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item requires a permit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Requires Permit - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 457657158 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item required mandatory fumigation</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Mandatory Fumigation - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 4288373280 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item requires mandatory heat treatment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Heat Treatment - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 77146067 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item required a mandatory inspection</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Mandatory Inspection - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 1348580669 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies standard estimation duration for storage</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Est. Storage Duration - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2198539546 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies drop ship item availability</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB DropShip Avail. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 201653293 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies estimated availability if drop ship item is not available</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB DropShip ETA - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2226684871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies country from which item is purchased</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Country/Region Purchased Code - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 150234495 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if product should act as generic item. </source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Act As Generic - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 1427132437 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies alternative names for item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Alt. Names - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 896862025 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies parent item if item is not acting as a generic</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Parent Generic Item Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 153321545 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies parent item if item is not acting as a generic</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFBGenericExtensionName - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 1059470183 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies long description for item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Long Desc. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Unit Price Per Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Per Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies the per kilogram unit price based on item weight</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Per Kg - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 552635874 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if the unit price source is linked with a customer price group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Price Source - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 1782882114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Unit Cost Per Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 1782882114 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies the unit cost per kilogram</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Action 3907474199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Item Costings</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Action 3907474199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Open item costings list for item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Action 3549265048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Generic Item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBGenericItem - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Action 3549265048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Open related generic item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBGenericItem - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Task List - Change Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 749713401 - Field 393647425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1682139193">
           <source>No. Open Trans.</source>
@@ -12322,26 +12422,6 @@
           <source>Further details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Segment Line - Field TFB Further Details - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 227743407 - Field 3223712143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
-          <source>TFB Sale or Purchase</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Sale or Purchase - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 227743407 - Field 88521350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
-          <source>TFB Posted or Archived</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Posted or Archived - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 227743407 - Field 3191917288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
-          <source>Transaction Record ID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Trans. Record ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 227743407 - Field 679229030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
-          <source>Transaction Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Trans. Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 4111624503 - Field 2878052885 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3660300303">
           <source>TFB Postcode Zone</source>
@@ -13477,6 +13557,26 @@
           <source>Open Task Exists</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Open Task Exists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 227743407 - Field 3223712143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
+          <source>TFB Sale or Purchase</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Sale or Purchase - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 227743407 - Field 88521350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
+          <source>TFB Posted or Archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Posted or Archived - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 227743407 - Field 3191917288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
+          <source>Transaction Record ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Trans. Record ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 227743407 - Field 679229030 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
+          <source>Transaction Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB To-do - Field TFB Trans. Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Profile 3402792832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operations Manager</source>

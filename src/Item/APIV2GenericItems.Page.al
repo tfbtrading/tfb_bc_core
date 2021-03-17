@@ -85,6 +85,12 @@ page 50140 "TFB APIV2 - Generic Items"
                         end;
                     end;
                 }
+                field(alternativeNames; Rec."Alternative Names")
+                {
+                    Caption = 'Alternative Names';
+                    Editable = true;
+                }
+
 
                 field(lastModifiedDateTime; Rec.SystemModifiedAt)
                 {
@@ -97,6 +103,11 @@ page 50140 "TFB APIV2 - Generic Items"
                     Editable = true;
 
                 }
+                field(doNotPublish; Rec."Do Not Publish")
+                {
+                    Caption = 'External ID';
+                    Editable = true;
+                }
 
                 part(picture; "APIV2 - Pictures")
                 {
@@ -106,20 +117,7 @@ page 50140 "TFB APIV2 - Generic Items"
                     EntitySetName = 'pictures';
                     SubPageLink = Id = Field(SystemId), "Parent Type" = const(2);
                 }
-                part(defaultDimensions; "APIV2 - Default Dimensions")
-                {
-                    Caption = 'Default Dimensions';
-                    EntityName = 'defaultDimension';
-                    EntitySetName = 'defaultDimensions';
-                    SubPageLink = ParentId = Field(SystemId), "Parent Type" = const(2);
-                }
-                part(itemVariants; "APIV2 - Item Variants")
-                {
-                    Caption = 'Variants';
-                    EntityName = 'itemVariant';
-                    EntitySetName = 'itemVariants';
-                    SubPageLink = "Item Id" = field(SystemId);
-                }
+
             }
         }
     }
