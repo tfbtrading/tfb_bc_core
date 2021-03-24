@@ -50,6 +50,10 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
                 Caption = 'Container';
                 ToolTip = 'Opens up the related container for the purchase receipt';
                 Visible = ContainerEntryNo <> '';
+                Promoted = true;
+                PromotedCategory = Category4;
+                PromotedIsBig = true;
+                Image = Navigate;
 
                 trigger OnAction()
                 begin

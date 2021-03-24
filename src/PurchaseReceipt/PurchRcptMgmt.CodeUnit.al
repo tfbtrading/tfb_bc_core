@@ -129,7 +129,7 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
         Line: Record "Purch. Rcpt. Line";
 
     begin
-        Line.SetRange("No.", DocNo);
+        Line.SetRange("Document No.", DocNo);
 
         If Line.FindFirst() then
             Exit(Line."TFB Container Entry No.");

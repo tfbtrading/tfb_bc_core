@@ -9,18 +9,19 @@ tableextension 50200 "TFB Purch. Rcpt. Line." extends "Purch. Rcpt. Line" //121
             ValidateTableRelation = True;
             Editable = false;
             Caption = 'Container Entry No.';
+        
         }
         field(50008; "TFB Container No. LookUp"; Text[20])
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Container Entry"."Container No." where("Order Reference" = field("Order No.")));
+            CalcFormula = lookup("TFB Container Entry"."Container No." where("Order Reference" = field("Order No.")));
             Editable = false;
             Caption = 'Container Lookup';
         }
         field(50010; "TFB Vendor Order No. Lookup"; Text[100])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Purch. Rcpt. Header"."Vendor Order No." where("No." = field("Document No.")));
+            CalcFormula = Lookup("Purch. Rcpt. Header"."Vendor Order No." where("No." = field("Document No.")));
             Editable = false;
             Caption = 'Vendor Order No.';
         }
