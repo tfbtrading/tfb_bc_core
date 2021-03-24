@@ -8,6 +8,40 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeValidateBlanketOrderLineNo', '', false, false)]
+    local procedure OnBeforeValidateBlanketOrderLineNo(var PurchaseLine: Record "Purchase Line"; var InHandled: Boolean);
+
+    var
+        PurchLine2: Record "Purchase Line";
+    begin
+
+        if InHandled then
+            exit;
+
+        PurchaseLine.TestField(PurchaseLine."Quantity Received", 0);
+        if PurchaseLine."Blanket Order Line No." <> 0 then begin
+            PurchLine2.Get(PurchaseLine."Document Type"::"Blanket Order", PurchaseLine."Blanket Order No.", PurchaseLine."Blanket Order Line No.");
+            PurchLine2.TestField(Type, PurchaseLine.Type);
+            PurchLine2.TestField("No.", PurchaseLine."No.");
+            PurchLine2.TestField("Pay-to Vendor No.", PurchaseLine."Pay-to Vendor No.");
+            PurchLine2.TestField("Buy-from Vendor No.", PurchaseLine."Buy-from Vendor No.");
+            if PurchaseLine."Drop Shipment" then begin
+                PurchLine2.TestField("Variant Code", PurchaseLine."Variant Code");
+                PurchLine2.TestField("Location Code", PurchaseLine."Location Code");
+                PurchLine2.TestField("Unit of Measure Code", PurchaseLine."Unit of Measure Code");
+            end else begin
+                PurchaseLine.Validate("Variant Code", PurchLine2."Variant Code");
+                //Removed inheretance of location from blanket purchase order as it should not matter
+                //All other code is copied directly
+                PurchaseLine.Validate("Unit of Measure Code", PurchLine2."Unit of Measure Code");
+            end;
+            PurchaseLine.Validate("Direct Unit Cost", PurchLine2."Direct Unit Cost");
+            PurchaseLine.Validate("Line Discount %", PurchLine2."Line Discount %");
+        end;
+
+        InHandled := true;
+    end;
+
     local procedure GetNextWorkDay(Location: Code[20]; TargetDate: Date): Date
 
     var
@@ -32,8 +66,8 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         Exit(TargetDate);
     end;
 
-    
-    
+
+
 
 
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeValidatePromisedReceiptDate', '', false, false)]
