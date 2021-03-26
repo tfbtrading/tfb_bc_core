@@ -2,7 +2,7 @@ tableextension 50111 "TFB Incoming Document Attach." extends "Incoming Document 
 {
     procedure ViewAttachment()
     var
-      
+
     begin
         case Type of
             Type::PDF:
@@ -23,14 +23,16 @@ tableextension 50111 "TFB Incoming Document Attach." extends "Incoming Document 
 
     procedure ToBase64String() ReturnValue: Text
     var
-        TempBlob: Record TempBlob temporary;
+        InStr: InStream;
+        Base64Convert: Codeunit "Base64 Convert";
     begin
         CalcFields(Content);
         if not Content.HasValue() then
             exit;
 
-        TempBlob.Blob := Content;
-        ReturnValue := TempBlob.ToBase64String();
+        CalcFields(Content);
+        Content.CreateInStream(InStr);
+        ReturnValue := Base64Convert.ToBase64(InStr);
     end;
 
 }

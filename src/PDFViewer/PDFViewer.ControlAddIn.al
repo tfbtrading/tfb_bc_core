@@ -6,7 +6,6 @@ controladdin PDFViewer
     HorizontalStretch = true;
     HorizontalShrink = true;
     MinimumWidth = 250;
-    MinimumHeight = 400;
 
     event OnControlAddInReady();
     event OnPdfViewerReady();

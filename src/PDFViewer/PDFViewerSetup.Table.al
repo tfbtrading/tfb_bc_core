@@ -1,7 +1,7 @@
 table 50108 "PDF Viewer Setup"
 {
     DataPerCompany = false;
-    
+
     fields
     {
         field(1; Code; Code[10])
@@ -9,6 +9,10 @@ table 50108 "PDF Viewer Setup"
             DataClassification = SystemMetadata;
         }
         field(2; "Web Viewer URL"; Text[250])
+        {
+            DataClassification = CustomerContent;
+        }
+        field(3; "Test Viewer URL"; Text[250])
         {
             DataClassification = CustomerContent;
         }
