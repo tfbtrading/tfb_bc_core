@@ -141,8 +141,7 @@ codeunit 50120 "TFB Customer Mgmt"
         FileNameBuilder.Append('.pdf');
         FileNameBuilder.Replace('/', '-');
 
-        SubjectNameBuilder.Append('Statement From TFB Trading as at ');
-        SubjectNameBuilder.Append(Format(AsAtDate));
+        SubjectNameBuilder.Append(StrSubstNo('Statement for %1 from Tfb Trading as at %2', Customer.Name, Format(AsAtDate)));
 
 
         RepSelSales.SetRange(Usage, RepSelSales.Usage::"C.Statement");

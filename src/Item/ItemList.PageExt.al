@@ -3,6 +3,12 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
     layout
     {
+
+        modify(Description)
+        {
+            Style = Unfavorable;
+            StyleExpr = IsBlockedFromSale;
+        }
         modify("Unit Cost")
         {
             Visible = false;
@@ -15,8 +21,16 @@ pageextension 50117 "TFB Item List" extends "Item List"
         {
             Visible = false;
         }
+
         addafter(Type)
         {
+            field(TFBDropShip; IsDropShipByDefault)
+            {
+                Caption = 'Usually dropship.';
+                ApplicationArea = All;
+
+                ToolTip = 'Specifies if an item is usually sent directly from the supplier to the customer and not held in inventory';
+            }
 
             field(TFBSalesPrice; SalesPriceVar)
             {
@@ -73,6 +87,14 @@ pageextension 50117 "TFB Item List" extends "Item List"
             }
 
         }
+
+        modify(InventoryField)
+        {
+            Style = Ambiguous;
+            StyleExpr = IsDropShipByDefault;
+        }
+
+
 
 
 
@@ -143,8 +165,9 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
     var
 
+        IsDropShipByDefault: Boolean;
 
-
+        IsBlockedFromSale: Boolean;
 
         SalesPriceVar: Decimal;
 
@@ -163,10 +186,29 @@ pageextension 50117 "TFB Item List" extends "Item List"
         Clear(SalesPriceVar);
         Clear(LastChangedDateVar);
         Rec.SetAutoCalcFields("TFB Generic Link Exists");
-
+        IsDropShipByDefault := GetIfUsuallyDropship();
+        IsBlockedFromSale := GetIfBlockedFromSale();
         ItemMgmtCU.GetItemDynamicDetails(Rec."No.", SalesPriceVar, LastChangedDateVar);
 
 
+    end;
+
+    local procedure GetIfBlockedFromSale(): Boolean
+
+    begin
+        Exit(Rec.Blocked or Rec."Sales Blocked");
+    end;
+
+    local procedure GetIfUsuallyDropship(): Boolean
+
+    var
+
+        PurchCode: Record Purchasing;
+
+    begin
+
+        If PurchCode.Get(Rec."Purchasing Code") then
+            Exit(PurchCode."Drop Shipment");
     end;
 
 }
