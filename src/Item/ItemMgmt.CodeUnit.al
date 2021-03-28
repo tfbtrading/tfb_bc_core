@@ -6,7 +6,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
-    
+
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCopyFromItem', '', true, true)]
 
@@ -90,21 +90,23 @@ codeunit 50107 "TFB Item Mgmt"
             end;
     end;
 
+
     procedure GetItemDynamicDetails(ItemNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date)
+
 
     var
         SalesSetup: Record "Sales & Receivables Setup";
+
         Item: Record Item;
         PricingCU: CodeUnit "TFB Pricing Calculations";
         SalesPriceRec: Record "Sales Price";
     begin
         SalesSetup.Get();
-
-
         Clear(SalesPriceRec);
 
 
         If (SalesSetup."TFB Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
+
 
             SalesPriceRec.SetRange("Item No.", ItemNo);
             SalesPriceRec.SetRange("Sales Code", SalesSetup."TFB Def. Customer Price Group");
@@ -114,6 +116,44 @@ codeunit 50107 "TFB Item Mgmt"
             If SalesPriceRec.FindLast() then begin
                 SalesPrice := PricingCU.CalcPerKgFromUnit(SalesPriceRec."Unit Price", Item."Net Weight");
                 LastChanged := SalesPriceRec."Starting Date";
+            end;
+        end;
+
+
+
+    end;
+
+    /// <summary>
+    /// Get Price List details for default customer group to display in the sales price list
+    /// Only enables if new sales price lists are operational
+    /// </summary>
+    /// <param name="ItemNo">Code[20].</param>
+    /// <param name="SalesPrice">VAR Decimal.</param>
+    /// <param name="LastChanged">VAR Date.</param>
+    procedure GetPriceListDynamicDetails(ItemNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date)
+
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        Item: Record Item;
+        PricingCU: CodeUnit "TFB Pricing Calculations";
+        PriceListLine: Record "Price List Line";
+    //SalesPriceRec: Record "Sales Price";
+    begin
+        SalesSetup.Get();
+        SalesPrice := 0;
+        LastChanged := 0D;
+
+        If (SalesSetup."TFB Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
+
+
+            PriceListLine.SetRange("Asset No.", ItemNo);
+            PriceListLine.SetRange("Source No.", SalesSetup."TFB Def. Customer Price Group");
+            PriceListLine.SetRange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
+            PriceListLine.SetRange("Ending Date", 0D);
+
+            If PriceListLine.FindLast() then begin
+                SalesPrice := PricingCU.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight");
+                LastChanged := PriceListLine."Starting Date";
             end;
         end;
 
@@ -132,6 +172,33 @@ codeunit 50107 "TFB Item Mgmt"
     begin
 
         GetItemDynamicDetails(ItemNo, SalesPrice, LastChanged);
+
+
+        SalesInvoiceLine.SetRange("Sell-to Customer No.", CustNo);
+        SalesInvoiceLine.SetRange("No.", ItemNo);
+        SalesInvoiceLine.SetCurrentKey("Posting Date");
+        SalesInvoiceLine.SetAscending("Posting Date", false);
+
+        If SalesInvoiceLine.FindFirst() and Item.Get(ItemNo) then begin
+            LastPricePaid := PricingCU.CalcPerKgFromUnit(SalesInvoiceLine."Unit Price", SalesInvoiceLine."Net Weight");
+            LastDatePurchased := SalesInvoiceLine."Posting Date";
+        end;
+    end;
+
+
+    procedure GetPriceListDynamicDetails(ItemNo: Code[20]; CustNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date; var LastPricePaid: Decimal; var LastDatePurchased: Date)
+
+    var
+
+        PricingCU: CodeUnit "TFB Pricing Calculations";
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        Item: Record Item;
+    begin
+
+        GetPriceListDynamicDetails(ItemNo, SalesPrice, LastChanged);
+
+        LastPricePaid := 0;
+        LastDatePurchased := 0D;
 
 
         SalesInvoiceLine.SetRange("Sell-to Customer No.", CustNo);

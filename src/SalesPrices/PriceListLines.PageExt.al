@@ -4,6 +4,14 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
     {
         addafter("Unit Price")
         {
+            field(ProductWeight; _ProductWeight)
+            {
+                ApplicationArea = All;
+                BlankZero = true;
+                Caption = 'Product Weight';
+                ToolTip = 'Specifies the weight of the product if applicable';
+                Editable = false;
+            }
 
             Field(PriceByWeight; _PricePerKg)
             {
@@ -25,13 +33,22 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
 
 
         }
+        modify("Minimum Quantity")
+        {
+            Visible = false;
+        }
+
+        modify("Cost Factor")
+        {
+            Visible = false;
+        }
 
         modify("Unit Price")
         {
             trigger OnAfterValidate()
 
             begin
-                _PricePerKg := GetPricePerKg();
+                _PricePerKg := GetPricePerKgAndWeight();
             end;
         }
 
@@ -41,7 +58,7 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
             trigger OnAfterValidate()
 
             begin
-                _PricePerKg := GetPricePerKg();
+                _PricePerKg := GetPricePerKgAndWeight();
             end;
 
         }
@@ -54,28 +71,27 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
 
     var
         PricingCU: CodeUnit "TFB Pricing Calculations";
+        _ProductWeight: Decimal;
         _PricePerKg: Decimal;
 
     trigger OnAfterGetRecord()
 
     begin
-        _PricePerKg := GetPricePerKg();
+        GetPricePerKgAndWeight();
     end;
 
-    local procedure GetPricePerKg(): Decimal
+    local procedure GetPricePerKgAndWeight(): Decimal
 
     var
         Item: Record Item;
 
     begin
-        If Rec."Asset Type" = Rec."Asset Type"::Item then begin
-            Item.Get(Rec."Asset No.");
-            If Item."Net Weight" > 0 then
-                Exit(PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight"))
-            else
-                Exit(0);
-        end
-        else
-            Exit(0);
+        _PricePerKg := 0;
+
+        If not (Rec."Asset Type" = Rec."Asset Type"::Item) then exit;
+        if not Item.Get(Rec."Asset No.") then exit;
+        If not (Item."Net Weight" > 0) then exit;
+        _PricePerKg := PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight");
+        _ProductWeight := Item."Net Weight";
     end;
 }

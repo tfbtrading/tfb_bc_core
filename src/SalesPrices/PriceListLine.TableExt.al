@@ -5,6 +5,10 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
         // Add changes to table fields here
     }
 
+    /// <summary>
+    /// Updates the unit price with a per kilogram price
+    /// </summary>
+    /// <param name="NewPricePerKg">Decimal.</param>
     procedure UpdateUnitPriceFromPerKgPrice(NewPricePerKg: Decimal)
 
     begin

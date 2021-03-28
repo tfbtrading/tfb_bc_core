@@ -758,10 +758,95 @@ codeunit 50304 "TFB Costing Mgmt"
         end;
     end;
 
-	internal procedure CopyCurrentCostingToPriceList(Rec: Record "Price List Header")
-	begin
-		Error('Procedure CopyCurrentCostingToPriceList not implemented.');
-	end;
+    internal procedure CopyCurrentCostingToPriceList(PriceListHeader: Record "Price List Header")
+
+
+    var
+        ItemCostingLines: Record "TFB Item Costing Lines";
+        PostCodeZone: Record "TFB Postcode Zone";
+        //SalesPrices: Record "Sales Price";
+        PriceListLine: Record "Price List Line";
+
+        // SalesPriceWksh: Record "Sales Price Worksheet";
+        CostingSetup: Record "TFB Costings Setup";
+        TargetCustomerGroup: Code[20];
+        TargetPostcodeZone: Code[20];
+        ExistingPrice: Boolean;
+        CustomerGroup: Boolean;
+        ExWarehousePricing: Boolean;
+        LineNo: Integer;
+
+
+
+    begin
+        If PriceListHeader.IsEmpty then exit;
+        If PriceListHeader.Code = '' then exit;
+        If not (PriceListHeader.Status = PriceListHeader.Status::Draft) then exit;
+        If not (PriceListHeader."Price Type" = PriceListHeader."Price Type"::Sale) then exit;
+        If not (PriceListHeader."Source Type" = PriceListHeader."Source Type"::"Customer Price Group") then exit;
+
+        PostCodeZone.SetRange("Customer Price Group", PriceListHeader."Source No.");
+        IF PostCodeZone.FindFirst() then
+            //Get the correct customer group mapping for the postcode zone
+            TargetPostcodeZone := PostCodeZone.Code
+        else
+            Exit;
+
+
+        If CostingSetup.Get() then
+            If CostingSetup.ExWarehouseEnabled then
+                if CostingSetup.ExWarehousePricingGroup = PriceListHeader."Source No." then
+                    ExWarehousePricing := true;
+
+
+        ItemCostingLines.Reset();
+        ItemCostingLines.SetRange(Current, true);
+
+
+        If ExWarehousePricing then begin
+            ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
+            ItemCostingLines.SetRange("Line Key", '-');
+        end
+        else begin
+            ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::DZP);
+            ItemCostingLines.SetRange("Line Key", TargetPostcodeZone);
+        end;
+        ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
+
+        if ItemCostingLines.FindSet() then
+            repeat
+
+                //Check if existing sales price worksheet item exists
+                PriceListLine.Reset();
+                PriceListLine.SetRange("Price List Code", PriceListHeader.Code);
+                PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+                PriceListLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+
+                If PriceListLine.FindFirst() then begin
+                    //Update existing price on sales price worksheet
+                    PriceListLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                    PriceListLine.Modify();
+                end
+                else begin
+
+                    PriceListLine.Init();
+                    PriceListLine."Price List Code" := PriceListHeader.Code;
+
+                    PriceListLine.CopySourceFrom(PriceListHeader);
+                    PriceListLine.CopyFrom(PriceListHeader);
+                    PriceListLine.validate("Asset Type", PriceListLine."Asset Type"::Item);
+                    //Check first if price is different to existing sales price
+
+                    PriceListLine.validate("Asset No.", ItemCostingLines."Item No.");
+                    PriceListLine.validate("Unit Price", ItemCostingLines."Price (Base)");
+                    PriceListLine.Insert();
+                end;
+
+
+            until ItemCostingLines.Next() < 1;
+
+
+    end;
 
     local procedure AddMargin(Margin: Decimal; BaseValue: Decimal): Decimal
 

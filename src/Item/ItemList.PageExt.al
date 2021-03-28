@@ -38,6 +38,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 ApplicationArea = All;
                 BlankZero = true;
                 ToolTip = 'Specifies the local sales price per kg';
+                Visible = not ExtendedPriceEnabled;
 
                 trigger OnDrillDown()
 
@@ -53,6 +54,25 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 end;
 
             }
+
+            field(TFBSalesPriceNew; _salesPriceVar)
+            {
+                AccessByPermission = TableData "Sales Price Access" = R;
+                ApplicationArea = Basic, Suite;
+                Caption = 'Local Sales Price';
+
+                Visible = ExtendedPriceEnabled;
+                ToolTip = 'Set up sales prices for the item. An item price is automatically granted on invoice lines when the specified criteria are met, such as customer, quantity, or ending date.';
+
+                trigger OnDrillDown()
+                var
+                    AmountType: Enum "Price Amount Type";
+                    PriceType: Enum "Price Type";
+                begin
+                    Rec.ShowPriceListLines(PriceType::Sale, AmountType::Price);
+                end;
+            }
+
             field(TFBLastPriceChangedDate; LastChangedDateVar)
             {
                 Caption = 'Last Changed';
@@ -175,6 +195,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
         LastChangedDateVar: Date;
 
+        _salesPriceVar: Decimal;
 
 
     trigger OnAfterGetRecord()
@@ -188,7 +209,10 @@ pageextension 50117 "TFB Item List" extends "Item List"
         Rec.SetAutoCalcFields("TFB Generic Link Exists");
         IsDropShipByDefault := GetIfUsuallyDropship();
         IsBlockedFromSale := GetIfBlockedFromSale();
-        ItemMgmtCU.GetItemDynamicDetails(Rec."No.", SalesPriceVar, LastChangedDateVar);
+        If not ExtendedPriceEnabled then
+            ItemMgmtCU.GetItemDynamicDetails(Rec."No.", SalesPriceVar, LastChangedDateVar)
+        else
+            ItemMgmtCU.GetPriceListDynamicDetails(Rec."No.", _salesPriceVar, LastChangedDateVar);
 
 
     end;

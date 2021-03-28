@@ -2,6 +2,26 @@ pageextension 50198 "TFB Sales Price List" extends "Sales Price List"
 {
     layout
     {
+
+        modify(VATBusPostingGrPrice)
+        {
+            Visible = false;
+        }
+        modify(CurrencyCode)
+        {
+            Visible = false;
+        }
+
+        addfirst(FactBoxes)
+        {
+            part(factbox; "TFB Price List Line Factbox")
+            {
+                Provider = Lines;
+                SubPageLink = SystemId = field(SystemId);
+                ApplicationArea = all;
+                Caption = 'Additional context';
+            }
+        }
     }
 
     actions
@@ -23,7 +43,6 @@ pageextension 50198 "TFB Sales Price List" extends "Sales Price List"
                     CostingCU: Codeunit "TFB Costing Mgmt";
 
                 begin
-                    CostingCU.CopyCurrentCostingToSalesWorkSheet();
                     CostingCU.CopyCurrentCostingToPriceList(Rec);
                 end;
             }
