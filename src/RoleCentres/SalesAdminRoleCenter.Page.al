@@ -13,6 +13,17 @@ page 50109 "TFB Sales Admin Role Center"
             {
                 ApplicationArea = Basic, Suite;
             }
+            part(LastRecords; "DYCE LastRecordsPart")
+            {
+                ApplicationArea = All;
+                Visible = true;
+
+            }
+            part(FavouriteRecords; "DYCE FavoriteRecordsPart")
+            {
+                ApplicationArea = All;
+                Visible = true;
+            }
             part("Help And Chart Wrapper"; "Help And Chart Wrapper")
             {
                 ApplicationArea = Basic, Suite;

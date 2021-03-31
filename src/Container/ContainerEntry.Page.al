@@ -131,8 +131,7 @@ page 50210 "TFB Container Entry"
                     group(ShippedFromPort)
                     {
                         ShowCaption = false;
-                        Visible = Rec."Qty. On Purch. Rcpt" > 0;
-
+                        Visible = (Rec."Qty. On Transfer Rcpt" > 0);
                         field("Qty. On Purch. Rcpt"; Rec."Qty. On Purch. Rcpt")
                         {
                             ApplicationArea = All;
@@ -141,21 +140,22 @@ page 50210 "TFB Container Entry"
                             DrillDownPageId = "Purch. Receipt Lines";
                             ToolTip = 'Specifies qty on rcpt';
                         }
-                        Field("Qty. On Transfer Order"; Rec."Qty. On Transfer Order")
+                        field("No. Of Transfer Orders"; Rec."No. Of Transfer Orders")
                         {
                             ApplicationArea = All;
                             Editable = false;
                             DrillDown = true;
-                            DrillDownPageId = "Transfer Order";
-                            ToolTip = 'Specifies qty on transfer order';
+                            DrillDownPageId = "Transfer Orders";
+                            ToolTip = 'Specifies related transfer orders';
                         }
-                        field("Qty. On Transfer Ship."; Rec."Qty. On Transfer Ship.")
+
+                        field("No. of Transfer Receipts"; Rec."No. of Transfer Receipts")
                         {
                             ApplicationArea = All;
                             Editable = false;
                             DrillDown = true;
-                            DrillDownPageId = "Posted Transfer Shipment Lines";
-                            ToolTip = 'Specifies qty on transfer shipment';
+                            DrillDownPageId = "Posted Transfer Receipts";
+                            ToolTip = 'Specifies related transfer receipts';
 
                         }
 
@@ -165,7 +165,7 @@ page 50210 "TFB Container Entry"
                     group(Received)
                     {
                         ShowCaption = False;
-                        Visible = Rec."Qty. On Transfer Rcpt" > 0;
+                        Visible = (Rec."No. of Transfer Receipts" > 0);
                         field("Qty. On Transfer Rcpt"; Rec."Qty. On Transfer Rcpt")
                         {
                             ApplicationArea = All;
@@ -889,6 +889,7 @@ page 50210 "TFB Container Entry"
         DocLines: Record "TFB ContainerContents" temporary;
         RepSel: Record "Report Selections";
         Purchase: record "Purchase Header";
+        Transfer: record "Transfer Header";
         TransferLine: record "Transfer Line";
         Location: record Location;
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
@@ -919,11 +920,11 @@ page 50210 "TFB Container Entry"
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
         if not Purchase.FindFirst() then begin
-            TransferLine.SetRange("TFB Container Entry No.", Rec."No.");
-            If not TransferLine.FindFirst() then
+            Transfer.SetRange("TFB Container Entry No.", Rec."No.");
+            If not Transfer.FindFirst() then
                 exit
             else
-                Location.Get(TransferLine."Transfer-to Code");
+                Location.Get(Transfer."Transfer-to Code");
         end
         else
             Location.Get(Purchase."Location Code");

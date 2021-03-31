@@ -373,15 +373,31 @@ table 50181 "TFB Container Entry"
             FieldClass = FlowField;
             CalcFormula = sum("Transfer line"."Quantity (Base)" where("TFB Container Entry No." = field("No."), "Qty. to Ship (Base)" = filter('>0'), "Quantity Shipped" = filter('>0')));
         }
+        field(415; "No. Of Transfer Orders"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Transfer Receipt Header" where("TFB Container Entry No." = field("No.")));
+        }
         field(420; "Qty. On Transfer Rcpt"; Decimal)
         {
             FieldClass = FlowField;
             CalcFormula = sum("Transfer Receipt Line"."Quantity (Base)" where("TFB Container Entry No." = field("No.")));
         }
+        field(425; "No. of Transfer Receipts"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Transfer Receipt Header" where("TFB Container Entry No." = field("No.")));
+        }
+
         field(430; "Qty. On Transfer Ship."; Decimal)
         {
             FieldClass = FlowField;
             CalcFormula = sum("Transfer Shipment Line"."Quantity (Base)" where("TFB Container Entry No." = field("No.")));
+        }
+        field(435; "No. Of Transfer Shipments"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Transfer Shipment Header" where("TFB Container Entry No." = field("No.")));
         }
         field(500; "Unpack Worksheet Attach."; BigInteger)
         {
