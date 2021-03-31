@@ -26,8 +26,8 @@ page 50119 "PDF Viewer"
     var
         ControlIsReady: Boolean;
         Data: JsonObject;
-        DataCache: Text;
-        Dirty: Boolean;
+        ContentType: Option URL,BASE64;
+        Content: Text;
 
     local procedure InitializePDFViewer()
     var
@@ -39,24 +39,26 @@ page 50119 "PDF Viewer"
 
     local procedure ShowData()
     begin
-        
+        if Content = '' then
+            exit;
+
+        Clear(Data);
+        Data.Add('type', Format(ContentType));
+        Data.Add('content', Content);
         CurrPage.PDFViewer.LoadDocument(Data);
         Clear(Data);
     end;
 
     procedure LoadPdfViaUrl(Url: Text)
     begin
-        Clear(Data);
-        Data.Add('type', 'url');
-        Data.Add('content', Url);
+        ContentType := ContentType::URL;
+        Content := Url;
     end;
 
     procedure LoadPdfFromBlob(Base64Data: Text)
     begin
-        Clear(Data);
-        Data.Add('type', 'base64');
-        Data.Add('content', Base64Data);
-
+        ContentType := ContentType::BASE64;
+        Content := Base64Data;
     end;
 
 }

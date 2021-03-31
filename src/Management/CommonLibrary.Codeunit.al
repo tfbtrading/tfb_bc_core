@@ -18,6 +18,8 @@ codeunit 50142 "TFB Common Library"
         Log.SetRange("Record ID", RecId);
         Log.SetFilter("Old Value", '<>0');
         Log.SetRange("Type of Change", Log."Type of Change"::Modification);
+        Log.SetCurrentKey("Date and Time");
+        Log.SetAscending("Date and Time", false);
 
         If not Log.IsEmpty then begin
 

@@ -19,7 +19,7 @@ pageextension 50169 "TFB Incoming Document" extends "Incoming Document" // 189
 
     local procedure ShowPdfInViewer()
     var
-        TempBlob: Record TempBlob temporary;
+       
         IncomingDocumentAttachment: Record "Incoming Document Attachment";
     begin
         if not Rec.GetMainAttachment(IncomingDocumentAttachment) then
@@ -32,7 +32,6 @@ pageextension 50169 "TFB Incoming Document" extends "Incoming Document" // 189
         if not IncomingDocumentAttachment.Content.HasValue() then
             exit;
 
-        TempBlob.Blob := IncomingDocumentAttachment.Content;
         CurrPage.PDFViewer.Page.LoadPdfFromBase64(IncomingDocumentAttachment.ToBase64String());
     end;
 }

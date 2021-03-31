@@ -46,7 +46,7 @@ page 50118 "PDF Viewer Part"
             exit;
 
         CurrPage.PDFViewer.LoadDocument(Data);
-        DataCache := Data;
+  
         Clear(Data);
     end;
 
@@ -60,13 +60,9 @@ page 50118 "PDF Viewer Part"
 
     procedure LoadPdfFromBase64(Base64Data: Text)
 
-    var
-        ExistingBase64Data: JsonToken;
+   
     begin
-        If DataCache.Get('content', ExistingBase64Data) then
-            If (ExistingBase64Data.AsValue().AsText() = Base64Data) then
-                exit;
-
+       
         Clear(Data);
         Data.Add('type', 'base64');
         Data.Add('content', Base64Data);
