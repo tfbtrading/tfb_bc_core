@@ -131,7 +131,7 @@ page 50210 "TFB Container Entry"
                     group(ShippedFromPort)
                     {
                         ShowCaption = false;
-                        Visible = (Rec."Qty. On Transfer Rcpt" > 0);
+                        Visible = (Rec."Qty. On Purch. Rcpt" > 0);
                         field("Qty. On Purch. Rcpt"; Rec."Qty. On Purch. Rcpt")
                         {
                             ApplicationArea = All;
@@ -159,20 +159,8 @@ page 50210 "TFB Container Entry"
 
                         }
 
-
-
                     }
-                    group(Received)
-                    {
-                        ShowCaption = False;
-                        Visible = (Rec."No. of Transfer Receipts" > 0);
-                        field("Qty. On Transfer Rcpt"; Rec."Qty. On Transfer Rcpt")
-                        {
-                            ApplicationArea = All;
-                            Editable = false;
-                            ToolTip = 'Specifies qty on Transfer Rcpt';
-                        }
-                    }
+
 
 
                 }

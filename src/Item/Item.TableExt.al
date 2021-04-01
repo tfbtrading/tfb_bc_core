@@ -233,8 +233,10 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem.Description := Rec.Description;
                 GenericItem."Item Category Id" := Rec."Item Category Id";
                 GenericItem."Item Category Code" := Rec."Item Category Code";
-                If Rec.Picture.Count > 0 then
-                    GenericItem.Picture.Insert(Rec.Picture.MediaId);
+                /*      If Rec.Picture.Count > 0 then begin
+                         Index := 1;
+                         GenericItem.Picture.Insert(Rec.Picture.Item(Index));
+                     end; */
                 GenericItem.Type := GenericItem.Type::ItemExtension;
                 GenericItem.Modify(false);
             end;
