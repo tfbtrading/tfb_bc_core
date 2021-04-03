@@ -1,4 +1,4 @@
-page 50128 "TFB Resveration Strategy List"
+page 50128 "TFB Reservation Strategy List"
 {
     PageType = List;
     ApplicationArea = All;

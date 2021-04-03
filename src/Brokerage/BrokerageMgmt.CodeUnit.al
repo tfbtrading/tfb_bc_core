@@ -325,7 +325,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
     end;
 
 
-    procedure CalculateBrokerage(var ItemNo: Code[20]; var Quantity: Decimal; AgreedPrice: Decimal; BrokerageContractNo: Code[20]): Decimal
+    procedure CalculateBrokerage(ItemNo: Code[20]; Quantity: Decimal; AgreedPrice: Decimal; BrokerageContractNo: Code[20]): Decimal
 
     var
         BrokerageContract: record "TFB Brokerage Contract";

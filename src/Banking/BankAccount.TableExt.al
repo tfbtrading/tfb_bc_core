@@ -17,7 +17,7 @@ tableextension 50102 "TFB Bank Account" extends "Bank Account" //270
             CalcFormula = max ("Bank Account Statement"."Statement Date" where("Bank Account No." = field("No.")));
         }
 
-
+       
     }
 
 }

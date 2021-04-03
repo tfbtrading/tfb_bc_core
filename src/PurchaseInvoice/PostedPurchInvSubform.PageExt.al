@@ -14,25 +14,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
         {
             Visible = false;
         }
-        addbefore("Direct Unit Cost")
-        {
-            field("TFB Container No"; _ContainerNo)
-            {
-                Caption = 'Container';
-                Visible = _ContainerEntry <> '';
-                DrillDown = true;
-                Tooltip = 'Specifies if a container number exists';
-                ApplicationArea = All;
-
-                trigger OnDrillDown()
-
-                begin
-                    If _ContainerEntry <> '' then
-                        OpenContainerDrillDown(_ContainerEntry);
-                end;
-            }
-
-        }
+        
 
         addafter("Direct Unit Cost")
         {
@@ -80,9 +62,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
     var
 
         CostByVendorPriceUnit: Decimal;
-        _ContainerEntry: Code[20];
-        _ContainerNo: Text[100];
-        VendorPriceUnit: Enum "TFB Price Unit";
+         VendorPriceUnit: Enum "TFB Price Unit";
         _RemainingAmt: Decimal;
 
     local procedure GetLedgerEntryDetail(var RemainingAmt: Decimal): Boolean
@@ -103,20 +83,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
     end;
 
 
-    local procedure OpenContainerDrillDown(EntryNo: Code[20])
-
-    var
-        CE: Record "TFB Container Entry";
-        CP: Page "TFB Container Entry";
-
-    begin
-
-        If CE.Get(EntryNo) then begin
-            CP.SetRecord(CE);
-            CP.Run();
-        end;
-
-    end;
+   
 
 
     trigger OnAfterGetRecord()

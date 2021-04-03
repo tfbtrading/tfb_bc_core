@@ -1,4 +1,4 @@
-page 50116 "TFB Notifications Email Setup"
+page 50116 "TFB Notification Email Setup"
 {
 
     PageType = Card;

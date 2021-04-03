@@ -169,10 +169,8 @@ codeunit 50130 "TFB Vendor Mgmt"
 
 
                 //Found a record which indicates date has changed in the last week
-                If ChangeLog.FindLast() then begin
-
-                    ExpectedDate := StrSubstNo('<b> Change to %1 from %2 </b>', OrderLine."Expected Receipt Date", ChangeLog.GetLocalOldValue());
-                end
+                If ChangeLog.FindLast() then
+                    ExpectedDate := StrSubstNo('<b> Change to %1 from %2 </b>', OrderLine."Expected Receipt Date", ChangeLog.GetLocalOldValue())
                 else
                     ExpectedDate := format(OrderLine."Expected Receipt Date");
 

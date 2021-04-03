@@ -237,7 +237,7 @@ table 50111 "TFB Generic Item"
 
         case Rec.Type of
             Rec.Type::ItemParent:
-                begin
+                
 
                     case NewType of
                         NewType::ItemParent:
@@ -263,7 +263,7 @@ table 50111 "TFB Generic Item"
 
                     end;
 
-                end;
+               
 
             Rec.Type::ItemExtension:
 

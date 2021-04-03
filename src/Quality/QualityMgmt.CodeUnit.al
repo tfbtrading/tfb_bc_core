@@ -95,12 +95,12 @@ codeunit 50104 "TFB Quality Mgmt"
     procedure GatherCustomerQualityDocuments(CustomerNo: Code[20]; var ListOfCertifications: Record "TFB Vendor Certification" temporary; QualityOnly: Boolean): Boolean
 
     var
-
         VendorCertification: Record "TFB Vendor Certification";
         ListQuery: Query "TFB Items Shipped";
         ListOfItems: Dictionary of [Code[20], Integer];
         ListOfVendors: Dictionary of [Code[20], Integer];
         VendorNo: Code[20];
+
 
 
 
@@ -141,15 +141,15 @@ codeunit 50104 "TFB Quality Mgmt"
     procedure SendQualityDocumentsToCustomer(CustomerNo: Code[20]; QualityOnly: Boolean): Boolean
 
     var
-
-        Customer: Record Customer;
         Contact: Record Contact;
+        Customer: Record Customer;
         TempListOfCertifications: Record "TFB Vendor Certification" temporary;
-        ContactList: Page "Contact List";
         CLib: CodeUnit "TFB Common Library";
+        ContactList: Page "Contact List";
         Recipients: List of [Text];
         SubTitleTxt: Label '';
         TitleTxt: Label 'Vendor Certifications Email';
+
 
     begin
 

@@ -203,6 +203,7 @@ page 50122 "TFB Cust. Fav. Items"
                 ApplicationArea = All;
                 Promoted = True;
                 PromotedCategory = Process;
+                PromotedOnly = true;
 
                 Image = ExecuteBatch;
                 Caption = 'Auto Populate Favourites';

@@ -263,23 +263,22 @@ page 50110 "TFB Sales Admin Activities"
 
     trigger OnOpenPage()
     var
-        RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
-        ConfPersonalizationMgt: Codeunit "Conf./Personalization Mgt.";
-      
-        
+
         UserSetup: Record "User Setup";
         User: record User;
+        RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
+        ConfPersonalizationMgt: Codeunit "Conf./Personalization Mgt.";
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-       
+
     begin
         Rec.Reset();
         if not Rec.Get() then begin
             Rec.Init();
             Rec.Insert();
             Commit();
-        
+
         end;
 
         Rec.SetFilter("User ID Filter", UserId());
@@ -304,29 +303,27 @@ page 50110 "TFB Sales Admin Activities"
 
         Rec.SetRange("Recent DateTime Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
 
-       
+
         RoleCenterNotificationMgt.ShowNotifications();
         ConfPersonalizationMgt.RaiseOnOpenRoleCenterEvent();
-    
+
     end;
 
     var
 
         CuesAndKpis: Codeunit "Cues And KPIs";
         O365GettingStartedMgt: Codeunit "O365 Getting Started Mgt.";
-        ClientTypeManagement: Codeunit "Client Type Management";
-
         UserTaskManagement: Codeunit "User Task Management";
 
-    
+
         TileGettingStartedVisible: Boolean;
 
-        //IsAddInReady: Boolean;
-
-     
+    //IsAddInReady: Boolean;
 
 
-    
+
+
+
 
     local procedure SetActivityGroupVisibility()
     var

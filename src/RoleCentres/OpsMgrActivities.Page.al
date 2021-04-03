@@ -301,14 +301,14 @@ page 50101 "TFB Ops Mgr Activities"
     var
         RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
         ConfPersonalizationMgt: Codeunit "Conf./Personalization Mgt.";
-        NewRecord: Boolean;
+   
     begin
         Rec.Reset();
         if not Rec.Get() then begin
             Rec.Init();
             Rec.Insert();
             Commit();
-            NewRecord := true;
+            
         end;
 
         Rec.SetFilter("User ID Filter", UserId());
@@ -328,9 +328,7 @@ page 50101 "TFB Ops Mgr Activities"
 
         CuesAndKpis: Codeunit "Cues And KPIs";
         O365GettingStartedMgt: Codeunit "O365 Getting Started Mgt.";
-        ClientTypeManagement: Codeunit "Client Type Management";
-
-        UserTaskManagement: Codeunit "User Task Management";
+         UserTaskManagement: Codeunit "User Task Management";
 
       
         TileGettingStartedVisible: Boolean;

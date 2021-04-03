@@ -19,10 +19,10 @@ page 50335 "TFB ItemCosting Entity"
         {
             repeater(Group)
             {
-                field(id;Rec.SystemId)
+                field(id; Rec.SystemId)
                 {
-                    Caption='id';
-                    ApplicationArea=All;
+                    Caption = 'id';
+                    ApplicationArea = All;
                 }
                 field(itemNo; Rec."Item No.")
                 {
@@ -159,19 +159,5 @@ page 50335 "TFB ItemCosting Entity"
         exit(false);
     end;
 
-    trigger OnModifyRecord(): Boolean
-    var
-        ItemCostModel: Record "TFB Item Costing";
-    begin
-        ItemCostModel.SETRANGE(Id, Rec.Id);
-        ItemCostModel.FINDFIRST();
 
-        IF (Rec."Item No." <> ItemCostModel."Item No.") or (Rec."Costing Type" <> ItemCostModel."Costing Type") or (Rec."Effective Date" <> ItemCostModel."Effective Date") THEN BEGIN
-            ItemCostModel.TRANSFERFIELDS(Rec, FALSE);
-            ItemCostModel.RENAME(Rec."Item No.");
-            ItemCostModel.Rename(Rec."Effective Date");
-            ItemCostModel.Rename(Rec."Costing Type");
-            Rec.TRANSFERFIELDS(ItemCostModel);
-        END;
-    end;
 }

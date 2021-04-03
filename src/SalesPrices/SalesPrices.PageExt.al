@@ -25,7 +25,7 @@ pageextension 50145 "TFB Sales Prices" extends "Sales Prices"
     }
 
     var
-        PricingCU: CodeUnit "TFB Pricing Calculations";
+ 
         _PricePerKg: Decimal;
 
     

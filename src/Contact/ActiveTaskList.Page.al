@@ -210,6 +210,7 @@ page 50131 "TFB Active Task List"
                 Image = NewToDo;
                 Promoted = true;
                 PromotedCategory = Process;
+                PromotedOnly = true;
                 ToolTip = 'Create a new task.';
 
                 trigger OnAction()

@@ -86,8 +86,7 @@ page 50210 "TFB Container Entry"
                         trigger OnValidate()
                         begin
 
-                            isVisible := false;
-                            CurrPage.Lines.Page.SetVisibilityType(isVisible);
+                            
                             LoadTempTable();
                         end;
 
@@ -797,16 +796,7 @@ page 50210 "TFB Container Entry"
 
     end;
 
-    local procedure CheckVisible(): Boolean
-    var
-
-    begin
-        if isVisible then
-            exit(true)
-        else
-            exit(false);
-
-    end;
+   
 
     local procedure CheckAqisReq()
 

@@ -76,16 +76,8 @@ page 50216 "TFB Container Entry SubForm"
 
         }
     }
-    var
 
-        isBrokerage: Boolean;
-
-    procedure SetVisibilityType(Visibility: Boolean)
-
-    begin
-        isBrokerage := Visibility;
-    end;
-
+   
 
     procedure InitTempTable(var ContainerEntry: Record "TFB Container Entry"): Boolean
     var
@@ -128,39 +120,13 @@ page 50216 "TFB Container Entry SubForm"
 
     end;
 
-    procedure GetReceiptNo(): code[20]
-
-    begin
-        Exit(ReceiptNo);
-    end;
-
-    procedure GetTransferNo(): code[20]
-
-    begin
-        Exit(TransferNo);
-    end;
-
-    procedure GetPstdTransferRcptNo(): Code[20]
-
-    begin
-        Exit(PstdTransferRcptNo);
-    end;
-
-    procedure GetPstdTransferShptNo(): Code[20]
-
-    begin
-        Exit(PstdTransferShptNo);
-    end;
+  
 
 
 
     var
 
-        ReceiptNo: Code[20];
-        TransferNo: Code[20];
-
-        PstdTransferRcptNo: Code[20];
-        PstdTransferShptNo: Code[20];
+    
 
         ContainerStatus: Enum "TFB Container Status";
 

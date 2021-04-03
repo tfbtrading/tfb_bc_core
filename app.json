@@ -14,7 +14,7 @@
   "propagateDependencies": true,
   "platform": "17.0.0.0",
 
-  "suppressWarnings": ["AL0432","AL0254","ÄA0217","AA0072","DOC0001","AA0217"],
+  "suppressWarnings": ["AL0432","AL0254","ÄA0217","AA0072","DOC0001","AA0217","AW0006","AA0232"],
   "application": "17.1.0.0",
     "dependencies": [
       {"id": "10cb69d9-bc8a-4d27-970a-9e110e9db2a5",

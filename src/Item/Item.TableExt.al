@@ -210,7 +210,7 @@ tableextension 50260 "TFB Item" extends Item
         Index: Integer;
 
     begin
-        If Rec."TFB Act As Generic" then begin
+        If Rec."TFB Act As Generic" then
             If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
                 Guid := CreateGuid();
                 GenericItem.Init();
@@ -239,7 +239,7 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem.Type := GenericItem.Type::ItemExtension;
                 GenericItem.Modify(false);
             end;
-        end;
+        
 
         //Removed as this appears to delete any parent item if it was switched from generic to parent
         If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then

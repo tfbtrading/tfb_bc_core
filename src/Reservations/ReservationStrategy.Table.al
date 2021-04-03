@@ -2,7 +2,7 @@ table 50110 "TFB Reservation Strategy"
 {
     DataClassification = CustomerContent;
     Caption = 'Reservation Strategy';
-    LookupPageId = "TFB Resveration Strategy List";
+    LookupPageId = "TFB Reservation Strategy List";
 
     fields
     {

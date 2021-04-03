@@ -347,11 +347,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlobCU2: CodeUnit "Temp Blob";
         TempBlobCU: Codeunit "Temp Blob";
-        inStreamReportAtc: Array[10] of InStream;
-        outStreamReportAtc: Array[10] of OutStream;
+        TempBlobAtc: Array[10] of Codeunit "Temp Blob";
         InStream, InStream2 : InStream;
         OutStream, OutStream2 : Outstream;
-        TempBlobAtc: Array[10] of Codeunit "Temp Blob";
+        inStreamReportAtc: Array[10] of InStream;
+        outStreamReportAtc: Array[10] of OutStream;
         Ref: BigInteger;
         LastLotNo: Code[50];
         LoopCount, i : Integer;
@@ -511,10 +511,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                                             FileNameBuilder.Append(PurchaseLine."No.");
                                             FileNameBuilder.Append('_' + format(i));
                                             FileNameBuilder.Append('.' + DocAttachment."File Extension");
-                                            if DocAttachment."Document Reference ID".ExportStream(outStreamReportAtc[i]) then begin
+                                            if DocAttachment."Document Reference ID".ExportStream(outStreamReportAtc[i]) then
                                                 //Mail Attachments
                                                 EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/pdf', inStreamReportAtc[i]);
-                                            end;
+
                                             i += 1;
                                         end;
 
@@ -718,7 +718,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                         ExpectedDate := CalMgmt.CalcDateBOC(format(Line."Shipping Time"), Header."Posting Date", CustCalendarChange, true);
                         If ExpectedDate = Header."Posting Date" then
-                            CommentBuilder.AppendLine(StrSubstNo('Dispatched today for same delivery by %.', ShippingAgent.Name))
+                            CommentBuilder.AppendLine(StrSubstNo('Dispatched today for same delivery by %1.', ShippingAgent.Name))
                         else
                             CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name));
 
@@ -877,7 +877,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
         ShipmentLine.SetRange("Document No.", RefNo);
-
+        LastLotNo := '';
 
         if ShipmentLine.FindSet(false, false) then
             repeat

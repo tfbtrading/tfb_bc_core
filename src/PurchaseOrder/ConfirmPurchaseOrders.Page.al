@@ -140,6 +140,7 @@ page 50124 "TFB Confirm Purchase Orders"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = New;
+                PromotedOnly = true;
                 ToolTip = 'Add a file as an attachment. You can attach images as well as documents.';
 
                 trigger OnAction()

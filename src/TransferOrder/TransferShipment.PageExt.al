@@ -24,6 +24,7 @@ pageextension 50197 "TFB Transfer Shipment" extends "Posted Transfer Shipment"
                 Promoted = true;
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
+                Image = TransferOrder;
 
             }
         }

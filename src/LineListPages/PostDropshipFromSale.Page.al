@@ -193,6 +193,7 @@ page 50115 "TFB Post Dropship from Sale"
                 ApplicationArea = All;
                 Caption = 'Post Dropship';
                 ToolTip = 'Post the drop ship receipt';
+                Image = Post;
 
                 trigger OnAction()
 
