@@ -35,7 +35,7 @@ table 50114 "TFB Segment Match Criteria"
             DataClassification = CustomerContent;
             TableRelation = "Item Attribute Value".ID where("Attribute ID" = field(ItemAttributeID));
         }
-        field(25; "Attribute Value"; Text[100])
+        field(25; "Attribute Value"; Text[250])
         {
             CalcFormula = Lookup("Item Attribute Value".Value WHERE(ID = FIELD(ItemAttributeValueID), "Attribute ID" = field(ItemAttributeID)));
             Caption = 'Attribute Value';

@@ -17,7 +17,7 @@ report 50131 "TFB Send Vendor Updates"
             trigger OnPreDataItem()
 
             begin
-                HTMLTemplate := CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleText);
+                HTMLTemplate := CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleTxt);
                 SetRange("TFB Vendor Type", "TFB Vendor Type"::TRADE);
                 SetRange("TFB Receive Updates", true);
                 SetRange(Blocked, Blocked::" ");
@@ -76,7 +76,7 @@ report 50131 "TFB Send Vendor Updates"
         HTMLTemplate: Text;
 
         TitleTxt: label 'Vendor status';
-        SubtitleText: label '';
+        SubtitleTxt: label '';
 
         Text001Msg: Label 'Sending Vendor Updates:\#1############################Msg', comment = '%1=vendor';
 

@@ -76,11 +76,11 @@ page 50216 "TFB Container Entry SubForm"
 
         }
     }
-
     var
+
         isBrokerage: Boolean;
 
-    procedure SetVisibilityType(var Visibility: Boolean)
+    procedure SetVisibilityType(Visibility: Boolean)
 
     begin
         isBrokerage := Visibility;

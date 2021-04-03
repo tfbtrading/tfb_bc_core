@@ -13,12 +13,10 @@ codeunit 50110 "TFB Cust. Fav. Items"
         Customer.SetLoadFields("No.");
         Customer.SetRange(Blocked, Customer.Blocked::" ");
         If Customer.Findset(false, false) then
-            repeat begin
-
+            repeat 
                 PopulateOneCustomer(Customer."No.");
 
-
-            end until Customer.Next() = 0;
+            until Customer.Next() = 0;
 
 
     end;

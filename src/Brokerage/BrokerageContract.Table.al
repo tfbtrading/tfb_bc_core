@@ -100,7 +100,7 @@ table 50219 "TFB Brokerage Contract"
 
                 if "Buy-from Contact No." <> '' then
                     if Cont.Get("Buy-from Contact No.") then
-                        Cont.CheckIfPrivacyBlockedGeneric;
+                        Cont.CheckIfPrivacyBlockedGeneric();
 
                 if ("Buy-from Contact No." <> xRec."Buy-from Contact No.") and
                    (xRec."Buy-from Contact No." <> '')
@@ -118,7 +118,7 @@ table 50219 "TFB Brokerage Contract"
                     Cont.Get("Buy-from Contact No.");
                     if ContBusinessRelation.FindByRelation(ContBusinessRelation."Link to Table"::Vendor, "Vendor No.") then
                         if ContBusinessRelation."Contact No." <> Cont."Company No." then
-                            Error(Text038, Cont."No.", Cont.Name, "Vendor No.")
+                            Error(Text038Msg, Cont."No.", Cont.Name, "Vendor No.")
                         else
                             "Buy-from Contact" := Cont.Name;
                 end;
@@ -355,7 +355,7 @@ table 50219 "TFB Brokerage Contract"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Confirmed: Boolean;
         ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
-        Text038: Label 'Contact %1 %2 is related to a different company than vendor %3.';
+        Text038Msg: Label 'Contact %1 %2 is related to a different company than vendor %3.', Comment = '%1 = Name, %2 = Company , %3 = Vendor';
 
 
     /// <summary> 

@@ -265,22 +265,21 @@ page 50110 "TFB Sales Admin Activities"
     var
         RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
         ConfPersonalizationMgt: Codeunit "Conf./Personalization Mgt.";
-        NewRecord: Boolean;
-        SalesPerson: Record "Salesperson/Purchaser";
+      
+        
         UserSetup: Record "User Setup";
         User: record User;
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-        Today: date;
-        StartRange: date;
+       
     begin
         Rec.Reset();
         if not Rec.Get() then begin
             Rec.Init();
             Rec.Insert();
             Commit();
-            NewRecord := true;
+        
         end;
 
         Rec.SetFilter("User ID Filter", UserId());
@@ -305,10 +304,10 @@ page 50110 "TFB Sales Admin Activities"
 
         Rec.SetRange("Recent DateTime Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
 
-        ShowProductVideosActivities := ClientTypeManagement.GetCurrentClientType() <> CLIENTTYPE::Phone;
+       
         RoleCenterNotificationMgt.ShowNotifications();
         ConfPersonalizationMgt.RaiseOnOpenRoleCenterEvent();
-        CalculateCueFieldValues();
+    
     end;
 
     var
@@ -319,45 +318,15 @@ page 50110 "TFB Sales Admin Activities"
 
         UserTaskManagement: Codeunit "User Task Management";
 
-        ShowProductVideosActivities: Boolean;
+    
         TileGettingStartedVisible: Boolean;
 
         //IsAddInReady: Boolean;
 
-        TaskIdCalculateCue: Integer;
+     
 
 
-    procedure CalculateCueFieldValues()
-    var
-    // params: Dictionary of [Text, Text];
-    begin
-        /*        if (TaskIdCalculateCue <> 0) then
-                   CurrPage.CancelBackgroundTask(TaskIdCalculateCue);
-               CurrPage.EnqueueBackgroundTask(TaskIdCalculateCue, Codeunit::"O365 Activities Dictionary"); */
-    end;
-
-    trigger OnPageBackgroundTaskError(TaskId: Integer; ErrorCode: Text; ErrorText: Text; ErrorCallStack: Text; var IsHandled: Boolean)
-    begin
-
-        if (TaskId <> TaskIdCalculateCue) then
-            exit;
-
-
-        // TASKSCHEDULER.CreateTask(CODEUNIT::"Activities Mgt.", 0, true, CompanyName(), CurrentDateTime());
-        //IsHandled := TRUE;
-    end;
-
-    trigger OnPageBackgroundTaskCompleted(TaskId: Integer; Results: Dictionary of [Text, Text])
-    var
-
-    begin
-        if (TaskId = TaskIdCalculateCue) THEN BEGIN
-            Rec.LockTable(true);
-            Rec.Get();
-            Rec."Last Date/Time Modified" := CurrentDateTime();
-            Rec.Modify(true);
-        END
-    end;
+    
 
     local procedure SetActivityGroupVisibility()
     var

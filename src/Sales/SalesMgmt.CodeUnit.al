@@ -31,9 +31,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
     procedure OpenExistingSalesOrder(DuplicateNotification: Notification): Text
     var
-        SalesOrderSystemID: Guid;
         SalesHeader: Record "Sales Header";
         SalesOrderPage: Page "Sales Order";
+        SalesOrderSystemID: Guid;
 
     begin
         SalesOrderSystemID := DuplicateNotification.GetData('SystemId');
@@ -50,12 +50,12 @@ codeunit 50122 "TFB Sales Mgmt"
     end;
 
 
-
+    //TODO Explore how to reactive this functionality
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeCheckAssocPurchOrder', '', false, false)]
     local procedure HandleOnBeforeCheckAssocPurchOrder(TheFieldCaption: Text[250]; var IsHandled: Boolean; var SalesLine: Record "Sales Line"; xSalesLine: Record "Sales Line")
     var
-        PurchaseLine: Record "Purchase Line";
-        ContinueChangeQtyMsg: Label 'Do you want to change qty in associated PO?';
+    //PurchaseLine: Record "Purchase Line";
+    //ContinueChangeQtyMsg: Label 'Do you want to change qty in associated PO?';
     begin
 
 
@@ -87,8 +87,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
     var
         ExchangeRate: Record "Currency Exchange Rate";
-        Rate: Decimal;
         NewUnitPrice: Decimal;
+        Rate: Decimal;
         RateDiff: Decimal;
         RateDiffPerc: Decimal;
         UnitPriceDiff: Decimal;
@@ -122,8 +122,8 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure HandleOnBeforeReleaseSalesDoc(PreviewMode: Boolean; var SalesHeader: Record "Sales Header")
 
     var
-
         Customer: Record Customer;
+
 
     begin
 
@@ -139,9 +139,9 @@ codeunit 50122 "TFB Sales Mgmt"
     procedure GetShipmentNoForInvoiceLine(DocumentNo: Code[20]; LineNo: Integer): Code[20]
 
     var
-        ValueEntry: Record "Value Entry";
         ItemLedger: Record "Item Ledger Entry";
         SalesShipment: Record "Sales Shipment Header";
+        ValueEntry: Record "Value Entry";
 
     begin
         ValueEntry.SetRange("Document No.", DocumentNo);
@@ -162,9 +162,9 @@ codeunit 50122 "TFB Sales Mgmt"
     procedure SendPODRequest(DocumentNo: Code[20]; LineNo: Integer)
 
     var
-        ValueEntry: Record "Value Entry";
         ItemLedger: Record "Item Ledger Entry";
         SalesShipment: Record "Sales Shipment Header";
+        ValueEntry: Record "Value Entry";
         ShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";
 
     begin
@@ -197,14 +197,14 @@ codeunit 50122 "TFB Sales Mgmt"
     procedure AdjustSalesLinePlannedDateByItemRes(ItemLedgerEntry: Record "Item Ledger Entry"): Boolean
 
     var
+        LotInfo: Record "Lot No. Information";
         ResEntry: Record "Reservation Entry";
         ResEntryDemand: Record "Reservation Entry";
-        SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";
-        LotInfo: Record "Lot No. Information";
+        SalesLine: Record "Sales Line";
         DateFormula: DateFormula;
         BlockDate: Date;
-        TargetDate: Date;
+   
 
     begin
 
@@ -279,15 +279,15 @@ codeunit 50122 "TFB Sales Mgmt"
     var
         Item: Record Item;
         _availability: Text;
-        emojiDropShipTxt: Label '📦';
-        emojiDropShipPendingTxt: Label '🛒';
-        emojiSpecialTxt: Label '🔐';
         emojiAvailableTxt: Label '🟢';
-        emojiReservedTxt: Label '👌';
+        emojiDropShipPendingTxt: Label '🛒';
+        emojiDropShipTxt: Label '📦';
+        emojiNotApplicableTxt: Label '';
         emojiNotAvailableTxt: Label '🟠';
-        emojiShippedTxt: Label '😀';
+        emojiReservedTxt: Label '👌';
         emojiReservedWaitingStockTxt: Label '🪂';
-        emojiNotApplicable: Label '';
+        emojiShippedTxt: Label '😀';
+        emojiSpecialTxt: Label '🔐';
 
     begin
         _availability := '';
@@ -330,9 +330,9 @@ codeunit 50122 "TFB Sales Mgmt"
                     end;
             end
             else
-                _availability := emojiNotApplicable
+                _availability := emojiNotApplicableTxt
         else
-            _availability := emojiNotApplicable;
+            _availability := emojiNotApplicableTxt;
         Exit(_availability);
     end;
 
@@ -341,19 +341,19 @@ codeunit 50122 "TFB Sales Mgmt"
     procedure OpenRelatedAvailabilityInfo(SalesLineStatus: Enum "TFB Sales Line Status"; RelatedRecRef: RecordRef)
 
     var
-        Purchase: Record "Purchase Header";
-        PurchaseLine: Record "Purchase Line";
-        WhseShipLine: Record "Warehouse Shipment Line";
-        WhseShip: Record "Warehouse Shipment Header";
         Container: Record "TFB Container Entry";
         LedgerEntry: Record "Item Ledger Entry";
         LotNoInfo: Record "Lot No. Information";
-
-        PurchasePage: Page "Purchase Order";
+        Purchase: Record "Purchase Header";
+        PurchaseLine: Record "Purchase Line";
+        WhseShip: Record "Warehouse Shipment Header";
+        WhseShipLine: Record "Warehouse Shipment Line";
         ContainerPage: Page "TFB Container Entry";
         LedgerEntryPage: Page "Item Ledger Entries";
         LotNoInfoPage: Page "Lot No. Information Card";
+        PurchasePage: Page "Purchase Order";
         WhseShipPage: Page "Warehouse Shipment";
+
 
     begin
 
@@ -421,18 +421,18 @@ codeunit 50122 "TFB Sales Mgmt"
     procedure GetItemSalesLineAvailability(SalesLine: Record "Sales Line"; var AvailInfo: Text[512]; var ShipDatePlanned: Date; var LineStatus: Enum "TFB Sales Line Status"; var RelatedRecRef: RecordRef): Boolean
 
     var
+        Container: Record "TFB Container Entry";
         DemandResEntry: Record "Reservation Entry";
-        SupplyResEntry: Record "Reservation Entry";
         LedgerEntry: Record "Item Ledger Entry";
         LotNoInfo: Record "Lot No. Information";
         Purchase: Record "Purchase Header";
-        Vendor: Record Vendor;
         PurchaseLine: Record "Purchase Line";
-        Container: Record "TFB Container Entry";
+        SupplyResEntry: Record "Reservation Entry";
+        Vendor: Record Vendor;
         WhseShptLine: Record "Warehouse Shipment Line";
-
-        Status: Text[512];
         DeliverySLA: TExt;
+        Status: Text[512];
+
 
 
     begin

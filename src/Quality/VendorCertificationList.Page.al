@@ -278,9 +278,9 @@ page 50107 "TFB Vendor Certification List"
 
     var
         QualityCU: Codeunit "TFB Quality Mgmt";
+        AttachmentExists: Boolean;
         DaysToExpiry: Integer;
         CalculatedStatus: Enum "TFB Quality Certificate Status";
-        AttachmentExists: Boolean;
         CalculatedEmoticonStatus: Text;
 
 
@@ -310,19 +310,14 @@ page 50107 "TFB Vendor Certification List"
     local procedure SendSelectedDocs()
 
     var
-        VendorCerts: Record "TFB Vendor Certification";
         Contact: Record Contact;
-        ContactList: Page "Contact List";
-        Recipients: List of [Text];
-
+        VendorCerts: Record "TFB Vendor Certification";
         CLib: CodeUnit "TFB Common Library";
         QLib: CodeUnit "TFB Quality Mgmt";
-
-        Result: Boolean;
+        ContactList: Page "Contact List";
+        Recipients: List of [Text];
         SubTitleTxt: Label '';
-        Text001Msg: Label 'Sending Vendor Certifications';
         TitleTxt: Label 'Vendor Certifications Email';
-
 
 
     begin
@@ -348,11 +343,9 @@ page 50107 "TFB Vendor Certification List"
 
                 until Contact.Next() = 0;
 
-            If Recipients.Count > 0 then begin
-
+            If Recipients.Count > 0 then
                 QLib.SendVendorCertificationEmail(VendorCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
 
-            end;
         end;
 
 
@@ -361,14 +354,14 @@ page 50107 "TFB Vendor Certification List"
     local procedure ReplaceFile()
 
     var
-
-        TempBlobCU: Codeunit "Temp Blob";
         PersBlobCU: CodeUnit "Persistent Blob";
-        BlobKey: BigInteger;
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
-        FileDialogTxt: Label 'Select Certificate File to Upload';
-        FileName: Text;
+        TempBlobCU: Codeunit "Temp Blob";
         InStream: InStream;
+        BlobKey: BigInteger;
+        FileName: Text;
+        FileDialogTxt: Label 'Select Certificate File to Upload';
+        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+
 
     begin
 
@@ -390,14 +383,14 @@ page 50107 "TFB Vendor Certification List"
     local procedure AttachFile()
 
     var
-
-        TempBlobCU: Codeunit "Temp Blob";
         PersBlobCU: CodeUnit "Persistent Blob";
-        BlobKey: BigInteger;
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
-        FileDialogTxt: Label 'Select Certificate File to Upload';
-        FileName: Text;
+        TempBlobCU: Codeunit "Temp Blob";
         InStream: InStream;
+        BlobKey: BigInteger;
+        FileName: Text;
+        FileDialogTxt: Label 'Select Certificate File to Upload';
+        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+
 
     begin
 
@@ -419,18 +412,18 @@ page 50107 "TFB Vendor Certification List"
     local procedure DownloadFile()
 
     var
-
         SelRecs: Record "TFB Vendor Certification";
-        TempBlobCU: Codeunit "Temp Blob";
-        PersBlobCU: CodeUnit "Persistent Blob";
-        ZipTempBlob: CodeUnit "Temp Blob";
         DataCompCU: CodeUnit "Data Compression";
+        PersBlobCU: CodeUnit "Persistent Blob";
+        TempBlobCU: Codeunit "Temp Blob";
         TempBlobList: CodeUnit "Temp Blob List";
-        FileNameList: List of [Text];
+        ZipTempBlob: CodeUnit "Temp Blob";
         InStream: InStream;
         OutStream: Outstream;
-        FileName: Text;
         i: integer;
+        FileName: Text;
+        FileNameList: List of [Text];
+
 
     begin
 

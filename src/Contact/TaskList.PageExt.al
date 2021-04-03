@@ -20,6 +20,7 @@ pageextension 50188 "TFB Task List" extends "Task List"
                 Visible = true;
                 Editable = false;
                 ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Ending Date field';
             }
         }
         movelast(Control1; Closed)
@@ -49,6 +50,4 @@ pageextension 50188 "TFB Task List" extends "Task List"
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
 }

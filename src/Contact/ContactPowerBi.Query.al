@@ -1,109 +1,101 @@
 query 50102 "TFB Contact PowerBI"
 {
     QueryType = API;
-    EntitySetName = 'TFBPowerBIContacts';
-    EntityName = 'TFBPowerBIContact';
-    APIPublisher = 'TFB';
-    APIGroup = 'PowerBI';
+    EntitySetName = 'tfbPowerBIContacts';
+    EntityName = 'tfbPowerBIContact';
+    APIPublisher = 'tfb';
+    APIGroup = 'tfbPowerBI';
     DataAccessIntent = ReadOnly;
 
     elements
     {
-        dataitem(Contact; Contact)
+        dataitem(contact; Contact)
         {
-            column(Address; Address)
+            column(typeOfContact; Type)
             {
             }
-            column(Address2; "Address 2")
+            column(address; Address)
             {
             }
-            column(City; City)
+            column(address2; "Address 2")
             {
             }
-            column(CompanyName; "Company Name")
+            column(city; City)
             {
             }
-            column(CompanyNo; "Company No.")
+            column(companyName; "Company Name")
             {
             }
-            column(CountryRegionCode; "Country/Region Code")
+            column(companyNo; "Company No.")
             {
             }
-            column(County; County)
+            column(countryRegionCode; "Country/Region Code")
             {
             }
-            column(EMail; "E-Mail")
+            column(county; County)
             {
             }
-            column(EMail2; "E-Mail 2")
+            column(eMail; "E-Mail")
             {
             }
-            column(HomePage; "Home Page")
+            column(eMail2; "E-Mail 2")
             {
             }
-            column(JobTitle; "Job Title")
+            column(homePage; "Home Page")
             {
             }
-            column(Image; Image)
+            column(jobTitle; "Job Title")
             {
             }
-            column(LastDateModified; "Last Date Modified")
+            column(image; Image)
             {
             }
-            column(FirstName; "First Name")
+
+            column(firstName; "First Name")
             {
             }
-            column(PostCode; "Post Code")
+            column(postCode; "Post Code")
             {
             }
-            column(PhoneNo; "Phone No.")
+            column(phoneNo; "Phone No.")
             {
             }
-            column(Surname; Surname)
+            column(surname; Surname)
             {
             }
-            column(SystemModifiedAt; SystemModifiedAt)
+            column(systemModifiedAt; SystemModifiedAt)
             {
             }
-            column(TFBBuyingReason; "TFB Buying Reason")
+            column(buyingReason; "TFB Buying Reason")
             {
             }
-            column(TFBBuyingTimeframe; "TFB Buying Timeframe")
+            column(buyingTimeframe; "TFB Buying Timeframe")
             {
             }
-            column(TFBContactStage; "TFB Contact Stage")
+            column(contactStage; "TFB Contact Stage")
             {
             }
-            column(TFBLinkedinPage; "TFB Linkedin Page")
+            column(linkedinPage; "TFB Linkedin Page")
             {
             }
-            column(TFBLeadSource; "TFB Lead Source")
+            column(leadSource; "TFB Lead Source")
             {
             }
-            column(TFBIsCustomer; "TFB Is Customer")
+            column(isCustomer; "TFB Is Customer")
             {
             }
-            column(TFBContactStatus; "TFB Contact Status")
+            column(contactStatus; "TFB Contact Status")
             {
             }
-            column(TFBSalesReadiness; "TFB Sales Readiness")
+            column(salesReadiness; "TFB Sales Readiness")
             {
             }
-            column(TerritoryCode; "Territory Code")
+            column(territoryCode; "Territory Code")
             {
             }
-            column(Type; Type)
-            {
-            }
+
 
         }
     }
 
-    var
-        myInt: Integer;
-
-    trigger OnBeforeOpen()
-    begin
-
-    end;
 }

@@ -109,14 +109,14 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
     trigger OnOpenPage()
 
     var
-        SalesPerson: Record "Salesperson/Purchaser";
+       
         UserSetup: Record "User Setup";
         User: record User;
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-        Today: date;
-        StartRange: date;
+       
+        
     begin
         USID := Database.UserSecurityId();
 

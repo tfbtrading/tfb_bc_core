@@ -118,6 +118,7 @@ page 50211 "TFB Container Entry List"
                 }
                 field("TFB Unpack Attach."; Rec."Unpack Worksheet Attach." > 0)
                 {
+                    Caption = 'Unpack Worksheet Attached?';
                     ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Show whether unpack report attached';
@@ -178,7 +179,7 @@ page 50211 "TFB Container Entry List"
     trigger OnAfterGetRecord()
 
     begin
-        Clear(ContainerContents);
+        Clear(TempContainerContents);
         Clear(_PercReserved);
         Clear(_QtyOnOrder);
         Clear(_QtyReserved);
@@ -186,15 +187,15 @@ page 50211 "TFB Container Entry List"
 
         If rec.Type = rec.type::PurchaseOrder then
             if rec."Qty. On Purch. Rcpt" > 0 then
-                ContainerCU.PopulateReceiptLines(rec, ContainerContents)
+                ContainerCU.PopulateReceiptLines(rec, TempContainerContents)
             else
-                ContainerCU.PopulateOrderOrderLines(Rec, ContainerContents);
+                ContainerCU.PopulateOrderOrderLines(Rec, TempContainerContents);
 
 
 
-        ContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
-        _QtyOnOrder := ContainerContents.Quantity;
-        _QtyReserved := ContainerContents."Qty Sold (Base)";
+        TempContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
+        _QtyOnOrder := TempContainerContents.Quantity;
+        _QtyReserved := TempContainerContents."Qty Sold (Base)";
         _PercReserved := (_QtyReserved / _QtyOnOrder);
         LineSummary := GetOrderLines();
     end;
@@ -208,18 +209,18 @@ page 50211 "TFB Container Entry List"
 
     begin
 
-        If ContainerContents.Findset(false, false) then
+        If TempContainerContents.Findset(false, false) then
             repeat
 
-                LineBuilder.AppendLine(StrSubstNo('%1 (%2) - %3', ContainerContents."Item Description", ContainerContents."Item Code", ContainerContents.Quantity));
+                LineBuilder.AppendLine(StrSubstNo('%1 (%2) - %3', TempContainerContents."Item Description", TempContainerContents."Item Code", TempContainerContents.Quantity));
 
-            until ContainerContents.Next() = 0;
+            until TempContainerContents.Next() = 0;
         exit(LineBuilder.ToText());
     end;
 
 
     var
-        ContainerContents: Record "TFB ContainerContents" temporary;
+        TempContainerContents: Record "TFB ContainerContents" temporary;
         ContainerCU: Codeunit "TFB Container Mgmt";
         [InDataSet]
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;

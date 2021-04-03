@@ -46,11 +46,10 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
     var
         CompanyInfo: Record "Company Information";
-        CalendarMgt: CodeUnit "Calendar Management";
         CustomCalChange: Record "Customized Calendar Change";
+        CalendarMgt: CodeUnit "Calendar Management";
         CalcDateFormula: DateFormula;
         NonWorking: Boolean;
-        DateDesc: Text[50];
 
     begin
         Evaluate(CalcDateFormula, '1D');
@@ -76,12 +75,11 @@ codeunit 50106 "TFB Purchase Order Mgmt"
     var
         SupplyResEntry: Record "Reservation Entry";
         DemandResEntry: Record "Reservation Entry";
-        ReservDateCheck: CodeUnit "Reservation-Check Date Confl.";
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
         Location: record Location;
-        AlreadyReleased: Boolean;
         DateFormula: DateFormula;
+        AlreadyReleased: Boolean;
 
     begin
 
@@ -128,10 +126,10 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                                         SalesHeader.FindFirst();
                                         Location.Get(SalesLine."Location Code");
 
-                                        SalesHeader.SetStatus(SalesHeader.Status::Open);
+                                        SalesHeader.SetStatus(SalesHeader.Status::Open.AsInteger());
                                         SalesLine.Validate("Shipment Date", GetNextWorkDay(SalesLine."Location Code", CalcDate(Location."Inbound Whse. Handling Time", PurchaseLine."Promised Receipt Date")));
                                         SalesLine.Modify(true);
-                                        SalesHeader.SetStatus(SalesHeader.Status::Released);
+                                        SalesHeader.SetStatus(SalesHeader.Status::Released.AsInteger());
 
                                     end;
 
@@ -142,12 +140,11 @@ codeunit 50106 "TFB Purchase Order Mgmt"
             end;
         end
         else
-            if (PurchaseLine."Drop Shipment") then begin
-
+            if (PurchaseLine."Drop Shipment") then
                 If SalesHeader.Get(SalesHeader."Document Type"::Order, PurchaseLine."Sales Order No.") then begin
                     Clear(AlreadyReleased);
                     If SalesHeader.Status = SalesHeader.Status::Released then begin
-                        SalesHeader.SetStatus(SalesHeader.Status::Open);
+                        SalesHeader.SetStatus(SalesHeader.Status::Open.AsInteger());
                         AlreadyReleased := true;
                     end;
 
@@ -159,10 +156,10 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                         SalesLine.Validate("Planned Shipment Date", PurchaseLine."Promised Receipt Date");
                         SalesLine.Modify(true);
                         If AlreadyReleased then
-                            SalesHeader.SetStatus(SalesHeader.Status::Released);
+                            SalesHeader.SetStatus(SalesHeader.Status::Released.AsInteger());
                     end
-                end
-            end;
+                end;
+
 
 
         if CallingFieldNo <> 0 then
@@ -179,12 +176,12 @@ codeunit 50106 "TFB Purchase Order Mgmt"
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnValidateExpectedReceiptDateOnBeforeCheckDateConflict', '', false, false)]
     local procedure HandlePurchaseLineDateChange(var IsHandled: Boolean; var PurchaseLine: Record "Purchase Line")
     var
-        SupplyResEntry: Record "Reservation Entry";
+    /*     SupplyResEntry: Record "Reservation Entry";
         DemandResEntry: Record "Reservation Entry";
-        ReservDateCheck: CodeUnit "Reservation-Check Date Confl.";
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
-        DateFormula: DateFormula;
+        ReservDateCheck: CodeUnit "Reservation-Check Date Confl.";
+        DateFormula: DateFormula; */
 
     begin
         /* 
@@ -253,17 +250,17 @@ codeunit 50106 "TFB Purchase Order Mgmt"
     var
         ItemLedger: Record "Item Ledger Entry";
         LotStatus: Enum "TFB Lot Status";
-        QtyTracked: Decimal;
+
     begin
         LotStatus := LotStatus::ExistsWithIssue;
         If Line.Type = Line.Type::Item then
             If Line."Quantity Received" = Line.Quantity then begin
                 If GetItemLedgerForPOLine(Line, ItemLedger) then
-                    QtyTracked := GetLedgerEntryQtyAndStatus(Line."Quantity (Base)", Line, LotStatus);
+                    GetLedgerEntryLotStatus(Line."Quantity (Base)", Line, LotStatus);
 
             end
             else
-                QtyTracked := GetPurchaseLineQtyAndStatus(Line."Quantity (Base)", Line, LotStatus)
+                GetPurchaseLineLotStatus(Line."Quantity (Base)", Line, LotStatus)
         else
             LotStatus := LotStatus::NotRequired;
         Exit(LotStatus);
@@ -291,7 +288,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
     end;
 
-    local procedure GetPurchaseLineQtyAndStatus(QtyToTrack: Decimal; Line: Record "Purchase Line"; var LotStatus: Enum "TFB Lot Status"): Decimal
+    local procedure GetPurchaseLineLotStatus(QtyToTrack: Decimal; Line: Record "Purchase Line"; var LotStatus: Enum "TFB Lot Status")
 
     var
         ReservationEntry: Record "Reservation Entry";
@@ -336,13 +333,11 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         else
             LotStatus := LotStatus::NotRequired;
 
-        exit(QtyTracked);
-
     end;
 
 
 
-    local procedure GetLedgerEntryQtyAndStatus(QtyToTrack: Decimal; PurchaseLine: Record "Purchase Line"; var LotStatus: Enum "TFB Lot Status"): Decimal
+    local procedure GetLedgerEntryLotStatus(QtyToTrack: Decimal; PurchaseLine: Record "Purchase Line"; var LotStatus: Enum "TFB Lot Status")
 
     var
 
@@ -401,7 +396,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         else
             LotStatus := LotStatus::NotRequired;
 
-        exit(QtyTracked);
+
 
     end;
 }

@@ -51,21 +51,21 @@ table 50111 "TFB Generic Item"
                 Item.SetRange("TFB Generic Item ID", SystemId);
 
                 If Item.FindSet(true, false) then
-                    repeat begin
-                        If Rec.Picture.Count > 0 then begin
-                            For Index := 1 to Rec.Picture.Count do
+                    repeat
+                        If Rec.Picture.Count > 0 then
+                            For Index := 1 to Rec.Picture.Count do begin
                                 Item.Picture.Insert(Rec.Picture.Item(Index));
-                            Item.Modify(true);
-                        end;
+                                Item.Modify(true);
+                            end;
 
-                    end until Item.Next() = 0;
+                    until Item.Next() = 0;
 
             end;
         }
-        field(100;"Do Not Publish"; Boolean)
+        field(100; "Do Not Publish"; Boolean)
         {
             Caption = 'Do Not Publish';
-            
+
         }
         field(5702; "Item Category Code"; Code[20])
         {
@@ -73,11 +73,10 @@ table 50111 "TFB Generic Item"
             TableRelation = "Item Category";
 
             trigger OnValidate()
-            var
-                ItemAttributeManagement: Codeunit "Item Attribute Management";
+
             begin
 
-                UpdateItemCategoryId;
+                UpdateItemCategoryId();
             end;
         }
 
@@ -89,7 +88,7 @@ table 50111 "TFB Generic Item"
 
             trigger OnValidate()
             begin
-                UpdateItemCategoryCode;
+                UpdateItemCategoryCode();
             end;
         }
 
@@ -148,7 +147,7 @@ table 50111 "TFB Generic Item"
         if IsTemporary then
             exit;
 
-        if not GraphMgtGeneralTools.IsApiEnabled then
+        if not GraphMgtGeneralTools.IsApiEnabled() then
             exit;
 
         if "Item Category Code" = '' then begin
@@ -197,19 +196,19 @@ table 50111 "TFB Generic Item"
         else begin
 
             Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-            If item.Count() > 0 then begin
+            If item.Count() > 0 then
                 If Confirm('Items exist. Do you still want to delete this item?', false) then
                     If Item.FindSet() then
-                        repeat begin
+                        repeat
                             Clear(Item."TFB Generic Item ID");
                             Item."TFB Parent Generic Item Name" := '';
                             Item."TFB Act As Generic" := false;
                             Item.Modify(false);
-                        end until Item.Next() = 0
+                        until Item.Next() = 0
                     else
                         error('Items exist cannot delete parent');
-            end;
         end;
+
 
         GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
         If GenericItemMarketRel.Count > 0 then
@@ -242,32 +241,22 @@ table 50111 "TFB Generic Item"
 
                     case NewType of
                         NewType::ItemParent:
-                            begin
-
-                                Error('No change to current type');
-
-                            end;
-
+                            Error('No change to current type');
                         NewType::ItemExtension:
                             begin
-
                                 Item.SetRange("TFB Generic Item ID", Rec.SystemId);
                                 Case Item.Count() of
                                     0:
                                         Error('No items currently are set to this generic item');
                                     1:
-                                        begin
-
-                                            If Item.FindFirst() then begin
-                                                Item."TFB Act As Generic" := true;
-                                                Item.Modify(false);
-                                                Rec.Type := NewType;
-                                                Rec.Modify(false);
-                                            end
-
-                                        end;
-                                    else
-                                        error('More than one item refers to this generic item. It cannot be turned into an extension');
+                                        If Item.FindFirst() then begin
+                                            Item."TFB Act As Generic" := true;
+                                            Item.Modify(false);
+                                            Rec.Type := NewType;
+                                            Rec.Modify(false);
+                                        end
+                                        else
+                                            error('More than one item refers to this generic item. It cannot be turned into an extension');
                                 end;
 
                             end;
@@ -277,51 +266,41 @@ table 50111 "TFB Generic Item"
                 end;
 
             Rec.Type::ItemExtension:
-                begin
-                    case NewType of
-                        NewType::ItemParent:
-                            begin
-                                Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-                                Case Item.Count() of
-                                    0:
-                                        begin
-                                            Rec.Type := NewType;
-                                            Rec.Modify();
-                                        end;
-                                    1:
-                                        begin
 
-                                            If Item.FindFirst() then begin
-                                                Item."TFB Act As Generic" := false;
-                                                Item."TFB Parent Generic Item Name" := Rec.Description;
-                                                Item."TFB Generic Item ID" := Rec.SystemId;
-                                                Item.Modify(false);
-                                                Rec.Type := NewType;
-                                                Rec.Modify(false);
-                                            end
-
-                                        end;
+                case NewType of
+                    NewType::ItemParent:
+                        begin
+                            Item.SetRange("TFB Generic Item ID", Rec.SystemId);
+                            Case Item.Count() of
+                                0:
+                                    begin
+                                        Rec.Type := NewType;
+                                        Rec.Modify();
+                                    end;
+                                1:
+                                    If Item.FindFirst() then begin
+                                        Item."TFB Act As Generic" := false;
+                                        Item."TFB Parent Generic Item Name" := Rec.Description;
+                                        Item."TFB Generic Item ID" := Rec.SystemId;
+                                        Item.Modify(false);
+                                        Rec.Type := NewType;
+                                        Rec.Modify(false);
+                                    end
                                     else begin
-                                            Rec.Type := NewType;
-                                            Rec.Modify();
-                                        end;
-
-                                end;
+                                        Rec.Type := NewType;
+                                        Rec.Modify();
+                                    end;
                             end;
-                        NewType::ItemExtension:
-                            begin
-
-                                Error('No change to current type');
-
-                            end;
-
-                    end;
-
-
+                        end;
+                    NewType::ItemExtension:
+                        Error('No change to current type');
                 end;
+
 
         end;
 
     end;
+
+
 
 }

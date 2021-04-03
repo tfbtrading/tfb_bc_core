@@ -98,7 +98,7 @@ page 50117 "TFB Report Sel - Brokerage"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Rec.NewRecord;
+        Rec.NewRecord();
     end;
 
     trigger OnOpenPage()
@@ -113,7 +113,7 @@ page 50117 "TFB Report Sel - Brokerage"
     local procedure SetUsageFilter(ModifyRec: Boolean)
     begin
         if ModifyRec then
-            if Rec.Modify then;
+            if Rec.Modify(true) then;
         Rec.FilterGroup(2);
         case ReportUsage2 of
             ReportUsage2::"Brokerage Shipment":
@@ -122,7 +122,7 @@ page 50117 "TFB Report Sel - Brokerage"
                 Rec.SetRange(Usage, Rec.Usage::"S.Brok.Contract");
         end;
         Rec.FilterGroup(0);
-        CurrPage.Update;
+        CurrPage.Update();
     end;
 
     local procedure InitUsageFilter()

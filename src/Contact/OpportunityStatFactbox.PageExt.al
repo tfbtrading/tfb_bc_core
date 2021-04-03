@@ -1,4 +1,4 @@
-pageextension 50187 "TFB Opp. Stat. FactBox" extends "Opportunity Statistics FactBox"
+pageextension 50187 "TFB Opportunity Stat. FactBox" extends "Opportunity Statistics FactBox"
 {
     layout
     {
@@ -47,10 +47,8 @@ pageextension 50187 "TFB Opp. Stat. FactBox" extends "Opportunity Statistics Fac
         OppEntry.SetRange(Active, true);
         OppEntry.SetRange("Opportunity No.", Rec."No.");
 
-        if OppEntry.FindFirst() then begin
+        if OppEntry.FindFirst() then
             Exit(StrSubstNo('Updated to %1 on %2', OppEntry."Sales Cycle Stage Description", OppEntry."Date of Change"));
-        end;
-
 
     end;
 

@@ -82,27 +82,4 @@ report 50123 "TFB Send Customer Updates"
         TitleTxt: Label 'Order Status';
 
 
-
-    local procedure UpdateDatesAndReleaseShipments()
-
-    var
-        WhseShipheader: Record "Warehouse Shipment Header";
-        ReleaseWhseShipment: CodeUnit "Whse.-Shipment Release";
-        DateFormula: DateFormula;
-
-
-    begin
-        WhseShipheader.SetRange(Status, WhseShipheader.Status::Open);
-        Evaluate(DateFormula, '1D');
-        If WhseShipheader.Findfirst() then
-            repeat
-                WhseShipheader."Shipment Date" := CalcDate(DateFormula, Today());
-                WhseShipheader."Posting Date" := CalcDate(DateFormula, Today());
-                WhseShipheader.Modify();
-                ReleaseWhseShipment.Release(WhseShipheader);
-
-            Until WhseShipheader.Next() = 0;
-
-    end;
-
 }

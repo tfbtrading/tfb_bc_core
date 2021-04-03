@@ -210,7 +210,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     procedure GetPurchaseReceiptByPOReference(var PurchLine: Record "Purchase Line"; Reference: Text[100]): Boolean
 
     var
-        ICAssignment: Record "Item Charge Assignment (Purch)" temporary;
+        TempICAssignment: Record "Item Charge Assignment (Purch)" temporary;
         Line: Record "Purch. Rcpt. Line";
         ICAssignmentCU: CodeUnit "Item Charge Assgnt. (Purch.)";
         PurchaseReceiptCU: Codeunit "TFB Purch. Rcpt. Mgmt";
@@ -233,21 +233,21 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
             repeat
-                CLEAR(ICAssignment);
-                ICAssignment."Document No." := PurchLine."Document No.";
-                ICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
-                ICAssignment."Document Line No." := PurchLine."Line No.";
-                ICAssignment."Line No." := LineNo;
-                ICAssignment."Item Charge No." := PurchLine."No.";
-                ICAssignment."Item No." := Line."No.";
-                ICAssignment.Description := Line.Description;
-                ICAssignment."Applies-to Doc. No." := Line."Document No.";
-                ICAssignment."Applies-to Doc. Line No." := Line."Line No.";
-                ICAssignment."Applies-to Doc. Type" := ICAssignment."Applies-to Doc. Type"::Receipt;
+                CLEAR(TempICAssignment);
+                TempICAssignment."Document No." := PurchLine."Document No.";
+                TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+                TempICAssignment."Document Line No." := PurchLine."Line No.";
+                TempICAssignment."Line No." := LineNo;
+                TempICAssignment."Item Charge No." := PurchLine."No.";
+                TempICAssignment."Item No." := Line."No.";
+                TempICAssignment.Description := Line.Description;
+                TempICAssignment."Applies-to Doc. No." := Line."Document No.";
+                TempICAssignment."Applies-to Doc. Line No." := Line."Line No.";
+                TempICAssignment."Applies-to Doc. Type" := TempICAssignment."Applies-to Doc. Type"::Receipt;
 
 
                 LineNo := LineNo + 10000; //Increment line count as it appears it doesn't happen automatically
-                ICAssignmentCU.CreateRcptChargeAssgnt(Line, ICAssignment);
+                ICAssignmentCU.CreateRcptChargeAssgnt(Line, TempICAssignment);
                 ChargesAssigned := true;
 
             until Line.Next() < 1;
@@ -311,7 +311,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     procedure GetPurchaseReceiptByCntReference(var PurchLine: Record "Purchase Line"; Reference: Text[100]): Boolean
 
     var
-        ICAssignment: Record "Item Charge Assignment (Purch)" temporary;
+        TempICAssignment: Record "Item Charge Assignment (Purch)" temporary;
         Lines: Record "Purch. Rcpt. Line";
         ICAssignmentCU: CodeUnit "Item Charge Assgnt. (Purch.)";
         PurchaseReceiptCU: Codeunit "TFB Purch. Rcpt. Mgmt";
@@ -336,19 +336,19 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
             repeat
-                CLEAR(ICAssignment);
+                CLEAR(TempICAssignment);
                 LineNo := LineNo + 10000; //Increment line count as it appears it doesn't happen automatically
-                ICAssignment."Document No." := PurchLine."Document No.";
-                ICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
-                ICAssignment."Document Line No." := PurchLine."Line No.";
-                ICAssignment."Line No." := LineNo;
-                ICAssignment."Item Charge No." := PurchLine."No.";
-                ICAssignment."Item No." := Lines."No.";
-                ICAssignment.Description := Lines.Description;
-                ICAssignment."Applies-to Doc. No." := Lines."Document No.";
-                ICAssignment."Applies-to Doc. Line No." := Lines."Line No.";
-                ICAssignment."Applies-to Doc. Type" := ICAssignment."Applies-to Doc. Type"::Receipt;
-                ICAssignmentCU.CreateRcptChargeAssgnt(Lines, ICAssignment);
+                TempICAssignment."Document No." := PurchLine."Document No.";
+                TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+                TempICAssignment."Document Line No." := PurchLine."Line No.";
+                TempICAssignment."Line No." := LineNo;
+                TempICAssignment."Item Charge No." := PurchLine."No.";
+                TempICAssignment."Item No." := Lines."No.";
+                TempICAssignment.Description := Lines.Description;
+                TempICAssignment."Applies-to Doc. No." := Lines."Document No.";
+                TempICAssignment."Applies-to Doc. Line No." := Lines."Line No.";
+                TempICAssignment."Applies-to Doc. Type" := TempICAssignment."Applies-to Doc. Type"::Receipt;
+                ICAssignmentCU.CreateRcptChargeAssgnt(Lines, TempICAssignment);
                 ChargesAssigned := true;
 
             until Lines.Next() = 0;
@@ -394,7 +394,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     procedure GetSalesShipmentByBookingReference(var PurchLine: Record "Purchase Line"; Reference: Text[100]): Boolean
 
     var
-        ICAssignment: Record "Item Charge Assignment (Purch)" temporary;
+        TempICAssignment: Record "Item Charge Assignment (Purch)" temporary;
         ShipHeader: Record "Sales Shipment Header";
         ShipLine: Record "Sales Shipment Line";
         ICAssignmentCU: CodeUnit "Item Charge Assgnt. (Purch.)";
@@ -406,19 +406,19 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         PurchLine.UpdateAmounts();
 
 
-        ICAssignment.SetRange("Document No.", PurchLine."Document No.");
-        ICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
-        ICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
+        TempICAssignment.SetRange("Document No.", PurchLine."Document No.");
+        TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
+        TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
-        If not ICAssignment.IsEmpty() then
+        If not TempICAssignment.IsEmpty() then
             If Dialog.Confirm('Assignment lines already exist - Remove them first?') then
-                ICAssignment.DeleteAll(false);
+                TempICAssignment.DeleteAll(false);
 
 
-        ICAssignment."Document No." := PurchLine."Document No.";
-        ICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
-        ICAssignment."Document Line No." := PurchLine."Line No.";
-        ICAssignment."Item Charge No." := PurchLine."No.";
+        TempICAssignment."Document No." := PurchLine."Document No.";
+        TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+        TempICAssignment."Document Line No." := PurchLine."Line No.";
+        TempICAssignment."Item Charge No." := PurchLine."No.";
 
         ShipHeader.SetRange("TFB 3PL Booking No.", Reference);
 
@@ -438,7 +438,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
             If ShipLine.FindSet(False, false) then begin
 
-                ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, ICAssignment);
+                ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 PurchLine.Description := 'Sales Freight for ' + Reference + StrSubstNo(' for %1 on %2', ShipHeader."Ship-to Name", ShipHeader."Posting Date");
                 PurchLine.CalcFields("Qty. to Assign");
@@ -542,7 +542,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     procedure GetSalesShipmentByWarehouseReference(var PurchLine: Record "Purchase Line"; Reference: Text[100]): Boolean
 
     var
-        ICAssignment: Record "Item Charge Assignment (Purch)" temporary;
+        TempICAssignment: Record "Item Charge Assignment (Purch)" temporary;
         ShipLine: Record "Sales Shipment Line";
         ICAssignmentCU: CodeUnit "Item Charge Assgnt. (Purch.)";
         CustomerList: Text;
@@ -552,24 +552,24 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         PurchLine.UpdateAmounts();
 
-        ICAssignment.SetRange("Document No.", PurchLine."Document No.");
-        ICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
-        ICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
+        TempICAssignment.SetRange("Document No.", PurchLine."Document No.");
+        TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
+        TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
-        If not ICAssignment.IsEmpty() then
+        If not TempICAssignment.IsEmpty() then
             If Dialog.Confirm('Assignment lines already exist - Remove them first?') then
-                ICAssignment.DeleteAll(false);
+                TempICAssignment.DeleteAll(false);
 
-        ICAssignment."Document No." := PurchLine."Document No.";
-        ICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
-        ICAssignment."Document Line No." := PurchLine."Line No.";
-        ICAssignment."Item Charge No." := PurchLine."No.";
+        TempICAssignment."Document No." := PurchLine."Document No.";
+        TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+        TempICAssignment."Document Line No." := PurchLine."Line No.";
+        TempICAssignment."Item Charge No." := PurchLine."No.";
 
         GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate);
 
         If ShipLine.FindSet(False, false) then begin
 
-            ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, ICAssignment);
+            ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
             ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
             PurchLine.Description := Text.CopyStr(StrSubstNo('%1 Shipment to %2 on %3', Reference, CustomerList, PostingDate), 1, 100);
             PurchLine.CalcFields("Qty. to Assign");

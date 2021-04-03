@@ -88,14 +88,13 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
     trigger OnOpenPage()
 
     var
-        SalesPerson: Record "Salesperson/Purchaser";
+     
         UserSetup: Record "User Setup";
         User: record User;
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-        Today: date;
-        StartRange: date;
+    
     begin
         USID := Database.UserSecurityId();
 

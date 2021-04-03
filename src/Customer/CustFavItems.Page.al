@@ -232,15 +232,12 @@ page 50122 "TFB Cust. Fav. Items"
                 trigger OnAction()
 
                 var
-                    SalesOrder: Record "Sales Header";
-                    SalesOrderPage: Page "Sales Order";
                     SalesLine: Record "Sales Line";
-
+                    SalesOrder: Record "Sales Header";
                     SourceLines: Record "TFB Cust. Fav. Item";
-                    LineCount: Integer;
+                    SalesOrderPage: Page "Sales Order";
                     DocNo: Code[20];
-
-
+                    LineCount: Integer;
 
                 begin
 
@@ -259,7 +256,7 @@ page 50122 "TFB Cust. Fav. Items"
                         CurrPage.SetSelectionFilter(SourceLines);
 
                         If SourceLines.FindSet() then
-                            repeat begin
+                            repeat
                                 LineCount += 10000;
                                 SalesLine.Init();
                                 SalesLine."Line No." := LineCount;
@@ -267,10 +264,9 @@ page 50122 "TFB Cust. Fav. Items"
                                 SalesLine.validate("Document No.", DocNo);
                                 SalesLine.Validate(Type, SalesLine.Type::Item);
                                 SalesLine.Validate("No.", SourceLines."Item No.");
-
                                 SalesLine.Insert(true);
 
-                            end until SourceLines.Next = 0;
+                            until SourceLines.Next() = 0;
 
 
                         SalesOrderPage.SetRecord(SalesOrder);
@@ -296,12 +292,12 @@ page 50122 "TFB Cust. Fav. Items"
     end;
 
     var
-
         ItemMgmt: CodeUnit "TFB Item Mgmt";
-        [InDataSet]
-        SalesPriceVar: Decimal;
         LastChangedDateVar: Date;
+        LastDatePurchased: Date;
         [InDataSet]
         LastPricePaid: Decimal;
-        LastDatePurchased: Date;
+        [InDataSet]
+        SalesPriceVar: Decimal;
+
 }

@@ -40,7 +40,7 @@ tableextension 50121 "TFB To-do" extends "To-do"
     /// <param name="PurchaseHeader">Record "Sales Header".</param>
     procedure CreateTaskFromPurchaseHeader(PurchaseHeader: Record "Purchase Header")
     var
-        TransText: Text;
+        TransText: Text[250];
     begin
         DeleteAll();
         Init();
@@ -71,11 +71,11 @@ tableextension 50121 "TFB To-do" extends "To-do"
 
     procedure CreateTaskFromPstdDocument(RecRef: RecordRef)
     var
-        TransText: Text;
-        RecordContactNo: Code[20];
-        SalesPurchCode: Code[20];
         SalesInvoice: Record "Sales Invoice Header";
         PurchInvoice: Record "Purch. Inv. Header";
+        TransText: Text[250];
+        RecordContactNo: Code[20];
+        SalesPurchCode: Code[20];
         SalesOrPurchase: Enum "TFB To-do Trans. Type";
     begin
 

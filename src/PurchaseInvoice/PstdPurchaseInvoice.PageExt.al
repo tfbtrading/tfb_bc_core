@@ -74,7 +74,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
                 trigger OnAction()
                 begin
-                    Rec.CreateTask;
+                    Rec.CreateTask();
                 end;
             }
         }

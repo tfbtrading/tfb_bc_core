@@ -438,32 +438,7 @@ table 50345 "TFB Item Costing"
 
     end;
 
-    local procedure GetItemDefaults()
-    var
-        Item: record Item;
-        ItemUOM: record "Item Unit of Measure";
-        Vendor: record Vendor;
-
-    begin
-
-        if Item.get("Item No.") then begin
-
-            "Est. Storage Duration" := item."TFB Est. Storage Duration";
-            "Vendor No." := item."Vendor No.";
-
-            ItemUOM.SetRange("Item No.", "Item No.");
-            ItemUOM.SetRange(Code, 'PALLET');
-            If ItemUOM.FindFirst() then
-                "Pallet Qty" := ItemUOM."Qty. per Unit of Measure";
-
-            If Vendor.get("Vendor No.") then begin
-                "Vendor Name" := Vendor.Name;
-                "Landed Cost Profile" := Vendor."TFB Landed Cost Profile";
-            end;
-        end;
-    end;
-
-
+    
 
     procedure CalcCostings(paramRec: record "TFB Item Costing")
 

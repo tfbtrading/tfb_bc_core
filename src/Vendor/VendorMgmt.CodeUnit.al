@@ -5,17 +5,17 @@ codeunit 50130 "TFB Vendor Mgmt"
     procedure SendOneVendorStatusEmail(VendNo: Code[20]): Boolean
 
     var
+        CommonCU: CodeUnit "TFB Common Library";
         Window: Dialog;
         Text001Msg: Label 'Sending Vendor Updates:\#1############################Msg', comment = '%1=vendor';
-        Result: Boolean;
-        CommonCU: CodeUnit "TFB Common Library";
         TitleTxt: label 'Vendor status';
-        SubtitleText: label '';
+        SubtitleTxt: label '';
+        Result: Boolean;
 
     begin
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', VendNo, ''));
-        Result := SendVendorStatusEmail(VendNo, CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleText), true);
+        Result := SendVendorStatusEmail(VendNo, CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleTxt), true);
         Window.Close();
         Exit(Result);
     end;
@@ -29,8 +29,6 @@ codeunit 50130 "TFB Vendor Mgmt"
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         EmailScenEnum: Enum "Email Scenario";
-        EmailAction: Enum "Email Action";
-        //Email address to send to
         EmailID: Text;
 
         //TextBuilders to generate FileName and Other Details
@@ -100,7 +98,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         Dest: text;
         LastWeek: Date;
         ThisTime: Time;
-        IsModified: Boolean;
+
         ExpectedDate: Text;
 
         PricingUnit: Enum "TFB Price Unit";
@@ -172,7 +170,7 @@ codeunit 50130 "TFB Vendor Mgmt"
 
                 //Found a record which indicates date has changed in the last week
                 If ChangeLog.FindLast() then begin
-                    IsModified := true;
+
                     ExpectedDate := StrSubstNo('<b> Change to %1 from %2 </b>', OrderLine."Expected Receipt Date", ChangeLog.GetLocalOldValue());
                 end
                 else

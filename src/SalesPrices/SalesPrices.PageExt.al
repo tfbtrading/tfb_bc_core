@@ -1,5 +1,6 @@
 pageextension 50145 "TFB Sales Prices" extends "Sales Prices"
 {
+    
     layout
     {
         addafter("Unit Price")
@@ -27,17 +28,5 @@ pageextension 50145 "TFB Sales Prices" extends "Sales Prices"
         PricingCU: CodeUnit "TFB Pricing Calculations";
         _PricePerKg: Decimal;
 
-    local procedure UpdatePricePerKg()
-
-    var
-        Item: Record Item;
-
-    begin
-
-        Item.Get(Rec."Item No.");
-        If Item."Net Weight" > 0 then
-            _PricePerKg := PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight")
-        else
-            _PricePerKg := 0;
-    end;
+    
 }

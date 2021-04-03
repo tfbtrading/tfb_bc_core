@@ -5,7 +5,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         // Add changes to page layout here
         addlast(Item)
         {
-            field(TFBItemCostingSystemID; GetStandardItemCostingDescription(ItemCostingSystemID))
+            field(TFBItemCostingSystemID; GetStandardItemCostingDescription())
             {
                 Caption = 'Costing calculation';
                 ToolTip = 'Specifies if an item costings exists and links  to it';
@@ -61,7 +61,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
     end;
 
-    local procedure GetStandardItemCostingDescription(Ref: Guid): Text[50]
+    local procedure GetStandardItemCostingDescription(): Text[50]
 
     begin
 

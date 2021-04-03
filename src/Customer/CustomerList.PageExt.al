@@ -126,6 +126,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
                 ApplicationArea = All;
                 Image = UpdateDescription;
                 Caption = 'Update Contact IDs';
+                ToolTip = 'Úpdate contact identifiers for all customers';
 
                 trigger OnAction()
 
@@ -137,16 +138,16 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
                     Customer.SetLoadFields("No.", "TFB Primary Contact Company ID");
                     Customer.FindSet(true, false);
-                    repeat begin
+                    repeat 
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
                         ContBusRel.SetRange("No.", Customer."No.");
-                        if ContBusRel.FindFirst then begin
+                        if ContBusRel.FindFirst() then begin
                             Customer."TFB Primary Contact Company ID" := ContBusRel."Contact No.";
                             Customer.Modify();
                         end;
 
-                    end until Customer.Next() = 0;
+                    until Customer.Next() = 0;
 
                 end;
             }

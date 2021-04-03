@@ -31,6 +31,4 @@ pageextension 50180 "TFB Interaction Log Entry" extends "Interaction Log Entries
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
 }

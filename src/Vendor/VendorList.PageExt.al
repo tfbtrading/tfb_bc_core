@@ -58,6 +58,7 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
                 ApplicationArea = All;
                 Image = UpdateDescription;
                 Caption = 'Update Contact IDs';
+                ToolTip = 'Updates all of the contact IDs against related Vendors';
 
                 trigger OnAction()
 
@@ -69,16 +70,16 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
 
                     Vendor.SetLoadFields("No.", "TFB Primary Contact Company ID");
                     Vendor.FindSet(true, false);
-                    repeat begin
+                    repeat 
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Vendor);
                         ContBusRel.SetRange("No.", Vendor."No.");
-                        if ContBusRel.FindFirst then begin
+                        if ContBusRel.FindFirst() then begin
                             Vendor."TFB Primary Contact Company ID" := ContBusRel."Contact No.";
                             Vendor.Modify();
                         end;
 
-                    end until Vendor.Next() = 0;
+                     until Vendor.Next() = 0;
 
                 end;
             }

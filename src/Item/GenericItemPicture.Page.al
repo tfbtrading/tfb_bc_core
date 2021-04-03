@@ -42,7 +42,7 @@ page 50134 "TFB Generic Item Picture"
 
                 trigger OnAction()
                 begin
-                    TakeNewPicture;
+                    TakeNewPicture();
                 end;
             }
             action(ImportPicture)
@@ -83,7 +83,7 @@ page 50134 "TFB Generic Item Picture"
 
                 trigger OnAction()
                 begin
-                    DeleteItemPicture;
+                    DeleteItemPicture();
                 end;
             }
         }
@@ -91,7 +91,7 @@ page 50134 "TFB Generic Item Picture"
 
     trigger OnAfterGetCurrRecord()
     begin
-        SetEditableOnPictureActions;
+        SetEditableOnPictureActions();
     end;
 
     trigger OnOpenPage()
@@ -103,16 +103,16 @@ page 50134 "TFB Generic Item Picture"
         Camera: Codeunit Camera;
         [InDataSet]
         CameraAvailable: Boolean;
-        OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
+        //OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
+        //SelectPictureTxt: Label 'Select a picture to upload';
         DeleteImageQst: Label 'Are you sure you want to delete the picture?';
-        SelectPictureTxt: Label 'Select a picture to upload';
         DeleteExportEnabled: Boolean;
         HideActions: Boolean;
-        MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
+    //MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
 
     procedure TakeNewPicture()
     begin
-        Rec.Find;
+        Rec.Find();
         Rec.TestField(Description);
 
 
@@ -148,18 +148,18 @@ page 50134 "TFB Generic Item Picture"
     local procedure ExportItemPicture()
 
     var
-        Instream: Instream;
-        Index: Integer;
         TenantMedia: Record "Tenant Media";
-        ImgFileName: Text;
+        Instream: Instream;
         ConfMsg: Label 'No picture stored';
+        Index: Integer;
+        ImgFileName: Text;
 
 
     begin
         If Rec.Picture.Count = 0 then
             Error(ConfMsg);
 
-        for Index := 1 to Rec.Picture.count do begin
+        for Index := 1 to Rec.Picture.count do
             If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
                 TenantMedia.CalcFields(content);
                 If TenantMedia.Content.HasValue then begin
@@ -169,7 +169,7 @@ page 50134 "TFB Generic Item Picture"
 
                 end;
             end;
-        end;
+
     end;
 
     local procedure GetImgFileExt(var TenantMedia: Record "Tenant Media"): Text

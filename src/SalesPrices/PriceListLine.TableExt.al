@@ -13,7 +13,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
             Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", PriceUnit, NewPricePerKg));
     end;
 
-    local procedure GetPricePerKgFromUnitPrice(): Decimal
+    procedure GetPricePerKgFromUnitPrice(): Decimal
 
     begin
         PriceUnit := PriceUnit::KG;

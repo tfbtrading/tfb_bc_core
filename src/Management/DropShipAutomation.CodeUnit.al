@@ -19,10 +19,10 @@ codeunit 50109 "TFB DropShip Automation"
     end;
 
     var
+        ReqWorkLine: Record "Requisition Line";
+        ReqWorkName: Record "Requisition Wksh. Name";
         GetSalesRpt: Report "Get Sales Orders";
 
         CarryOutRpt: Report "Carry Out Action Msg. - Req.";
 
-        ReqWorkLine: Record "Requisition Line";
-        ReqWorkName: Record "Requisition Wksh. Name";
 }

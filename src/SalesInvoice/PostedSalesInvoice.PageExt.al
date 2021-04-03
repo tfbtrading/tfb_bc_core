@@ -91,7 +91,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateTask;
+                    Rec.CreateTask();
                 end;
             }
         }

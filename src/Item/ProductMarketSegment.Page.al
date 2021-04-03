@@ -18,6 +18,7 @@ page 50136 "TFB Product Market Segment"
                     field(Title; Rec.Title)
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the title field';
                     }
 
                     field("External ID"; Rec."External ID")
@@ -25,16 +26,19 @@ page 50136 "TFB Product Market Segment"
                         ApplicationArea = All;
                         Visible = ShowExternalIDs;
                         Importance = Standard;
+                        ToolTip = 'Specifies the value of the external ID field';
                     }
                     field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                         MultiLine = true;
+                        ToolTip = 'Specifies the value of the short description for slug field';
                     }
 
                     field("No. Of Generic Items"; Rec."No. Of Generic Items")
                     {
                         ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the no. of generic items field';
                     }
 
 
@@ -66,8 +70,8 @@ page 50136 "TFB Product Market Segment"
     }
 
     var
-        ShowExternalIDs: Boolean;
         CommonCU: CodeUnit "TFB Common Library";
+        ShowExternalIDs: Boolean;
 
     trigger OnAfterGetRecord()
 

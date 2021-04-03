@@ -89,12 +89,13 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
 
                 If not Confirm('Do you want to update relates sales order package tracking no?', true) then exit;
 
+                OrderNo := '';
                 Line.SetRange("Document Type", Rec."Document Type");
                 Line.SetRange("Document No.", Rec."No.");
                 Line.SetFilter("Outstanding Quantity", '>0');
                 Line.SetLoadFields("Sales Order No.");
                 If Line.FindSet(false, false) then
-                    repeat begin
+                    repeat
 
                         SalesOrder.SetRange("No.", Line."Sales Order No.");
                         SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
@@ -107,7 +108,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
                                 OrderNo := SalesOrder."No.";
                             end;
 
-                    end until Line.Next = 0;
+                    until Line.Next() = 0;
 
             end;
         }
@@ -239,7 +240,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateTask;
+                    Rec.CreateTask();
                 end;
             }
         }

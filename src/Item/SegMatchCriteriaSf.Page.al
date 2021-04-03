@@ -74,25 +74,6 @@ page 50141 "TFB Seg. Match Criteria Sf"
         }
     }
 
-    actions
-    {
-    }
-
-    trigger OnAfterGetCurrRecord()
-    begin
-
-    end;
-
-    trigger OnAfterGetRecord()
-    begin
-
-    end;
 
 
-
-
-
-
-    var
-        AttributeNameLookup: Text[100];
 }

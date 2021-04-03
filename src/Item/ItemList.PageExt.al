@@ -165,15 +165,15 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
     var
 
+        ItemMgmtCU: CodeUnit "TFB Item Mgmt";
+        LastChangedDateVar: Date;
         IsDropShipByDefault: Boolean;
 
         IsBlockedFromSale: Boolean;
 
         SalesPriceVar: Decimal;
 
-        ItemMgmtCU: CodeUnit "TFB Item Mgmt";
 
-        LastChangedDateVar: Date;
 
 
 

@@ -47,33 +47,6 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
 
 
-    local procedure SetDefaultCustomerPreference();
-
-    var
-        Customer: Record Customer;
-
-    begin
-        Customer.ModifyAll("TFB Order Update Preference", Enum::"TFB Order Update Preference"::Always);
-    end;
-
-    local procedure CopyToDefaultPurchaseCodes()
-
-    var
-        Item: record Item;
-
-    begin
-
-        Item.FindSet(true, false);
-
-        repeat
-            Item."Purchasing Code" := Text.CopyStr(Item."TFB Default Purch. Code", 1, 10);
-            Item.Modify(false);
-
-        until Item.Next() < 1;
-
-
-    end;
-
     procedure CopyQualityAttachToPersBlob()
 
     var
@@ -132,25 +105,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-    local procedure CheckForEmptyLineContracts()
-
-    var
-        Line: Record "TFB Brokerage Shipment Line";
-        Header: Record "TFB Brokerage Shipment";
-
-    begin
-
-        Line.SetFilter("Contract No.", '%1', '');
-        If Line.Count() > 0 then
-            if Line.FindSet() then
-                repeat
-
-                    If Header.Get(Line."Document No.") then begin
-                        Line."Contract No." := Header."Contract No.";
-                        Line.Modify();
-                    end;
-                until Line.Next() < 1;
-    end;
+  
 
     local procedure SetAllItemstoGenericItem()
     var
@@ -160,14 +115,14 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
         if not Item.FindSet(true, false) then exit;
 
-        repeat begin
+        repeat 
 
             If not IsNullGuid(Item."TFB Generic Item ID") then exit;
 
             Item.validate("TFB Act As Generic", true);
             Item.Modify(true);
 
-        end until Item.Next = 0;
+         until Item.Next() = 0;
 
     end;
 

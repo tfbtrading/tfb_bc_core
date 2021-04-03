@@ -18,18 +18,22 @@ page 50128 "TFB Resveration Strategy List"
                 field(Code; Rec.Code)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Code field';
                 }
                 field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Name field';
                 }
                 field("No. of Customers"; Rec."No. of Customers")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the No. of Customers field';
                 }
                 field(SystemModifiedAt; Rec.SystemModifiedAt)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the SystemModifiedAt field';
                 }
             }
         }
@@ -38,17 +42,6 @@ page 50128 "TFB Resveration Strategy List"
 
     actions
     {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction();
-                begin
-
-                end;
-            }
-        }
     }
 }

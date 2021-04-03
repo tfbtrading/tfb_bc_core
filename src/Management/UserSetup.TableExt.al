@@ -1,4 +1,4 @@
-tableextension 50124 "TFB User" extends "User Setup"
+tableextension 50124 "TFB User Setup" extends "User Setup"
 {
     fields
     {

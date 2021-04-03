@@ -98,7 +98,7 @@ page 50121 "TFB Report Sel - Containers"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Rec.NewRecord;
+        Rec.NewRecord();
     end;
 
     trigger OnOpenPage()
@@ -113,7 +113,7 @@ page 50121 "TFB Report Sel - Containers"
     local procedure SetUsageFilter(ModifyRec: Boolean)
     begin
         if ModifyRec then
-            if Rec.Modify then;
+            if Rec.Modify(true) then;
         Rec.FilterGroup(2);
         case ReportUsage2 of
             ReportUsage2::"Inbound Shipment - Warehouse":
@@ -121,7 +121,7 @@ page 50121 "TFB Report Sel - Containers"
 
         end;
         Rec.FilterGroup(0);
-        CurrPage.Update;
+        CurrPage.Update();
     end;
 
     local procedure InitUsageFilter()

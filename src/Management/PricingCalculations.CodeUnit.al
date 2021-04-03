@@ -23,7 +23,7 @@ codeunit 50140 "TFB Pricing Calculations"
 
     //Procedure elaborated to handle change in fields that drive price per kilogram
 
-    procedure CalcLineTotalKg(var NetWeight: decimal; var QtyBase: decimal): Decimal;
+    procedure CalcLineTotalKg(NetWeight: decimal; QtyBase: decimal): Decimal;
 
     var
         LineTotalKg: decimal;
@@ -33,7 +33,7 @@ codeunit 50140 "TFB Pricing Calculations"
         Exit(LineTotalKg);
     end;
 
-    procedure CalcLineTotalKg(var ItemNo: code[20]; var UomCode: code[10]; var Qty: decimal): Decimal;
+    procedure CalcLineTotalKg(ItemNo: code[20]; UomCode: code[10]; Qty: decimal): Decimal;
 
     var
         Item: Record Item;
@@ -55,28 +55,6 @@ codeunit 50140 "TFB Pricing Calculations"
         Exit(LineTotalKg);
     end;
 
-
-
-
-
-
-    local procedure CheckWeight(Item: record Item): Decimal;
-    var
-        WeightNotification: Notification;
-        Text003: Text;
-    begin
-        if Item."Net Weight" = 0 then begin
-            Text003 := 'The current item has no weight';
-
-            WeightNotification.Scope := NotificationScope::LocalScope;
-            WeightNotification.Message(Text003);
-            WeightNotification.SetData('ItemNo', Item."No.");
-            WeightNotification.AddAction('Change Item Weight', CodeUnit::"TFB Action Handlers", 'OpenItem');
-            WeightNotification.Send()
-        end else
-            exit(Item."Net Weight");
-
-    end;
 
     procedure CalcPerKgFromUnit(UnitPrice: Decimal; Weight: Decimal): Decimal
 
@@ -227,18 +205,15 @@ codeunit 50140 "TFB Pricing Calculations"
                         SalesPrice.SetRange("Ending Date", 0D);
 
 
-                        if SalesPrice.FindLast() then
-                            repeat
-                                ExpireOldPrice(Item."No.", SalesPrice."Sales Type", SalesPrice."Sales Code", SalesPrice."Starting Date");
+                        if SalesPrice.FindLast() then begin
+                            ExpireOldPrice(Item."No.", SalesPrice."Sales Type", SalesPrice."Sales Code", SalesPrice."Starting Date");
 
-                                If CustomerPriceGroup.code = SalesSetup."TFB Item Price Group" then begin
-                                    Item."Unit Price" := SalesPrice."Unit Price";
-                                    Item."TFB Unit Price Source" := CustomerPriceGroup.Code;
-                                    Item.Modify(false);
-                                end;
-
-                            until SalesPrice.Next() < 1;
-
+                            If CustomerPriceGroup.code = SalesSetup."TFB Item Price Group" then begin
+                                Item."Unit Price" := SalesPrice."Unit Price";
+                                Item."TFB Unit Price Source" := CustomerPriceGroup.Code;
+                                Item.Modify(false);
+                            end;
+                        end;
 
                     until CustomerPriceGroup.Next() < 1;
 
@@ -285,7 +260,7 @@ codeunit 50140 "TFB Pricing Calculations"
         end;
     end;
 
-    procedure CalculateQtyPriceUnit(var paramItemNo: code[20]; var paramPriceUnit: enum "TFB Price Unit"; var paramQtyByBaseUnit: decimal) Value: Decimal;
+    procedure CalculateQtyPriceUnit(ItemNo: code[20]; PriceUnit: enum "TFB Price Unit"; QtyByBaseUnit: decimal) Value: Decimal;
     var
         Item: Record Item;
         ItemUOM: Record "Item Unit of Measure";
@@ -295,25 +270,25 @@ codeunit 50140 "TFB Pricing Calculations"
         QtyPriceUnit: Decimal;
         Weight: Decimal;
     begin
-        Item.Get(paramItemNo);
+        Item.Get(ItemNo);
 
         Weight := Item."Net Weight";
         UOM.Get(item."Base Unit of Measure");
         ItemUOM.Get(Item."No.", UOM.Code);
         Multiplier := ItemUOM."Qty. per Unit of Measure";
 
-        if (paramQtyByBaseUnit <> 0) and (Weight <> 0) and (Multiplier <> 0) then begin
-            case paramPriceUnit of
+        if (QtyByBaseUnit <> 0) and (Weight <> 0) and (Multiplier <> 0) then begin
+            case PriceUnit of
                 Vendor."TFB Vendor Price Unit"::MT:
-                    QtyPriceUnit := paramQtyByBaseUnit * (Weight * Multiplier) / 1000;
+                    QtyPriceUnit := QtyByBaseUnit * (Weight * Multiplier) / 1000;
 
                 Vendor."TFB Vendor Price Unit"::LB:
-                    QtyPriceUnit := paramQtyByBaseUnit * (Weight * Multiplier) * 2.204642;
+                    QtyPriceUnit := QtyByBaseUnit * (Weight * Multiplier) * 2.204642;
 
                 Vendor."TFB Vendor Price Unit"::KG:
-                    QtyPriceUnit := paramQtyByBaseUnit * (Weight * Multiplier);
+                    QtyPriceUnit := QtyByBaseUnit * (Weight * Multiplier);
                 Vendor."TFB Vendor Price Unit"::UNIT:
-                    QtyPriceUnit := paramQtyByBaseUnit
+                    QtyPriceUnit := QtyByBaseUnit
             end;
             EXIT(QtyPriceUnit);
 
@@ -370,8 +345,8 @@ codeunit 50140 "TFB Pricing Calculations"
         Exit(RatePerUnit);
     end;
 
-	internal procedure CheckPriceHealthOnPriceList(Rec: Record "Price List Header")
-	begin
-		Error('Procedure CheckPriceHealthOnPriceList not implemented.');
-	end;
+    internal procedure CheckPriceHealthOnPriceList(Rec: Record "Price List Header")
+    begin
+        Error('Procedure CheckPriceHealthOnPriceList not implemented.');
+    end;
 }

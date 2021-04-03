@@ -28,6 +28,4 @@ pageextension 50195 "TFB Interaction Template Setup" extends "Interaction Templa
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
 }

@@ -259,13 +259,10 @@ page 50131 "TFB Active Task List"
         Opp: Record Opportunity;
         SegHeader: Record "Segment Header";
         RecordsFound: Boolean;
-        Text000: Label '(Multiple)';
-        Text001: Label 'untitled';
-        Text004: Label 'The Make Phone Call function for this task is available only on the Attendee Scheduling window.';
-        indent: Integer;
+        Text000Msg: Label '(Multiple)';
+        Text001Msg: Label 'untitled';
         _Overdue: Boolean;
-        Text005: Label 'You must select a task with a contact assigned to it before you can use the Make Phone Call function.';
-
+      
     procedure Caption() CaptionStr: Text
     var
         IsHandled: Boolean;
@@ -293,13 +290,13 @@ page 50131 "TFB Active Task List"
         if SegHeader.Get(Rec.GetFilter("Segment No.")) then
             CaptionStr := CopyStr(CaptionStr + ' ' + SegHeader."No." + ' ' + SegHeader.Description, 1, MaxStrLen(CaptionStr));
         if CaptionStr = '' then
-            CaptionStr := Text001;
+            CaptionStr := Text001Msg;
     end;
 
     local procedure ContactNoOnFormat(Text: Text[1024])
     begin
         if Rec.Type = Rec.Type::Meeting then
-            Text := Text000;
+            Text := Text000Msg;
     end;
 
     [IntegrationEvent(false, false)]

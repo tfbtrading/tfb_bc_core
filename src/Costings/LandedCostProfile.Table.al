@@ -211,8 +211,8 @@ table 50340 "TFB Landed Cost Profile"
     procedure CalculateUnitCostStandard(ItemWeight: Decimal; PalletQty: Integer; ExchRate: Decimal; cs: Record "TFB Costing Scenario"; isDirectContainer: Boolean; var CalcBaseDesc: TextBuilder): Decimal
 
     var
-        TempPerPallet: Decimal;
-        TempPerContainer: Decimal;
+        LclTempPerPallet: Decimal;
+        LclTempPerContainer: Decimal;
         TotalForContainer: Decimal;
         FreightLCY: Decimal;
         ChargesToBeExcludedIfDirect: Decimal; // Direct charges excluded are calculated per pallet
@@ -229,47 +229,47 @@ table 50340 "TFB Landed Cost Profile"
 
         If not Palletised then begin
 
-            TempPerPallet += cs."Pallet Package Bundle";
-            TempPerContainer += cs."Unpack Loose";
+            LclTempPerPallet += cs."Pallet Package Bundle";
+            LclTempPerContainer += cs."Unpack Loose";
             CalcBaseDesc.AppendLine(StrSubstNo('Requires palletisation - pallet %1, container %2', cs."Pallet Package Bundle", cs."Unpack Loose"));
         end
         else begin
-            TempPerPallet += (cs."Pallet In Charge" + cs."Pallet Putaway Charge" + cs.Labelling);
-            CalcBaseDesc.AppendLine(StrSubstNo('Already palletised - just need pallet handling charge of %1', cs."Pallet In Charge" + cs."Pallet Putaway Charge" + TempPerPallet + cs.Labelling));
+            LclTempPerPallet += (cs."Pallet In Charge" + cs."Pallet Putaway Charge" + cs.Labelling);
+            CalcBaseDesc.AppendLine(StrSubstNo('Already palletised - just need pallet handling charge of %1', cs."Pallet In Charge" + cs."Pallet Putaway Charge" + LclTempPerPallet + cs.Labelling));
         end;
 
         if Inspected then
-            TempPerContainer += cs."Inspection Charge";
+            LclTempPerContainer += cs."Inspection Charge";
 
         //Exclude total pallet costs having to do with accepting in pallet of goods
 
-        ChargesToBeExcludedIfDirect := (TempPerPallet * Pallets);
+        ChargesToBeExcludedIfDirect := (LclTempPerPallet * Pallets);
 
 
 
         if "Purchase Type" = "Purchase Type"::Imported then begin
-            TempPerContainer += cs."Customs Declaration";
-            TempPerContainer += "Port Documents";
-            TempPerContainer += "Quarantine Fees";
-            TempPerContainer += cs."Port Cartage";
+            LclTempPerContainer += cs."Customs Declaration";
+            LclTempPerContainer += "Port Documents";
+            LclTempPerContainer += "Quarantine Fees";
+            LclTempPerContainer += cs."Port Cartage";
             if Financed then
-                TempPerContainer += cs."Bank Charge";
+                LclTempPerContainer += cs."Bank Charge";
             If "Freight Currency" <> '' then
                 FreightLCY := "Ocean Freight" / ExchRate
             else
                 FreightLCY := "Ocean Freight";
 
-            TempPerContainer += FreightLCY;
+            LclTempPerContainer += FreightLCY;
 
             CalcBaseDesc.AppendLine(StrSubstNo('Added Additional Import Charges of %1 and Freight %2', cs."Customs Declaration" + "Port Documents" + "Quarantine Fees" + cs."Port Cartage", FreightLCY));
-            if "Apply Contingency" then TempPerContainer += cs."Container Contingency";
-            if Fumigated then TempPerContainer += cs.Fumigation;
-            If "Heat Treated" then TempPerContainer += cs."Heat Treatment";
+            if "Apply Contingency" then LclTempPerContainer += cs."Container Contingency";
+            if Fumigated then LclTempPerContainer += cs.Fumigation;
+            If "Heat Treated" then LclTempPerContainer += cs."Heat Treatment";
 
         end;
 
 
-        TotalForContainer := (TempPerContainer + (TempPerPallet * Pallets));
+        TotalForContainer := (LclTempPerContainer + (LclTempPerPallet * Pallets));
 
         If isDirectContainer then
             TotalForContainer := TotalForContainer - ChargesToBeExcludedIfDirect;
@@ -283,10 +283,8 @@ table 50340 "TFB Landed Cost Profile"
 
     var
         currency: record Currency;
-        currency2: record "Currency Amount";
         currency3: record "Currency Exchange Rate";
-        cu: codeunit "Map Currency Exchange Rate";
-        cu2: codeunit "Additional-Currency Management";
+
         LatestDate: date;
         ExchRate: Decimal;
     begin
@@ -369,7 +367,7 @@ table 50340 "TFB Landed Cost Profile"
     end;
 
 
-    procedure CalculateCostPerUnit(var UnitWeight: decimal): Decimal
+    procedure CalculateCostPerUnit(UnitWeight: decimal): Decimal
     var
 
         AmountToAllocate: Decimal;

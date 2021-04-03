@@ -195,7 +195,7 @@ page 50140 "TFB APIV2 - Generic Items"
 
         ItemCategory: Record "Item Category";
 
-        GraphCollectionMgtItem: Codeunit "Graph Collection Mgt - Item";
+        //GraphCollectionMgtItem: Codeunit "Graph Collection Mgt - Item"; Doesn't appear to yet serve a useful function
         BlankGUID: Guid;
         ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
         ItemCategoriesValuesDontMatchErr: Label 'The item categories values do not match to a specific item category.';

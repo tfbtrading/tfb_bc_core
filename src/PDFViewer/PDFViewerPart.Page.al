@@ -27,7 +27,7 @@ page 50118 "PDF Viewer Part"
     var
         ControlIsReady: Boolean;
         Data: JsonObject;
-        DataCache: JsonObject;
+  
 
     local procedure InitializePDFViewer()
     var

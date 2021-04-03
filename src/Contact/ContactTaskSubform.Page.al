@@ -20,28 +20,34 @@ page 50126 "TFB Contact Task Subform"
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Description field';
                 }
 
                 field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Type field';
                 }
                 field(Date; Rec.Date)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Date field';
                 }
                 field(Priority; Rec.Priority)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Priority field';
                 }
                 field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Status field';
                 }
 
                 field("Opportunity Description"; Rec."Opportunity Description")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Opportunity Description field';
                 }
             }
         }
@@ -60,6 +66,7 @@ page 50126 "TFB Contact Task Subform"
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 Image = Start;
+                ToolTip = 'Executes the Set to In-Progress action';
 
                 trigger OnAction()
                 begin
@@ -77,6 +84,7 @@ page 50126 "TFB Contact Task Subform"
                 Image = Completed;
                 PromotedIsBig = true;
                 PromotedOnly = true;
+                ToolTip = 'Executes the Set to Completed action';
 
                 trigger OnAction()
                 begin

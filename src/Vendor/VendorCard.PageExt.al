@@ -19,8 +19,6 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                         else
                             Rec.Validate("TFB Vendor Price Unit", Rec."TFB Vendor Price Unit"::"N/A");
                     end;
-
-                    CheckVendorType();
                 end;
             }
         }
@@ -161,24 +159,9 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
         }
     }
 
-    trigger OnAfterGetRecord()
+ 
+  
 
-    begin
-        CheckVendorType()
-    end;
-
-    local procedure CheckVendorType()
-
-    begin
-        If Rec."TFB Vendor Type" = Rec."TFB Vendor Type"::TRADE then
-            VendorSellsInventory := true
-        else
-            VendorSellsInventory := false;
-    end;
-
-    var
-
-        [InDataSet]
-        VendorSellsInventory: Boolean;
+      
 
 }

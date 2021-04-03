@@ -116,11 +116,11 @@ page 50102 "TFB Item Costing Factbox"
     trigger OnAfterGetRecord()
 
     var
-        CCU: CodeUnit "TFB Costing Mgmt";
-        VPC: CodeUnit "Purch. Price Calc. Mgt.";
-        PricingLogic: CodeUnit "TFB Pricing Calculations";
-        PurchPrice: Record "Purchase Price";
         ItemCosting: Record "TFB Item Costing";
+        PurchPrice: Record "Purchase Price";
+        CCU: CodeUnit "TFB Costing Mgmt";
+        PricingLogic: CodeUnit "TFB Pricing Calculations";
+        VPC: CodeUnit "Purch. Price Calc. Mgt.";
 
     begin
 
@@ -152,11 +152,11 @@ page 50102 "TFB Item Costing Factbox"
 
     var
         _CurrentLandedCost: Decimal;
-        _LastPreLandedCost: Decimal;
-        _NextPreLandedCost: Decimal;
         _CurrPricePerKg: Decimal;
         _CurrPurchPrice: Decimal;
+        _LastPreLandedCost: Decimal;
         _MarketPrice: Decimal;
+        _NextPreLandedCost: Decimal;
 
 
 }

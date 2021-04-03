@@ -19,9 +19,6 @@ pageextension 50201 "TFB Unapply Vendor Entries" extends "Unapply Vendor Entries
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
-
     local procedure getExternalDocNo(): Text[100]
     var
         VendLedgEntry: Record "Vendor Ledger Entry";

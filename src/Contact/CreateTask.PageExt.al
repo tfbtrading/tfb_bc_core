@@ -17,11 +17,11 @@ pageextension 50193 "TFB Create Task" extends "Create Task"
 
                 trigger OnDrillDown()
                 var
-                    RecordRef: RecordRef;
                     SalesHeader: Record "Sales Header";
                     PurchaseHeader: Record "Purchase Header";
                     SalesInvoice: Record "Sales Invoice Header";
                     PurchInvoice: Record "Purch. Inv. Header";
+                    RecordRef: RecordRef;
                 begin
                     If not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
 

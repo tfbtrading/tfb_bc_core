@@ -617,7 +617,7 @@ table 50181 "TFB Container Entry"
 
     end;
 
-    local procedure ChangePurchaseOrderLink(var NewOrderReference: Code[20]; var OldOrderReference: Code[20]): Boolean
+    local procedure ChangePurchaseOrderLink(NewOrderReference: Code[20]; OldOrderReference: Code[20]): Boolean
 
     var
         PurchaseLine: Record "Purchase Line";
@@ -636,7 +636,7 @@ table 50181 "TFB Container Entry"
         ContainerEntry.Reset();
         ContainerEntry.SetRange("Order Type", "Order Type");
         ContainerEntry.SetRange("Order Reference", NewOrderReference);
-        If ContainerEntry.FIND('-') then begin
+        If not ContainerEntry.IsEmpty() then begin
             FieldError("Order Reference", 'Purchase Order Already has a Container Specified as' + ContainerEntry."Container No.");
             Exit(false);
         end;
@@ -681,7 +681,7 @@ table 50181 "TFB Container Entry"
 
     end;
 
-    local procedure ClearPurchaseOrderLink(var OrderReference: Code[20]): Boolean
+    local procedure ClearPurchaseOrderLink(OrderReference: Code[20]): Boolean
 
     var
         PurchaseLine: Record "Purchase Line";

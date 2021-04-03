@@ -17,12 +17,12 @@ pageextension 50194 "TFB Task Card" extends "Task Card"
 
                 trigger OnDrillDown()
                 var
-                    RecordRef: RecordRef;
-                    Variant: Variant;
                     SalesHeader: Record "Sales Header";
                     PurchaseHeader: Record "Purchase Header";
                     SalesInvoice: Record "Sales Invoice Header";
                     PurchInvoice: Record "Purch. Inv. Header";
+                    RecordRef: RecordRef;
+
                 begin
                     If not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
                     RecordRef.Get(Rec."TFB Trans. Record ID");

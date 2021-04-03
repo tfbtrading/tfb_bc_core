@@ -63,15 +63,7 @@ page 50348 "TFB Item Costing"
 
 
                 }
-                field("Landed Cost Scenario"; "LandedCostScenarioCode")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Landed cost scenario';
-
-                    Visible = false;
-                    ToolTip = 'Specifies landed cost scenario if overriden';
-
-                }
+           
                 field("Scenario Override"; Rec."Scenario Override")
                 {
                     ApplicationArea = All;
@@ -308,20 +300,7 @@ page 50348 "TFB Item Costing"
             }
         }
     }
-    var
-        LandedCostScenarioCode: code[20];
-        isDropShipVisible: Boolean;
+    
 
-    trigger OnAfterGetCurrRecord()
-    var
-        recScenario: record "TFB Costing Scenario";
-        recProfile: record "TFB Landed Cost Profile";
-    begin
-        if recProfile.get(Rec."Landed Cost Profile") then
-            if recScenario.get(recProfile.Scenario) then
-                LandedCostScenarioCode := recScenario.Code;
 
-        if Rec.Dropship then isDropShipVisible := false else isDropShipVisible := true;
-        ;
-    end;
 }

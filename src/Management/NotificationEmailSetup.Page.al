@@ -1,9 +1,9 @@
-page 50116 "TFB Email Notifications Setup"
+page 50116 "TFB Notifications Email Setup"
 {
 
     PageType = Card;
     SourceTable = "TFB Notification Email Setup";
-    Caption = 'Email Notification Setup';
+    Caption = 'Notification Email Setup';
     InsertAllowed = false;
     DeleteAllowed = false;
     UsageCategory = Administration;

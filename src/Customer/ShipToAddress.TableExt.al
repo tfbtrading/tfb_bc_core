@@ -19,6 +19,5 @@ tableextension 50109 "TFB Ship-to Address" extends "Ship-to Address"
         }
     }
 
-    var
-        myInt: Integer;
+
 }

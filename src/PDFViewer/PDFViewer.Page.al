@@ -39,7 +39,10 @@ page 50119 "PDF Viewer"
 
     local procedure ShowData()
     begin
-        if Content = '' then
+        if not ControlIsReady then
+            exit;
+
+        if not Data.Contains('content') then
             exit;
 
         Clear(Data);

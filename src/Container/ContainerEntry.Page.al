@@ -88,8 +88,6 @@ page 50210 "TFB Container Entry"
 
                             isVisible := false;
                             CurrPage.Lines.Page.SetVisibilityType(isVisible);
-
-
                             LoadTempTable();
                         end;
 
@@ -514,6 +512,22 @@ page 50210 "TFB Container Entry"
                 end;
             }
 
+            action("Remove Unpack Report")
+            {
+                ApplicationArea = All;
+                Image = ElectronicDoc;
+                Enabled = _unpackReportAttached;
+                Tooltip = 'Removes the pdf attachment if it exists';
+
+
+                trigger OnAction()
+                begin
+
+                    RemoveFile();
+
+                end;
+            }
+
             action("Adjust Reserved Sales")
             {
                 ApplicationArea = All;
@@ -549,8 +563,8 @@ page 50210 "TFB Container Entry"
                 trigger OnAction()
 
                 var
-
                     recPurchaseHeader: record "Purchase Header";
+
 
                 begin
 
@@ -654,32 +668,32 @@ page 50210 "TFB Container Entry"
     }
 
     var
-        NoSeriesMgt: Codeunit NoSeriesManagement;
-
         ContainerCU: Codeunit "TFB Container Mgmt";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
         pagePurchaseHead: Page "Purchase Order";
-
-
-
-        _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
-        ClearDateEnabled: Boolean;
         AvailToSellDateEnabled: Boolean;
+        ClearDateEnabled: Boolean;
         _unpackReportAttached, isAQISRelevant, isVisible : Boolean;
+        _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
+
+
+
+
 
     local procedure AttachFile()
 
     var
-
-        TempBlobCU: Codeunit "Temp Blob";
         PersistBlobCU: CodeUnit "Persistent Blob";
-
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        TempBlobCU: Codeunit "Temp Blob";
+        IStream: InStream;
+        BlobRef: BigInteger;
+        FileName: Text;
         EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Container Unpack File to Upload';
-        FileName: Text;
-        IStream: InStream;
+        FilterTxt: Label 'All files (*.pdf)|*.pdf';
 
-        BlobRef: BigInteger;
+
+
 
 
     begin
@@ -707,13 +721,13 @@ page 50210 "TFB Container Entry"
     local procedure DownloadFile()
 
     var
-
         PersistentBlob: Codeunit "Persistent Blob";
         TempBlob: CodeUnit "Temp Blob";
-        FileNameBuilder: TextBuilder;
-        FileName: Text;
         InStream: InStream;
         OutStream: OutStream;
+        FileName: Text;
+        FileNameBuilder: TextBuilder;
+
 
     begin
 
@@ -734,8 +748,8 @@ page 50210 "TFB Container Entry"
     end;
 
     var
-        DepatureDateEnabled: Boolean;
         ArrivalDateEnabled: Boolean;
+        DepatureDateEnabled: Boolean;
 
     local procedure RemoveFile()
     var
@@ -748,7 +762,6 @@ page 50210 "TFB Container Entry"
                 Clear(Rec."Unpack Worksheet Attach.");
                 UpdateReportStatus();
             end;
-
 
     end;
 
@@ -816,7 +829,7 @@ page 50210 "TFB Container Entry"
     local procedure UpdatePercReserved()
 
     var
-        ContainerContents: Record "TFB ContainerContents" temporary;
+        TempContainerContents: Record "TFB ContainerContents" temporary;
     begin
 
         Clear(_PercReserved);
@@ -825,14 +838,14 @@ page 50210 "TFB Container Entry"
         Rec.CalcFields("Qty. On Purch. Rcpt");
         If rec.Type = rec.type::PurchaseOrder then
             if rec."Qty. On Purch. Rcpt" > 0 then
-                ContainerCU.PopulateReceiptLines(rec, ContainerContents)
+                ContainerCU.PopulateReceiptLines(rec, TempContainerContents)
             else
-                ContainerCU.PopulateOrderOrderLines(Rec, ContainerContents);
+                ContainerCU.PopulateOrderOrderLines(Rec, TempContainerContents);
 
 
-        ContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
-        _QtyOnOrder := ContainerContents.Quantity;
-        _QtyReserved := ContainerContents."Qty Sold (Base)";
+        TempContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
+        _QtyOnOrder := TempContainerContents.Quantity;
+        _QtyReserved := TempContainerContents."Qty Sold (Base)";
         If _QtyOnOrder > 0 then
             _PercReserved := (_QtyReserved / _QtyOnOrder)
         else
@@ -842,8 +855,8 @@ page 50210 "TFB Container Entry"
     local procedure AdjustReservedSales()
 
     var
-        PR: Record "Purch. Rcpt. Line";
         LE: Record "Item Ledger Entry";
+        PR: Record "Purch. Rcpt. Line";
         SalesCU: CodeUnit "TFB Sales Mgmt";
 
     begin
@@ -872,33 +885,26 @@ page 50210 "TFB Container Entry"
     local procedure SendWarehouseUpdateEmail(DocNo: Code[20]): Boolean;
 
     var
-
         Doc: Record "TFB Container Entry";
-        DocLines: Record "TFB ContainerContents" temporary;
-        RepSel: Record "Report Selections";
-        Purchase: record "Purchase Header";
-        Transfer: record "Transfer Header";
-        TransferLine: record "Transfer Line";
         Location: record Location;
+        Purchase: record "Purchase Header";
+        RepSel: Record "Report Selections";
+        TransferRec: record "Transfer Header";
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
         DocMailing: codeunit "Document-Mailing";
         mgmt: codeunit "TFB Common Library";
-        TempBlobHTML: CodeUnit "Temp Blob";
         TempBlob: CodeUnit "Temp Blob";
         TempBlobCOA: CodeUnit "Temp Blob";
+        TempBlobHTML: CodeUnit "Temp Blob";
         DocumentRef: RecordRef;
         InStreamCOA: Instream;
-        OutStreamHTML: OutStream;
-        OutStreamReport: OutStream;
         InStreamHTML: InStream;
         InstreamReport: InStream;
+        OutStreamHTML: OutStream;
+        OutStreamReport: OutStream;
+        EmailID: Text[250];
         FileName: Text;
         FileNameCOA: Text;
-
-        EmailID: Text;
-
-        Recipients: List of [Text];
-
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
 
@@ -908,11 +914,11 @@ page 50210 "TFB Container Entry"
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
         if not Purchase.FindFirst() then begin
-            Transfer.SetRange("TFB Container Entry No.", Rec."No.");
-            If not Transfer.FindFirst() then
+            TransferRec.SetRange("TFB Container Entry No.", Rec."No.");
+            If not TransferRec.FindFirst() then
                 exit
             else
-                Location.Get(Transfer."Transfer-to Code");
+                Location.Get(TransferRec."Transfer-to Code");
         end
         else
             Location.Get(Purchase."Location Code");
@@ -940,32 +946,28 @@ page 50210 "TFB Container Entry"
                 If REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
                     TempBlob.CreateInStream(InstreamReport);
                     DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-
                 end;
         end
-        else begin
-
+        else
             DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-
-        end;
     end;
 
 
     local procedure GetNotificationContent(var HTMLBuilder: TextBuilder; Doc: record "TFB Container Entry"): Boolean
 
     var
-
-
-        tdTxt: label '<td valign="top" style="line-height:15px;">%1</td>', comment = '%1=table data html';
-        BodyBuilder: TextBuilder;
-
-        ReferenceBuilder: TextBuilder;
-        LineBuilder: TextBuilder;
+        TempContainerContents: record "TFB ContainerContents" temporary;
+        FieldRef: FieldRef;
+        RecordRef: RecordRef;
         FieldList: List of [Integer];
         FieldNo: Integer;
-        RecordRef: RecordRef;
-        FieldRef: FieldRef;
-        Content: record "TFB ContainerContents" temporary;
+        tdTxt: label '<td valign="top" style="line-height:15px;">%1</td>', comment = '%1=table data html';
+        BodyBuilder: TextBuilder;
+        LineBuilder: TextBuilder;
+        ReferenceBuilder: TextBuilder;
+
+
+
 
 
     begin
@@ -1034,21 +1036,21 @@ page 50210 "TFB Container Entry"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="10%">Qty Sold</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Unit</th></thead>');
 
-        ContainerCU.GetContainerContents(Content, Doc);
-        If Content.FindSet() then
+        ContainerCU.GetContainerContents(TempContainerContents, Doc);
+        If TempContainerContents.FindSet() then
             repeat
 
                 clear(LineBuilder);
                 LineBuilder.AppendLine('<tr>');
-                LineBuilder.Append(StrSubstNo(tdTxt, content."Item Code"));
-                LineBuilder.Append(StrSubstNo(tdTxt, content."Item Description"));
-                LineBuilder.Append(StrSubstNo(tdTxt, content.Quantity));
-                LineBuilder.Append(StrSubstNo(tdTxt, content."Qty Sold (Base)"));
-                LineBuilder.Append(StrSubstNo(tdTxt, content.UnitOfMeasure));
+                LineBuilder.Append(StrSubstNo(tdTxt, TempContainerContents."Item Code"));
+                LineBuilder.Append(StrSubstNo(tdTxt, TempContainerContents."Item Description"));
+                LineBuilder.Append(StrSubstNo(tdTxt, TempContainerContents.Quantity));
+                LineBuilder.Append(StrSubstNo(tdTxt, TempContainerContents."Qty Sold (Base)"));
+                LineBuilder.Append(StrSubstNo(tdTxt, TempContainerContents.UnitOfMeasure));
                 LineBuilder.AppendLine('</tr>');
                 BodyBuilder.Append(LineBuilder.ToText());
 
-            until Content.Next() < 1;
+            until TempContainerContents.Next() < 1;
 
         BodyBuilder.AppendLine('</table>');
 

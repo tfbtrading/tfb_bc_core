@@ -10,6 +10,5 @@ pageextension 50196 "TFB Sales Credit Memo" extends "Sales Credit Memo"
         // Add changes to page actions here
     }
     
-    var
-        myInt: Integer;
+    
 }

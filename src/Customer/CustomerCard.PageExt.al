@@ -240,6 +240,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 ApplicationArea = All;
                 Image = UpdateDescription;
                 Caption = 'Update Contact ID';
+                ToolTip = 'Update the contact link for this customer';
 
                 trigger OnAction()
 
@@ -249,7 +250,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     ContBusRel.SetCurrentKey("Link to Table", "No.");
                     ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
                     ContBusRel.SetRange("No.", Rec."No.");
-                    if ContBusRel.FindFirst then begin
+                    if ContBusRel.FindFirst() then begin
 
                         Rec."TFB Primary Contact Company ID" := ContBusRel."Contact No.";
                         Rec.Modify();
@@ -334,13 +335,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
 
         }
     }
-    var
-        _testLink: code[20];
 
-    trigger OnAfterGetRecord()
 
-    begin
-
-    end;
 
 }

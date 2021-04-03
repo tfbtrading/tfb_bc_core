@@ -13,10 +13,11 @@ pageextension 50197 "TFB Transfer Shipment" extends "Posted Transfer Shipment"
     {
         addfirst("&Shipment")
         {
-            action(ActionName)
+            action("&TransferOrder")
             {
                 ApplicationArea = All;
                 Caption = 'Transfer Order';
+                ToolTip = 'Opens the related transfer order';
                 RunObject = page "Transfer Order";
                 RunPageLink = "No." = field("Transfer Order No.");
                 Enabled = TransferOrderExists;

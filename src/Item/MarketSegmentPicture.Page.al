@@ -41,7 +41,7 @@ page 50137 "TFB Market Segment Picture"
 
                 trigger OnAction()
                 begin
-                    TakeNewPicture;
+                    TakeNewPicture();
                 end;
             }
             action(ImportPicture)
@@ -82,7 +82,7 @@ page 50137 "TFB Market Segment Picture"
 
                 trigger OnAction()
                 begin
-                    DeleteItemPicture;
+                    DeleteItemPicture();
                 end;
             }
         }
@@ -90,7 +90,7 @@ page 50137 "TFB Market Segment Picture"
 
     trigger OnAfterGetCurrRecord()
     begin
-        SetEditableOnPictureActions;
+        SetEditableOnPictureActions();
     end;
 
     trigger OnOpenPage()
@@ -102,16 +102,17 @@ page 50137 "TFB Market Segment Picture"
         Camera: Codeunit Camera;
         [InDataSet]
         CameraAvailable: Boolean;
-        OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
+
         DeleteImageQst: Label 'Are you sure you want to delete the picture?';
-        SelectPictureTxt: Label 'Select a picture to upload';
+        //SelectPictureTxt: Label 'Select a picture to upload';
+        //MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
+        //OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
         DeleteExportEnabled: Boolean;
         HideActions: Boolean;
-        MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
 
     procedure TakeNewPicture()
     begin
-        Rec.Find;
+        Rec.Find();
         Rec.TestField(Description);
 
 
@@ -147,9 +148,9 @@ page 50137 "TFB Market Segment Picture"
     local procedure ExportItemPicture()
 
     var
+        TenantMedia: Record "Tenant Media";
         Instream: Instream;
         Index: Integer;
-        TenantMedia: Record "Tenant Media";
         ImgFileName: Text;
         ConfMsg: Label 'No picture stored';
 
@@ -158,7 +159,7 @@ page 50137 "TFB Market Segment Picture"
         If Rec.Picture.Count = 0 then
             Error(ConfMsg);
 
-        for Index := 1 to Rec.Picture.count do begin
+        for Index := 1 to Rec.Picture.count do
             If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
                 TenantMedia.CalcFields(content);
                 If TenantMedia.Content.HasValue then begin
@@ -168,7 +169,7 @@ page 50137 "TFB Market Segment Picture"
 
                 end;
             end;
-        end;
+
     end;
 
     local procedure GetImgFileExt(var TenantMedia: Record "Tenant Media"): Text

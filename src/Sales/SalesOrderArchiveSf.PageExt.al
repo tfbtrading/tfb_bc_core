@@ -1,4 +1,4 @@
-pageextension 50185 "TFB Sales Order Arch. Subform" extends "Sales Order Archive Subform"
+pageextension 50185 "TFB Sales Order Archive Sf" extends "Sales Order Archive Subform"
 {
     layout
     {

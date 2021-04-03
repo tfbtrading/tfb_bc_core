@@ -23,8 +23,8 @@ tableextension 50111 "TFB Incoming Document Attach." extends "Incoming Document 
 
     procedure ToBase64String() ReturnValue: Text
     var
-        InStr: InStream;
         Base64Convert: Codeunit "Base64 Convert";
+        InStr: InStream;
     begin
         CalcFields(Content);
         if not Content.HasValue() then

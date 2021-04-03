@@ -95,8 +95,8 @@ codeunit 50107 "TFB Item Mgmt"
     var
         SalesSetup: Record "Sales & Receivables Setup";
         Item: Record Item;
-        PricingCU: CodeUnit "TFB Pricing Calculations";
         SalesPriceRec: Record "Sales Price";
+        PricingCU: CodeUnit "TFB Pricing Calculations";
     begin
         SalesSetup.Get();
 
@@ -126,9 +126,9 @@ codeunit 50107 "TFB Item Mgmt"
 
     var
 
-        PricingCU: CodeUnit "TFB Pricing Calculations";
         SalesInvoiceLine: Record "Sales Invoice Line";
         Item: Record Item;
+        PricingCU: CodeUnit "TFB Pricing Calculations";
     begin
 
         GetItemDynamicDetails(ItemNo, SalesPrice, LastChanged);

@@ -17,9 +17,6 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
 
                 trigger OnDrillDown()
 
-                var
-
-                    _TotalQty: Decimal;
                 begin
                     If Rec.Type = Rec.Type::Item then
                         Rec.OpenItemTrackingLines();
@@ -178,8 +175,8 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
     end;
 
     var
+        PurchaseLine: record "Purchase Line";
         LotCU: Codeunit "TFB Lot Intelligence";
-        _trackingEmoji: Text;
         _isTrackingReq: enum "TFB Lot Status";
         _isCoAReq: enum "TFB Lot Status";
 
@@ -187,8 +184,8 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
         _isTrackingVisible: Boolean;
         _TotalQty: Decimal;
         _TotalWeight: Decimal;
+        _trackingEmoji: Text;
         _isCoARequiredEmoji: Text;
-        PurchaseLine: record "Purchase Line";
 
     local procedure CheckCoAVisibility()
 

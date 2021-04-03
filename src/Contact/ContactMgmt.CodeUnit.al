@@ -9,7 +9,7 @@ codeunit 50111 "TFB Contact Mgmt"
     local procedure OnCreateTaskFromSalesHeaderOnBeforeStartWizard(var Task: Record "To-do"; SalesHeader: Record "Sales Header");
 
     var
-        TransText: Text;
+        TransText: Text[250];
 
     begin
 

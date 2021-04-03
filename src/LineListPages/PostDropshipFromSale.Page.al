@@ -192,6 +192,7 @@ page 50115 "TFB Post Dropship from Sale"
             {
                 ApplicationArea = All;
                 Caption = 'Post Dropship';
+                ToolTip = 'Post the drop ship receipt';
 
                 trigger OnAction()
 
@@ -202,30 +203,18 @@ page 50115 "TFB Post Dropship from Sale"
                     CurrPage.SetSelectionFilter(Line);
                     Message('Post %1 with package tracking %2 on %3', Rec."Purchase Order No.", _packageTrackingNo, _dateShipped);
 
-                    if Line.FindSet() then begin
+                    if Line.FindSet() then
                         repeat
                             Message('Selected %1, Line $%2', line."Purchase Order No.", Line."Purch. Order Line No.");
 
                         until Line.Next() < 1;
-                    end;
+
 
                 end;
             }
         }
 
     }
-    local procedure TriggerPostSalesPost()
-
-    var
-        cu: codeunit "Sales-Post and Send";
-        cu2: codeunit "Sales-Post";
-
-    begin
-
-
-
-    end;
-
 
     var
 

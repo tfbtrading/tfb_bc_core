@@ -102,22 +102,6 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
         Exit(true);
     end;
 
-    local procedure CheckAndRetrieveContainerEntry()
-
-    var
-        CE: Record "TFB Container Entry";
-
-    begin
-
-        _ContainerEntry := '';
-        _ContainerNo := '';
-
-        CE.SetRange("Order Reference", Rec."Order No.");
-        If CE.FindSet(false, false) then begin
-            _ContainerEntry := CE."No.";
-            _ContainerEntry := CE."Container No.";
-        end;
-    end;
 
     local procedure OpenContainerDrillDown(EntryNo: Code[20])
 

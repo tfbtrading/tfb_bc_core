@@ -116,8 +116,8 @@ page 50132 "TFB Generic Item"
                         trigger OnLookup(var Text: Text): Boolean
 
                         var
-                            MarketSegmentList: Page "TFB Product Market Seg. List";
                             MarketSegmentRec: Record "TFB Product Market Segment";
+                            MarketSegmentList: Page "TFB Product Market Seg. List";
                         begin
                             MarketSegmentList.LookupMode(true);
                             MarketSegmentRec.SetFilter(SystemId, BuildExclusionFilter(Rec.SystemId));
@@ -204,10 +204,10 @@ page 50132 "TFB Generic Item"
 
 
     var
+        CommonCU: CodeUnit "TFB Common Library";
         FullDescription: Text;
         MarketSegment: Text[255];
         ShowExternalIDs: Boolean;
-        CommonCU: CodeUnit "TFB Common Library";
 
     trigger OnAfterGetRecord()
 
@@ -243,7 +243,7 @@ page 50132 "TFB Generic Item"
     begin
         Rec.CalcFields("Full Description");
         Rec."Full Description".CreateInStream(InStream, TEXTENCODING::UTF8);
-        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator));
+        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator()));
     end;
 
     local procedure ValidateNewSegment(Title: Text[255])
@@ -282,10 +282,10 @@ page 50132 "TFB Generic Item"
 
         MarketSegmentRel.SetRange(GenericItemID, SystemId);
         If MarketSegmentRel.FindSet(false, false) then
-            repeat begin
+            repeat 
                 If FilterExpr.Length > 0 then FilterExpr.Append('&');
                 FilterExpr.Append(StrSubstNo('<>%1', MarketSegmentRel.ProductMarketSegmentID));
-            end until MarketSegmentRel.Next = 0;
+            until MarketSegmentRel.Next() = 0;
         Exit(FilterExpr.ToText());
     end;
 

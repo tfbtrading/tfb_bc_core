@@ -273,7 +273,6 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
     var
         DropShipDefault: Boolean;
-        GenericExtensionName: Text[255];
 
 
     local procedure CheckAndUpdateDropShipDetails()

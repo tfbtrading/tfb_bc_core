@@ -43,11 +43,12 @@ codeunit 50242 "TFB Brokerage Mgmt"
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Shipment: Record "TFB Brokerage Shipment";
-        ShipmentRef: Text;
+     
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
 
         EmailID: Text;
+        ShipmentRef: Text;
         Recipients: List of [Text];
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
@@ -121,9 +122,9 @@ codeunit 50242 "TFB Brokerage Mgmt"
         BodyBuilder: TextBuilder;
         LineBuilder: TextBuilder;
         ReferenceBuilder: TextBuilder;
-        OrderNoTxt: label 'Our order %1', comment = 'Order No';
-        CustomerRefTxt: label ' and your ref no. is %1', comment = 'External No';
-        VendorNoTxt: label '. Vendor invoice no. is %1', comment = 'Vendor Invoice No';
+        OrderNoTxt: label 'Our order %1', comment = '%1 = Order No';
+        CustomerRefTxt: label ' and your ref no. is %1', comment = '%1 = External No';
+        VendorNoTxt: label '. Vendor invoice no. is %1', comment = '%1 = Vendor Invoice No';
 
     begin
 

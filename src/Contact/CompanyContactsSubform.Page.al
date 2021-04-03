@@ -21,6 +21,7 @@ page 50130 "TFB Company Contacts Subform"
                     ApplicationArea = All;
 
                     DrillDown = true;
+                    ToolTip = 'Specifies the value of the Name field';
 
                     trigger OnDrillDown()
 
@@ -33,26 +34,31 @@ page 50130 "TFB Company Contacts Subform"
                 field("Job Title"; Rec."Job Title")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Job Title field';
                 }
                 field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the E-Mail field';
                 }
 
                 field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Phone No. field';
                 }
 
                 field("Mobile Phone No."; Rec."Mobile Phone No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Mobile Phone No. field';
                 }
 
                 field(AssignedRoles; getJobResponsibilities())
                 {
                     ApplicationArea = All;
                     Caption = 'Job responsibilities';
+                    ToolTip = 'Specifies the value of the Job responsibilities field';
                 }
             }
         }
@@ -135,7 +141,7 @@ page 50130 "TFB Company Contacts Subform"
                 var
                     TAPIManagement: Codeunit TAPIManagement;
                 begin
-                    TAPIManagement.DialContCustVendBank(DATABASE::Contact, Rec."No.", Rec.GetDefaultPhoneNo, '');
+                    TAPIManagement.DialContCustVendBank(DATABASE::Contact, Rec."No.", Rec.GetDefaultPhoneNo(), '');
                 end;
             }
             action("Create &Interaction")
@@ -152,7 +158,7 @@ page 50130 "TFB Company Contacts Subform"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateInteraction;
+                    Rec.CreateInteraction();
                 end;
             }
         }
@@ -171,12 +177,12 @@ page 50130 "TFB Company Contacts Subform"
         Resp.SetRange("Contact No.", Rec."No.");
         Resp.SetAutoCalcFields("Job Responsibility Description");
 
-        If Resp.FindFirst() then
-            repeat begin
+        If Resp.FindSet() then
+            repeat
 
                 RespText.AppendLine(Resp."Job Responsibility Description");
 
-            end until Resp.Next = 0;
+            until Resp.Next() = 0;
 
         Exit(RespText.ToText());
     end;

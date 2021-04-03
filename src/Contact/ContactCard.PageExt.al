@@ -139,6 +139,6 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
 
 
     var
-        Link: Label '🔗';
+    //    LinkTxt: Label '🔗';
 
 }

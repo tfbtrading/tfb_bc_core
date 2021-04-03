@@ -150,6 +150,7 @@ page 50147 "TFB Pending Sales Lines"
                 field("Shipment Status Update"; _StatusUpdate)
                 {
                     ApplicationArea = All;
+                    Caption = 'Shipment Status';
                     ToolTip = 'Captures the suppliers status update';
                     Editable = true;
                     Visible = false;

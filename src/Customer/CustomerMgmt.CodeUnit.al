@@ -73,8 +73,8 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
         RepSelSales: Record "Report Selections";
-        Common: CodeUnit "TFB Common Library";
         Customer: Record Customer;
+        Common: CodeUnit "TFB Common Library";
         XmlParameters: Text;
         SubTitleTxt: Label 'Please find below your latest statement';
         TitleTxt: Label 'Statement';
@@ -100,27 +100,21 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
 
-    procedure SendCustomerStatement(var CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text): Boolean
+    procedure SendCustomerStatement(CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text): Boolean
 
     var
 
         RepSelSales: Record "Report Selections";
         Customer: Record Customer;
-
-
         CustomerLayouts: Record "Custom Report Selection";
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
-        EmailScenEnum: Enum "Email Scenario";
-        EmailAction: enum "Email Action";
         TempBlobCU: Codeunit "Temp Blob";
-
-
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
-
+        EmailScenEnum: Enum "Email Scenario";
         EmailID: Text;
         IStream: InStream;
         OStream: OutStream;
@@ -187,7 +181,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-                EmailMessage.AddAttachment(FileNameBuilder.ToText(), 'Application/PDF', IStream);
+                EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(),1,250), 'Application/PDF', IStream);
                 Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
 
 
@@ -200,12 +194,12 @@ codeunit 50120 "TFB Customer Mgmt"
 
     procedure SendOneCustomerStatusEmail(CustNo: Code[20]): Boolean
     var
+        cu: CodeUnit "TFB Common Library";
         Window: Dialog;
         Text001Msg: Label 'Sending Customer Updates:\#1############################', Comment = '%1 is the customer number';
-        Result: Boolean;
         SubtitleTxt: Label 'Please find below our latest information on pending orders that have not yet been shipped or invoiced and recent invoices that have been sent';
         TitleTxt: Label 'Order Status';
-        cu: CodeUnit "TFB Common Library";
+        Result: Boolean;
 
     begin
 
@@ -226,7 +220,6 @@ codeunit 50120 "TFB Customer Mgmt"
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         EmailScenEnum: Enum "Email Scenario";
-        EmailAction: enum "Email Action";
         SubjectTxt: Label 'Order status update for %1 from TFB Trading Australia', Comment = '%1 is Customer Name';
 
         //Email address to send to
@@ -354,7 +347,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         PricingCU: CodeUnit "TFB Pricing Calculations";
 
-        ShipDatePlanned: Date;
+     
         Count: Integer;
 
         BodyBuilder: TextBuilder;
@@ -434,7 +427,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 Item.Get(salesLine."No.");
                 UoM.Get(Item."Base Unit of Measure");
                 SalesLine.CalcFields("Reserved Qty. (Base)", "Whse. Outstanding Qty.");
-                ShipDatePlanned := SalesLine."Planned Shipment Date";
+            
 
                 //BodyBuilder.AppendLine('<tr>');
 
@@ -530,8 +523,8 @@ codeunit 50120 "TFB Customer Mgmt"
                             WhseShptLine.SetRange("Source No.", SalesLine."Document No.");
                             WhseShptLine.SetRange("Source Line No.", SalesLine."Line No.");
 
-                            if WhseShptLine.FindFirst() then
-                                ShipDatePlanned := WhseShptLine."Shipment Date";
+                            //if WhseShptLine.FindFirst() then
+                                //ShipDatePlanned := WhseShptLine."Shipment Date"; //TODO Check if we need to add ship date
                         end
                     else begin
                         //Get Vendor Details
@@ -642,7 +635,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         SalesSetup: Record "Sales & Receivables Setup";
         BodyBuilder: TextBuilder;
-        overdue, overCreditLimit, SuppressLine : Boolean;
+        overdue, overCreditLimit:  Boolean;
 
 
     begin

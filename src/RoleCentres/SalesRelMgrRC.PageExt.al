@@ -24,6 +24,5 @@ pageextension 50203 "TFB Sales & Rel. Mgr RC" extends "Sales & Relationship Mgr.
         // Add changes to page actions here
     }
 
-    var
-        myInt: Integer;
+
 }

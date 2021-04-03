@@ -44,16 +44,14 @@ codeunit 50304 "TFB Costing Mgmt"
 
     begin
 
-        if UpdateExchRate then begin
+        if UpdateExchRate then
             if LCProfile.FindSet(true, false) then
                 repeat
 
                     LCProfile.CalculateCosts();
-                    LCProfile.Modify(false);
 
                 until LCProfile.Next() < 1;
 
-        end;
 
         ItemCost.SetRange(Current, true);
 
@@ -99,9 +97,9 @@ codeunit 50304 "TFB Costing Mgmt"
             SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
             SalesPrice.SetRange("Ending Date", 0D);
 
-            If SalesPrice.FindLast() then begin
+            If SalesPrice.FindLast() then
                 Exit(PCE.CalcPerKgFromUnit(SalesPrice."Unit Price", Item."Net Weight"));
-            end;
+
         end;
     end;
 
@@ -496,11 +494,9 @@ codeunit 50304 "TFB Costing Mgmt"
         DaysStored: Decimal;
         StorageCost: Decimal;
         HandlingCost: Decimal;
-        InspectionCost: Decimal;
         DeliveryCost: Decimal;
         CalcBaseDesc: TextBuilder;
-        CalcDescLine: TextBuilder;
-
+        
 
         i: Integer;
         j: Integer;
@@ -636,7 +632,7 @@ codeunit 50304 "TFB Costing Mgmt"
         Lines."Price Per Weight Unit" := PricingCU.CalcPerKgFromUnit(TotalLCUnitCostLCY[1, 1], ItemWeight);
         Lines."Market Price (Base)" := TotalLCUnitCostLCY[2, 1];
         Lines."Market price Per Weight Unit" := PricingCU.CalcPerKgFromUnit(TotalLCUnitCostLCY[2, 1], ItemWeight);
-        Lines.CalcDesc := CalcBaseDesc.ToText();
+        Lines.CalcDesc := CopyStr(CalcBaseDesc.ToText(), 1, 2048);
         Lines.Insert();
 
         //Generate total costs including outbound handling
@@ -652,7 +648,7 @@ codeunit 50304 "TFB Costing Mgmt"
         Lines."Price Per Weight Unit" := PricingCU.CalcPerKgFromUnit(TotalUnitCostLCY[1, 1], ItemWeight);
         Lines."Market Price (Base)" := TotalUnitCostLCY[2, 1];
         Lines."Market price Per Weight Unit" := PricingCU.CalcPerKgFromUnit(TotalUnitCostLCY[2, 1], ItemWeight);
-        Lines.CalcDesc := CalcBaseDesc.ToText();
+        Lines.CalcDesc := CopyStr(CalcBaseDesc.ToText(), 1, 2048);
         Lines.Insert();
 
         //Generate total direct container / semi-load pricing
@@ -758,10 +754,10 @@ codeunit 50304 "TFB Costing Mgmt"
         end;
     end;
 
-	internal procedure CopyCurrentCostingToPriceList(Rec: Record "Price List Header")
-	begin
-		Error('Procedure CopyCurrentCostingToPriceList not implemented.');
-	end;
+    internal procedure CopyCurrentCostingToPriceList(Rec: Record "Price List Header")
+    begin
+        Error('Procedure CopyCurrentCostingToPriceList not implemented.');
+    end;
 
     local procedure AddMargin(Margin: Decimal; BaseValue: Decimal): Decimal
 

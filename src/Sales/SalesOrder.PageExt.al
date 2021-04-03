@@ -123,7 +123,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
 
                 trigger OnAction()
                 begin
-                    Rec.CreateTask;
+                    Rec.CreateTask();
                 end;
             }
         }

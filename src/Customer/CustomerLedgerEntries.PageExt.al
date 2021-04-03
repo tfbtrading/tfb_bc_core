@@ -26,6 +26,5 @@ pageextension 50168 "TFB Customer Ledger Entries" extends "Customer Ledger Entri
         }
     }
 
-    var
-        myInt: Integer;
+
 }

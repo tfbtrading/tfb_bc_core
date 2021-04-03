@@ -1,4 +1,4 @@
-tableextension 50122 "TFB Inteaction Temp. Setip" extends "Interaction Template Setup"
+tableextension 50122 "TFB Interaction Template Setup" extends "Interaction Template Setup"
 {
     fields
     {

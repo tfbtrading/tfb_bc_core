@@ -1,57 +1,6 @@
 codeunit 50200 "TFB Container Mgmt"
 {
 
-
-
-
-    local procedure RegisterLinkToContainer("Link Type": Enum "TFB Container Link Type"; "Container Entry No.": Code[20];
-                                                             "Source No.": Code[20])
-
-    var
-        LifeCycleLink: record "TFB Container LifeCycle Link";
-
-
-    begin
-
-        LifeCycleLink.SetRange("Document No.", "Container Entry No.");
-        LifeCycleLink.SetRange(Type, "Link Type");
-        LifeCycleLink.SetRange("Line No.", 0);
-        LifeCycleLink.SetRange("Source No.", "Source No.");
-
-        If LifeCycleLink.IsEmpty() then begin
-
-            LifeCycleLink.Init();
-            LifeCycleLink.Comment := 'Created during purchase receipt';
-            LifeCycleLink.Insert(true);
-
-        end;
-
-    end;
-
-
-
-    local procedure UpdateContainerStatus(DocumentNo: Code[20]; POReceived: Boolean)
-
-    var
-        ContainerEntry: record "TFB Container Entry";
-
-    begin
-        ContainerEntry.SetRange("Order Reference", DocumentNo);
-        ContainerEntry.SetRange(Type, ContainerEntry.Type::PurchaseOrder);
-        If ContainerEntry.FindFirst() then
-            If POReceived then
-                case ContainerEntry.Status of
-                    ContainerEntry.Status::Closed:
-                        //No Nothing
-                        Message('Container has already been set to closed/received');
-                    else begin
-                            ContainerEntry.Validate(Status, ContainerEntry.Status::Closed);
-                            ContainerEntry.Modify(false)
-                        end;
-                end;
-
-    end;
-
     /// <summary> 
     /// Description for GetContainerContents.
     /// </summary>
@@ -105,7 +54,7 @@ codeunit 50200 "TFB Container Mgmt"
         ReceiptLine: Record "Purch. Rcpt. Line";
         ResEntry: Record "Reservation Entry";
         OrderLine: Record "Purchase Line";
-        Lines: Record "TFB ContainerContents" temporary;
+        TempLines: Record "TFB ContainerContents" temporary;
         LotInfo: Record "Lot No. Information";
         ItemLedger: Record "Item Ledger Entry";
         TempBlobList: CodeUnit "Temp Blob List";
@@ -126,18 +75,18 @@ codeunit 50200 "TFB Container Mgmt"
 
 
     begin
-        GetContainerContents(Lines, ContainerEntry);
-        If Lines.FindSet() then
+        GetContainerContents(TempLines, ContainerEntry);
+        If TempLines.FindSet() then
             repeat
                 Clear(LineLotNo);
-                OrderNo := Lines.OrderReference;
-                case Lines."Link Type" of
-                    Lines."Link Type"::"Purchase Order Receipt":
+                OrderNo := TempLines.OrderReference;
+                case TempLines."Link Type" of
+                    TempLines."Link Type"::"Purchase Order Receipt":
                         begin
                             RecRef.GetTable(ReceiptLine);
 
-                            ReceiptLine.SetRange("Order No.", Lines.OrderReference);
-                            ReceiptLine.SetRange("Order Line No.", Lines.LineNo);
+                            ReceiptLine.SetRange("Order No.", TempLines.OrderReference);
+                            ReceiptLine.SetRange("Order Line No.", TempLines.LineNo);
                             ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
 
                             If ReceiptLine.FindFirst() then begin
@@ -158,15 +107,15 @@ codeunit 50200 "TFB Container Mgmt"
 
                         end;
 
-                    Lines."Link Type"::"Purchase Order":
+                    TempLines."Link Type"::"Purchase Order":
                         begin
                             RecRef.GetTable(OrderLine);
                             ResEntry.SetFilter("Reservation Status", '%1|%2', ResEntry."Reservation Status"::Surplus, ResEntry."Reservation Status"::Reservation);
-                            ResEntry.SetRange("Source ID", Lines.OrderReference);
-                            ResEntry.SetRange("Source Ref. No.", Lines.LineNo);
+                            ResEntry.SetRange("Source ID", TempLines.OrderReference);
+                            ResEntry.SetRange("Source Ref. No.", TempLines.LineNo);
                             ResEntry.SetFilter("Quantity (Base)", '>0');
                             ResEntry.SetRange("Source Type", RecRef.Number());
-                            ResEntry.SetRange("Item No.", Lines."Item Code");
+                            ResEntry.SetRange("Item No.", TempLines."Item Code");
                             ResEntry.SetFilter("Lot No.", '<>%1', '');
 
                             If ResEntry.FindFirst() then
@@ -184,7 +133,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                     //Get Lot Info 
                     LotInfo.SetRange("Lot No.", LineLotNo);
-                    LotInfo.SetRange("Item No.", Lines."Item Code");
+                    LotInfo.SetRange("Item No.", TempLines."Item Code");
 
                     If LotInfo.FindFirst() then begin
 
@@ -198,7 +147,7 @@ codeunit 50200 "TFB Container Mgmt"
                             TempBlobList.Add(TempBlobCu);
                             clear(FileNameBuilder);
                             FileNameBuilder.Append('COA_');
-                            FileNameBuilder.Append(Lines."Item Code");
+                            FileNameBuilder.Append(TempLines."Item Code");
                             FileNameBuilder.Append('_');
                             FileNameBuilder.Append(LineLotNo);
                             FileNameBuilder.Append('.pdf');
@@ -211,7 +160,7 @@ codeunit 50200 "TFB Container Mgmt"
                 end;
 
 
-            until Lines.Next() < 1;
+            until TempLines.Next() < 1;
 
 
         case TempBlobList.Count() of
@@ -475,7 +424,7 @@ codeunit 50200 "TFB Container Mgmt"
     begin
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntryNo);
 
-        If TransferLine.FindSet(false, false) then begin
+        If TransferLine.FindFirst() then begin
 
             //Check Status
             If TransferLine."Quantity Shipped" > 0 then begin
@@ -484,7 +433,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 TransferShipmentLine.SetRange("Transfer Order No.", TransferNo);
                 TransferShipmentLine.SetFilter(Quantity, '>0');
-                If TransferShipmentLine.FindSet(false, false) then
+                If TransferShipmentLine.FindFirst() then
                     PstdTransferShptNo := TransferShipmentLine."Document No.";
             end
             else
@@ -501,9 +450,9 @@ codeunit 50200 "TFB Container Mgmt"
             TransferReceiptLine.SetRange("TFB Container Entry No.", ContainerEntryNo);
             TransferReceiptLine.SetFilter(Quantity, '>0');
 
-            If TransferShipmentLine.FindSet(false, false) then begin
+            If TransferShipmentLine.FindFirst() then begin
 
-                if TransferReceiptLine.FindSet(false, false) then begin
+                if TransferReceiptLine.FindFirst() then begin
 
                     PstdTransferShptNo := TransferShipmentLine."Document No.";
                     PstdTransferRcptNo := TransferReceiptLine."Document No.";
@@ -576,14 +525,12 @@ codeunit 50200 "TFB Container Mgmt"
         Vendor: Record Vendor;
         CodePricing: Codeunit "TFB Pricing Calculations";
         TempPriceUnit: Enum "TFB Price Unit";
-        LineWeight: Decimal;
+
         TempEstAlloc: Decimal;
         TempLineAlloc: Decimal;
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
-        TotalQuantity: Decimal;
-        TotalValue: Decimal;
-        TotalWeight: Decimal;
+
 
 
     begin
@@ -593,7 +540,7 @@ codeunit 50200 "TFB Container Mgmt"
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
 
         //Get Header Defaults and Calculate Totals
-        If PurchaseLine.FINDSET() then begin
+        If not PurchaseLine.IsEmpty() then begin
 
             Vendor.Get(PurchaseLine."Buy-from Vendor No.");
             TempPriceUnit := Vendor."TFB Vendor Price Unit";
@@ -602,14 +549,7 @@ codeunit 50200 "TFB Container Mgmt"
             Lines.Reset();
             Lines.DeleteAll();
 
-            repeat
-                //Calculate Totals of Lines 
-                TotalQuantity += PurchaseLine.Quantity;
-                TotalValue += PurchaseLine.Amount;
-                TotalWeight += (PurchaseLine."Net Weight" * PurchaseLine.Quantity);
 
-
-            UNTIL PurchaseLine.Next() = 0;
         end;
 
         If PurchaseLine.FINDSET() THEN
@@ -622,9 +562,6 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines.Quantity := PurchaseLine.Quantity;
                 Lines."Unit Cost" := PurchaseLine."Unit Cost";
                 Lines."Link Type" := Lines."Link Type"::"Purchase Order";
-
-
-                LineWeight := PurchaseLine.Quantity * PurchaseLine."Net Weight";
 
 
                 Lines."Price Unit" := TempPriceUnit;
@@ -668,14 +605,13 @@ codeunit 50200 "TFB Container Mgmt"
         ItemLedger: Record "Item Ledger Entry";
         CodePricing: Codeunit "TFB Pricing Calculations";
         TempPriceUnit: Enum "TFB Price Unit";
-        LineWeight: Decimal;
+
         TempEstAlloc: Decimal;
         TempLineAlloc: Decimal;
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
-        TotalQuantity: Decimal;
-        TotalValue: Decimal;
-        TotalWeight: Decimal;
+
+   
         LineNo: Integer;
 
 
@@ -687,7 +623,7 @@ codeunit 50200 "TFB Container Mgmt"
         ReceiptLine.SetFilter(Quantity, '>0');
 
         //Get Header Defaults and Calculate Totals
-        If ReceiptLine.FindSet() then begin
+        If not ReceiptLine.IsEmpty() then begin
 
             Vendor.Get(ReceiptLine."Buy-from Vendor No.");
             TempPriceUnit := Vendor."TFB Vendor Price Unit";
@@ -696,14 +632,7 @@ codeunit 50200 "TFB Container Mgmt"
             Lines.Reset();
             Lines.DeleteAll();
 
-            repeat
-                //Calculate Totals of Lines 
-                TotalQuantity += ReceiptLine.Quantity;
-                TotalValue += ReceiptLine."Unit Cost" * ReceiptLine.Quantity;
-                TotalWeight += (ReceiptLine."Net Weight" * ReceiptLine.Quantity);
-
-
-            UNTIL ReceiptLine.Next() = 0;
+          
         end;
         clear(Lines);
         clear(LineNo);
@@ -721,7 +650,6 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines."Link Type" := Lines."Link Type"::"Purchase Order Receipt";
 
 
-                LineWeight := ReceiptLine.Quantity * ReceiptLine."Net Weight";
 
 
                 Lines."Price Unit" := TempPriceUnit;
@@ -793,14 +721,11 @@ codeunit 50200 "TFB Container Mgmt"
         Vendor: Record Vendor;
         CodePricing: Codeunit "TFB Pricing Calculations";
         TempPriceUnit: Enum "TFB Price Unit";
-        LineWeight: Decimal;
         TempEstAlloc: Decimal;
         TempLineAlloc: Decimal;
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
-        TotalQuantity: Decimal;
-        TotalValue: Decimal;
-        TotalWeight: Decimal;
+
 
     begin
 
@@ -808,7 +733,7 @@ codeunit 50200 "TFB Container Mgmt"
         TransferLine.SetFilter(Quantity, '>0');
 
 
-        If TransferLine.FindSet() then begin
+        If not TransferLine.IsEmpty() then begin
 
 
             Vendor.Get(ContainerEntry."Vendor No.");
@@ -817,14 +742,7 @@ codeunit 50200 "TFB Container Mgmt"
             Lines.Reset();
             Lines.DeleteAll();
 
-            repeat
-                //Calculate Totals of Lines 
-                TotalQuantity += TransferLine.Quantity;
-                TotalValue += 0;  //TODO In Future populate with corresponding receipt
-                TotalWeight += (TransferLine."Net Weight" * TransferLine.Quantity);
 
-
-            UNTIL TransferLine.Next() = 0;
         end;
 
         If TransferLine.FindSet() THEN
@@ -837,9 +755,6 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines.Quantity := TransferLine.Quantity;
                 Lines."Unit Cost" := 0; //Look to retrieve value
                 Lines."Link Type" := Lines."Link Type"::"Transfer Order";
-
-                LineWeight := TransferLine.Quantity * TransferLine."Net Weight";
-
 
                 Lines."Price Unit" := TempPriceUnit;
                 //Lines."Price Unit Cost" := CodePricing.CalculatePriceUnitByUnitPrice(TransferLine."No.", TransferLine."Unit of Measure Code", TempPriceUnit, TransferLine."Unit Cost");
@@ -878,21 +793,19 @@ codeunit 50200 "TFB Container Mgmt"
         Vendor: Record Vendor;
         CodePricing: Codeunit "TFB Pricing Calculations";
         TempPriceUnit: Enum "TFB Price Unit";
-        LineWeight: Decimal;
+
         TempEstAlloc: Decimal;
         TempLineAlloc: Decimal;
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
-        TotalQuantity: Decimal;
-        TotalValue: Decimal;
-        TotalWeight: Decimal;
+
 
     begin
 
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
         TransferLine.SetFilter(Quantity, '>0');
 
-        If TransferLine.FindSet() then begin
+        If not TransferLine.IsEmpty() then begin
 
 
             Vendor.Get(ContainerEntry."Vendor No.");
@@ -901,14 +814,7 @@ codeunit 50200 "TFB Container Mgmt"
             Lines.Reset();
             Lines.DeleteAll();
 
-            repeat
-                //Calculate Totals of Lines 
-                TotalQuantity += TransferLine.Quantity;
-                TotalValue += 0;  //TODO In Future populate with corresponding receipt
-                TotalWeight += (TransferLine."Net Weight" * TransferLine.Quantity);
 
-
-            UNTIL TransferLine.Next() = 0;
         end;
 
         If TransferLine.FindSet() THEN
@@ -920,8 +826,6 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines.UnitOfMeasure := TransferLine."Unit of Measure Code";
                 Lines.Quantity := TransferLine.Quantity;
                 Lines."Unit Cost" := 0; //Look to retrieve value
-
-                LineWeight := TransferLine.Quantity * TransferLine."Net Weight";
 
 
                 Lines."Price Unit" := TempPriceUnit;
@@ -960,22 +864,20 @@ codeunit 50200 "TFB Container Mgmt"
         Vendor: Record Vendor;
         CodePricing: Codeunit "TFB Pricing Calculations";
         TempPriceUnit: Enum "TFB Price Unit";
-        LineWeight: Decimal;
+
         TempEstAlloc: Decimal;
         TempLineAlloc: Decimal;
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
-        TotalQuantity: Decimal;
-        TotalValue: Decimal;
+
         LineNo: Integer;
-        TotalWeight: Decimal;
 
     begin
 
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
         TransferLine.SetFilter(Quantity, '>0');
 
-        If TransferLine.FindSet() then begin
+        If not TransferLine.IsEmpty() then begin
 
 
             Vendor.Get(ContainerEntry."Vendor No.");
@@ -985,14 +887,7 @@ codeunit 50200 "TFB Container Mgmt"
             Lines.DeleteAll();
             LineNo := 10000;
 
-            repeat
-                //Calculate Totals of Lines 
-                TotalQuantity += TransferLine.Quantity;
-                TotalValue += 0;  //TODO In Future populate with corresponding receipt
-                TotalWeight += (TransferLine."Net Weight" * TransferLine.Quantity);
 
-
-            UNTIL TransferLine.Next() = 0;
         end;
 
         If TransferLine.FindSet() THEN
@@ -1007,12 +902,11 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines."Unit Cost" := 0; //Look to retrieve value
                 Lines."Link Type" := Lines."Link Type"::"Transfer Receipt";
 
-                LineWeight := TransferLine.Quantity * TransferLine."Net Weight";
+
 
 
                 Lines."Price Unit" := TempPriceUnit;
-                //Lines."Price Unit Cost" := CodePricing.CalculatePriceUnitByUnitPrice(TransferLine."No.", TransferLine."Unit of Measure Code", TempPriceUnit, TransferLine."Unit Cost");
-                //Look to retrieve value from original receipt
+
 
                 // Get Landed Cost Profile
                 if LandedCostProfile.get() then begin
@@ -1043,7 +937,7 @@ codeunit 50200 "TFB Container Mgmt"
         Vendor: Record Vendor;
         Item: Record Item;
         CodePricing: Codeunit "TFB Pricing Calculations";
-        LineWeight: Decimal;
+
         LineNo: Integer;
 
     begin
@@ -1073,10 +967,6 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines.UnitOfMeasure := Item."Base Unit of Measure";
                 Lines.Quantity := BrokerageLine.Quantity;
                 Lines."Unit Cost" := 0;
-
-
-
-                LineWeight := BrokerageLine.Quantity * Item."Net Weight";
 
 
                 Lines."Price Unit" := Vendor."TFB Vendor Price Unit"::MT;

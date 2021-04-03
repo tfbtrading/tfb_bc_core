@@ -169,9 +169,8 @@ tableextension 50260 "TFB Item" extends Item
 
     begin
         If Rec."TFB Act As Generic" then
-            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
                 GenericItem.Delete(false);
-            end;
 
     end;
 
@@ -182,7 +181,7 @@ tableextension 50260 "TFB Item" extends Item
 
     begin
 
-        If Rec."TFB Act As Generic" then begin
+        If Rec."TFB Act As Generic" then
             If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
                 Guid := CreateGuid();
                 GenericItem.Init();
@@ -199,7 +198,7 @@ tableextension 50260 "TFB Item" extends Item
                     Rec.Modify(false);
                 end;
             end;
-        end;
+
 
 
     end;
@@ -243,16 +242,16 @@ tableextension 50260 "TFB Item" extends Item
         end;
 
         //Removed as this appears to delete any parent item if it was switched from generic to parent
-        If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then begin
-            If GenericItem.GetBySystemId(xrec."TFB Generic Item ID") then begin
+        If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then
+            If GenericItem.GetBySystemId(xrec."TFB Generic Item ID") then
                 If GenericItem.Type = GenericItem.Type::ItemExtension then begin
                     GenericItem.Delete(false);
                     clear(Guid);
                     Rec."TFB Generic Item ID" := Guid;
                     Rec."TFB Parent Generic Item Name" := '';
                 end
-            end;
-        end;
+
+
 
     end;
 
@@ -265,7 +264,7 @@ tableextension 50260 "TFB Item" extends Item
     begin
 
         //Ensure removal of corresponding entries in the system
-        If Rec."TFB Act As Generic" then begin
+        If Rec."TFB Act As Generic" then
             If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") and (GenericItem.Type = GenericItem.Type::ItemExtension) then begin
 
                 GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
@@ -274,8 +273,8 @@ tableextension 50260 "TFB Item" extends Item
 
                 GenericItem.Delete(false);
             end;
-        end;
     end;
+
 
     var
         GenericItem: Record "TFB Generic Item";

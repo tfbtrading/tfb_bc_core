@@ -39,7 +39,7 @@ codeunit 50142 "TFB Common Library"
     var
         EmailSetup: Record "TFB Notification Email Setup";
         TempBlobCU: Codeunit "Temp Blob";
-        Confirm: Codeunit "Error Message Handler";
+   
         HttpClient: HttpClient;
         HttpResponseMessage: HttpResponseMessage;
         IStream: InStream;
@@ -74,7 +74,7 @@ codeunit 50142 "TFB Common Library"
         Exit(HTMLBuilder.ToText())
     end;
 
-    procedure GetCustDelInstr(var CustomerNo: Code[20]): Text[2048]
+    procedure GetCustDelInstr(CustomerNo: Code[20]): Text[2048]
     var
         Customer: record Customer;
         DelInstrBuilder: TextBuilder;
@@ -138,7 +138,6 @@ codeunit 50142 "TFB Common Library"
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         EmailScenEnum: Enum "Email Scenario";
-        EmailAction: enum "Email Action";
         LoopCount: Integer;
         HeaderSetup: Boolean;
 
@@ -367,7 +366,7 @@ codeunit 50142 "TFB Common Library"
         If LoopCount > 0 then begin
 
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), BodyBuilder.ToText(), true);
-            EmailMessage.AddAttachment(FileNameBuilder.ToText(), 'Application/PDF', InStream);
+            EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(),1,250), 'Application/PDF', InStream);
             Email.Enqueue(EmailMessage, EmailScenEnum::Quality);
 
             CommEntry.Init();
@@ -393,8 +392,6 @@ codeunit 50142 "TFB Common Library"
     var
         UserSetup: Record "User Setup";
         User: record User;
-        UserName: code[50];
-        USID: Guid;
 
     begin
 

@@ -48,7 +48,7 @@ page 50133 "TFB Generic Items"
                 {
                     Visible = true;
                     ApplicationArea = All;
-
+                    ToolTip = 'Specifies that the generic item should not be published in the catalogue';
                 }
                 field("No. Of Items"; Rec."No. Of Items")
                 {
@@ -63,8 +63,8 @@ page 50133 "TFB Generic Items"
     }
 
     var
-        ShowExternalIDs: Boolean;
         CommonCU: CodeUnit "TFB Common Library";
+        ShowExternalIDs: Boolean;
 
     trigger OnAfterGetRecord()
 

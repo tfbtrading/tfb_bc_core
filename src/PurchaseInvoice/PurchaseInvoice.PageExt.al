@@ -109,7 +109,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
 
                 trigger OnAction()
                 begin
-                    Rec.CreateTask;
+                    Rec.CreateTask();
                 end;
             }
         }
@@ -233,7 +233,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
     var
         PurchInvCU: Codeunit "TFB Purch. Inv. Mgmt";
         TokenClass: Enum "TFB Assignment Class";
-        Reference: Text[50];
+        Reference: Text[100];
         Result: Boolean;
 
     begin

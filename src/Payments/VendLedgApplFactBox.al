@@ -15,10 +15,12 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
                 field("External Document No."; Rec."External Document No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the external document no. supplied by the vendor';
                 }
                 field("Remaining Amount"; Rec."Remaining Amount")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the amount remaining to be paid on the invoice';
                 }
 
                 field(_IDAFilename; _DownloadSymbol)
@@ -151,7 +153,6 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
 
         TempBlob: CodeUnit "Temp Blob";
         RecRef: RecordRef;
-        FileNameBuilder: TextBuilder;
         FileName: Text;
         InStream: InStream;
 

@@ -1,4 +1,4 @@
-query 50104 "TFB Item Metadata Query"
+query 50104 "TFB Item Metadata"
 {
     QueryType = Normal;
     Caption = 'Item Metadata Query';
