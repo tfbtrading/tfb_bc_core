@@ -542,8 +542,8 @@ codeunit 50200 "TFB Container Mgmt"
         //Get Header Defaults and Calculate Totals
         If not PurchaseLine.IsEmpty() then begin
 
-            Vendor.Get(PurchaseLine."Buy-from Vendor No.");
-            TempPriceUnit := Vendor."TFB Vendor Price Unit";
+            If Vendor.Get(PurchaseLine."Buy-from Vendor No.") then
+                TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
 
             Lines.Reset();
@@ -611,7 +611,7 @@ codeunit 50200 "TFB Container Mgmt"
         TempLineUnitAlloc: Decimal;
         TempTotal: Decimal;
 
-   
+
         LineNo: Integer;
 
 
@@ -625,14 +625,14 @@ codeunit 50200 "TFB Container Mgmt"
         //Get Header Defaults and Calculate Totals
         If not ReceiptLine.IsEmpty() then begin
 
-            Vendor.Get(ReceiptLine."Buy-from Vendor No.");
-            TempPriceUnit := Vendor."TFB Vendor Price Unit";
+            If Vendor.Get(ReceiptLine."Buy-from Vendor No.") then
+                TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
 
             Lines.Reset();
             Lines.DeleteAll();
 
-          
+
         end;
         clear(Lines);
         clear(LineNo);
@@ -736,8 +736,8 @@ codeunit 50200 "TFB Container Mgmt"
         If not TransferLine.IsEmpty() then begin
 
 
-            Vendor.Get(ContainerEntry."Vendor No.");
-            TempPriceUnit := Vendor."TFB Vendor Price Unit";
+            If Vendor.Get(ContainerEntry."Vendor No.") then
+                TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
             Lines.DeleteAll();
@@ -808,8 +808,8 @@ codeunit 50200 "TFB Container Mgmt"
         If not TransferLine.IsEmpty() then begin
 
 
-            Vendor.Get(ContainerEntry."Vendor No.");
-            TempPriceUnit := Vendor."TFB Vendor Price Unit";
+            If Vendor.Get(ContainerEntry."Vendor No.") then
+                TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
             Lines.DeleteAll();
@@ -880,8 +880,8 @@ codeunit 50200 "TFB Container Mgmt"
         If not TransferLine.IsEmpty() then begin
 
 
-            Vendor.Get(ContainerEntry."Vendor No.");
-            TempPriceUnit := Vendor."TFB Vendor Price Unit";
+            If Vendor.Get(ContainerEntry."Vendor No.") then
+                TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
             Lines.DeleteAll();
