@@ -94,6 +94,13 @@ page 50211 "TFB Container Entry List"
                     ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies est. date container arrives';
+                    Visible = false;
+                }
+                field("Est. Clear Date"; Rec."Est. Clear Date")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    ToolTip = 'Specifies est. date container is available';
                 }
                 field("% Sold"; _PercReserved)
                 {
