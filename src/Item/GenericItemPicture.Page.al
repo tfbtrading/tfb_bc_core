@@ -128,6 +128,8 @@ page 50134 "TFB Generic Item Picture"
 
     local procedure ImportItemPicture()
     var
+        FileManagement: CodeUnit "File Management";
+        TempBlob: CodeUnit "Temp Blob";
         Instream: Instream;
         ImgFileName: Text;
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
@@ -138,12 +140,15 @@ page 50134 "TFB Generic Item Picture"
             If not confirm(ConfMsg) then
                 exit;
 
-        If UploadIntoStream('Import', '', 'All files (*.*)|*.*', ImgFileName, Instream) then begin
-            Clear(Rec.Picture);
-            Rec.Picture.ImportStream(Instream, ImgFileName);
-            Rec.Modify(true);
-        end;
+        If FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*') = '' then
+            exit;
+
+        TempBlob.CreateInStream(Instream);
+        Clear(Rec.Picture);
+        Rec.Picture.ImportStream(Instream, ImgFileName);
+        Rec.Modify(true);
     end;
+
 
     local procedure ExportItemPicture()
 

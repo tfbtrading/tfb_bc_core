@@ -128,8 +128,13 @@ page 50137 "TFB Market Segment Picture"
 
     local procedure ImportItemPicture()
     var
+        FileManagement: CodeUnit "File Management";
+        TempBlob: CodeUnit "Temp Blob";
         Instream: Instream;
+
         ImgFileName: Text;
+        FilterTxt: Label 'All files (*.*)|*.*';
+        FileDialogTxt: Label 'Choose an image to upload';
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
 
 
@@ -137,8 +142,9 @@ page 50137 "TFB Market Segment Picture"
         If Rec.Picture.count > 0 then
             If not confirm(ConfMsg) then
                 exit;
+                
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, ImgFileName, '', FilterTxt) <> '' then begin
 
-        If UploadIntoStream('Import', '', 'All files (*.*)|*.*', ImgFileName, Instream) then begin
             Clear(Rec.Picture);
             Rec.Picture.ImportStream(Instream, ImgFileName);
             Rec.Modify(true);

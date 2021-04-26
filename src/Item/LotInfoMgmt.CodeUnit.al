@@ -8,7 +8,8 @@ codeunit 50100 "TFB Lot Info Mgmt"
     procedure AttachFile(IDT: enum "TFB Item Doc Type"; var LotInfo: Record "Lot No. Information"): BigInteger
 
     var
-        TempBlobCU: CodeUnit "Temp Blob";
+        TempBlob: CodeUnit "Temp Blob";
+        FileManagement: Codeunit "File Management";
         PersBlobCU: Codeunit "Persistent Blob";
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
         FileDialogTxt: Label 'Select %1 File to Upload', comment = '%1=Type of File';
@@ -21,9 +22,10 @@ codeunit 50100 "TFB Lot Info Mgmt"
     begin
 
 
-        TempBlobCU.CreateInStream(InStream);
+        TempBlob.CreateInStream(InStream);
         FileName := StrSubstNo('%1_%2_%3.pdf', IDT.Ordinals, LotInfo."Item No.", LotInfo."Lot No.");
-        if UploadIntoStream(StrSubstNo(FileDialogTxt, IDT), '', FilterTxt, FileName, InStream) then begin
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+            TempBlob.CreateInStream(InStream);
             BlobKey := PersBlobCU.Create();
             If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
 

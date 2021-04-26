@@ -86,7 +86,7 @@ page 50210 "TFB Container Entry"
                         trigger OnValidate()
                         begin
 
-                            
+
                             LoadTempTable();
                         end;
 
@@ -683,7 +683,8 @@ page 50210 "TFB Container Entry"
 
     var
         PersistBlobCU: CodeUnit "Persistent Blob";
-        TempBlobCU: Codeunit "Temp Blob";
+        TempBlob: Codeunit "Temp Blob";
+        FileManagement: CodeUnit "File Management";
         IStream: InStream;
         BlobRef: BigInteger;
         FileName: Text;
@@ -692,26 +693,18 @@ page 50210 "TFB Container Entry"
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
 
 
-
-
-
     begin
 
-
-        TempBlobCU.CreateInStream(IStream);
-
         FileName := StrSubstNo('Unpack_%1.pdf', Rec."Container No.");
-        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, IStream) then begin
-            If (FileName <> '') and TempBlobCU.HasValue() then
-                Error(EmptyFileNameErr);
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) = '' then
+            Error(EmptyFileNameErr);
 
-            BlobRef := PersistBlobCU.Create();
-            If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
-                Rec."Unpack Worksheet Attach." := BlobRef;
+        TempBlob.CreateInStream(IStream);
+        BlobRef := PersistBlobCU.Create();
+        If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
+            Rec."Unpack Worksheet Attach." := BlobRef;
 
-            rec.Modify();
-
-        end;
+        rec.Modify();
 
         UpdateReportStatus();
     end;
@@ -796,7 +789,7 @@ page 50210 "TFB Container Entry"
 
     end;
 
-   
+
 
     local procedure CheckAqisReq()
 

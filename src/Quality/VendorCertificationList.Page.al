@@ -354,8 +354,9 @@ page 50107 "TFB Vendor Certification List"
     local procedure ReplaceFile()
 
     var
+        FileManagement: CodeUnit "File Management";
         PersBlobCU: CodeUnit "Persistent Blob";
-        TempBlobCU: Codeunit "Temp Blob";
+        TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         BlobKey: BigInteger;
         FileName: Text;
@@ -366,10 +367,12 @@ page 50107 "TFB Vendor Certification List"
     begin
 
         PersBlobCU.Delete(Rec."Certificate Attach.");
-        TempBlobCU.CreateInStream(InStream);
+
         FileName := QualityCU.GetCertificateFileName(rec);
-        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, InStream) then begin
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+
             BlobKey := PersBlobCU.Create();
+            TempBlob.CreateInStream(InStream);
             If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
@@ -383,8 +386,9 @@ page 50107 "TFB Vendor Certification List"
     local procedure AttachFile()
 
     var
-        PersBlobCU: CodeUnit "Persistent Blob";
-        TempBlobCU: Codeunit "Temp Blob";
+        FileManagement: CodeUnit "File Management";
+        PersistentBlob: CodeUnit "Persistent Blob";
+        TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         BlobKey: BigInteger;
         FileName: Text;
@@ -395,11 +399,12 @@ page 50107 "TFB Vendor Certification List"
     begin
 
 
-        TempBlobCU.CreateInStream(InStream);
         FileName := QualityCU.GetCertificateFileName(rec);
-        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, InStream) then begin
-            BlobKey := PersBlobCU.Create();
-            If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+
+            BlobKey := PersistentBlob.Create();
+            TempBlob.CreateInStream(InStream);
+            If PersistentBlob.CopyFromInStream(BlobKey, InStream) then begin
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
                 AttachmentExists := true;

@@ -4538,6 +4538,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Est. Arrival Date - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2135441443 - Control 1006493019 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies est. date container is available</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Est. Clear Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2135441443 - Control 2550589688 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies est. date container leaves port</source>
           <note from="Developer" annotates="general" priority="2"></note>

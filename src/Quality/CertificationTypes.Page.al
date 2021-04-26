@@ -116,17 +116,20 @@ page 50105 "TFB Certification Types"
     local procedure AttachFile()
 
     var
-
+        FileManagement: CodeUnit "File Management";
+        TempBlob: CodeUnit "Temp Blob";
         FilterTxt: Label 'All files (*.*)|*.*';
         FileDialogTxt: Label 'Select Image File to Upload';
         FileName: Text;
-        IStream: InStream;
+        InStream: InStream;
 
     begin
 
-        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, IStream) then begin
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+
             Clear(Rec.Logo);
-            Rec.Logo.ImportStream(IStream, FileName);
+            TempBlob.CreateInStream(InStream);
+            Rec.Logo.ImportStream(InStream, FileName);
             Rec.Modify(true);
 
         end;

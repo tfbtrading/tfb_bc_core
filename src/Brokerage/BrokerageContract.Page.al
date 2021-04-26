@@ -342,8 +342,9 @@ page 50240 "TFB Brokerage Contract"
 
     var
 
-        TempBlobCU: Codeunit "Temp Blob";
+        TempBlob: Codeunit "Temp Blob";
         PersistBlobCU: CodeUnit "Persistent Blob";
+        FileManagement: CodeUnit "File Management";
 
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
         EmptyFileNameErr: Label 'No content';
@@ -358,20 +359,21 @@ page 50240 "TFB Brokerage Contract"
     begin
 
 
-        TempBlobCU.CreateInStream(IStream);
+
 
         FileName := StrSubstNo(FileNameTxt, Rec."No.");
-        if UploadIntoStream(FileDialogTxt, '', FilterTxt, FileName, IStream) then begin
-            If (FileName <> '') and TempBlobCU.HasValue() then
-                Error(EmptyFileNameErr);
 
-            BlobRef := PersistBlobCU.Create();
-            If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
-                Rec."Contract Attach." := BlobRef;
+        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) = '' then
+            Error(EmptyFileNameErr);
 
-            rec.Modify();
+        BlobRef := PersistBlobCU.Create();
+        TempBlob.CreateInStream(IStream);
 
-        end;
+        If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
+            Rec."Contract Attach." := BlobRef;
+
+        rec.Modify();
+
 
     end;
 
