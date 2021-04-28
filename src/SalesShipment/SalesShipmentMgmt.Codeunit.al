@@ -129,13 +129,13 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     end;
 
-    procedure SendShipmentStatusQuery(Header: record "Sales Shipment Header"; OriginalRef: Code[20]): Boolean
+    procedure SendShipmentStatusQuery(SalesShipmentHeader: record "Sales Shipment Header"; OriginalRef: Code[20]): Boolean
 
     var
         CommEntry: Record "TFB Communication Entry";
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
-        Line: Record "Sales Shipment Line";
+        SalesShipmentLine: Record "Sales Shipment Line";
         Location: Record Location;
         PurchaseHeaderArchive: Record "Purchase Header Archive";
         User: Record User;
@@ -173,21 +173,21 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         CompanyInfo.Get();
 
-        If not Customer.Get(Header."Sell-to Customer No.") then
+        If not Customer.Get(SalesShipmentHeader."Sell-to Customer No.") then
             exit(false);
 
         CustomerName := Customer.Name;
         //Find first line to check for drop ship 
-        Line.SetRange("Document No.", Header."No.");
-        Line.SetFilter("Quantity (Base)", '>0');
+        SalesShipmentLine.SetRange("Document No.", SalesShipmentHeader."No.");
+        SalesShipmentLine.SetFilter("Quantity (Base)", '>0');
 
-        If Line.FindFirst() then begin
+        If SalesShipmentLine.FindFirst() then begin
 
             //Check if drop ship
 
-            If Line."Drop Shipment" then begin
+            If SalesShipmentLine."Drop Shipment" then begin
 
-                PurchaseHeaderArchive.SetRange("No.", Line."Purchase Order No.");
+                PurchaseHeaderArchive.SetRange("No.", SalesShipmentLine."Purchase Order No.");
                 PurchaseHeaderArchive.SetRange("Document Type", PurchaseHeaderArchive."Document Type"::Order);
 
                 If PurchaseHeaderArchive.FindLast() then begin
@@ -201,11 +201,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
-                Location.get(Line."Location Code");
+                Location.get(SalesShipmentLine."Location Code");
                 ContactName := Location.Name;
                 EmailID := Location."E-Mail";
-                Reference := Header."TFB 3PL Booking No.";
-                Reference2 := RetrieveWhseShipReference(Line."Document No.");
+                Reference := SalesShipmentHeader."TFB 3PL Booking No.";
+                Reference2 := RetrieveWhseShipReference(SalesShipmentLine."Document No.");
 
 
             end;
@@ -229,6 +229,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
+                Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source");
+                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
                 If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
 
                     CommEntry.Init();
@@ -237,7 +239,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     CommEntry."Source Name" := Customer.Name;
                     CommEntry."Record Type" := commEntry."Record Type"::SOC;
                     CommEntry."Record Table No." := Database::"Sales Shipment Header";
-                    CommEntry."Record No." := Header."No.";
+                    CommEntry."Record No." := SalesShipmentHeader."No.";
                     CommEntry.Direction := CommEntry.Direction::Outbound;
                     CommEntry.MessageContent := CopyStr(HTMLBuilder.ToText(), 1, 2048);
                     CommEntry.Method := CommEntry.Method::EMAIL;
@@ -529,7 +531,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         end;
 
 
-
+        Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
 

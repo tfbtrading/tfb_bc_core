@@ -181,7 +181,8 @@ codeunit 50120 "TFB Customer Mgmt"
                 GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-                EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(),1,250), 'Application/PDF', IStream);
+                EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', IStream);
+                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
                 Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
 
 
@@ -265,6 +266,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        Email.AddRelation(EmailMessage,Database::Customer,Customer.SystemId,Enum::"Email Relation Type"::"Related Entity");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
     end;
@@ -347,7 +349,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         PricingCU: CodeUnit "TFB Pricing Calculations";
 
-     
+
         Count: Integer;
 
         BodyBuilder: TextBuilder;
@@ -427,7 +429,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 Item.Get(salesLine."No.");
                 UoM.Get(Item."Base Unit of Measure");
                 SalesLine.CalcFields("Reserved Qty. (Base)", "Whse. Outstanding Qty.");
-            
+
 
                 //BodyBuilder.AppendLine('<tr>');
 
@@ -524,7 +526,7 @@ codeunit 50120 "TFB Customer Mgmt"
                             WhseShptLine.SetRange("Source Line No.", SalesLine."Line No.");
 
                             //if WhseShptLine.FindFirst() then
-                                //ShipDatePlanned := WhseShptLine."Shipment Date"; //TODO Check if we need to add ship date
+                            //ShipDatePlanned := WhseShptLine."Shipment Date"; //TODO Check if we need to add ship date
                         end
                     else begin
                         //Get Vendor Details
@@ -635,7 +637,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         SalesSetup: Record "Sales & Receivables Setup";
         BodyBuilder: TextBuilder;
-        overdue, overCreditLimit:  Boolean;
+        overdue, overCreditLimit : Boolean;
 
 
     begin

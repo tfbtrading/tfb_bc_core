@@ -39,7 +39,7 @@ codeunit 50142 "TFB Common Library"
     var
         EmailSetup: Record "TFB Notification Email Setup";
         TempBlobCU: Codeunit "Temp Blob";
-   
+
         HttpClient: HttpClient;
         HttpResponseMessage: HttpResponseMessage;
         IStream: InStream;
@@ -366,7 +366,8 @@ codeunit 50142 "TFB Common Library"
         If LoopCount > 0 then begin
 
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), BodyBuilder.ToText(), true);
-            EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(),1,250), 'Application/PDF', InStream);
+            EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
+            Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
             Email.Enqueue(EmailMessage, EmailScenEnum::Quality);
 
             CommEntry.Init();

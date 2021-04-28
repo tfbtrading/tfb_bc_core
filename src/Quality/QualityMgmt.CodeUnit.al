@@ -173,13 +173,13 @@ codeunit 50104 "TFB Quality Mgmt"
                     until Contact.Next() = 0;
 
                 If Recipients.Count > 0 then
-                    SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
+                    SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt),Customer.SystemId);
 
             end;
         end;
     end;
 
-    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
+    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text;CustomerSystemID: GUID)
 
     var
         CompanyInfo: Record "Company Information";
@@ -219,7 +219,8 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
             until VendorCerts.Next() < 1;
-
+        
+        Email.AddRelation(EmailMessage,Database::Customer,CustomerSystemID,Enum::"Email Relation Type"::"Related Entity");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;

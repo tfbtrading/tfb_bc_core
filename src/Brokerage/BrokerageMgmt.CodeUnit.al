@@ -43,7 +43,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Shipment: Record "TFB Brokerage Shipment";
-     
+
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
 
@@ -84,6 +84,8 @@ codeunit 50242 "TFB Brokerage Mgmt"
         //Check that content has been generated to send
         If GenerateBrokerageUpdateContent(RefNo, HTMLBuilder) then begin
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+            Email.AddRelation(EmailMessage, Database::"TFB Brokerage Shipment", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source");
+            Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
             If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
                 CommEntry.Init();
                 CommEntry."Source Type" := CommEntry."Source Type"::Customer;

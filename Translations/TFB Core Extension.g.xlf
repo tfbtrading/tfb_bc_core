@@ -6133,6 +6133,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
+        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+          <source>All files (*.*)|*.*</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose an image to upload</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FileDialogTxt</note>
+        </trans-unit>
         <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
           <source>The existing picture will be overwritten, do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
