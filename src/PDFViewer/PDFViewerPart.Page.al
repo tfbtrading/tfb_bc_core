@@ -27,6 +27,8 @@ page 50118 "PDF Viewer Part"
     var
         ControlIsReady: Boolean;
         Data: JsonObject;
+
+        Cache: Text;
   
 
     local procedure InitializePDFViewer()
@@ -62,10 +64,11 @@ page 50118 "PDF Viewer Part"
 
    
     begin
-       
-        Clear(Data);
+      
+      
         Data.Add('type', 'base64');
         Data.Add('content', Base64Data);
+        Cache := Base64Data;
         ShowData();
 
     end;

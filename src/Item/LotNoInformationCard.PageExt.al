@@ -108,7 +108,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 Promoted = True;
                 PromotedIsBig = true;
                 Image = Import;
-                Enabled = not IsCoAAvailable;
+                Enabled = (not IsCoAAvailable);
                 ToolTip = 'Attach a certificate of analysis to the lot information';
 
                 trigger OnAction()

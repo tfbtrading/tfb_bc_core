@@ -361,15 +361,17 @@ page 50107 "TFB Vendor Certification List"
         BlobKey: BigInteger;
         FileName: Text;
         FileDialogTxt: Label 'Select Certificate File to Upload';
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
+        ExtFilterTxt: Label 'pdf';
 
 
     begin
 
         PersBlobCU.Delete(Rec."Certificate Attach.");
 
-        FileName := QualityCU.GetCertificateFileName(rec);
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
+        If TempBlob.HasValue() then begin
 
             BlobKey := PersBlobCU.Create();
             TempBlob.CreateInStream(InStream);
@@ -391,16 +393,19 @@ page 50107 "TFB Vendor Certification List"
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         BlobKey: BigInteger;
-        FileName: Text;
+  
         FileDialogTxt: Label 'Select Certificate File to Upload';
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
+        ExtFilterTxt: Label 'pdf';
 
 
     begin
 
 
-        FileName := QualityCU.GetCertificateFileName(rec);
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+        
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
+
+        If TempBlob.HasValue() then begin
 
             BlobKey := PersistentBlob.Create();
             TempBlob.CreateInStream(InStream);

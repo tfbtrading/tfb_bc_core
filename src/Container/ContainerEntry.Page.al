@@ -691,22 +691,24 @@ page 50210 "TFB Container Entry"
         EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Container Unpack File to Upload';
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        ExtFilterTxt: Label 'pdf';
 
 
     begin
 
         FileName := StrSubstNo('Unpack_%1.pdf', Rec."Container No.");
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) = '' then
-            Error(EmptyFileNameErr);
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FilterTxt, ExtFilterTxt);
 
-        TempBlob.CreateInStream(IStream);
-        BlobRef := PersistBlobCU.Create();
-        If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
-            Rec."Unpack Worksheet Attach." := BlobRef;
+        If TempBlob.HasValue() then begin
+            TempBlob.CreateInStream(IStream);
+            BlobRef := PersistBlobCU.Create();
+            If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
+                Rec."Unpack Worksheet Attach." := BlobRef;
 
-        rec.Modify();
+            rec.Modify();
 
-        UpdateReportStatus();
+            UpdateReportStatus();
+        end;
     end;
 
 

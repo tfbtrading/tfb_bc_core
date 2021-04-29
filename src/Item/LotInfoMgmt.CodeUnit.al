@@ -11,8 +11,9 @@ codeunit 50100 "TFB Lot Info Mgmt"
         TempBlob: CodeUnit "Temp Blob";
         FileManagement: Codeunit "File Management";
         PersBlobCU: Codeunit "Persistent Blob";
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
-        FileDialogTxt: Label 'Select %1 File to Upload', comment = '%1=Type of File';
+        FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
+        ExtFilterTxt: Label 'pdf';
+        FileDialogTxt: Label 'Select file', comment = '%1=Type of File';
         FileName: Text;
         InStream: InStream;
         BlobKey: BigInteger;
@@ -23,8 +24,10 @@ codeunit 50100 "TFB Lot Info Mgmt"
 
 
         TempBlob.CreateInStream(InStream);
-        FileName := StrSubstNo('%1_%2_%3.pdf', IDT.Ordinals, LotInfo."Item No.", LotInfo."Lot No.");
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
+
+        If TempBlob.HasValue() then begin
             TempBlob.CreateInStream(InStream);
             BlobKey := PersBlobCU.Create();
             If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin

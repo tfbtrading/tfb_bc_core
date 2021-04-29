@@ -140,13 +140,16 @@ page 50134 "TFB Generic Item Picture"
             If not confirm(ConfMsg) then
                 exit;
 
-        If FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*') = '' then
-            exit;
+        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*');
 
-        TempBlob.CreateInStream(Instream);
-        Clear(Rec.Picture);
-        Rec.Picture.ImportStream(Instream, ImgFileName);
-        Rec.Modify(true);
+        If TempBlob.HasValue() then begin
+
+            TempBlob.CreateInStream(Instream);
+            Clear(Rec.Picture);
+            Rec.Picture.ImportStream(Instream, ImgFileName);
+            Rec.Modify(true);
+
+        end;
     end;
 
 

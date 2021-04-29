@@ -582,6 +582,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
+
+
     /// <summary> 
     /// Description for Generate Shipment Notification Content to HTML Builder variable that is passed
     /// </summary>
@@ -688,7 +690,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
                     If Line."Drop Shipment" then begin
-                        CommentBuilder.Append('Drop shipped against supplier PO No. ' + Line."Purchase Order No." + '</br>');
+                        CommentBuilder.Append('Direct shipped with our ref. ' + Line."Purchase Order No." + '</br>');
 
                         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
                         Purchase.SetRange("No.", Line."Purchase Order No.");
@@ -701,9 +703,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                                     else
                                         ShippingAgentName := 'unknown';
 
-                                    CommentBuilder.Append(StrSubstNo('Supplier has delivery SLA of %1 and uses %2 for freight', vendor."TFB Delivery SLA", ShippingAgent.Name));
+                                    CommentBuilder.Append(StrSubstNo('Delivery SLA of %1 using %2 for freight', vendor."TFB Delivery SLA", ShippingAgent.Name));
                                     If (ShippingAgent."Internet Address" <> '') and (Header."Package Tracking No." <> '') then
-                                        CommentBuilder.Append(StrSubstNo('<p>. Tracking No is <b>%1</b> </p>', Header."Package Tracking No."))
+                                        CommentBuilder.Append(StrSubstNo('. <p>Tracking No is <b>%1</b> </p>', Header."Package Tracking No."))
                                 end;
                     end
                     else begin

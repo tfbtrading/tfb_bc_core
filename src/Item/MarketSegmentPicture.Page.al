@@ -142,8 +142,10 @@ page 50137 "TFB Market Segment Picture"
         If Rec.Picture.count > 0 then
             If not confirm(ConfMsg) then
                 exit;
-                
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, ImgFileName, '', FilterTxt) <> '' then begin
+
+        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', '', '');
+
+        If TempBlob.HasValue() then begin
 
             Clear(Rec.Picture);
             Rec.Picture.ImportStream(Instream, ImgFileName);

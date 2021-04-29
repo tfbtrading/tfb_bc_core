@@ -2638,10 +2638,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Customer Mgmt - Method SendStatementToOneCustomer - NamedType TitleTxt</note>
         </trans-unit>
-        <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Lot Info Mgmt - Method AttachFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Lot Info Mgmt - Method AttachFile - NamedType FileFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Lot Info Mgmt - Method AttachFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select %1 File to Upload</source>
@@ -3088,10 +3093,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType ExtFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 238945643" size-unit="char" translate="yes" xml:space="preserve">
           <source>No content</source>
@@ -4232,6 +4242,11 @@
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Method AttachFile - NamedType FilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Method 3445273183 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Method AttachFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Method 3857605678 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -8923,20 +8938,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FileDialogTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType FileFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 3445273183 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Certificate File to Upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileDialogTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileFilterTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+          <source>pdf</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>

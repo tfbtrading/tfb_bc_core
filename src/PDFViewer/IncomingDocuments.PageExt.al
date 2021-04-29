@@ -37,7 +37,6 @@ pageextension 50172 "TFB Incoming Documents" extends "Incoming Documents"
         if not IncomingDocumentAttachment.Content.HasValue() then
             exit;
 
-        TempBlob.Blob := IncomingDocumentAttachment.Content;
         CurrPage.PDFViewer.Page.LoadPdfFromBase64(IncomingDocumentAttachment.ToBase64String());
     end;
 }

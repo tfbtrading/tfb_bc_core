@@ -30,7 +30,7 @@ tableextension 50111 "TFB Incoming Document Attach." extends "Incoming Document 
         if not Content.HasValue() then
             exit;
 
-        CalcFields(Content);
+     
         Content.CreateInStream(InStr);
         ReturnValue := Base64Convert.ToBase64(InStr);
     end;

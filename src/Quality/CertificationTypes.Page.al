@@ -125,8 +125,9 @@ page 50105 "TFB Certification Types"
 
     begin
 
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) <> '' then begin
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', '', '');
 
+        If TempBlob.HasValue() then begin
             Clear(Rec.Logo);
             TempBlob.CreateInStream(InStream);
             Rec.Logo.ImportStream(InStream, FileName);
