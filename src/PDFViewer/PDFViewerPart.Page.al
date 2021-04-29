@@ -29,7 +29,7 @@ page 50118 "PDF Viewer Part"
         Data: JsonObject;
 
         Cache: Text;
-  
+
 
     local procedure InitializePDFViewer()
     var
@@ -48,7 +48,7 @@ page 50118 "PDF Viewer Part"
             exit;
 
         CurrPage.PDFViewer.LoadDocument(Data);
-  
+
         Clear(Data);
     end;
 
@@ -62,14 +62,15 @@ page 50118 "PDF Viewer Part"
 
     procedure LoadPdfFromBase64(Base64Data: Text)
 
-   
+
     begin
-      
-      
-        Data.Add('type', 'base64');
-        Data.Add('content', Base64Data);
-        Cache := Base64Data;
-        ShowData();
+        If not (Cache = Base64Data) then begin
+            Clear(Data);
+            Data.Add('type', 'base64');
+            Data.Add('content', Base64Data);
+            Cache := Base64Data;
+            ShowData();
+        end
 
     end;
 }

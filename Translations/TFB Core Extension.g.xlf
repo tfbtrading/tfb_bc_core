@@ -2649,7 +2649,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Lot Info Mgmt - Method AttachFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select %1 File to Upload</source>
+          <source>Select file</source>
           <note from="Developer" annotates="general" priority="2">%1=Type of File</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Lot Info Mgmt - Method AttachFile - NamedType FileDialogTxt</note>
         </trans-unit>
