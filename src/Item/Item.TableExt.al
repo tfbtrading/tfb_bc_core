@@ -239,18 +239,18 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem.Type := GenericItem.Type::ItemExtension;
                 GenericItem.Modify(false);
             end;
-        
+
 
         //Removed as this appears to delete any parent item if it was switched from generic to parent
-        If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then
-            If GenericItem.GetBySystemId(xrec."TFB Generic Item ID") then
-                If GenericItem.Type = GenericItem.Type::ItemExtension then begin
-                    GenericItem.Delete(false);
-                    clear(Guid);
-                    Rec."TFB Generic Item ID" := Guid;
-                    Rec."TFB Parent Generic Item Name" := '';
-                end
-
+        /*   If Xrec."TFB Act As Generic" and not rec."TFB Act As Generic" then
+              If GenericItem.GetBySystemId(xrec."TFB Generic Item ID") then
+                  If GenericItem.Type = GenericItem.Type::ItemExtension then begin
+                      GenericItem.Delete(false);
+                      clear(Guid);
+                      Rec."TFB Generic Item ID" := Guid;
+                      Rec."TFB Parent Generic Item Name" := '';
+                  end
+   */
 
 
     end;
