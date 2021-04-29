@@ -346,11 +346,12 @@ page 50240 "TFB Brokerage Contract"
         PersistBlobCU: CodeUnit "Persistent Blob";
         FileManagement: CodeUnit "File Management";
 
-        FilterTxt: Label 'All files (*.pdf)|*.pdf';
+        ExtFilterTxt: Label 'pdf';
+        FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
         EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Contract File to Upload';
         FileNameTxt: Label 'Contract_%1.pdf', comment = '%1 = contract number';
-        FileName: Text;
+
         IStream: InStream;
 
         BlobRef: BigInteger;
@@ -361,10 +362,10 @@ page 50240 "TFB Brokerage Contract"
 
 
 
-        FileName := StrSubstNo(FileNameTxt, Rec."No.");
 
-        If FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, FileName, '', FilterTxt) = '' then
-            Error(EmptyFileNameErr);
+
+        FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
+
 
         BlobRef := PersistBlobCU.Create();
         TempBlob.CreateInStream(IStream);
