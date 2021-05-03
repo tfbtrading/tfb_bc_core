@@ -224,6 +224,27 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::Email, 'OnShowSource', '', false, false)]
+    local procedure OnShowSource(SourceTableId: Integer; SourceSystemId: Guid; var IsHandled: Boolean);
+
+    var
+        TFBBrokerageShipment: Record "TFB Brokerage Shipment";
+    begin
+
+        If IsHandled then exit;
+
+        case SourceTableId of
+            Database::"TFB Brokerage Shipment":
+                If TFBBrokerageShipment.GetBySystemId(SourceSystemId) then begin
+                    Page.Run(PAGE::"TFB Brokerage Shipment", TFBBrokerageShipment);
+                    IsHandled := true;
+
+                end;
+
+        end;
+    end;
+
+
     procedure RaiseInvoiceFromShipment(var BrokShipment: Record "TFB Brokerage Shipment"; var Header: record "Sales Header"): Boolean
 
     var
