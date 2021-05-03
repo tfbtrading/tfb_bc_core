@@ -223,78 +223,76 @@ page 50210 "TFB Container Entry"
                         Tooltip = 'Specifies quarantine reference';
                     }
 
+                }
+                group(AQIS)
+                {
+                    Caption = 'Quarantine Requirements';
 
-                    group(AQIS)
+
+                    field("Inspection Req."; Rec."Inspection Req.")
                     {
-                        grid(NEW)
-                        {
-                            GridLayout = Columns;
-                            ShowCaption = false;
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies if inspection is required';
 
-                            field("Inspection Req."; Rec."Inspection Req.")
-                            {
-                                ApplicationArea = All;
-                                Tooltip = 'Specifies if inspection is required';
+                        trigger OnValidate()
 
-                                trigger OnValidate()
+                        begin
+                            CheckAqisReq()
+                        end;
 
-                                begin
-                                    CheckAqisReq()
-                                end;
+                    }
+                    field("Fumigation Req."; Rec."Fumigation Req.")
+                    {
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies if fumigation is required';
 
-                            }
-                            field("Fumigation Req."; Rec."Fumigation Req.")
-                            {
-                                ApplicationArea = All;
-                                Tooltip = 'Specifies if fumigation is required';
+                        trigger OnValidate()
 
-                                trigger OnValidate()
+                        begin
+                            CheckAqisReq()
+                        end;
 
-                                begin
-                                    CheckAqisReq()
-                                end;
+                    }
+                    field("IFIP Req."; Rec."IFIP Req.")
+                    {
+                        ApplicationArea = All;
+                        Tooltip = 'Specifies if imported food program inspection required';
 
-                            }
-                            field("IFIP Req."; Rec."IFIP Req.")
-                            {
-                                ApplicationArea = All;
-                                Tooltip = 'Specifies if imported food program inspection required';
+                        trigger OnValidate()
 
-                                trigger OnValidate()
+                        begin
+                            CheckAqisReq()
+                        end;
 
-                                begin
-                                    CheckAqisReq()
-                                end;
+                    }
 
-                            }
+                    field("Heat Treat. Req."; Rec."Heat Treat. Req.")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies if heat treatment is required';
 
-                            field("Heat Treat. Req."; Rec."Heat Treat. Req.")
-                            {
-                                ApplicationArea = All;
-                                ToolTip = 'Specifies if heat treatment is required';
+                        trigger OnValidate()
 
-                                trigger OnValidate()
-
-                                begin
-                                    CheckAqisReq();
-                                end;
-                            }
-                        }
+                        begin
+                            CheckAqisReq();
+                        end;
+                    }
 
 
-                        field("Unpack Report Attach."; _unpackReportAttached)
-                        {
-                            ApplicationArea = All;
-                            AssistEdit = false;
-                            Caption = 'Unpack Report Attached';
-                            Editable = false;
-                            Tooltip = 'Specifies if unpack report for container is attached';
+
+                    field("Unpack Report Attach."; _unpackReportAttached)
+                    {
+                        ApplicationArea = All;
+                        AssistEdit = false;
+                        Caption = 'Unpack Report Attached';
+                        Editable = false;
+                        Tooltip = 'Specifies if unpack report for container is attached';
 
 
 
 
 
-                        }
+
 
 
                     }

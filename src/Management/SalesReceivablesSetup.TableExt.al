@@ -130,6 +130,24 @@ tableextension 50220 "TFB Sales & Receivables Setup" extends "Sales & Receivable
             Caption = 'Customer/Vendor Status Default';
         }
 
+        field(51130; "TFB Sample Request Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+            Caption = 'Sample Request Nos.';
+            ValidateTableRelation = true;
+
+        }
+
+          field(51140; "TFB Posted Sample Request Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+            Caption = 'Pstd. Sample Request Nos.';
+            ValidateTableRelation = true;
+
+        }
+
     }
 
 

@@ -4263,6 +4263,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control General - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 4060017246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quarantine Requirements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control AQIS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 4283034199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if fumigation is required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Fumigation Req. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3636205604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if heat treatment is required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Heat Treat. Req. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3901950218 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if imported food program inspection required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control IFIP Req. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3083651602 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if inspection is required</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Inspection Req. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3288270691 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if unpack report for container is attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Unpack Report Attach. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3288270691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unpack Report Attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Unpack Report Attach. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1207535885 - Control 3994523350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipment Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4327,36 +4362,6 @@
           <source>% Sold</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control % Sold - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 4283034199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if fumigation is required</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Fumigation Req. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3636205604 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if heat treatment is required</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Heat Treat. Req. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3901950218 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if imported food program inspection required</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control IFIP Req. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3083651602 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if inspection is required</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Inspection Req. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3288270691 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies if unpack report for container is attached</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Unpack Report Attach. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3288270691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unpack Report Attached</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Unpack Report Attach. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Control 1507419454 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies booking reference</source>

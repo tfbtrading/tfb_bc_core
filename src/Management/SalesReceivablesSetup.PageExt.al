@@ -16,6 +16,18 @@ pageextension 50221 "TFB Sales & Receivables Setup" extends "Sales & Receivables
                 LookupPageId = "No. Series";
                 Tooltip = 'Specifies number series for brokerage shipments';
             }
+            field("TFB Sample Request Nos."; Rec."TFB Sample Request Nos.")
+            {
+                ApplicationArea = All;
+                LookupPageId = "No. Series";
+                Tooltip = 'Specifies number series for sample requests';
+            }
+            field("TFB Posted Sample Request Nos."; Rec."TFB Posted Sample Request Nos.")
+            {
+                ApplicationArea = All;
+                LookupPageId = "No. Series";
+                Tooltip = 'Specifies number series for sample requests';
+            }
 
         }
 
