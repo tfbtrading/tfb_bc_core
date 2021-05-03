@@ -135,6 +135,11 @@ table 50101 "TFB Vendor Certification"
                 end;
             end;
         }
+        field(80; Archived; Boolean)
+        {
+            Editable = false;
+
+        }
         field(1; ID; Guid)
         {
             Editable = false;

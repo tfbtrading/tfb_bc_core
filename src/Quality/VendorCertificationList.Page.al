@@ -99,7 +99,7 @@ page 50107 "TFB Vendor Certification List"
                     tooltip = 'Specifies the date on which the certification will expire';
                     Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
-                    StyleExpr = DaysToExpiry < 30;
+                    StyleExpr = (DaysToExpiry < 30) and (not Rec.Archived);
 
                     trigger OnValidate()
 
@@ -118,7 +118,7 @@ page 50107 "TFB Vendor Certification List"
                     Caption = 'Days to Expiry';
                     Tooltip = 'Specifies the number of days until the certification expires';
                     Style = Unfavorable;
-                    StyleExpr = DaysToExpiry < 30;
+                    StyleExpr = (DaysToExpiry < 30) and (not Rec.Archived);
                 }
                 field(CertificateExists; AttachmentExists)
                 {
@@ -247,6 +247,27 @@ page 50107 "TFB Vendor Certification List"
 
             }
 
+            action("Toggle Archived")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = Archive;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                PromotedOnly = true;
+
+
+                ToolTip = 'Set current vendor certificate to be archived';
+
+                trigger OnAction()
+
+                begin
+                    ToggleArchiveStatus();
+                end;
+
+            }
+
 
         }
     }
@@ -287,9 +308,47 @@ page 50107 "TFB Vendor Certification List"
     trigger OnAfterGetRecord()
 
     begin
-        DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+
+        DaysToExpiry := GetExpiryDays();
         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
         AttachmentExists := CheckIfAttachmentExists();
+        CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
+    end;
+
+    local procedure GetExpiryDays(): Integer
+
+    begin
+        If Rec.Archived then
+            Exit(0)
+        else
+            QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+    end;
+
+    local procedure ToggleArchiveStatus()
+
+    var
+
+    begin
+
+        If (CalculatedStatus = CalculatedStatus::Expired) or (CalculatedStatus = CalculatedStatus::Inherent) or (Rec.Archived) then begin
+
+
+            If rec.Archived then begin
+                if confirm('Are you sure you want to restore to non-archived status?', true) then
+                    rec.Archived := false;
+            end
+            else
+                if confirm('Are you sure you want to archive this vendor certificate?', false) then begin
+                    rec.Archived := true;
+                    rec.Modify(false);
+                    CurrPage.Update(true);
+                end;
+
+        end
+        else
+            Message('Only valid for expired or expired, inherent or archived certificates');
+
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
     end;
 
@@ -393,7 +452,7 @@ page 50107 "TFB Vendor Certification List"
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         BlobKey: BigInteger;
-  
+
         FileDialogTxt: Label 'Select Certificate File to Upload';
         FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
         ExtFilterTxt: Label 'pdf';
@@ -402,7 +461,7 @@ page 50107 "TFB Vendor Certification List"
     begin
 
 
-        
+
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
 
         If TempBlob.HasValue() then begin

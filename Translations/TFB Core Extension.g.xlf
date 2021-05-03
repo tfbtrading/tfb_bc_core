@@ -2418,6 +2418,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Segment Match Criteria - Field ProductMarketSegmentID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 936251592 - Field 57370450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Vendor Certification - Field Archived - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 936251592 - Field 261047940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Auditor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9072,6 +9077,11 @@
           <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Send to Contact(s) - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 2847184576 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set current vendor certificate to be archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Toggle Archived - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Action 3694725606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attaches a certificate (in pdf form) to vendor certfication record</source>

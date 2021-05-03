@@ -6,7 +6,7 @@ codeunit 50104 "TFB Quality Mgmt"
         DaysToExpiry: Integer;
 
     begin
-
+        
         If ExpiryDate <> 0D then
             DaysToExpiry := ExpiryDate - Today();
 
@@ -22,29 +22,32 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
     begin
-        If not Certificate.Inherent then
-            If Certificate."Expiry Date" > 0D then begin
+        If not Certificate.Archived then begin
+            If not Certificate.Inherent then
+                If Certificate."Expiry Date" > 0D then begin
 
-                DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
+                    DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
 
-                case DaysToExpiry of
-                    -10000 .. -1:
-                        Status := Status::Expired;
-                    0 .. 5:
-                        Status := Status::"About to Expire";
+                    case DaysToExpiry of
+                        -10000 .. -1:
+                            Status := Status::Expired;
+                        0 .. 5:
+                            Status := Status::"About to Expire";
 
-                    6 .. 30:
-                        Status := Status::"Expiring Soon";
-                    else
-                        Status := Status::Active;
+                        6 .. 30:
+                            Status := Status::"Expiring Soon";
+                        else
+                            Status := Status::Active;
 
-                end;
-            end
+                    end;
+                end
+                else
+                    Status := Status::Pending
             else
-                Status := Status::Pending
+                Status := Status::Inherent;
+        end
         else
-            Status := Status::Inherent;
-
+            Status := Status::Archived;
         exit(Status);
     end;
 
@@ -88,7 +91,9 @@ codeunit 50104 "TFB Quality Mgmt"
             status::Pending:
                 Exit('🕙');
             status::Inherent:
-                Exit('🃏');
+                Exit('🔘');
+            status::Archived:
+                Exit('🗄️')
         end;
     end;
 
@@ -173,13 +178,27 @@ codeunit 50104 "TFB Quality Mgmt"
                     until Contact.Next() = 0;
 
                 If Recipients.Count > 0 then
-                    SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt),Customer.SystemId);
+                    SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
 
             end;
         end;
     end;
 
-    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text;CustomerSystemID: GUID)
+    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
+
+    var
+
+        CustomerSystemID: GUID;
+
+
+    begin
+
+        SendVendorCertificationEmail(VendorCerts, Recipients, HTMLTemplate, CustomerSystemID);
+
+
+    end;
+
+    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
 
     var
         CompanyInfo: Record "Company Information";
@@ -214,13 +233,14 @@ codeunit 50104 "TFB Quality Mgmt"
                     TempBlob.CreateOutStream(Outstream);
                     PersBlobCU.CopyToOutStream(VendorCerts."Certificate Attach.", OutStream);
                     TempBlob.CreateInStream(InStream);
-                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(),1,250), 'Application/PDF', InStream);
+                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
                 end
 
 
             until VendorCerts.Next() < 1;
-        
-        Email.AddRelation(EmailMessage,Database::Customer,CustomerSystemID,Enum::"Email Relation Type"::"Related Entity");
+
+        If not IsNullGuid(CustomerSystemID) then
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;
