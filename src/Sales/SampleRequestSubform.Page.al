@@ -33,6 +33,13 @@ page 50143 "TFB Sample Request Subform"
                     end;
                 }
 
+                field(Description; Description)
+                {
+                    ApplicationArea = All;
+                }
+
+
+
                 field(SampleSizeSel; SampleRequestSize.Description)
                 {
 
@@ -43,10 +50,12 @@ page 50143 "TFB Sample Request Subform"
                     trigger OnLookup(var Text: Text): Boolean
 
                     var
+                        SampleSizes: Page "TFB Sample Request Sizes";
 
 
                     begin
-                        Page.RunModal(Page::"TFB Sample Request Sizes")
+                        SampleSizes.LookupMode(true);
+                        SampleSizes.RunModal();
                     end;
 
                     trigger OnAfterLookup(Selected: RecordRef)
@@ -55,10 +64,21 @@ page 50143 "TFB Sample Request Subform"
                     begin
 
                         Selected.SetTable(SampleRequestSize);
-
                         Rec."Sample Size SystemID" := SampleRequestSize.SystemId;
-
+                        CurrPage.Update();
                     end;
+                }
+
+                field("Sourced From"; Rec."Sourced From")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies where the sample is retrieved from';
+                }
+
+                field("Line Status"; Rec."Line Status")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies status of retrieving this specific sample';
                 }
             }
         }

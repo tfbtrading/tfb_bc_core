@@ -28,7 +28,7 @@ table 50116 "TFB Sample Request Line"
             begin
                 GetSalesSetup();
                 GetSalesHeader();
-
+                Description := GetItem().Description;
             end;
         }
 

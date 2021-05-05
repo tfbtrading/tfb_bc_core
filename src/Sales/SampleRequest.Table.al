@@ -7,11 +7,6 @@ table 50115 "TFB Sample Request"
 
     fields
     {
-        field(1; MyField; Integer)
-        {
-            DataClassification = ToBeClassified;
-
-        }
 
         field(2; "Sell-to Customer No."; Code[20])
         {
@@ -20,7 +15,7 @@ table 50115 "TFB Sample Request"
 
             trigger OnValidate()
             var
-                StandardCodesMgt: Codeunit "Standard Codes Mgt.";
+
                 Confirmed: Boolean;
                 TFBSampleRequestLine: Record "TFB Sample Request Line";
             begin
@@ -28,8 +23,7 @@ table 50115 "TFB Sample Request"
                 if "No." = '' then
                     InitRecord;
 
-                if ("Sell-to Customer No." <> xRec."Sell-to Customer No.") and
-                   (xRec."Sell-to Customer No." <> '')
+                if ("Sell-to Customer No." <> xRec."Sell-to Customer No.") and (xRec."Sell-to Customer No." <> '')
                 then begin
                     if ("Opportunity No." <> '') then
                         Error(
@@ -67,6 +61,7 @@ table 50115 "TFB Sample Request"
 
 
                 GetCust("Sell-to Customer No.");
+                Rec."Sell-to Customer Name" := Cust.Name;
                 UpdateSellToCont("Sell-to Customer No.");
 
             end;
@@ -79,8 +74,8 @@ table 50115 "TFB Sample Request"
             trigger OnValidate()
             begin
                 if "No." <> xRec."No." then begin
-
-                    NoSeriesMgt.TestManual(GetNoSeriesCode);
+                    SalesSetup.Get();
+                    NoSeriesMgt.TestManual(GetNoSeriesCode());
                     "No. Series" := '';
                 end;
             end;
@@ -96,6 +91,7 @@ table 50115 "TFB Sample Request"
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
+            ValidateTableRelation = true;
         }
 
         field(5055; "Opportunity No."; Code[20])
@@ -122,7 +118,6 @@ table 50115 "TFB Sample Request"
                 IsHandled: Boolean;
             begin
                 IsHandled := false;
-
 
                 if "Sell-to Customer No." <> '' then
                     if Cont.Get("Sell-to Contact No.") then
@@ -258,7 +253,7 @@ table 50115 "TFB Sample Request"
         {
             Caption = 'Sell-to Customer Name 2';
         }
-        field(81; "Sell-to Address"; Text[100])
+        field(81; "Address"; Text[100])
         {
             Caption = 'Sell-to Address';
 
@@ -266,12 +261,12 @@ table 50115 "TFB Sample Request"
             begin
                 PostCodeCheck.ValidateAddress(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition, 3,
-                   "Sell-to Customer Name", "Sell-to Customer Name 2", "Sell-to Contact", "Sell-to Address", "Sell-to Address 2",
-                   "Sell-to City", "Sell-to Post Code", "Sell-to County", "Sell-to Country/Region Code");
+                   "Sell-to Customer Name", "Sell-to Customer Name 2", "Sell-to Contact", "Address", "Address 2",
+                   "City", "Post Code", "County", "Country/Region Code");
 
             end;
         }
-        field(82; "Sell-to Address 2"; Text[50])
+        field(82; "Address 2"; Text[50])
         {
             Caption = 'Sell-to Address 2';
 
@@ -279,17 +274,17 @@ table 50115 "TFB Sample Request"
             begin
                 PostCodeCheck.ValidateAddress(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition, 3,
-                   "Sell-to Customer Name", "Sell-to Customer Name 2", "Sell-to Contact", "Sell-to Address", "Sell-to Address 2",
-                   "Sell-to City", "Sell-to Post Code", "Sell-to County", "Sell-to Country/Region Code");
+                   "Sell-to Customer Name", "Sell-to Customer Name 2", "Sell-to Contact", "Address", "Address 2",
+                   "City", "Post Code", "County", "Country/Region Code");
 
             end;
         }
-        field(83; "Sell-to City"; Text[30])
+        field(83; "City"; Text[30])
         {
             Caption = 'Sell-to City';
-            TableRelation = IF ("Sell-to Country/Region Code" = CONST('')) "Post Code".City
+            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code".City
             ELSE
-            IF ("Sell-to Country/Region Code" = FILTER(<> '')) "Post Code".City WHERE("Country/Region Code" = FIELD("Sell-to Country/Region Code"));
+            IF ("Country/Region Code" = FILTER(<> '')) "Post Code".City WHERE("Country/Region Code" = FIELD("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -297,15 +292,15 @@ table 50115 "TFB Sample Request"
             trigger OnLookup()
             begin
 
-                PostCode.LookupPostCode("Sell-to City", "Sell-to Post Code", "Sell-to County", "Sell-to Country/Region Code");
+                PostCode.LookupPostCode("City", "Post Code", "County", "Country/Region Code");
             end;
 
             trigger OnValidate()
             begin
                 PostCodeCheck.ValidateCity(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition, 3,
-                  "Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Sell-to Address", Rec."Sell-to Address 2",
-                  Rec."Sell-to City", Rec."Sell-to Post Code", Rec."Sell-to County", Rec."Sell-to Country/Region Code");
+                  "Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
+                  Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
 
             end;
         }
@@ -328,12 +323,12 @@ table 50115 "TFB Sample Request"
 
         }
 
-        field(88; "Sell-to Post Code"; Code[20])
+        field(88; "Post Code"; Code[20])
         {
             Caption = 'Sell-to Post Code';
-            TableRelation = IF ("Sell-to Country/Region Code" = CONST('')) "Post Code"
+            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code"
             ELSE
-            IF ("Sell-to Country/Region Code" = FILTER(<> '')) "Post Code" WHERE("Country/Region Code" = FIELD("Sell-to Country/Region Code"));
+            IF ("Country/Region Code" = FILTER(<> '')) "Post Code" WHERE("Country/Region Code" = FIELD("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -342,7 +337,7 @@ table 50115 "TFB Sample Request"
             begin
 
 
-                PostCode.LookupPostCode(Rec."Sell-to City", Rec."Sell-to Post Code", Rec."Sell-to County", Rec."Sell-to Country/Region Code");
+                PostCode.LookupPostCode(Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
             end;
 
             trigger OnValidate()
@@ -350,20 +345,20 @@ table 50115 "TFB Sample Request"
 
                 PostCodeCheck.ValidatePostCode(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition, 3,
-                  Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Sell-to Address", Rec."Sell-to Address 2",
-                  Rec."Sell-to City", Rec."Sell-to Post Code", Rec."Sell-to County", Rec."Sell-to Country/Region Code");
+                  Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
+                  Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
 
 
             end;
         }
-        field(89; "Sell-to County"; Text[30])
+        field(89; "County"; Text[30])
         {
-            CaptionClass = '5,1,' + "Sell-to Country/Region Code";
+            CaptionClass = '5,1,' + "Country/Region Code";
             Caption = 'Sell-to County';
 
 
         }
-        field(90; "Sell-to Country/Region Code"; Code[10])
+        field(90; "Country/Region Code"; Code[10])
         {
             Caption = 'Sell-to Country/Region Code';
             TableRelation = "Country/Region";
@@ -379,7 +374,7 @@ table 50115 "TFB Sample Request"
         field(19; "Order Date"; Date)
         {
             AccessByPermission = TableData "Sales Shipment Header" = R;
-            Caption = 'Order Date';
+            Caption = 'Requested Date';
 
         }
 
@@ -408,12 +403,12 @@ table 50115 "TFB Sample Request"
         field(120; Status; Enum "TFB Sample Request Status")
         {
             Caption = 'Status';
-            Editable = false;
+            Editable = true;
         }
 
         field(200; "Work Description"; BLOB)
         {
-            Caption = 'Work Description';
+            Caption = 'Request Context';
         }
 
         field(105; "Shipping Agent Code"; Code[10])
@@ -437,7 +432,7 @@ table 50115 "TFB Sample Request"
 
     keys
     {
-        key(Key1; MyField)
+        key(Key1; "No.")
         {
             Clustered = true;
         }
@@ -611,12 +606,12 @@ table 50115 "TFB Sample Request"
 
 
         if Customer.Get("Sell-to Customer No.") or Customer.Get(ContBusinessRelation."No.") then begin
-            "Sell-to Address" := Cont.Address;
-            "Sell-to Address 2" := Cont."Address 2";
-            "Sell-to City" := Cont.City;
-            "Sell-to Post Code" := Cont."Post Code";
-            "Sell-to County" := Cont.County;
-            "Sell-to Country/Region Code" := Cont."Country/Region Code";
+            "Address" := Cont.Address;
+            "Address 2" := Cont."Address 2";
+            "City" := Cont.City;
+            "Post Code" := Cont."Post Code";
+            "County" := Cont.County;
+            "Country/Region Code" := Cont."Country/Region Code";
         end;
     end;
 
@@ -656,6 +651,22 @@ table 50115 "TFB Sample Request"
                 "Sell-to Contact" := ''
             else
                 "Sell-to Contact" := Cont.Name;
+    end;
+
+    local procedure updateAddressFromContact(Contact: Record Contact)
+
+    var
+
+    begin
+        If Contact."No." <> '' then begin
+            Rec."Address" := Contact.Address;
+            Rec."Address 2" := Contact."Address 2";
+            Rec."City" := Contact.City;
+            Rec."County" := Contact.County;
+            Rec."Country/Region Code" := Contact."Country/Region Code";
+            Rec."Posting No. Series" := Contact."Post Code";
+            
+        end;
     end;
 
     local procedure CheckCustomerContactRelation(Cont: Record Contact; CustomerNo: Code[20]; ContBusinessRelationNo: Code[20])
@@ -725,7 +736,7 @@ table 50115 "TFB Sample Request"
     local procedure UpdateSellToCont(CustomerNo: Code[20])
     var
         ContBusRel: Record "Contact Business Relation";
-        Cust: Record Customer;
+        Customer: Record Customer;
         OfficeContact: Record Contact;
         OfficeMgt: Codeunit "Office Management";
     begin
@@ -734,25 +745,26 @@ table 50115 "TFB Sample Request"
             UpdateSellToCust(OfficeContact."No.");
             HideValidationDialog := false;
         end else
-            if Cust.Get(CustomerNo) then begin
-                if Cust."Primary Contact No." <> '' then
-                    "Sell-to Contact No." := Cust."Primary Contact No."
+            if Customer.Get(CustomerNo) then begin
+                if Customer."Primary Contact No." <> '' then
+                    "Sell-to Contact No." := Customer."Primary Contact No."
                 else begin
                     ContBusRel.Reset();
                     ContBusRel.SetCurrentKey("Link to Table", "No.");
                     ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
                     ContBusRel.SetRange("No.", "Sell-to Customer No.");
-                    if ContBusRel.FindFirst then
+                    if ContBusRel.FindFirst() then
                         "Sell-to Contact No." := ContBusRel."Contact No."
                     else
                         "Sell-to Contact No." := '';
                 end;
-                "Sell-to Contact" := Cust.Contact;
+                "Sell-to Contact" := Customer.Contact;
             end;
         if "Sell-to Contact No." <> '' then
-            if OfficeContact.Get("Sell-to Contact No.") then
-                OfficeContact.CheckIfPrivacyBlockedGeneric;
-
+            if OfficeContact.Get("Sell-to Contact No.") then begin
+                OfficeContact.CheckIfPrivacyBlockedGeneric();
+                updateAddressFromContact(OfficeContact);
+            end
     end;
 
     local procedure InitNoSeries()
@@ -811,6 +823,8 @@ table 50115 "TFB Sample Request"
 
     end;
 
+
+
     procedure InitRecord()
     var
         ArchiveManagement: Codeunit ArchiveManagement;
@@ -845,6 +859,9 @@ table 50115 "TFB Sample Request"
 
     trigger OnInsert()
     begin
+        If "No." = '' then begin
+            NoSeriesMgt.InitSeries(GetNoSeriesCode(), xRec."No. Series", 0D, "No.", "No. Series");
+        end;
 
     end;
 

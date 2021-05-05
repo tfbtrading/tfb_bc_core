@@ -31,7 +31,7 @@ page 50142 "TFB Sample Request"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Customer No.';
                     Importance = Additional;
-                    NotBlank = true;
+
                     ToolTip = 'Specifies the number of the customer who will receive the products and be billed by default.';
 
                     trigger OnValidate()
@@ -44,11 +44,12 @@ page 50142 "TFB Sample Request"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Customer Name';
-                    ShowMandatory = true;
+
                     ToolTip = 'Specifies the name of the customer who will receive the products and be billed by default.';
 
                     trigger OnValidate()
                     begin
+                        SellToContact.Get(Rec."Sell-to Contact No.");
                         CurrPage.Update();
                     end;
 
@@ -58,12 +59,56 @@ page 50142 "TFB Sample Request"
                             CurrPage.Update();
                     end;
                 }
+                field("Sell-to Contact"; Rec."Sell-to Contact")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Importance = Promoted;
+                    Caption = 'Contact';
+                    Editable = Rec."Sell-to Customer No." <> '';
+                    ToolTip = 'Specifies the name of the person to contact at the customer.';
+                }
+                field("Sell-to Contact No."; Rec."Sell-to Contact No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Contact No.';
+                    Importance = Additional;
+                    ToolTip = 'Specifies the number of the contact person that the sales document will be sent to.';
+
+                    trigger OnValidate()
+                    begin
+                        SellToContact.Get(Rec."Sell-to Contact No.");
+                        if Rec.GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
+                            if Rec."Sell-to Contact No." <> xRec."Sell-to Contact No." then
+                                Rec.SetRange("Sell-to Contact No.");
+
+                        CurrPage.Update();
+                    end;
+                }
+
+                field("Order Date"; Rec."Order Date")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Importance = Promoted;
+                    QuickEntry = false;
+                    ToolTip = 'Specifies the date the order was created. The order date is also used to determine the prices and discounts on the document.';
+                }
+
+                field("Requested Delivery Date"; Rec."Requested Delivery Date")
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the date that the customer has asked for the sample(s) to be delivered.';
+
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
+                }
 
 
-                group("Sell-to")
+                group("Ship-to")
                 {
                     Caption = 'Sell-to';
-                    field("Sell-to Address"; Rec."Sell-to Address")
+                    field("Sell-to Address"; Rec."Address")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Address';
@@ -71,7 +116,7 @@ page 50142 "TFB Sample Request"
                         QuickEntry = false;
                         ToolTip = 'Specifies the address where the customer is located.';
                     }
-                    field("Sell-to Address 2"; Rec."Sell-to Address 2")
+                    field("Sell-to Address 2"; Rec."Address 2")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Address 2';
@@ -79,7 +124,7 @@ page 50142 "TFB Sample Request"
                         QuickEntry = false;
                         ToolTip = 'Specifies additional address information.';
                     }
-                    field("Sell-to City"; Rec."Sell-to City")
+                    field("Sell-to City"; Rec."City")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'City';
@@ -91,7 +136,7 @@ page 50142 "TFB Sample Request"
                     {
                         ShowCaption = false;
                         Visible = IsSellToCountyVisible;
-                        field("Sell-to County"; Rec."Sell-to County")
+                        field("Sell-to County"; Rec."County")
                         {
                             ApplicationArea = Basic, Suite;
                             Caption = 'County';
@@ -100,7 +145,7 @@ page 50142 "TFB Sample Request"
                             ToolTip = 'Specifies the state, province or county of the address.';
                         }
                     }
-                    field("Sell-to Post Code"; Rec."Sell-to Post Code")
+                    field("Sell-to Post Code"; Rec."Post Code")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Post Code';
@@ -108,7 +153,7 @@ page 50142 "TFB Sample Request"
                         QuickEntry = false;
                         ToolTip = 'Specifies the postal code.';
                     }
-                    field("Sell-to Country/Region Code"; Rec."Sell-to Country/Region Code")
+                    field("Sell-to Country/Region Code"; Rec."Country/Region Code")
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Country/Region Code';
@@ -118,23 +163,10 @@ page 50142 "TFB Sample Request"
 
                         trigger OnValidate()
                         begin
-                            IsSellToCountyVisible := FormatAddress.UseCounty(Rec."Sell-to Country/Region Code");
+                            IsSellToCountyVisible := FormatAddress.UseCounty(Rec."Country/Region Code");
                         end;
                     }
-                    field("Sell-to Contact No."; Rec."Sell-to Contact No.")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Contact No.';
-                        Importance = Additional;
-                        ToolTip = 'Specifies the number of the contact person that the sales document will be sent to.';
 
-                        trigger OnValidate()
-                        begin
-                            if Rec.GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
-                                if Rec."Sell-to Contact No." <> xRec."Sell-to Contact No." then
-                                    Rec.SetRange("Sell-to Contact No.");
-                        end;
-                    }
                     field("Sell-to Phone No."; SellToContact."Phone No.")
                     {
                         ApplicationArea = Basic, Suite;
@@ -159,33 +191,9 @@ page 50142 "TFB Sample Request"
                         ToolTip = 'Specifies the email address of the contact person that the sales document will be sent to.';
                     }
                 }
-                field("Sell-to Contact"; Rec."Sell-to Contact")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Contact';
-                    Editable = Rec."Sell-to Customer No." <> '';
-                    ToolTip = 'Specifies the name of the person to contact at the customer.';
-                }
 
 
-                field("Order Date"; Rec."Order Date")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Importance = Promoted;
-                    QuickEntry = false;
-                    ToolTip = 'Specifies the date the order was created. The order date is also used to determine the prices and discounts on the document.';
-                }
 
-                field("Requested Delivery Date"; Rec."Requested Delivery Date")
-                {
-                    ApplicationArea = Basic, Suite;
-                    ToolTip = 'Specifies the date that the customer has asked for the sample(s) to be delivered.';
-
-                    trigger OnValidate()
-                    begin
-                        CurrPage.Update();
-                    end;
-                }
 
                 field("Salesperson Code"; Rec."Salesperson Code")
                 {
@@ -219,7 +227,7 @@ page 50142 "TFB Sample Request"
                 }
                 group("Work Description")
                 {
-                    Caption = 'Work Description';
+                    Caption = 'Request context';
                     field(WorkDescription; WorkDescription)
                     {
                         ApplicationArea = Basic, Suite;
@@ -244,7 +252,7 @@ page 50142 "TFB Sample Request"
                 UpdatePropagation = Both;
             }
 
-            group("Shipping and Billing")
+            group("Transport Options")
             {
                 Caption = 'Shipping and Billing';
                 group(Control91)
@@ -329,7 +337,7 @@ page 50142 "TFB Sample Request"
     var
     begin
         SetDocNoVisible();
-        IsSellToCountyVisible := FormatAddress.UseCounty(Rec."Sell-to Country/Region Code");
+        IsSellToCountyVisible := FormatAddress.UseCounty(Rec."Country/Region Code");
     end;
 
     local procedure SetDocNoVisible()
