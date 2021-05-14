@@ -14,7 +14,6 @@ codeunit 50100 "TFB Lot Info Mgmt"
         FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
         ExtFilterTxt: Label 'pdf';
         FileDialogTxt: Label 'Select file', comment = '%1=Type of File';
-        FileName: Text;
         InStream: InStream;
         BlobKey: BigInteger;
 

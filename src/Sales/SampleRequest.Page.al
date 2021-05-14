@@ -26,48 +26,16 @@ page 50142 "TFB Sample Request"
                             CurrPage.Update();
                     end;
                 }
-                field("Sell-to Customer No."; Rec."Sell-to Customer No.")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Customer No.';
-                    Importance = Additional;
 
-                    ToolTip = 'Specifies the number of the customer who will receive the products and be billed by default.';
-
-                    trigger OnValidate()
-                    begin
-
-                        CurrPage.Update();
-                    end;
-                }
-                field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Customer Name';
-
-                    ToolTip = 'Specifies the name of the customer who will receive the products and be billed by default.';
-
-                    trigger OnValidate()
-                    begin
-                        SellToContact.Get(Rec."Sell-to Contact No.");
-                        CurrPage.Update();
-                    end;
-
-                    trigger OnLookup(var Text: Text): Boolean
-                    begin
-                        if Rec.LookupSellToCustomerName() then
-                            CurrPage.Update();
-                    end;
-                }
                 field("Sell-to Contact"; Rec."Sell-to Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Promoted;
                     Caption = 'Contact';
-                    Editable = Rec."Sell-to Customer No." <> '';
+                    Editable = true;
                     ToolTip = 'Specifies the name of the person to contact at the customer.';
                 }
-                field("Sell-to Contact No."; Rec."Sell-to Contact No.")
+                field("Sell-to Contact No."; Rec."Requesting Contact No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Contact No.';
@@ -76,13 +44,59 @@ page 50142 "TFB Sample Request"
 
                     trigger OnValidate()
                     begin
-                        SellToContact.Get(Rec."Sell-to Contact No.");
-                        if Rec.GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
-                            if Rec."Sell-to Contact No." <> xRec."Sell-to Contact No." then
-                                Rec.SetRange("Sell-to Contact No.");
 
+                        SellToContact.Get(Rec."Requesting Contact No.");
                         CurrPage.Update();
                     end;
+                }
+                group(HideCustomer)
+                {
+                    Visible = Rec."Sell-to Customer No." <> '';
+                    ShowCaption = false;
+
+                    field("Sell-to Customer No."; Rec."Sell-to Customer No.")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Customer No.';
+                        Importance = Additional;
+                        Editable = false;
+
+                        ToolTip = 'Specifies the number of the customer who will receive the products and be billed by default.';
+
+                        trigger OnValidate()
+                        begin
+
+                            CurrPage.Update();
+                        end;
+                    }
+                    field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Customer Name';
+                        Editable = false;
+
+                        ToolTip = 'Specifies the name of the customer who will receive the products and be billed by default.';
+
+                        trigger OnValidate()
+                        begin
+
+                            CurrPage.Update();
+                        end;
+
+
+                    }
+                }
+                group(HideContact)
+                {
+                    ShowCaption = false;
+                    Visible = Rec."Sell-to Customer No." = '';
+
+                    field(IsLeadOnly; true)
+                    {
+                        Caption = 'Lead only (not customer)';
+                        ToolTip = 'Indicates that this is not a customer';
+                        ApplicationArea = All;
+                    }
                 }
 
                 field("Order Date"; Rec."Order Date")
@@ -172,6 +186,7 @@ page 50142 "TFB Sample Request"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Phone No.';
                         Importance = Additional;
+                        Editable = false;
                         ToolTip = 'Specifies the telephone number of the contact person that the sales document will be sent to.';
                     }
                     field(SellToMobilePhoneNo; SellToContact."Mobile Phone No.")
@@ -188,6 +203,7 @@ page 50142 "TFB Sample Request"
                         ApplicationArea = Basic, Suite;
                         Caption = 'Email';
                         Importance = Additional;
+                        Editable = false;
                         ToolTip = 'Specifies the email address of the contact person that the sales document will be sent to.';
                     }
                 }
@@ -247,7 +263,7 @@ page 50142 "TFB Sample Request"
             {
                 ApplicationArea = Basic, Suite;
                 Editable = DynamicEditable;
-                Enabled = Rec."Sell-to Customer No." <> '';
+                Enabled = Rec."Requesting Contact No." <> '';
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
@@ -293,12 +309,14 @@ page 50142 "TFB Sample Request"
             {
                 ApplicationArea = Basic, Suite;
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                Visible = Rec."Sell-to Customer No." <> '';
             }
 
             part(CustomerDetails; "Customer Details FactBox")
             {
                 ApplicationArea = Basic, Suite;
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                Visible = Rec."Sell-to Customer No." <> '';
             }
             systempart(Notes; Notes)
             {
@@ -310,9 +328,12 @@ page 50142 "TFB Sample Request"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(Print)
             {
                 ApplicationArea = All;
+                Image = Print;
+                Caption = 'Print Packing Slip';
+                ToolTip = 'Print a packing slip';
 
                 trigger OnAction()
                 begin
@@ -351,7 +372,7 @@ page 50142 "TFB Sample Request"
     trigger OnAfterGetRecord()
 
     begin
-        SellToContact.Get(Rec."Sell-to Contact No.");
+        SellToContact.Get(Rec."Requesting Contact No.");
     end;
 
     trigger OnAfterGetCurrRecord()
@@ -359,6 +380,7 @@ page 50142 "TFB Sample Request"
     begin
         StatusStyleTxt := Rec.GetStatusStyleText();
         DynamicEditable := CurrPage.Editable;
+
     end;
 
 

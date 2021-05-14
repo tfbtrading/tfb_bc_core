@@ -33,46 +33,42 @@ page 50143 "TFB Sample Request Subform"
                     end;
                 }
 
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Description of item being sampled';
                 }
 
 
 
-                field(SampleSizeSel; SampleRequestSize.Description)
+                field("Use Inventory"; Rec."Use Inventory")
                 {
-
-                    ToolTip = 'Specifies the sample size to be sent';
-                    Caption = 'Sample size';
                     ApplicationArea = All;
-
-                    trigger OnLookup(var Text: Text): Boolean
-
-                    var
-                        SampleSizes: Page "TFB Sample Request Sizes";
+                    Caption = 'Full Inventory Unit';
+                    Enabled = Rec."No." <> '';
+                }
 
 
-                    begin
-                        SampleSizes.LookupMode(true);
-                        SampleSizes.RunModal();
-                    end;
-
-                    trigger OnAfterLookup(Selected: RecordRef)
-
-
-                    begin
-
-                        Selected.SetTable(SampleRequestSize);
-                        Rec."Sample Size SystemID" := SampleRequestSize.SystemId;
-                        CurrPage.Update();
-                    end;
+                field("Customer Sample Size"; Rec."Customer Sample Size")
+                {
+                    ApplicationArea = All;
+                    Enabled = (Rec."No." <> '');
+                    Width = 10;
+                    ToolTip = 'Specifies the size of sample in kilograms requested by customer';
                 }
 
                 field("Sourced From"; Rec."Sourced From")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies where the sample is retrieved from';
+                }
+                field("Source Sample Size"; Rec."Source Sample Size")
+
+                {
+                    ApplicationArea = All;
+                    Width = 10;
+                    Enabled = (Rec."No." <> '') and ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Warehouse));
+                    ToolTip = 'Specifies the size of sample in kilograms requested from source';
                 }
 
                 field("Line Status"; Rec."Line Status")

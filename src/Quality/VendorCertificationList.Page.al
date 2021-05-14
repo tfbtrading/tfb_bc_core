@@ -418,7 +418,6 @@ page 50107 "TFB Vendor Certification List"
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         BlobKey: BigInteger;
-        FileName: Text;
         FileDialogTxt: Label 'Select Certificate File to Upload';
         FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
         ExtFilterTxt: Label 'pdf';

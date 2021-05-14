@@ -55,10 +55,58 @@ table 50116 "TFB Sample Request Line"
         field(20; "Sample Size SystemID"; Guid)
         {
             TableRelation = "TFB Sample Request Size".SystemId;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Replaced by regular kilogram quantity fields';
+        }
+        field(21; "Use Inventory"; Boolean)
+        {
+            trigger OnValidate()
+
+            begin
+                if "Use Inventory" then begin
+                    If "No." <> '' then begin
+                        "Customer Sample Size" := GetItem()."Net Weight";
+                        If ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
+                            "Source Sample Size" := GetItem()."Net Weight";
+                    end;
+                end
+                else begin
+                    "Source Sample Size" := 0;
+                    "Customer Sample Size" := 0;
+                end;
+            end;
+
         }
 
-        field(30; "Line Status"; Enum "TFB Sample Request Status")
+        field(22; "Customer Sample Size"; Decimal)
         {
+            DecimalPlaces = 2 : 2;
+            Caption = 'Kg Sample Size for Customer';
+        }
+
+        field(24; "Source Sample Size"; Decimal)
+        {
+            DecimalPlaces = 2 : 2;
+            Caption = 'Kg Sample Size from Source';
+
+            trigger OnValidate()
+
+            begin
+                if Rec."Source Sample Size" <> 0 then
+                    FieldError("Source Sample Size", 'Source sample size can only be set if source is warehouse or supplier');
+            end;
+        }
+
+        field(30; "Line Status"; Enum "TFB Sample Request Line Status")
+        {
+
+            trigger OnValidate()
+
+            begin
+                If not ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
+                    if Rec."Line Status" = Rec."Line Status"::Requested then
+                        FieldError("Line Status", 'Can only set status requested when requesting from warehouse or supplier');
+            end;
 
         }
 
@@ -67,6 +115,8 @@ table 50116 "TFB Sample Request Line"
             Caption = 'Description';
             TableRelation = Item.Description WHERE(Blocked = CONST(false), "Sales Blocked" = CONST(false));
             ValidateTableRelation = false;
+            Editable = false;
+
 
 
             trigger OnValidate()

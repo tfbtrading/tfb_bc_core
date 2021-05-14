@@ -4,7 +4,7 @@ enum 50122 "TFB Sample Request Status"
     AssignmentCompatibility = true;
     Caption = 'Sample Request Status';
 
-    value(0;" ") { Caption = ' ';}
+    value(0; " ") { Caption = ' '; }
     value(1; "Documented") { Caption = 'Documented Initial Requirement'; }
     value(2; Confirmed) { Caption = 'Confirmed Sample Manifest'; }
     value(3; Sourcing) { Caption = 'Sourcing Required Samples'; }

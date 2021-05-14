@@ -348,9 +348,7 @@ page 50240 "TFB Brokerage Contract"
 
         ExtFilterTxt: Label 'pdf';
         FileFilterTxt: Label 'All files (*.pdf)|*.pdf';
-        EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Contract File to Upload';
-        FileNameTxt: Label 'Contract_%1.pdf', comment = '%1 = contract number';
 
         IStream: InStream;
 

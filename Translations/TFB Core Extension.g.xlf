@@ -2444,12 +2444,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType Text051</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Address</source>
+          <source>Ship-to Address</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Address - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 2306852000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Address 2</source>
+          <source>Ship-to Address 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Address 2 - Property Caption</note>
         </trans-unit>
@@ -2459,12 +2459,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Campaign No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 714791889 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to City</source>
+          <source>Ship-to City</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field City - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 284764054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Country/Region Code</source>
+          <source>Ship-to Country/Region Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Country/Region Code - Property Caption</note>
         </trans-unit>
@@ -2499,7 +2499,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Package Tracking No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 3660300303 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Post Code</source>
+          <source>Ship-to Post Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Post Code - Property Caption</note>
         </trans-unit>
@@ -2518,33 +2518,33 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Requested Delivery Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 4017276786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requesting Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Requesting Contact No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Salesperson Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Salesperson Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 1006519668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Contact</source>
+          <source>Requesting Contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Contact - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - Field 3128777977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Contact No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Contact No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 1474036805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Customer Name</source>
+          <source>Customer Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Customer Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 2958825091 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Customer Name 2</source>
+          <source>Customer Name 2</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Customer Name 2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 1225278069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Customer No.</source>
+          <source>Customer No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Customer No. - Property Caption</note>
         </trans-unit>
@@ -2567,6 +2567,11 @@
           <source>Location is not valid unless sourced from warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - NamedType NotValidLocationMsg</note>
+        </trans-unit>
+        <trans-unit id="Table 484963403 - Field 2956254577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Kg Sample Size for Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Customer Sample Size - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 484963403 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -2603,10 +2608,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Sample Size SystemID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 484963403 - Field 4193586954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Kg Sample Size from Source</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Source Sample Size - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 484963403 - Field 2946002593 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sourced From</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Sourced From - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 484963403 - Field 212485179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Use Inventory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3902644822 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -3338,20 +3353,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileFilterTxt</note>
         </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 238945643" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No content</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType EmptyFileNameErr</note>
-        </trans-unit>
         <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Contract File to Upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileDialogTxt</note>
-        </trans-unit>
-        <trans-unit id="Page 111198966 - Method 3445273183 - NamedType 1845236427" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contract_%1.pdf</source>
-          <note from="Developer" annotates="general" priority="2">%1 = contract number</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Method AttachFile - NamedType FileNameTxt</note>
         </trans-unit>
         <trans-unit id="Page 111198966 - Control 4246820665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
@@ -4118,11 +4123,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Certification Types - Property AdditionalSearchTerms</note>
         </trans-unit>
-        <trans-unit id="Page 2883510973 - Method 3445273183 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
-          <source>All files (*.*)|*.*</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Certification Types - Method AttachFile - NamedType FilterTxt</note>
-        </trans-unit>
         <trans-unit id="Page 2883510973 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Image File to Upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4462,11 +4462,6 @@
           <source>Inbound Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 1207535885 - Method 3445273183 - NamedType 238945643" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No content</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Method AttachFile - NamedType EmptyFileNameErr</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Method 3445273183 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Container Unpack File to Upload</source>
@@ -6388,10 +6383,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
-        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 303728444" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.*)|*.*</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FileFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Choose an image to upload</source>
@@ -9098,6 +9093,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Campaign No. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1465874206 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicates that this is not a customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control IsLeadOnly - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1465874206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead only (not customer)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control IsLeadOnly - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1474036805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the customer who will receive the products and be billed by default.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1474036805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1225278069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the customer who will receive the products and be billed by default.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 1225278069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3380206577 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of the involved entry or record, according to the specified number series.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9142,26 +9167,6 @@
           <source>Contact No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Contact No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3380206577 - Control 1474036805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the name of the customer who will receive the products and be billed by default.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer Name - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3380206577 - Control 1474036805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3380206577 - Control 1225278069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the number of the customer who will receive the products and be billed by default.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer No. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3380206577 - Control 1225278069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Sell-to Customer No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3380206577 - Control 2150623144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sell-to</source>
@@ -9298,6 +9303,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Shipping Agent Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3380206577 - Action 1002420131 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print a packing slip</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Action Print - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Action 1002420131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Print Packing Slip</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Action Print - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 660183975 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Request Approval,Order,Release,Posting,Print/Send,Navigate</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9363,6 +9378,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1376206855 - Control 2956254577 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the size of sample in kilograms requested by customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Customer Sample Size - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description of item being sampled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Description - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1376206855 - Control 172091438 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies status of retrieving this specific sample</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9373,20 +9398,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control No. - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1376206855 - Control 2349044547 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the sample size to be sent</source>
+        <trans-unit id="Page 1376206855 - Control 4193586954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the size of sample in kilograms requested from source</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control SampleSizeSel - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1376206855 - Control 2349044547 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sample size</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control SampleSizeSel - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Source Sample Size - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1376206855 - Control 2946002593 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies where the sample is retrieved from</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Sourced From - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Control 212485179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Full Inventory Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Use Inventory - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 552860638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attribute Match Selection</source>
@@ -14777,6 +14802,41 @@
           <source>Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Source - EnumValue Warehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sample Request Line Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue   - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 1179586270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Awaiting New Stock</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue AwaitingStock - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 541166302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ready to Package</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue ReadyToPackage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 3437333680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ready to Send</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue ReadyToSend - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 3741122412 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requested</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue Requested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3504532607 - EnumValue 2561328176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Sample Request Line Status - EnumValue Sent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 4066079357 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sample Request Status</source>

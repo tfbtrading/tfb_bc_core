@@ -118,7 +118,6 @@ page 50105 "TFB Certification Types"
     var
         FileManagement: CodeUnit "File Management";
         TempBlob: CodeUnit "Temp Blob";
-        FilterTxt: Label 'All files (*.*)|*.*';
         FileDialogTxt: Label 'Select Image File to Upload';
         FileName: Text;
         InStream: InStream;

@@ -686,7 +686,6 @@ page 50210 "TFB Container Entry"
         IStream: InStream;
         BlobRef: BigInteger;
         FileName: Text;
-        EmptyFileNameErr: Label 'No content';
         FileDialogTxt: Label 'Select Container Unpack File to Upload';
         FilterTxt: Label 'All files (*.pdf)|*.pdf';
         ExtFilterTxt: Label 'pdf';

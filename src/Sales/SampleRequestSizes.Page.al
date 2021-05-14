@@ -1,14 +1,16 @@
 page 50145 "TFB Sample Request Sizes"
 {
 
-    ApplicationArea = All;
+  
     Caption = 'Sample Request Sizes';
     PageType = List;
     Editable = true;
     InsertAllowed = true;
     DeleteAllowed = true;
     SourceTable = "TFB Sample Request Size";
-    UsageCategory = Administration;
+    ObsoleteReason = 'Replaced by numeric fields';
+    ObsoleteState = Pending;
+
 
     layout
     {
