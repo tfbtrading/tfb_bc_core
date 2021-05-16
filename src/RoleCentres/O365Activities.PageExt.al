@@ -35,6 +35,14 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
                     DrillDownPageID = "TFB Active Task List";
                     ToolTip = 'Specifies tasks that are still open.';
                 }
+                field("TFB No. Open Sample Requests"; Rec."TFB No. Open Sample Requests")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    Caption = 'Sample Requests';
+                    ToolTip = 'Specifies the number of open sample requests';
+                    DrillDown = true;
+                    DrillDownPageId = "TFB Sample Request List";
+                }
                 field("TFB New Contacts"; Rec."TFB New Contacts")
                 {
                     ApplicationArea = Basic, Suite;
@@ -88,13 +96,13 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
     trigger OnOpenPage()
 
     var
-     
+
         UserSetup: Record "User Setup";
         User: record User;
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-    
+
     begin
         USID := Database.UserSecurityId();
 

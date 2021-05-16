@@ -42,6 +42,14 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
 
                     ToolTip = 'Specifies your own tasks that are pending.';
                 }
+                field("TFB No. Open Sample Requests"; Rec."TFB No. Open Sample Requests")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    Caption = 'Sample Requests';
+                    ToolTip = 'Specifies the number of open sample requests';
+                    DrillDown = true;
+                    DrillDownPageId = "TFB Sample Request List";
+                }
                 field("TFB My Interactions"; Rec."TFB My Interactions")
                 {
                     ApplicationArea = RelationshipMgmt;
@@ -109,14 +117,14 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
     trigger OnOpenPage()
 
     var
-       
+
         UserSetup: Record "User Setup";
         User: record User;
         UserName: code[50];
         USID: Guid;
         ExpressionTxt: Label '<-14D>';
-       
-        
+
+
     begin
         USID := Database.UserSecurityId();
 

@@ -46,7 +46,7 @@ table 50115 "TFB Sample Request"
         field(5055; "Opportunity No."; Code[20])
         {
             Caption = 'Opportunity No.';
-            TableRelation = Opportunity."No." WHERE("Contact No." = FIELD("Requesting Contact No."),
+            TableRelation = Opportunity."No." WHERE("Contact No." = FIELD("Sell-to Contact No."),
                                                                                           Closed = CONST(false));
 
             trigger OnValidate()
@@ -55,7 +55,7 @@ table 50115 "TFB Sample Request"
             end;
         }
 
-        field(5052; "Requesting Contact No."; Code[20])
+        field(5052; "Sell-to Contact No."; Code[20])
         {
             Caption = 'Requesting Contact No.';
             TableRelation = Contact where(Type = const(Person));
@@ -68,16 +68,16 @@ table 50115 "TFB Sample Request"
                 Opportunity: Record Opportunity;
                 Confirmed: Boolean;
             begin
-                Cont.Get("Requesting Contact No.");
+                Cont.Get("Sell-to Contact No.");
 
 
                 if GetHideValidationDialog() or not GuiAllowed() then
                     Confirmed := true
                 else
-                    Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Requesting Contact No."));
+                    Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Sell-to Contact No."));
 
                 if Confirmed then begin
-                    if InitFromContact("Requesting Contact No.", FieldCaption("Requesting Contact No.")) then
+                    if InitFromContact("Sell-to Contact No.", FieldCaption("Sell-to Contact No.")) then
                         exit;
 
                     If Cont."Company No." <> '' then
@@ -98,12 +98,12 @@ table 50115 "TFB Sample Request"
                 end;
                 "Sell-to Contact" := Cont.Name;
 
-                if "Requesting Contact No." <> '' then
-                    if Cont.Get("Requesting Contact No.") then
+                if "Sell-to Contact No." <> '' then
+                    if Cont.Get("Sell-to Contact No.") then
                         if ("Salesperson Code" = '') and (Cont."Salesperson Code" <> '') then
                             Validate("Salesperson Code", Cont."Salesperson Code");
 
-                UpdateAddressFromContact("Requesting Contact No.");
+                UpdateAddressFromContact("Sell-to Contact No.");
 
             end;
         }
@@ -199,9 +199,9 @@ table 50115 "TFB Sample Request"
             begin
 
                 Contact.FilterGroup(2);
-                LookupContact("Requesting Contact No.", Contact);
+                LookupContact("Sell-to Contact No.", Contact);
                 if PAGE.RunModal(0, Contact) = ACTION::LookupOK then
-                    Validate("Requesting Contact No.", Contact."No.");
+                    Validate("Sell-to Contact No.", Contact."No.");
                 Contact.FilterGroup(0);
             end;
 
@@ -289,6 +289,15 @@ table 50115 "TFB Sample Request"
         {
             Caption = 'Status';
             Editable = true;
+
+            trigger OnValidate()
+
+            begin
+                If Status = Status::Sent then
+                    Closed := true
+                else
+                    Closed := false;
+            end;
         }
 
         field(200; "Work Description"; BLOB)
@@ -312,6 +321,11 @@ table 50115 "TFB Sample Request"
         field(106; "Package Tracking No."; Text[30])
         {
             Caption = 'Package Tracking No.';
+        }
+        field(999; Closed; Boolean)
+        {
+            Caption = 'Closed';
+            Editable = false;
         }
     }
 
@@ -446,7 +460,7 @@ table 50115 "TFB Sample Request"
         if not Cont.Get(ContactNo) then
             exit;
 
-        "Requesting Contact No." := Cont."No.";
+        "Sell-to Contact No." := Cont."No.";
 
         "Address" := Cont.Address;
         "Address 2" := Cont."Address 2";

@@ -170,6 +170,12 @@ table 50105 "TFB Sales Admin Activities Cue"
             CalcFormula = count("To-do" where(Closed = const(false), "System To-do Type" = const(Organizer), "Salesperson Code" = field("TFB SalesPerson Filter")));
 
         }
+        field(50130; "TFB No. Open Sample Requests"; Integer)
+        {
+            FieldClass = FlowField;
+            Caption = 'No. Open Sample Requests';
+            CalcFormula = count("TFB Sample Request" where(Closed = const(true)));
+        }
 
 
         field(50120; "TFB SalesPerson Filter"; Code[20])

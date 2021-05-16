@@ -199,6 +199,15 @@ page 50110 "TFB Sales Admin Activities"
                         UserTaskList.Run();
                     end;
                 }
+
+                field("TFB No. Open Sample Requests";Rec."TFB No. Open Sample Requests")
+                {
+                    ApplicationArea = RelationshipMgmt;
+                    Caption = 'Sample Requests';
+                    ToolTip = 'Specifies the number of open sample requests';
+                    DrillDown  = true;
+                    DrillDownPageId = "TFB Sample Request List";
+                }
             }
 
 

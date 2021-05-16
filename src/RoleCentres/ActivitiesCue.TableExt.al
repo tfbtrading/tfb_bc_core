@@ -34,6 +34,12 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             CalcFormula = Count(Opportunity where(Closed = const(false), "Salesperson Code" = field("TFB Salesperson Code Filter")));
             Caption = 'Opportunities';
         }
+        field(50130; "TFB No. Open Sample Requests"; Integer)
+        {
+            FieldClass = FlowField;
+            Caption = 'No. Open Sample Requests';
+            CalcFormula = count("TFB Sample Request" where(Closed = const(true)));
+        }
 
         field(50510; "TFB New Contacts"; Integer)
         {

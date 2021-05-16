@@ -2358,6 +2358,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field TFB My Tasks - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 500998361 - Field 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. Open Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field TFB No. Open Sample Requests - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 500998361 - Field 2761897838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>TFB Open Tasks</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2463,6 +2468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field City - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 1778072510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Closed - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 284764054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ship-to Country/Region Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2518,11 +2528,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Requested Delivery Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - Field 4017276786 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Requesting Contact No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Requesting Contact No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Salesperson Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2532,6 +2537,11 @@
           <source>Requesting Contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 3128777977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requesting Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sell-to Contact No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 1474036805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Name</source>
@@ -8723,6 +8733,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales Admin Activities - Control TFB My Tasks - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3677314760 - Control 3180526113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of open sample requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales Admin Activities - Control TFB No. Open Sample Requests - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677314760 - Control 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sales Admin Activities - Control TFB No. Open Sample Requests - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3677314760 - Control 991736964 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the number of pending tasks that are assigned to you or to a group that you are a member of.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9303,6 +9323,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control Shipping Agent Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 3348961033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control ItemDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Control 999101188 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control ItemWarehouse - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3380206577 - Action 1002420131 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print a packing slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9412,6 +9442,51 @@
           <source>Full Inventory Unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Use Inventory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 1262203249 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Item Availability by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action ItemAvailabilityBy - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 3310733264 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View how the actual and the projected available balance of an item will develop over time according to supply and demand events.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Event - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 3310733264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Event</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Event - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 3891454143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the actual and projected quantity of the item per location.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Location - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 4230226825 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the current and projected quantity of the item in each lot.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Lot - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 4230226825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Lot - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 912261439 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show the projected quantity of the item over time according to time periods, such as day, week, or month.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Period - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1376206855 - Action 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Action Period - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 552860638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attribute Match Selection</source>
@@ -11238,6 +11313,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB New Contacts - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Control 3180526113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
+          <source>Specifies the number of open sample requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB No. Open Sample Requests - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Control 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
+          <source>Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB No. Open Sample Requests - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2173142200 - Control 3565464677 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
           <source>Specifies opportunities that are still open.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12678,6 +12763,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Rel. Mgr. Act. - Control TFB My Tasks - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 638571901 - Control 3180526113 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1477659176">
+          <source>Specifies the number of open sample requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Rel. Mgr. Act. - Control TFB No. Open Sample Requests - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 638571901 - Control 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1477659176">
+          <source>Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Rel. Mgr. Act. - Control TFB No. Open Sample Requests - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 638571901 - Control 2042530107 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1477659176">
           <source>Interactions &amp; Tasks</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13087,6 +13182,11 @@
           <source>New Contacts - last 7 days</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB New Contacts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>No. Open Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB No. Open Sample Requests - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3099020840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>Sales Lines</source>
@@ -13792,6 +13892,11 @@
           <source>My Pending Tasks</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Rel. Mgmt. Cue - Field TFB My Tasks - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 331525781 - Field 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 714095046">
+          <source>No. Open Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Rel. Mgmt. Cue - Field TFB No. Open Sample Requests - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 331525781 - Field 2761897838 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 714095046">
           <source>All Pending Tasks</source>

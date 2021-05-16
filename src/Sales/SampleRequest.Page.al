@@ -35,7 +35,7 @@ page 50142 "TFB Sample Request"
                     Editable = true;
                     ToolTip = 'Specifies the name of the person to contact at the customer.';
                 }
-                field("Sell-to Contact No."; Rec."Requesting Contact No.")
+                field("Sell-to Contact No."; Rec."Sell-to Contact No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Contact No.';
@@ -45,7 +45,7 @@ page 50142 "TFB Sample Request"
                     trigger OnValidate()
                     begin
 
-                        SellToContact.Get(Rec."Requesting Contact No.");
+                        SellToContact.Get(Rec."Sell-to Contact No.");
                         CurrPage.Update();
                     end;
                 }
@@ -263,7 +263,7 @@ page 50142 "TFB Sample Request"
             {
                 ApplicationArea = Basic, Suite;
                 Editable = DynamicEditable;
-                Enabled = Rec."Requesting Contact No." <> '';
+                Enabled = Rec."Sell-to Contact No." <> '';
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
@@ -317,6 +317,22 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 SubPageLink = "No." = FIELD("Sell-to Customer No.");
                 Visible = Rec."Sell-to Customer No." <> '';
+            }
+            part(ItemDetails; "Item Picture")
+            {
+                ApplicationArea = Basic, Suite;
+                Provider = Lines;
+                SubPageLink = "No." = field("No.");
+                Visible = Rec."No." <> '';
+                Caption = '';
+            }
+            part(ItemWarehouse; "Item Warehouse FactBox")
+            {
+                ApplicationArea = Basic, Suite;
+                Provider = Lines;
+                SubPageLink = "No." = field("No.");
+                Visible = Rec."No." <> '';
+                Caption = '';
             }
             systempart(Notes; Notes)
             {
@@ -372,7 +388,7 @@ page 50142 "TFB Sample Request"
     trigger OnAfterGetRecord()
 
     begin
-        SellToContact.Get(Rec."Requesting Contact No.");
+        SellToContact.Get(Rec."Sell-to Contact No.");
     end;
 
     trigger OnAfterGetCurrRecord()
