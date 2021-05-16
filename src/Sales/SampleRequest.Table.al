@@ -14,6 +14,17 @@ table 50115 "TFB Sample Request"
             TableRelation = Customer;
             Editable = false;
 
+            trigger OnValidate()
+            var
+                Customer: Record Customer;
+            begin
+                Customer.SetLoadFields("No.", Name);
+                If Customer.Get(Rec."Sell-to Customer No.") then
+                    Rec."Sell-to Customer Name" := Customer.Name;
+
+            end;
+
+
         }
 
         field(3; "No."; Code[20])
@@ -104,6 +115,7 @@ table 50115 "TFB Sample Request"
                             Validate("Salesperson Code", Cont."Salesperson Code");
 
                 UpdateAddressFromContact("Sell-to Contact No.");
+                Get
 
             end;
         }
@@ -292,9 +304,21 @@ table 50115 "TFB Sample Request"
 
             trigger OnValidate()
 
+            var
+                Lines: Record "TFB Sample Request Line";
+
             begin
-                If Status = Status::Sent then
-                    Closed := true
+                If Status = Status::Sent then begin
+                    Closed := true;
+                    Lines.SetRange("Document No.", "No.");
+
+                    If Lines.FindFirst() then
+                        repeat begin
+
+                            Lines."Line Status" := Lines."Line Status"::Sent;
+                            Lines.Modify(false);
+                        end until Lines.Next() = 0;
+                end
                 else
                     Closed := false;
             end;
@@ -338,28 +362,29 @@ table 50115 "TFB Sample Request"
     }
 
     var
+        Cust: Record Customer;
+        PostCode: Record "Post Code";
         SalesSetup: Record "Sales & Receivables Setup";
         TFBSampleRequest: Record "TFB Sample Request";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         PostCodeCheck: Codeunit "Post Code Check";
         SelectNoSeriesAllowed: Boolean;
 
-        Cust: Record Customer;
-        PostCode: Record "Post Code";
-        ReadingDataSkippedMsg: Label 'Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.', Comment = '%1=field caption';
-
-        NoChangeOpportunityMsg: Label 'You cannot change %1 because the corresponding %2 %3 has been assigned';
-        ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
-        SellToCustomerTxt: Label 'Sell-to Customer';
-        ConfirmEmptyEmailQst: Label 'Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?', Comment = '%1 - Contact No., %2 - Email';
-        NoRelationMsg: Label 'Contact %1 %2 is not related to customer %3.';
-        NoResetMsg: Label 'You cannot reset %1 because the document still has one or more lines.';
-
-        NoBlankDueToOpportunity: Label 'The %1 field cannot be blank because this quote is linked to an opportunity.';
-        Text051: Label 'The sales %1 %2 already exists.';
-
     protected var
         HideValidationDialog: Boolean;
+        ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
+        ConfirmEmptyEmailQst: Label 'Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?', Comment = '%1 - Contact No., %2 - Email';
+        NoBlankDueToOpportunity: Label 'The %1 field cannot be blank because this quote is linked to an opportunity.';
+        NoChangeOpportunityMsg: Label 'You cannot change %1 because the corresponding %2 %3 has been assigned';
+        NoRelationMsg: Label 'Contact %1 %2 is not related to customer %3.';
+        NoResetMsg: Label 'You cannot reset %1 because the document still has one or more lines.';
+        ReadingDataSkippedMsg: Label 'Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.', Comment = '%1=field caption';
+        SellToCustomerTxt: Label 'Sell-to Customer';
+        Text051: Label 'The sales %1 %2 already exists.';
+
+
+
+
 
     local procedure GetSalesSetup()
     begin
@@ -418,8 +443,8 @@ table 50115 "TFB Sample Request"
 
     procedure LinkSalesDocWithOpportunity(OldOpportunityNo: Code[20])
     var
-        SalesHeader: Record "Sales Header";
         Opportunity: Record Opportunity;
+        SalesHeader: Record "Sales Header";
         ConfirmManagement: Codeunit "Confirm Management";
     begin
         if "Opportunity No." <> OldOpportunityNo then
@@ -452,8 +477,8 @@ table 50115 "TFB Sample Request"
 
     local procedure UpdateAddressFromContact(ContactNo: Code[20])
     var
-
         Cont: Record Contact;
+
 
     begin
 
@@ -654,8 +679,8 @@ table 50115 "TFB Sample Request"
 
     procedure GetNoSeriesCode(): Code[20]
     var
-        NoSeriesCode: Code[20];
         IsHandled: Boolean;
+        NoSeriesCode: Code[20];
     begin
         GetSalesSetup;
         NoSeriesCode := SalesSetup."TFB Sample Request Nos.";

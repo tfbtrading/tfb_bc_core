@@ -46,13 +46,14 @@ page 50143 "TFB Sample Request Subform"
                     ApplicationArea = All;
                     Caption = 'Full Inventory Unit';
                     Enabled = Rec."No." <> '';
+                    ToolTip = 'Specifies if a full inventory unit is used)';
                 }
 
 
                 field("Customer Sample Size"; Rec."Customer Sample Size")
                 {
                     ApplicationArea = All;
-                    Enabled = (Rec."No." <> '');
+                    Enabled = (Rec."No." <> '') and (not Rec."Use Inventory");
                     Width = 10;
                     ToolTip = 'Specifies the size of sample in kilograms requested by customer';
                 }

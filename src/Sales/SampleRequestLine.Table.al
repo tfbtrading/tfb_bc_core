@@ -82,17 +82,19 @@ table 50116 "TFB Sample Request Line"
         {
             DecimalPlaces = 2 : 2;
             Caption = 'Kg Sample Size for Customer';
+            MinValue = 0;
         }
 
         field(24; "Source Sample Size"; Decimal)
         {
             DecimalPlaces = 2 : 2;
             Caption = 'Kg Sample Size from Source';
+            MinValue = 0;
 
             trigger OnValidate()
 
             begin
-                if Rec."Source Sample Size" <> 0 then
+                if (Rec."Source Sample Size" <> 0) and ((Rec."Sourced From" = Rec."Sourced From"::Supplier) or (Rec."Sourced From" = Rec."Sourced From"::Warehouse)) then
                     FieldError("Source Sample Size", 'Source sample size can only be set if source is warehouse or supplier');
             end;
         }

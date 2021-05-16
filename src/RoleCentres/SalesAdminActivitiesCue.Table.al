@@ -174,7 +174,7 @@ table 50105 "TFB Sales Admin Activities Cue"
         {
             FieldClass = FlowField;
             Caption = 'No. Open Sample Requests';
-            CalcFormula = count("TFB Sample Request" where(Closed = const(true)));
+            CalcFormula = count("TFB Sample Request" where(Closed = const(false)));
         }
 
 

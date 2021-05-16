@@ -9438,6 +9438,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Sourced From - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1376206855 - Control 212485179 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if a full inventory unit is used)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Subform - Control Use Inventory - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1376206855 - Control 212485179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Full Inventory Unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14007,6 +14012,11 @@
           <source>Containers</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Cue - Field TFB Containers In Progress - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2551426373 - Field 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 388441093">
+          <source>No. Open Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Cue - Field TFB No. Open Sample Requests - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2551426373 - Field 3099020840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 388441093">
           <source>Sales Lines - Ongoing</source>

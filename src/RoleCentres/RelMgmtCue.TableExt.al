@@ -57,7 +57,7 @@ tableextension 50119 "TFB Rel. Mgmt. Cue" extends "Relationship Mgmt. Cue"
         {
             FieldClass = FlowField;
             Caption = 'No. Open Sample Requests';
-            CalcFormula = count("TFB Sample Request" where(Closed = const(true)));
+            CalcFormula = count("TFB Sample Request" where(Closed = const(false)));
         }
 
         field(50535; "Recent Filter"; DateTime)

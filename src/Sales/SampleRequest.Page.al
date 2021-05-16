@@ -34,6 +34,13 @@ page 50142 "TFB Sample Request"
                     Caption = 'Contact';
                     Editable = true;
                     ToolTip = 'Specifies the name of the person to contact at the customer.';
+
+                    trigger OnValidate()
+
+                    begin
+                        SellToContact.Get(Rec."Sell-to Contact No.");
+                        CurrPage.Update();
+                    end;
                 }
                 field("Sell-to Contact No."; Rec."Sell-to Contact No.")
                 {
@@ -263,7 +270,7 @@ page 50142 "TFB Sample Request"
             {
                 ApplicationArea = Basic, Suite;
                 Editable = DynamicEditable;
-                Enabled = Rec."Sell-to Contact No." <> '';
+                Enabled = (Rec."Sell-to Contact No." <> '') and (not (Rec.Status = Rec.Status::Sent));
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
             }
