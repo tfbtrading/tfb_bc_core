@@ -3,12 +3,10 @@ page 50144 "TFB Sample Request List"
     ApplicationArea = Basic, Suite;
     Caption = 'Sample Requests';
     CardPageID = "TFB Sample Request";
-    DataCaptionFields = "Sell-to Customer No.";
+    DataCaptionExpression = 'Sample Requests';
     Editable = false;
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Request Approval,Order,Release,Posting,Print/Send,Navigate';
-    QueryCategory = 'Sample Request List';
-    RefreshOnActivate = true;
     SourceTable = "TFB Sample Request";
     UsageCategory = Lists;
 
@@ -23,6 +21,11 @@ page 50144 "TFB Sample Request List"
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
+                }
+                field("Sell-to Contact"; Rec."Sell-to Contact")
+                {
+                    ApplicationArea = Basic, Suite;
+                    ToolTip = 'Specifies the name of the sell-to-contact';
                 }
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
@@ -58,18 +61,9 @@ page 50144 "TFB Sample Request List"
     {
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction()
-                begin
-
-                end;
-            }
         }
     }
 
-    var
-        myInt: Integer;
+
 }

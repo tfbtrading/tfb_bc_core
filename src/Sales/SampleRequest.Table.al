@@ -1,9 +1,9 @@
 table 50115 "TFB Sample Request"
 {
     Caption = 'Sample Request';
-    DataCaptionFields =; //TODO Add in Data caption fields
-    LookupPageID = "Sales List";
-    Permissions = tabledata "Assemble-to-Order Link" = rmid;
+    DataCaptionFields = "No.", "Sell-to Contact";
+    LookupPageID = "TFB Sample Request List";
+    Permissions = tabledata "TFB Sample Request" = rmid;
 
     fields
     {
@@ -369,8 +369,6 @@ table 50115 "TFB Sample Request"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         PostCodeCheck: Codeunit "Post Code Check";
         SelectNoSeriesAllowed: Boolean;
-
-    protected var
         HideValidationDialog: Boolean;
         ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
         ConfirmEmptyEmailQst: Label 'Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?', Comment = '%1 - Contact No., %2 - Email';
@@ -419,7 +417,7 @@ table 50115 "TFB Sample Request"
         Clear("Work Description");
         "Work Description".CreateOutStream(OutStream, TEXTENCODING::UTF8);
         OutStream.WriteText(NewWorkDescription);
-        Modify;
+        Modify();
     end;
 
     procedure GetWorkDescription() WorkDescription: Text
@@ -690,25 +688,12 @@ table 50115 "TFB Sample Request"
 
     trigger OnInsert()
     begin
-        If "No." = '' then begin
+        If "No." = '' then
             NoSeriesMgt.InitSeries(GetNoSeriesCode(), xRec."No. Series", 0D, "No.", "No. Series");
-        end;
+
 
     end;
 
-    trigger OnModify()
-    begin
 
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
 
 }

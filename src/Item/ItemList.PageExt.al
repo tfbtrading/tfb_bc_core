@@ -73,6 +73,19 @@ pageextension 50117 "TFB Item List" extends "Item List"
         }
         addafter(InventoryField)
         {
+            field("TFB Inventory - Excl. Transit"; "TFB Inventory - Excl. Transit")
+            {
+                ApplicationArea = All;
+                BlankZero = true;
+                ToolTip = 'Specifies remaining inv. excl. transit';
+            }
+            field("Qty. in Transit"; Rec."Qty. in Transit")
+            {
+                ApplicationArea = All;
+                BlankZero = true;
+                ToolTip = 'Specific qty currently in transit';
+            }
+
             field("Reserved Qty. on Inventory"; Rec."Reserved Qty. on Inventory")
             {
                 ApplicationArea = All;

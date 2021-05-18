@@ -93,6 +93,31 @@ tableextension 50260 "TFB Item" extends Item
 
         }
 
+        field(50325; "TFB Qty. In Transit"; Decimal)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" where("Remaining Quantity" = filter('>0'), "Document Type" = const("Transfer Shipment"), "Item No." = field("No.")));
+            Caption = 'Qty in Transit';
+        }
+
+        field(50326; "TFB Inventory - Excl. Transit"; Decimal)
+        {
+            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = FIELD("No."),
+                                                                 
+                                                                  "Location Code" = FIELD("Location Filter"),
+                                                                  "Drop Shipment" = FIELD("Drop Shipment Filter"),
+                                                                  "Variant Code" = FIELD("Variant Filter"),
+                                                                  "Lot No." = FIELD("Lot No. Filter"),
+                                                                  "Serial No." = FIELD("Serial No. Filter"),
+                                                                  "Unit of Measure Code" = FIELD("Unit of Measure Filter"),
+                                                                  "Package No." = FIELD("Package No. Filter"),
+                                                                  "Entry Type" = filter('<>Transfer')));
+            Caption = 'Inventory - Excl. Transfers';
+            DecimalPlaces = 0 : 5;
+            Editable = false;
+            FieldClass = FlowField;
+        }
+
         field(50330; "TFB Unit Price Source"; Code[20])
         {
             Caption = 'Unit Price Source';

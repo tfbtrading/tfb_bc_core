@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            SetAllItemstoGenericItem();
+            DeleteExistingSampleRequests();
 
 
     end;
@@ -42,10 +42,23 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '17.0.8.8'))
+        Exit((GetInstallingVersionNo() = '18.0.1.4'))
     end;
 
 
+    local procedure DeleteExistingSampleRequests(): Boolean
+
+    var
+
+        SampleRequestLines: Record "TFB Sample Request Line";
+        SampleRequest: Record "TFB Sample Request";
+
+    begin
+
+        SampleRequestLines.DeleteAll(false);
+        SampleRequest.DeleteAll(false);
+
+    end;
 
     procedure CopyQualityAttachToPersBlob()
 
@@ -105,7 +118,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-  
+
 
     local procedure SetAllItemstoGenericItem()
     var
@@ -115,14 +128,14 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
         if not Item.FindSet(true, false) then exit;
 
-        repeat 
+        repeat
 
             If not IsNullGuid(Item."TFB Generic Item ID") then exit;
 
             Item.validate("TFB Act As Generic", true);
             Item.Modify(true);
 
-         until Item.Next() = 0;
+        until Item.Next() = 0;
 
     end;
 
