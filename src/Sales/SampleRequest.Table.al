@@ -312,11 +312,11 @@ table 50115 "TFB Sample Request"
                     Lines.SetRange("Document No.", "No.");
 
                     If Lines.FindFirst() then
-                        repeat begin
+                        repeat
 
                             Lines."Line Status" := Lines."Line Status"::Sent;
                             Lines.Modify(false);
-                        end until Lines.Next() = 0;
+                        until Lines.Next() = 0;
                 end
                 else
                     Closed := false;
@@ -349,6 +349,11 @@ table 50115 "TFB Sample Request"
         {
             Caption = 'Closed';
             Editable = false;
+        }
+        field(980; LinesExist; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = exist("TFB Sample Request Line" where("Document No." = field("No.")));
         }
     }
 

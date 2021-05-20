@@ -16,7 +16,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Usage';
-                OptionCaption = 'Sample Request';
+                OptionCaption = 'Packing Slip,Warehouse Request,Supplier Request';
                 ToolTip = 'Specifies which type of document the report is used for.';
 
                 trigger OnValidate()
@@ -108,7 +108,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
     end;
 
     var
-        ReportUsage2: Option "Sample Request";
+        ReportUsage2: Option "Packing Slip","Warehouse Request","Supplier Request";
 
     local procedure SetUsageFilter(ModifyRec: Boolean)
     begin
@@ -116,9 +116,12 @@ page 50146 "TFB Rep. Sel - Sample Req."
             if Rec.Modify(true) then;
         Rec.FilterGroup(2);
         case ReportUsage2 of
-            ReportUsage2::"Sample Request":
+            ReportUsage2::"Packing Slip":
                 Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request");
-
+            ReportUsage2::"Supplier Request":
+                Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request.Supplier");
+            ReportUsage2::"Warehouse Request":
+                Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request.Warehouse");
         end;
         Rec.FilterGroup(0);
         CurrPage.Update();
@@ -132,8 +135,11 @@ page 50146 "TFB Rep. Sel - Sample Req."
             if Evaluate(DummyReportSelections.Usage, Rec.GetFilter(Usage)) then
                 case DummyReportSelections.Usage of
                     Rec.Usage::"S.Sample.Request":
-                        ReportUsage2 := ReportUsage2::"Sample Request"
-
+                        ReportUsage2 := ReportUsage2::"Packing Slip";
+                    Rec.Usage::"S.Sample.Request.Supplier":
+                        ReportUsage2 := ReportUsage2::"Supplier Request";
+                    Rec.Usage::"S.Sample.Request.Warehouse":
+                        ReportUsage2 := ReportUsage2::"Warehouse Request";
                 end;
             Rec.SetRange(Usage);
         end;

@@ -35,12 +35,7 @@ page 50142 "TFB Sample Request"
                     Editable = true;
                     ToolTip = 'Specifies the name of the person to contact at the customer.';
 
-                    trigger OnValidate()
 
-                    begin
-                        SellToContact.Get(Rec."Sell-to Contact No.");
-                        CurrPage.Update();
-                    end;
                 }
                 field("Sell-to Contact No."; Rec."Sell-to Contact No.")
                 {
@@ -51,6 +46,12 @@ page 50142 "TFB Sample Request"
                     editable = false;
 
 
+                    trigger OnValidate()
+
+                    begin
+                        SellToContact.Get(Rec."Sell-to Contact No.");
+                        CurrPage.Update();
+                    end;
                 }
                 group(HideCustomer)
                 {
@@ -269,6 +270,8 @@ page 50142 "TFB Sample Request"
                 Enabled = (Rec."Sell-to Contact No." <> '') and (not (Rec.Status = Rec.Status::Sent));
                 SubPageLink = "Document No." = FIELD("No.");
                 UpdatePropagation = Both;
+
+
             }
 
             group("Transport Options")
@@ -332,7 +335,7 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 Provider = Lines;
                 SubPageLink = "No." = field("No.");
-
+                Visible = Rec.LinesExist = true;
                 Caption = '';
             }
             part(ItemWarehouse; "Item Warehouse FactBox")
@@ -340,7 +343,7 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 Provider = Lines;
                 SubPageLink = "No." = field("No.");
-
+                Visible = Rec.LinesExist = true;
                 Caption = '';
             }
             systempart(Notes; Notes)

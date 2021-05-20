@@ -26,6 +26,7 @@ page 50144 "TFB Sample Request List"
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the name of the sell-to-contact';
+                    Visible = true;
                 }
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {

@@ -8278,6 +8278,61 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Auditors - Control Name - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3698941796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Selection - Sample Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3318038509 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the email body layout that is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Email Body Layout Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3004246684 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a description of the email body layout that is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Email Body Layout Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3046817188 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the display name of the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Report Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 1272245069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the object ID of the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Report ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 4154341761 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a number that indicates where this report is in the printing order.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Sequence - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 1083714199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the related document will be attached to the email.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Use for Email Attachment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 1794945120 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that summarized information, such as invoice number, due date, and payment service link, will be inserted in the body of the email that you send.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control Use for Email Body - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3362749197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which type of document the report is used for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3362749197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Usage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3698941796 - Control 3362749197 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sample Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Page 1472572923 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Report Selection - Brokerage</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15062,6 +15117,11 @@
           <source>Brokerage Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Brok.Shipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1092060365 - EnumValue 4138928704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Inbound Shipment - Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
         </trans-unit>
       </group>
     </body>
