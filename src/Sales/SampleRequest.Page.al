@@ -48,13 +48,9 @@ page 50142 "TFB Sample Request"
                     Caption = 'Contact No.';
                     Importance = Additional;
                     ToolTip = 'Specifies the number of the contact person that the sales document will be sent to.';
+                    editable = false;
 
-                    trigger OnValidate()
-                    begin
 
-                        SellToContact.Get(Rec."Sell-to Contact No.");
-                        CurrPage.Update();
-                    end;
                 }
                 group(HideCustomer)
                 {
@@ -312,6 +308,12 @@ page 50142 "TFB Sample Request"
         area(factboxes)
         {
 
+            part(ContactDetails; "Contact Statistics FactBox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("Sell-to Contact No.");
+                Visible = Rec."Sell-to Contact No." = '';
+            }
             part(SalesHistory; "Sales Hist. Sell-to FactBox")
             {
                 ApplicationArea = Basic, Suite;
@@ -330,7 +332,7 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 Provider = Lines;
                 SubPageLink = "No." = field("No.");
-                Visible = Rec."No." <> '';
+
                 Caption = '';
             }
             part(ItemWarehouse; "Item Warehouse FactBox")
@@ -338,7 +340,7 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 Provider = Lines;
                 SubPageLink = "No." = field("No.");
-                Visible = Rec."No." <> '';
+
                 Caption = '';
             }
             systempart(Notes; Notes)
@@ -395,7 +397,10 @@ page 50142 "TFB Sample Request"
     trigger OnAfterGetRecord()
 
     begin
-        SellToContact.Get(Rec."Sell-to Contact No.");
+        If Rec."Sell-to Contact No." <> '' then
+            SellToContact.Get(Rec."Sell-to Contact No.")
+        else
+            Clear(SellToContact);
     end;
 
     trigger OnAfterGetCurrRecord()

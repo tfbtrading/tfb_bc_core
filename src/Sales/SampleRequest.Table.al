@@ -82,7 +82,7 @@ table 50115 "TFB Sample Request"
                 Cont.Get("Sell-to Contact No.");
 
 
-                if GetHideValidationDialog() or not GuiAllowed() then
+                if GetHideValidationDialog() or not GuiAllowed() or (xRec."Sell-to Contact No." = '') then
                     Confirmed := true
                 else
                     Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Sell-to Contact No."));
@@ -115,7 +115,6 @@ table 50115 "TFB Sample Request"
                             Validate("Salesperson Code", Cont."Salesperson Code");
 
                 UpdateAddressFromContact("Sell-to Contact No.");
-                Get
 
             end;
         }

@@ -12,5 +12,9 @@ enumextension 50100 "TFB REport Selection Usage" extends "Report Selection Usage
     {
         Caption = 'Inbound Shipment - Warehouse';
     }
+    value(50130; "S.Sample.Request")
+    {
+        Caption = 'Inbound Shipment - Warehouse';
+    }
 
 }
