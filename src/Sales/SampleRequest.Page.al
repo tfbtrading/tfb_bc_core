@@ -362,9 +362,56 @@ page 50142 "TFB Sample Request"
                 Image = Print;
                 Caption = 'Print Packing Slip';
                 ToolTip = 'Print a packing slip';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
 
                 trigger OnAction()
+                var
+                    ReportSelection: Record "Report Selections";
+                    ReportUsage: Enum "Report Selection Usage";
                 begin
+
+                    Rec.SetRecFilter();
+
+                    ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request");
+                    ReportSelection.SetRange("Use for Email Attachment", true);
+                    If ReportSelection.findfirst() then
+                        ReportSelection.PrintWithDialogForCust(
+                           ReportUsage, Rec, GuiAllowed, Rec.FieldNo("Sell-to Customer No."));
+
+                end;
+            }
+
+            action(EmailRequest)
+            {
+                ApplicationArea = All;
+                Image = Print;
+                Caption = 'Email Requests';
+                ToolTip = 'Email requests where required to warehouse and suppliers';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    ReportSelection: Record "Report Selections";
+                    ReportUsage: Enum "Report Selection Usage";
+                    SampleRequestMgmt: codeunit "TFB Sample Request Mgmt";
+                begin
+
+                    Rec.SetRecFilter();
+
+                    ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request.Warehouse");
+                    ReportSelection.SetRange("Use for Email Attachment", true);
+                    If ReportSelection.findfirst() then begin
+
+                        
+
+                    end;
+
+
+
 
                 end;
             }

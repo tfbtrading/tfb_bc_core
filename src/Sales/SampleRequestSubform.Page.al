@@ -8,7 +8,6 @@ page 50143 "TFB Sample Request Subform"
     PageType = ListPart;
     SourceTable = "TFB Sample Request Line";
 
-
     layout
     {
         area(content)

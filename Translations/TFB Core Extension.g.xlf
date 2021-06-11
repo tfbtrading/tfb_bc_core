@@ -2483,6 +2483,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field County - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 3641001162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LinesExist</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field LinesExist - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8329,7 +8334,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3698941796 - Control 3362749197 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sample Request</source>
+          <source>Packing Slip,Warehouse Request,Supplier Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property OptionCaption</note>
         </trans-unit>
@@ -9423,6 +9428,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request List - Control Requested Delivery Date - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 660183975 - Control 1006519668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the sell-to-contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request List - Control Sell-to Contact - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 660183975 - Control 1474036805 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the name of the customer.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9867,6 +9877,11 @@
           <source>Last Updated Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TFB Close Prev. Sale Prices - Control LastUpdatedDateReq - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 3380206577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sample Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Sample Request - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 913375166 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Customer Status Updates</source>
@@ -11058,6 +11073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Control TFBSalesPrice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Control 2077925582 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Specific qty currently in transit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Control Qty. in Transit - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Control 3420811913 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Specifies qty currently on purchase orders</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11067,6 +11087,11 @@
           <source>Specifies qty reserved against inventory</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Control Reserved Qty. on Inventory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Control 1967892960 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Specifies remaining inv. excl. transit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Control TFB Inventory - Excl. Transit - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 351986553 - Control 3088522385 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1460081465">
           <source>Specifies net weight of the product</source>
@@ -13563,6 +13588,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Inspection - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 1967892960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Inventory - Excl. Transfers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Inventory - Excl. Transit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 1059470183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Long Descriptions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13592,6 +13622,11 @@
           <source>Do Not Publish</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Publishing Block - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 1448164846 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Qty in Transit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Qty. In Transit - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 552635874 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Unit Price Source</source>
@@ -15119,9 +15154,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Brok.Shipment - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 1092060365 - EnumValue 4138928704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
-          <source>Inbound Shipment - Warehouse</source>
+          <source>Sample Packing Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1092060365 - EnumValue 1361856706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Sample Request to Supplier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request.Supplier - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 1092060365 - EnumValue 2645827697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Sample Request to Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
         </trans-unit>
       </group>
     </body>
