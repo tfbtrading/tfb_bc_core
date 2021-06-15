@@ -355,6 +355,16 @@ table 50115 "TFB Sample Request"
             FieldClass = FlowField;
             CalcFormula = exist("TFB Sample Request Line" where("Document No." = field("No.")));
         }
+
+        field(50020; RequestSent; Boolean)
+        {
+            Caption = 'Request Sent';
+
+        }
+        field(50030; "Sample Cost"; Decimal)
+        {
+            Caption = 'Estimated Cost of Sample';
+        }
     }
 
     keys

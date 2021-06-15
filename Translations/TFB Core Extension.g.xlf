@@ -2533,10 +2533,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Requested Delivery Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 522015751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Request Sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field RequestSent - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3380206577 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Salesperson Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Salesperson Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3380206577 - Field 2601617463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estimated Cost of Sample</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - Field Sample Cost - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 1006519668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Requesting Contact</source>
@@ -3017,6 +3027,16 @@
           <source>Order Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Shipment Mgmt - Method SendShipmentStatusQuery - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2020475400 - Method 190870653 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Please find a request for sample dispatch. </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sample Request Mgmt - Method SendSampleRequest - NamedType SubTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2020475400 - Method 190870653 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sample Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sample Request Mgmt - Method SendSampleRequest - NamedType TitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 1740417769 - Method 3010399840 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -9392,6 +9412,16 @@
           <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Control ItemWarehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Action 2315417447 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email requests where required to warehouse and suppliers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Action EmailRequest - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3380206577 - Action 2315417447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Requests</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request - Action EmailRequest - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3380206577 - Action 1002420131 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Print a packing slip</source>
