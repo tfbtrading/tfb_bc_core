@@ -126,6 +126,7 @@ codeunit 50122 "TFB Sales Mgmt"
         Currency: Record Currency;
         ItemCheckAvail: Codeunit "Item-Check Avail.";
         LocationCode: Code[20];
+        Location: Record Location;
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
         QtyCalc: Decimal;
@@ -151,12 +152,17 @@ codeunit 50122 "TFB Sales Mgmt"
                 ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
                 ItemLedgerEntry.SetAscending("Remaining Quantity", false);
 
-                If ItemLedgerEntry.FindFirst() then begin
-                    SalesLine."Location Code" := ItemLedgerEntry."Location Code";
-                    IsHandled := true;
-                end
+
+                If ItemLedgerEntry.FindSet(false, false) then
+                    repeat
+                        If not Location.IsInTransit(ItemLedgerEntry."Location Code") then begin
+                            SalesLine."Location Code" := ItemLedgerEntry."Location Code";
+                            IsHandled := true;
+                        end;
+                    until (ItemLedgerEntry.Next() = 0) or (isHandled = true)
 
             end;
+
         end;
 
     end;
