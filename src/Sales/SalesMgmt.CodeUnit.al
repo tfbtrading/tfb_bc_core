@@ -3,6 +3,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
+
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeInitInsert', '', false, false)]
     local procedure MyProcedure(var IsHandled: Boolean; var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header")
     begin
@@ -117,6 +118,47 @@ codeunit 50122 "TFB Sales Mgmt"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', false, false)]
+    local procedure OnBeforeInitHeaderLocationCode(var IsHandled: Boolean; var SalesLine: Record "Sales Line")
+
+    var
+        SalesHeader: Record "Sales Header";
+        Currency: Record Currency;
+        ItemCheckAvail: Codeunit "Item-Check Avail.";
+        LocationCode: Code[20];
+        Item: Record Item;
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        QtyCalc: Decimal;
+
+
+    begin
+        SalesLine.GetSalesHeader(SalesHeader, Currency);
+
+        LocationCode := SalesHeader."Location Code";
+        If Item.Get(SalesLine."No.") and Item.IsInventoriableType() then begin
+
+            ItemLedgerEntry.SetRange("Location Code", LocationCode);
+            ItemLedgerEntry.SetRange("Item No.", Item."No.");
+            ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+            ItemLedgerEntry.CalcSums("Remaining Quantity");
+            QtyCalc := ItemLedgerEntry."Remaining Quantity";
+
+            If QtyCalc = 0 then begin
+
+                ItemLedgerEntry.Reset();
+                ItemLedgerEntry.SetRange("Item No.", Item."No.");
+                ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+                ItemLedgerEntry.SetAscending("Remaining Quantity", false);
+
+                If ItemLedgerEntry.FindFirst() then begin
+                    SalesLine."Location Code" := ItemLedgerEntry."Location Code";
+                    IsHandled := true;
+                end
+
+            end;
+        end;
+
+    end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnBeforeReleaseSalesDoc', '', false, false)]
     local procedure HandleOnBeforeReleaseSalesDoc(PreviewMode: Boolean; var SalesHeader: Record "Sales Header")
@@ -204,7 +246,7 @@ codeunit 50122 "TFB Sales Mgmt"
         SalesLine: Record "Sales Line";
         DateFormula: DateFormula;
         BlockDate: Date;
-   
+
 
     begin
 
