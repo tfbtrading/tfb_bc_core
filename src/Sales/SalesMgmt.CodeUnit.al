@@ -148,6 +148,7 @@ codeunit 50122 "TFB Sales Mgmt"
                 ItemLedgerEntry.Reset();
                 ItemLedgerEntry.SetRange("Item No.", Item."No.");
                 ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+                ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
                 ItemLedgerEntry.SetAscending("Remaining Quantity", false);
 
                 If ItemLedgerEntry.FindFirst() then begin
