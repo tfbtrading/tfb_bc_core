@@ -124,11 +124,10 @@ codeunit 50122 "TFB Sales Mgmt"
     var
         SalesHeader: Record "Sales Header";
         Currency: Record Currency;
-        ItemCheckAvail: Codeunit "Item-Check Avail.";
-        LocationCode: Code[20];
         Location: Record Location;
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
+        LocationCode: Code[20];
         QtyCalc: Decimal;
 
 
@@ -152,7 +151,6 @@ codeunit 50122 "TFB Sales Mgmt"
                 ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
                 ItemLedgerEntry.SetAscending("Remaining Quantity", false);
 
-
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
                         If not Location.IsInTransit(ItemLedgerEntry."Location Code") then begin
@@ -162,9 +160,7 @@ codeunit 50122 "TFB Sales Mgmt"
                     until (ItemLedgerEntry.Next() = 0) or (isHandled = true)
 
             end;
-
         end;
-
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnBeforeReleaseSalesDoc', '', false, false)]
