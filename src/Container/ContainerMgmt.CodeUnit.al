@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit TFB Container Mgmt (ID 50200).
+/// </summary>
 codeunit 50200 "TFB Container Mgmt"
 {
 
@@ -48,6 +51,85 @@ codeunit 50200 "TFB Container Mgmt"
     /// <param name="TempBlob">Parameter of type CodeUnit "Temp Blob".</param>
     /// <param name="FileName">Parameter of type Text.</param>
     /// <returns>Return variable "Boolean".</returns>
+
+    procedure GetWarehouseLocation(ContainerEntry: Record "TFB Container Entry"): Record Location
+
+    var
+
+
+    begin
+
+        If not ContainerEntry.IsEmpty() then begin
+
+            ContainerEntry.CalcFields("Qty. On Transfer Rcpt", "Qty. On Transfer Ship.", "Qty. On Transfer Order", "Qty. On Purch. Rcpt");
+            case ContainerEntry.Type of
+
+
+                ContainerEntry.Type::"PurchaseOrder":
+
+                    If ContainerEntry."Qty. On Transfer Rcpt" > 0 then
+                        Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Receipt Line"))
+                    else
+                        if ContainerEntry."Qty. On Transfer Ship." > 0 then
+                            Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Shipment Line"))
+                        else
+                            if ContainerEntry."Qty. On Transfer Order" > 0 then
+                                Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Line"))
+                            else
+                                if ContainerENtry."Qty. On Purch. Rcpt" > 0 then
+                                    Exit(GetLocationByDocumentType(ContainerEntry, Database::"Purch. Rcpt. Line"))
+                                else
+                                    Exit(GetLocationByDocumentType(ContainerEntry, Database::"Purchase Line"))
+
+
+            end;
+        end;
+
+    end;
+
+    local procedure GetLocationByDocumentType(ContainerEntry: Record "TFB Container Entry"; Table: Integer): Record Location
+
+    var
+    Location: Record Location;
+        PurchaseLine: Record "Purchase Line";
+        TransferLine: Record "Transfer Line";
+        TransferReceiptLine: Record "Transfer Shipment Line";
+
+    begin
+
+        case Table of
+            Database::"Purchase Line":
+                begin
+
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", ContainerEntry."Order Reference");
+                    PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
+
+                    If Location.Get(PurchaseLine."Location Code") then
+                        Exit(Location);
+                end;
+
+            Database::"Transfer Line":
+                begin
+
+                end;
+
+            Database::"Transfer Shipment Line":
+                begin
+
+                end;
+            Database::"Transfer Receipt Line":
+                begin
+
+                end;
+            Database::"Purch. Rcpt. Line":
+                begin
+
+                end;
+        end;
+
+    end;
+
     procedure GetContainerCoAStream(ContainerEntry: Record "TFB Container Entry"; var TempBlob: CodeUnit "Temp Blob"; var FileName: Text): Boolean
 
     var
