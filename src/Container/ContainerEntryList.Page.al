@@ -83,6 +83,19 @@ page 50211 "TFB Container Entry List"
                     Editable = true;
                     Tooltip = 'Specifies status of container';
                 }
+                field(DestLocation; _location)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the current target location';
+                    Caption = 'Intended Location';
+                }
+                field("Customer Direct"; Rec."Customer Direct")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    ToolTip = 'Specifies whether the container is directly for a customer';
+                }
                 field("Est. Departure Date"; Rec."Est. Departure Date")
                 {
                     ApplicationArea = All;
@@ -198,7 +211,7 @@ page 50211 "TFB Container Entry List"
             else
                 ContainerCU.PopulateOrderOrderLines(Rec, TempContainerContents);
 
-
+        _location := ContainerCU.GetWarehouseLocation(Rec).Code;
 
         TempContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
         _QtyOnOrder := TempContainerContents.Quantity;
@@ -232,5 +245,6 @@ page 50211 "TFB Container Entry List"
         [InDataSet]
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
         LineSummary: Text;
+        _location: code[20];
 
 }

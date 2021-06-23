@@ -405,6 +405,19 @@ table 50181 "TFB Container Entry"
             Editable = false;
 
         }
+        field(510; "Customer Direct"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+
+        }
+
+        field(520; "Direct Sales Order No."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+        }
+
 
     }
 
@@ -465,7 +478,32 @@ table 50181 "TFB Container Entry"
         end;
     end;
 
+    procedure GetDirectSalesOrderDetails(): Text
 
+    var
+        SalesHeader: Record "Sales Header";
+        TextBuilder: TextBuilder;
+
+    begin
+
+        If not SalesHeader.Get(SalesHeader."Document Type"::Order, "Direct Sales Order No.") then exit;
+
+        TextBuilder.AppendLine(SalesHeader."Sell-to Customer Name");
+
+        case SalesHeader.ShipToAddressEqualsSellToAddress() of
+            true:
+                begin
+                    TextBuilder.AppendLine(SalesHeader."Sell-to Address");
+                    TextBuilder.AppendLine(StrSubstNo('%1 %2 %3', SalesHeader."Sell-to City", SalesHeader."Sell-to County", SalesHeader."Sell-to Post Code"));
+                end;
+
+            false:
+                begin
+                    TextBuilder.AppendLine(SalesHeader."Ship-to Address");
+                    TextBuilder.AppendLine(StrSubstNo('%1 %2 %3', SalesHeader."Ship-to City", SalesHeader."Ship-to County", SalesHeader."Ship-to Post Code"));
+                end;
+        end;  
+    end;
 
     local procedure RecalculateDates(): Boolean
 

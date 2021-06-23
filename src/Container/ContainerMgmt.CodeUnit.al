@@ -90,10 +90,12 @@ codeunit 50200 "TFB Container Mgmt"
     local procedure GetLocationByDocumentType(ContainerEntry: Record "TFB Container Entry"; Table: Integer): Record Location
 
     var
-    Location: Record Location;
+        Location: Record Location;
         PurchaseLine: Record "Purchase Line";
+        ReceiptLine: Record "Purch. Rcpt. Line";
         TransferLine: Record "Transfer Line";
-        TransferReceiptLine: Record "Transfer Shipment Line";
+        TransferShipmentLine: Record "Transfer Shipment Line";
+        TransferReceiptLine: Record "Transfer Receipt Line";
 
     begin
 
@@ -104,30 +106,55 @@ codeunit 50200 "TFB Container Mgmt"
                     PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                     PurchaseLine.SetRange("Document No.", ContainerEntry."Order Reference");
                     PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-
-                    If Location.Get(PurchaseLine."Location Code") then
+                    If PurchaseLine.FindFirst() and Location.Get(PurchaseLine."Location Code") then
                         Exit(Location);
                 end;
 
             Database::"Transfer Line":
                 begin
 
+                    TransferLine.SetRange("TFB Container Entry No.", ContainerEntry."Vendor No.");
+                    TransferLine.SetFilter(Quantity, '>0');
+
+
+                    If TransferLine.FindFirst() and Location.Get(TransferLine."Transfer-to Code") then
+                        Exit(Location);
                 end;
 
             Database::"Transfer Shipment Line":
                 begin
 
+                    TransferShipmentLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
+                    TransferShipmentLine.SetFilter(Quantity, '>0');
+
+                    If TransferShipmentLine.FindFirst() and Location.Get(TransferShipmentLine."Transfer-to Code") then
+                        Exit(Location);
+
                 end;
             Database::"Transfer Receipt Line":
                 begin
+
+                    TransferReceiptLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
+                    TransferReceiptLine.SetFilter(Quantity, '>0');
+
+                    If TransferReceiptLine.FindFirst() and Location.Get(TransferReceiptLine."Transfer-to Code") then
+                        Exit(Location);
 
                 end;
             Database::"Purch. Rcpt. Line":
                 begin
 
-                end;
-        end;
+                    ReceiptLine.SetRange("Order No.", ContainerEntry."Order Reference");
+                    ReceiptLine.SetRange(Type, ReceiptLine.Type::Item);
+                    ReceiptLine.SetFilter(Quantity, '>0');
 
+                    //Get Header Defaults and Calculate Totals
+                    If ReceiptLine.FindFirst() and Location.Get(ReceiptLine."Location Code") then
+                        Exit(Location);
+
+                end;
+
+        end;
     end;
 
     procedure GetContainerCoAStream(ContainerEntry: Record "TFB Container Entry"; var TempBlob: CodeUnit "Temp Blob"; var FileName: Text): Boolean
