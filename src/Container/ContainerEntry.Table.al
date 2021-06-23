@@ -273,6 +273,8 @@ table 50181 "TFB Container Entry"
             end;
         }
         field(200; "Est. Clear Date"; Date) { DataClassification = CustomerContent; Caption = 'Est. Avail. At Wharf'; }
+
+
         field(210; "Est. Warehouse"; Date)
         {
             DataClassification = CustomerContent;
@@ -296,6 +298,7 @@ table 50181 "TFB Container Entry"
         field(236; "Inspection Date"; Date) { DataClassification = CustomerContent; Caption = 'Inspection Booked On'; }
         field(238; "Heat Treatment Date"; Date) { DataClassification = CustomerContent; Caption = 'Heat Treatment Booked On'; }
         field(240; "Clear Date"; Date) { DataClassification = CustomerContent; Caption = 'Available at Wharf'; }
+        field(245; "Receipt Date"; Date) { DataClassification = CustomerContent; Caption = 'Received into Warehouse'; }
         field(250; "Warehouse Date"; Date) { DataClassification = CustomerContent; Caption = 'Available to Sell'; }
         field(252; "Container Returned"; Date) { DataClassification = CustomerContent; }
 
@@ -410,12 +413,28 @@ table 50181 "TFB Container Entry"
             DataClassification = CustomerContent;
             Editable = true;
 
+            trigger OnValidate()
+
+            begin
+                If not Rec."Customer Direct" then
+                    "Direct Sales Order No." := '';
+            end;
+
         }
 
         field(520; "Direct Sales Order No."; Code[20])
         {
             DataClassification = CustomerContent;
             Editable = true;
+            TableRelation = "Sales Header"."No." where("Document Type" = const(Order));
+
+        }
+
+        field(530; "Direct Sale Customer Name"; Text[100])
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Header"."Sell-to Customer Name" where("No." = field("Direct Sales Order No."), "Document Type" = const(Order)));
+
         }
 
 
@@ -502,7 +521,9 @@ table 50181 "TFB Container Entry"
                     TextBuilder.AppendLine(SalesHeader."Ship-to Address");
                     TextBuilder.AppendLine(StrSubstNo('%1 %2 %3', SalesHeader."Ship-to City", SalesHeader."Ship-to County", SalesHeader."Ship-to Post Code"));
                 end;
-        end;  
+        end;
+
+        exit(TextBuilder.ToText());
     end;
 
     local procedure RecalculateDates(): Boolean

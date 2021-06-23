@@ -106,6 +106,34 @@ page 50210 "TFB Container Entry"
                         end;
                     }
 
+                    field("Customer Direct"; "Customer Direct")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies whether the container is directly for a customer';
+                    }
+                    group(DirectContainer)
+                    {
+                        ShowCaption = false;
+                        Visible = rec."Customer Direct";
+
+                        field("Direct Sales Order No."; Rec."Direct Sales Order No.")
+                        {
+                            ApplicationArea = All;
+                            ToolTip = 'Specifies the sales order number related to the container';
+
+
+                        }
+
+                        field(CustomerDetails; Rec.GetDirectSalesOrderDetails())
+                        {
+                            ApplicationArea = All;
+                            MultiLine = true;
+                            Editable = false;
+                            Caption = 'Customer Details';
+                            ToolTip = 'Specifies that the container is for direct transfer from port  to customer';
+                        }
+                    }
+
                     group(PurchaseDetails)
                     {
                         ShowCaption = false;
@@ -352,6 +380,13 @@ page 50210 "TFB Container Entry"
                         begin
                             CheckDatesEnabled();
                         end;
+                    }
+
+                    field("Receipt Date"; Rec."Receipt Date")
+                    {
+                        ApplicationArea = All;
+
+                        ToolTip = 'Specifies the date goods were actually received into warehouse. Actual PO may reflect goods receipt after inspection';
                     }
 
                     group(Fumigation)

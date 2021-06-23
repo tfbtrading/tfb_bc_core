@@ -618,10 +618,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Container Returned - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 3904326051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Direct</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Customer Direct - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1207535885 - Field 1521402580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Departure Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Departure Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 1956843720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Sales Order No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Direct Sales Order No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1207535885 - Field 2262123005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Est. Arrival Date</source>
@@ -4563,6 +4573,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control ShipmentDetails - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3904326051 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the container is directly for a customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Customer Direct - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3950908042 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the container is for direct transfer from port  to customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control CustomerDetails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3950908042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control CustomerDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 1956843720 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sales order number related to the container</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Direct Sales Order No. - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1207535885 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies no. for container entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4817,6 +4847,21 @@
           <source>Specifies container no</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Container No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2135441443 - Control 3904326051 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the container is directly for a customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Customer Direct - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2135441443 - Control 3657108013 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the current target location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control DestLocation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2135441443 - Control 3657108013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intended Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control DestLocation - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2135441443 - Control 2262123005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies est. date container arrives</source>

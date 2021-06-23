@@ -27,6 +27,11 @@ enum 50200 "TFB Container Status"
         Caption = 'Pending AQIS Clearance';
     }
 
+    value(9; PendingUnpack)
+    {
+        Caption = 'Pending Unpack Report';
+
+    }
     value(6; Closed)
     {
         Caption = 'Received and Closed';
