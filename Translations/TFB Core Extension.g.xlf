@@ -628,6 +628,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Departure Date - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 3859368927 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direct Sale Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Direct Sale Customer Name - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1207535885 - Field 1956843720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Direct Sales Order No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -772,6 +777,11 @@
           <source>Quarantine Reference</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Quarantine Reference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 358029708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Received into Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Receipt Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1207535885 - Field 3248325040 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ship Via</source>
@@ -4732,6 +4742,11 @@
           <source>Specifies date container is booked to be inspected</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Inspection Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 358029708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date goods were actually received into warehouse. Actual PO may reflect goods receipt after inspection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Receipt Date - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Control 3390984195 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies date container is available to sell</source>
@@ -10898,6 +10913,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3387022275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Find and download specification file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBDownloadSpec - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 3387022275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Download Specification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBDownloadSpec - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Action 3549265048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Open related generic item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11092,6 +11117,16 @@
           <source>Item Costings</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBItemCostings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 3387022275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Find and download specification file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBDownloadSpec - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 3387022275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Download Specification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBDownloadSpec - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Action 3549265048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Open related generic item</source>
@@ -12532,6 +12567,11 @@
           <source>Specifies the job responsibility for a contact that will receive price lists automatically</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Price List Def. Job Resp. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 2096216514 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specify a valid url using %1 as placement for item code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Specification URL Pattern - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1631890160 - Control 3275808402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 21747839">
           <source>Shows the number of sales line not shipped and invoiced</source>
@@ -14173,6 +14213,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB Sample Request Nos. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3704753354 - Field 2096216514 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Specification URL Pattern</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB Specification URL Pattern - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2551426373 - Field 1520156154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 388441093">
           <source>Containers</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14797,6 +14842,11 @@
           <source>Pending Fumigation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue PendingFumigation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2042165717 - EnumValue 3001289599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Unpack Report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue PendingUnpack - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2042165717 - EnumValue 1137949029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Requires re-export</source>

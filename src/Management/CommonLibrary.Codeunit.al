@@ -74,6 +74,36 @@ codeunit 50142 "TFB Common Library"
         Exit(HTMLBuilder.ToText())
     end;
 
+
+
+
+    procedure GetFileTempBlobCU(Item: Record Item): Codeunit "Temp Blob"
+    var
+        SalesSetup: Record "Sales & Receivables Setup";
+        TempBlobCU: Codeunit "Temp Blob";
+
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        IStream: InStream;
+        OStream: OutStream;
+        urlTok: text;
+
+    begin
+
+        SalesSetup.Get();
+        urlTok := SalesSetup."TFB Specification URL Pattern";
+
+        If urlTok = '' then Error('No URL defined for transactional email template');
+        if Item."No." = '' then Error ('No valid item code defined');
+
+        HttpClient.Get(StrSubstNo(urlTok,Item."No."), HttpResponseMessage);
+        HttpResponseMessage.Content().ReadAs(IStream);
+        TempBlobCU.CreateOutStream(OStream);
+        CopyStream(OStream, IStream);
+
+        Exit(TempBlobCU);
+    end;
+
     procedure GetCustDelInstr(CustomerNo: Code[20]): Text[2048]
     var
         Customer: record Customer;

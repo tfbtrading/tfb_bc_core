@@ -238,6 +238,30 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 RunPageMode = View;
                 Enabled = Rec."TFB Generic Link Exists";
             }
+
+            action("TFBDownloadSpec")
+            {
+                ApplicationArea = All;
+                Image = ExportFile;
+                Caption = 'Download Specification';
+                ToolTip = 'Find and download specification file';
+                Promoted = true;
+                PromotedCategory = Category4;
+                
+                Enabled = true;
+
+                trigger OnAction()
+
+                var
+                    ItemCU: CodeUnit "TFB Item Mgmt";
+
+                begin
+
+                    ItemCU.DownloadItemSpecification(Rec);
+
+                end;
+
+            }
         }
     }
 

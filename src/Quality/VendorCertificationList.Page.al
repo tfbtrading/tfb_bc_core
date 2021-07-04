@@ -75,7 +75,7 @@ page 50107 "TFB Vendor Certification List"
 
                     trigger OnValidate()
                     begin
-                        DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+                        _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
                         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
                         AttachmentExists := CheckIfAttachmentExists();
 
@@ -99,18 +99,18 @@ page 50107 "TFB Vendor Certification List"
                     tooltip = 'Specifies the date on which the certification will expire';
                     Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
-                    StyleExpr = (DaysToExpiry < 30) and (not Rec.Archived);
+                    StyleExpr = (_DaysToExpiry < 30) and (not Rec.Archived);
 
                     trigger OnValidate()
 
                     begin
-                        DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
+
                         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
                 }
-                field("Days To Expiry"; DaysToExpiry)
+                field("Days To Expiry"; _DaysToExpiry)
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -118,7 +118,7 @@ page 50107 "TFB Vendor Certification List"
                     Caption = 'Days to Expiry';
                     Tooltip = 'Specifies the number of days until the certification expires';
                     Style = Unfavorable;
-                    StyleExpr = (DaysToExpiry < 30) and (not Rec.Archived);
+                    StyleExpr = (_DaysToExpiry < 30) and (not Rec.Archived);
                 }
                 field(CertificateExists; AttachmentExists)
                 {
@@ -300,7 +300,7 @@ page 50107 "TFB Vendor Certification List"
     var
         QualityCU: Codeunit "TFB Quality Mgmt";
         AttachmentExists: Boolean;
-        DaysToExpiry: Integer;
+        _DaysToExpiry: Integer;
         CalculatedStatus: Enum "TFB Quality Certificate Status";
         CalculatedEmoticonStatus: Text;
 
@@ -309,11 +309,13 @@ page 50107 "TFB Vendor Certification List"
 
     begin
 
-        DaysToExpiry := GetExpiryDays();
+        _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
         CalculatedStatus := QualityCU.GetCurrentStatus(Rec);
         AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
+
     end;
+
 
     local procedure GetExpiryDays(): Integer
 

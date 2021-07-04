@@ -6,7 +6,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
-    
+
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCopyFromItem', '', true, true)]
 
@@ -18,6 +18,27 @@ codeunit 50107 "TFB Item Mgmt"
     begin
         //SalesLine.Validate("Purchasing Code", Item."TFB Default Purch. Code"); //No longer required
         UpdateDropShipSalesLineAgent(Item, SalesLine);
+    end;
+
+
+
+    procedure DownloadItemSpecification(Item: Record Item)
+
+
+    var
+        CommonCU: CodeUnit "TFB Common Library";
+        TempBlobCU: Codeunit "Temp Blob";
+        InStream: InStream;
+        FileName: Text;
+
+    begin
+
+        TempBlobCU := CommonCU.GetFileTempBlobCU(Item);
+        TempBlobCu.CreateInStream(InStream);
+        FileName := StrSubstNo('Spec For %1 (%2).pdf', Item.Description, Item."No.");
+        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+            Error('File %1 not downloaded', FileName);
+
     end;
 
     internal procedure UpdateDropShipSalesLineAgent(Item: Record Item; var SalesLine: Record "Sales Line"): Boolean
