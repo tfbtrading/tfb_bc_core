@@ -12388,6 +12388,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order Subform - Control TFB COA Required - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2417056480 - Control 1433484117 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4165496608">
+          <source>Specifies the price unit select for all prices shown in list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List - Control TFB Price Unit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Specifies the price in weight unit specified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBAltPrice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 1877170360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Weight Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBAltPrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 506875005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Specifies the price unit of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBPriceUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 506875005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBPriceUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 4271495292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Specifies the weight of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3222091715 - Control 4271495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4154795139">
+          <source>Weight (kg)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Price List Lines - Control TFBWeight - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3521907375 - Control 23818717 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2033306735">
           <source>Specifies the item description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13842,6 +13877,11 @@
           <source>TFB Postcode Zone</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB PostCode - Field TFB Postcode Zone - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1673160556 - Field 1433484117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1961578924">
+          <source>Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Price List Header - Field TFB Price Unit - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2580114637 - Field 61130814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Vendor Invoice No.</source>
