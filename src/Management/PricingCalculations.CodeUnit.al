@@ -84,7 +84,7 @@ codeunit 50140 "TFB Pricing Calculations"
         Weight: Decimal;
 
     begin
-        Item.Get(ItemNo);
+        If not Item.Get(ItemNo) then exit(0);
         Weight := Item."Net Weight";
 
         If UomCode <> '' then

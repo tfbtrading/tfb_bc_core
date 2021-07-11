@@ -71,30 +71,18 @@ pageextension 50204 "TFB Purchase Price List Lines" extends "Purchase Price List
     }
 
     var
-        _weight: Decimal;
+
         _altprice: Decimal;
 
-        TFBPricingLogic: Codeunit "TFB Pricing Calculations";
         PriceUnit: Enum "TFB Price Unit";
 
 
     local procedure SetPriceUnit()
 
-    var
-        Vendor: record Vendor;
-        PriceListHeader: Record "Price List Header";
+
 
     begin
-        Vendor.SetLoadFields("TFB Vendor Price Unit");
-        PriceListHeader.SetLoadFields("TFB Price Unit");
-
-        PriceListHeader.Get(Rec."Price List Code");
-        If Rec."Source Type" = Rec."Source Type"::Vendor then begin
-            If Vendor.GetBySystemId(rec."Source ID") then
-                PriceUnit := Vendor."TFB Vendor Price Unit"
-        end
-        else
-            PriceUnit := PriceListHeader."TFB Price Unit";
+        PriceUnit := Rec.GetPriceUnit();
 
     end;
 
@@ -111,8 +99,7 @@ pageextension 50204 "TFB Purchase Price List Lines" extends "Purchase Price List
     begin
 
         SetPriceUnit();
-        If Rec."Asset Type" = Rec."Asset Type"::Item then
-            Rec.Validate("Direct Unit Cost", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", PriceUnit, _altprice));
+        Rec.UpdateUnitPriceFromAltPrice(_altprice);
 
     end;
 
@@ -121,8 +108,7 @@ pageextension 50204 "TFB Purchase Price List Lines" extends "Purchase Price List
 
     begin
         SetPriceUnit();
-        If Rec."Asset Type" = Rec."Asset Type"::Item then
-            _altprice := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", PriceUnit, rec."Direct Unit Cost");
+        _altprice := Rec.GetPriceAltPriceFromUnitPrice()
 
     end;
 

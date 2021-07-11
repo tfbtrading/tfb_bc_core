@@ -22,7 +22,8 @@ tableextension 50125 "TFB Price List Header" extends "Price List Header"
 
                 If "Source Type" = "Source Type"::Vendor then
                     If Vendor.Get("Source No.") then
-                        "TFB Price Unit" := Vendor."TFB Vendor Price Unit";
+                        Rec.validate("TFB Price Unit", Vendor."TFB Vendor Price Unit");
+
             end;
         }
     }
