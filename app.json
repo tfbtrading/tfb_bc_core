@@ -38,7 +38,7 @@
     "from": 50100,
     "to": 52000
   }],
-  "runtime": "7.0",
+  "runtime": "7.2",
   "target": "Cloud",
   "showMyCode": true,
   "supportedLocales": ["en-AU"]
