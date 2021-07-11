@@ -70,7 +70,7 @@ pageextension 50205 "TFB Price List Line Review" extends "Price List Line Review
     trigger OnAfterGetRecord()
 
     begin
-
+        PriceUnit := Rec.GetPriceUnit();
         _altprice := Rec.GetPriceAltPriceFromUnitPrice();
 
 

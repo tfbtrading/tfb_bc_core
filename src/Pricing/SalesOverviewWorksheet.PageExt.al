@@ -79,6 +79,7 @@ pageextension 50206 "TFB Prices Overview" extends "Prices Overview"
 
     begin
 
+        PriceUnit := Rec.GetPriceUnit();
         _altprice := Rec.GetPriceAltPriceFromUnitPrice();
 
 

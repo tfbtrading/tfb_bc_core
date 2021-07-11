@@ -56,7 +56,7 @@ pageextension 50207 "TFB Get Price Line" extends "Get Price Line"
     trigger OnAfterGetRecord()
 
     begin
-
+        PriceUnit := Rec.GetPriceUnit();
         _altprice := Rec.GetPriceAltPriceFromUnitPrice();
 
 
