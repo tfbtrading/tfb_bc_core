@@ -10828,6 +10828,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Det. Vendor Ledg. Entries - Control TFB Implied Exchange Rate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Specifies the price in weight unit specified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBAltPrice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 1877170360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Weight Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBAltPrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 506875005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Specifies the price unit of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBPriceUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 506875005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBPriceUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 4271495292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Specifies the weight of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 932861455 - Control 4271495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 47214799">
+          <source>Weight (kg)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Get Price Line - Control TFBWeight - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2992869633 - Control 2202932243 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 343343022">
           <source>Specifies purchase order number</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11838,6 +11868,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shpt. Subform - Control Purchase Order No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Specifies the price in weight unit specified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBAltPrice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 1877170360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Weight Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBAltPrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 506875005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Specifies the price unit of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBPriceUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 506875005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBPriceUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 4271495292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Specifies the weight of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2723034133 - Control 4271495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2341972053">
+          <source>Weight (kg)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Line Review - Control TFBWeight - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4186299070 - Control 1584744386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 881164414">
           <source>Specifies the price per kg</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11847,6 +11907,36 @@
           <source>Price per kg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Lines - Control PriceByWeight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Specifies the price in weight unit specified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBAltPrice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 1877170360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Weight Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBAltPrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 506875005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Specifies the price unit of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBPriceUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 506875005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBPriceUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 4271495292 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Specifies the weight of the item shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 637498175 - Control 4271495292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
+          <source>Weight (kg)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Prices Overview - Control TFBWeight - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2640289959 - Control 61130814 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1708450418">
           <source>External reference number for invoice</source>

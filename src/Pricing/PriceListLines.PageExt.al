@@ -45,6 +45,33 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
             end;
 
         }
+
+        modify(CurrencyCode)
+        {
+            Visible = false;
+        }
+
+        modify("Variant Code")
+        {
+            Visible = false;
+        }
+        modify("Work Type Code")
+        {
+            Visible = false;
+        }
+        modify("Unit of Measure Code")
+        {
+            Visible = false;
+        }
+        modify("Minimum Quantity")
+        {
+            Visible = false;
+        }
+        modify("Cost Factor")
+        {
+            Visible = false;
+        }
+
     }
 
     actions

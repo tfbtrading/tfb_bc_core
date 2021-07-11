@@ -10,7 +10,13 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
     begin
 
         If Rec."Asset Type" = Rec."Asset Type"::Item then
-            Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
+            case "Price Type" of
+                "Price Type"::Sale:
+                    Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
+                "Price Type"::Purchase:
+                    Rec.Validate("Direct Unit Cost", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
+            end;
+
     end;
 
     procedure GetPriceUnit(): Enum "TFB Price Unit"
@@ -56,9 +62,15 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
     procedure GetPriceAltPriceFromUnitPrice(): Decimal
 
     begin
-
         If Rec."Asset Type" = Rec."Asset Type"::Item then
-            Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));
+            case "Price Type" of
+                "Price Type"::Sale:
+                    Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));
+                "Price Type"::Purchase:
+                    Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Direct Unit Cost"));
+            end;
+
+
     end;
 
     var
