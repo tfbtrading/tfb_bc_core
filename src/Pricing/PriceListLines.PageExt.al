@@ -17,7 +17,7 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
                 trigger OnValidate()
 
                 begin
-                    rec.UpdateUnitPriceFromPerKgPrice(_PricePerKg);
+                    rec.UpdateUnitPriceFromAltPrice(_PricePerKg);
                 end;
 
             }

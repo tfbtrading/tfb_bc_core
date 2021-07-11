@@ -5,25 +5,65 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
         // Add changes to table fields here
     }
 
-    procedure UpdateUnitPriceFromPerKgPrice(NewPricePerKg: Decimal)
+    procedure UpdateUnitPriceFromAltPrice(AltPrice: Decimal)
 
     begin
-        PriceUnit := PriceUnit::KG;
+
         If Rec."Asset Type" = Rec."Asset Type"::Item then
-            Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", PriceUnit, NewPricePerKg));
+            Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
     end;
 
-    procedure GetPricePerKgFromUnitPrice(): Decimal
+    procedure GetPriceUnit(): Enum "TFB Price Unit"
+
+    var
+        Vendor: record Vendor;
+        PriceListHeader: Record "Price List Header";
+        _PriceUnit: Enum "TFB Price Unit";
 
     begin
-        PriceUnit := PriceUnit::KG;
+        case "Price Type" of
+            "Price Type"::Purchase:
+                If "Source Type" = "Source Type"::Vendor then begin
+                    Vendor.SetLoadFields("TFB Vendor Price Unit");
+                    If Vendor.GetBySystemId(rec."Source ID") then
+                        _PriceUnit := Vendor."TFB Vendor Price Unit"
+                end
+                else begin
+                    PriceListHeader.SetLoadFields("TFB Price Unit");
+                    PriceListHeader.Get(Rec."Price List Code");
+                    _PriceUnit := PriceListHeader."TFB Price Unit";
+                end;
+            "Price Type"::Sale:
+                _PriceUnit := _PriceUnit::KG;
+        end;
+
+        Exit(_PriceUnit);
+
+    end;
+
+    procedure GetItemWeight(): Decimal;
+
+    var
+        Item: Record Item;
+
+    begin
+        If "Asset Type" = "Asset Type"::Item then
+            If Item.GetBySystemId("Asset ID") then
+                Exit(Item."Net Weight");
+
+    end;
+
+    procedure GetPriceAltPriceFromUnitPrice(): Decimal
+
+    begin
+
         If Rec."Asset Type" = Rec."Asset Type"::Item then
-            Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", PriceUnit, rec."Unit Price"));
+            Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));
     end;
 
     var
 
         TFBPricingLogic: Codeunit "TFB Pricing Calculations";
-        PriceUnit: Enum "TFB Price Unit";
+
 
 }

@@ -32,15 +32,17 @@ pageextension 50204 "TFB Purchase Price List Lines" extends "Purchase Price List
                 Editable = false;
                 Caption = 'Price Unit';
                 ToolTip = 'Specifies the price unit of the item shown';
+                Width = 5;
 
             }
-            field(TFBWeight; _weight)
+            field(TFBWeight; Rec.GetItemWeight())
             {
                 ApplicationArea = All;
                 Editable = false;
                 Caption = 'Weight (kg)';
                 ToolTip = 'Specifies the weight of the item shown';
                 BlankZero = true;
+                Width = 5;
 
             }
 
@@ -50,6 +52,7 @@ pageextension 50204 "TFB Purchase Price List Lines" extends "Purchase Price List
                 Editable = true;
                 Caption = 'Weight Price';
                 ToolTip = 'Specifies the price in weight unit specified';
+                Width = 8;
 
                 trigger OnValidate()
 

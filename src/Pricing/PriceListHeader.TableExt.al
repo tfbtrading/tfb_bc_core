@@ -8,7 +8,7 @@ tableextension 50125 "TFB Price List Header" extends "Price List Header"
             Caption = 'Price Unit';
         }
 
-        modify("Source ID")
+        modify("Source No.")
         {
 
             trigger OnAfterValidate()
