@@ -57,6 +57,15 @@ page 50228 "TFB Brokerage Shipment Subform"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies quantity for line item';
+                    Visible = not UsingBulkers;
+
+                }
+
+                field(Bulkers; Rec.BulkerQuantity)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies quantity for line item';
+                    Visible = UsingBulkers;
 
                 }
 
@@ -129,6 +138,26 @@ page 50228 "TFB Brokerage Shipment Subform"
         Rec.Validate(Quantity);
     end;
 
+    trigger OnAfterGetRecord()
 
+    begin
+        UsingBulkers := CheckIfBulkers();
+    end;
+
+    var
+        UsingBulkers: Boolean;
+
+
+    local procedure CheckIfBulkers(): Boolean
+
+    var
+        BrokerageShipment: Record "TFB Brokerage Shipment";
+
+    begin
+
+        If BrokerageShipment.Get(Rec."Document No.") then
+            Exit(BrokerageShipment.Bulkers);
+
+    end;
 
 }

@@ -367,9 +367,12 @@ codeunit 50242 "TFB Brokerage Mgmt"
         if (Item."Net Weight" > 0) and (Quantity > 0) and (AgreedPrice > 0) then begin
 
             //Calculate out the Values used by the system
+
             TotalMT := (Item."Net Weight" * Quantity) / 1000;
             PricingUnitQty := PriceCodeUnit.CalculateQtyPriceUnit(ItemNo, BrokerageContract."Vendor Price Unit", Quantity);
             Amount := AgreedPrice * PricingUnitQty;
+
+
 
             case BrokerageContract."Commission Type" of
                 BrokerageContract."Commission Type"::"$ per MT":

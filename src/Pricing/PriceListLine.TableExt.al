@@ -36,8 +36,8 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
                 end
                 else begin
                     PriceListHeader.SetLoadFields("TFB Price Unit");
-                    PriceListHeader.Get(Rec."Price List Code");
-                    _PriceUnit := PriceListHeader."TFB Price Unit";
+                    If PriceListHeader.Get(Rec."Price List Code") then
+                        _PriceUnit := PriceListHeader."TFB Price Unit";
                 end;
             "Price Type"::Sale:
                 _PriceUnit := _PriceUnit::KG;

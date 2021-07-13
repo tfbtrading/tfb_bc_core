@@ -238,6 +238,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment - Field Brokerage Fee - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4009555772 - Field 1727406025 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulker Weight (mt)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment - Field Bulker Weight (mt) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4009555772 - Field 1743900968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulkers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment - Field Bulkers - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4009555772 - Field 1518224037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy From Vendor Name</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -388,6 +398,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment - Field Shipping Agent Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 4009555772 - Field 3040733782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Special Instructions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment - Field Special Instructions - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 4009555772 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -432,6 +447,11 @@
           <source>Brokerage Fee</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment Line - Field Brokerage Fee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2211550490 - Field 1747241600 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BulkerQuantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Shipment Line - Field BulkerQuantity - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2211550490 - Field 30954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy From Vendor No</source>
@@ -3818,6 +3838,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Vendor Invoice No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4009555772 - Control 1743900968 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether bulkers are supplied for the shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Bulkers - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4009555772 - Control 1727406025 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies weight in metric tonnes for bulkers</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Bulker Weight (mt) - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 4009555772 - Control 2071735474 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the container route</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4142,6 +4172,11 @@
           <source>Specifies brokerage fee for line item. Automatically calculated</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment Subform - Control Brokerage Fee - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 192354022 - Control 1743900968 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies quantity for line item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment Subform - Control Bulkers - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 192354022 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies description for line item</source>

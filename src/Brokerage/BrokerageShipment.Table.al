@@ -184,30 +184,30 @@ table 50226 "TFB Brokerage Shipment"
         {
             TableRelation = "Shipment Method";
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Brokerage Contract"."Shipping Method Code" where("No." = field("Contract No.")));
+            CalcFormula = lookup("TFB Brokerage Contract"."Shipping Method Code" where("No." = field("Contract No.")));
         }
 
         field(80; "Freight per MT"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Brokerage Contract"."Est. Freight Per MT" where("No." = field("Contract No.")));
+            CalcFormula = lookup("TFB Brokerage Contract"."Est. Freight Per MT" where("No." = field("Contract No.")));
         }
 
         field(90; "Freight Extra"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("Shipment Method"."TFB Freight Exclusive" where(Code = field("Shipment Method Code")));
+            CalcFormula = lookup("Shipment Method"."TFB Freight Exclusive" where(Code = field("Shipment Method Code")));
         }
         field(100; Amount; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum ("TFB Brokerage Shipment Line".Amount where("Document No." = field("No.")));
+            CalcFormula = sum("TFB Brokerage Shipment Line".Amount where("Document No." = field("No.")));
             Editable = false;
         }
         field(110; "Brokerage Fee"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum ("TFB Brokerage Shipment Line"."Brokerage Fee" where("Document No." = field("No.")));
+            CalcFormula = sum("TFB Brokerage Shipment Line"."Brokerage Fee" where("Document No." = field("No.")));
             Editable = false;
         }
         field(1302; Closed; Boolean)
@@ -245,6 +245,24 @@ table 50226 "TFB Brokerage Shipment"
 
         }
         field(200; "Printed"; Integer)
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+        }
+
+        field(210; "Special Instructions"; Text[2048])
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+
+        }
+        field(220; "Bulkers"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+        }
+
+        field(230; "Bulker Weight (mt)"; Decimal)
         {
             DataClassification = CustomerContent;
             Editable = true;

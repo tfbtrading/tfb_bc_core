@@ -1,7 +1,7 @@
 table 50227 "TFB Brokerage Shipment Line"
 {
     DataClassification = CustomerContent;
-   
+
 
     fields
     {
@@ -60,6 +60,26 @@ table 50227 "TFB Brokerage Shipment Line"
             end;
 
         }
+        field(4; BulkerQuantity; Decimal)
+        {
+            DataClassification = CustomerContent;
+
+            trigger OnValidate()
+
+            var
+                BrokerageShipment: Record "TFB Brokerage Shipment";
+                Item: Record Item;
+
+            begin
+
+                If BrokerageShipment.Get(Rec."Document No.") and Item.Get(Rec."Item No.") then
+                    If BrokerageShipment.Bulkers then begin
+                        Rec.Validate(Quantity, BrokerageShipment."Bulker Weight (mt)" / Item."Net Weight");
+                    end;
+
+            end;
+        }
+
 
         field(5; "Pricing Unit Qty"; Decimal)
         {
@@ -122,19 +142,21 @@ table 50227 "TFB Brokerage Shipment Line"
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Brokerage Shipment"."Customer No." where("No." = field("Document No.")));
+            CalcFormula = lookup("TFB Brokerage Shipment"."Customer No." where("No." = field("Document No.")));
         }
         field(60; "Buy From Vendor No"; Code[20])
         {
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Brokerage Shipment"."Buy From Vendor No." where("No." = field("Document No.")));
+            CalcFormula = lookup("TFB Brokerage Shipment"."Buy From Vendor No." where("No." = field("Document No.")));
         }
         field(70; "Status"; Enum "TFB Brokerage Shipment Status")
         {
             FieldClass = FlowField;
-            CalcFormula = lookup ("TFB Brokerage Shipment".Status where("No." = field("Document No.")));
+            CalcFormula = lookup("TFB Brokerage Shipment".Status where("No." = field("Document No.")));
         }
+
+
 
     }
 
@@ -180,6 +202,7 @@ table 50227 "TFB Brokerage Shipment Line"
 
             "Brokerage Fee" := BrokerageCodeUnit.CalculateBrokerage("Item No.", Quantity, BrokerageContractLine."Agreed Price", BrokerageShipment."Contract No.");
             "Agreed Price" := BrokerageContractLine."Agreed Price";
+
             "Total MT" := (ItemRecord."Net Weight" * Quantity) / 1000;
             Amount := BrokerageContractLine."Agreed Price" * "Total MT";
         end

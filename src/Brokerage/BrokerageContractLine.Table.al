@@ -104,7 +104,7 @@ table 50224 "TFB Brokerage Contract Line"
         {
             FieldClass = FlowField;
 
-            CalcFormula = sum ("TFB Brokerage Shipment Line".Quantity where("Contract No." = field("Document No."), "Item No." = field("Item No.")));
+            CalcFormula = sum("TFB Brokerage Shipment Line".Quantity where("Contract No." = field("Document No."), "Item No." = field("Item No.")));
 
 
         }

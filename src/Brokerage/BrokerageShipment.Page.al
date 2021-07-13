@@ -131,8 +131,31 @@ page 50229 "TFB Brokerage Shipment"
                     ToolTip = 'Specifies the vendor reference for the shipment';
 
                 }
+                field(Bulkers; Rec.Bulkers)
+                {
+                    ApplicationArea = All;
+                    Importance = Additional;
+                    ToolTip = 'Specifies whether bulkers are supplied for the shipment';
+                }
 
+                group(BulkersWeight)
+                {
+                    Visible = Rec.Bulkers;
 
+                    field("Bulker Weight (mt)"; Rec."Bulker Weight (mt)")
+                    {
+                        ApplicationArea = All;
+                        Importance = Additional;
+                        ToolTip = 'Specifies weight in metric tonnes for bulkers';
+                    }
+                }
+
+                field("Special Instructions"; Rec."Special Instructions")
+                {
+                    ApplicationArea = All;
+                    Importance = Additional;
+                    MultiLine = true;
+                }
 
 
 
