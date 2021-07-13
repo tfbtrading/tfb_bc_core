@@ -410,19 +410,19 @@ table 50115 "TFB Sample Request"
 
     begin
 
-        with TFBSampleRequest do begin
-            Copy(Rec);
-            GetSalesSetup();
-            TestNoSeries();
-            if NoSeriesMgt.SelectSeries(GetNoSeriesCode, OldSampleRequest."No. Series", "No. Series") then begin
-                NoSeriesMgt.SetSeries("No.");
-                if SampleRequest2.Get("No.") then
-                    Error(Text051, "No.");
-                Rec := TFBSampleRequest;
-                exit(true);
-            end;
+
+        TFBSampleRequest.Copy(Rec);
+        GetSalesSetup();
+        TestNoSeries();
+        if NoSeriesMgt.SelectSeries(GetNoSeriesCode, OldSampleRequest."No. Series", "No. Series") then begin
+            NoSeriesMgt.SetSeries("No.");
+            if SampleRequest2.Get("No.") then
+                Error(Text051, "No.");
+            Rec := TFBSampleRequest;
+            exit(true);
         end;
     end;
+
 
     procedure SetWorkDescription(NewWorkDescription: Text)
     var

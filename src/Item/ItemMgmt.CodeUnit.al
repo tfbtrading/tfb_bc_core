@@ -116,25 +116,25 @@ codeunit 50107 "TFB Item Mgmt"
     var
         SalesSetup: Record "Sales & Receivables Setup";
         Item: Record Item;
-        SalesPriceRec: Record "Sales Price";
+        PriceListLine: Record "Price List Line";
+
         PricingCU: CodeUnit "TFB Pricing Calculations";
     begin
         SalesSetup.Get();
 
-
-        Clear(SalesPriceRec);
-
-
         If (SalesSetup."TFB Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
+            PriceListLine.SetRange("Asset No.", ItemNo);
+            PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+            PriceListLine.SetRange("Price Type", PriceListLine."Price Type"::Sale);
+            PriceListLine.Setrange(Status, PriceListLine.Status::Active);
+            PriceListLine.SetRange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
+            PriceListLine.SetRange("Source No.", SalesSetup."TFB Def. Customer Price Group");
+            PriceListLine.SetFilter("Ending Date", '=%1|>=%2', 0D, WorkDate());
 
-            SalesPriceRec.SetRange("Item No.", ItemNo);
-            SalesPriceRec.SetRange("Sales Code", SalesSetup."TFB Def. Customer Price Group");
-            SalesPriceRec.SetRange("Sales Type", SalesPriceRec."Sales Type"::"Customer Price Group");
-            SalesPriceRec.SetRange("Ending Date", 0D);
 
-            If SalesPriceRec.FindLast() then begin
-                SalesPrice := PricingCU.CalcPerKgFromUnit(SalesPriceRec."Unit Price", Item."Net Weight");
-                LastChanged := SalesPriceRec."Starting Date";
+            If PriceListLine.FindLast() then begin
+                SalesPrice := PricingCU.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight");
+                LastChanged := PriceListLine."Starting Date";
             end;
         end;
 

@@ -43,12 +43,18 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
                 var
                     SPLD: Page "Sales Price and Line Discounts";
+                    PriceListLineReview: Page "Price List Line Review";
+                    PriceListLine: Record "Price List Line";
 
                 begin
-
-                    SPLD.LoadItem(Rec);
-                    SPLD.InitPage(True);
-                    SPLD.RunModal();
+                    PriceListLine.SetRange("Asset No.", Rec."No.");
+                    PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+                    PriceListLine.SetRange("Price Type", PriceListLine."Price Type"::Sale);
+                    PriceListLine.Setrange(Status, PriceListLine.Status::Active);
+                    PriceListLine.SetFilter("Ending Date", '=%1|>=%2', 0D, WorkDate());
+                    PriceListLineReview.SetTableView(PriceListLine);
+                    PriceListLineReview.LookupMode(false);
+                    PriceListLineReview.RunModal();
 
                 end;
 
