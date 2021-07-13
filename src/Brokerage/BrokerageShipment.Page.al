@@ -135,12 +135,21 @@ page 50229 "TFB Brokerage Shipment"
                 {
                     ApplicationArea = All;
                     Importance = Additional;
+                    Caption = 'Use Bulker Bags';
                     ToolTip = 'Specifies whether bulkers are supplied for the shipment';
+
+                    trigger OnValidate()
+
+                    begin
+
+                        CurrPage.Lines.Page.Update(false);
+                    end;
                 }
 
                 group(BulkersWeight)
                 {
                     Visible = Rec.Bulkers;
+                    ShowCaption = false;
 
                     field("Bulker Weight (mt)"; Rec."Bulker Weight (mt)")
                     {

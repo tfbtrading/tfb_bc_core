@@ -3843,6 +3843,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Bulkers - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 4009555772 - Control 1743900968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Bulker Bags</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Bulkers - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4009555772 - Control 1727406025 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies weight in metric tonnes for bulkers</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4177,6 +4182,11 @@
           <source>Specifies quantity for line item</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment Subform - Control Bulkers - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 192354022 - Control 1743900968 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bulker Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment Subform - Control Bulkers - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 192354022 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies description for line item</source>

@@ -74,7 +74,7 @@ table 50227 "TFB Brokerage Shipment Line"
 
                 If BrokerageShipment.Get(Rec."Document No.") and Item.Get(Rec."Item No.") then
                     If BrokerageShipment.Bulkers then begin
-                        Rec.Validate(Quantity, BrokerageShipment."Bulker Weight (mt)" / Item."Net Weight");
+                        Rec.Validate(Quantity, (BrokerageShipment."Bulker Weight (mt)" * 1000 * Rec.BulkerQuantity) / Item."Net Weight");
                     end;
 
             end;

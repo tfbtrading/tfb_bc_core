@@ -60,6 +60,19 @@ pageextension 50205 "TFB Price List Line Review" extends "Price List Line Review
     actions
     {
         // Add changes to page actions here
+        modify(PurchJobPriceLists)
+        {
+            Visible = false;
+
+        }
+        modify(JobPriceLists)
+        {
+            Visible = false;
+        }
+        modify(SalesJobPriceLists)
+        {
+            Visible = false;
+        }
     }
     var
 

@@ -65,6 +65,7 @@ page 50228 "TFB Brokerage Shipment Subform"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies quantity for line item';
+                    Caption = 'Bulker Quantity';
                     Visible = UsingBulkers;
 
                 }
