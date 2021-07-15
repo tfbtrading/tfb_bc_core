@@ -565,7 +565,7 @@ codeunit 50122 "TFB Sales Mgmt"
                                                                         Status += StrSubstNo(' based on shipped container %1, due for arrival on %2 and estimated to be available on %3', Container."Container No.", Container."Est. Arrival Date", Container."Est. Warehouse");
                                                                         LineStatus := LineStatus::ReservedFromInboundContainer;
                                                                     end;
-                                                                Container.Status::PendingFumigation:
+                                                                Container.Status::PendingTreatment:
                                                                     begin
                                                                         Status += StrSubstNo(' based on container that arrived on %1.', Container."Arrival Date");
                                                                         If Container."Fumigation Req." then

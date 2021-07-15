@@ -19,7 +19,7 @@ tableextension 50476 "TFB Sales Cue" extends "Sales Cue" //9053
         field(50478; "TFB Containers In Progress"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Container Entry" where(Status = filter(PendingFumigation | Dispatched | PendingClearance | ShippedFromPort)));
+            CalcFormula = Count("TFB Container Entry" where(Status = filter(PendingTreatment | Dispatched | PendingClearance | ShippedFromPort)));
             Caption = 'Containers';
         }
 

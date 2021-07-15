@@ -131,7 +131,7 @@ table 50181 "TFB Container Entry"
                     case Status of
                         Status::ShippedFromPort:
                             "Departure Date" := Today();
-                        Status::PendingFumigation:
+                        Status::PendingTreatment:
                             "Arrival Date" := Today();
                         Status::Closed:
                             "Warehouse Date" := Today();

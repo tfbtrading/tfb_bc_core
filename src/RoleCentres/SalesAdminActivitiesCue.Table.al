@@ -131,7 +131,7 @@ table 50105 "TFB Sales Admin Activities Cue"
         field(320; "Containers In Progress"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingFumigation)));
+            CalcFormula = Count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingTreatment)));
             Caption = 'Inbound Shipments';
         }
 

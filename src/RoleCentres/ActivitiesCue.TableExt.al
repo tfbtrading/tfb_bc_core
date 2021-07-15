@@ -18,7 +18,7 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
         field(50478; "TFB Containers In Progress"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingFumigation)));
+            CalcFormula = Count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingTreatment)));
             Caption = 'Inbound Shipments';
         }
         field(50500; "TFB Open Opportunities"; Integer)
