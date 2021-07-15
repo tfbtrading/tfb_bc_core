@@ -35,6 +35,19 @@ tableextension 50100 "TFB Location" extends Location
             Caption = 'Approved Arrangement No.';
             DataClassification = CustomerContent;
         }
+
+        field(50160; "TFB Location Type"; Enum "TFB Location Type")
+        {
+            Caption = 'Location Type';
+            DataClassification = CustomerContent;
+        }
+
+        field(50170; "TFB Enabled"; Boolean)
+        {
+            Caption = 'Enabled';
+            DataClassification = CustomerContent;
+            InitValue = true;
+        }
     }
 
 }
