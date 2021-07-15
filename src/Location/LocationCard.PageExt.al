@@ -2,6 +2,20 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
 {
     layout
     {
+        addbefore("Use As In-Transit")
+        {
+            field("TFB Enabled"; Rec."TFB Enabled")
+            {
+                ApplicationArea = All;
+
+            }
+            field("TFB Location Type"; Rec."TFB Location Type")
+            {
+                Importance = Promoted;
+                ApplicationArea = All;
+
+            }
+        }
         addafter("Inbound Whse. Handling Time")
         {
             field("TFB Quarantine Location"; Rec."TFB Quarantine Location")
