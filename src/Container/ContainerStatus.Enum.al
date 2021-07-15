@@ -17,9 +17,9 @@ enum 50200 "TFB Container Status"
     {
         Caption = 'Shipped from Port';
     }
-    value(4; PendingFumigation)
+    value(4; PendingTreatment)
     {
-        Caption = 'Pending Fumigation';
+        Caption = 'Pending Treatment';
 
     }
     value(5; PendingClearance)

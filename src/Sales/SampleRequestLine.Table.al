@@ -94,7 +94,7 @@ table 50116 "TFB Sample Request Line"
             trigger OnValidate()
 
             begin
-                if (Rec."Source Sample Size" <> 0) and ((Rec."Sourced From" = Rec."Sourced From"::Supplier) or (Rec."Sourced From" = Rec."Sourced From"::Warehouse)) then
+                if (Rec."Source Sample Size" <> 0) and not ((Rec."Sourced From" = Rec."Sourced From"::Supplier) or (Rec."Sourced From" = Rec."Sourced From"::Warehouse)) then
                     FieldError("Source Sample Size", 'Source sample size can only be set if source is warehouse or supplier');
             end;
         }
