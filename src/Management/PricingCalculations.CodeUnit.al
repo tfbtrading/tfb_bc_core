@@ -233,7 +233,7 @@ codeunit 50140 "TFB Pricing Calculations"
 
 
     begin
-        Item.Get(ItemNo);
+        If not Item.Get(ItemNo) then exit(0);
         Weight := Item."Net Weight";
         If UomCode <> '' then
             UOM.Get(UomCode)
@@ -270,7 +270,7 @@ codeunit 50140 "TFB Pricing Calculations"
         QtyPriceUnit: Decimal;
         Weight: Decimal;
     begin
-        Item.Get(ItemNo);
+        If not Item.Get(ItemNo) then exit(0);
 
         Weight := Item."Net Weight";
         UOM.Get(item."Base Unit of Measure");
