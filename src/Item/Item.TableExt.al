@@ -103,7 +103,7 @@ tableextension 50260 "TFB Item" extends Item
         field(50326; "TFB Inventory - Excl. Transit"; Decimal)
         {
             CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = FIELD("No."),
-                                                                 
+
                                                                   "Location Code" = FIELD("Location Filter"),
                                                                   "Drop Shipment" = FIELD("Drop Shipment Filter"),
                                                                   "Variant Code" = FIELD("Variant Filter"),
@@ -252,18 +252,8 @@ tableextension 50260 "TFB Item" extends Item
                     Rec."TFB Generic Item ID" := GUID;
                     Rec.Modify(false);
                 end;
-            end
-            else begin
-                GenericItem.Description := Rec.Description;
-                GenericItem."Item Category Id" := Rec."Item Category Id";
-                GenericItem."Item Category Code" := Rec."Item Category Code";
-                /*      If Rec.Picture.Count > 0 then begin
-                         Index := 1;
-                         GenericItem.Picture.Insert(Rec.Picture.Item(Index));
-                     end; */
-                GenericItem.Type := GenericItem.Type::ItemExtension;
-                GenericItem.Modify(false);
             end;
+
 
 
         //Removed as this appears to delete any parent item if it was switched from generic to parent

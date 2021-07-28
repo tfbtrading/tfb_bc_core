@@ -907,6 +907,7 @@ page 50210 "TFB Container Entry"
         Purchase: record "Purchase Header";
         RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
+        RecordRef: RecordRef;
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
         DocMailing: codeunit "Document-Mailing";
         mgmt: codeunit "TFB Common Library";
@@ -927,6 +928,7 @@ page 50210 "TFB Container Entry"
 
     begin
         Doc.get(DocNo);
+        RecordRef.GetTable(Doc);
         Purchase.SetRange("No.", Doc."Order Reference");
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 

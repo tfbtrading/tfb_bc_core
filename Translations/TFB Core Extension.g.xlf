@@ -13923,6 +13923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB AA No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 2516243223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Enabled - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 4117167199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Fumigation Handling Time</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13937,6 +13942,11 @@
           <source>Inspection Time Delay</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Inspection Time Delay - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 783415655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Location Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Location Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 1462942397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Quarantine Location</source>
@@ -15013,10 +15023,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue PendingClearance - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Enum 2042165717 - EnumValue 2853442286 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pending Fumigation</source>
+        <trans-unit id="Enum 2042165717 - EnumValue 2509158789 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pending Treatment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue PendingFumigation - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue PendingTreatment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 2042165717 - EnumValue 3001289599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pending Unpack Report</source>
@@ -15107,6 +15117,31 @@
           <source>Organic Product Certificate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Item Doc Type - EnumValue OPC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 783415655 - EnumValue 124933732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manufacturing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Location Type - EnumValue Manufacturing - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 783415655 - EnumValue 875876267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Overseas Receival</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Location Type - EnumValue OverseasReceival - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 783415655 - EnumValue 3727401273 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Special Purpose</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Location Type - EnumValue SpecialPurpose - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 783415655 - EnumValue 2672704373 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Standard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Location Type - EnumValue Standard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 783415655 - EnumValue 2609919304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quarantine Treatment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Location Type - EnumValue Treatment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 4161131189 - EnumValue 2864987877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lot Detail Required</source>
