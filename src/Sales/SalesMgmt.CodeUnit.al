@@ -118,6 +118,18 @@ codeunit 50122 "TFB Sales Mgmt"
         end;
     end;
 
+    protected procedure GetBaseQtyForSalesLine(SalesLine: Record "Sales Line"): Decimal
+
+    var
+        Item: Record Item;
+        ItemUoM: Record "Item Unit of Measure";
+
+    begin
+        If item.Get(SalesLine."No.") then
+            if ItemUoM.Get(Item."No.", Item."Sales Unit of Measure") then
+                exit(ItemUoM."Qty. per Unit of Measure");
+    end;
+
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', false, false)]
     local procedure OnBeforeInitHeaderLocationCode(var IsHandled: Boolean; var SalesLine: Record "Sales Line")
 
@@ -127,8 +139,11 @@ codeunit 50122 "TFB Sales Mgmt"
         Location: Record Location;
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
+        PurchaseLine: Record "Purchase Line";
+        TransferLine: Record "Transfer Line";
         LocationCode: Code[20];
         QtyCalc: Decimal;
+        MinQty: Decimal;
 
 
     begin
@@ -137,13 +152,17 @@ codeunit 50122 "TFB Sales Mgmt"
         LocationCode := SalesHeader."Location Code";
         If Item.Get(SalesLine."No.") and Item.IsInventoriableType() then begin
 
+
+            MinQty := GetBaseQtyForSalesLine(SalesLine);
             ItemLedgerEntry.SetRange("Location Code", LocationCode);
             ItemLedgerEntry.SetRange("Item No.", Item."No.");
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
             ItemLedgerEntry.CalcSums("Remaining Quantity");
             QtyCalc := ItemLedgerEntry."Remaining Quantity";
 
-            If QtyCalc = 0 then begin
+            If QtyCalc < MinQty then begin
+
+                //Check if inventory is in stock at other locations currently
 
                 ItemLedgerEntry.Reset();
                 ItemLedgerEntry.SetRange("Item No.", Item."No.");
@@ -153,13 +172,45 @@ codeunit 50122 "TFB Sales Mgmt"
 
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
-                        If not Location.IsInTransit(ItemLedgerEntry."Location Code") then begin
+                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (ItemLedgerEntry."Remaining Quantity" < MinQty) then begin
                             SalesLine."Location Code" := ItemLedgerEntry."Location Code";
                             IsHandled := true;
                         end;
-                    until (ItemLedgerEntry.Next() = 0) or (isHandled = true)
+                    until (ItemLedgerEntry.Next() = 0) or (isHandled = true);
+
+                If not IsHandled then begin
+
+                    //Check if for the first incoming purchase order for this item
+                    PurchaseLine.SetRange("No.", Item."No.");
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetFilter("Outstanding Qty. (Base)", '>0');
+                    PurchaseLine.SetCurrentKey("Planned Receipt Date");
+                    PurchaseLine.SetAscending("Planned Receipt Date", true);
+
+                    If PurchaseLine.FindFirst() and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) then begin
+                        SalesLine."Location Code" := PurchaseLine."Location Code";
+                        IsHandled := true;
+                    end;
+
+                end;
+
+                If not IsHandled then begin
+
+                    //Check if for the first incoming transfer for this item
+                    TransferLine.SetRange("Item No.", Item."No.");
+                    TransferLine.SetFilter("Outstanding Qty. (Base)", '>0');
+                    TransferLine.SetCurrentKey("Receipt Date");
+                    TransferLine.SetAscending("Receipt Date", true);
+
+                    If TransferLine.FindFirst() and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
+                        SalesLine."Location Code" := TransferLine."Transfer-to Code";
+                        IsHandled := true;
+                    end;
+
+                end;
 
             end;
+
         end;
     end;
 
