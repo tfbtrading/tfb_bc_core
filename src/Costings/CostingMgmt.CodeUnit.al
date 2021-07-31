@@ -496,7 +496,7 @@ codeunit 50304 "TFB Costing Mgmt"
         HandlingCost: Decimal;
         DeliveryCost: Decimal;
         CalcBaseDesc: TextBuilder;
-        
+
 
         i: Integer;
         j: Integer;
@@ -755,9 +755,177 @@ codeunit 50304 "TFB Costing Mgmt"
     end;
 
     internal procedure CopyCurrentCostingToPriceList(Rec: Record "Price List Header")
+
+
+
+    var
+        ItemCostingLines: Record "TFB Item Costing Lines";
+        PostCodeZone: Record "TFB Postcode Zone";
+        PriceLine: Record "Price List Line";
+        PriceLineNew: Record "Price List Line";
+        CostingSetup: Record "TFB Costings Setup";
+        ExistingPrice: Boolean;
+
+
+
     begin
-        Error('Procedure CopyCurrentCostingToPriceList not implemented.');
+        ItemCostingLines.Reset();
+        ItemCostingLines.SetRange(Current, true);
+        ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::DZP);
+        ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
+        if ItemCostingLines.FindSet() then
+            repeat
+
+                //Check if existing sales price worksheet item exists
+                PriceLine.Reset();
+                PriceLine.SetRange("Price List Code", Rec.Code);
+                PriceLine.SetRange("Starting Date", System.WorkDate());
+                PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
+                PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
+
+                If PostCodeZone.get(ItemCostingLines."Line Key") then
+
+                    //Get the correct customer group mapping for the postcode zone
+                    PriceLine.SetRange("Source No.", PostCodeZone."Customer Price Group");
+
+                If PriceLine.FindFirst() then begin
+
+                    //Update existing price on sales price worksheet
+                    PriceLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                    PriceLine."Price Includes VAT" := false;
+                    PriceLine.Modify();
+                end
+                else begin
+
+                    //Check first if price is different to existing sales price
+                    PriceLine.Reset();
+                    PriceLine.SetRange("Price List Code", Rec.Code);
+                    PriceLine.SetRange("Starting Date", System.WorkDate());
+                    PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                    PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
+                    PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
+                    PriceLine.SetRange("Source No.", PostCodeZone."Customer Price Group");
+                    PriceLine.SetFilter("Unit of Measure Code", '');
+                    PriceLine.SetFilter("Ending Date", '');
+
+                    If PriceLine.FindLast() then begin
+
+                        //Check if price is different
+                        If ItemCostingLines."Price (Base)" <> PriceLine."Unit Price" then begin
+
+                            //Add new item into sales price worksheet
+                            PriceLineNew.Init();
+                            PriceLineNew."Price List Code" := Rec.Code;
+                            PriceLineNew."Asset Type" := PriceLineNew."Asset Type"::Item;
+                            PriceLineNew."Asset No." := ItemCostingLines."Item No.";
+                            PriceLineNew."Starting Date" := WorkDate();
+                            PriceLineNew."Source Type" := PriceLineNew."Source Type"::"Customer Price Group";
+                            PriceLineNew.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                            PriceLineNew."Price Includes VAT" := false;
+                            PriceLineNew.Insert();
+                        end;
+                    end
+                    else begin
+
+                        //No Sales Price Found So Insert
+                        PriceLineNew.Init();
+                        PriceLineNew."Price List Code" := Rec.Code;
+                        PriceLineNew."Asset Type" := PriceLineNew."Asset Type"::Item;
+                        PriceLineNew."Asset No." := ItemCostingLines."Item No.";
+                        PriceLineNew."Starting Date" := WorkDate();
+                        PriceLineNew."Source Type" := PriceLineNew."Source Type"::"Customer Price Group";
+                        PriceLineNew.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                        PriceLineNew."Price Includes VAT" := false;
+                        PriceLineNew.Insert();
+                    end;
+
+                end;
+
+
+            until ItemCostingLines.Next() < 1;
+
+        //Process any ex-warehouse line items
+
+        If CostingSetup.FindFirst() then
+            If CostingSetup.ExWarehouseEnabled then
+                if CostingSetup.ExWarehousePricingGroup <> '' then begin
+
+
+                    ItemCostingLines.Reset();
+                    ItemCostingLines.SetRange(Current, true);
+                    ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
+                    ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
+                    ItemCostingLines.SetRange("Line Key", '-');
+                   
+                    if ItemCostingLines.FindSet() then
+                        repeat
+                            PriceLine.Reset();
+                            PriceLine.SetRange("Price List Code", Rec.Code);
+                            PriceLine.SetRange("Starting Date", System.WorkDate());
+                            PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                            PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
+                            PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
+                            PriceLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
+
+                            If PriceLine.FindFirst() then begin
+
+                                //Update existing price on sales price worksheet as it was found
+                                PriceLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                                PriceLine."Price Includes VAT" := false;
+                                PriceLine.Modify();
+
+                            end
+                            else begin
+                                PriceLine.Reset();
+                                PriceLine.SetRange("Price List Code", Rec.Code);
+                                PriceLine.SetRange("Starting Date", System.WorkDate());
+                                PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                                PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
+                                PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
+                                PriceLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
+                                PriceLine.SetFilter("Unit of Measure Code", '');
+                                PriceLine.SetFilter("Ending Date", '');
+
+
+                                If PriceLine.FindLast() then begin
+
+                                    //Check if price is different
+                                    If ItemCostingLines."Price (Base)" <> PriceLine."Unit Price" then begin
+
+                                        //Add new item into sales price worksheet
+                                        PriceLineNew.Init();
+                                        PriceLineNew."Price List Code" := Rec.Code;
+                                        PriceLineNew."Asset Type" := PriceLineNew."Asset Type"::Item;
+                                        PriceLineNew."Asset No." := ItemCostingLines."Item No.";
+                                        PriceLineNew."Starting Date" := WorkDate();
+                                        PriceLineNew."Source Type" := PriceLineNew."Source Type"::"Customer Price Group";
+                                        PriceLineNew."Source No." := CostingSetup.ExWarehousePricingGroup;
+                                        PriceLineNew.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                                        PriceLineNew."Price Includes VAT" := false;
+                                        PriceLineNew.Insert();
+                                    end;
+                                end
+                                else begin
+
+                                    //No Sales Price Found So Insert
+                                    PriceLineNew.Init();
+                                    PriceLineNew."Price List Code" := Rec.Code;
+                                    PriceLineNew."Asset Type" := PriceLineNew."Asset Type"::Item;
+                                    PriceLineNew."Asset No." := ItemCostingLines."Item No.";
+                                    PriceLineNew."Starting Date" := WorkDate();
+                                    PriceLineNew."Source Type" := PriceLineNew."Source Type"::"Customer Price Group";
+                                    PriceLineNew."Source No." := CostingSetup.ExWarehousePricingGroup;
+                                    PriceLineNew.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                                    PriceLineNew."Price Includes VAT" := false;
+                                    PriceLineNew.Insert();
+                                end;
+                            end;
+                        until ItemCostingLines.Next() < 1;
+                end;
     end;
+
+
 
     local procedure AddMargin(Margin: Decimal; BaseValue: Decimal): Decimal
 

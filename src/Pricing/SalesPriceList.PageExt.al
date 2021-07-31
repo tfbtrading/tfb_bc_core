@@ -23,7 +23,7 @@ pageextension 50198 "TFB Sales Price List" extends "Sales Price List"
                     CostingCU: Codeunit "TFB Costing Mgmt";
 
                 begin
-                    CostingCU.CopyCurrentCostingToSalesWorkSheet();
+                   
                     CostingCU.CopyCurrentCostingToPriceList(Rec);
                 end;
             }
