@@ -787,7 +787,7 @@ codeunit 50304 "TFB Costing Mgmt"
             repeat
                 Item.Get(ItemCostingLines."Item No.");
 
-                If (not Item."TFB Publishing Block") and not (Item.Blocked) then begin  //Ignore price processing changes if 
+                If not (Item."TFB Publishing Block" and Item.Blocked) then begin  //Ignore price processing changes if 
                     //Check if existing sales price worksheet item exists
                     PriceLine.Reset();
                     PriceLine.SetRange("Price List Code", PriceListHeader.Code);
@@ -870,64 +870,67 @@ codeunit 50304 "TFB Costing Mgmt"
 
                     if ItemCostingLines.FindSet() then
                         repeat
-                            PriceLine.Reset();
-                            PriceLine.SetRange("Price List Code", PriceListHeader.Code);
-                            PriceLine.SetRange("Starting Date", System.WorkDate());
-                            PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
-                            PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
-                            PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
-                            PriceLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
 
-                            If PriceLine.FindFirst() then begin
-
-                                //Update existing price on sales price worksheet as it was found
-                                PriceLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
-                                PriceLine."Price Includes VAT" := false;
-                                PriceLine.Modify();
-
-                            end
-                            else begin
+                            If not (Item."TFB Publishing Block" and Item.Blocked) then begin
                                 PriceLine.Reset();
                                 PriceLine.SetRange("Price List Code", PriceListHeader.Code);
+                                PriceLine.SetRange("Starting Date", System.WorkDate());
                                 PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
                                 PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
                                 PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
                                 PriceLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
-                                PriceLine.SetFilter("Unit of Measure Code", '');
-                                PriceLine.SetFilter("Ending Date", '');
+
+                                If PriceLine.FindFirst() then begin
+
+                                    //Update existing price on sales price worksheet as it was found
+                                    PriceLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                                    PriceLine."Price Includes VAT" := false;
+                                    PriceLine.Modify();
+
+                                end
+                                else begin
+                                    PriceLine.Reset();
+                                    PriceLine.SetRange("Price List Code", PriceListHeader.Code);
+                                    PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                                    PriceLine.SetRange("Asset Type", PriceLine."Asset Type"::Item);
+                                    PriceLine.SetRange("Source Type", PriceLine."Source Type"::"Customer Price Group");
+                                    PriceLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
+                                    PriceLine.SetFilter("Unit of Measure Code", '');
+                                    PriceLine.SetFilter("Ending Date", '');
 
 
-                                If PriceLine.FindLast() then begin
+                                    If PriceLine.FindLast() then begin
 
-                                    //Check if price is different
-                                    If ItemCostingLines."Price (Base)" <> PriceLine."Unit Price" then begin
+                                        //Check if price is different
+                                        If ItemCostingLines."Price (Base)" <> PriceLine."Unit Price" then begin
 
-                                        //Add new item into sales price worksheet
+                                            //Add new item into sales price worksheet
+                                            PriceAsset."Price Type" := PriceListHeader."Price Type";
+                                            PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
+                                            PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
+                                            PriceAsset.Validate("Unit of Measure Code", '');
+
+
+                                            If PriceAsset."Asset No." <> '' then
+                                                If AddLine(PriceListHeader, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup) then begin
+                                                    PriceLine.validate("Ending Date", DayBefore);
+                                                    PriceLine.Modify(true);
+                                                end;
+
+                                        end;
+                                    end
+                                    else begin
+
+                                        //No Sales Price Found So Insert
+
                                         PriceAsset."Price Type" := PriceListHeader."Price Type";
                                         PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
                                         PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
                                         PriceAsset.Validate("Unit of Measure Code", '');
 
-
                                         If PriceAsset."Asset No." <> '' then
-                                            If AddLine(PriceListHeader, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup) then begin
-                                                PriceLine.validate("Ending Date", DayBefore);
-                                                PriceLine.Modify(true);
-                                            end;
-
+                                            AddLine(PriceListHeader, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup);
                                     end;
-                                end
-                                else begin
-
-                                    //No Sales Price Found So Insert
-
-                                    PriceAsset."Price Type" := PriceListHeader."Price Type";
-                                    PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
-                                    PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
-                                    PriceAsset.Validate("Unit of Measure Code", '');
-
-                                    If PriceAsset."Asset No." <> '' then
-                                        AddLine(PriceListHeader, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup);
                                 end;
                             end;
                         until ItemCostingLines.Next() < 1;
