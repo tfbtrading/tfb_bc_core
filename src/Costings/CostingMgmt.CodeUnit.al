@@ -127,17 +127,19 @@ codeunit 50304 "TFB Costing Mgmt"
     procedure GetNextPurchasePrice(Item: Record Item; Costing: Record "TFB Item Costing"): Decimal
 
     var
-        PO: Record "Purchase Line";
-        PCE: CodeUnit "TFB Pricing Calculations";
+        PurchaseLine: Record "Purchase Line";
+        PricingCalculations: CodeUnit "TFB Pricing Calculations";
 
     begin
 
-        PO.SetRange("No.", Item."No.");
-        PO.SetCurrentKey("Expected Receipt Date");
-        PO.SetAscending("Expected Receipt Date", true);
+        PurchaseLine.SetRange("No.", Item."No.");
+        PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+        PurchaseLine.SetFilter("Outstanding Qty. (Base)",'>0');
+        PurchaseLine.SetCurrentKey("Expected Receipt Date");
+        PurchaseLine.SetAscending("Expected Receipt Date", true);
 
-        If PO.FindFirst() then
-            Exit(PCE.CalculatePriceUnitByUnitPrice(Item."No.", PO."Unit of Measure Code", Costing."Purchase Price Unit", PO."Unit Cost"))
+        If PurchaseLine.FindFirst() then
+            Exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", PurchaseLine."Unit of Measure Code", Costing."Purchase Price Unit", PurchaseLine."Unit Cost"))
         else
             Exit(0);
 
@@ -146,10 +148,12 @@ codeunit 50304 "TFB Costing Mgmt"
     procedure GetCurrentItemCost(Item: Record Item; Costing: Record "TFB Item Costing"): Decimal
 
     var
-        PCE: CodeUnit "TFB Pricing Calculations";
+        PricingCalculations: CodeUnit "TFB Pricing Calculations";
     begin
-        Exit(PCE.CalculatePriceUnitByUnitPrice(Item."No.", Item."Base Unit of Measure", Costing."Purchase Price Unit", Item."Unit Cost"));
+        Exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", Item."Base Unit of Measure", Costing."Purchase Price Unit", Item."Unit Cost"));
     end;
+
+
 
     procedure CopyCurrentCostingToSalesWorkSheet(ItemNo: Code[20]): Boolean
 

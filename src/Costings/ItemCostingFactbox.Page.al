@@ -91,10 +91,19 @@ page 50102 "TFB Item Costing Factbox"
                 field(_CurrentLandedCost; _CurrentLandedCost)
                 {
                     ApplicationArea = All;
-                    Caption = 'Current Cost';
+                    Caption = 'Current Landed Cost';
                     Tooltip = 'Specifies current cost in costing unit of measure';
 
                 }
+
+                field(_CurrentLandedCostInPurchaseCurr; _CurrentLandedCostInPurchaseCurr)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Current Landed Cost (in Purchase Exch)';
+                    Tooltip = 'Specifies current cost in costing unit of measure in foreign currency based on current item costing rate';
+
+                }
+
                 field(_LastPreLandedCost; _LastPreLandedCost)
                 {
                     ApplicationArea = All;
@@ -136,6 +145,7 @@ page 50102 "TFB Item Costing Factbox"
 
         If ItemCosting.FindFirst() then begin
             _CurrentLandedCost := CCU.GetCurrentItemCost(rec, ItemCosting);
+            _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost * ItemCosting."Exch. Rate";
             _LastPreLandedCost := CCU.GetLastPurchasePrice(rec, ItemCosting);
             _NextPreLandedCost := CCU.GetNextPurchasePrice(rec, ItemCosting);
             _CurrPricePerKg := CCU.GetCurrPricePerKg(Rec);
@@ -157,6 +167,7 @@ page 50102 "TFB Item Costing Factbox"
         _LastPreLandedCost: Decimal;
         _MarketPrice: Decimal;
         _NextPreLandedCost: Decimal;
+        _CurrentLandedCostInPurchaseCurr: Decimal;
 
 
 }
