@@ -11953,6 +11953,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price List Lines - Control PriceByWeight - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Action 2788375324 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Add suggested sales prices based on item costing worksheets</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Action TFBCopyItemCostings - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Action 2788375324 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Suggest based on item costings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Action TFBCopyItemCostings - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 637498175 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
           <source>Specifies the price in weight unit specified</source>
           <note from="Developer" annotates="general" priority="2"></note>

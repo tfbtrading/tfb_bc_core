@@ -61,7 +61,7 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
         }
         modify("Unit of Measure Code")
         {
-            Visible = false;
+            Visible = true;
         }
         modify("Minimum Quantity")
         {
