@@ -17,6 +17,16 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 ToolTip = 'Specifies brokerage shipment if relevant';
             }
         }
+
+        addlast(factboxes)
+        {
+            part(PODInfo; "TFB Sales POD FactBox")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("No.");
+                Caption = 'POD Info';
+            }
+        }
     }
 
     actions
@@ -56,6 +66,8 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 ToolTip = 'Process your customer payments by matching amounts received on your bank account with the related unpaid sales invoices, and then post the payments.';
             }
         }
+
+
     }
 
     views

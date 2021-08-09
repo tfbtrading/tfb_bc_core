@@ -18,6 +18,21 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterSalesShptHeaderInsert', '', false, false)]
+    local procedure OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesOrderHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PurchHeader: Record "Purchase Header");
+    var
+        Vendor: Record Vendor;
+
+    begin
+
+        if (not CommitIsSuppressed) then
+            if Vendor.Get(PurchHeader."Buy-from Vendor No.") then begin
+                SalesShipmentHeader.validate("Shipping Agent Code", Vendor."Shipping Agent Code");
+                SalesShipmentHeader.validate("Shipping Agent Service Code", Vendor."Shipping Agent Code");
+            end;
+    end;
+
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterInsertCombinedSalesShipment', '', false, false)]
     local procedure HandlePurchaseOrderDropShipAdvice(var SalesShipmentHeader: Record "Sales Shipment Header")
@@ -26,6 +41,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     begin
         If SalesShipmentHeader."No." <> '' then
+
+
             //do something
             If not CheckIfSent(SalesShipmentHeader."No.") then
                 shipmentcu.SendOneShipmentNotificationEmail(SalesShipmentHeader."No.");
