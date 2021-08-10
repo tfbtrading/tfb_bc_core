@@ -22,16 +22,52 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     local procedure OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesOrderHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PurchHeader: Record "Purchase Header");
     var
         Vendor: Record Vendor;
+        Agent: Record "Shipping Agent";
+        ShippingAgentCode: Code[20];
+        ShippingAgentServiceCode: Code[20];
 
     begin
 
         if (not CommitIsSuppressed) then
             if Vendor.Get(PurchHeader."Buy-from Vendor No.") then begin
-                SalesShipmentHeader.validate("Shipping Agent Code", Vendor."Shipping Agent Code");
-                SalesShipmentHeader.validate("Shipping Agent Service Code", Vendor."Shipping Agent Code");
+
+                If not getZoneRateForShipment(Vendor."No.", SalesShipmentHeader, ShippingAgentCode, ShippingAgentServiceCode) then begin
+                    ShippingAgentCode := Vendor."Shipping Agent Code";
+
+                    If Agent.Get(ShippingAgentCode) then
+                        ShippingAgentServiceCode := Agent."TFB Service Default";
+                end;
+
+                SalesShipmentHeader.validate("Shipping Agent Code", ShippingAgentCode);
+                SalesShipmentHeader.validate("Shipping Agent Service Code", ShippingAgentServiceCode);
             end;
     end;
 
+    local procedure getZoneRateForShipment(VendorNo: Code[20]; SalesShipment: Record "Sales Shipment Header"; var ShippingAgentCode: Code[20]; var ShippingAgentServiceCode: Code[20]): Boolean
+
+    var
+        PostalZone: Record "TFB Postcode Zone";
+        VendorZoneRate: Record "TFB Vendor Zone Rate";
+
+    begin
+
+        VendorZoneRate.SetRange("Vendor No.", VendorNo);
+
+        PostalZone.SetRange("Customer Price Group", SalesShipment."Customer Price Group");
+        If PostalZone.FindFirst() then begin
+
+            VendorZoneRate.SetRange("Zone Code", PostalZone.Code);
+            VendorZoneRate.SetRange("Sales Type", VendorZoneRate."Sales Type"::All);
+
+            If VendorZoneRate.FindFirst() then begin
+                ShippingAgentCode := VendorZoneRate."Shipping Agent";
+                ShippingAgentServiceCode := VendorZoneRate."Agent Service Code";
+                exit(true);
+            end;
+
+        end;
+
+    end;
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterInsertCombinedSalesShipment', '', false, false)]

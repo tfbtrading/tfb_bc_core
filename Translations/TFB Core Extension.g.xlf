@@ -5889,9 +5889,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Control _CurrentLandedCost - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1845793501 - Control 45413037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Current Cost</source>
+          <source>Current Landed Cost</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Control _CurrentLandedCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1845793501 - Control 1554590283 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies current cost in costing unit of measure in foreign currency based on current item costing rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Control _CurrentLandedCostInPurchaseCurr - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1845793501 - Control 1554590283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Landed Cost (in Purchase Exch)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Control _CurrentLandedCostInPurchaseCurr - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1845793501 - Control 1372537449 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies last purchase cost (prior to any landed costs) in costing unit of measure</source>
@@ -11797,6 +11807,11 @@
           <source>Specifies brokerage shipment if relevant</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control TFB Brokerage Shipment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3543807989 - Control 1526968527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>POD Info</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control PODInfo - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1167537379 - Action 747683197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Emails a details notification about the shipment to the customer</source>
