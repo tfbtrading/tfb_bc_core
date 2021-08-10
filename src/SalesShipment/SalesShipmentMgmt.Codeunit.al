@@ -31,7 +31,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         if (not CommitIsSuppressed) then
             if Vendor.Get(PurchHeader."Buy-from Vendor No.") then begin
 
-                If not getZoneRateForShipment(Vendor."No.", SalesShipmentHeader, ShippingAgentCode, ShippingAgentServiceCode) then begin
+                If not getZoneRateForShipment(Vendor."No.", SalesShipmentHeader."Customer Price Group", ShippingAgentCode, ShippingAgentServiceCode) then begin
                     ShippingAgentCode := Vendor."Shipping Agent Code";
 
                     If Agent.Get(ShippingAgentCode) then
@@ -40,10 +40,12 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                 SalesShipmentHeader.validate("Shipping Agent Code", ShippingAgentCode);
                 SalesShipmentHeader.validate("Shipping Agent Service Code", ShippingAgentServiceCode);
+                SalesShipmentHeader.Modify(false);
             end;
     end;
 
-    local procedure getZoneRateForShipment(VendorNo: Code[20]; SalesShipment: Record "Sales Shipment Header"; var ShippingAgentCode: Code[20]; var ShippingAgentServiceCode: Code[20]): Boolean
+
+    local procedure getZoneRateForShipment(VendorNo: Code[20]; CustomerPriceGroup: Code[20]; var ShippingAgentCode: Code[20]; var ShippingAgentServiceCode: Code[20]): Boolean
 
     var
         PostalZone: Record "TFB Postcode Zone";
@@ -53,7 +55,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         VendorZoneRate.SetRange("Vendor No.", VendorNo);
 
-        PostalZone.SetRange("Customer Price Group", SalesShipment."Customer Price Group");
+        PostalZone.SetRange("Customer Price Group", CustomerPriceGroup);
         If PostalZone.FindFirst() then begin
 
             VendorZoneRate.SetRange("Zone Code", PostalZone.Code);
