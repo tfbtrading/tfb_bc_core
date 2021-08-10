@@ -40,9 +40,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                 SalesShipmentHeader.validate("Shipping Agent Code", ShippingAgentCode);
                 SalesShipmentHeader.validate("Shipping Agent Service Code", ShippingAgentServiceCode);
-                SalesShipmentHeader.Modify(false);
+
             end;
     end;
+
 
 
     local procedure getZoneRateForShipment(VendorNo: Code[20]; CustomerPriceGroup: Code[20]; var ShippingAgentCode: Code[20]; var ShippingAgentServiceCode: Code[20]): Boolean
