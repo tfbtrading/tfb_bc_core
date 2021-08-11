@@ -2,6 +2,8 @@ table 50113 "TFB Generic Item Market Rel."
 {
     DataClassification = CustomerContent;
 
+    Caption = 'Generic Item Market Relationship';
+
     fields
     {
         field(1; GenericItemID; Guid)

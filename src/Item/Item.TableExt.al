@@ -176,6 +176,10 @@ tableextension 50260 "TFB Item" extends Item
             Caption = 'External ID';
 
         }
+        field(50360; "TFB Multi-item Pallet Option"; Enum "TFB Multi-item Pallet Option")
+        {
+            Caption = 'Multi-item Pallet Option';
+        }
 
     }
     fieldgroups
