@@ -39,19 +39,13 @@ page 50136 "TFB Product Market Segment"
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies the value of the no. of generic items field';
+                        DrillDown = true;
+                        DrillDownPageId = "TFB Generic Items";
                     }
 
 
                 }
-                group(Image)
-                {
-                    ShowCaption = false;
-                    part(Picture; "TFB Market Segment Picture")
-                    {
-                        ApplicationArea = All;
-                        SubPageLink = SystemId = field(SystemId);
-                    }
-                }
+
             }
             group(CriteriaGroup)
             {
@@ -67,7 +61,21 @@ page 50136 "TFB Product Market Segment"
             }
 
         }
+        area(factboxes)
+        {
+            part(Picture; "TFB Market Segment Picture")
+            {
+                ApplicationArea = All;
+                SubPageLink = SystemId = field(SystemId);
+            }
+
+            systempart(Notes; Notes)
+            {
+                ApplicationArea = All;
+            }
+        }
     }
+
 
     var
         CommonCU: CodeUnit "TFB Common Library";

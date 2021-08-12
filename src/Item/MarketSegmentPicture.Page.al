@@ -143,7 +143,7 @@ page 50137 "TFB Market Segment Picture"
             If not confirm(ConfMsg) then
                 exit;
 
-        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, '');
+        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*');
 
         If TempBlob.HasValue() then begin
 

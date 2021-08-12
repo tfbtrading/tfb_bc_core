@@ -8,13 +8,14 @@ table 50114 "TFB Segment Match Criteria"
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Product Market Segment".SystemId;
-            
+            Caption = 'Product Market Segment ID';
 
         }
         field(10; ItemAttributeID; Integer)
         {
             DataClassification = CustomerContent;
             TableRelation = "Item Attribute".ID;
+            Caption = 'Item Attribute ID';
 
             trigger OnValidate()
 
@@ -42,6 +43,7 @@ table 50114 "TFB Segment Match Criteria"
             FieldClass = FlowField;
         }
 
+        
     }
 
     keys
