@@ -148,11 +148,13 @@ page 50137 "TFB Market Segment Picture"
 
 
         If TempBlob.HasValue() then begin
-
+            TempBlob.CreateInStream(Instream);
             Clear(Rec.Picture);
             Rec.Picture.ImportStream(Instream, ImgFileName);
             Rec.Modify(true);
         end;
+
+
     end;
 
     local procedure ExportItemPicture()

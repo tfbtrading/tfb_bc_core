@@ -5723,6 +5723,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Control Type - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 864529121 - Action 1051056490 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add additional market segments to the generic item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Action AddMarketSegment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 864529121 - Action 1051056490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add Market Segment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Action AddMarketSegment - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1857308130 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Costing</source>
           <note from="Developer" annotates="general" priority="2"></note>
