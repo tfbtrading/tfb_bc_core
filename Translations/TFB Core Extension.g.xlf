@@ -1468,6 +1468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1198809383 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item Market Relationship</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1198809383 - Field 3718912726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11028,15 +11033,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. in Transit - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 662871797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if only price on application should be shown in price list</source>
+        <trans-unit id="PageExtension 2581648259 - Control 3387142174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifics the most flexible options available when wanting to mix this item on a pallet</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publish POA Only - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Multi-item Pallet Option - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 2146749556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifies if item should be blocked from being shown on price list</source>
+        <trans-unit id="PageExtension 2581648259 - Control 3226948711 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies how many bags or carton in a layer on the pallet</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publishing Block - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB No. Of Bags Per Layer - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Specifies the per kilogram unit price based on item weight</source>
@@ -11062,6 +11067,16 @@
           <source>Unit Cost Per Kg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 662871797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if only price on application should be shown in price list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publish POA Only - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 2146749556 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if item should be blocked from being shown on price list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Publishing Block - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Control 975912338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>AQIS Requirements</source>
@@ -13908,6 +13923,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Long Desc. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 3387142174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Multi-item Pallet Option</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Multi-item Pallet Option - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 3226948711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>No. Of Bags Per Layer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB No. Of Bags Per Layer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 646273103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Out. Qty. on Sales Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15187,6 +15212,21 @@
           <source>Not Required</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Lot Status - EnumValue NotRequired - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3387142174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Multi-item pallet option</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Multi-item Pallet Option - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3387142174 - EnumValue 97107021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Even Split</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Multi-item Pallet Option - EnumValue Half - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3387142174 - EnumValue 4105672341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>By Layer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Multi-item Pallet Option - EnumValue Layer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1531188592 - EnumValue 3702499555 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Always Receive</source>

@@ -180,6 +180,10 @@ tableextension 50260 "TFB Item" extends Item
         {
             Caption = 'Multi-item Pallet Option';
         }
+        field(50365; "TFB No. Of Bags Per Layer"; Integer)
+        {
+            Caption = 'No. Of Bags Per Layer';
+        }
 
     }
     fieldgroups

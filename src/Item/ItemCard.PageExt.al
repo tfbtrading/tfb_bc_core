@@ -21,6 +21,24 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             }
 
         }
+
+        addbefore("Net Weight")
+        {
+            field("TFB Multi-item Pallet Option"; Rec."TFB Multi-item Pallet Option")
+            {
+                Importance = Additional;
+                ApplicationArea = All;
+                ToolTip = 'Specifics the most flexible options available when wanting to mix this item on a pallet';
+
+            }
+            field("TFB No. Of Bags Per Layer"; Rec."TFB No. Of Bags Per Layer")
+            {
+                Importance = Additional;
+                ApplicationArea = All;
+                ToolTip = 'Specifies how many bags or carton in a layer on the pallet';
+            }
+        }
+
         addafter(Blocked)
         {
             field("TFB Publish POA Only"; Rec."TFB Publish POA Only")
@@ -247,7 +265,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 ToolTip = 'Find and download specification file';
                 Promoted = true;
                 PromotedCategory = Category4;
-                
+
                 Enabled = true;
 
                 trigger OnAction()
