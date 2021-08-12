@@ -68,7 +68,62 @@ page 50133 "TFB Generic Items"
                 ApplicationArea = All;
                 SubPageLink = SystemId = field(SystemId);
             }
+            part(MarketSegments; "TFB Generic Item Segment Tags")
+            {
 
+                ShowFilter = false;
+                ApplicationArea = All;
+                SubPageLink = GenericItemID = field(SystemId);
+            }
+
+        }
+    }
+    actions
+    {
+        area(Processing)
+        {
+            action(AddMarketSegment)
+            {
+                Caption = 'Add Market Segment';
+                ApplicationArea = All;
+                Image = CustomerGroup;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Enabled = true;
+                ToolTip = 'Add additional market segments to the generic item';
+
+                trigger OnAction()
+
+                var
+                    MarketSegmentRec: Record "TFB Product Market Segment";
+                    MarketSegmentSelRec: Record "TFB Product Market Segment";
+                    MarketSegmentList: Page "TFB Product Market Seg. List";
+                begin
+                    MarketSegmentList.LookupMode(true);
+                    MarketSegmentRec.SetFilter(SystemId, BuildExclusionFilter(Rec.SystemId));
+                    If MarketSegmentRec.Count > 0 then begin
+                        MarketSegmentList.SetTableView(MarketSegmentRec);
+                        If MarketSegmentList.RunModal() = Action::LookupOK then begin
+                            MarketSegmentList.SetSelectionFilter(MarketSegmentSelRec);
+                            If MarketSegmentSelRec.Count > 1 then
+                                repeat
+                                    ValidateNewSegment(MarketSegmentSelRec.Title);
+
+                                until MarketSegmentSelRec.Next() = 0
+                            else begin
+                                MarketSegmentList.GetRecord(MarketSegmentRec);
+                                ValidateNewSegment(MarketSegmentRec.Title);
+
+                            end;
+
+                        end;
+
+                    end
+                    else
+                        Message('No more segments to be added');
+                end;
+            }
         }
     }
 
@@ -82,5 +137,48 @@ page 50133 "TFB Generic Items"
 
         ShowExternalIDs := CommonCU.CheckIfExternalIdsVisible();
 
+    end;
+
+    local procedure ValidateNewSegment(Title: Text[255])
+
+
+    var
+        MarketSegmentRec: Record "TFB Product Market Segment";
+        MarketSegmentRel: Record "TFB Generic Item Market Rel.";
+
+    begin
+
+        If Title = '' then exit;
+
+        MarketSegmentRec.SetRange(Title, Title);
+        If MarketSegmentRec.FindFirst() then begin
+            If not MarketSegmentRel.get(Rec.SystemId, MarketSegmentRec.SystemId) then begin
+                MarketSegmentRel.Init();
+                MarketSegmentRel.GenericItemID := Rec.SystemId;
+                MarketSegmentRel.ProductMarketSegmentID := MarketSegmentRec.SystemId;
+                MarketSegmentRel.Insert(true);
+                CurrPage.MarketSegments.Page.Update();
+            end
+        end
+        else
+            Error('Market segment title of %1 is invalid', Title);
+
+    end;
+
+    local procedure BuildExclusionFilter(SystemId: Guid): Text
+
+    var
+
+        MarketSegmentRel: Record "TFB Generic Item Market Rel.";
+        FilterExpr: TextBuilder;
+    begin
+
+        MarketSegmentRel.SetRange(GenericItemID, SystemId);
+        If MarketSegmentRel.FindSet(false, false) then
+            repeat
+                If FilterExpr.Length > 0 then FilterExpr.Append('&');
+                FilterExpr.Append(StrSubstNo('<>%1', MarketSegmentRel.ProductMarketSegmentID));
+            until MarketSegmentRel.Next() = 0;
+        Exit(FilterExpr.ToText());
     end;
 }
