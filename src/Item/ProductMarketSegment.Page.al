@@ -40,7 +40,8 @@ page 50136 "TFB Product Market Segment"
                         ApplicationArea = All;
                         ToolTip = 'Specifies the value of the no. of generic items field';
                         DrillDown = true;
-                        DrillDownPageId = "TFB Generic Items";
+                        DrillDownPageId = "TFB Segment Generic Items";
+
                     }
 
 

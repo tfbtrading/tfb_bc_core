@@ -132,6 +132,8 @@ page 50134 "TFB Generic Item Picture"
         TempBlob: CodeUnit "Temp Blob";
         Instream: Instream;
         ImgFileName: Text;
+        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png';
+        ExtFilterTxt: Label 'jpg,jpeg,png';
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
 
 
@@ -140,7 +142,7 @@ page 50134 "TFB Generic Item Picture"
             If not confirm(ConfMsg) then
                 exit;
 
-        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*');
+        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, FileFilterTxt, ExtFilterTxt);
 
         If TempBlob.HasValue() then begin
 

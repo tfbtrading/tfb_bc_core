@@ -30,12 +30,13 @@ page 50135 "TFB Product Market Seg. List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the No. Of Generic Items field';
                     DrillDown = true;
-                    DrillDownPageId = "TFB Generic Items";
+                    DrillDownPageId = "TFB Segment Generic Items";
+
                 }
                 field("External ID"; Rec."External ID")
                 {
                     ApplicationArea = All;
-                    Visible = false;
+
                     ToolTip = 'Specifies the value of the External ID field';
                 }
 

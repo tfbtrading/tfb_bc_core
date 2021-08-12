@@ -85,15 +85,7 @@ page 50132 "TFB Generic Item"
                         }
                     }
                 }
-                group(Image)
-                {
-                    ShowCaption = false;
-                    part(Picture; "TFB Generic Item Picture")
-                    {
-                        ApplicationArea = All;
-                        SubPageLink = SystemId = field(SystemId);
-                    }
-                }
+
             }
 
             group(MarketSegmentsGroup)
@@ -147,6 +139,16 @@ page 50132 "TFB Generic Item"
                     }
                 }
             }
+        }
+
+        area(FactBoxes)
+        {
+            part(Picture; "TFB Generic Item Picture")
+            {
+                ApplicationArea = All;
+                SubPageLink = SystemId = field(SystemId);
+            }
+
         }
     }
 
@@ -282,7 +284,7 @@ page 50132 "TFB Generic Item"
 
         MarketSegmentRel.SetRange(GenericItemID, SystemId);
         If MarketSegmentRel.FindSet(false, false) then
-            repeat 
+            repeat
                 If FilterExpr.Length > 0 then FilterExpr.Append('&');
                 FilterExpr.Append(StrSubstNo('<>%1', MarketSegmentRel.ProductMarketSegmentID));
             until MarketSegmentRel.Next() = 0;

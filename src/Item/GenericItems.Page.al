@@ -60,6 +60,16 @@ page 50133 "TFB Generic Items"
                 }
             }
         }
+
+        area(FactBoxes)
+        {
+            part(Picture; "TFB Generic Item Picture")
+            {
+                ApplicationArea = All;
+                SubPageLink = SystemId = field(SystemId);
+            }
+
+        }
     }
 
     var

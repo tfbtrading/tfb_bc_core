@@ -133,7 +133,8 @@ page 50137 "TFB Market Segment Picture"
         Instream: Instream;
 
         ImgFileName: Text;
-        FileFilterTxt: Label 'All files (*.*)|*.*';
+        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png';
+        ExtFilterTxt: Label 'jpg,jpeg,png';
         FileDialogTxt: Label 'Choose an image to upload';
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
 
@@ -143,7 +144,8 @@ page 50137 "TFB Market Segment Picture"
             If not confirm(ConfMsg) then
                 exit;
 
-        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, '', 'All files (*.*)|*.*');
+        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, FileFilterTxt, ExtFilterTxt);
+
 
         If TempBlob.HasValue() then begin
 
