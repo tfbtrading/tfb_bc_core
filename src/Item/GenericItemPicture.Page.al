@@ -132,7 +132,7 @@ page 50134 "TFB Generic Item Picture"
         TempBlob: CodeUnit "Temp Blob";
         Instream: Instream;
         ImgFileName: Text;
-        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png';
+        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png';
         ExtFilterTxt: Label 'jpg,jpeg,png';
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
 

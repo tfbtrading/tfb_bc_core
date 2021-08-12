@@ -5513,15 +5513,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 421897184 - Control 2048063077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the alternative names that the generic item might be known by.</source>
+        <trans-unit id="Page 421897184 - Control 695674158 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Content Management</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Alternative Names - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Description field</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Description - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control ContentMgmt - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Control 2522536945 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indicates whether generic item should appear in catalogues or online</source>
@@ -5532,6 +5527,26 @@
           <source>Specifies the value of the External ID field</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control External ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 264130340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the No. Of Items field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control No. Of Items - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2731845899 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control DescriptionGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 2048063077 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the alternative names that the generic item might be known by.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Alternative Names - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 421897184 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Description field</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Description - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Control 2591013655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Full Description</source>
@@ -5548,10 +5563,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Item Category Code - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 421897184 - Control 264130340 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the No. Of Items field</source>
+        <trans-unit id="Page 421897184 - Control 1037119892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default item category</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control No. Of Items - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Item Category Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Type field</source>
@@ -5609,7 +5624,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
         <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png</source>
+          <source>Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType FileFilterTxt</note>
         </trans-unit>
@@ -6549,7 +6564,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png</source>
+          <source>Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FileFilterTxt</note>
         </trans-unit>

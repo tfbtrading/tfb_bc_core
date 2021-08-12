@@ -133,7 +133,7 @@ page 50137 "TFB Market Segment Picture"
         Instream: Instream;
 
         ImgFileName: Text;
-        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg *.jpeg *.png';
+        FileFilterTxt: Label 'Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png';
         ExtFilterTxt: Label 'jpg,jpeg,png';
         FileDialogTxt: Label 'Choose an image to upload';
         ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';

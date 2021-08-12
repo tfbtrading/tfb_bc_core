@@ -4,6 +4,7 @@ page 50132 "TFB Generic Item"
     Caption = 'Generic Item';
     PageType = Card;
     SourceTable = "TFB Generic Item";
+    DataCaptionFields = Type, Description;
 
     layout
     {
@@ -11,14 +12,9 @@ page 50132 "TFB Generic Item"
         {
             group(General)
             {
-                group(Details)
+                group(DescriptionGroup)
                 {
-                    field("Item Category Code"; Rec."Item Category Code")
-                    {
-                        ApplicationArea = All;
-                        ShowMandatory = true;
-                        ToolTip = 'Specifies the value of the Item Category Code field';
-                    }
+                    Caption = 'About';
 
                     field(Description; Rec.Description)
                     {
@@ -26,47 +22,25 @@ page 50132 "TFB Generic Item"
                         ShowMandatory = true;
                         ToolTip = 'Specifies the value of the Description field';
                     }
-                    field("Alternative Names"; Rec."Alternative Names")
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies the alternative names that the generic item might be known by.';
-
-                    }
                     field(Type; Rec.Type)
                     {
                         ApplicationArea = All;
                         Editable = false;
                         ToolTip = 'Specifies the value of the Type field';
                     }
-                    field("No. Of Items"; Rec."No. Of Items")
+                    field("Alternative Names"; Rec."Alternative Names")
                     {
                         ApplicationArea = All;
-                        Editable = false;
-                        DrillDown = true;
-                        DrillDownPageId = "Item List";
-                        ToolTip = 'Specifies the value of the No. Of Items field';
-                    }
-                    group(ExternalID)
-                    {
-                        Visible = ShowExternalIDs;
-                        ShowCaption = false;
-                        field("External ID"; Rec."External ID")
-                        {
-                            ApplicationArea = All;
-                            Editable = true;
+                        ToolTip = 'Specifies the alternative names that the generic item might be known by.';
 
-                            ToolTip = 'Specifies the value of the External ID field';
-
-                        }
                     }
-                    field("Do Not Publish"; Rec."Do Not Publish")
+                    field("Item Category Code"; Rec."Item Category Code")
                     {
+                        Caption = 'Default item category';
                         ApplicationArea = All;
-                        Editable = true;
-                        ToolTip = 'Indicates whether generic item should appear in catalogues or online';
-
+                        ShowMandatory = true;
+                        ToolTip = 'Specifies the value of the Item Category Code field';
                     }
-
                     group(FullDescription)
                     {
                         Caption = 'Full Description';
@@ -84,13 +58,44 @@ page 50132 "TFB Generic Item"
                             end;
                         }
                     }
+
                 }
+                group(ContentMgmt)
+                {
+                    Caption = 'Content Management';
+                    field("No. Of Items"; Rec."No. Of Items")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                        DrillDown = true;
+                        DrillDownPageId = "Item List";
+                        ToolTip = 'Specifies the value of the No. Of Items field';
+                    }
+                    group(ExternalID)
+                    {
+                        Visible = ShowExternalIDs;
+                        ShowCaption = false;
+                        field("External ID"; Rec."External ID")
+                        {
+                            ApplicationArea = All;
+                            Editable = true;
+                            ToolTip = 'Specifies the value of the External ID field';
+                        }
+                    }
+                    field("Do Not Publish"; Rec."Do Not Publish")
+                    {
+                        ApplicationArea = All;
+                        Editable = true;
+                        ToolTip = 'Indicates whether generic item should appear in catalogues or online';
 
+                    }
+                }
             }
-
-            group(MarketSegmentsGroup)
+            group(ManageSegments)
             {
                 ShowCaption = false;
+
+
                 group(VerticalStack)
                 {
                     ShowCaption = false;
@@ -138,7 +143,13 @@ page 50132 "TFB Generic Item"
                         SubPageLink = GenericItemID = field(SystemId);
                     }
                 }
+
+
             }
+
+
+
+
         }
 
         area(FactBoxes)
