@@ -89,68 +89,16 @@ page 50132 "TFB Generic Item"
                         ToolTip = 'Indicates whether generic item should appear in catalogues or online';
 
                     }
-                }
-            }
-            group(ManageSegments)
-            {
-                ShowCaption = false;
 
 
-                group(VerticalStack)
-                {
-                    ShowCaption = false;
-                    Caption = '';
-
-                    field(MarketSegment; MarketSegment)
-
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Add Market Segment';
-                        Lookup = true;
-                        Editable = true;
-                        LookupPageId = "TFB Product Market Seg. List";
-                        ToolTip = 'Specifies the value of the Add Market Segment field';
-                        trigger OnLookup(var Text: Text): Boolean
-
-                        var
-                            MarketSegmentRec: Record "TFB Product Market Segment";
-                            MarketSegmentList: Page "TFB Product Market Seg. List";
-                        begin
-                            MarketSegmentList.LookupMode(true);
-                            MarketSegmentRec.SetFilter(SystemId, BuildExclusionFilter(Rec.SystemId));
-                            If MarketSegmentRec.Count > 0 then begin
-                                MarketSegmentList.SetTableView(MarketSegmentRec);
-                                If MarketSegmentList.RunModal() = Action::LookupOK then begin
-                                    MarketSegmentList.GetRecord(MarketSegmentRec);
-                                    Text := MarketSegmentRec.Title;
-                                    MarketSegment := MarketSegmentRec.Title;
-                                    ValidateNewSegment(MarketSegmentRec.Title);
-                                    MarketSegment := '';
-                                end;
-
-                            end
-                            else
-                                Message('No more segments to be added');
-
-                        end;
 
 
-                    }
-                    part(MarketSegments; "TFB Generic Item Segment Tags")
-                    {
-                        ShowFilter = false;
-                        ApplicationArea = All;
-                        SubPageLink = GenericItemID = field(SystemId);
-                    }
                 }
 
 
             }
-
-
-
-
         }
+
 
         area(FactBoxes)
         {
@@ -158,6 +106,14 @@ page 50132 "TFB Generic Item"
             {
                 ApplicationArea = All;
                 SubPageLink = SystemId = field(SystemId);
+            }
+
+            part(MarketSegments; "TFB Generic Item Segment Tags")
+            {
+
+                ShowFilter = false;
+                ApplicationArea = All;
+                SubPageLink = GenericItemID = field(SystemId);
             }
 
         }
@@ -211,10 +167,51 @@ page 50132 "TFB Generic Item"
 
                 end;
             }
+
+            action(AddMarketSegment)
+            {
+                Caption = 'Add Market Segment';
+                ApplicationArea = All;
+                Image = CustomerGroup;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Enabled = true;
+                ToolTip = 'Add additional market segments to the generic item';
+
+                trigger OnAction()
+
+                var
+                    MarketSegmentRec: Record "TFB Product Market Segment";
+                    MarketSegmentSelRec: Record "TFB Product Market Segment";
+                    MarketSegmentList: Page "TFB Product Market Seg. List";
+                begin
+                    MarketSegmentList.LookupMode(true);
+                    MarketSegmentRec.SetFilter(SystemId, BuildExclusionFilter(Rec.SystemId));
+                    If MarketSegmentRec.Count > 0 then begin
+                        MarketSegmentList.SetTableView(MarketSegmentRec);
+                        If MarketSegmentList.RunModal() = Action::LookupOK then begin
+                            MarketSegmentList.SetSelectionFilter(MarketSegmentSelRec);
+                            If MarketSegmentSelRec.Count > 1 then
+                                repeat
+                                    ValidateNewSegment(MarketSegmentSelRec.Title);
+                                    MarketSegment := '';
+                                until MarketSegmentSelRec.Next() = 0
+                            else begin
+                                MarketSegmentList.GetRecord(MarketSegmentRec);
+                                ValidateNewSegment(MarketSegmentRec.Title);
+                                MarketSegment := '';
+                            end;
+
+                        end;
+
+                    end
+                    else
+                        Message('No more segments to be added');
+                end;
+            }
         }
     }
-    var
-
 
     var
         CommonCU: CodeUnit "TFB Common Library";

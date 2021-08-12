@@ -5573,20 +5573,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Type - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 421897184 - Control 2619367864 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+        <trans-unit id="Page 421897184 - Action 1051056490 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Add additional market segments to the generic item</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control VerticalStack - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action AddMarketSegment - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 421897184 - Control 712282577 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Add Market Segment field</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 421897184 - Control 712282577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 421897184 - Action 1051056490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Add Market Segment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control MarketSegment - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action AddMarketSegment - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Action 2384347012 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Switch to Extension action</source>
@@ -5624,7 +5619,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
         <trans-unit id="Page 3921465668 - Method 1439528424 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png</source>
+          <source>Image file(*.png, *.jpg)|*.png;*.jpg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Method ImportItemPicture - NamedType FileFilterTxt</note>
         </trans-unit>
@@ -6564,7 +6559,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ExportItemPicture - NamedType ConfMsg</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image files (*.jpg, *.jpeg, *.png) | *.jpg;*.jpeg;*.png</source>
+          <source>Image file(*.png, *.jpg)|*.png;*.jpg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FileFilterTxt</note>
         </trans-unit>

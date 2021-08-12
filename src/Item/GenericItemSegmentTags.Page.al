@@ -1,6 +1,7 @@
 page 50139 "TFB Generic Item Segment Tags"
 {
     Caption = 'Selected Market Segments';
+
     PageType = ListPart;
     SourceTable = "TFB Generic Item Market Rel.";
     InsertAllowed = false;
