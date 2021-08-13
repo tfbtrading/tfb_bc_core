@@ -127,7 +127,7 @@ codeunit 50122 "TFB Sales Mgmt"
     begin
         If item.Get(SalesLine."No.") then
             if ItemUoM.Get(Item."No.", Item."Sales Unit of Measure") then
-                exit(ItemUoM."Qty. per Unit of Measure");
+                exit(ItemUoM."Qty. per Unit of Measure" * 1);
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', false, false)]
@@ -142,7 +142,7 @@ codeunit 50122 "TFB Sales Mgmt"
         PurchaseLine: Record "Purchase Line";
         TransferLine: Record "Transfer Line";
         LocationCode: Code[20];
-        QtyCalc: Decimal;
+        QtyRemaining: Decimal;
         MinQty: Decimal;
 
 
@@ -158,9 +158,9 @@ codeunit 50122 "TFB Sales Mgmt"
             ItemLedgerEntry.SetRange("Item No.", Item."No.");
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
             ItemLedgerEntry.CalcSums("Remaining Quantity");
-            QtyCalc := ItemLedgerEntry."Remaining Quantity";
+            QtyRemaining := ItemLedgerEntry."Remaining Quantity";
 
-            If QtyCalc < MinQty then begin
+            If QtyRemaining < MinQty then begin
 
                 //Check if inventory is in stock at other locations currently
 

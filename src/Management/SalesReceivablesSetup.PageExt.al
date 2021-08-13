@@ -122,11 +122,16 @@ pageextension 50221 "TFB Sales & Receivables Setup" extends "Sales & Receivables
                 ApplicationArea = All;
                 ToolTip = 'Specifies the customer price group that will be used to populate item unit prices';
             }
-            field("TFB Specification URL Pattern";Rec."TFB Specification URL Pattern")
+            field("TFB Specification URL Pattern"; Rec."TFB Specification URL Pattern")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specify a valid url using %1 as placement for item code';
 
+            }
+            field("TFB Image URL Pattern"; Rec."TFB Image URL Pattern")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specify a valid url using %1 as a placement for specific image code';
             }
         }
     }

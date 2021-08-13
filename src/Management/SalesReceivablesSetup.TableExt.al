@@ -152,7 +152,11 @@ tableextension 50220 "TFB Sales & Receivables Setup" extends "Sales & Receivable
         {
             DataClassification = CustomerContent;
             Caption = 'Specification URL Pattern';
-
+        }
+        field(51160; "TFB Image URL Pattern"; Text[240])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Item Image URL Pattern';
         }
 
     }
