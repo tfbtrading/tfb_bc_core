@@ -175,7 +175,7 @@ page 50137 "TFB Market Segment Picture"
             If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
                 TenantMedia.CalcFields(content);
                 If TenantMedia.Content.HasValue then begin
-                    ImgFileName := ConvertStr(Rec.TableCaption + '_' + Rec.Description + GetImgFileExt(TenantMedia), ' ', '_');
+                    ImgFileName := ConvertStr(Rec.TableCaption + '_' + Rec.Title + GetImgFileExt(TenantMedia), ' ', '_');
                     TenantMedia.Content.CreateInStream(Instream);
                     DownloadFromStream(Instream, '', '', '', ImgFileName);
 
