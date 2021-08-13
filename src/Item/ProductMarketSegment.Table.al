@@ -3,7 +3,7 @@ table 50112 "TFB Product Market Segment"
     DataClassification = CustomerContent;
     LookupPageId = "TFB Product Market Seg. List";
     DrillDownPageId = "TFB Product Market Seg. List";
-    Caption = 'Marketing Item';
+    Caption = 'Market Segment';
 
     fields
     {

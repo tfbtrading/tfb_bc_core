@@ -173,7 +173,7 @@ page 50134 "TFB Generic Item Picture"
             If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
                 TenantMedia.CalcFields(content);
                 If TenantMedia.Content.HasValue then begin
-                    ImgFileName := Rec.TableCaption + '_Image' + format(Index) + GetImgFileExt(TenantMedia);
+                    ImgFileName := ConvertStr(Rec.TableCaption + '_' + format(Rec.Description) + GetImgFileExt(TenantMedia), ' ', '_');
                     TenantMedia.Content.CreateInStream(Instream);
                     DownloadFromStream(Instream, '', '', '', ImgFileName);
 

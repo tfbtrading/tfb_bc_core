@@ -2189,7 +2189,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Postcode Zone Rate - Field Zone Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2993679784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Marketing Item</source>
+          <source>Market Segment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Property Caption</note>
         </trans-unit>
@@ -12813,6 +12813,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Def. Customer Price Group - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 2670522768 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specify a valid url using %1 as a placement for specific image code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Image URL Pattern - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3704753354 - Control 983136745 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Specifies the customer price group that will be used to populate item unit prices</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14452,6 +14457,11 @@
           <source>Def. Cust. Price Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB Def. Customer Price Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3704753354 - Field 2670522768 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>Item Image URL Pattern</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB Image URL Pattern - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3704753354 - Field 983136745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Item Unit Price Group</source>
