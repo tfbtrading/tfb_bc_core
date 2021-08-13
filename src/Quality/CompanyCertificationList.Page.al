@@ -1,10 +1,10 @@
-page 50107 "TFB Vendor Certification List"
+page 50149 "TFB Company Certification List"
 {
     PageType = List;
-    Caption = 'Vendor Certification List';
+    Caption = 'Company Certification List';
     UsageCategory = Lists;
     ApplicationArea = All;
-    SourceTable = "TFB Vendor Certification";
+    SourceTable = "TFB Company Certification";
     Editable = true;
     InsertAllowed = true;
     DeleteAllowed = true;
@@ -18,18 +18,6 @@ page 50107 "TFB Vendor Certification List"
         {
             repeater(Group)
             {
-
-
-                field("Vendor Name"; Rec."Vendor Name")
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'Specifies vendors name';
-                }
-                field(Site; Rec.Site)
-                {
-                    ApplicationArea = All;
-                    Tooltip = 'Specifies vendors facility that is certified';
-                }
                 field("Certification Type"; Rec."Certification Type")
                 {
                     ApplicationArea = All;
@@ -48,6 +36,17 @@ page 50107 "TFB Vendor Certification List"
                     DrillDown = false;
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
+                }
+                field("Location Specific"; Rec."Location Specific")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether the certification is for a specific location';
+                }
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = All;
+                    Enabled = Rec."Location Specific";
+                    ToolTip = 'Specifies the location if the certificaton is location specific';
                 }
                 field(Status; CalculatedStatus)
                 {
@@ -71,12 +70,12 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
-                    Enabled = Rec."Certification Class" = Rec."Certificate Class"::Religous;
+                    Enabled = Rec."Certificate Class" = Rec."Certificate Class"::Religous;
 
                     trigger OnValidate()
                     begin
                         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
@@ -85,19 +84,19 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
                     StyleExpr = (_DaysToExpiry < 30) and (not Rec.Archived);
 
@@ -105,9 +104,9 @@ page 50107 "TFB Vendor Certification List"
 
                     begin
 
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
-
+                        CurrPage.Update();
                     end;
                 }
                 field("Days To Expiry"; _DaysToExpiry)
@@ -310,7 +309,7 @@ page 50107 "TFB Vendor Certification List"
     begin
 
         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
 
@@ -350,7 +349,7 @@ page 50107 "TFB Vendor Certification List"
         else
             Message('Only valid for expired or expired, inherent or archived certificates');
 
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
     end;
 
@@ -372,22 +371,22 @@ page 50107 "TFB Vendor Certification List"
 
     var
         Contact: Record Contact;
-        VendorCerts: Record "TFB Vendor Certification";
+        CompanyCerts: Record "TFB Company Certification";
         CLib: CodeUnit "TFB Common Library";
         QLib: CodeUnit "TFB Quality Mgmt";
         ContactList: Page "Contact List";
         Recipients: List of [Text];
         SubTitleTxt: Label '';
-        TitleTxt: Label 'Vendor Certifications Email';
+        TitleTxt: Label 'Company Certifications Email';
 
 
     begin
 
         //Determine if multiple items have been selected
 
-        CurrPage.SetSelectionFilter(VendorCerts);
+        CurrPage.SetSelectionFilter(CompanyCerts);
 
-        If VendorCerts.Count() = 0 then exit;
+        If CompanyCerts.Count() = 0 then exit;
         Contact.SetFilter("E-Mail", '>%1', '');
         ContactList.LookupMode(true);
         ContactList.SetTableView(Contact);
@@ -405,7 +404,7 @@ page 50107 "TFB Vendor Certification List"
                 until Contact.Next() = 0;
 
             If Recipients.Count > 0 then
-                QLib.SendVendorCertificationEmail(VendorCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
+                QLib.SendCompanyCertificationEmail(CompanyCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
 
         end;
 
@@ -482,7 +481,7 @@ page 50107 "TFB Vendor Certification List"
     local procedure DownloadFile()
 
     var
-        SelRecs: Record "TFB Vendor Certification";
+        SelRecs: Record "TFB Company Certification";
         DataCompCU: CodeUnit "Data Compression";
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlobCU: Codeunit "Temp Blob";
