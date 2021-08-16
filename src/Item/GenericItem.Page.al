@@ -44,60 +44,57 @@ page 50132 "TFB Generic Item"
                     group(FullDescription)
                     {
                         Caption = 'Full Description';
-                        field("Full Description"; FullDescription)
+                        field("Marketing Copy"; Rec."Marketing Copy")
                         {
-                            ApplicationArea = Basic, Suite;
+                            ApplicationArea = All;
                             Importance = Standard;
                             MultiLine = true;
                             ShowCaption = false;
-                            ToolTip = 'Specifies the full description of the generic item.';
-
-                            trigger OnValidate()
-                            begin
-                                SetFullDescription(FullDescription);
-                            end;
+                            ToolTip = 'Specifies the marketing copy of the generic item.';
                         }
-                    }
 
+                    }
                 }
-                group(ContentMgmt)
+
+            }
+            group(ContentMgmt)
+            {
+                Caption = 'Content Management';
+                field("No. Of Items"; Rec."No. Of Items")
                 {
-                    Caption = 'Content Management';
-                    field("No. Of Items"; Rec."No. Of Items")
-                    {
-                        ApplicationArea = All;
-                        Editable = false;
-                        DrillDown = true;
-                        DrillDownPageId = "Item List";
-                        ToolTip = 'Specifies the value of the No. Of Items field';
-                    }
-                    group(ExternalID)
-                    {
-                        Visible = ShowExternalIDs;
-                        ShowCaption = false;
-                        field("External ID"; Rec."External ID")
-                        {
-                            ApplicationArea = All;
-                            Editable = true;
-                            ToolTip = 'Specifies the value of the External ID field';
-                        }
-                    }
-                    field("Do Not Publish"; Rec."Do Not Publish")
+                    ApplicationArea = All;
+                    Editable = false;
+                    DrillDown = true;
+                    DrillDownPageId = "Item List";
+                    ToolTip = 'Specifies the value of the No. Of Items field';
+                }
+                group(ExternalID)
+                {
+                    Visible = ShowExternalIDs;
+                    ShowCaption = false;
+                    field("External ID"; Rec."External ID")
                     {
                         ApplicationArea = All;
                         Editable = true;
-                        ToolTip = 'Indicates whether generic item should appear in catalogues or online';
-
+                        ToolTip = 'Specifies the value of the External ID field';
                     }
-
-
-
+                }
+                field("Do Not Publish"; Rec."Do Not Publish")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    ToolTip = 'Indicates whether generic item should appear in catalogues or online';
 
                 }
 
 
+
+
             }
+
+
         }
+
 
 
         area(FactBoxes)
@@ -222,7 +219,7 @@ page 50132 "TFB Generic Item"
     trigger OnAfterGetRecord()
 
     begin
-        FullDescription := GetFullDescription();
+        //FullDescription := GetFullDescription();
         ShowExternalIDs := CommonCU.CheckIfExternalIdsVisible();
 
     end;

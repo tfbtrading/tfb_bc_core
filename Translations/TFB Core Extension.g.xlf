@@ -1448,6 +1448,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Item Category Id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 421897184 - Field 1444517299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Marketing Copy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Marketing Copy - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 421897184 - Field 264130340 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. Of Items</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1457,11 +1462,6 @@
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Picture - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 421897184 - Field 4109921066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Marketing Copy</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item - Field Rich Description - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 421897184 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -5553,10 +5553,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control FullDescription - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 421897184 - Control 3439236327 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the full description of the generic item.</source>
+        <trans-unit id="Page 421897184 - Control 1444517299 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the marketing copy of the generic item.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Full Description - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Control Marketing Copy - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Control 1037119892 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Item Category Code field</source>

@@ -21,14 +21,13 @@ table 50111 "TFB Generic Item"
         field(20; "Rich Description"; Text[2048])
         {
             Caption = 'Marketing Copy';
-            ObsoleteReason = 'Replaced by blob field';
-            ObsoleteState = Pending;
-
         }
         field(25; "Full Description"; Blob)
         {
             Caption = 'Full Description';
             DataClassification = CustomerContent;
+            ObsoleteReason = 'Replaced by marketing copy';
+            ObsoleteState = Pending;
         }
         field(30; "Alternative Names"; Text[255])
         {
@@ -237,33 +236,33 @@ table 50111 "TFB Generic Item"
 
         case Rec.Type of
             Rec.Type::ItemParent:
-                
 
-                    case NewType of
-                        NewType::ItemParent:
-                            Error('No change to current type');
-                        NewType::ItemExtension:
-                            begin
-                                Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-                                Case Item.Count() of
-                                    0:
-                                        Error('No items currently are set to this generic item');
-                                    1:
-                                        If Item.FindFirst() then begin
-                                            Item."TFB Act As Generic" := true;
-                                            Item.Modify(false);
-                                            Rec.Type := NewType;
-                                            Rec.Modify(false);
-                                        end
-                                        else
-                                            error('More than one item refers to this generic item. It cannot be turned into an extension');
-                                end;
 
+                case NewType of
+                    NewType::ItemParent:
+                        Error('No change to current type');
+                    NewType::ItemExtension:
+                        begin
+                            Item.SetRange("TFB Generic Item ID", Rec.SystemId);
+                            Case Item.Count() of
+                                0:
+                                    Error('No items currently are set to this generic item');
+                                1:
+                                    If Item.FindFirst() then begin
+                                        Item."TFB Act As Generic" := true;
+                                        Item.Modify(false);
+                                        Rec.Type := NewType;
+                                        Rec.Modify(false);
+                                    end
+                                    else
+                                        error('More than one item refers to this generic item. It cannot be turned into an extension');
                             end;
 
-                    end;
+                        end;
 
-               
+                end;
+
+
 
             Rec.Type::ItemExtension:
 
