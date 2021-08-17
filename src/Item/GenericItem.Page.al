@@ -44,7 +44,7 @@ page 50132 "TFB Generic Item"
                     group(FullDescription)
                     {
                         Caption = 'Full Description';
-                        field("Marketing Copy"; Rec."Marketing Copy")
+                        field("Marketing Copy"; Rec."Rich Description")
                         {
                             ApplicationArea = All;
                             Importance = Standard;

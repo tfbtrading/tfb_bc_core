@@ -37,7 +37,16 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
             end;
         }
 
-
+        addlast(factboxes)
+        {
+            part("Attached Documents"; "Document Attachment Factbox")
+            {
+                ApplicationArea = All;
+                Caption = 'Attachments';
+                SubPageLink = "Table ID" = CONST(120),
+                              "No." = FIELD("No.");
+            }
+        }
     }
 
     actions
