@@ -6,7 +6,7 @@ codeunit 50104 "TFB Quality Mgmt"
         DaysToExpiry: Integer;
 
     begin
-        
+
         If ExpiryDate <> 0D then
             DaysToExpiry := ExpiryDate - Today();
 
@@ -14,7 +14,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
     end;
 
-    procedure GetCurrentStatus(Certificate: Record "TFB Vendor Certification"): Enum "TFB Quality Certificate Status";
+    procedure GetCurrentStatus(Archived: Boolean; Inherent: Boolean; ExpiryDate: Date): Enum "TFB Quality Certificate Status";
 
     var
         DaysToExpiry: Integer;
@@ -22,11 +22,11 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
     begin
-        If not Certificate.Archived then begin
-            If not Certificate.Inherent then
-                If Certificate."Expiry Date" > 0D then begin
+        If not Archived then begin
+            If not Inherent then
+                If ExpiryDate > 0D then begin
 
-                    DaysToExpiry := CalcDaysToExpiry(Certificate."Expiry Date");
+                    DaysToExpiry := CalcDaysToExpiry(ExpiryDate);
 
                     case DaysToExpiry of
                         -10000 .. -1:
@@ -64,6 +64,22 @@ codeunit 50104 "TFB Quality Mgmt"
             FileNameBuilder.Append('-');
             FileNameBuilder.Append(Certification.Site);
         end;
+        FileNameBuilder.Append('_');
+        FileNameBuilder.Append(Certification."Certification Type");
+        FileNameBuilder.Append('.pdf');
+        Exit(FileNameBuilder.ToText());
+
+    end;
+
+    procedure GetCertificateFileName(Certification: record "TFB Company Certification"): Text
+
+    var
+        FileNameBuilder: TextBuilder;
+
+    begin
+        FileNameBuilder.Append('Certificate');
+        If Certification."Location Specific" then
+            FileNameBuilder.Append('_' + Certification."Location Code");
         FileNameBuilder.Append('_');
         FileNameBuilder.Append(Certification."Certification Type");
         FileNameBuilder.Append('.pdf');
@@ -190,11 +206,21 @@ codeunit 50104 "TFB Quality Mgmt"
 
         CustomerSystemID: GUID;
 
-
     begin
 
         SendVendorCertificationEmail(VendorCerts, Recipients, HTMLTemplate, CustomerSystemID);
 
+    end;
+
+    internal procedure SendCompanyCertificationEmail(var CompanyCerts: Record "TFB Company Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
+
+    var
+
+        CustomerSystemID: GUID;
+
+    begin
+
+        SendCompanyCertificationEmail(CompanyCerts, Recipients, HTMLTemplate, CustomerSystemID);
 
     end;
 
@@ -245,6 +271,55 @@ codeunit 50104 "TFB Quality Mgmt"
 
     end;
 
+    internal procedure SendCompanyCertificationEmail(var CompanyCerts: Record "TFB Company Certification"; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
+
+    var
+        CompanyInfo: Record "Company Information";
+        Email: CodeUnit Email;
+        EmailMessage: CodeUnit "Email Message";
+        PersBlobCU: CodeUnit "Persistent Blob";
+        TempBlob: Codeunit "Temp Blob";
+        InStream: InStream;
+        OutStream: OutStream;
+        TitleTxt: Label 'Quality Documents Request';
+        FileNameBuilder: TextBuilder;
+        HTMLBuilder: TextBuilder;
+        SubjectNameBuilder: TextBuilder;
+
+    begin
+
+        CompanyInfo.Get();
+
+        SubjectNameBuilder.Append(TitleTxt);
+
+
+        HTMLBuilder.Append(HTMLTemplate);
+
+        GenerateQualityDocumentsContent(CompanyCerts, HTMLBuilder);
+
+        EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        if CompanyCerts.FindSet(false, false) then
+            repeat
+                If PersBlobCU.Exists(CompanyCerts."Certificate Attach.") then begin
+                    Clear(FileNameBuilder);
+                    FileNameBuilder.Append(StrSubstNo('Cert %1', CompanyCerts."Certification Type"));
+                    If CompanyCerts."Location Specific" then
+                        FileNameBuilder.Append(StrSubstNo('_%2', CompanyCerts."Location Code"));
+                    FileNameBuilder.Append('.pdf');
+                    TempBlob.CreateOutStream(Outstream);
+                    PersBlobCU.CopyToOutStream(CompanyCerts."Certificate Attach.", OutStream);
+                    TempBlob.CreateInStream(InStream);
+                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
+                end
+
+            until CompanyCerts.Next() < 1;
+
+        If not IsNullGuid(CustomerSystemID) then
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
+        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
+
+    end;
+
 
 
 
@@ -252,7 +327,6 @@ codeunit 50104 "TFB Quality Mgmt"
 
     var
         PersBlob: CodeUnit "Persistent Blob";
-        tdTxt: label '<td valign="top" class="tfbdata" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
         BodyBuilder: TextBuilder;
         CommentBuilder: TextBuilder;
         LineBuilder: TextBuilder;
@@ -304,4 +378,67 @@ codeunit 50104 "TFB Quality Mgmt"
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         Exit(true);
     end;
+
+
+    local procedure GenerateQualityDocumentsContent(var CompanyCertification: Record "TFB Company Certification"; var HTMLBuilder: TextBuilder): Boolean
+
+    var
+        PersBlob: CodeUnit "Persistent Blob";
+
+        BodyBuilder: TextBuilder;
+        CommentBuilder: TextBuilder;
+        LineBuilder: TextBuilder;
+
+    begin
+
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Updated Vendor Certifications');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', '');
+        HTMLBuilder.Replace('%{ReferenceValue}', '');
+        HTMLBuilder.Replace('%{AlertText}', '');
+
+        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents as requested</h2><br>'));
+
+        BodyBuilder.AppendLine('<table class="tfbdata" width="100%" cellspacing="10" cellpadding="10" border="0">');
+        BodyBuilder.AppendLine('<thead>');
+
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Location</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="25%">Type</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
+
+        if CompanyCertification.FindSet(false, false) then begin
+            repeat
+
+                Clear(LineBuilder);
+                Clear(CommentBuilder);
+                LineBuilder.AppendLine('<tr>');
+                CompanyCertification.CalcFields(Location);
+                If CompanyCertification."Location Specific" then
+                    LineBuilder.Append(StrSubstNo(tdTxt, 'Company wide'))
+                else
+                    LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertification.Location));
+                LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertification."Certification Type"));
+                LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertification."Expiry Date"));
+                LineBuilder.Append(StrSubstNo(tdTxt, PersBlob.Exists(CompanyCertification."Certificate Attach.")));
+                LineBuilder.AppendLine('</tr>');
+                BodyBuilder.AppendLine(LineBuilder.ToText());
+
+
+
+            until CompanyCertification.Next() < 1;
+            BodyBuilder.AppendLine('</table>');
+        end
+        else
+            BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
+
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        Exit(true);
+    end;
+
+
+    var
+        tdTxt: label '<td valign="top" class="tfbdata" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
 }
