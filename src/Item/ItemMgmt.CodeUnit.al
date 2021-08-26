@@ -33,7 +33,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     begin
 
-        TempBlobCU := CommonCU.GetFileTempBlobCU(Item);
+        TempBlobCU := CommonCU.GetSpecificationTempBlob(Item);
         TempBlobCu.CreateInStream(InStream);
         FileName := StrSubstNo('Spec For %1 (%2).pdf', Item.Description, Item."No.");
         If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
