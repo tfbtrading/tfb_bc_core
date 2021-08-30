@@ -11733,6 +11733,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Enabled - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 2037582099 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies that the location should be checked first for inventory in a particular state</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Location Check First - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 2037582099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Check this location first</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Location Check First - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 783415655 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Specifies purpose of the location</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14367,6 +14377,11 @@
           <source>Local Shipping Agent Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Lcl Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 2037582099 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Location Check First</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Location Check First - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 783415655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Location Type</source>
