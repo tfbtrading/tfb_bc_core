@@ -62,7 +62,7 @@ tableextension 50100 "TFB Location" extends Location
 
             Caption = 'Local Agent Service Code';
             DataClassification = CustomerContent;
-            TableRelation = "Shipping Agent Services" where("Shipping Agent Code" = field("TFB Lcl Shipping Agent Code"));
+            TableRelation = "Shipping Agent Services".Code where("Shipping Agent Code" = field("TFB Lcl Shipping Agent Code"));
             ValidateTableRelation = true;
         }
 
@@ -79,7 +79,7 @@ tableextension 50100 "TFB Location" extends Location
 
             Caption = 'Interstate Agent Service Code';
             DataClassification = CustomerContent;
-            TableRelation = "Shipping Agent Services" where("Shipping Agent Code" = field("TFB Insta Shipping Agent Code"));
+            TableRelation = "Shipping Agent Services".Code where("Shipping Agent Code" = field("TFB Insta Shipping Agent Code"));
             ValidateTableRelation = true;
         }
     }

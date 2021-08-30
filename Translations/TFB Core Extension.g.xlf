@@ -2253,6 +2253,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2993679784 - Field 734730100 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Background Colour</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Product Market Segment - Field Backgroud Colour - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2993679784 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Short Description for slug</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8378,6 +8383,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Product Market Segment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2993679784 - Control 734730100 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Background colour stored in hex</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Product Market Segment - Control Backgroud Colour - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2993679784 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the short description for slug field</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11678,6 +11688,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Tracking Summary - Control TFB Lot Blocked - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1861606804 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the default service level for agent for interstate deliveries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Insta Agent Service Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1861606804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Default Service Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Insta Agent Service Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1786385305 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the agent to be used for interstate deliveries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Insta Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1786385305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Shipping Agent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Insta Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 3185007182 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the default service level for agent for local deliveries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Agent Service Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 3185007182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Default Service Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Agent Service Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1108984751 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the agent to be used for local deliveries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1108984751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Shipping Agent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 2516243223 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies if location is current active for shipments and receipts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Enabled - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 783415655 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies purpose of the location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Location Type - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 1896437121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Quarantine Location Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14287,6 +14347,26 @@
           <source>Inspection Time Delay</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Inspection Time Delay - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1861606804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Interstate Agent Service Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Insta Agent Service Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1786385305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Interstate Shipping Agent Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Insta Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 3185007182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Local Agent Service Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Lcl Agent Service Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1108984751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Local Shipping Agent Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Lcl Shipping Agent Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 783415655 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Location Type</source>
