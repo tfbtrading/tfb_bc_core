@@ -146,7 +146,7 @@ codeunit 50122 "TFB Sales Mgmt"
         //Check if location is in same state or not
         If not LocationShippingAgentEnabled(Location) then exit;
 
-        If (SalesHeader."Ship-to Country/Region Code" <> Location."Country/Region Code") and (SalesHeader."Ship-to County" <> Location.County) then begin
+        If (SalesHeader."Ship-to County" <> Location.County) then begin
 
             SalesLine."Shipping Agent Code" := Location."TFB Insta Shipping Agent Code";
             SalesLine."Shipping Agent Service Code" := Location."TFB Insta Agent Service Code";

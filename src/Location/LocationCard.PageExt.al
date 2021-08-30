@@ -2,10 +2,14 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
 {
     layout
     {
+
         addafter("Address & Contact")
         {
             group("Shipping Agents")
             {
+
+
+
                 Group("Local Deliveries")
                 {
                     field("TFB Lcl Shipping Agent Code"; Rec."TFB Lcl Shipping Agent Code")
@@ -55,6 +59,13 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
                 ApplicationArea = All;
                 ToolTip = 'Specifies purpose of the location';
 
+            }
+            field("TFB Location Check First"; Rec."TFB Location Check First")
+            {
+                Importance = Promoted;
+                ApplicationArea = All;
+                Caption = 'Check this location first';
+                ToolTip = 'Specifies that the location should be checked first for inventory in a particular state';
             }
         }
         addafter("Inbound Whse. Handling Time")

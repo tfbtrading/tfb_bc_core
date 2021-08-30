@@ -82,6 +82,27 @@ tableextension 50100 "TFB Location" extends Location
             TableRelation = "Shipping Agent Services".Code where("Shipping Agent Code" = field("TFB Insta Shipping Agent Code"));
             ValidateTableRelation = true;
         }
+        field(50220; "TFB Location Check First"; Boolean)
+        {
+            Caption = 'Location Check First';
+
+            trigger OnValidate()
+            var
+                Location: Record Location;
+
+            begin
+
+                If not xRec."TFB Location Check First" and Rec."TFB Location Check First" then begin
+                    Location.SetRange(County, Rec.County);
+                    Location.SetRange("TFB Location Check First", true);
+
+                    If not Location.IsEmpty() then
+                        FieldError("TFB Location Check First", 'Another location already has this priority for the same state');
+
+                end
+
+            end;
+        }
     }
 
 }
