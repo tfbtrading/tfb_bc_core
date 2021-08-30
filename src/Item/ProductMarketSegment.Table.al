@@ -25,6 +25,10 @@ table 50112 "TFB Product Market Segment"
 
 
         }
+        field(94; "Backgroud Colour"; text[20])
+        {
+            Caption = 'Background Colour';
+        }
 
         field(9000; "No. Of Generic Items"; Integer)
         {

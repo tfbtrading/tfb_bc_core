@@ -34,6 +34,11 @@ page 50136 "TFB Product Market Segment"
                         MultiLine = true;
                         ToolTip = 'Specifies the value of the short description for slug field';
                     }
+                    field("Backgroud Colour"; Rec."Backgroud Colour")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Background colour stored in hex';
+                    }
 
                     field("No. Of Generic Items"; Rec."No. Of Generic Items")
                     {

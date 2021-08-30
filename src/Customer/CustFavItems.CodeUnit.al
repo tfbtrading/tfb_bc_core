@@ -13,7 +13,7 @@ codeunit 50110 "TFB Cust. Fav. Items"
         Customer.SetLoadFields("No.");
         Customer.SetRange(Blocked, Customer.Blocked::" ");
         If Customer.Findset(false, false) then
-            repeat 
+            repeat
                 PopulateOneCustomer(Customer."No.");
 
             until Customer.Next() = 0;
@@ -36,7 +36,7 @@ codeunit 50110 "TFB Cust. Fav. Items"
 
     end;
 
-    local procedure AddLine(CustNo: Code[20]; ItemNo: Code[20]; QtySold: Integer)
+    local procedure AddLine(CustNo: Code[20]; ItemNo: Code[20]; QtySold: Decimal)
 
     var
         CustFavItem: record "TFB Cust. Fav. Item";
