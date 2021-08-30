@@ -118,13 +118,29 @@ codeunit 50122 "TFB Sales Mgmt"
         end;
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
-    local procedure OnAfterInitHeaderDefaults(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; xSalesLine: Record "Sales Line");
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateLocationCodeOnAfterSetOutboundWhseHandlingTime', '', false, false)]
+    local procedure OnValidateLocationCodeOnAfterSetOutboundWhseHandlingTime(var SalesLine: Record "Sales Line");
+    var
+        SalesHeader: record "Sales Header";
+        Location: record Location;
+
+    begin
+
+        SalesHeader.SetLoadFields("Ship-to Country/Region Code", "Ship-to County");
+
+        if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then exit;
+
+        GetShippingAgentDetailsForLocation(SalesLine, SalesHeader);
+
+
+    end;
+
+    local procedure GetShippingAgentDetailsForLocation(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
 
     var
         Location: Record Location;
-    begin
 
+    begin
         If not Location.Get(SalesLine."Location Code") then exit;
 
         //Check if location is in same state or not
@@ -139,6 +155,15 @@ codeunit 50122 "TFB Sales Mgmt"
             SalesLine."Shipping Agent Code" := Location."TFB Lcl Shipping Agent Code";
             SalesLine."Shipping Agent Service Code" := Location."TFB Lcl Agent Service Code";
         end;
+    end;
+
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
+    local procedure OnAfterInitHeaderDefaults(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; xSalesLine: Record "Sales Line");
+
+    begin
+
+        GetShippingAgentDetailsForLocation(SalesLine, SalesHeader);
     end;
 
     local procedure LocationShippingAgentEnabled(Location: Record Location): Boolean
