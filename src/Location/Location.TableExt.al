@@ -49,7 +49,7 @@ tableextension 50100 "TFB Location" extends Location
             InitValue = true;
         }
 
-        field(50180; "TFB Lcl Shipping Agent Code"; Code[20])
+        field(50180; "TFB Lcl Shipping Agent Code"; Code[10])
         {
             Caption = 'Local Shipping Agent Code';
             DataClassification = CustomerContent;
@@ -57,7 +57,7 @@ tableextension 50100 "TFB Location" extends Location
             ValidateTableRelation = true;
         }
 
-        field(50190; "TFB Lcl Agent Service Code"; Code[20])
+        field(50190; "TFB Lcl Agent Service Code"; Code[10])
         {
 
             Caption = 'Local Agent Service Code';
@@ -66,7 +66,7 @@ tableextension 50100 "TFB Location" extends Location
             ValidateTableRelation = true;
         }
 
-        field(50200; "TFB Insta Shipping Agent Code"; Code[20])
+        field(50200; "TFB Insta Shipping Agent Code"; Code[10])
         {
             Caption = 'Interstate Shipping Agent Code';
             DataClassification = CustomerContent;
@@ -74,7 +74,7 @@ tableextension 50100 "TFB Location" extends Location
             ValidateTableRelation = true;
         }
 
-        field(50210; "TFB Insta Agent Service Code"; Code[20])
+        field(50210; "TFB Insta Agent Service Code"; Code[10])
         {
 
             Caption = 'Interstate Agent Service Code';

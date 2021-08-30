@@ -118,6 +118,44 @@ codeunit 50122 "TFB Sales Mgmt"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
+    local procedure OnAfterInitHeaderDefaults(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; xSalesLine: Record "Sales Line");
+
+    var
+        Location: Record Location;
+    begin
+
+        If not Location.Get(SalesLine."Location Code") then exit;
+
+        //Check if location is in same state or not
+        If not LocationShippingAgentEnabled(Location) then exit;
+
+        If (SalesHeader."Ship-to Country/Region Code" <> Location."Country/Region Code") and (SalesHeader."Ship-to County" <> Location.County) then begin
+
+            SalesLine."Shipping Agent Code" := Location."TFB Insta Shipping Agent Code";
+            SalesLine."Shipping Agent Service Code" := Location."TFB Insta Agent Service Code";
+        end
+        else begin
+            SalesLine."Shipping Agent Code" := Location."TFB Lcl Shipping Agent Code";
+            SalesLine."Shipping Agent Service Code" := Location."TFB Lcl Agent Service Code";
+        end;
+    end;
+
+    local procedure LocationShippingAgentEnabled(Location: Record Location): Boolean
+
+    var
+        failedtest: Boolean;
+
+    begin
+
+        If Location."TFB Lcl Agent Service Code" = '' then failedtest := true;
+        If Location."TFB Insta Agent Service Code" = '' then failedtest := true;
+        If Location."TFB Lcl Shipping Agent Code" = '' then failedtest := true;
+        If Location."TFB Insta Shipping Agent Code" = '' then failedtest := true;
+
+        Exit(not failedtest)
+    end;
+
     protected procedure GetBaseQtyForSalesLine(SalesLine: Record "Sales Line"): Decimal
 
     var
