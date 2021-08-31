@@ -154,7 +154,11 @@ page 50102 "TFB Item Costing Factbox"
 
         If ItemCosting.FindFirst() then begin
             _CurrentLandedCost := CCU.GetCurrentItemCost(rec, ItemCosting);
-            _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost * ItemCosting."Exch. Rate";
+            ItemCosting.CalcFields("Vendor Currency");
+            If ItemCosting."Vendor Currency" <> '' then
+                _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost * ItemCosting."Exch. Rate"
+            else
+                _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost;
             _LastPreLandedCost := CCU.GetLastPurchasePrice(rec, ItemCosting);
             _NextPreLandedCost := CCU.GetNextPurchasePrice(rec, ItemCosting);
             _CurrPricePerKg := CCU.GetCurrPricePerKg(Rec);

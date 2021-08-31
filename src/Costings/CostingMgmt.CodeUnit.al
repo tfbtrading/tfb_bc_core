@@ -82,8 +82,8 @@ codeunit 50304 "TFB Costing Mgmt"
 
     var
         SalesSetup: Record "Sales & Receivables Setup";
-        SalesPrice: Record "Sales Price";
         PCE: CodeUnit "TFB Pricing Calculations";
+        PriceListLine: Record "Price List Line";
 
     begin
 
@@ -91,14 +91,15 @@ codeunit 50304 "TFB Costing Mgmt"
 
         If SalesSetup."TFB Def. Customer Price Group" <> '' then begin
 
+            PriceListLine.SetRange("Asset ID", Item.SystemId);
+            PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+            PriceListLine.SetRange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
+            PriceListLine.SetRange("Source No.", SalesSetup."TFB Def. Customer Price Group");
+            PriceListLine.SetRange("Ending Date", 0D);
+            PriceListLine.SetRange(Status, PriceListLine.Status::Active);
 
-            SalesPrice.SetRange("Item No.", Item."No.");
-            SalesPrice.SetRange("Sales Code", SalesSetup."TFB Def. Customer Price Group");
-            SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
-            SalesPrice.SetRange("Ending Date", 0D);
-
-            If SalesPrice.FindLast() then
-                Exit(PCE.CalcPerKgFromUnit(SalesPrice."Unit Price", Item."Net Weight"));
+            If PriceListLine.FindLast() then
+                Exit(PCE.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight"));
 
         end;
     end;
@@ -134,7 +135,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
         PurchaseLine.SetRange("No.", Item."No.");
         PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
-        PurchaseLine.SetFilter("Outstanding Qty. (Base)",'>0');
+        PurchaseLine.SetFilter("Outstanding Qty. (Base)", '>0');
         PurchaseLine.SetCurrentKey("Expected Receipt Date");
         PurchaseLine.SetAscending("Expected Receipt Date", true);
 
