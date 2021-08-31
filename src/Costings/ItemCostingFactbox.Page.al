@@ -23,8 +23,11 @@ page 50102 "TFB Item Costing Factbox"
                     ApplicationArea = All;
                     Caption = 'Curr. Price Per Kg';
                     Tooltip = 'Specifies the current price per kilogram based on the default pricing group setup';
+                    Style = AttentionAccent;
+                    StyleExpr = _CostingPricePerKg <> _CurrPricePerKg;
                 }
-                field(_currPurchPrice; _CurrPurchPrice)
+                field(_currPurchPrice;
+                _CurrPurchPrice)
                 {
                     ApplicationArea = All;
                     Caption = 'Curr. Vendor Purch Price';
@@ -82,7 +85,9 @@ page 50102 "TFB Item Costing Factbox"
             }
             group(Costing)
             {
-                Caption = 'Costing';
+                Caption = 'Inventory Costing';
+                Visible = not _IsDropShipCosting;
+
                 field("Unit Cost"; Rec."Unit Cost")
                 {
                     ApplicationArea = All;
@@ -126,10 +131,13 @@ page 50102 "TFB Item Costing Factbox"
 
     var
         ItemCosting: Record "TFB Item Costing";
+
         PurchPrice: Record "Purchase Price";
         CCU: CodeUnit "TFB Costing Mgmt";
         PricingLogic: CodeUnit "TFB Pricing Calculations";
         VPC: CodeUnit "Purch. Price Calc. Mgt.";
+
+
 
     begin
 
@@ -143,6 +151,7 @@ page 50102 "TFB Item Costing Factbox"
         ItemCosting.SetRange(Current, true);
         ItemCosting.SetRange("Costing Type", ItemCosting."Costing Type"::Standard);
 
+
         If ItemCosting.FindFirst() then begin
             _CurrentLandedCost := CCU.GetCurrentItemCost(rec, ItemCosting);
             _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost * ItemCosting."Exch. Rate";
@@ -150,7 +159,12 @@ page 50102 "TFB Item Costing Factbox"
             _NextPreLandedCost := CCU.GetNextPurchasePrice(rec, ItemCosting);
             _CurrPricePerKg := CCU.GetCurrPricePerKg(Rec);
             _MarketPrice := ItemCosting."Market Price";
+            ItemCosting.CalcFields("Mel Metro Kg");
+            _CostingPricePerKg := ItemCosting."Mel Metro Kg";
+            _IsDropShipCosting := ItemCosting.Dropship;
+
         end;
+
 
         VPC.FindPurchPrice(PurchPrice, Rec."Vendor No.", Rec."No.", '', Rec."Base Unit of Measure", '', today(), false);
 
@@ -160,9 +174,19 @@ page 50102 "TFB Item Costing Factbox"
             _CurrPurchPrice := 0;
     end;
 
+    trigger OnOpenPage()
+
+    begin
+        SalesSetup.Get();
+    end;
+
     var
+        SalesSetup: Record "Sales & Receivables Setup";
         _CurrentLandedCost: Decimal;
         _CurrPricePerKg: Decimal;
+        _CostingPricePerKg: Decimal;
+
+        _IsDropShipCosting: Boolean;
         _CurrPurchPrice: Decimal;
         _LastPreLandedCost: Decimal;
         _MarketPrice: Decimal;

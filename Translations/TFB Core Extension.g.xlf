@@ -6154,7 +6154,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1845793501 - Control 415390853 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Costing</source>
+          <source>Inventory Costing</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Factbox - Control Costing - Property Caption</note>
         </trans-unit>
