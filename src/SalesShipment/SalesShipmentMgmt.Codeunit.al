@@ -18,6 +18,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     end;
 
+
+
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterSalesShptHeaderInsert', '', false, false)]
     local procedure OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesOrderHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PurchHeader: Record "Purchase Header");
     var
@@ -43,6 +45,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             end;
     end;
+
+    
 
 
 

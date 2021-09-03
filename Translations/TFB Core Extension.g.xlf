@@ -5378,6 +5378,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Types - Control Width - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2735775500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Invoice External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2735775500 - Control 1881986821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the customer name for which expected payment date is provided</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Control CustomerName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2735775500 - Control 3632073096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies what the new external document will be</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Control ExternalDocNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2735775500 - Control 3632073096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Control ExternalDocNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3688095463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Costing Scenario</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7922,6 +7942,41 @@
           <source>Vendor certificates</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Ops Mgr Role Center - Action VendorCertificates - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 1881986821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the customer name for which expected payment date is provided</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control CustomerName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 45104836 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date at which the customer says payment will be taken</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control ExpectedPaymentDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 45104836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expected Payment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control ExpectedPaymentDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 1157543360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies explanation behind payment date of invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control ExpectedPaymentNote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 1157543360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control ExpectedPaymentNote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 2081834607 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control PreviousNoteDate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 841882914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pending Purchase Order Lines</source>
@@ -10838,6 +10893,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Create Task - Control TFB Trans. Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3287557893 - Control 32771041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 768781948">
+          <source>Add date and notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Cust. Ledger Entry Factbox - Control ExpectedDateText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3287557893 - Control 32771041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 768781948">
+          <source>Expected Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Cust. Ledger Entry Factbox - Control ExpectedDateText - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1465570817 - Control 3330935376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3902691336">
           <source>Specifies the date on which the first order was placed in the system</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12133,6 +12198,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action Create &amp;Task - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Action 940523622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Handle scenario when customer has changed their purchase order reference without reissuing doc</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action TFBCorrectExternalDocNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Action 940523622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Correct External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action TFBCorrectExternalDocNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Action 3424892570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Send a POD request to warehouse or supplier depending on how invoice was fulfilled</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12148,10 +12223,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control Tasks - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Control 1272163355 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Original external document number prior to being updated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control TFB Orig. External Doc. No. - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Control 4009555772 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Specifies related brokerage shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control TFB Brokerage Shipment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Control 32771041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Add date and notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control ExpectedDateText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Control 32771041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Expected Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control ExpectedDateText - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Control 1526968527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>POD Info</source>
@@ -12177,6 +12267,16 @@
           <source>Send POD request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Action TFBSendPODRequest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3543807989 - Control 32771041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Add date and notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control ExpectedDateText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3543807989 - Control 32771041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Expected Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control ExpectedDateText - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3543807989 - Control 4009555772 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>Specifies brokerage shipment if relevant</source>
@@ -14922,6 +15022,26 @@
           <source>Brokerage Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Invoice Header - Field TFB Brokerage Shipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3817895786 - Field 3851771836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Expected Payment Note Last Added</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Invoice Header - Field TFB Expected Note TimeStamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3817895786 - Field 1983185268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Expected Payment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Invoice Header - Field TFB Expected Payment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3817895786 - Field 1026878320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Expected Payment Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Invoice Header - Field TFB Expected Payment Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3817895786 - Field 1272163355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Original External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Invoice Header - Field TFB Orig. External Doc. No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2327977969 - Field 3279059437 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Sell-to Customer Name</source>

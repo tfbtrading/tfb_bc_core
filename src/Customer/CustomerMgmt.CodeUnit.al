@@ -178,6 +178,8 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
                 Recipients := EmailID.Split(';');
+                Clear(HTMLBuilder);
+                HTMLBuilder.Append(HTMLTemplate);
                 GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
@@ -266,7 +268,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        Email.AddRelation(EmailMessage,Database::Customer,Customer.SystemId,Enum::"Email Relation Type"::"Related Entity");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
     end;

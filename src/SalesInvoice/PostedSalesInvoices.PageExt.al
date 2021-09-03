@@ -16,7 +16,47 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 Visible = Rec."TFB Brokerage Shipment" <> '';
                 ToolTip = 'Specifies brokerage shipment if relevant';
             }
+
+            field(ExpectedDateText; ExpectedDateText)
+            {
+                ApplicationArea = All;
+                Style = Unfavorable;
+                StyleExpr = IsExpectedDatePastDue;
+                ToolTip = 'Add date and notes';
+                Caption = 'Expected Date';
+                DrillDown = true;
+                trigger OnDrillDown()
+
+                var
+                    SalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    AddPaymentNote: Page "TFB Payment Note";
+                    Customer: Record Customer;
+                begin
+
+                    if not Rec.Closed then begin
+                        Customer.Get(Rec."Sell-to Customer No.");
+                        AddPaymentNote.SetupCustomerInfo(Customer, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
+                        SalesInvoiceHeader := Rec;
+                        If AddPaymentNote.RunModal() = Action::OK then begin
+                            SalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
+                            SalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", SalesInvoiceHeader);
+                        end
+
+                    end
+
+                end;
+            }
+
         }
+
+        modify("Due Date")
+        {
+            Style = Unfavorable;
+            StyleExpr = IsPastDue;
+        }
+
+
 
         addlast(factboxes)
         {
@@ -74,4 +114,37 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
     {
 
     }
+
+    trigger OnAfterGetRecord()
+
+    begin
+        Clear(ExpectedDateText);
+
+        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+            IsPastDue := true
+        else
+            IsPastDue := false;
+
+        If not Rec.Closed then begin
+            If Rec."TFB Expected Payment Date" > 0D then
+                ExpectedDateText := format(Rec."TFB Expected Payment Date")
+            else
+                if Rec."TFB Expected Payment Note" = '' then
+                    ExpectedDateText := '➕'
+                else
+                    ExpectedDateText := '📄';
+        end
+        else
+            ExpectedDateText := '';
+
+        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+            IsExpectedDatePastDue := true
+        else
+            IsExpectedDatePastDue := false;
+    end;
+
+    var
+        IsPastDue: Boolean;
+        IsExpectedDatePastDue: Boolean;
+        ExpectedDateText: Text;
 }

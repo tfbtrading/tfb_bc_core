@@ -2,6 +2,13 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 {
     layout
     {
+
+        modify("External Document No.")
+        {
+            Style = Strong;
+            StyleExpr = (Rec."TFB Orig. External Doc. No." <> '') or ((Rec."External Document No." <> '') and (Rec."TFB Orig. External Doc. No." = ''));
+
+        }
         addlast(General)
         {
             field(Tasks; GetTaskStatus())
@@ -33,6 +40,25 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
             }
         }
+
+        addafter("External Document No.")
+        {
+            group(CorrectedExternalDocNo)
+            {
+                Visible = (Rec."TFB Orig. External Doc. No." <> '') or ((Rec."External Document No." <> '') and (Rec."TFB Orig. External Doc. No." = ''));
+                ShowCaption = false;
+
+                field("TFB Orig. External Doc. No."; Rec."TFB Orig. External Doc. No.")
+                {
+                    ApplicationArea = All;
+                    Style = Attention;
+                    StyleExpr = true;
+                    ToolTip = 'Original external document number prior to being updated';
+                    Editable = false;
+                }
+            }
+        }
+
         addbefore("External Document No.")
         {
             group(Brokerage)
@@ -64,6 +90,53 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 }
             }
         }
+
+
+        modify("Due Date")
+        {
+            Style = Unfavorable;
+            StyleExpr = IsPastDue;
+        }
+
+        addafter("Due Date")
+        {
+            field(ExpectedDateText; ExpectedDateText)
+            {
+                ApplicationArea = All;
+                Style = Unfavorable;
+                StyleExpr = IsExpectedDatePastDue;
+                ToolTip = 'Add date and notes';
+                Caption = 'Expected Date';
+                Editable = false;
+                DrillDown = true;
+                trigger OnDrillDown()
+
+                var
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    Customer: Record Customer;
+                    AddPaymentNote: Page "TFB Payment Note";
+                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
+                begin
+
+                    if not Rec.Closed then begin
+                        Customer.Get(Rec."Sell-to Customer No.");
+                        AddPaymentNote.SetupCustomerInfo(Customer, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
+                        TempSalesInvoiceHeader := Rec;
+                        If AddPaymentNote.RunModal() = Action::OK then begin
+                            TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
+                            TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. Sales Inv.-Edit Scenario"::PaymentNote);
+                            CodeUnit.Run(TempSalesInvoiceHeader);
+                        end
+
+                    end
+
+                end;
+            }
+
+        }
+
+
         addlast(factboxes)
         {
             part(PODInfo; "TFB Sales POD FactBox")
@@ -115,8 +188,80 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 end;
 
             }
+
+            action(TFBCorrectExternalDocNo)
+            {
+                Caption = 'Correct External Document No.';
+                ApplicationArea = All;
+                Image = UpdateDescription;
+                Promoted = true;
+                PromotedCategory = process;
+                PromotedIsBig = true;
+                ToolTip = 'Handle scenario when customer has changed their purchase order reference without reissuing doc';
+
+                trigger OnAction()
+
+                var
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    Customer: Record Customer;
+                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
+                    CorrectExtDocNo: Page "TFB Correct Ext. Doc. No.";
+                begin
+
+                    if not Rec.Closed then begin
+                        Customer.Get(Rec."Sell-to Customer No.");
+                        CorrectExtDocNo.SetupCustomerInfo(Customer, Rec."External Document No.");
+                        TempSalesInvoiceHeader := Rec;
+                        If CorrectExtDocNo.RunModal() = Action::OK then begin
+                            TempSalesInvoiceHeader."TFB Orig. External Doc. No." := Rec."External Document No.";
+                            TempSalesInvoiceHeader."External Document No." := CorrectExtDocNo.GetExternalDocNo();
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. Sales Inv.-Edit Scenario"::ExternalDocumentNo);
+                            CodeUnit.Run(TempSalesInvoiceHeader);
+                        end
+
+                    end
+
+                end;
+            }
         }
     }
+
+
+
+
+
+    trigger OnAfterGetRecord()
+
+    begin
+        Clear(ExpectedDateText);
+
+        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+            IsPastDue := true
+        else
+            IsPastDue := false;
+
+        If not Rec.Closed then begin
+            If Rec."TFB Expected Payment Date" > 0D then
+                ExpectedDateText := format(Rec."TFB Expected Payment Date")
+            else
+                if Rec."TFB Expected Payment Note" = '' then
+                    ExpectedDateText := '➕'
+                else
+                    ExpectedDateText := '📄';
+        end
+        else
+            ExpectedDateText := '';
+
+        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+            IsExpectedDatePastDue := true
+        else
+            IsExpectedDatePastDue := false;
+    end;
+
+    var
+        IsPastDue: Boolean;
+        IsExpectedDatePastDue: Boolean;
+        ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text
 
