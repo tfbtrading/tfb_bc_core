@@ -341,7 +341,7 @@ codeunit 50104 "TFB Quality Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', '');
         HTMLBuilder.Replace('%{AlertText}', '');
 
-        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find out latest quality documents as requested</h2><br>'));
+        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find our latest quality documents as requested</h2><br>'));
 
         BodyBuilder.AppendLine('<table class="tfbdata" width="100%" cellspacing="10" cellpadding="10" border="0">');
         BodyBuilder.AppendLine('<thead>');

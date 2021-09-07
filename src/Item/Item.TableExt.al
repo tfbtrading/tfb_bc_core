@@ -88,7 +88,7 @@ tableextension 50260 "TFB Item" extends Item
         field(50320; "TFB Out. Qty. On Sales Order"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter")));
+            CalcFormula = Sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter"), "Location Code" = field("Location Filter")));
             Caption = 'Out. Qty. on Sales Order';
 
         }
@@ -96,7 +96,7 @@ tableextension 50260 "TFB Item" extends Item
         field(50325; "TFB Qty. In Transit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" where("Remaining Quantity" = filter('>0'), "Document Type" = const("Transfer Shipment"), "Item No." = field("No.")));
+            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" where("Remaining Quantity" = filter('>0'), "Document Type" = const("Transfer Shipment"), "Item No." = field("No."), "Location Code" = field("Location Filter")));
             Caption = 'Qty in Transit';
         }
 
