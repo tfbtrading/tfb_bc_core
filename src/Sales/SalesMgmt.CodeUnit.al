@@ -205,7 +205,7 @@ codeunit 50122 "TFB Sales Mgmt"
         PurchaseLine: Record "Purchase Line";
         TransferLine: Record "Transfer Line";
         LocationCode: Code[20];
-        QtyRemaining: Decimal;
+        QtyRemainingAtLocation: Decimal;
         MinQty: Decimal;
 
 
@@ -221,21 +221,21 @@ codeunit 50122 "TFB Sales Mgmt"
             ItemLedgerEntry.SetRange("Item No.", Item."No.");
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
             ItemLedgerEntry.CalcSums("Remaining Quantity");
-            QtyRemaining := ItemLedgerEntry."Remaining Quantity";
+            QtyRemainingAtLocation := ItemLedgerEntry."Remaining Quantity";
 
-            If QtyRemaining < MinQty then begin
+            If QtyRemainingAtLocation < MinQty then begin
 
                 //Check if inventory is in stock at other locations currently
 
                 ItemLedgerEntry.Reset();
                 ItemLedgerEntry.SetRange("Item No.", Item."No.");
-                ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+                ItemLedgerEntry.SetFilter("Remaining Quantity", '>%1', QtyRemainingAtLocation);
                 ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
                 ItemLedgerEntry.SetAscending("Remaining Quantity", false);
 
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
-                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (ItemLedgerEntry."Remaining Quantity" < MinQty) then begin
+                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = LocationCode) then begin
                             SalesLine."Location Code" := ItemLedgerEntry."Location Code";
                             IsHandled := true;
                         end;
