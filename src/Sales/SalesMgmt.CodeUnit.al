@@ -130,32 +130,49 @@ codeunit 50122 "TFB Sales Mgmt"
 
         if not SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then exit;
 
-        GetShippingAgentDetailsForLocation(SalesLine, SalesHeader);
+        GetShippingAgentDetailsForSalesLine(SalesLine, SalesHeader);
 
 
     end;
 
-    local procedure GetShippingAgentDetailsForLocation(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
+    local procedure GetShippingAgentDetailsForSalesLine(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header")
+
+    var
+        ShippingAgentServices: Record "Shipping Agent Services";
+
+    begin
+
+        ShippingAgentServices := GetShippingAgentDetailsForLocation(SalesLine."Location Code", SalesHeader."Ship-to County", SalesHeader."Shipment Method Code");
+
+        If ShippingAgentServices.Code = '' then exit;
+
+        SalesLine."Shipping Agent Code" := ShippingAgentServices."Shipping Agent Code";
+        SalesLine."Shipping Agent Service Code" := ShippingAgentServices.Code;
+
+    end;
+
+    procedure GetShippingAgentDetailsForLocation(LocationCode: Code[10]; ShipToCounty: text[30]; ShipmentMethodCode: Code[10]) ShippingAgentServices: Record "Shipping Agent Services"
 
     var
         Location: Record Location;
+        ShipmentMethod: Record "Shipment Method";
 
     begin
-        If not Location.Get(SalesLine."Location Code") then exit;
-
+        If not Location.Get(LocationCode) then exit;
+        If ShipmentMethod.Get(ShipmentMethodCode) then
+            If ShipmentMethod."TFB Pickup at Location" then exit;
         //Check if location is in same state or not
         If not LocationShippingAgentEnabled(Location) then exit;
 
-        If (SalesHeader."Ship-to County" <> Location.County) then begin
+        If (ShipToCounty <> Location.County) then
+            //Interstate location
+            ShippingAgentServices.Get(Location."TFB Insta Shipping Agent Code", Location."TFB Insta Agent Service Code")
+        else
+            //Locale state
+            ShippingAgentServices.Get(Location."TFB Lcl Shipping Agent Code", Location."TFB Lcl Agent Service Code");
 
-            SalesLine."Shipping Agent Code" := Location."TFB Insta Shipping Agent Code";
-            SalesLine."Shipping Agent Service Code" := Location."TFB Insta Agent Service Code";
-        end
-        else begin
-            SalesLine."Shipping Agent Code" := Location."TFB Lcl Shipping Agent Code";
-            SalesLine."Shipping Agent Service Code" := Location."TFB Lcl Agent Service Code";
-        end;
     end;
+
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
@@ -163,7 +180,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        GetShippingAgentDetailsForLocation(SalesLine, SalesHeader);
+        GetShippingAgentDetailsForSalesLine(SalesLine, SalesHeader);
     end;
 
     local procedure LocationShippingAgentEnabled(Location: Record Location): Boolean

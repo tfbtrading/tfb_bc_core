@@ -5,6 +5,7 @@ enum 50127 "TFB Multi-item Pallet Option"
 
     value(0; " ")
     {
+        Caption = 'None';
     }
     value(10; "Half")
     {

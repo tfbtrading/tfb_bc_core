@@ -31,11 +31,17 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 ToolTip = 'Specifics the most flexible options available when wanting to mix this item on a pallet';
 
             }
-            field("TFB No. Of Bags Per Layer"; Rec."TFB No. Of Bags Per Layer")
+            group(MultiItem)
             {
-                Importance = Additional;
-                ApplicationArea = All;
-                ToolTip = 'Specifies how many bags or carton in a layer on the pallet';
+                ShowCaption = false;
+                Visible = Rec."TFB Multi-item Pallet Option" <> Rec."TFB Multi-item Pallet Option"::" ";
+
+                field("TFB No. Of Bags Per Layer"; Rec."TFB No. Of Bags Per Layer")
+                {
+                    Importance = Additional;
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies how many bags or carton in a layer on the pallet';
+                }
             }
         }
 

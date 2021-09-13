@@ -11393,15 +11393,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control Qty. in Transit - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2581648259 - Control 3387142174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Specifics the most flexible options available when wanting to mix this item on a pallet</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Multi-item Pallet Option - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Control 3226948711 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Specifies how many bags or carton in a layer on the pallet</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB No. Of Bags Per Layer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 3387142174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifics the most flexible options available when wanting to mix this item on a pallet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Multi-item Pallet Option - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Control 3043042052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Specifies the per kilogram unit price based on item weight</source>
@@ -15732,6 +15732,11 @@
           <source>Multi-item pallet option</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Multi-item Pallet Option - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3387142174 - EnumValue 1371923692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>None</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Multi-item Pallet Option - EnumValue   - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3387142174 - EnumValue 97107021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Even Split</source>
