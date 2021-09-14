@@ -214,27 +214,61 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnBeforeInitHeaderLocationCode(var IsHandled: Boolean; var SalesLine: Record "Sales Line")
 
     var
-        SalesHeader: Record "Sales Header";
-        Currency: Record Currency;
+        IntelligentLocationCode: Code[10];
+
+    begin
+
+        IntelligentLocationCode := GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine));
+
+        If not (IntelligentLocationCode = '') then begin
+            SalesLine."Location Code" := IntelligentLocationCode;
+            IsHandled := true;
+        end;
+
+    end;
+
+    local procedure GetSalesUoMForItem(Item: Record Item) ItemUoM: Record "Item Unit of Measure";
+
+    var
+
+    begin
+
+        ItemUoM.Get(Item."No.", Item."Sales Unit of Measure");
+
+    end;
+
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
+
+    var
+        AddressBuffer: Record "Address Buffer";
+
+    begin
+
+        Exit(GetIntelligentLocation(CustomerNo, ItemNo, MinQty, AddressBuffer));
+
+    end;
+
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal; Address: Record "Address Buffer" temporary): Code[10]
+
+    var
         Location: Record Location;
+        Customer: Record Customer;
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
         PurchaseLine: Record "Purchase Line";
         TransferLine: Record "Transfer Line";
-        LocationCode: Code[20];
         QtyRemainingAtLocation: Decimal;
-        MinQty: Decimal;
-
+        LocationCode2: Code[10];
+        IsHandled: Boolean;
 
     begin
-        SalesLine.GetSalesHeader(SalesHeader, Currency);
 
-        LocationCode := SalesHeader."Location Code";
-        If Item.Get(SalesLine."No.") and Item.IsInventoriableType() then begin
+        If Customer.Get(CustomerNo) and Item.Get(ItemNo) and Item.IsInventoriableType() then begin
+
+            If MinQty = 0 then MinQty := GetSalesUoMForItem(Item)."Qty. per Unit of Measure";
 
 
-            MinQty := GetBaseQtyForSalesLine(SalesLine);
-            ItemLedgerEntry.SetRange("Location Code", LocationCode);
+            ItemLedgerEntry.SetRange("Location Code", Customer."Location Code");
             ItemLedgerEntry.SetRange("Item No.", Item."No.");
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
             ItemLedgerEntry.CalcSums("Remaining Quantity");
@@ -252,8 +286,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
-                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = LocationCode) then begin
-                            SalesLine."Location Code" := ItemLedgerEntry."Location Code";
+                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
+                            LocationCode2 := ItemLedgerEntry."Location Code";
                             IsHandled := true;
                         end;
                     until (ItemLedgerEntry.Next() = 0) or (isHandled = true);
@@ -268,7 +302,7 @@ codeunit 50122 "TFB Sales Mgmt"
                     PurchaseLine.SetAscending("Planned Receipt Date", true);
 
                     If PurchaseLine.FindFirst() and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) then begin
-                        SalesLine."Location Code" := PurchaseLine."Location Code";
+                        LocationCode2 := PurchaseLine."Location Code";
                         IsHandled := true;
                     end;
 
@@ -283,7 +317,7 @@ codeunit 50122 "TFB Sales Mgmt"
                     TransferLine.SetAscending("Receipt Date", true);
 
                     If TransferLine.FindFirst() and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
-                        SalesLine."Location Code" := TransferLine."Transfer-to Code";
+                        LocationCode2 := TransferLine."Transfer-to Code";
                         IsHandled := true;
                     end;
 
@@ -292,6 +326,8 @@ codeunit 50122 "TFB Sales Mgmt"
             end;
 
         end;
+
+        Exit(LocationCode2);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnBeforeReleaseSalesDoc', '', false, false)]
