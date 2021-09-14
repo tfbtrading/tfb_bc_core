@@ -86,6 +86,45 @@ tableextension 50118 "TFB Vendor" extends Vendor
             Caption = 'Open Task Exists';
             CalcFormula = exist("To-do" where("Contact Company No." = field("TFB Primary Contact Company ID"), "System To-do Type" = const(Organizer), Closed = const(false)));
         }
+        field(50250; "TFB DropShip Date Override"; Boolean)
+
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Override Dropship Dates';
+
+        }
+
+        field(50251; "TFB Dispatch Lead Time"; DateFormula)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dispatch Lead Time';
+
+            trigger OnValidate()
+            var
+                DateTest: Date;
+
+            begin
+                DateTest := CalcDate("TFB Dispatch Lead Time", WorkDate());
+                if DateTest < WorkDate() then
+                    Error(Text000Err, FieldCaption("TFB Dispatch Lead Time"));
+            end;
+        }
+
+        field(50252; "TFB Dispatch Lead Time Max"; DateFormula)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Dipatch Lead Time Max';
+
+            trigger OnValidate()
+            var
+                DateTest: Date;
+
+            begin
+                DateTest := CalcDate("TFB Dispatch Lead Time Max", WorkDate());
+                if DateTest < WorkDate() then
+                    Error(Text000Err, FieldCaption("TFB Dispatch Lead Time Max"));
+            end;
+        }
     }
 
 
@@ -93,5 +132,8 @@ tableextension 50118 "TFB Vendor" extends Vendor
     {
         addlast(Brick; "TFB Vendor Type", Blocked) { }
     }
+
+    var
+        Text000Err: Label 'The %1 cannot be negative.';
 
 }

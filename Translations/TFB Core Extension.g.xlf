@@ -13748,6 +13748,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Shipment Methods - Control TFB Pickup at Location - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 805079367 - Control 649516293 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4577671">
+          <source>Specifies the maximum potential time for shipment with this agent service. If blank assume shipping time is min and max</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Shipping Agent Services - Control TFB Shipping Time Max - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3782718564 - Control 145035530 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4073709604">
           <source>Specifies service default for shipping agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13947,6 +13952,21 @@
           <source>Specifies if the vendor always provides an order confirmation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB Vendor Provides Ref. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1765208732 - Control 2628108859 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Specifies the minimum lead time until the supplier usually dispatches the product from their warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB Dispatch Lead Time - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1765208732 - Control 1884421695 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Specifies the minimum lead time until the supplier usually dispatches the product from their warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB Dispatch Lead Time Max - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1765208732 - Control 40958333 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Specifies if any drop ships related to this vendor override the default date behaviour on a sales and purchase order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB DropShip Date Override - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1765208732 - Control 763852134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Specifies delivery SLA for local deliveries if a drop ship vendor</source>
@@ -15288,6 +15308,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Shipping Agent - Field TFB Service Default - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 805079367 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 805079367">
+          <source>The %1 cannot be negative.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Shipping Agent Services - NamedType Text000Err</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 805079367 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 805079367">
+          <source>Max shipping time cannot be less than min.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Shipping Agent Services - NamedType Text001Err</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 805079367 - Field 649516293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4577671">
+          <source>Shipping Time Max</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Shipping Agent Services - Field TFB Shipping Time Max - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 227743407 - Field 88521350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1837078383">
           <source>TFB Posted or Archived</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15427,6 +15462,21 @@
           <source>Delivery SLA</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Delivery SLA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3225036808 - Field 2628108859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Dispatch Lead Time</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Dispatch Lead Time - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3225036808 - Field 1884421695 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Dipatch Lead Time Max</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Dispatch Lead Time Max - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3225036808 - Field 40958333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Override Dropship Dates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB DropShip Date Override - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3225036808 - Field 1560174290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>TFB Landed Cost Default</source>

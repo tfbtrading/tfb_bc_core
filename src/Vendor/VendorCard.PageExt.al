@@ -38,6 +38,37 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                 ToolTip = 'Specifies if the vendor always provides an order confirmation';
             }
         }
+
+
+
+        addbefore("Lead Time Calculation")
+        {
+            group(LeadTime)
+            {
+                Visible = Rec."TFB Vendor Type" = Rec."TFB Vendor Type"::TRADE;
+                ShowCaption = false;
+
+                field("TFB DropShip Date Override"; Rec."TFB DropShip Date Override")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies if any drop ships related to this vendor override the default date behaviour on a sales and purchase order';
+                }
+
+                field("TFB Dispatch Lead Time"; Rec."TFB Dispatch Lead Time")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the minimum lead time until the supplier usually dispatches the product from their warehouse';
+                    Enabled = Rec."TFB DropShip Date Override";
+                }
+                field("TFB Dispatch Lead Time Max"; Rec."TFB Dispatch Lead Time Max")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the minimum lead time until the supplier usually dispatches the product from their warehouse';
+                    Enabled = Rec."TFB DropShip Date Override";
+                }
+
+            }
+        }
         addafter("Shipment Method Code")
         {
 
@@ -159,9 +190,9 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
         }
     }
 
- 
-  
 
-      
+
+
+
 
 }
