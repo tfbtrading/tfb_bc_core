@@ -89,7 +89,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
-    local procedure GetVendorShippingAgentOverride(VendorNo: Code[20]; ShippingZone: Code[20]; var AgentServices: Record "Shipping Agent Services"): Boolean
+    procedure GetVendorShippingAgentOverride(VendorNo: Code[20]; ShippingZone: Code[20]; var ShippingAgentService: Record "Shipping Agent Services"): Boolean
 
     var
         VendorZoneRate: Record "TFB Vendor Zone Rate";
@@ -101,14 +101,8 @@ codeunit 50107 "TFB Item Mgmt"
         VendorZoneRate.SetRange("Vendor No.", VendorNo);
 
         If VendorZoneRate.FindFirst() then
-            If VendorZoneRate."Agent Service Code" <> '' then begin
-                AgentServices.SetRange("Shipping Agent Code", VendorZoneRate."Shipping Agent");
-                AgentServices.SetRange(Code, VendorZoneRate."Agent Service Code");
-
-                If AgentServices.FindFirst() then
-                    Exit(true);
-
-            end;
+            If VendorZoneRate."Agent Service Code" <> '' then
+                Exit(ShippingAgentService.Get(VendorZoneRate."Shipping Agent", VendorZoneRate."Agent Service Code"))
     end;
 
     procedure GetItemDynamicDetails(ItemNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date)

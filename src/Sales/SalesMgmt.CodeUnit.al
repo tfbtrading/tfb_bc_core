@@ -151,6 +151,31 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    procedure GetShippingAgentDetailsForDropShipItem(Item: Record Item; Customer: Record Customer) ShippingAgentServices: Record "Shipping Agent Services"
+
+    var
+        Vendor: Record Vendor;
+        ItemCU: Codeunit "TFB Item Mgmt";
+        ShippingAgent: Record "Shipping Agent";
+        PostCodeZone: Record "TFB Postcode Zone";
+
+
+    begin
+
+        PostcodeZone.SetRange("Customer Price Group", Customer."Customer Price Group");
+
+        //Check if there is an override shipping agent and service
+
+        If Vendor.Get(Item."Vendor No.") then
+            If PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
+                If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+                    ShippingAgentServices.Get(ShippingAgent.Code, ShippingAgent."TFB Service Default");
+
+    end;
+
+
+
+
     procedure GetShippingAgentDetailsForLocation(LocationCode: Code[10]; ShipToCounty: text[30]; ShipmentMethodCode: Code[10]) ShippingAgentServices: Record "Shipping Agent Services"
 
     var

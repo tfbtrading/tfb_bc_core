@@ -184,6 +184,17 @@ tableextension 50260 "TFB Item" extends Item
         {
             Caption = 'No. Of Bags Per Layer';
         }
+        field(50370; "TFB Vendor is Agent"; Boolean)
+        {
+            Caption = 'Vendor is Agent';
+
+        }
+        field(50380; "TFB Item Manufacturer/Brand"; Code[20])
+        {
+            Caption = 'Item Manufacturer/Brand';
+            TableRelation = Vendor where("TFB Vendor Type" = const(TRADE));
+            ValidateTableRelation = true;
+        }
 
     }
     fieldgroups

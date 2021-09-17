@@ -15448,6 +15448,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB User Setup - Field TFB Show External IDs - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3225036808 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3225036808">
+          <source>The %1 cannot be negative.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - NamedType Text000Err</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3225036808 - Field 2595876784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>TFB Brokerage Fixed Rate</source>
           <note from="Developer" annotates="general" priority="2"></note>

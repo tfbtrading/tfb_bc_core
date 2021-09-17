@@ -225,6 +225,27 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 ToolTip = 'Specifies the unit cost per kilogram';
             }
         }
+
+        addafter("Vendor Item No.")
+        {
+            field("TFB Vendor is Agent"; Rec."TFB Vendor is Agent")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies if the vendor is only purchased on behalf of our company and the manufacturer is a different entity. Useful for quality and branding';
+
+            }
+            group(TFBVendorAgent)
+            {
+                ShowCaption = false;
+                Visible = Rec."TFB Vendor is Agent";
+
+                field("TFB Item Manufacturer/Brand"; Rec."TFB Item Manufacturer/Brand")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the actual manufacturer or company brand of goods being purchased.';
+                }
+            }
+        }
     }
     actions
     {
