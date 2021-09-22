@@ -103,6 +103,21 @@ tableextension 50100 "TFB Location" extends Location
 
             end;
         }
+
+        field(50230; "TFB Outbound Order Deadline"; Time)
+        {
+            Caption = 'Outbound Order Deadline';
+            trigger OnValidate()
+
+            var
+                Text001Msg: Label 'Time must be between 10am and 8pm';
+
+            begin
+                If ("TFB Outbound Order Deadline" < 100000T) or ("TFB Outbound Order Deadline" > 200000T) then
+                    FieldError("TFB Outbound Order Deadline", Text001Msg);
+
+            end;
+        }
     }
 
 }

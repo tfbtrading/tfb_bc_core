@@ -11428,6 +11428,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Unit Cost per Kg - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 3767736521 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies if the vendor is only purchased on behalf of our company and the manufacturer is a different entity. Useful for quality and branding</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Vendor is Agent - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Control 1881801898 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Specifies the actual manufacturer or company brand of goods being purchased.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Item Manufacturer/Brand - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Control 662871797 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Specifies if only price on application should be shown in price list</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11792,6 +11802,11 @@
           <source>Shipping Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Shipping Agent Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 1601623652 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the time after which an order lines earliest dispatch day will be extended by an additional day</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Outbound Order Deadline - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 2516243223 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Specifies if location is current active for shipments and receipts</source>
@@ -14403,6 +14418,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Inventory - Excl. Transit - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 1881801898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Item Manufacturer/Brand</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Item Manufacturer/Brand - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 1059470183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Long Descriptions</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14452,6 +14472,11 @@
           <source>Unit Price Source</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Unit Price Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 3767736521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Vendor is Agent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Vendor is Agent - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 2671920321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Approved Arrangement No.</source>
@@ -14507,6 +14532,16 @@
           <source>Location Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Location Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1601623652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Outbound Order Deadline</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Outbound Order Deadline - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1601623652 - Method 2126772001 - NamedType 1881095303" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2422250495">
+          <source>Time must be between 10am and 8pm</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Outbound Order Deadline - Method OnValidate - NamedType Text001Msg</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 1462942397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Quarantine Location</source>

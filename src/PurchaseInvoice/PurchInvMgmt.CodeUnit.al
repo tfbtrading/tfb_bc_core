@@ -460,7 +460,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
     end;
 
-    local procedure GetWarehouseShipmentLines(var Lines: Record "Sales Shipment Line"; reference: Text[100]; var NewCustomerList: Text; var PostingDate: Date)
+    local procedure GetWarehouseShipmentLines(var Lines: Record "Sales Shipment Line"; reference: Text[100]; var NewCustomerList: Text; var PostingDate: Date): Boolean
 
     var
         WhseHeader: Record "Posted Whse. Shipment Header";
@@ -522,6 +522,8 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             NewCustomerList := CustomerList.ToText();
             PostingDate := WhseHeader."Posting Date";
         end;
+
+        Exit(HeaderDocList.Count > 0)
     end;
 
     procedure IsWarehouseReferenceValid(Reference: Text[100]): Boolean
@@ -565,16 +567,15 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment."Document Line No." := PurchLine."Line No.";
         TempICAssignment."Item Charge No." := PurchLine."No.";
 
-        GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate);
+        If GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
+            If ShipLine.FindSet(False, false) then begin
 
-        If ShipLine.FindSet(False, false) then begin
-
-            ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
-            ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
-            PurchLine.Description := Text.CopyStr(StrSubstNo('%1 Shipment to %2 on %3', Reference, CustomerList, PostingDate), 1, 100);
-            PurchLine.CalcFields("Qty. to Assign");
-            Exit(true);
-        end;
+                ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
+                ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
+                PurchLine.Description := Text.CopyStr(StrSubstNo('%1 Shipment to %2 on %3', Reference, CustomerList, PostingDate), 1, 100);
+                PurchLine.CalcFields("Qty. to Assign");
+                Exit(true);
+            end;
 
     end;
 }
