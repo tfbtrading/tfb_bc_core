@@ -323,6 +323,7 @@ codeunit 50122 "TFB Sales Mgmt"
                     PurchaseLine.SetRange("No.", Item."No.");
                     PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                     PurchaseLine.SetFilter("Outstanding Qty. (Base)", '>0');
+                    PurchaseLine.SetRange("Drop Shipment", false);
                     PurchaseLine.SetCurrentKey("Planned Receipt Date");
                     PurchaseLine.SetAscending("Planned Receipt Date", true);
 

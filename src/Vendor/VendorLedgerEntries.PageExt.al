@@ -22,6 +22,16 @@ pageextension 50153 "TFB Vendor Ledger Entries" extends "Vendor Ledger Entries"
 
 
         }
+
+        addlast(factboxes)
+        {
+            part(tfbPayments; "TFB Vend. Applied Entries FB")
+            {
+                ApplicationArea = All;
+                Visible = Rec."Document Type" = Rec."Document Type"::Invoice;
+                SubPageLink = "Vendor Ledger Entry No." = field("Entry No.");
+            }
+        }
     }
 
     actions

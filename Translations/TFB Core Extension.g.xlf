@@ -10088,6 +10088,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Segment Generic Items - Control Generic Item Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 184115528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Applied Payments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Amount Paid</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 2063440005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Paid from</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control PaymentDetail - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Paid On</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 67363760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total in Payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control TotalPaymentAmount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3780146663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoices Applied FactBox</source>
           <note from="Developer" annotates="general" priority="2"></note>
