@@ -21,12 +21,12 @@ page 50153 "TFB Vend. Applied Entries FB"
                     ApplicationArea = All;
                     Caption = 'Invoice Amount Paid';
                 }
-                field(TotalPaymentAmount; GetTotalPaymentAmount())
+                field(TotalPaymentAmount; _TotalPaymentAmount)
                 {
                     ApplicationArea = All;
                     Caption = 'Total in Payment';
                 }
-                field(PaymentDetail; GetPaymentDetails())
+                field(PaymentDetail; _PaymentDetails)
                 {
                     ApplicationArea = All;
                     Caption = 'Paid from';
@@ -41,24 +41,16 @@ page 50153 "TFB Vend. Applied Entries FB"
 
     actions
     {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction();
-                begin
-
-                end;
-            }
-        }
     }
 
 
     trigger OnAfterGetRecord()
 
     begin
+        SetDetailedPaymentLedgerEntry();
+        _TotalPaymentAmount := GetTotalPaymentAmount();
+        _PaymentDetails := GetPaymentDetails();
 
     end;
 
@@ -101,5 +93,8 @@ page 50153 "TFB Vend. Applied Entries FB"
     var
         DetailedVendorLedgerEntry2: Record "Detailed Vendor Ledg. Entry";
         VendorLedgerEntry2: Record "Vendor Ledger Entry";
+        _TotalPaymentAmount: Decimal;
+
+        _PaymentDetails: Text[100];
 
 }
