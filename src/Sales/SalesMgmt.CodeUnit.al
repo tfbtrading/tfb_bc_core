@@ -43,12 +43,28 @@ codeunit 50122 "TFB Sales Mgmt"
         SalesOrderPage.Run();
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterSalesShptHeaderInsert', '', false, false)]
-    local procedure OnAfterSalesShptHeaderInsert(var SalesShipmentHeader: Record "Sales Shipment Header"; SalesOrderHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; PurchHeader: Record "Purchase Header");
-    begin
 
-        SalesShipmentHeader."Package Tracking No." := CopyStr(Purchheader."Vendor Shipment No.", 1, 30);
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeSalesShptHeaderInsert', '', false, false)]
+    local procedure OnBeforeSalesShptHeaderInsert(var SalesShptHeader: Record "Sales Shipment Header"; SalesOrderHeader: Record "Sales Header"; CommitIsSupressed: Boolean; var PurchaseHeader: Record "Purchase Header");
+
+    var
+        Customer: Record Customer;
+        Vendor: record Vendor;
+        ShippingAgentServices: Record "Shipping Agent Services";
+        SalesMgmt: CodeUnit "TFB Sales Mgmt";
+
+    begin
+        SalesShptHeader."Package Tracking No." := CopyStr(PurchaseHeader."Vendor Shipment No.", 1, 30);
+
+        Customer.get(SalesShptHeader."Sell-to Customer No.");
+        Vendor.get(PurchaseHeader."Buy-from Vendor No.");
+        ShippingAgentServices := SalesMgmt.GetShippingAgentDetailsForDropShipItem(Vendor, Customer);
+        SalesShptHeader."Shipping Agent Code" := ShippingAgentServices."Shipping Agent Code";
+        SalesShptHeader."Shipping Agent Service Code" := ShippingAgentServices.Code;
+
     end;
+
 
 
     //TODO Explore how to reactive this functionality
@@ -173,6 +189,27 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    procedure GetShippingAgentDetailsForDropShipItem(Vendor: Record Vendor; Customer: Record Customer) ShippingAgentServices: Record "Shipping Agent Services"
+
+    var
+
+        ItemCU: Codeunit "TFB Item Mgmt";
+        ShippingAgent: Record "Shipping Agent";
+        PostCodeZone: Record "TFB Postcode Zone";
+
+
+    begin
+
+        PostcodeZone.SetRange("Customer Price Group", Customer."Customer Price Group");
+
+        //Check if there is an override shipping agent and service
+
+
+        If PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
+            If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+                ShippingAgentServices.Get(ShippingAgent.Code, ShippingAgent."TFB Service Default");
+
+    end;
 
 
 

@@ -74,44 +74,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
             }
         }
 
-        modify("Vendor Shipment No.")
-        {
-            trigger OnAfterValidate()
 
-            var
-                SalesOrder: Record "Sales Header";
-                Line: Record "Purchase Line";
-                OrderNo: Code[20];
-
-            begin
-
-                If Rec."Sell-to Customer No." = '' then exit;
-
-                If not Confirm('Do you want to update relates sales order package tracking no?', true) then exit;
-
-                OrderNo := '';
-                Line.SetRange("Document Type", Rec."Document Type");
-                Line.SetRange("Document No.", Rec."No.");
-                Line.SetFilter("Outstanding Quantity", '>0');
-                Line.SetLoadFields("Sales Order No.");
-                If Line.FindSet(false, false) then
-                    repeat
-
-                        SalesOrder.SetRange("No.", Line."Sales Order No.");
-                        SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
-
-                        if SalesOrder.FindFirst() then
-                            if SalesOrder."No." <> OrderNo then begin
-
-                                SalesOrder.validate("Package Tracking No.", Rec."Vendor Shipment No.");
-                                SalesOrder.Modify();
-                                OrderNo := SalesOrder."No.";
-                            end;
-
-                    until Line.Next() = 0;
-
-            end;
-        }
 
         addlast("Shipping and Payment")
         {

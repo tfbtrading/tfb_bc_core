@@ -12843,31 +12843,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control Tasks - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Control 1143889069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Customer Quality Requirements</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control QualityReq - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Control 1096449745 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Specifies if a customer has elected to received a CoA</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Customer CoA Req - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Control 1096449745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Customer Requires CoA</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Customer CoA Req - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Control 763852134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Specifies if a delivery SLA exists for this purchase order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Delivery SLA - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Control 3691525173 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
-          <source>Specifies any special instructions for the purchase order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Instructions - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 1856114087 - Control 2682724073 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Specifies no. of printed or emailed documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12942,6 +12917,31 @@
           <source>Specifies if purchase is subject to x-ray hold</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB X-Ray Hold - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Control 1143889069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Customer Quality Requirements</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control QualityReq - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Control 1096449745 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Specifies if a customer has elected to received a CoA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Customer CoA Req - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Control 1096449745 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Customer Requires CoA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Customer CoA Req - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Control 763852134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Specifies if a delivery SLA exists for this purchase order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Delivery SLA - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Control 3691525173 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Specifies any special instructions for the purchase order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Control TFB Instructions - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3151109616 - Control 3126877759 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 5120816">
           <source>Specifies the vendors order number corresponding to sale</source>
