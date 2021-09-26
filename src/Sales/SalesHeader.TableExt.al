@@ -80,7 +80,13 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
             TableRelation = "Purchase Header"."No." where("Document Type" = const(Quote), Status = const(Open), "TFB Group Purchase" = const(true));
             ValidateTableRelation = true;
         }
-     
+        field(50320; "TFB Direct to Customer"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Direct to Customer (DropShip)';
+
+        }
+
 
 
 

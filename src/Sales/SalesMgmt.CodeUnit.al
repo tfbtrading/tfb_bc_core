@@ -235,6 +235,23 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterCopyFromItem', '', false, false)]
+    local procedure OnAfterCopyFromItem(var SalesLine: Record "Sales Line"; Item: Record Item; CurrentFieldNo: Integer);
+    var
+        SalesHeader: Record "Sales Header";
+        Purchasing: Record Purchasing;
+    begin
+
+        Purchasing.SetRange("Drop Shipment", true);
+
+        SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.");
+
+        If SalesHeader."TFB Direct to Customer" = true then
+            If Purchasing.FindFirst() then
+                SalesLine.validate("Purchasing Code", Purchasing.Code);
+
+
+    end;
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
@@ -386,7 +403,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
                 end;
 
-            end;
+            end
+            else
+                LocationCode2 := Customer."Location Code";
 
         end;
 

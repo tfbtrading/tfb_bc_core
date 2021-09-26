@@ -51,6 +51,14 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                 ToolTip = 'Specifies customer price group for sals order';
             }
         }
+        addfirst("Shipment Method")
+        {
+            field("TFB Direct to Customer"; Rec."TFB Direct to Customer")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies if all the items will be drop shipped directly to the customer. Usually reserved for trailor loads of items';
+            }
+        }
         addlast(General)
         {
             field("TFB Pre-order Exists"; Rec."TFB Pre-order Exists")

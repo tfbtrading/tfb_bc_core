@@ -13363,6 +13363,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control Customer Price Group - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Control 1659813318 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Specifies if all the items will be drop shipped directly to the customer. Usually reserved for trailor loads of items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control TFB Direct to Customer - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3575399586 - Control 2682724073 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Specifies no. of times document has been printed or emailed</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15067,6 +15072,11 @@
           <source>Brokerage Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Header - Field TFB Brokerage Shipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 321817545 - Field 1659813318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
+          <source>Direct to Customer (DropShip)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Header - Field TFB Direct to Customer - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 321817545 - Field 1468961821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1192395785">
           <source>End Date</source>
