@@ -34,7 +34,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             group(MultiItem)
             {
                 ShowCaption = false;
-                Visible = Rec."TFB Multi-item Pallet Option" <> Rec."TFB Multi-item Pallet Option"::" ";
+                Visible = Rec."TFB Multi-item Pallet Option" = Rec."TFB Multi-item Pallet Option"::Layer;
 
                 field("TFB No. Of Bags Per Layer"; Rec."TFB No. Of Bags Per Layer")
                 {

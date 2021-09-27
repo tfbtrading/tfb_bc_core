@@ -125,6 +125,14 @@ tableextension 50118 "TFB Vendor" extends Vendor
                     Error(Text000Err, FieldCaption("TFB Dispatch Lead Time Max"));
             end;
         }
+
+        field(50260; "TFB Max Products Per Pallet"; Integer)
+        {
+            Caption = 'Max Products Per Pallet';
+            InitValue = 1;
+            MinValue = 1;
+            MaxValue = 10;
+        }
     }
 
 

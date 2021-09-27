@@ -53,6 +53,12 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies if any drop ships related to this vendor override the default date behaviour on a sales and purchase order';
                 }
+                field("TFB Max Products Per Pallet"; Rec."TFB Max Products Per Pallet")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies if the vendor allows more than product per pallet in normal business operations';
+
+                }
 
                 field("TFB Dispatch Lead Time"; Rec."TFB Dispatch Lead Time")
                 {
