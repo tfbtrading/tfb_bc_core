@@ -3023,6 +3023,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Customer Mgmt - Method SendStatementToOneCustomer - NamedType TitleTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2169027073 - NamedType 1615422614" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cannot Connect to Azure Event Grid</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - NamedType CannotConnectErr</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2169027073 - NamedType 3799088596" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Error when calling web service for event grid %1 %2</source>
+          <note from="Developer" annotates="general" priority="2">%1 - HttpStatusCode, %2 = Reason Phrase</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - NamedType WebServiceErr</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4542,6 +4552,11 @@
           <source>Specifies the value of the Phone No. field</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Contacts Subform - Control Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1791385178 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if a contact has access to online channel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Contacts Subform - Control TFB Enable Online Access - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1791385178 - Action 1876160316 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Create an interaction with a specified contact.</source>
@@ -10783,10 +10798,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Control BankList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 602795601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies job title for contact</source>
+        <trans-unit id="PageExtension 1516405160 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies if a contact has direct online access to information for their related customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control Job Title - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Enable Online Access - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the contact status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Contact Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1501079646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Contacts</source>
@@ -10818,10 +10838,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Linkedin Page - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies the contact status</source>
+        <trans-unit id="PageExtension 1516405160 - Control 602795601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies job title for contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Contact Status - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control Job Title - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3856507940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 862853572">
           <source>Contact Details</source>
@@ -11107,6 +11127,11 @@
           <source>Specifies the contact status</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Contact Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Specifies if contacts for this customer can be enabled for digital access</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Enable Online Access - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 4115167540 - Control 1531188592 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Specifies if customer receives mass order updates</source>
@@ -14188,6 +14213,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Contact Status - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 3552331494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Enable Online Access</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Enable Online Access - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 641158986 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Is A Customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14273,6 +14303,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Sale - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3552331494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Enable Online Access</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Enable Online Access - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 1161532774 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>External Doc. No. Required?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14292,6 +14327,11 @@
           <source>No. of Favourite Items</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Of Fav. Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1571997681 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>No. Online Users Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB No. Online Users Enabled - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 844999280 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Ongoing Sales Lines</source>
@@ -15797,6 +15837,11 @@
           <source>Suggested</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cust. Item. Source - EnumValue Suggested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1814125389 - EnumValue 1016569187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ContactEnabledForOnline</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Event Grid Event Types - EnumValue ContactEnabledForOnline - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3084867664 - EnumValue 3531986640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Extension</source>

@@ -47,7 +47,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
         data.Add('contactid', Contact.SystemId);
         data.Add('customerid', Customer.SystemId);
-        data.Add('customerName', Customer.Name);
+        data.Add('customername', Customer.Name);
         data.Add('firstname', Contact."First Name");
         data.Add('lastname', Contact.Surname);
         data.Add('mobilenumber', Contact."Mobile Phone No.");
