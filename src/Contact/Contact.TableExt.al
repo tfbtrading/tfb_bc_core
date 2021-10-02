@@ -92,6 +92,7 @@ tableextension 50110 "TFB Contact" extends Contact
             var
                 Contact: Record Contact;
                 MarketingSetup: Record "Marketing Setup";
+                EventGridMgmt: CodeUnit "TFB Event Grid Mgmt";
             begin
 
                 MarketingSetup.Get();
@@ -111,6 +112,7 @@ tableextension 50110 "TFB Contact" extends Contact
                     if not Contact.IsEmpty() then
                         FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
 
+                    EventGridMgmt.PublishContactEnabledForOnline(Rec);
                 end
                 else
                     error('To enable online access for a contact, the customer must first be enabled');
