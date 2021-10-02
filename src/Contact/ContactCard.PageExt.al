@@ -8,6 +8,14 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
             Editable = false;
             Importance = Additional;
         }
+        addbefore("Exclude from Segment")
+        {
+            field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies if a contact has direct online access to information for their related customer';
+            }
+        }
         // Add changes to page layout here
         addafter("Organizational Level Code")
         {

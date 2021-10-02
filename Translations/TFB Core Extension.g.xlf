@@ -14013,6 +14013,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB DropShip Date Override - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1765208732 - Control 92620493 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+          <source>Specifies if the vendor allows more than product per pallet in normal business operations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Control TFB Max Products Per Pallet - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1765208732 - Control 763852134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Specifies delivery SLA for local deliveries if a drop ship vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15562,6 +15567,11 @@
           <source>Def. Landed Cost Profile</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Landed Cost Profile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3225036808 - Field 92620493 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Max Products Per Pallet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Max Products Per Pallet - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3225036808 - Field 289632952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Certifications</source>

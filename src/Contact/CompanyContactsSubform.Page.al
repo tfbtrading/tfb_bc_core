@@ -53,6 +53,11 @@ page 50130 "TFB Company Contacts Subform"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Mobile Phone No. field';
                 }
+                field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies if a contact has access to online channel';
+                }
 
                 field(AssignedRoles; getJobResponsibilities())
                 {

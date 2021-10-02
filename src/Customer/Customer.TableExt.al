@@ -182,6 +182,17 @@ tableextension 50101 "TFB Customer" extends Customer
             Caption = 'Open Task Exists';
             CalcFormula = exist("To-do" where("Contact Company No." = field("TFB Primary Contact Company ID"), "System To-do Type" = const(Organizer), Closed = const(false)));
         }
+        field(50260; "TFB Enable Online Access"; Boolean)
+        {
+            Caption = 'Enable Online Access';
+
+        }
+        field(50265; "TFB No. Online Users Enabled"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count(contact where(Type = const(Person), "Company No." = field("TFB Primary Contact Company ID")));
+            Caption = 'No. Online Users Enabled';
+        }
 
 
 

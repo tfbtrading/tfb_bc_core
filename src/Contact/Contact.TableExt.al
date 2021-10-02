@@ -82,6 +82,41 @@ tableextension 50110 "TFB Contact" extends Contact
             CalcFormula = count(Contact where("Company No." = field("Company No."), Type = const(Person)));
             Caption = 'No. Of Individuals';
         }
+
+        field(50260; "TFB Enable Online Access"; Boolean)
+        {
+            Caption = 'Enable Online Access';
+
+            trigger OnValidate()
+
+            var
+                Contact: Record Contact;
+                MarketingSetup: Record "Marketing Setup";
+            begin
+
+                MarketingSetup.Get();
+
+                If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
+                    //check mobile is unique
+
+
+
+                    If not (Rec."Mobile Phone No." <> '') then
+                        FieldError("Mobile Phone No.", 'To enable online access a contact must have a mobile phone number specified');
+
+
+                    Contact.SetRange(Type, Contact.Type::Person);
+                    Contact.SetFilter("No.", '<>%1', Rec."No.");
+                    Contact.SetRange("Mobile Phone No.", Rec."Mobile Phone No.");
+                    if not Contact.IsEmpty() then
+                        FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
+
+                end
+                else
+                    error('To enable online access for a contact, the customer must first be enabled');
+
+            end;
+        }
     }
     fieldgroups
     {

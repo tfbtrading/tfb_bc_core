@@ -148,6 +148,12 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     Importance = Standard;
                     ToolTip = 'Specifies if customer receives mass order updates';
                 }
+                field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
+                {
+                    ApplicationArea = All;
+                    Importance = Standard;
+                    ToolTip = 'Specifies if contacts for this customer can be enabled for digital access';
+                }
                 field("TFB Price List Recipient"; Rec."TFB Price List Recipient")
                 {
                     ApplicationArea = All;
