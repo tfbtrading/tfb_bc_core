@@ -96,28 +96,45 @@ tableextension 50110 "TFB Contact" extends Contact
             begin
 
                 MarketingSetup.Get();
+                case Rec."TFB Enable Online Access" of
+                    true:
 
-                If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
-                    //check mobile is unique
+                        If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
+                            //check mobile is unique
+
+                            If Not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
+
+                            EventGridMgmt.PublishContactEnabledForOnline(Rec);
+                        end
+                        else
+                            error('To enable online access for a contact, the customer must first be enabled');
 
 
 
-                    If not (Rec."Mobile Phone No." <> '') then
-                        FieldError("Mobile Phone No.", 'To enable online access a contact must have a mobile phone number specified');
+                    false:
+
+                        If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
+                            //check mobile is unique
+
+                            If Not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
 
 
-                    Contact.SetRange(Type, Contact.Type::Person);
-                    Contact.SetFilter("No.", '<>%1', Rec."No.");
-                    Contact.SetRange("Mobile Phone No.", Rec."Mobile Phone No.");
-                    if not Contact.IsEmpty() then
-                        FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
+                            EventGridMgmt.PublishContactDisabledForOnline(Rec);
+                        end
+                        else
+                            error('To enable online access for a contact, the customer must first be enabled');
 
-                    EventGridMgmt.PublishContactEnabledForOnline(Rec);
-                end
-                else
-                    error('To enable online access for a contact, the customer must first be enabled');
+
+
+                end;
 
             end;
+
+        }
+
+        field(50270; "TFB Online Identity Id"; Text[100])
+        {
+            Caption = 'Online Identity Id';
         }
     }
     fieldgroups
@@ -126,6 +143,21 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
 
+    local procedure IsMobilePhoneNoUnique(): Boolean
+
+    var
+        Contact: Record Contact;
+    begin
+        If not (Rec."Mobile Phone No." <> '') then
+            FieldError("Mobile Phone No.", 'To enable online access a contact must have a mobile phone number specified');
+
+
+        Contact.SetRange(Type, Contact.Type::Person);
+        Contact.SetFilter("No.", '<>%1', Rec."No.");
+        Contact.SetRange("Mobile Phone No.", Rec."Mobile Phone No.");
+
+        Exit(Contact.IsEmpty());
+    end;
 
     local procedure validateContactStatus()
 

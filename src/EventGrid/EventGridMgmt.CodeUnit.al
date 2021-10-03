@@ -20,6 +20,26 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
     end;
 
+    procedure PublishContactDisabledForOnline(Contact: Record Contact)
+
+    var
+
+    begin
+
+        Message(SendMessage(CreateBody(Contact, Enum::"TFB Event Grid Event Types"::ContactDisabledForOnline)));
+
+    end;
+
+    procedure PublishCheckStatus(Contact: Record Contact)
+
+    var
+
+    begin
+
+        Message(SendMessage(CreateBody(Contact, Enum::"TFB Event Grid Event Types"::ContactCheckStatus)));
+
+    end;
+
 
     local procedure CreateBody(Contact: Record Contact; EventType: Enum "TFB Event Grid Event Types") message: JsonArray
     var

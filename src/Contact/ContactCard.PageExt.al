@@ -15,6 +15,17 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies if a contact has direct online access to information for their related customer';
             }
+            group(OnlineIdentityDetails)
+            {
+                Visible = Rec."TFB Online Identity Id" <> '';
+                ShowCaption = false;
+
+                label(IdentitySetup)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Active ✔️';
+                }
+            }
         }
         // Add changes to page layout here
         addafter("Organizational Level Code")
@@ -141,12 +152,27 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
 
     actions
     {
-        // Add changes to page actions here
+        addlast("F&unctions")
+        {
+            action(CheckOnlineStatus)
+            {
+                ApplicationArea = All;
+                Image = UpdateDescription;
+                Caption = 'Check Online Access Status';
+                trigger OnAction()
+
+                var
+
+                    EventMgmt: CodeUnit "TFB Event Grid Mgmt";
+                begin
+
+                    EventMgmt.PublishCheckStatus(Rec);
+                end;
+            }
+        }
     }
 
 
 
-    var
-    //    LinkTxt: Label '🔗';
 
 }

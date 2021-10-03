@@ -3358,6 +3358,96 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Active Task List - View Overdue - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3895589588 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Property EntityCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Property EntitySetCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - NamedType 4261500932" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The blank "displayName" is not allowed.</source>
+          <note from="Developer" annotates="general" priority="2">displayName is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - NamedType BlankContactNameErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - NamedType 2753446044" size-unit="char" translate="yes" xml:space="preserve">
+          <source>A "displayName" must be provided.</source>
+          <note from="Developer" annotates="general" priority="2">displayName is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - NamedType NotProvidedContactNameErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 2321560956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Relation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control businessRelation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 1408747468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control companyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 4084316176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control companyNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Display Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control displayName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 3163706192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 2856562879 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control firstName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 1549695103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control lastName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 662401169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mobile Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control mobilePhoneNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 2757394829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control number - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 1221365490 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Online Access Enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control onlineAccessEnabled - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 3456906688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Online Identity ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control onlineIdentityId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3895589588 - Control 1463933576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control picture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 668130058 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
           <source>GenericItem</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10798,6 +10888,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Control BankList - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 4187634575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Check Online Access Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action CheckOnlineStatus - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1976311139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Active ✔️</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control IdentitySetup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Specifies if a contact has direct online access to information for their related customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14248,6 +14348,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB No. Of Individuals - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 1160906992 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Online Identity Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Online Identity Id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 917647956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Sales Readiness</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15837,6 +15942,16 @@
           <source>Suggested</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cust. Item. Source - EnumValue Suggested - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1814125389 - EnumValue 1500546710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ContactCheckStatus</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Event Grid Event Types - EnumValue ContactCheckStatus - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1814125389 - EnumValue 890721200 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ContactDisabledForOnline</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Event Grid Event Types - EnumValue ContactDisabledForOnline - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 1814125389 - EnumValue 1016569187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ContactEnabledForOnline</source>
