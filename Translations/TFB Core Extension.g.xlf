@@ -13448,6 +13448,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Archive List - Control Purchase Order No. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 3803109865 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>Specifies any additional information around delivery</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control DeliveryNotes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 3803109865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>Delivery Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control DeliveryNotes - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3957898749 - Control 3932505410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
           <source>Specifies if an item costings exists and links  to it</source>
           <note from="Developer" annotates="general" priority="2"></note>
