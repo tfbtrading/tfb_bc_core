@@ -1,3 +1,6 @@
+/// <summary>
+/// Page TFB Container Entry (ID 50210).
+/// </summary>
 page 50210 "TFB Container Entry"
 {
     PageType = Document;
@@ -106,7 +109,7 @@ page 50210 "TFB Container Entry"
                         end;
                     }
 
-                    field("Customer Direct"; "Customer Direct")
+                    field("Customer Direct"; Rec."Customer Direct")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies whether the container is directly for a customer';

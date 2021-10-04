@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension TFB Sales Lines (ID 50103) extends Record Sales Lines //516.
+/// </summary>
 pageextension 50103 "TFB Sales Lines" extends "Sales Lines" //516
 {
     layout

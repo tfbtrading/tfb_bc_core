@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension TFB Sales Line Factbox (ID 50175) extends Record Sales Line FactBox.
+/// </summary>
 pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 {
     layout
@@ -6,16 +9,24 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         {
             group(deliverydetails)
             {
-                Visible = Rec.type = Rec.Type::Item;
+                Visible = (Rec.type = Rec.Type::Item) and (Rec."Document Type" = Rec."Document Type"::Order);
                 ShowCaption = false;
 
-                field(DeliveryNotes; GetDeliveryNotes())
+                field(DeliveryNotes; GetDeliveryNotes() <> '')
                 {
                     Caption = 'Delivery Notes';
                     ToolTip = 'Specifies any additional information around delivery';
                     ApplicationArea = All;
-                    DrillDown = false;
+                    DrillDown = true;
                     MultiLine = true;
+
+                    trigger OnDrillDown()
+
+                    var
+
+                    begin
+                        Message(GetDeliveryNotes());
+                    end;
                 }
             }
         }
@@ -60,6 +71,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
     var
         ItemCostingSystemID: Guid;
+
 
     local procedure GetDeliveryNotes(): Text
     var
@@ -135,7 +147,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         If ShippingAgent.Get(ShippingAgentServices."Shipping Agent Code") then
             TrackingAvailable := ShippingAgent."Internet Address" <> ''; //internet address assumed to be trackingis available
 
-        InfoTextBuilder.Append(StrSubstNo(' dispatched between % and %2 and delivered between %3 and %4', DispatchDateMin, DispatchDateMax, DeliveryDateMin, DeliveryDateMax));
+        InfoTextBuilder.Append(StrSubstNo(' dispatched between %1 and %2 and delivered between %3 and %4', DispatchDateMin, DispatchDateMax, DeliveryDateMin, DeliveryDateMax));
         If TrackingAvailable then
             InfoTextBuilder.Append(StrSubstNo(' with tracking available from %1', ShippingAgentServices."Shipping Agent Code"));
 

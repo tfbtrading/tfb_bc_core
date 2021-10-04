@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension TFB Item List (ID 50117) extends Record Item List.
+/// </summary>
 pageextension 50117 "TFB Item List" extends "Item List"
 {
 
@@ -79,7 +82,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
         }
         addafter(InventoryField)
         {
-            field("TFB Inventory - Excl. Transit"; "TFB Inventory - Excl. Transit")
+            field("TFB Inventory - Excl. Transit"; Rec."TFB Inventory - Excl. Transit")
             {
                 ApplicationArea = All;
                 BlankZero = true;

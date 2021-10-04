@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension TFB Location Card (ID 50101) extends Record Location Card //5703.
+/// </summary>
 pageextension 50101 "TFB Location Card" extends "Location Card" //5703
 {
     layout
@@ -47,7 +50,7 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
         }
         addafter("Outbound Whse. Handling Time")
         {
-            field("TFB Outbound Order Deadline"; "TFB Outbound Order Deadline")
+            field("TFB Outbound Order Deadline"; Rec."TFB Outbound Order Deadline")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the time after which an order lines earliest dispatch day will be extended by an additional day';

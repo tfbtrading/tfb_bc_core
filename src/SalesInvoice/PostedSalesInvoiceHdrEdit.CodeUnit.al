@@ -31,13 +31,13 @@ codeunit 50117 "TFB Pstd. Sales Inv. Hdr. Edit"
         Rec := SalesInvoiceHeader;
     end;
 
-    procedure SetScenario(Scenario: Enum "TFB Pstd. Sales Inv.-Edit Scenario")
+    procedure SetScenario(Scenario: Enum "TFB Pstd. SInv.-Edit Scen.")
 
     begin
         _Scenario := Scenario;
     end;
 
     var
-        _Scenario: Enum "TFB Pstd. Sales Inv.-Edit Scenario";
+        _Scenario: Enum "TFB Pstd. SInv.-Edit Scen.";
 
 }

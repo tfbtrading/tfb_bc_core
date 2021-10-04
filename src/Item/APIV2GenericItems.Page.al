@@ -1,3 +1,6 @@
+/// <summary>
+/// Page TFB APIV2 - Generic Items (ID 50140).
+/// </summary>
 page 50140 "TFB APIV2 - Generic Items"
 {
     APIVersion = 'v2.0';
@@ -115,7 +118,7 @@ page 50140 "TFB APIV2 - Generic Items"
                     Multiplicity = ZeroOrOne;
                     EntityName = 'picture';
                     EntitySetName = 'pictures';
-                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(2);
+                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(Item);
                 }
 
             }
@@ -167,6 +170,11 @@ page 50140 "TFB APIV2 - Generic Items"
     end;
 
 
+    /// <summary>
+    /// InsertGenericItem.
+    /// </summary>
+    /// <param name="GenericItem">VAR Record "TFB Generic Item".</param>
+    /// <param name="TempFieldSet">Temporary VAR Record "Field".</param>
     [Scope('Cloud')]
     procedure InsertGenericItem(var GenericItem: Record "TFB Generic Item"; var TempFieldSet: Record "Field" temporary)
     var

@@ -1,3 +1,6 @@
+/// <summary>
+/// Codeunit TFB Sales Mgmt (ID 50122).
+/// </summary>
 codeunit 50122 "TFB Sales Mgmt"
 {
 
@@ -30,6 +33,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// OpenExistingSalesOrder.
+    /// </summary>
+    /// <param name="DuplicateNotification">Notification.</param>
+    /// <returns>Return value of type Text.</returns>
     procedure OpenExistingSalesOrder(DuplicateNotification: Notification): Text
     var
         SalesHeader: Record "Sales Header";
@@ -167,6 +175,12 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetShippingAgentDetailsForDropShipItem.
+    /// </summary>
+    /// <param name="Item">Record Item.</param>
+    /// <param name="Customer">Record Customer.</param>
+    /// <returns>Return variable ShippingAgentServices of type Record "Shipping Agent Services".</returns>
     procedure GetShippingAgentDetailsForDropShipItem(Item: Record Item; Customer: Record Customer) ShippingAgentServices: Record "Shipping Agent Services"
 
     var
@@ -189,6 +203,12 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetShippingAgentDetailsForDropShipItem.
+    /// </summary>
+    /// <param name="Vendor">Record Vendor.</param>
+    /// <param name="Customer">Record Customer.</param>
+    /// <returns>Return variable ShippingAgentServices of type Record "Shipping Agent Services".</returns>
     procedure GetShippingAgentDetailsForDropShipItem(Vendor: Record Vendor; Customer: Record Customer) ShippingAgentServices: Record "Shipping Agent Services"
 
     var
@@ -213,6 +233,13 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
+    /// <summary>
+    /// GetShippingAgentDetailsForLocation.
+    /// </summary>
+    /// <param name="LocationCode">Code[10].</param>
+    /// <param name="ShipToCounty">text[30].</param>
+    /// <param name="ShipmentMethodCode">Code[10].</param>
+    /// <returns>Return variable ShippingAgentServices of type Record "Shipping Agent Services".</returns>
     procedure GetShippingAgentDetailsForLocation(LocationCode: Code[10]; ShipToCounty: text[30]; ShipmentMethodCode: Code[10]) ShippingAgentServices: Record "Shipping Agent Services"
 
     var
@@ -277,7 +304,12 @@ codeunit 50122 "TFB Sales Mgmt"
         Exit(not failedtest)
     end;
 
-    protected procedure GetBaseQtyForSalesLine(SalesLine: Record "Sales Line"): Decimal
+    /// <summary>
+    /// GetBaseQtyForSalesLine.
+    /// </summary>
+    /// <param name="SalesLine">Record "Sales Line".</param>
+    /// <returns>Return value of type Decimal.</returns>
+    procedure GetBaseQtyForSalesLine(SalesLine: Record "Sales Line"): Decimal
 
     var
         Item: Record Item;
@@ -316,6 +348,13 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetIntelligentLocation.
+    /// </summary>
+    /// <param name="CustomerNo">Code[20].</param>
+    /// <param name="ItemNo">Code[20].</param>
+    /// <param name="MinQty">Decimal.</param>
+    /// <returns>Return value of type Code[10].</returns>
     procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
 
     var
@@ -327,6 +366,14 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetIntelligentLocation.
+    /// </summary>
+    /// <param name="CustomerNo">Code[20].</param>
+    /// <param name="ItemNo">Code[20].</param>
+    /// <param name="MinQty">Decimal.</param>
+    /// <param name="Address">Temporary Record "Address Buffer".</param>
+    /// <returns>Return value of type Code[10].</returns>
     procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal; Address: Record "Address Buffer" temporary): Code[10]
 
     var
@@ -430,6 +477,12 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetShipmentNoForInvoiceLine.
+    /// </summary>
+    /// <param name="DocumentNo">Code[20].</param>
+    /// <param name="LineNo">Integer.</param>
+    /// <returns>Return value of type Code[20].</returns>
     procedure GetShipmentNoForInvoiceLine(DocumentNo: Code[20]; LineNo: Integer): Code[20]
 
     var
@@ -453,6 +506,11 @@ codeunit 50122 "TFB Sales Mgmt"
                         Exit(SalesShipment."No.");
     end;
 
+    /// <summary>
+    /// SendPODRequest.
+    /// </summary>
+    /// <param name="DocumentNo">Code[20].</param>
+    /// <param name="LineNo">Integer.</param>
     procedure SendPODRequest(DocumentNo: Code[20]; LineNo: Integer)
 
     var
@@ -488,6 +546,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// AdjustSalesLinePlannedDateByItemRes.
+    /// </summary>
+    /// <param name="ItemLedgerEntry">Record "Item Ledger Entry".</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AdjustSalesLinePlannedDateByItemRes(ItemLedgerEntry: Record "Item Ledger Entry"): Boolean
 
     var
@@ -568,6 +631,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    /// <summary>
+    /// GetSalesLineStatusEmoji.
+    /// </summary>
+    /// <param name="SalesLine">Record "Sales Line".</param>
+    /// <returns>Return value of type Text.</returns>
     procedure GetSalesLineStatusEmoji(SalesLine: Record "Sales Line"): Text
 
     var
@@ -632,6 +700,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
+    /// <summary>
+    /// OpenRelatedAvailabilityInfo.
+    /// </summary>
+    /// <param name="SalesLineStatus">Enum "TFB Sales Line Status".</param>
+    /// <param name="RelatedRecRef">RecordRef.</param>
     procedure OpenRelatedAvailabilityInfo(SalesLineStatus: Enum "TFB Sales Line Status"; RelatedRecRef: RecordRef)
 
     var
@@ -712,6 +785,15 @@ codeunit 50122 "TFB Sales Mgmt"
         end;
     end;
 
+    /// <summary>
+    /// GetItemSalesLineAvailability.
+    /// </summary>
+    /// <param name="SalesLine">Record "Sales Line".</param>
+    /// <param name="AvailInfo">VAR Text[512].</param>
+    /// <param name="ShipDatePlanned">VAR Date.</param>
+    /// <param name="LineStatus">VAR Enum "TFB Sales Line Status".</param>
+    /// <param name="RelatedRecRef">VAR RecordRef.</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure GetItemSalesLineAvailability(SalesLine: Record "Sales Line"; var AvailInfo: Text[512]; var ShipDatePlanned: Date; var LineStatus: Enum "TFB Sales Line Status"; var RelatedRecRef: RecordRef): Boolean
 
     var

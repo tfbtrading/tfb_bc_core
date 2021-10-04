@@ -1,3 +1,6 @@
+/// <summary>
+/// PageExtension TFB Posted Sales Invoice (ID 50191) extends Record Posted Sales Invoice.
+/// </summary>
 pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 {
     layout
@@ -125,7 +128,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         If AddPaymentNote.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
                             TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
-                            CodeUnit.SetScenario(Enum::"TFB Pstd. Sales Inv.-Edit Scenario"::PaymentNote);
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::PaymentNote);
                             CodeUnit.Run(TempSalesInvoiceHeader);
                         end
 
@@ -215,7 +218,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         If CorrectExtDocNo.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Orig. External Doc. No." := Rec."External Document No.";
                             TempSalesInvoiceHeader."External Document No." := CorrectExtDocNo.GetExternalDocNo();
-                            CodeUnit.SetScenario(Enum::"TFB Pstd. Sales Inv.-Edit Scenario"::ExternalDocumentNo);
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::ExternalDocumentNo);
                             CodeUnit.Run(TempSalesInvoiceHeader);
                         end
 

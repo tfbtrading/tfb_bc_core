@@ -1,3 +1,6 @@
+/// <summary>
+/// Page TFB APIV2 - Contact DIL (ID 50154).
+/// </summary>
 page 50154 "TFB APIV2 - Contact DIL"
 {
     APIVersion = 'v2.0';
@@ -130,7 +133,7 @@ page 50154 "TFB APIV2 - Contact DIL"
                         RegisterFieldSet(Rec.FieldNo("TFB Enable Online Access"));
                     end;
                 }
-                field(onlineIdentityId; "TFB Online Identity Id")
+                field(onlineIdentityId; Rec."TFB Online Identity Id")
                 {
                     Caption = 'Online Identity ID';
 
@@ -170,7 +173,7 @@ page 50154 "TFB APIV2 - Contact DIL"
     var
         Contact: Record Contact;
     begin
-        Contact.GetBySystemId(SystemId);
+        Contact.GetBySystemId(Rec.SystemId);
 
         if Rec."No." = Contact."No." then
             Rec.Modify(true)
@@ -227,6 +230,11 @@ page 50154 "TFB APIV2 - Contact DIL"
         TempFieldSet.Insert(true);
     end;
 
+    /// <summary>
+    /// IsEnterpriseNumber.
+    /// </summary>
+    /// <param name="EnterpriseNoFieldRef">VAR FieldRef.</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure IsEnterpriseNumber(var EnterpriseNoFieldRef: FieldRef): Boolean
     var
         ContactRecordRef: RecordRef;
