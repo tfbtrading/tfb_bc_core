@@ -65,8 +65,8 @@ codeunit 50118 "TFB Event Grid Mgmt"
         If not ContactBusinessRel.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Contact."Company No.") then exit;
         If not Customer.Get(ContactBusinessRel."No.") then exit;
 
-        data.Add('contactid', Contact.SystemId);
-        data.Add('customerid', Customer.SystemId);
+        data.Add('contactid', Text.ConvertStr(ConvertStr(Contact.SystemId, '{', ''), '}', ''));
+        data.Add('customerid', Text.ConvertStr(ConvertStr(Customer.SystemId, '{', ''), '}', ''));
         data.Add('customername', Customer.Name);
         data.Add('firstname', Contact."First Name");
         data.Add('lastname', Contact.Surname);
