@@ -83,7 +83,7 @@ tableextension 50110 "TFB Contact" extends Contact
             Caption = 'No. Of Individuals';
         }
 
-        field(50260; "TFB Enable Online Access"; Boolean)
+        field(50410; "TFB Enable Online Access"; Boolean)
         {
             Caption = 'Enable Online Access';
 
@@ -132,7 +132,7 @@ tableextension 50110 "TFB Contact" extends Contact
 
         }
 
-        field(50270; "TFB Online Identity Id"; Text[100])
+        field(50420; "TFB Online Identity Id"; Text[100])
         {
             Caption = 'Online Identity Id';
         }

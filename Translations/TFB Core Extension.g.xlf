@@ -16358,10 +16358,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue SupplierQuery - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1955433036 - EnumValue 623076767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 74869279">
+        <trans-unit id="EnumExtension 2581746800 - EnumValue 623076767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 74869279">
           <source>Certificate of Analysis</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Quality Communication Record - EnumValue COA - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Quality Comm Record - EnumValue COA - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 1092060365 - EnumValue 1930130178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Inbound Shipment - Warehouse</source>
