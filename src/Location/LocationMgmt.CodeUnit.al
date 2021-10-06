@@ -35,6 +35,7 @@ codeunit 50115 "TFB Location Mgmt"
         NewDate: Date;
         CustomCalendarChange: Array[2] of Record "Customized Calendar Change";
     begin
+        If not (SalesLine.Type = SalesLine.Type::Item) then exit; // Only intended for item lines
         Evaluate(DateFormulae, '1D');
         SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
         CustomCalendarChange[1].SetSource(Enum::"Calendar Source Type"::Location, SalesLine."Location Code", '', '');
