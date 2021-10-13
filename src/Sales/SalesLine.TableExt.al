@@ -142,6 +142,19 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             Editable = false;
         }
 
+        field(50148; "TFB Price Unit Discount"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Per Kg Discount';
+            DecimalPlaces = 2 :;
+
+            trigger OnValidate()
+
+            begin
+                UpdateLineDiscount();
+            end;
+        }
+
 
         modify("Unit of Measure Code")
         {
@@ -244,6 +257,11 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             "TFB Pre-Order Exch. Rate" := 1;
             "TFB Pre-Order Eff. Date" := Header."Order Date";
         end;
+    end;
+
+    local procedure UpdateLineDiscount()
+    begin
+        Rec.Validate(Rec."Line Discount Amount", Rec."Net Weight" * Rec.Quantity * Rec."TFB Price Unit Discount");
     end;
 
     var

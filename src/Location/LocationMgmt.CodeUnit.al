@@ -30,10 +30,10 @@ codeunit 50115 "TFB Location Mgmt"
     var
         SalesHeader: record "Sales Header";
         Location: Record Location;
+        CustomCalendarChange: Array[2] of Record "Customized Calendar Change";
         CalendarMgmt: CodeUnit "Calendar Management";
         DateFormulae: DateFormula;
         NewDate: Date;
-        CustomCalendarChange: Array[2] of Record "Customized Calendar Change";
     begin
         If not (SalesLine.Type = SalesLine.Type::Item) then exit; // Only intended for item lines
         Evaluate(DateFormulae, '1D');

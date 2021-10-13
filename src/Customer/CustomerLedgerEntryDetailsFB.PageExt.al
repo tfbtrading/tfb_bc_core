@@ -17,7 +17,7 @@ pageextension 50211 "TFB Cust. Ledger Entry Factbox" extends "Customer Ledger En
                 var
                     SalesInvoiceHeader: Record "Sales Invoice Header";
                     Customer: Record Customer;
-                    SalesInvoiceHeaderTemp: Record "Sales Invoice Header" temporary;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
                     If Rec."Document Type" = Rec."Document Type"::Invoice then begin
@@ -27,11 +27,11 @@ pageextension 50211 "TFB Cust. Ledger Entry Factbox" extends "Customer Ledger En
                         if not SalesInvoiceHeader.Closed then begin
                             Customer.Get(SalesInvoiceHeader."Sell-to Customer No.");
                             AddPaymentNote.SetupCustomerInfo(Customer, SalesInvoiceHeader."TFB Expected Payment Note", SalesInvoiceHeader."TFB Expected Payment Date", SalesInvoiceHeader."TFB Expected Note TimeStamp");
-                            SalesInvoiceHeaderTemp := SalesInvoiceHeader;
+                            TempSalesInvoiceHeader := SalesInvoiceHeader;
                             If AddPaymentNote.RunModal() = Action::OK then begin
-                                SalesInvoiceHeaderTemp."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
-                                SalesInvoiceHeaderTemp."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
-                                CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", SalesInvoiceHeaderTemp);
+                                TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
+                                TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                                CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", TempSalesInvoiceHeader);
                                 CurrPage.Update();
                             end
 

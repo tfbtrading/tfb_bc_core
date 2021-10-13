@@ -910,7 +910,6 @@ page 50210 "TFB Container Entry"
         Purchase: record "Purchase Header";
         RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
-        RecordRef: RecordRef;
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
         DocMailing: codeunit "Document-Mailing";
         mgmt: codeunit "TFB Common Library";
@@ -918,6 +917,7 @@ page 50210 "TFB Container Entry"
         TempBlobCOA: CodeUnit "Temp Blob";
         TempBlobHTML: CodeUnit "Temp Blob";
         DocumentRef: RecordRef;
+        RecordRef: RecordRef;
         InStreamCOA: Instream;
         InStreamHTML: InStream;
         InstreamReport: InStream;

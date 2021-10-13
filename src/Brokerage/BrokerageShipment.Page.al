@@ -164,6 +164,7 @@ page 50229 "TFB Brokerage Shipment"
                     ApplicationArea = All;
                     Importance = Additional;
                     MultiLine = true;
+                    ToolTip = 'Specifies the special instructions required for the brokerage shipment from the customer';
                 }
 
 

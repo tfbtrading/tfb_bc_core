@@ -188,10 +188,9 @@ table 50116 "TFB Sample Request Line"
     local procedure CopyFromItem()
     var
         Item: Record Item;
-        PrepaymentMgt: Codeunit "Prepayment Mgt.";
         IsHandled: Boolean;
     begin
-        Item := GetItem;
+        Item := GetItem();
 
         Description := Item.Description;
 

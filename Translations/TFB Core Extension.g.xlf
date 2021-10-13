@@ -3373,11 +3373,6 @@
           <note from="Developer" annotates="general" priority="2">displayName is a field name and should not be translated.</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - NamedType BlankContactNameErr</note>
         </trans-unit>
-        <trans-unit id="Page 3895589588 - NamedType 2753446044" size-unit="char" translate="yes" xml:space="preserve">
-          <source>A "displayName" must be provided.</source>
-          <note from="Developer" annotates="general" priority="2">displayName is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - NamedType NotProvidedContactNameErr</note>
-        </trans-unit>
         <trans-unit id="Page 3895589588 - Control 2321560956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Business Relation</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4102,6 +4097,11 @@
           <source>Specifies the customer phone no</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Sell-to Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4009555772 - Control 3040733782 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the special instructions required for the brokerage shipment from the customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Control Special Instructions - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 4009555772 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the vendor name</source>
@@ -13623,6 +13623,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Control TFB Price Unit Cost - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2693121768 - Control 481041314 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Specifies the discount as a per kilogram price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Control TFB Price Unit Discount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2693121768 - Control 481041314 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Per Kg Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Control TFB Price Unit Discount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3059785857 - Control 3991446410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2502332124">
           <source>Specifies price per kilogram</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15417,6 +15427,11 @@
           <source>Per Kg Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB Price Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3348931394 - Field 481041314 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Per Kg Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB Price Unit Discount - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1128468512 - Field 1784036464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2903552224">
           <source>Line Weight</source>

@@ -193,10 +193,9 @@ page 50154 "TFB APIV2 - Contact DIL"
 
     var
         TempFieldSet: Record 2000000041 temporary;
-        GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
+      
         TaxRegistrationNumber: Text[50];
-        NotProvidedContactNameErr: Label 'A "displayName" must be provided.', Comment = 'displayName is a field name and should not be translated.';
-        BlankContactNameErr: Label 'The blank "displayName" is not allowed.', Comment = 'displayName is a field name and should not be translated.';
+              BlankContactNameErr: Label 'The blank "displayName" is not allowed.', Comment = 'displayName is a field name and should not be translated.';
         BECountryCodeLbl: Label 'BE', Locked = true;
 
     local procedure SetCalculatedFields()

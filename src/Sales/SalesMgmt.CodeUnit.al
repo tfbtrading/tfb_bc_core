@@ -146,7 +146,7 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnValidateLocationCodeOnAfterSetOutboundWhseHandlingTime(var SalesLine: Record "Sales Line");
     var
         SalesHeader: record "Sales Header";
-        Location: record Location;
+
 
     begin
 
@@ -175,6 +175,31 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateLineDiscPct', '', false, false)]
+    local procedure OnAfterUpdateLineDiscPct(var SalesLine: Record "Sales Line");
+    begin
+        If SalesLine."Document Type" = Enum::"Sales Document Type"::Order then
+            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
+                SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
+            else
+                SalesLine."TFB Price Unit Discount" := 0;
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateLineDiscountPercentOnBeforeUpdateAmounts', '', false, false)]
+    local procedure OnValidateLineDiscountPercentOnBeforeUpdateAmounts(var SalesLine: Record "Sales Line"; CurrFieldNo: Integer);
+
+    begin
+
+        If SalesLine."Document Type" = Enum::"Sales Document Type"::Order then
+            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
+                SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
+            else
+                SalesLine."TFB Price Unit Discount" := 0;
+    end;
+
+
+
     /// <summary>
     /// GetShippingAgentDetailsForDropShipItem.
     /// </summary>
@@ -185,8 +210,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
     var
         Vendor: Record Vendor;
-        ItemCU: Codeunit "TFB Item Mgmt";
         ShippingAgent: Record "Shipping Agent";
+        ItemCU: Codeunit "TFB Item Mgmt";
         PostCodeZone: Record "TFB Postcode Zone";
 
 
@@ -412,7 +437,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
-                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
+                        Location.SetLoadFields("TFB Enabled", Code);
+                        Location.Get(ItemLedgerEntry."Location Code");
+                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (Location."TFB Enabled") and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
                             LocationCode2 := ItemLedgerEntry."Location Code";
                             IsHandled := true;
                         end;

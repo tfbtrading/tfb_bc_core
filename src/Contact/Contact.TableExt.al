@@ -90,7 +90,7 @@ tableextension 50110 "TFB Contact" extends Contact
             trigger OnValidate()
 
             var
-                Contact: Record Contact;
+
                 MarketingSetup: Record "Marketing Setup";
                 EventGridMgmt: CodeUnit "TFB Event Grid Mgmt";
             begin

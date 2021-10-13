@@ -396,8 +396,7 @@ page 50142 "TFB Sample Request"
                 trigger OnAction()
                 var
                     ReportSelection: Record "Report Selections";
-                    ReportUsage: Enum "Report Selection Usage";
-                    SampleRequestMgmt: codeunit "TFB Sample Request Mgmt";
+
                 begin
 
                     Rec.SetRecFilter();
@@ -406,7 +405,7 @@ page 50142 "TFB Sample Request"
                     ReportSelection.SetRange("Use for Email Attachment", true);
                     If ReportSelection.findfirst() then begin
 
-                        
+
 
                     end;
 
@@ -438,7 +437,7 @@ page 50142 "TFB Sample Request"
 
     local procedure SetDocNoVisible()
     var
-        DocumentNoVisibility: Codeunit DocumentNoVisibility;
+   
 
     begin
         DocNoVisible := false;

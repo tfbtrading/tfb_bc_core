@@ -162,7 +162,7 @@ table 50115 "TFB Sample Request"
 
 
         }
-        field(80; "Sell-to Customer Name 2"; Text[50])
+        field(80; "Sell-to Customer Name 2"; Text[90])
         {
             Caption = 'Customer Name 2';
         }
@@ -178,7 +178,7 @@ table 50115 "TFB Sample Request"
 
 
         }
-        field(83; "City"; Text[30])
+        field(83; "City"; Text[50])
         {
             Caption = 'Ship-to City';
             TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code".City
@@ -240,14 +240,14 @@ table 50115 "TFB Sample Request"
             begin
 
                 PostCodeCheck.ValidatePostCode(
-                  CurrFieldNo, DATABASE::"Sales Header", GetPosition, 3,
+                  CurrFieldNo, DATABASE::"Sales Header", GetPosition(), 3,
                   Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
                   Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
 
 
             end;
         }
-        field(89; "County"; Text[30])
+        field(89; "County"; Text[50])
         {
             CaptionClass = '5,1,' + "Country/Region Code";
             Caption = 'Sell-to County';
@@ -529,38 +529,10 @@ table 50115 "TFB Sample Request"
         end;
     end;
 
-    local procedure UpdateSellToCustContact(Customer: Record Customer; Cont: Record Contact)
-    var
-        IsHandled: Boolean;
-    begin
-        IsHandled := false;
-
-        if IsHandled then
-            exit;
-
-        if (Cont.Type = Cont.Type::Company) and Customer.Get("Sell-to Customer No.") then
-            "Sell-to Contact" := Customer.Contact
-        else
-            if Cont.Type = Cont.Type::Company then
-                "Sell-to Contact" := ''
-            else
-                "Sell-to Contact" := Cont.Name;
-    end;
+    
 
 
 
-    local procedure CheckCustomerContactRelation(Cont: Record Contact; CustomerNo: Code[20]; ContBusinessRelationNo: Code[20])
-    var
-        IsHandled: Boolean;
-    begin
-        IsHandled := false;
-
-        if IsHandled then
-            exit;
-
-        if (CustomerNo <> '') and (CustomerNo <> ContBusinessRelationNo) then
-            Error(NoRelationMsg, Cont."No.", Cont.Name, CustomerNo);
-    end;
 
     procedure ShouldSearchForCustomerByName(CustomerNo: Code[20]) Result: Boolean
     var

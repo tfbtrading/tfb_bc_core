@@ -45,9 +45,8 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 trigger OnDrillDown()
 
                 var
-                    SPLD: Page "Sales Price and Line Discounts";
-                    PriceListLineReview: Page "Price List Line Review";
                     PriceListLine: Record "Price List Line";
+                    PriceListLineReview: Page "Price List Line Review";
 
                 begin
                     PriceListLine.SetRange("Asset No.", Rec."No.");

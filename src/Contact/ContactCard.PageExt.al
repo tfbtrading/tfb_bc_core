@@ -159,6 +159,7 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 ApplicationArea = All;
                 Image = UpdateDescription;
                 Caption = 'Check Online Access Status';
+                ToolTip = 'Checks whether the contact has been activated in the online system';
                 trigger OnAction()
 
                 var

@@ -43,7 +43,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
     local procedure CreateBody(Contact: Record Contact; EventType: Enum "TFB Event Grid Event Types") message: JsonArray
     var
-        RecRef: RecordRef;
+   
         body: JsonObject;
     begin
 
@@ -81,7 +81,6 @@ codeunit 50118 "TFB Event Grid Mgmt"
         ReportSelections: Record "Report Selections";
         Base64Convert: Codeunit "Base64 Convert";
         TempBlob: Codeunit "Temp Blob";
-        FileManagement: Codeunit "File Management";
         Instr: InStream;
         RecVar: Variant;
         CustomerNo: Code[20];

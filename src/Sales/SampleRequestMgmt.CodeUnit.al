@@ -25,7 +25,6 @@ codeunit 50114 "TFB Sample Request Mgmt"
         CommonCU: CodeUnit "TFB Common Library";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
-        EmailAction: Enum "Email Action";
         EmailScenEnum: Enum "Email Scenario";
         BCCRecipients: List of [Text];
         CCRecipients: List of [Text];

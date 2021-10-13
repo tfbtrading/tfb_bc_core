@@ -212,7 +212,6 @@ page 50132 "TFB Generic Item"
 
     var
         CommonCU: CodeUnit "TFB Common Library";
-        FullDescription: Text;
         MarketSegment: Text[255];
         ShowExternalIDs: Boolean;
 
@@ -232,26 +231,7 @@ page 50132 "TFB Generic Item"
             Rec.Type := Rec.Type::ItemParent;
 
     end;
-
-    local procedure SetFullDescription(NewFullDescription: Text)
-    var
-        OutStream: OutStream;
-    begin
-        Clear(Rec."Full Description");
-        Rec."Full Description".CreateOutStream(OutStream, TEXTENCODING::UTF8);
-        OutStream.WriteText(NewFullDescription);
-        Rec.Modify(false);
-    end;
-
-    local procedure GetFullDescription(): Text
-    var
-        TypeHelper: Codeunit "Type Helper";
-        InStream: InStream;
-    begin
-        Rec.CalcFields("Full Description");
-        Rec."Full Description".CreateInStream(InStream, TEXTENCODING::UTF8);
-        exit(TypeHelper.ReadAsTextWithSeparator(InStream, TypeHelper.LFSeparator()));
-    end;
+    
 
     local procedure ValidateNewSegment(Title: Text[255])
 

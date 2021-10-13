@@ -82,8 +82,8 @@ codeunit 50304 "TFB Costing Mgmt"
 
     var
         SalesSetup: Record "Sales & Receivables Setup";
-        PCE: CodeUnit "TFB Pricing Calculations";
         PriceListLine: Record "Price List Line";
+        PCE: CodeUnit "TFB Pricing Calculations";
 
     begin
 
@@ -768,7 +768,6 @@ codeunit 50304 "TFB Costing Mgmt"
         Item: Record Item;
         PostCodeZone: Record "TFB Postcode Zone";
         PriceLine: Record "Price List Line";
-        PriceLineNew: Record "Price List Line";
         CostingSetup: Record "TFB Costings Setup";
         PriceAsset: Record "Price Asset";
         DateFormula: DateFormula;
