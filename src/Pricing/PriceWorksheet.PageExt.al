@@ -21,9 +21,9 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
 
                 trigger OnAction()
                 var
-                    CostingCU: Codeunit "TFB Costing Mgmt";
-                    TFBPriceListManagement: CodeUnit "TFB Price List Management";
+                  
                     TempWorkSheetPriceListHeader: Record "Price List Header" temporary;
+                    TFBPriceListManagement: CodeUnit "TFB Price List Management";
                 begin
 
                     TFBPriceListManagement.AddLines(TempWorksheetPriceListHeader);

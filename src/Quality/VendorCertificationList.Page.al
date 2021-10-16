@@ -317,15 +317,7 @@ page 50107 "TFB Vendor Certification List"
     end;
 
 
-    local procedure GetExpiryDays(): Integer
-
-    begin
-        If Rec.Archived then
-            Exit(0)
-        else
-            QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-    end;
-
+ 
     local procedure ToggleArchiveStatus()
 
     var

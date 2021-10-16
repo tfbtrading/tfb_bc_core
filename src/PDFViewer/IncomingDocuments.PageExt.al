@@ -26,7 +26,7 @@ pageextension 50172 "TFB Incoming Documents" extends "Incoming Documents"
     var
 
         IncomingDocumentAttachment: Record "Incoming Document Attachment";
-        TempBlobCodeUnit: CodeUnit "Temp Blob";
+  
     begin
         if not Rec.GetMainAttachment(IncomingDocumentAttachment) then
             exit;

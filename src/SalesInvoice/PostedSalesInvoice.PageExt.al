@@ -117,8 +117,8 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 var
                     TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     Customer: Record Customer;
-                    AddPaymentNote: Page "TFB Payment Note";
                     CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
+                    AddPaymentNote: Page "TFB Payment Note";
                 begin
 
                     if not Rec.Closed then begin

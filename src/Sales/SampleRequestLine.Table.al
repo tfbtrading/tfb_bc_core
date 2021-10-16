@@ -168,8 +168,7 @@ table 50116 "TFB Sample Request Line"
     }
 
     var
-        SalesHeader: Record "Sales Header";
-        SampleSize: Record "TFB Sample Request Size";
+    
 
         NotValidLocationMsg: Label 'Location is not valid unless sourced from warehouse';
 
@@ -185,16 +184,7 @@ table 50116 "TFB Sample Request Line"
 
     end;
 
-    local procedure CopyFromItem()
-    var
-        Item: Record Item;
-        IsHandled: Boolean;
-    begin
-        Item := GetItem();
-
-        Description := Item.Description;
-
-    end;
+   
 
     protected procedure GetItemBaseUnitOfMeasure(): Record "Item Unit of Measure"
 
@@ -204,7 +194,7 @@ table 50116 "TFB Sample Request Line"
     begin
 
         ItemUnitOfMeasure.SetRange("Item No.", Rec."No.");
-        ItemUnitOfMeasure.SetRange(Code, GetItem."Base Unit of Measure");
+        ItemUnitOfMeasure.SetRange(Code, GetItem()."Base Unit of Measure");
         ItemUnitOfMeasure.FindFirst();
         Exit(ItemUnitOfMeasure);
 

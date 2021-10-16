@@ -50,6 +50,6 @@ tableextension 50128 "TFB Shipping Agent Services" extends "Shipping Agent Servi
     end;
 
     var
-        Text000Err: Label 'The %1 cannot be negative.';
+        Text000Err: Label 'The %1 cannot be negative.', Comment = '%1 = Value';
         Text001Err: Label 'Max shipping time cannot be less than min.';
 }

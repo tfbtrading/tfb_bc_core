@@ -24,6 +24,5 @@ pageextension 50214 "TFB Posted Purchase Invoices" extends "Posted Purchase Invo
         Rec.CalcFields("Remaining Amount");
     end;
 
-    var
-        myInt: Integer;
+
 }

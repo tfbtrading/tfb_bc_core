@@ -18,15 +18,16 @@ codeunit 50114 "TFB Sample Request Mgmt"
         Customer: Record Customer;
         User: Record User;
         Item: Record Item;
-        DocumentRef: RecordRef;
-        OutStream: OutStream;
-        InStream: InStream;
         TempBlob: Codeunit "Temp Blob";
         CommonCU: CodeUnit "TFB Common Library";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
+        DocumentRef: RecordRef;
+        OutStream: OutStream;
+        InStream: InStream;
+
         EmailScenEnum: Enum "Email Scenario";
-        BCCRecipients: List of [Text];
+
         CCRecipients: List of [Text];
         ContactName: Text;
         CustomerName: Text;

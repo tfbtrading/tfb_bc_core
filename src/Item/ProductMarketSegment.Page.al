@@ -24,7 +24,7 @@ page 50136 "TFB Product Market Segment"
                     field("External ID"; Rec."External ID")
                     {
                         ApplicationArea = All;
-                        Visible = true;
+                        Visible = ShowExternalIDs;
                         Importance = Standard;
                         ToolTip = 'Specifies the value of the external ID field';
                     }

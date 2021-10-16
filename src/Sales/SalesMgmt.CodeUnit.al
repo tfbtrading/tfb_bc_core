@@ -210,9 +210,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
     var
         Vendor: Record Vendor;
+        PostCodeZone: Record "TFB Postcode Zone";
         ShippingAgent: Record "Shipping Agent";
         ItemCU: Codeunit "TFB Item Mgmt";
-        PostCodeZone: Record "TFB Postcode Zone";
 
 
     begin
@@ -238,9 +238,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
     var
 
-        ItemCU: Codeunit "TFB Item Mgmt";
         ShippingAgent: Record "Shipping Agent";
         PostCodeZone: Record "TFB Postcode Zone";
+        ItemCU: Codeunit "TFB Item Mgmt";
 
 
     begin

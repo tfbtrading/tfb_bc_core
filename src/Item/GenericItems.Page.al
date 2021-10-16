@@ -90,6 +90,7 @@ page 50133 "TFB Generic Items"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
+                PromotedOnly = true;
                 Enabled = true;
                 ToolTip = 'Add additional market segments to the generic item';
 

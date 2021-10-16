@@ -142,6 +142,6 @@ tableextension 50118 "TFB Vendor" extends Vendor
     }
 
     var
-        Text000Err: Label 'The %1 cannot be negative.';
+        Text000Err: Label 'The %1 cannot be negative.', Comment = '%1 = value';
 
 }
