@@ -175,7 +175,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             }
         }
 
-        addbefore(PriceAndLineDisc)
+        addbefore(Statistics)
         {
             part(CustProfile; "Contact Card Subform")
             {
