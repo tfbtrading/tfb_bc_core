@@ -178,7 +178,7 @@ codeunit 50122 "TFB Sales Mgmt"
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateLineDiscPct', '', false, false)]
     local procedure OnAfterUpdateLineDiscPct(var SalesLine: Record "Sales Line");
     begin
-        If SalesLine."Document Type" = Enum::"Sales Document Type"::Order then
+        If (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
             If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
                 SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
             else
@@ -191,7 +191,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If SalesLine."Document Type" = Enum::"Sales Document Type"::Order then
+        If (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
             If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
                 SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
             else
