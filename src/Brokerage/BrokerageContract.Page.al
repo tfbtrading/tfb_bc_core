@@ -46,6 +46,28 @@ page 50240 "TFB Brokerage Contract"
                     Importance = Promoted;
                     ToolTip = 'Specifies customer name';
                 }
+
+                field("Sell-to Contact No."; Rec."Sell-to Contact No.")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Contact No.';
+                    Importance = Additional;
+                    ToolTip = 'Specifies the number of the contact person that the sales document will be sent to.';
+
+                    trigger OnValidate()
+                    begin
+                        if Rec.GetFilter("Sell-to Contact No.") = xRec."Sell-to Contact No." then
+                            if Rec."Sell-to Contact No." <> xRec."Sell-to Contact No." then
+                                Rec.SetRange("Sell-to Contact No.");
+                    end;
+                }
+                field("Sell-to Contact"; Rec."Sell-to Contact")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Contact';
+                    Editable = Rec."Customer No." <> '';
+                    ToolTip = 'Specifies the name of the person to contact at the customer.';
+                }
                 field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;

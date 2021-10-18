@@ -28,6 +28,11 @@
           <note from="Developer" annotates="general" priority="2">%1 = Name, %2 = Company , %3 = Vendor</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType Text038Msg</note>
         </trans-unit>
+        <trans-unit id="Table 111198966 - Method 1260276643 - NamedType 342054122" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact %1 %2 is related to a different company than customer %3.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Method CheckContactRelatedToCustomerCompany - NamedType Text038</note>
+        </trans-unit>
         <trans-unit id="Table 111198966 - Field 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy-from Contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -122,6 +127,16 @@
           <source>Percentage %</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Percentage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 1006519668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Sell-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 111198966 - Field 3128777977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Field Sell-to Contact No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 111198966 - Field 2861582008 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipment Status Filter</source>
@@ -3702,6 +3717,26 @@
           <source>Specifies percentage commission for contract</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Percentage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1006519668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the person to contact at the customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Sell-to Contact - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 1006519668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Sell-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3128777977 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the contact person that the sales document will be sent to.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Sell-to Contact No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 111198966 - Control 3128777977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Contract - Control Sell-to Contact No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 111198966 - Control 3119838595 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies est. freight per metric tonne</source>
@@ -13797,6 +13832,16 @@
           <source>Specifies the per kg item cost</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Control TFB Price Unit Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 23283996 - Control 481041314 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Specifies the discount as a per kilogram price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Control TFB Price Unit Discount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 23283996 - Control 481041314 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Per Kg Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Control TFB Price Unit Discount - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 23283996 - Control 3053736879 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Specifies the item net weight</source>

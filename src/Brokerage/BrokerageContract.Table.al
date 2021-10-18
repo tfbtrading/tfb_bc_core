@@ -177,6 +177,93 @@ table 50219 "TFB Brokerage Contract"
 
         }
 
+        field(18; "Sell-to Contact"; Text[100])
+        {
+            Caption = 'Sell-to Contact';
+
+            trigger OnLookup()
+            var
+                Contact: Record Contact;
+            begin
+
+
+                Contact.FilterGroup(2);
+                LookupContact("Customer No.", "Sell-to Contact No.", Contact);
+                if PAGE.RunModal(0, Contact) = ACTION::LookupOK then
+                    Validate("Sell-to Contact No.", Contact."No.");
+                Contact.FilterGroup(0);
+            end;
+
+            trigger OnValidate()
+            begin
+                if "Sell-to Contact" = '' then
+                    Validate("Sell-to Contact No.", '');
+
+            end;
+        }
+
+        field(19; "Sell-to Contact No."; Code[20])
+        {
+            Caption = 'Sell-to Contact No.';
+            TableRelation = Contact;
+
+            trigger OnLookup()
+            var
+                Cont: Record Contact;
+                ContBusinessRelation: Record "Contact Business Relation";
+                IsHandled: Boolean;
+            begin
+                IsHandled := false;
+
+                if IsHandled then
+                    exit;
+
+                if "Customer No." <> '' then
+                    if Cont.Get("Sell-to Contact No.") then
+                        Cont.SetRange("Company No.", Cont."Company No.")
+                    else
+                        if ContBusinessRelation.FindByRelation(ContBusinessRelation."Link to Table"::Customer, "Customer No.") then
+                            Cont.SetRange("Company No.", ContBusinessRelation."Contact No.")
+                        else
+                            Cont.SetRange("No.", '');
+
+                if "Sell-to Contact No." <> '' then
+                    if Cont.Get("Sell-to Contact No.") then;
+                if PAGE.RunModal(0, Cont) = ACTION::LookupOK then begin
+                    xRec := Rec;
+                    Validate("Sell-to Contact No.", Cont."No.");
+                end;
+            end;
+
+            trigger OnValidate()
+            var
+                Cont: Record Contact;
+                Opportunity: Record Opportunity;
+                IsHandled: Boolean;
+            begin
+
+
+
+
+                if ("Sell-to Contact No." <> xRec."Sell-to Contact No.") and (xRec."Sell-to Contact No." <> '')
+                then begin
+
+                    Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Sell-to Contact No."));
+                    if Confirmed then
+                        exit
+                    else begin
+                        Rec := xRec;
+                        exit;
+                    end;
+                end;
+
+                if ("Customer No." <> '') and ("Sell-to Contact No." <> '') then
+                    CheckContactRelatedToCustomerCompany("Sell-to Contact No.", "Customer No.", CurrFieldNo);
+
+
+
+            end;
+        }
         field(6; "External Reference No."; Text[100])
         {
             DataClassification = CustomerContent;
@@ -377,6 +464,28 @@ table 50219 "TFB Brokerage Contract"
     /// <summary> 
     /// Trigger an update of the brokerage contract lines shown
     /// </summary>
+    /// 
+    /// 
+
+    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; CurrFieldNo: Integer);
+    var
+        Contact: Record Contact;
+        ContBusRel: Record "Contact Business Relation";
+        IsHandled: Boolean;
+        Text038: Label 'Contact %1 %2 is related to a different company than customer %3.';
+
+    begin
+        IsHandled := false;
+
+        if IsHandled then
+            exit;
+
+        Contact.Get(ContactNo);
+        if ContBusRel.FindByRelation(ContBusRel."Link to Table"::Customer, CustomerNo) then
+            if (ContBusRel."Contact No." <> Contact."Company No.") and (ContBusRel."Contact No." <> Contact."No.") then
+                Error(Text038, Contact."No.", Contact.Name, CustomerNo);
+    end;
+
     local procedure UpdateContractLines()
 
     var

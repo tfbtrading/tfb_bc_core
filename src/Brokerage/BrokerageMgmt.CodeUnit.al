@@ -43,6 +43,8 @@ codeunit 50242 "TFB Brokerage Mgmt"
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Shipment: Record "TFB Brokerage Shipment";
+        Contract: Record "TFB Brokerage Contract";
+        Contact: Record Contact;
 
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
@@ -60,18 +62,18 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         CompanyInfo.Get();
 
-        If not Shipment.Get(RefNo) then
-            exit(false);
+        If not Shipment.Get(RefNo) then exit(false);
 
-        If not Customer.Get(Shipment."Customer No.") then
-            exit(false);
+        If not Contract.Get(Shipment."Container No.") then exit(false);
 
-        If Customer."E-Mail" = '' then
-            exit(false);
+        If not Customer.Get(Shipment."Customer No.") then exit(false);
+
+        If Contact.Get(Contract."Sell-to Contact No.") and (Contact."E-Mail" <> '') then
+            EmailID := Contact."E-Mail"
+        else
+            Customer."E-Mail" := '';
 
 
-
-        EmailID := Customer."E-Mail";
         If Shipment."Customer Reference" <> '' then
             ShipmentRef := Shipment."Customer Reference"
         else
