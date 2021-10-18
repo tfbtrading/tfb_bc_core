@@ -192,6 +192,7 @@ table 50115 "TFB Sample Request"
             begin
 
                 PostCode.LookupPostCode("City", "Post Code", "County", "Country/Region Code");
+
             end;
 
             trigger OnValidate()
@@ -386,13 +387,13 @@ table 50115 "TFB Sample Request"
         HideValidationDialog: Boolean;
         ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
         ConfirmEmptyEmailQst: Label 'Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?', Comment = '%1 - Contact No., %2 - Email';
-        NoBlankDueToOpportunity: Label 'The %1 field cannot be blank because this quote is linked to an opportunity.';
-        NoChangeOpportunityMsg: Label 'You cannot change %1 because the corresponding %2 %3 has been assigned';
-        NoRelationMsg: Label 'Contact %1 %2 is not related to customer %3.';
-        NoResetMsg: Label 'You cannot reset %1 because the document still has one or more lines.';
+        NoBlankDueToOpportunityErr: Label 'The %1 field cannot be blank because this quote is linked to an opportunity.', Comment = '%1 - field name';
+        NoChangeOpportunityMsg: Label 'You cannot change %1 because the corresponding %2 %3 has been assigned', Comment = '%1 - opportunity, %2 = Contant, %3 = Other Contact';
+        NoRelationMsg: Label 'Contact %1 %2 is not related to customer %3.', Comment = '%1 - No, %2 - Name, %3 - Customer Name';
+        NoResetMsg: Label 'You cannot reset %1 because the document still has one or more lines.', Comment = '%1 -  Document No';
         ReadingDataSkippedMsg: Label 'Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.', Comment = '%1=field caption';
         SellToCustomerTxt: Label 'Sell-to Customer';
-        Text051: Label 'The sales %1 %2 already exists.';
+        Text051Err: Label 'The sales %1 %2 already exists.', Comment = '%1 = No, %2 - Description';
 
 
 
@@ -414,10 +415,10 @@ table 50115 "TFB Sample Request"
         TFBSampleRequest.Copy(Rec);
         GetSalesSetup();
         TestNoSeries();
-        if NoSeriesMgt.SelectSeries(GetNoSeriesCode, OldSampleRequest."No. Series", "No. Series") then begin
+        if NoSeriesMgt.SelectSeries(GetNoSeriesCode(), OldSampleRequest."No. Series", "No. Series") then begin
             NoSeriesMgt.SetSeries("No.");
             if SampleRequest2.Get("No.") then
-                Error(Text051, "No.");
+                Error(Text051Err, "No.", "Work Description");
             Rec := TFBSampleRequest;
             exit(true);
         end;
@@ -529,7 +530,7 @@ table 50115 "TFB Sample Request"
         end;
     end;
 
-    
+
 
 
 
@@ -596,14 +597,14 @@ table 50115 "TFB Sample Request"
     var
         EnvInfoProxy: Codeunit "Env. Info Proxy";
     begin
-        exit(HideValidationDialog or EnvInfoProxy.IsInvoicing);
+        exit(HideValidationDialog or EnvInfoProxy.IsInvoicing());
     end;
 
     local procedure GetPostingNoSeriesCode() PostingNos: Code[20]
     var
         IsHandled: Boolean;
     begin
-        GetSalesSetup;
+        GetSalesSetup();
 
         PostingNos := SalesSetup."TFB Posted Sample Request Nos.";
 
@@ -611,10 +612,10 @@ table 50115 "TFB Sample Request"
 
     procedure TestNoSeries()
     var
-        IsHandled: Boolean;
+
     begin
-        GetSalesSetup;
-        IsHandled := false;
+        GetSalesSetup();
+
         SalesSetup.TestField("TFB Sample Request Nos.");
         SalesSetup.TestField("TFB Posted Sample Request Nos.");
 
@@ -643,10 +644,10 @@ table 50115 "TFB Sample Request"
     procedure InitRecord()
     var
         ArchiveManagement: Codeunit ArchiveManagement;
-        IsHandled: Boolean;
+
     begin
-        GetSalesSetup;
-        IsHandled := false;
+        GetSalesSetup();
+
 
 
         NoSeriesMgt.SetDefaultSeries("Posting No. Series", SalesSetup."Posted Invoice Nos.");
@@ -666,7 +667,7 @@ table 50115 "TFB Sample Request"
         IsHandled: Boolean;
         NoSeriesCode: Code[20];
     begin
-        GetSalesSetup;
+        GetSalesSetup();
         NoSeriesCode := SalesSetup."TFB Sample Request Nos.";
 
         exit(NoSeriesMgt.GetNoSeriesWithCheck(NoSeriesCode, SelectNoSeriesAllowed, "No. Series"));

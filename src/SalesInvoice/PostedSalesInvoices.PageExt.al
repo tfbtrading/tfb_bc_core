@@ -28,19 +28,19 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 trigger OnDrillDown()
 
                 var
-                    SalesInvoiceHeader: Record "Sales Invoice Header" temporary;
-                    AddPaymentNote: Page "TFB Payment Note";
                     Customer: Record Customer;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    AddPaymentNote: Page "TFB Payment Note";
                 begin
 
                     if not Rec.Closed then begin
                         Customer.Get(Rec."Sell-to Customer No.");
                         AddPaymentNote.SetupCustomerInfo(Customer, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
-                        SalesInvoiceHeader := Rec;
+                        TempSalesInvoiceHeader := Rec;
                         If AddPaymentNote.RunModal() = Action::OK then begin
-                            SalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
-                            SalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
-                            CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", SalesInvoiceHeader);
+                            TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
+                            TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", TempSalesInvoiceHeader);
                         end
 
                     end

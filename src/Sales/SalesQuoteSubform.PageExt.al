@@ -28,6 +28,16 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
                 BlankNumbers = BlankZero;
                 ToolTip = 'Specifies the per kg item cost';
             }
+
+            field("TFB Price Unit Discount"; Rec."TFB Price Unit Discount")
+            {
+                ApplicationArea = All;
+                BlankNumbers = BlankZero;
+                Editable = Rec."TFB Price Unit Cost" > 0;
+                Caption = 'Per Kg Discount';
+                ToolTip = 'Specifies the discount as a per kilogram price';
+
+            }
         }
 
 

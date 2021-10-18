@@ -93,9 +93,9 @@ page 50152 "TFB Correct Ext. Doc. No."
 
     var
         _Customer: Record Customer;
-        _ExternalDocNo: Text[512];
+        _ExternalDocNo: Code[35];
         _PreviousValues: Text;
-        _DocumentNo: Text;
+    
 
 
 }

@@ -22,12 +22,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
         addafter("Company Name")
         {
-            field("Job Title"; Rec."Job Title")
-            {
-                ApplicationArea = all;
-                Editable = true;
-                Tooltip = 'Specifies job title';
-            }
+          
             field("TFB Is Customer"; Rec."TFB Is Customer")
             {
                 ApplicationArea = All;

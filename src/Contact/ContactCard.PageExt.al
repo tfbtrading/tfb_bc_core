@@ -28,15 +28,7 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
             }
         }
         // Add changes to page layout here
-        addafter("Organizational Level Code")
-        {
-            field("Job Title"; Rec."Job Title")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies job title for contact';
-                Visible = Rec.Type = Rec.Type::Person;
-            }
-        }
+
         modify("Parental Consent Received")
         {
             Visible = false;

@@ -2523,24 +2523,24 @@
           <note from="Developer" annotates="general" priority="2">%1 - Contact No., %2 - Email</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ConfirmEmptyEmailQst</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 4149038727" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 3380206577 - NamedType 3650704788" size-unit="char" translate="yes" xml:space="preserve">
           <source>The %1 field cannot be blank because this quote is linked to an opportunity.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoBlankDueToOpportunity</note>
+          <note from="Developer" annotates="general" priority="2">%1 - field name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoBlankDueToOpportunityErr</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 4223605721" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot change %1 because the corresponding %2 %3 has been assigned</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 - opportunity, %2 = Contant, %3 = Other Contact</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoChangeOpportunityMsg</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 3714817322" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contact %1 %2 is not related to customer %3.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 - No, %2 - Name, %3 - Customer Name</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoRelationMsg</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 3516335711" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot reset %1 because the document still has one or more lines.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 -  Document No</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoResetMsg</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 261951165" size-unit="char" translate="yes" xml:space="preserve">
@@ -2553,10 +2553,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType SellToCustomerTxt</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 4269661899" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 3380206577 - NamedType 1872924336" size-unit="char" translate="yes" xml:space="preserve">
           <source>The sales %1 %2 already exists.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType Text051</note>
+          <note from="Developer" annotates="general" priority="2">%1 = No, %2 - Description</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType Text051Err</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - Field 3168444338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ship-to Address</source>
@@ -6948,11 +6948,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType ExtFilterTxt</note>
         </trans-unit>
-        <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Choose an image to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Market Segment Picture - Method ImportItemPicture - NamedType FileDialogTxt</note>
-        </trans-unit>
         <trans-unit id="Page 1042251773 - Method 1439528424 - NamedType 1079131591" size-unit="char" translate="yes" xml:space="preserve">
           <source>The existing picture will be overwritten, do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10198,20 +10193,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 184115528 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Invoice Amount Paid field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Amount - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 184115528 - Control 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Amount Paid</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 2063440005 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Paid from field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control PaymentDetail - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 184115528 - Control 2063440005 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Paid from</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control PaymentDetail - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 184115528 - Control 3710982960 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Paid On field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Posting Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 184115528 - Control 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Paid On</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control Posting Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 184115528 - Control 67363760 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Total in Payment field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vend. Applied Entries FB - Control TotalPaymentAmount - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 184115528 - Control 67363760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total in Payment</source>
@@ -10888,6 +10903,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Control BankList - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 4187634575 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Checks whether the contact has been activated in the online system</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action CheckOnlineStatus - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Action 4187634575 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Check Online Access Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10902,11 +10922,6 @@
           <source>Specifies if a contact has direct online access to information for their related customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Enable Online Access - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies the contact status</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Contact Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1501079646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Contacts</source>
@@ -10938,10 +10953,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Linkedin Page - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 602795601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies job title for contact</source>
+        <trans-unit id="PageExtension 1516405160 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the contact status</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control Job Title - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Contact Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3856507940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 862853572">
           <source>Contact Details</source>
@@ -10992,11 +11007,6 @@
           <source></source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control ToDoExists - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 3190613190 - Control 602795601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
-          <source>Specifies job title</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control Job Title - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3190613190 - Control 657836278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Specifies last date attempted to reach contact</source>
@@ -12012,6 +12022,21 @@
           <source>Specifies if location is a warehouse for handling imports</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Quarantine Location - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4123425417 - Control 1541011875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 105083977">
+          <source>Specifies the e-mail for contacting the location for any warehouse logistics purposes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location List - Control E-Mail - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4123425417 - Control 2516243223 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 105083977">
+          <source>Specifies if the location is enabled for use in inventory</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location List - Control TFB Enabled - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4123425417 - Control 783415655 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 105083977">
+          <source>Specifies what type of location it is. Used to indicate special purposes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location List - Control TFB Location Type - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1692614020 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4038454596">
           <source>CoA,Process</source>
@@ -15555,7 +15580,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 805079367 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 805079367">
           <source>The %1 cannot be negative.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 = Value</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Shipping Agent Services - NamedType Text000Err</note>
         </trans-unit>
         <trans-unit id="TableExtension 805079367 - NamedType 2316870939" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 805079367">
@@ -15695,7 +15720,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 3225036808 - NamedType 4204058380" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 3225036808">
           <source>The %1 cannot be negative.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 = value</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - NamedType Text000Err</note>
         </trans-unit>
         <trans-unit id="TableExtension 3225036808 - Field 2595876784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">

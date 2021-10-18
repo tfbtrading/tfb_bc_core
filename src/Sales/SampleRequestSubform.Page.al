@@ -150,7 +150,7 @@ page 50143 "TFB Sample Request Subform"
 
     var
 
-        ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
         Item: Record Item;
-        SampleRequestSize: Record "TFB Sample Request Size";
+        ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
+    
 }
