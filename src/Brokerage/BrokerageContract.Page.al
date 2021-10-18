@@ -51,6 +51,7 @@ page 50240 "TFB Brokerage Contract"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Contact No.';
+                    Editable = Rec."Customer No." <> '';
                     Importance = Additional;
                     ToolTip = 'Specifies the number of the contact person that the sales document will be sent to.';
 

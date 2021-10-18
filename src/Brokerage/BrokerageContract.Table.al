@@ -420,11 +420,11 @@ table 50219 "TFB Brokerage Contract"
         }
     }
 
-    local procedure LookupContact(VendorNo: Code[20]; ContactNo: Code[20]; var Contact: Record Contact)
+    local procedure LookupContact(CustomerNo: Code[20]; ContactNo: Code[20]; var Contact: Record Contact)
     var
         ContactBusinessRelation: Record "Contact Business Relation";
     begin
-        if ContactBusinessRelation.FindByRelation(ContactBusinessRelation."Link to Table"::Vendor, VendorNo) then
+        if ContactBusinessRelation.FindByRelation(ContactBusinessRelation."Link to Table"::Customer, CustomerNo) then
             Contact.SetRange("Company No.", ContactBusinessRelation."Contact No.")
         else
             Contact.SetRange("Company No.", '');
