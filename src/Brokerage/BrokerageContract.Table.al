@@ -211,12 +211,9 @@ table 50219 "TFB Brokerage Contract"
             var
                 Cont: Record Contact;
                 ContBusinessRelation: Record "Contact Business Relation";
-                IsHandled: Boolean;
-            begin
-                IsHandled := false;
 
-                if IsHandled then
-                    exit;
+            begin
+
 
                 if "Customer No." <> '' then
                     if Cont.Get("Sell-to Contact No.") then
@@ -241,10 +238,6 @@ table 50219 "TFB Brokerage Contract"
                 Opportunity: Record Opportunity;
                 IsHandled: Boolean;
             begin
-
-
-
-
                 if ("Sell-to Contact No." <> xRec."Sell-to Contact No.") and (xRec."Sell-to Contact No." <> '')
                 then begin
 
@@ -260,6 +253,8 @@ table 50219 "TFB Brokerage Contract"
                 if ("Customer No." <> '') and ("Sell-to Contact No." <> '') then
                     CheckContactRelatedToCustomerCompany("Sell-to Contact No.", "Customer No.", CurrFieldNo);
 
+                Cont.Get("Sell-to Contact No.");
+                "Sell-to Contact" := Cont.Name;
 
 
             end;
