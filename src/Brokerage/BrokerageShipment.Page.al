@@ -415,6 +415,21 @@ page 50229 "TFB Brokerage Shipment"
                     BrokerageCU.SendOneBrokerageUpdateEmail(Rec."No.");
                 end;
             }
+            action("Sent Emails")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Sent Emails';
+                Image = ShowList;
+                ToolTip = 'View a list of emails that you have sent to related to this shipment.';
+
+
+                trigger OnAction()
+                var
+                    Email: Codeunit Email;
+                begin
+                    Email.OpenSentEmails(Database::"TFB Brokerage Shipment", Rec.SystemId);
+                end;
+            }
             action("NewDraftInvoice")
             {
                 ApplicationArea = All;

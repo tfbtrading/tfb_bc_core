@@ -64,7 +64,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         If not Shipment.Get(RefNo) then exit(false);
 
-        If not Contract.Get(Shipment."Container No.") then exit(false);
+        If not Contract.Get(Shipment."Contract No.") then exit(false);
 
         If not Customer.Get(Shipment."Customer No.") then exit(false);
 
