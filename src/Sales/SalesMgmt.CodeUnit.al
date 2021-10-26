@@ -357,7 +357,7 @@ codeunit 50122 "TFB Sales Mgmt"
         If SalesLine.Type <> SalesLine.Type::Item then exit;
 
         SalesHeader.SetLoadFields("Ship-to Code");
-        SalesHeader.Get(SalesLine."Document No.", SalesLine."Document Type");
+        SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
 
         IntelligentLocationCode := GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesHeader."Ship-to Code", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine));
 
