@@ -70,6 +70,34 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
+    internal procedure DownloadItemMSDS(Rec: Record Item)
+
+    var
+        InventorySetup: Record "Inventory Setup";
+        CommonCU: CodeUnit "TFB Common Library";
+        WordTemplate: CodeUnit "Word Template";
+
+        InStream: InStream;
+        FileName: Text;
+        NoTemplateSetupMsg: Label 'No word template has been configured in inventory setup for the MSDS';
+
+    begin
+
+        InventorySetup.Get();
+        If InventorySetup."TFB MSDS Word Template" = '' then begin
+            Message(NoTemplateSetupMsg);
+            exit;
+        end;
+
+        WordTemplate.Load(InventorySetup."TFB MSDS Word Template");
+        WordTemplate.Merge(Rec, false, Enum::"Word Templates Save Format"::PDF);
+        WordTemplate.GetDocument(InStream);
+
+        FileName := StrSubstNo('MSDS for %1 (%2).pdf', Rec.Description, Rec."No.");
+        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+            Error('File %1 not downloaded', FileName);
+    end;
+
     local procedure GetZoneRateForSalesLine(SalesLine: Record "Sales Line"; var PostcodeZone: Record "TFB Postcode Zone"): Boolean
 
     var

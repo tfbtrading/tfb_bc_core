@@ -467,7 +467,7 @@ table 50219 "TFB Brokerage Contract"
         Contact: Record Contact;
         ContBusRel: Record "Contact Business Relation";
         IsHandled: Boolean;
-        Text038: Label 'Contact %1 %2 is related to a different company than customer %3.';
+        Text038Err: Label 'Contact %1 %2 is related to a different company than customer %3.', Comment = '%1 - Contact No., %2 - Contact Name, %3 - Customer Name';
 
     begin
         IsHandled := false;
@@ -478,7 +478,7 @@ table 50219 "TFB Brokerage Contract"
         Contact.Get(ContactNo);
         if ContBusRel.FindByRelation(ContBusRel."Link to Table"::Customer, CustomerNo) then
             if (ContBusRel."Contact No." <> Contact."Company No.") and (ContBusRel."Contact No." <> Contact."No.") then
-                Error(Text038, Contact."No.", Contact.Name, CustomerNo);
+                Error(Text038Err, Contact."No.", Contact.Name, CustomerNo);
     end;
 
     local procedure UpdateContractLines()

@@ -350,11 +350,14 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnBeforeInitHeaderLocationCode(var IsHandled: Boolean; var SalesLine: Record "Sales Line")
 
     var
+        SalesHeader: Record "Sales Header";
         IntelligentLocationCode: Code[10];
 
     begin
+        SalesHeader.SetLoadFields("Ship-to Code");
+        SalesHeader.Get(SalesLine."Document No.", SalesLine."Document Type");
 
-        IntelligentLocationCode := GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine));
+        IntelligentLocationCode := GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesHeader."Ship-to Code", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine));
 
         If not (IntelligentLocationCode = '') then begin
             SalesLine."Location Code" := IntelligentLocationCode;
@@ -380,14 +383,14 @@ codeunit 50122 "TFB Sales Mgmt"
     /// <param name="ItemNo">Code[20].</param>
     /// <param name="MinQty">Decimal.</param>
     /// <returns>Return value of type Code[10].</returns>
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
 
     var
         AddressBuffer: Record "Address Buffer";
 
     begin
 
-        Exit(GetIntelligentLocation(CustomerNo, ItemNo, MinQty, AddressBuffer));
+        Exit(GetIntelligentLocation(CustomerNo, "Ship-to Code", ItemNo, MinQty, AddressBuffer));
 
     end;
 
@@ -399,16 +402,18 @@ codeunit 50122 "TFB Sales Mgmt"
     /// <param name="MinQty">Decimal.</param>
     /// <param name="Address">Temporary Record "Address Buffer".</param>
     /// <returns>Return value of type Code[10].</returns>
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal; Address: Record "Address Buffer" temporary): Code[10]
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; Address: Record "Address Buffer" temporary): Code[10]
 
     var
         Location: Record Location;
+        CustomerShipTo: Record "Ship-to Address";
         Customer: Record Customer;
         Item: Record Item;
         ItemLedgerEntry: Record "Item Ledger Entry";
         PurchaseLine: Record "Purchase Line";
         TransferLine: Record "Transfer Line";
         QtyRemainingAtLocation: Decimal;
+        LocationCode1: Code[10];
         LocationCode2: Code[10];
         IsHandled: Boolean;
 
@@ -418,8 +423,12 @@ codeunit 50122 "TFB Sales Mgmt"
 
             If MinQty = 0 then MinQty := GetSalesUoMForItem(Item)."Qty. per Unit of Measure";
 
+            If ("Ship-to Code" <> '') and (CustomerShipTo.Get(CustomerNo, "Ship-to Code")) then
+                LocationCode1 := CustomerShipTo."Location Code"
+            else
+                LocationCode1 := Customer."Location Code";
 
-            ItemLedgerEntry.SetRange("Location Code", Customer."Location Code");
+            ItemLedgerEntry.SetRange("Location Code", LocationCode1);
             ItemLedgerEntry.SetRange("Item No.", Item."No.");
             ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
             ItemLedgerEntry.CalcSums("Remaining Quantity");
@@ -479,7 +488,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
             end
             else
-                LocationCode2 := Customer."Location Code";
+                LocationCode2 := LocationCode1;
 
         end;
 

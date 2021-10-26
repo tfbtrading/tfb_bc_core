@@ -877,6 +877,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
                             If not (Item."TFB Publishing Block" and Item.Blocked) then begin
                                 PriceLine.Reset();
+
                                 PriceLine.SetRange("Price List Code", PriceListHeader.Code);
                                 PriceLine.SetRange("Starting Date", System.WorkDate());
                                 PriceLine.SetRange("Asset No.", ItemCostingLines."Item No.");

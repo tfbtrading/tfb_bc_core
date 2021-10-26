@@ -28,10 +28,10 @@
           <note from="Developer" annotates="general" priority="2">%1 = Name, %2 = Company , %3 = Vendor</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - NamedType Text038Msg</note>
         </trans-unit>
-        <trans-unit id="Table 111198966 - Method 1260276643 - NamedType 342054122" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Table 111198966 - Method 1260276643 - NamedType 1435332781" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contact %1 %2 is related to a different company than customer %3.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Method CheckContactRelatedToCustomerCompany - NamedType Text038</note>
+          <note from="Developer" annotates="general" priority="2">%1 - Contact No., %2 - Contact Name, %3 - Customer Name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Brokerage Contract - Method CheckContactRelatedToCustomerCompany - NamedType Text038Err</note>
         </trans-unit>
         <trans-unit id="Table 111198966 - Field 1750733095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Buy-from Contact</source>
@@ -3048,6 +3048,11 @@
           <note from="Developer" annotates="general" priority="2">%1 - HttpStatusCode, %2 = Reason Phrase</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - NamedType WebServiceErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 706961860 - NamedType 2373722505" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No word template has been configured in inventory setup for the MSDS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method DownloadItemMSDS - NamedType NoTemplateSetupMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4222,6 +4227,16 @@
           <source>New draft invoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Action NewDraftInvoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4009555772 - Action 709229469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of emails that you have sent to related to this shipment.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Action Sent Emails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4009555772 - Action 709229469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent Emails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Brokerage Shipment - Action Sent Emails - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4009555772 - Action 1742391979 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sends update for brokerage shipment to customer</source>
@@ -11543,6 +11558,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Interaction Template Setup - Control TFB Shipment Status Enquiry - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 3573585 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Specifies the word template to use when generating an MSDS material sheet for an item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control TFB MSDS Word Template - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 837275381 - Action 951386020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2217622613">
           <source>Show reservations for currently selected row</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11557,6 +11577,16 @@
           <source>Item Costings</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBItemCostings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 4156951535 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Find and download Material Safety Data Sheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBDownloadMSDS - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2581648259 - Action 4156951535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Download MSDS</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Action TFBDownloadMSDS - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2581648259 - Action 3387022275 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Find and download specification file</source>
@@ -14622,6 +14652,11 @@
           <source>Shipment Status Enquiries</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Interaction Template Setup - Field TFB Shipment Status Enquiry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3362275503 - Field 3573585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>MSDS Word Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Inventory Setup - Field TFB MSDS Word Template - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 150234495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Act as Generic Item</source>

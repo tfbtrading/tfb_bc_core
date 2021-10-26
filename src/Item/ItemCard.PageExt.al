@@ -307,6 +307,30 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 end;
 
             }
+
+            action("TFBDownloadMSDS")
+            {
+                ApplicationArea = All;
+                Image = ExportFile;
+                Caption = 'Download MSDS';
+                ToolTip = 'Find and download Material Safety Data Sheet';
+                Promoted = true;
+                PromotedCategory = Category4;
+
+                Enabled = true;
+
+                trigger OnAction()
+
+                var
+                    ItemCU: CodeUnit "TFB Item Mgmt";
+
+                begin
+
+                    ItemCU.DownloadItemMSDS(Rec);
+
+                end;
+
+            }
         }
     }
 

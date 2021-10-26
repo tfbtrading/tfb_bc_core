@@ -1,0 +1,109 @@
+@clientid = 5b99570a-4846-4616-807b-a9e7709e1b17
+@clientsecret = M.7MRi7d0e33~j6k.oOF5tW3D1m.66.ay8
+@scope = https://api.businesscentral.dynamics.com/.default
+@tenant = 3ce2aa56-64db-4048-9ae4-f0bf827f4459
+
+
+###########################################################################
+#    ____      _                                   _        _              
+#   / ___| ___| |_    __ _  ___ ___ ___  ___ ___  | |_ ___ | | _____ _ __  
+#  | |  _ / _ \ __|  / _` |/ __/ __/ _ \/ __/ __| | __/ _ \| |/ / _ \ '_ \ 
+#  | |_| |  __/ |_  | (_| | (_| (_|  __/\__ \__ \ | || (_) |   <  __/ | | |
+#   \____|\___|\__|  \__,_|\___\___\___||___/___/  \__\___/|_|\_\___|_| |_|
+#
+###########################################################################
+# @name tokenrequest
+POST https://login.microsoftonline.com/{{tenant}}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id={{clientid}}
+&client_secret={{clientsecret}}
+&scope={{scope}}
+
+###
+@token = {{tokenrequest.response.body.access_token}}
+###
+
+@baseurl = https://api.businesscentral.dynamics.com/v2.0/production
+
+
+#######################################################################
+#    ____      _                                           _           
+#   / ___| ___| |_    ___ ___  _ __ ___  _ __   __ _ _ __ (_) ___  ___ 
+#  | |  _ / _ \ __|  / __/ _ \| '_ ` _ \| '_ \ / _` | '_ \| |/ _ \/ __|
+#  | |_| |  __/ |_  | (_| (_) | | | | | | |_) | (_| | | | | |  __/\__ \
+#   \____|\___|\__|  \___\___/|_| |_| |_| .__/ \__,_|_| |_|_|\___||___/
+#                                       |_|                            
+######################################################################
+# @name companies
+GET  {{baseurl}}/api/v2.0/companies
+Authorization: Bearer {{token}}
+
+###
+@companyid = {{companies.response.body.value[0].id}}
+
+
+######################################################################
+#    ____      _                    _                                
+#   / ___| ___| |_    ___ _   _ ___| |_ ___  _ __ ___   ___ _ __ ___ 
+#  | |  _ / _ \ __|  / __| | | / __| __/ _ \| '_ ` _ \ / _ \ '__/ __|
+#  | |_| |  __/ |_  | (__| |_| \__ \ || (_) | | | | | |  __/ |  \__ \
+#   \____|\___|\__|  \___|\__,_|___/\__\___/|_| |_| |_|\___|_|  |___/
+#
+######################################################################
+GET {{baseurl}}/api/v2.0/companies({{companyid}})/customers(5b5c125b-f28f-ea11-a813-000d3a6a1855)
+Authorization: Bearer {{token}}
+
+
+######################################################################
+#    ____      _                    _                                
+#   / ___| ___| |_    ___ _   _ ___| |_ ___  _ __ ___   ___ _ __ ___ 
+#  | |  _ / _ \ __|  / __| | | / __| __/ _ \| '_ ` _ \ / _ \ '__/ __|
+#  | |_| |  __/ |_  | (__| |_| \__ \ || (_) | | | | | |  __/ |  \__ \
+#   \____|\___|\__|  \___|\__,_|___/\__\___/|_| |_| |_|\___|_|  |___/
+#
+######################################################################
+GET {{baseurl}}/api/v2.0/companies({{companyid}})/items
+Authorization: Bearer {{token}}
+
+// THIS IS STANDARD API TO GET LIST OF ITEM CATEGORIES
+######################################################################
+GET {{baseurl}}/api/v2.0/companies({{companyid}})/itemCategories
+Authorization: Bearer {{token}}
+
+// THIS IS STANDARD API TO GET LIST OF ITEM CATEGORIES
+######################################################################
+GET {{baseurl}}/api/v2.0/companies({{companyid}})/countriesRegions?$filter=code eq 'AU'
+Authorization: Bearer {{token}}
+
+
+// THIS IS A TEST URL SHOWING HOW TO GET ALL ITEMS IN A CUSTOMER PRICE LIST WITH NO FURTHER NETED EXPANSION OR FILTERING
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/customers(d5e796e5-3e2a-49c6-9832-dd9e7e453c93)?$expand=priceListItems
+Authorization: Bearer {{token}}
+
+// THIS IS A TEST URL SHOWING HOW TO GET ALL ITEMS IN A CUSTOMER PRICE LIST WITH NO FURTHER NETED EXPANSION OR FILTERING
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/customers(d5e796e5-3e2a-49c6-9832-dd9e7e453c93)?$expand=priceListItems($expand=priceTrackingEntries,itemMarketSegments)
+Authorization: Bearer {{token}}
+
+// THIS IS A TEST URL SHOWING HOW TO GET A EXPANDED DETAILS FOR A SPECIFIC ITEM 
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/customers(d5e796e5-3e2a-49c6-9832-dd9e7e453c93)?$expand=priceListItems($filter=number eq '1640';$expand=priceTrackingEntries,itemMarketSegments)
+Authorization: Bearer {{token}}
+
+// THIS IS A TEST URL FOR GETTING MARKET SEGMENTS
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/marketSegments
+Authorization: Bearer {{token}}
+
+// THIS IS A TEST URL SHOWING HOW TO GET CUSTOMER PRICE LIST
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/customers(d5e796e5-3e2a-49c6-9832-dd9e7e453c93)?$expand=priceListItems($expand=picture),picture,customerFinancialDetail
+Authorization: Bearer {{token}}
+
+// THIS IS A TEST URL SHOWING HOW TO GET CUSTOMER PRICE LIST
+######################################################################
+GET {{baseurl}}/api/tfb/inreach/v2.0/companies({{companyid}})/tradeVendors?expand=picture
+Authorization: Bearer {{token}}
