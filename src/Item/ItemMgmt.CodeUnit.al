@@ -70,7 +70,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
-    internal procedure DownloadItemMSDS(Rec: Record Item)
+    internal procedure DownloadItemMSDS(Item: Record Item)
 
     var
         InventorySetup: Record "Inventory Setup";
@@ -80,20 +80,32 @@ codeunit 50107 "TFB Item Mgmt"
         InStream: InStream;
         FileName: Text;
         NoTemplateSetupMsg: Label 'No word template has been configured in inventory setup for the MSDS';
-
+        NoRecordsSelectedMsg: Label 'No records have been selected for the merge';
     begin
-
+        Item.SetRecFilter();
         InventorySetup.Get();
         If InventorySetup."TFB MSDS Word Template" = '' then begin
             Message(NoTemplateSetupMsg);
             exit;
         end;
 
+        If Item.Count = 0 then begin
+            Message(NoRecordsSelectedMsg);
+            Exit;
+        end;
+
         WordTemplate.Load(InventorySetup."TFB MSDS Word Template");
-        WordTemplate.Merge(Rec, false, Enum::"Word Templates Save Format"::PDF);
+        If Item.Count > 1 then
+            WordTemplate.Merge(Item, true, Enum::"Word Templates Save Format"::PDF)
+        else
+            WordTemplate.Merge(Item, false, Enum::"Word Templates Save Format"::PDF);
+
         WordTemplate.GetDocument(InStream);
 
-        FileName := StrSubstNo('MSDS for %1 (%2).pdf', Rec.Description, Rec."No.");
+        If Item.Count > 1 then
+            FileName := StrSubstNo('MSDS Collection on %1.zip', today)
+        else
+            FileName := StrSubstNo('MSDS for %1 (%2).pdf', Item.Description, Item."No.");
         If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
     end;

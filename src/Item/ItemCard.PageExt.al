@@ -322,11 +322,12 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 trigger OnAction()
 
                 var
+                    Item: Record Item;
                     ItemCU: CodeUnit "TFB Item Mgmt";
 
                 begin
-
-                    ItemCU.DownloadItemMSDS(Rec);
+                    CurrPage.SetSelectionFilter(Item);
+                    ItemCU.DownloadItemMSDS(Item);
 
                 end;
 
