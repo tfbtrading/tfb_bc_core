@@ -48,7 +48,7 @@ pageextension 50185 "TFB Sales Order Archive Sf" extends "Sales Order Archive Su
     local procedure GetPricePerKg(): Decimal
 
     begin
-        If Rec."Line Amount" > 0 then
+        If (Rec."Line Amount" > 0) and (GetTotalLineWeight() > 0) then
             Exit(Rec."Line Amount" / GetTotalLineWeight())
         else
             Exit(0);

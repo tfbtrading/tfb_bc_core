@@ -354,6 +354,8 @@ codeunit 50122 "TFB Sales Mgmt"
         IntelligentLocationCode: Code[10];
 
     begin
+        If SalesLine.Type <> SalesLine.Type::Item then exit;
+
         SalesHeader.SetLoadFields("Ship-to Code");
         SalesHeader.Get(SalesLine."Document No.", SalesLine."Document Type");
 
@@ -391,6 +393,17 @@ codeunit 50122 "TFB Sales Mgmt"
     begin
 
         Exit(GetIntelligentLocation(CustomerNo, "Ship-to Code", ItemNo, MinQty, AddressBuffer));
+
+    end;
+
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
+
+    var
+        AddressBuffer: Record "Address Buffer";
+
+    begin
+
+        Exit(GetIntelligentLocation(CustomerNo, '', ItemNo, MinQty, AddressBuffer));
 
     end;
 
