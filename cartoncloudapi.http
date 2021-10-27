@@ -1,0 +1,160 @@
+@clientid = FAqQMpwp4dzBd5R5jH7f0X17q
+@clientsecret = SCJepFv7hj1dSmpvMeetsNI2NkPC3uHuL22abIVX
+@scope = https://api.businesscentral.dynamics.com/.default
+@tenant = 3ce2aa56-64db-4048-9ae4-f0bf827f4459
+
+
+###########################################################################
+#    ____      _                                   _        _              
+#   / ___| ___| |_    __ _  ___ ___ ___  ___ ___  | |_ ___ | | _____ _ __  
+#  | |  _ / _ \ __|  / _` |/ __/ __/ _ \/ __/ __| | __/ _ \| |/ / _ \ '_ \ 
+#  | |_| |  __/ |_  | (_| | (_| (_|  __/\__ \__ \ | || (_) |   <  __/ | | |
+#   \____|\___|\__|  \__,_|\___\___\___||___/___/  \__\___/|_|\_\___|_| |_|
+#
+###########################################################################
+# @name tokenrequest
+POST https://api.cartoncloud.com/uaa/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id={{clientid}}
+&client_secret={{clientsecret}}
+
+###
+@token = {{tokenrequest.response.body.access_token}}
+###
+
+@baseurl = https://api.cartoncloud.com
+
+
+#######################################################################
+#    ____      _                                           _           
+#   / ___| ___| |_    ___ ___  _ __ ___  _ __   __ _ _ __ (_) ___  ___ 
+#  | |  _ / _ \ __|  / __/ _ \| '_ ` _ \| '_ \ / _` | '_ \| |/ _ \/ __|
+#  | |_| |  __/ |_  | (_| (_) | | | | | | |_) | (_| | | | | |  __/\__ \
+#   \____|\___|\__|  \___\___/|_| |_| |_| .__/ \__,_|_| |_|_|\___||___/
+#                                       |_|                            
+######################################################################
+# @name companies
+GET  {{baseurl}}/uaa/userinfo
+Authorization: Bearer {{token}}
+
+###
+@tenantId= {{companies.response.body.tenants[0].id}}
+
+
+######################################################################
+#    ____      _                    _                                
+#   / ___| ___| |_    ___ _   _ ___| |_ ___  _ __ ___   ___ _ __ ___ 
+#  | |  _ / _ \ __|  / __| | | / __| __/ _ \| '_ ` _ \ / _ \ '__/ __|
+#  | |_| |  __/ |_  | (__| |_| \__ \ || (_) | | | | | |  __/ |  \__ \
+#   \____|\___|\__|  \___|\__,_|___/\__\___/|_| |_| |_|\___|_|  |___/
+#
+######################################################################
+GET {{baseurl}}/tenants/{{tenantId}}/customers
+Accept-Version: 1
+Authorization: Bearer {{token}}
+
+
+############################
+POST {{baseurl}}/tenants/{{tenantId}}/outbound-orders/search
+Accept-Version: 1
+Authorization: Bearer {{token}}
+If-Match: {version}
+Content-Type: application/json
+//Prefer: return=minimal
+
+{
+    "condition": {
+        "type": "OrCondition",
+        "conditions": [
+            {
+                "type": "AndCondition",
+                "conditions": [
+                    {
+                        "type": "TextComparisonCondition",
+                        "field": {
+                            "type": "ValueField",
+                            "value": "reference"
+                        },
+                        "value": {
+                            "type": "ValueField",
+                            "value": "W-SHP22-0492"
+                        },
+                        "method": "STARTS_WITH"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+// THIS IS STANDARD API TO GET LIST OF ITEM CATEGORIES
+######################################################################
+POST {{baseurl}}/tenants/{{tenantId}}/consignments/search
+Accept-Version: 1
+Authorization: Bearer {{token}}
+If-Match: {version}
+Content-Type: application/json
+//Prefer: return=minimal
+
+{
+    "condition": {
+        "type": "OrCondition",
+        "conditions": [
+            {
+                "type": "AndCondition",
+                "conditions": [
+                    {
+                        "type": "TextComparisonCondition",
+                        "field": {
+                            "type": "ValueField",
+                            "value": "reference"
+                        },
+                        "value": {
+                            "type": "ValueField",
+                            "value": "W-SHP22-0492"
+                        },
+                        "method": "STARTS_WITH"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+// THIS IS STANDARD API TO SEARCH LIST OF INBOUND ORDERS
+######################################################################
+POST {{baseurl}}/tenants/{{tenantId}}/inbound-orders/search
+Accept-Version: 1
+Authorization: Bearer {{token}}
+If-Match: {version}
+Content-Type: application/json
+//Prefer: return=minimal
+
+{
+    "condition": {
+        "type": "OrCondition",
+        "conditions": [
+            {
+                "type": "AndCondition",
+                "conditions": [
+                    {
+                        "type": "TextComparisonCondition",
+                        "field": {
+                            "type": "ValueField",
+                            "value": "reference"
+                        },
+                        "value": {
+                            "type": "ValueField",
+                            "value": "PO33326"
+                        },
+                        "method": "STARTS_WITH"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+

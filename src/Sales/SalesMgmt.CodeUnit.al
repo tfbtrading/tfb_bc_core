@@ -189,11 +189,20 @@ codeunit 50122 "TFB Sales Mgmt"
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnValidateLineDiscountPercentOnBeforeUpdateAmounts', '', false, false)]
     local procedure OnValidateLineDiscountPercentOnBeforeUpdateAmounts(var SalesLine: Record "Sales Line"; CurrFieldNo: Integer);
 
+    var
+        Item: Record Item;
+        ItemUoM: Record "Item Unit of Measure";
+
     begin
 
         If (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
-            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
-                SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
+            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then begin
+                If SalesLine."Net Weight" > 0 then
+                    SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
+                else
+                    If ItemUoM.Get(SalesLine."No.", SalesLine."Unit of Measure Code") then
+                        SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / ItemUoM.Weight, 0.01, '=')
+            end
             else
                 SalesLine."TFB Price Unit Discount" := 0;
     end;
