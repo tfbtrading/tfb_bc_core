@@ -46,7 +46,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             end;
     end;
 
-    
+
 
 
 
@@ -1172,20 +1172,22 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     begin
 
-        SalesShptHeader."TFB 3PL Booking No." := FromSalesShptHeader."TFB 3PL Booking No.";
+        //TODO Replace with implementation that uses codeunit - similar to posted invoice update
 
-        ShptLine.SetRange("Document No.", SalesShptHeader."No.");
+        /*         SalesShptHeader."TFB 3PL Booking No." := FromSalesShptHeader."TFB 3PL Booking No.";
 
-        if ShptLine.FindSet() then
-            repeat
+                ShptLine.SetRange("Document No.", SalesShptHeader."No.");
 
-                ShptLine."TFB 3PL Booking No" := FromSalesShptHeader."TFB 3PL Booking No.";
-                ShptLine.Modify();
+                if ShptLine.FindSet() then
+                    repeat
 
-            until ShptLine.Next() < 1;
+                        ShptLine."TFB 3PL Booking No" := FromSalesShptHeader."TFB 3PL Booking No.";
+                        ShptLine.Modify();
+
+                    until ShptLine.Next() < 1;
 
 
-
+         */
     end;
 
 }

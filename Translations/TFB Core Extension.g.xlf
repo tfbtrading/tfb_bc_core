@@ -12858,11 +12858,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFBAmtRemaining - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3944119127 - Control 3825379891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 950053399">
-          <source>please update this field value</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Ship. - Update - Control TFB 3PL Booking No. - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 3272223732 - Control 3389914503 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
           <source>Specifies the location details of the transfer</source>
           <note from="Developer" annotates="general" priority="2"></note>
