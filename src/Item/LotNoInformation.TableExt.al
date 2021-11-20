@@ -6,7 +6,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
         {
             DataClassification = CustomerContent;
             Caption = 'CoA Attachment';
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by persistent blob';
             ObsoleteTag = '#PersistentBlob';
 
@@ -16,7 +16,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             DataClassification = CustomerContent;
             Editable = False;
             Caption = 'CoA Attached';
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by persistent blob';
             ObsoleteTag = '#PersistentBlob';
 
@@ -52,12 +52,22 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             Editable = false;
             Caption = 'Last DateTime Modified';
             DataClassification = CustomerContent;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Replaced by standard system fields';
         }
         field(50060; "TFB Last Date Modified"; Date)
         {
             Editable = false;
             Caption = 'Last Date Modified';
             DataClassification = CustomerContent;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Replaced by standard system fields';
+        }
+        field(50070; "TFB Sample Picture"; MediaSet)
+        {
+            DataClassification = CustomerContent;
+            Editable = false;
+            Caption = 'Sample Picture';
         }
 
 
@@ -87,12 +97,18 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             end;
         }
 
-
     }
     keys
     {
         key(TFBDesc; "TFB Item Description") { Enabled = true; }
     }
+
+    fieldgroups
+    {
+        addlast(Dropdown; Blocked) { }
+    }
+
+
 
     trigger OnAfterModify()
 
@@ -124,20 +140,6 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
 
 
 
-    procedure ToBase64String() ReturnValue: Text
-    var
-        TypeHelperCU: CodeUnit "Base64 Convert";
-        FileText: Text;
-        IStream: InStream;
 
-    begin
-        CalcFields("TFB CoA Attachment");
-        if not "TFB CoA Attachment".HasValue() then
-            exit;
-
-        "TFB CoA Attachment".CreateInStream(IStream);
-        IStream.ReadText(FileText);
-        ReturnValue := TypeHelperCU.ToBase64(FileText);
-    end;
 
 }

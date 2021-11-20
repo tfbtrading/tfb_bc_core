@@ -92,6 +92,16 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             }
         }
 
+        addlast(factboxes)
+        {
+            part(SamplePicture; "TFB Sample Picture")
+            {
+                ApplicationArea = All;
+                Caption = 'Sample Picture';
+                SubPageLink = SystemId = FIELD(SystemId);
+            }
+        }
+
 
     }
 

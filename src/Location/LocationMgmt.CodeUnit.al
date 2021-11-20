@@ -20,7 +20,7 @@ codeunit 50115 "TFB Location Mgmt"
 
 
     begin
-
+        If not ((Sender."Document Type" = Sender."Document Type"::Order) or (Sender."Document Type" = Sender."Document Type"::Quote)) then exit;
         Sender."Shipment Date" := CalcShipmentDateForLocation(Sender);
         IsHandled := true;
     end;

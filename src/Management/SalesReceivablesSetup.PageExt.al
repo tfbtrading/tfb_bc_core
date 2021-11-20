@@ -133,6 +133,28 @@ pageextension 50221 "TFB Sales & Receivables Setup" extends "Sales & Receivables
                 ApplicationArea = All;
                 ToolTip = 'Specify a valid url using %1 as a placement for specific image code';
             }
+
+            group("AzureBlobStoragePOD")
+            {
+                Caption = 'Proof of Deliveries ABS Config';
+                InstructionalText = 'These fields are all required to be completed to activate mirroring of proof of delivery files to designated blob storage account';
+                field("TFB ABS Lot Sample Account"; Rec."TFB ABS POD Account")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the ABS Account Name.';
+                }
+                field("TFB ABS Lot Sample Access Key"; Rec."TFB ABS POD Access Key")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the ABS Shared Access Key.';
+                }
+                field("TFB ABS Lot Sample Container"; Rec."TFB ABS POD Container")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the ABS Container Name.';
+                }
+            }
+
         }
     }
 

@@ -159,6 +159,23 @@ tableextension 50220 "TFB Sales & Receivables Setup" extends "Sales & Receivable
             Caption = 'Item Image URL Pattern';
         }
 
+        field(55170; "TFB ABS POD Account"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ABS Account Name';
+        }
+        field(55180; "TFB ABS POD Access Key"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ABS Shared Access Key';
+        }
+        field(55190; "TFB ABS POD Container"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'ABS Container Name';
+        }
+
+
     }
 
 

@@ -34,7 +34,6 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
             }
         }
 
-
     }
 
     actions
