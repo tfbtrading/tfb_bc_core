@@ -29,7 +29,7 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
             Caption = 'Confirmed Delivered At';
         }
 
-        
+
 
     }
 
@@ -70,7 +70,7 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
         PstdShipmentHdrEdit: CodeUnit "TFB Pstd. Shipment. Hdr. Edit";
         ConfirmOverwriteMsg: Label 'Overwright existing blob assigned with filename %1', comment = '%1 = filename of blob being overwritten';
     begin
-        
+
         If not HideDialog then
             If "TFB POD Received" then
                 If not Confirm(ConfirmOverwriteMsg, true, "TFB POD Filename") then exit;
@@ -96,12 +96,12 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
     var
         TempSalesShipmentHeader: Record "Sales Shipment Header" temporary;
         PstdShipmentHdrEdit: CodeUnit "TFB Pstd. Shipment. Hdr. Edit";
-        ConfirmOverwriteMsg: Label 'Overwright existing blob assigned with filename %1', comment = '%1 = filename of blob being overwritten';
+        ConfirmOverwriteBlobMsg: Label 'Overwright existing blob assigned with filename %1', comment = '%1 = filename of blob being overwritten';
 
     begin
         If not HideDialog then
             If "TFB POD Received" then
-                If not Confirm(ConfirmOverwriteMsg, true, "TFB POD Filename") then exit;
+                If not Confirm(ConfirmOverwriteBlobMsg, true, "TFB POD Filename") then exit;
 
         SalesSetup.SetLoadFields("TFB ABS POD Container", "TFB ABS POD Access Key", "TFB ABS POD Account");
         SalesSetup.Get();

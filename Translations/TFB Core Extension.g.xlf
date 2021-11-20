@@ -11643,6 +11643,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control TFB MSDS Word Template - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 711216063 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Lot Sample Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control LotSampleImages - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 1828188222 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>These fields are all required to be completed to activate mirroring of lot sample images to designated blob storage account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control Azure Blob Storage (ABS) - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 3858002086 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Specifies the value of the ABS Shared Access Key.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control TFB ABS Lot Sample Access Key - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 3963263508 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Specifies the value of the ABS Account Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control TFB ABS Lot Sample Account - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3362275503 - Control 3327272650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Specifies the value of the ABS Container Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Inventory Setup - Control TFB ABS Lot Sample Container - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 837275381 - Action 951386020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2217622613">
           <source>Show reservations for currently selected row</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13558,6 +13583,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB ASN Def. Job Resp. Rec. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 1870626980 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>These fields are all required to be completed to activate mirroring of proof of delivery files to designated blob storage account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control AzureBlobStoragePOD - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 1870626980 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Proof of Deliveries ABS Config</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control AzureBlobStoragePOD - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 3858002086 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specifies the value of the ABS Shared Access Key.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB ABS Lot Sample Access Key - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 3963263508 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specifies the value of the ABS Account Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB ABS Lot Sample Account - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 3327272650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specifies the value of the ABS Container Name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB ABS Lot Sample Container - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3704753354 - Control 655603382 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Specifies if auto shipment notifications are generated</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14743,6 +14793,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Interaction Template Setup - Field TFB Shipment Status Enquiry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3362275503 - Field 3858002086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>ABS Shared Access Key for Lot Samples</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Inventory Setup - Field TFB ABS Lot Sample Access Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3362275503 - Field 3963263508 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>ABS Account Name for Lot Samples</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Inventory Setup - Field TFB ABS Lot Sample Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3362275503 - Field 3327272650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>ABS Container Name for Lot Samples</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Inventory Setup - Field TFB ABS Lot Sample Container - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3362275503 - Field 3573585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>MSDS Word Template</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15298,6 +15363,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field Brokerage Default % - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3704753354 - Field 3727569228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>ABS Shared Access Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB ABS POD Access Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3704753354 - Field 2140535630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>ABS Account Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB ABS POD Account - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3704753354 - Field 3264772160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
+          <source>ABS Container Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales &amp; Receivables Setup - Field TFB ABS POD Container - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3704753354 - Field 2370295998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Shipment Notification Job Resp.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15693,10 +15773,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Price Worksheet - Field TFB New Per Kg Price - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Method 3555759228 - NamedType 2803737564" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2284106393">
+          <source>Overwright existing blob assigned with filename %1</source>
+          <note from="Developer" annotates="general" priority="2">%1 = filename of blob being overwritten</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Method AddProofOfDelivery - NamedType ConfirmOverwriteMsg</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Method 3555759228 - NamedType 3727910789" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2284106393">
+          <source>Overwright existing blob assigned with filename %1</source>
+          <note from="Developer" annotates="general" priority="2">%1 = filename of blob being overwritten</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Method AddProofOfDelivery - NamedType ConfirmOverwriteBlobMsg</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2284106393 - Field 3825379891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
           <source>3PL Booking No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Field TFB 3PL Booking No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Field 3141104603 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Confirmed Delivered At</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Field TFB DeliveredAt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Field 883699486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>Customer Marked as Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Field TFB Marked Rec. By Cust. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Field 3413985606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>POD Filename</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Field TFB POD Filename - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2284106393 - Field 1925847960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3118382297">
+          <source>POD Received</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Shipment Header - Field TFB POD Received - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2739873586 - Field 1067518521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1114148978">
           <source>3PL Booking No</source>
