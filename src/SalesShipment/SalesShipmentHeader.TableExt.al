@@ -8,22 +8,22 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
             Caption = '3PL Booking No.';
 
         }
-        field(50190; "TFB POD Received"; Boolean)
+        field(50331; "TFB POD Received"; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'POD Received';
         }
-        field(50200; "TFB POD Filename"; Text[256])
+        field(50332; "TFB POD Filename"; Text[256])
         {
             DataClassification = CustomerContent;
             Caption = 'POD Filename';
         }
-        field(50210; "TFB Marked Rec. By Cust."; Boolean)
+        field(50334; "TFB Marked Rec. By Cust."; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Customer Marked as Received';
         }
-        field(50220; "TFB DeliveredAt"; DateTime)
+        field(50336; "TFB DeliveredAt"; DateTime)
         {
             DataClassification = CustomerContent;
             Caption = 'Confirmed Delivered At';
