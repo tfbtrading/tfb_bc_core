@@ -35,7 +35,7 @@ codeunit 50115 "TFB Location Mgmt"
         DateFormulae: DateFormula;
         NewDate: Date;
     begin
-        If not (SalesLine.Type = SalesLine.Type::Item) then exit; // Only intended for item lines
+        If not IsLineValidForIntelligentLocation(SalesLine) then exit; // Only intended for item lines
         Evaluate(DateFormulae, '1D');
         SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
         CustomCalendarChange[1].SetSource(Enum::"Calendar Source Type"::Location, SalesLine."Location Code", '', '');
@@ -45,6 +45,12 @@ codeunit 50115 "TFB Location Mgmt"
                 NewDate := CalcDate(DateFormulae, SalesHeader."Shipment Date");
 
         ShipmentDate2 := CalendarMgmt.CalcDateBOC('', NewDate, CustomCalendarChange, false);
+    end;
+
+    local procedure IsLineValidForIntelligentLocation(SalesLine: Record "Sales Line"): Boolean
+
+    begin
+        Exit((SalesLine.Type = SalesLine.Type::Item) and ((SalesLine."Document Type" = SalesLine."Document Type"::Quote) or (SalesLine."Document Type" = SalesLine."Document Type"::Order)));
     end;
 
 }
