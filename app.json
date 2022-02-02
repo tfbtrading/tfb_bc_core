@@ -4,7 +4,7 @@
   "publisher": "TFB Trading",
   "brief": "Expansive changes specific to TFB Trading",
   "description": "",
-  "version": "19.0.1.3",
+  "version": "19.0.1.6",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -38,7 +38,7 @@
     "from": 50100,
     "to": 52000
   }],
-  "runtime": "8.0",
+  "runtime": "8.1",
   "target": "Cloud",
   "resourceExposurePolicy": {"includeSourceInSymbolFile": true},
   "supportedLocales": ["en-AU"]
