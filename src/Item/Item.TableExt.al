@@ -111,7 +111,7 @@ tableextension 50260 "TFB Item" extends Item
                                                                   "Serial No." = FIELD("Serial No. Filter"),
                                                                   "Unit of Measure Code" = FIELD("Unit of Measure Filter"),
                                                                   "Package No." = FIELD("Package No. Filter"),
-                                                                  "Entry Type" = filter('<>Transfer')));
+                                                                  "Document Type" = filter('<>Transfer Shipment')));
             Caption = 'Inventory - Excl. Transfers';
             DecimalPlaces = 0 : 5;
             Editable = false;
