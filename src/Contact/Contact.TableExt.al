@@ -103,7 +103,7 @@ tableextension 50110 "TFB Contact" extends Contact
                             //check mobile is unique
 
                             If Not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
-
+                            CheckMandatoryFieldsForEvent();
                             EventGridMgmt.PublishContactEnabledForOnline(Rec);
                         end
                         else
@@ -176,6 +176,13 @@ tableextension 50110 "TFB Contact" extends Contact
 
 
 
+    end;
+
+    local procedure CheckMandatoryFieldsForEvent()
+    begin
+        If "First Name" = '' then FieldError("First Name", 'First Name must be entered');
+        If Surname = '' then FieldError(Surname, 'Last Name must be entered');
+        If "Mobile Phone No." = '' then FieldError("Mobile Phone No.", 'Mobile phone number must be entered');
     end;
 
 }

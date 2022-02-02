@@ -3048,6 +3048,11 @@
           <note from="Developer" annotates="general" priority="2">%1 - HttpStatusCode, %2 = Reason Phrase</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - NamedType WebServiceErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2169027073 - Method 186414097 - NamedType 1556380518" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Initiated process to activate contact for mobile application</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - Method SendMessage - NamedType SuccessMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 706961860 - NamedType 2373722505" size-unit="char" translate="yes" xml:space="preserve">
           <source>No word template has been configured in inventory setup for the MSDS</source>
           <note from="Developer" annotates="general" priority="2"></note>

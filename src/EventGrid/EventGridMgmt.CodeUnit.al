@@ -43,7 +43,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
     local procedure CreateBody(Contact: Record Contact; EventType: Enum "TFB Event Grid Event Types") message: JsonArray
     var
-   
+
         body: JsonObject;
     begin
 
@@ -111,6 +111,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
         Response: HttpResponseMessage;
         Content: HttpContent;
         ContentHeaders: HttpHeaders;
+        SuccessMsg: Label 'Initiated process to activate contact for mobile application';
     begin
         Client.DefaultRequestHeaders.Add(
             'aeg-sas-key',
@@ -128,7 +129,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
         if not Response.IsSuccessStatusCode then
             Error(WebServiceErr, Response.HttpStatusCode, response.ReasonPhrase);
 
-        Response.Content.ReadAs(Result);
+        Exit(SuccessMsg);
     end;
 
 
