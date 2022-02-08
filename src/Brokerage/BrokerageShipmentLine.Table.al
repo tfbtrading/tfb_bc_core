@@ -16,7 +16,7 @@ table 50227 "TFB Brokerage Shipment Line"
         field(2; "Item No."; Code[20])
         {
             DataClassification = CustomerContent;
-            TableRelation = Item;
+            TableRelation = "TFB Brokerage Contract Line" where ("Document No."=field("Contract No."));
             ValidateTableRelation = true;
             NotBlank = true;
 
