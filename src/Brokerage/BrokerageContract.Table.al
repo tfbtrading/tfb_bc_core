@@ -507,6 +507,7 @@ table 50219 "TFB Brokerage Contract"
             SalesSetup.TestField("TFB Brokerage Contract Nos.");
             NoSeriesMgt.InitSeries(SalesSetup."TFB Brokerage Contract Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
+
     end;
 
     trigger OnModify()

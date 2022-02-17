@@ -337,6 +337,10 @@ table 50226 "TFB Brokerage Shipment"
             SalesSetup.Get();
             SalesSetup.TestField("TFB Brokerage Shipment Nos.");
             NoSeriesMgt.InitSeries(SalesSetup."TFB Brokerage Shipment Nos.", Rec."No. Series", 0D, "No.", "No. Series");
+        end
+        else begin
+            If "Document Date" = 0D then
+                "Document Date" := WorkDate();
         end;
     end;
 
