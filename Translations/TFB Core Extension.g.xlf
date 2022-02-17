@@ -1483,6 +1483,81 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Customer Sales Line Buffer - Field Vendor Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 535105157 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to Doc No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Doc No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2865137134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to Doc. Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Doc. Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2686297204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applying Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applying Entry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 404483104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EntryType</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field EntryType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2364051070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Est. Interest</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Est. Interest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field External Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 1213267064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interest Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Interest Rate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Original Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 3826939645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Currency Factor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Original Currency Factor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 4267346559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Source Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 3627141058 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Source Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2855641942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Incl. Interest</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Total Incl. Interest - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5937,6 +6012,91 @@
           <source>New Sales Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Fav. Items - Action CreateSalesOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Mgmt Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 535105157 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Applies-to Doc No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 2865137134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc. Type field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Applies-to Doc. Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 2686297204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applying Entry field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Applying Entry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Due Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Due Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Entry No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 404483104 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the EntryType field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control EntryType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 2364051070 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the estimated interest amount to be charged by the trade finance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Est. Interest - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1527563463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the External Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control External Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1213267064 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the anticipated interest rate to be charged for this trade finance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Interest Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Original Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Original Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 3826939645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Currency Factor field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Original Currency Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1794219516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control RemainingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 4267346559 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Source Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Source Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 3627141058 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Source Entry No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Source Entry No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item</source>
@@ -16287,6 +16447,31 @@
           <source>ContactEnabledForOnline</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Event Grid Event Types - EnumValue ContactEnabledForOnline - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 617303227 - EnumValue 1640572759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Applies-To Type - EnumValue PurchaseOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 617303227 - EnumValue 4104438143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Applies-To Type - EnumValue VendorLedgerEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 371909651 - EnumValue 3462677320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Entry Type - EnumValue ForexContract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 371909651 - EnumValue 1640572759 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchase Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Entry Type - EnumValue PurchaseOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 371909651 - EnumValue 4104438143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Ledger Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Entry Type - EnumValue VendorLedgerEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3084867664 - EnumValue 3531986640 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Extension</source>
