@@ -46,6 +46,31 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
                     }
 
                 }
+                group("Pallet Account Details")
+                {
+                    field("TFB PalletExchange"; Rec.PalletExchange)
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies if customer does a pallet exchange';
+                    }
+                    group(PalletDetails)
+                    {
+                        Visible = not Rec.PalletExchange;
+                        ShowCaption = false;
+                        field("TFB PalletAccountType"; Rec."TFB Pallet Acct Type")
+                        {
+                            ApplicationArea = All;
+                            ToolTip = 'Specifies if customer has a pallet account';
+                        }
+
+                        field("TFB PalletAccountNo"; Rec.PalletAccountNo)
+                        {
+                            ApplicationArea = All;
+                            ToolTip = 'Specifies pallet account number for specific account type';
+
+                        }
+                    }
+                }
             }
         }
         addafter("Outbound Whse. Handling Time")
@@ -56,12 +81,19 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
                 ToolTip = 'Specifies the time after which an order lines earliest dispatch day will be extended by an additional day';
             }
         }
+
         addbefore("Use As In-Transit")
         {
             field("TFB Enabled"; Rec."TFB Enabled")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if location is current active for shipments and receipts';
+
+            }
+            field("TFB Use for ILA"; Rec."TFB Use for ILA")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies if intelligent location assignment on sales line';
 
             }
             field("TFB Location Type"; Rec."TFB Location Type")
