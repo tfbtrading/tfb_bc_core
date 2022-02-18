@@ -103,6 +103,11 @@ tableextension 50100 "TFB Location" extends Location
 
             end;
         }
+        field(50222; "TFB Use for ILA"; Boolean)
+        {
+            Caption = 'Use for Intelligent Location Assignment';
+            InitValue = true;
+        }
 
         field(50230; "TFB Outbound Order Deadline"; Time)
         {
@@ -117,6 +122,23 @@ tableextension 50100 "TFB Location" extends Location
                     FieldError("TFB Outbound Order Deadline", Text001Msg);
 
             end;
+        }
+
+        field(50102; "PalletExchange"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Pallet Exchange';
+        }
+        field(50105; "TFB Pallet Acct Type"; Enum "TFB Pallet Acct Type")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Account Type';
+        }
+        field(50103; PalletAccountNo; Text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Pallet Account No';
+
         }
     }
 

@@ -468,9 +468,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
                 If ItemLedgerEntry.FindSet(false, false) then
                     repeat
-                        Location.SetLoadFields("TFB Enabled", Code);
+                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
                         Location.Get(ItemLedgerEntry."Location Code");
-                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (Location."TFB Enabled") and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
+                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
                             LocationCode2 := ItemLedgerEntry."Location Code";
                             IsHandled := true;
                         end;
@@ -488,7 +488,10 @@ codeunit 50122 "TFB Sales Mgmt"
 
                     If PurchaseLine.FindFirst() and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) then begin
                         LocationCode2 := PurchaseLine."Location Code";
-                        IsHandled := true;
+                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
+                        Location.Get(LocationCode2);
+                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then
+                            IsHandled := true;
                     end;
 
                 end;
@@ -503,7 +506,10 @@ codeunit 50122 "TFB Sales Mgmt"
 
                     If TransferLine.FindFirst() and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
                         LocationCode2 := TransferLine."Transfer-to Code";
-                        IsHandled := true;
+                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
+                        Location.Get(LocationCode2);
+                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then
+                            IsHandled := true;
                     end;
 
                 end;
