@@ -37,8 +37,8 @@ page 50147 "TFB Pending Sales Lines"
                     var
                         SalesRec: record "Sales Header";
 
-
                     begin
+
                         SalesRec.SetRange("Document Type", Rec."Document Type"::Order);
                         SalesRec.SetRange("No.", Rec."Document No.");
 
@@ -292,6 +292,23 @@ page 50147 "TFB Pending Sales Lines"
 
 
             }
+            action(OrderPromising)
+            {
+                AccessByPermission = TableData "Order Promising Line" = R;
+                ApplicationArea = OrderPromising;
+                Caption = 'Order &Promising';
+                Image = OrderPromising;
+                ToolTip = 'Calculate the shipment and delivery dates based on the item''s known and expected availability dates, and then promise the dates to the customer.';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedOnly = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                begin
+                    OrderPromisingLine();
+                end;
+            }
         }
     }
 
@@ -359,6 +376,35 @@ page 50147 "TFB Pending Sales Lines"
         _availability: Text;
         _statusUpdate: Text;
 
+    /// <summary>
+    /// Duplicates order promising functionality 
+    /// </summary>
+    procedure OrderPromisingLine()
+    var
+        SalesHeader: Record "Sales Header";
+        OrderPromisingLine: Record "Order Promising Line" temporary;
+        OrderPromisingLines: Page "Order Promising Lines";
+        ReleaseSalesDoc: Codeunit "Release Sales Document";
+
+
+    begin
+        Rec.calcFields("TFB Document Status");
+        If Rec."TFB Document Status" <> Rec."TFB Document Status"::Open then
+            If Dialog.Confirm('Do you want to first open document before order promising?', true) then begin
+                SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+                ReleaseSalesDoc.PerformManualReopen(SalesHeader);
+            end
+            else
+                exit;
+
+        OrderPromisingLine.SetRange("Source Type", Rec."Document Type");
+        OrderPromisingLine.SetRange("Source ID", Rec."Document No.");
+        OrderPromisingLine.SetRange("Source Line No.", Rec."Line No.");
+
+        OrderPromisingLines.SetSourceType(OrderPromisingLine."Source Type"::Sales.AsInteger());
+        OrderPromisingLines.SetTableView(OrderPromisingLine);
+        OrderPromisingLines.RunModal();
+    end;
 
     trigger OnAfterGetRecord()
 

@@ -1498,6 +1498,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applying Entry - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2191982802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Covered Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Covered Rate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 846900315 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Currency Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1533,15 +1538,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Interest Rate - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Open - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 846900315 - Field 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Original Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Original Amount - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 846900315 - Field 3826939645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Original Currency Factor</source>
+        <trans-unit id="Table 846900315 - Field 2521736277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Original Rate</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Original Currency Factor - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Original Rate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 846900315 - Field 4267346559 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Source Document No.</source>
@@ -6014,7 +6024,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Fav. Items - Action CreateSalesOrder - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forex Mgmt Entries</source>
+          <source>Forex Management Entries</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Property Caption</note>
         </trans-unit>
@@ -6068,6 +6078,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Interest Rate - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 880770545 - Control 4259830144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the application or original forex entry are still open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Open - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 880770545 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Original Amount field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6084,9 +6099,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Original Currency Factor - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Control 1794219516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remaining Amount</source>
+          <source>Specifies the remaining amount after </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control RemainingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control RemainingAmount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Control 4267346559 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Source Document No. field.</source>
@@ -8577,6 +8597,16 @@
           <source>Sales order</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Action Sales order - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3940659150 - Action 1137230472 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Calculate the shipment and delivery dates based on the item's known and expected availability dates, and then promise the dates to the customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Action OrderPromising - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3940659150 - Action 1137230472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order &amp;Promising</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Action OrderPromising - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3940659150 - Action 1891316876 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Updates shipping agent details based on latest rules and defaults for pending lines</source>
@@ -12308,6 +12338,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Lcl Shipping Agent Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 3265501444 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies pallet account number for specific account type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB PalletAccountNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 3574003171 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies if customer has a pallet account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB PalletAccountType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 4102569469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies if customer does a pallet exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB PalletExchange - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 1601623652 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Specifies the time after which an order lines earliest dispatch day will be extended by an additional day</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12332,6 +12377,11 @@
           <source>Specifies purpose of the location</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Location Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 43691312 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies if intelligent location assignment on sales line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Use for ILA - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 1896437121 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Quarantine Location Details</source>
@@ -15103,6 +15153,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Vendor is Agent - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 422750020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Pallet Account No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field PalletAccountNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 3269800125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Pallet Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field PalletExchange - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 2671920321 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Approved Arrangement No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15168,10 +15228,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Outbound Order Deadline - Method OnValidate - NamedType Text001Msg</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 1314643903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Pallet Acct Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 1462942397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Quarantine Location</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Quarantine Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 43691312 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Use for Intelligent Location Assignment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Use for ILA - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 3072294817 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>X-Ray Time Delay</source>
