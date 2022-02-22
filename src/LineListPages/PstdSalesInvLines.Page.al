@@ -21,6 +21,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies document number for sales invoice line';
+                    TableRelation = "Sales Invoice Header"."No.";
 
                 }
 
@@ -30,6 +31,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies sell-to-customer for sales invoice line';
+                    TableRelation = customer."No.";
 
                 }
                 field("TFB Customer Name"; Rec."TFB Customer Name")
@@ -44,6 +46,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies item number that was sold';
+                    TableRelation = item."No.";
                 }
                 field(Description; Rec."Description")
                 {
@@ -75,6 +78,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies sales unit of measure';
+                    TableRelation = "Unit of Measure".Code;
                 }
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
