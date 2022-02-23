@@ -47,6 +47,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     DrillDown = false;
                     ToolTip = 'Specifies item number that was sold';
                     TableRelation = item."No.";
+                    LookupPageId = "Item List";
                 }
                 field(Description; Rec."Description")
                 {

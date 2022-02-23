@@ -1853,6 +1853,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Vendor No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2823997807 - Field 1858753812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Copy Price List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Close Existing Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2823997807 - Field 1737091078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>From Price List Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Price List Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2823997807 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Key</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Primary Key - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2823997807 - Field 2113407517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Product Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2823997807 - Field 1506462522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Worksheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Worksheet - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1512186245 - Field 1560660872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CalcDesc</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3077,6 +3102,16 @@
           <source>Brokerage Shipment Update</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reviewing Items: #1#### @2@@@@</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 936493466" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reviewing ExW: #1#### @2@@@@</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressMsgEXW</note>
         </trans-unit>
         <trans-unit id="Codeunit 2022358305 - Method 2367029192 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -10513,6 +10548,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Segment Generic Items - Control Generic Item Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1119567561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1119567561 - NamedType 8049155" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Suggest based on item costing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - NamedType DataCaptionCopyLbl</note>
+        </trans-unit>
+        <trans-unit id="Page 1119567561 - Control 1858753812 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the suggested lines will also close existing lines in previous price list with yesterdays date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - Control Close Existing Lines - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1119567561 - Control 1858753812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close existing pricing lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - Control Close Existing Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1119567561 - Control 1737091078 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the price list code to compare against item costing    </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - Control Price List Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1119567561 - Control 1737091078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Compare to Price List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Suggest Item Costing Lines - Control Price List Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 184115528 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Invoice Applied Payments</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13042,6 +13107,31 @@
           <source>Suggest based on item costings</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Action TFBCopyItemCostings - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Specifies a description of the asset/product</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Control 3325354031 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Specifies the price per kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Control ExistingPriceByWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Control 3325354031 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Existing Price per kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Control ExistingPriceByWeight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Control 1584744386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Specifies the price per kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Control PriceByWeight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787709205 - Control 1584744386 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 295059669">
+          <source>Price per kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Price Worksheet - Control PriceByWeight - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 637498175 - Control 1877170360 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2464338943">
           <source>Specifies the price in weight unit specified</source>
