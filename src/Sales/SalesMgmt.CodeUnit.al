@@ -18,17 +18,26 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnBeforeGetAttachmentFileName(var AttachmentFileName: Text[250]; PostedDocNo: Code[20]; EmailDocumentName: Text[250]; ReportUsage: Integer);
     var
         SalesOrder: record "Sales Header";
-
+        SalesInvoice: record "Sales Invoice Header";
     begin
 
         case ReportUsage of
             Enum::"Report Selection Usage"::"S.Order".AsInteger():
-
-                If SalesOrder.Get(Enum::"Sales Document Type"::Order.AsInteger(), PostedDocNo) and (SalesOrder."Prepayment %" = 100) then
-                    AttachmentFileName := StrSubstNo('Sales Contract (Proforma) %1.pdf', PostedDocNo)
-                else
-                    AttachmentFileName := StrSubstNo('Sales Contract %1.pdf', PostedDocNo)
-
+                begin
+                    SalesOrder.SetLoadFields("Prepayment %");
+                    If SalesOrder.Get(Enum::"Sales Document Type"::Order.AsInteger(), PostedDocNo) and (SalesOrder."Prepayment %" = 100) then
+                        AttachmentFileName := StrSubstNo('Sales Contract (Proforma) %1.pdf', PostedDocNo)
+                    else
+                        AttachmentFileName := StrSubstNo('Sales Contract %1.pdf', PostedDocNo);
+                end;
+            Enum::"Report Selection Usage"::"S.Invoice".AsInteger():
+                begin
+                    SalesInvoice.SetLoadFields("Prepayment Invoice");
+                    If SalesInvoice.Get(PostedDocNo) and (SalesInvoice."Prepayment Invoice") then
+                        AttachmentFileName := StrSubstNo('Prepayment Invoice %1.pdf', PostedDocNo)
+                    else
+                        AttachmentFileName := StrSubstNo('Sales Invoice %1.pdf', PostedDocNo);
+                end;
         end;
 
     end;
