@@ -48,7 +48,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
             {
                 ApplicationArea = All;
                 Importance = Promoted;
-                ToolTip = 'Specifies customer price group for sals order';
+                ToolTip = 'Specifies customer price group for sales order';
             }
         }
         addfirst("Shipment Method")

@@ -17,6 +17,20 @@ tableextension 50109 "TFB Ship-to Address" extends "Ship-to Address"
 
             end;
         }
+        field(50110; "TFB Pallet Acct Type"; enum "TFB Pallet Acct Type")
+        {
+            Caption = 'TFB Pallet Account Type';
+        }
+        field(50120; "TFB Pallet Account No."; Text[50])
+        {
+            Caption = 'Pallet Account No.';
+        }
+        field(50130; "TFB Override Pallet Details"; Boolean)
+        {
+            Caption = 'Override Pallet Details';
+        }
+
+
     }
 
 

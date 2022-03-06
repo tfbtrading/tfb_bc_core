@@ -13,6 +13,18 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                 Caption = 'Instructions';
             }
         }
+
+        addafter("Order Date")
+        {
+            field("Requested Delivery Date"; Rec."Requested Delivery Date")
+            {
+                ApplicationArea = All;
+                Importance = Standard;
+                ToolTip = 'Specifies when the customer wants the order delivered';
+            }
+        }
+
+
         addbefore("Document Date")
 
         {
@@ -37,6 +49,15 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                     ApplicationArea = All;
                     Importance = Standard;
                     tooltip = 'Specifies if the blanket agreement is for a dropshipment';
+
+                    trigger OnValidate()
+
+                    begin
+                        If Rec."TFB Blanket DropShip" then
+                            Rec."TFB Direct to Customer" := true
+                        else
+                            Rec."TFB Direct to Customer" := false;
+                    end;
                 }
                 group(DropShip)
                 {
@@ -54,8 +75,19 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
 
                 }
 
+
+
             }
 
+        }
+
+        addfirst("Shipment Method")
+        {
+            field("TFB Direct to Customer"; Rec."TFB Direct to Customer")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies if all the items will be drop shipped directly to the customer. Usually reserved for trailor loads of items';
+            }
         }
 
 

@@ -14473,6 +14473,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Notify Contact - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 1314424333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Location specific pallet details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control PalletAccountDetails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 1699761818 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Specifies the separate account number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Pallet Account No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 1314643903 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Specifies the pallet account type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Pallet Acct Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 3316829010 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Specifies whether you want to override customer account details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Override Pallet Details - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1640080328 - Control 1660055543 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1636789000">
           <source>Specifies if shipment method is exclusive of freight</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16162,6 +16182,21 @@
           <source>Notify separately</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Notify Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2896263782 - Field 3316829010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Override Pallet Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Override Pallet Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2896263782 - Field 1699761818 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Pallet Account No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Pallet Account No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2896263782 - Field 1314643903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>TFB Pallet Account Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Pallet Acct Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2735403537 - Field 1660055543 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3470333905">
           <source>Freight Exclusive</source>
