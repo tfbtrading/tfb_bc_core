@@ -134,6 +134,54 @@ page 50156 "TFB Forex Mgmt Entries"
                 }
 
             }
+
+        }
+        area(factboxes)
+        {
+
+            systempart(Control1900383207; Links)
+            {
+                ApplicationArea = RecordLinks;
+                Visible = false;
+            }
+            systempart(Control1905767507; Notes)
+            {
+                ApplicationArea = Notes;
+                Visible = false;
+            }
+        }
+
+
+    }
+    actions
+    {
+        area(Navigation)
+        {
+            action(OpenSource)
+            {
+                ApplicationArea = All;
+                PromotedIsBig = true;
+                Promoted = true;
+                Image = Open;
+                Caption = 'Open Applied Document';
+                ToolTip = 'Opens the applied document if spceified';
+                Enabled = Rec."Applies-to Doc No." <> '';
+
+                trigger OnAction()
+                var
+                    VendorLedgerEntry: Record "Vendor Ledger Entry";
+                begin
+
+                    case Rec."Applies-to Doc. Type" of
+                        Rec."Applies-to Doc. Type"::VendorLedgerEntry:
+
+                            If VendorLedgerEntry.GetBySystemId(Rec."Applies-to id") then
+                                Page.Run(Page::"Vendor Ledger Entries", VendorLedgerEntry);
+
+                    end;
+
+                end;
+            }
         }
     }
 

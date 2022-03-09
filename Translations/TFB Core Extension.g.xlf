@@ -5668,10 +5668,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2735775500 - Control 1881986821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 2735775500 - Control 1951177368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the customer name for which expected payment date is provided</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Control CustomerName - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Correct Ext. Doc. No. - Control EntityName - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2735775500 - Control 3632073096 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies what the new external document will be</source>
@@ -13203,10 +13203,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Action Create &amp;Task - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Action 940523622 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Handle scenario when vendor invoice number was incorrectly specified without reissuing doc</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Action TFBCorrectExternalDocNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Action 940523622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Correct Vendor Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Action TFBCorrectExternalDocNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3393324683 - Control 2973329650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Opens up a task list</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control Tasks - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Control 1272163355 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Original external document number prior to being updated</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control TFB Orig. External Doc. No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3393324683 - Control 777769276 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Indicates if the due date is different on the actual vendor record</source>
@@ -15432,6 +15447,26 @@
           <source>Price Unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Price List Header - Field TFB Price Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2107562374 - Field 3851771836 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Expected Payment Note Last Added</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purch. Inv. Header - Field TFB Expected Note TimeStamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2107562374 - Field 1983185268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Expected Payment Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purch. Inv. Header - Field TFB Expected Payment Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2107562374 - Field 1026878320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Expected Payment Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purch. Inv. Header - Field TFB Expected Payment Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2107562374 - Field 1272163355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Original External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purch. Inv. Header - Field TFB Orig. External Doc. No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2580114637 - Field 61130814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2575310733">
           <source>Vendor Invoice No.</source>

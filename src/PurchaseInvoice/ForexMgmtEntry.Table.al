@@ -147,9 +147,12 @@ table 50119 "TFB Forex Mgmt Entry"
                             VendorLedgerEntry.SetRange("Currency Code", Rec."Currency Code");
 
                             If Page.RunModal(Page::"Vendor Ledger Entries", VendorLedgerEntry) = Action::LookupOK then begin
+                                VendorLedgerEntry.CalcFields("Remaining Amount", "TFB Forex Amount");
                                 Rec."Applies-to Doc No." := VendorLedgerEntry."External Document No.";
                                 Rec."Original Rate" := VendorLedgerEntry."Original Currency Factor";
                                 Rec."Due Date" := VendorLedgerEntry."Due Date";
+                                Rec."Applies-to id" := VendorLedgerEntry.SystemId;
+                                Rec."Original Amount" := VendorLedgerEntry."Remaining Amount" - VendorLedgerEntry."TFB Forex Amount";
                             end;
 
                         end;
@@ -169,6 +172,10 @@ table 50119 "TFB Forex Mgmt Entry"
 
                 end;
             end;
+
+        }
+        field(90; "Applies-to id"; GUID)
+        {
 
         }
         field(86; "Applying Entry"; Boolean)

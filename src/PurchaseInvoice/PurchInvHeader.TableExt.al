@@ -2,22 +2,22 @@ tableextension 50113 "TFB Purch. Inv. Header" extends "Purch. Inv. Header"
 {
     fields
     {
-        field(50200; "TFB Expected Payment Date"; Date)
+        field(50401; "TFB Expected Payment Date"; Date)
         {
             DataClassification = CustomerContent;
             Caption = 'Expected Payment Date';
         }
-        field(50210; "TFB Expected Payment Note"; Text[512])
+        field(50402; "TFB Expected Payment Note"; Text[512])
         {
             DataClassification = CustomerContent;
             Caption = 'Expected Payment Note';
         }
-        field(50220; "TFB Expected Note TimeStamp"; DateTime)
+        field(50403; "TFB Expected Note TimeStamp"; DateTime)
         {
             DataClassification = CustomerContent;
             Caption = 'Expected Payment Note Last Added';
         }
-        field(50230; "TFB Orig. External Doc. No."; Code[35])
+        field(50405; "TFB Orig. External Doc. No."; Code[35])
         {
             DataClassification = CustomerContent;
             Caption = 'Original External Document No.';
