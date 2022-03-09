@@ -5,8 +5,10 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
     layout
     {
+
         addlast(General)
         {
+
             field(Tasks; GetTaskStatus())
             {
                 ShowCaption = false;
@@ -39,7 +41,26 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         modify("Vendor Invoice No.")
         {
             Style = Strong;
-            StyleExpr = Rec."Vendor Invoice No." <> '';
+            StyleExpr = (Rec."Vendor Invoice No." <> '') or ((Rec."TFB Orig. External Doc. No." <> '') or (Rec."Vendor Invoice No." <> '')) or (Rec."TFB Orig. External Doc. No." = '');
+
+        }
+
+        addafter("Vendor Invoice No.")
+        {
+            group(CorrectedExternalDocNo)
+            {
+                Visible = (Rec."TFB Orig. External Doc. No." <> '') or ((Rec."Vendor Invoice No." <> '') and (Rec."TFB Orig. External Doc. No." = ''));
+                ShowCaption = false;
+
+                field("TFB Orig. External Doc. No."; Rec."TFB Orig. External Doc. No.")
+                {
+                    ApplicationArea = All;
+                    Style = Attention;
+                    StyleExpr = true;
+                    ToolTip = 'Original external document number prior to being updated';
+                    Editable = false;
+                }
+            }
         }
 
         addafter("Due Date")
@@ -75,6 +96,43 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
                 trigger OnAction()
                 begin
                     Rec.CreateTask();
+                end;
+            }
+        }
+        addlast(processing)
+        {
+            action(TFBCorrectExternalDocNo)
+            {
+                Caption = 'Correct Vendor Invoice No.';
+                ApplicationArea = All;
+                Image = UpdateDescription;
+                Promoted = true;
+                PromotedCategory = process;
+                PromotedIsBig = true;
+                ToolTip = 'Handle scenario when vendor invoice number was incorrectly specified without reissuing doc';
+
+                trigger OnAction()
+
+                var
+                    TempPurchaseInvoiceHeader: Record "Purch. Inv. Header" temporary;
+                    Vendor: Record Vendor;
+                    CodeUnit: CodeUnit "TFB Pstd. Purch Inv. Hdr. Edit";
+                    CorrectExtDocNo: Page "TFB Correct Ext. Doc. No.";
+                begin
+
+                    if not Rec.Closed then begin
+                        Vendor.Get(Rec."Buy-from Vendor No.");
+                        CorrectExtDocNo.SetupVendorInfo(Vendor, Rec."Vendor Invoice No.");
+                        TempPurchaseInvoiceHeader := Rec;
+                        If CorrectExtDocNo.RunModal() = Action::OK then begin
+                            TempPurchaseInvoiceHeader."TFB Orig. External Doc. No." := Rec."Vendor Invoice No.";
+                            TempPurchaseInvoiceHeader."Vendor Invoice No." := CorrectExtDocNo.GetExternalDocNo();
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::ExternalDocumentNo);
+                            CodeUnit.Run(TempPurchaseInvoiceHeader);
+                        end
+
+                    end
+
                 end;
             }
         }

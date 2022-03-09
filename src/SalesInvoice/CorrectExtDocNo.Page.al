@@ -13,7 +13,7 @@ page 50152 "TFB Correct Ext. Doc. No."
             {
                 ShowCaption = false;
 
-                field(CustomerName; _Customer.Name)
+                field(EntityName; _EntityName)
                 {
                     Editable = false;
                     Style = Strong;
@@ -75,9 +75,26 @@ page 50152 "TFB Correct Ext. Doc. No."
         PreviousNote: TextBuilder;
     begin
 
-        _Customer := Customer;
+        _EntityName := Customer.Name;
 
 
+        if not (ExternalDocNo = '') then
+            PreviousNote.AppendLine(StrSubstNo('Previous external document no was %1', ExternalDocNo))
+        else
+            PreviousNote.AppendLine('No prior external document number');
+
+
+        _PreviousValues := PreviousNote.ToText();
+
+
+    end;
+
+    procedure SetupVendorInfo(Vendor: Record Vendor; ExternalDocNo: Code[35])
+    var
+        PreviousNote: TextBuilder;
+    begin
+
+        _EntityName := Vendor.Name;
 
 
         if not (ExternalDocNo = '') then
@@ -92,10 +109,11 @@ page 50152 "TFB Correct Ext. Doc. No."
     end;
 
     var
-        _Customer: Record Customer;
+
         _ExternalDocNo: Code[35];
         _PreviousValues: Text;
-    
+        _EntityName: Text[100];
+
 
 
 }

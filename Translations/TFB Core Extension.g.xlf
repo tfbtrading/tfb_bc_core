@@ -11183,6 +11183,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Control TFB Instructions - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3920438679 - Control 135600996 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
+          <source>Specifies when the customer wants the order delivered</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Control Requested Delivery Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3920438679 - Control 2482778060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
           <source>Contract Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11212,6 +11217,11 @@
           <source>Specifies start date for shipments to occur</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Control TFB Start Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3920438679 - Control 1659813318 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
+          <source>Specifies if all the items will be drop shipped directly to the customer. Usually reserved for trailor loads of items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Control TFB Direct to Customer - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2313980770 - Control 3578572908 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3925560610">
           <source>Specifies if the blanket order is for dropshipments</source>
@@ -14029,7 +14039,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control Tasks - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3575399586 - Control 2725149570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
-          <source>Specifies customer price group for sals order</source>
+          <source>Specifies customer price group for sales order</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control Customer Price Group - Property ToolTip</note>
         </trans-unit>
