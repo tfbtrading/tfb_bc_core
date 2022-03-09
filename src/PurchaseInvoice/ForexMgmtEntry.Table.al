@@ -153,6 +153,8 @@ table 50119 "TFB Forex Mgmt Entry"
                                 Rec."Due Date" := VendorLedgerEntry."Due Date";
                                 Rec."Applies-to id" := VendorLedgerEntry.SystemId;
                                 Rec."Original Amount" := VendorLedgerEntry."Remaining Amount" - VendorLedgerEntry."TFB Forex Amount";
+                                Rec."Applies-to Entry Doc. No." := VendorLedgerEntry."Document No.";
+                                Rec."Applies-to Posting Date" := VendorLedgerEntry."Posting Date";
                             end;
 
                         end;
@@ -175,6 +177,14 @@ table 50119 "TFB Forex Mgmt Entry"
 
         }
         field(90; "Applies-to id"; GUID)
+        {
+
+        }
+        field(92; "Applies-to Entry Doc. No."; Code[20])
+        {
+
+        }
+        field(94; "Applies-to Posting Date"; Date)
         {
 
         }

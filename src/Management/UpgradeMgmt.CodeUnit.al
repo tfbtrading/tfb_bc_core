@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '19.0.3.7'))
+        Exit((GetInstallingVersionNo() = '19.0.3.8'))
     end;
 
 
@@ -151,8 +151,12 @@ codeunit 50103 "TFB Upgrade Mgmt"
                     If ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
                         VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
                         VendorLedgerEntry.SetRange("Document No.", ForexMgmtEntry."Applies-to Doc No.");
-                        If VendorLedgerEntry.FindFirst() then
+                        If VendorLedgerEntry.FindFirst() then begin
                             ForexMgmtEntry."Applies-to id" := VendorLedgerEntry.SystemId;
+                            ForexMgmtEntry."Applies-to Entry Doc. No." := VendorLedgerEntry."Document No.";
+                            ForexMgmtEntry."Applies-to Posting Date" := VendorLedgerEntry."Posting Date";
+                            VendorLedgerEntry.Modify();
+                        end;
                     end
 
             until ForexMgmtEntry.Next() = 0;

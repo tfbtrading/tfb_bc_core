@@ -1493,10 +1493,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Doc. Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 2025775731 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to Entry Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Entry Doc. No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 846900315 - Field 1932306843 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Applies-to id</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 846900315 - Field 3493030500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to Posting Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Posting Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 846900315 - Field 2686297204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Applying Entry</source>
@@ -6062,6 +6072,11 @@
           <source>New Sales Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Fav. Items - Action CreateSalesOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Navigation,Related</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Property PromotedActionCategories</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forex Management Entries</source>

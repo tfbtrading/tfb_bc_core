@@ -9,6 +9,7 @@ page 50156 "TFB Forex Mgmt Entries"
     Editable = true;
     InsertAllowed = true;
     DelayedInsert = true;
+    PromotedActionCategories = 'New,Process,Navigation,Related';
 
 
     layout
@@ -138,7 +139,12 @@ page 50156 "TFB Forex Mgmt Entries"
         }
         area(factboxes)
         {
-
+            part(IncomingDocAttachFactBox; "Incoming Doc. Attach. FactBox")
+            {
+                ApplicationArea = Basic, Suite;
+                ShowFilter = false;
+                SubPageLink = "Posting Date" = field("Applies-to Posting Date"), "Document No." = field("Applies-to Entry Doc. No.");
+            }
             systempart(Control1900383207; Links)
             {
                 ApplicationArea = RecordLinks;
@@ -160,6 +166,7 @@ page 50156 "TFB Forex Mgmt Entries"
             action(OpenSource)
             {
                 ApplicationArea = All;
+                PromotedCategory = Category4;
                 PromotedIsBig = true;
                 Promoted = true;
                 Image = Open;
