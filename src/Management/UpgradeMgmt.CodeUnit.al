@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '19.0.3.6'))
+        Exit((GetInstallingVersionNo() = '19.0.3.7'))
     end;
 
 
@@ -145,17 +145,17 @@ codeunit 50103 "TFB Upgrade Mgmt"
         VendorLedgerEntry: Record "Vendor Ledger Entry";
 
     begin
-        ForexMgmtEntry.FindSet(true, false);
-        repeat
-            if IsNullGuid(ForexMgmtEntry."Applies-to id") and (ForexMgmtEntry."Applies-to Doc No." <> '') then
-                If ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
-                    VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
-                    VendorLedgerEntry.SetRange("Document No.", ForexMgmtEntry."Applies-to Doc No.");
-                    If VendorLedgerEntry.FindFirst() then
-                        ForexMgmtEntry."Applies-to id" := VendorLedgerEntry.SystemId;
-                end
+        If ForexMgmtEntry.FindSet(true, false) then
+            repeat
+                if IsNullGuid(ForexMgmtEntry."Applies-to id") and (ForexMgmtEntry."Applies-to Doc No." <> '') then
+                    If ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
+                        VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
+                        VendorLedgerEntry.SetRange("Document No.", ForexMgmtEntry."Applies-to Doc No.");
+                        If VendorLedgerEntry.FindFirst() then
+                            ForexMgmtEntry."Applies-to id" := VendorLedgerEntry.SystemId;
+                    end
 
-        until ForexMgmtEntry.Next() = 0;
+            until ForexMgmtEntry.Next() = 0;
 
     end;
 }

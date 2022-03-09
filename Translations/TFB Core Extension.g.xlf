@@ -1493,6 +1493,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to Doc. Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 1932306843 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applies-to id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Applies-to id - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 846900315 - Field 2686297204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Applying Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6152,6 +6157,16 @@
           <source>Specifies the value of the Source Entry No. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Source Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Action 1711048043 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opens the applied document if spceified</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Action OpenSource - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Action 1711048043 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Applied Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Action OpenSource - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item</source>
@@ -16497,6 +16512,11 @@
           <source>Vendor Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor - Field TFB Vendor Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1316773911 - Field 1240155230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 406314583">
+          <source>Forex Coverage Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Vendor Ledger Entry - Field TFB Forex Amount - Property Caption</note>
         </trans-unit>
         <trans-unit id="Profile 3402792832 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Operations Manager</source>
