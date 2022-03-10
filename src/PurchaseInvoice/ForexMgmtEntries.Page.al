@@ -149,8 +149,15 @@ page 50156 "TFB Forex Mgmt Entries"
             {
                 ApplicationArea = All;
                 ShowFilter = false;
-                SubPageLink = SystemId = field(SystemId);
+                SubPageLink = "Applies-to ID" = field(SystemId);
                 Visible = Rec."Applies-to Doc. Type" = Rec."Applies-to Doc. Type"::VendorLedgerEntry;
+            }
+            part(ContractEntry; "TFB Forex Contract FB")
+            {
+                ApplicationArea = All;
+                ShowFilter = false;
+                SubPageLink = SystemId = field(SystemId);
+                Visible = Rec.EntryType = Rec.EntryType::ForexContract;
             }
             systempart(Control1900383207; Links)
             {

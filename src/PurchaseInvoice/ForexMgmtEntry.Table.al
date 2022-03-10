@@ -285,6 +285,7 @@ table 50119 "TFB Forex Mgmt Entry"
                         begin
 
                             LedgerEntry.SetRange("External Document No.", ForexMgmtEntry."Applies-to Doc No.");
+                            LedgerEntry.SetRange(Reversed, false);
                             If LedgerEntry.FindFirst() then begin
 
                                 ForexMgmtEntry2.SetRange(EntryType, ForexMgmtEntry2.EntryType::Assignment);

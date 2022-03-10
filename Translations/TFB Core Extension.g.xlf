@@ -6073,6 +6073,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Fav. Items - Action CreateSalesOrder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2324133868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contract Details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2324133868 - Control 1769753268 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of ledger entries uncovered.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Control UncoveredLedgerEntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2324133868 - Control 1769753268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Uncovered Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Control UncoveredLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2324133868 - Control 2326081969 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Invoice Amount Paid field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Control UncoveredPurchases - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2324133868 - Control 2326081969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Amount Paid</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Control UncoveredPurchases - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 880770545 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Navigation,Related</source>
           <note from="Developer" annotates="general" priority="2"></note>

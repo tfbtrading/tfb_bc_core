@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            UpdateSystemIDForForexMgmg();
+            FixContainerEntries();
 
 
     end;
@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '19.0.3.9'))
+        Exit((GetInstallingVersionNo() = '19.0.3.11'))
     end;
 
 
@@ -161,5 +161,37 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
             until ForexMgmtEntry.Next() = 0;
 
+    end;
+
+    local procedure FixContainerEntries()
+
+    var
+        ContainerEntry: Record "TFB Container Entry";
+
+    begin
+        ContainerEntry.SetRange(Closed, false);
+
+        if ContainerEntry.FindSet(true, false) then
+            repeat
+
+                //Check if it should be closed
+
+                case ContainerEntry.Status of
+                    ContainerEntry.Status::Closed:
+                        begin
+
+
+                            ContainerEntry.Closed := true;
+                            ContainerEntry.Modify(false);
+                        end;
+                    ContainerEntry.Status::Cancelled:
+                        begin
+                            ContainerEntry.Closed := true;
+                            ContainerEntry.Modify(false);
+                        end;
+                end;
+
+
+            until ContainerEntry.Next() = 0;
     end;
 }
