@@ -6183,6 +6183,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Action OpenSource - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1928311124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ledger entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Vend.Ledg. Factbox - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1928311124 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the document number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Vend.Ledg. Factbox - Control Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1928311124 - Control 3826939645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the original currency factor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Vend.Ledg. Factbox - Control Original Currency Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1928311124 - Control 3710982960 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date the ledger entry was created</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Vend.Ledg. Factbox - Control Posting Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1928311124 - Control 3119688693 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the vendors names</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Vend.Ledg. Factbox - Control Vendor Name - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item</source>
           <note from="Developer" annotates="general" priority="2"></note>

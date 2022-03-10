@@ -145,6 +145,13 @@ page 50156 "TFB Forex Mgmt Entries"
                 ShowFilter = false;
                 SubPageLink = "Posting Date" = field("Applies-to Posting Date"), "Document No." = field("Applies-to Entry Doc. No.");
             }
+            part(LedgerEntry; "TFB Forex Vend.Ledg. Factbox")
+            {
+                ApplicationArea = All;
+                ShowFilter = false;
+                SubPageLink = SystemId = field(SystemId);
+                Visible = Rec."Applies-to Doc. Type" = Rec."Applies-to Doc. Type"::VendorLedgerEntry;
+            }
             systempart(Control1900383207; Links)
             {
                 ApplicationArea = RecordLinks;
@@ -192,6 +199,13 @@ page 50156 "TFB Forex Mgmt Entries"
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+
+    begin
+        If Rec."Entry No." <> 0 then
+            RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
+    end;
 
 
 
