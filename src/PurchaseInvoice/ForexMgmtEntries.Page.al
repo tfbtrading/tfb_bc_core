@@ -47,6 +47,18 @@ page 50156 "TFB Forex Mgmt Entries"
                     Visible = false;
                     ApplicationArea = All;
                 }
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
+                {
+                    ToolTip = 'Specifies the value of the Applies-to Doc. Type field.';
+                    ApplicationArea = All;
+                    Enabled = Rec."Applying Entry" = true;
+                }
+                field("Applies-to Doc No."; Rec."Applies-to Doc No.")
+                {
+                    ToolTip = 'Specifies the value of the Applies-to Doc No. field.';
+                    ApplicationArea = All;
+                    Enabled = Rec."Applying Entry" = true;
+                }
                 field("Currency Code"; Rec."Currency Code")
                 {
                     ToolTip = 'Specifies the value of the Currency Code field.';
@@ -101,23 +113,11 @@ page 50156 "TFB Forex Mgmt Entries"
                     ToolTip = 'Specifies the value of the Due Date field.';
                     ApplicationArea = All;
                     Editable = Rec."Applying Entry" = false;
-                    Style = Unfavorable;
-                    StyleExpr = PastDue;
+
                 }
 
 
-                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
-                {
-                    ToolTip = 'Specifies the value of the Applies-to Doc. Type field.';
-                    ApplicationArea = All;
-                    Enabled = Rec."Applying Entry" = true;
-                }
-                field("Applies-to Doc No."; Rec."Applies-to Doc No.")
-                {
-                    ToolTip = 'Specifies the value of the Applies-to Doc No. field.';
-                    ApplicationArea = All;
-                    Enabled = Rec."Applying Entry" = true;
-                }
+
 
                 field("Applying Entry"; Rec."Applying Entry")
                 {
@@ -182,9 +182,10 @@ page 50156 "TFB Forex Mgmt Entries"
                     case Rec."Applies-to Doc. Type" of
                         Rec."Applies-to Doc. Type"::VendorLedgerEntry:
 
-                            If VendorLedgerEntry.GetBySystemId(Rec."Applies-to id") then
+                            If VendorLedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
+                                VendorLedgerEntry.SetRecFilter();
                                 Page.Run(Page::"Vendor Ledger Entries", VendorLedgerEntry);
-
+                            end;
                     end;
 
                 end;
@@ -192,15 +193,7 @@ page 50156 "TFB Forex Mgmt Entries"
         }
     }
 
-    trigger OnAfterGetRecord()
 
-    begin
-        If Rec."Entry No." <> 0 then
-            RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
-
-        If Rec."Due Date" < Today() then
-            PastDue := true;
-    end;
 
     var
 

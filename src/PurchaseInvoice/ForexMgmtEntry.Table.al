@@ -152,7 +152,7 @@ table 50119 "TFB Forex Mgmt Entry"
                                 Rec."Original Rate" := VendorLedgerEntry."Original Currency Factor";
                                 Rec."Due Date" := VendorLedgerEntry."Due Date";
                                 Rec."Applies-to id" := VendorLedgerEntry.SystemId;
-                                Rec."Original Amount" := VendorLedgerEntry."Remaining Amount" - VendorLedgerEntry."TFB Forex Amount";
+                                Rec."Original Amount" := -VendorLedgerEntry."Remaining Amount" - VendorLedgerEntry."TFB Forex Amount";
                                 Rec."Applies-to Entry Doc. No." := VendorLedgerEntry."Document No.";
                                 Rec."Applies-to Posting Date" := VendorLedgerEntry."Posting Date";
                             end;
