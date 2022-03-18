@@ -13,7 +13,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         if (not CommitIsSuppressed) then
             If SalesShptHdrNo <> '' then
                 //Check if document already sent
-                If not CheckIfSent(SalesShptHdrNo) then
+                If not IgnoreSalesShipmentCheck(SalesShptHdrNo) then
                     shipmentcu.SendOneShipmentNotificationEmail(SalesShptHdrNo);
 
     end;
@@ -87,7 +87,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
             //do something
-            If not CheckIfSent(SalesShipmentHeader."No.") then
+            If not IgnoreSalesShipmentCheck(SalesShipmentHeader."No.") then
                 shipmentcu.SendOneShipmentNotificationEmail(SalesShipmentHeader."No.");
     end;
 
@@ -900,26 +900,32 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             Exit(false);
     end;
 
-    procedure CheckIfSent(RefNo: Code[20]): Boolean
+    procedure IgnoreSalesShipmentCheck(RefNo: Code[20]): Boolean
 
     var
         CommEntry: record "TFB Communication Entry";
         Header: record "Sales Shipment Header";
+        Lines: record "Sales Shipment Line";
 
     begin
-
+        Header.SetLoadFields("No.");
         If not Header.Get(RefNo) then
             exit(false);
+
+        Lines.SetRange("No.", Header."No.");
+        Lines.SetRange(Type, Lines.Type::Item);
+
+        If (Lines.IsEmpty()) then exit(true);
 
         CommEntry.SetRange("Record Type", CommEntry."Record Type"::ASN);
         Commentry.SetRange("Record No.", Header."No.");
         CommEntry.SetRange("Record Table No.", Database::"Sales Shipment Header");
         CommEntry.SetRange(Direction, CommEntry.Direction::Outbound);
 
-        If not CommEntry.IsEmpty() then
-            Exit(true)
+        If CommEntry.IsEmpty() then
+            Exit(false)
         else
-            Exit(False);
+            Exit(true);
     end;
 
     procedure AddCoAToShipmentStatusEmail(RefNo: Code[20]; var EmailMessage: CodeUnit "Email Message"): Boolean
