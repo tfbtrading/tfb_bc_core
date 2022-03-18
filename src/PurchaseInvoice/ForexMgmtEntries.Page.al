@@ -125,7 +125,7 @@ page 50156 "TFB Forex Mgmt Entries"
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Open; Rec.Open)
+                field(Open; Rec.IsOpen())
                 {
                     Style = Favorable;
                     StyleExpr = not Rec.Open;

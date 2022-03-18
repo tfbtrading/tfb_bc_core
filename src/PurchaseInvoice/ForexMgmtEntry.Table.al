@@ -293,7 +293,10 @@ table 50119 "TFB Forex Mgmt Entry"
                                 ForexMgmtEntry2.SetFilter("Entry No.", '<>%1', ForexMgmtEntry."Entry No.");
                                 ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
                                 LedgerEntry.CalcFields("Remaining Amount");
-                                Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount");
+                                if LedgerEntry.Open then
+                                    Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount")
+                                else
+                                    Exit(0);
 
                             end;
 
@@ -320,6 +323,36 @@ table 50119 "TFB Forex Mgmt Entry"
         end;
 
 
+    end;
+
+    internal procedure IsOpen() Open: Boolean
+
+
+    var
+
+        LedgerEntry: Record "Vendor Ledger Entry";
+
+
+    begin
+
+        Open := true;
+
+        case Rec.EntryType of
+
+            Rec.EntryType::Assignment:
+
+                case Rec."Applies-to Doc. Type" of
+                    Rec."Applies-to Doc. Type"::VendorLedgerEntry:
+                        begin
+
+                            LedgerEntry.SetRange("External Document No.", rec."Applies-to Doc No.");
+                            LedgerEntry.SetRange(Reversed, false);
+                            LedgerEntry.SetLoadFields(Open);
+                            If LedgerEntry.FindFirst() then
+                                Exit(LedgerEntry.Open);
+                        end;
+                end;
+        end;
     end;
 
     local procedure UpdateAmounts()
