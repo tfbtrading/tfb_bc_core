@@ -914,6 +914,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         Lines.SetRange("No.", Header."No.");
         Lines.SetRange(Type, Lines.Type::Item);
+        Lines.SetRange(Nonstock, false);
 
         If (Lines.IsEmpty()) then exit(true);
 
