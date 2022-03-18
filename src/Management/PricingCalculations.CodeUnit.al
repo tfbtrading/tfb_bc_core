@@ -240,8 +240,10 @@ codeunit 50140 "TFB Pricing Calculations"
         else
             UOM.Get(Item."Base Unit of Measure");
 
-        ItemUOM.Get(Item."No.", UOM.Code);
-        Multiplier := ItemUOM."Qty. per Unit of Measure";
+        If ItemUOM.Get(Item."No.", UOM.Code) then
+            Multiplier := ItemUOM."Qty. per Unit of Measure"
+        else
+            Multiplier := 1;
 
 
         if ((UnitPrice) <> 0) and (Weight <> 0) and (Multiplier <> 0) then begin
@@ -274,8 +276,10 @@ codeunit 50140 "TFB Pricing Calculations"
 
         Weight := Item."Net Weight";
         UOM.Get(item."Base Unit of Measure");
-        ItemUOM.Get(Item."No.", UOM.Code);
-        Multiplier := ItemUOM."Qty. per Unit of Measure";
+        If ItemUOM.Get(Item."No.", UOM.Code) then
+            Multiplier := ItemUOM."Qty. per Unit of Measure"
+        else
+            Multiplier := 1;
 
         if (QtyByBaseUnit <> 0) and (Weight <> 0) and (Multiplier <> 0) then begin
             case PriceUnit of
