@@ -464,7 +464,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         //Check that content has been generated to send
         If GenerateShipmentNotificationContent(RefNo, HTMLBuilder) then
             If (Customer."TFB CoA Required") and ((Customer."TFB CoA Alt. Email") <> '') then
-                CCRecipients.Add(Customer."TFB CoA Alt. Email");
+                CCRecipients.AddRange(Customer."TFB CoA Alt. Email".Split(';', ','));  //Handles if usual email separators are used for multiple emails
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
 
