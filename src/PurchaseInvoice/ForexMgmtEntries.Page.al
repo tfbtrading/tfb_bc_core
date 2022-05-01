@@ -131,7 +131,7 @@ page 50156 "TFB Forex Mgmt Entries"
                     StyleExpr = not Rec.Open;
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the application or original forex entry are still open';
-
+                    Caption = 'Open';
                 }
 
             }

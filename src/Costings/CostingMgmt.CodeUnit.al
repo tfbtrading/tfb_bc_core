@@ -795,8 +795,8 @@ codeunit 50304 "TFB Costing Mgmt"
         DateFormula: DateFormula;
         DayBefore: Date;
         WorkSheet: Boolean;
-        ProgressMsg: Label 'Reviewing Items: #1#### @2@@@@';
-        ProgressMsgEXW: Label 'Reviewing ExW: #1#### @2@@@@';
+        ProgressMsg: Label 'Reviewing Items: #1#### @2@@@@', Comment = '%1 = Item No and %2 = Item Description';
+        ProgressEXWMsg: Label 'Reviewing ExW: #1#### @2@@@@', Comment = '%1 = Item No and %2 = Item Description';
         ApproxCount: Integer;
         Progress: Dialog;
         Counter: Integer;
@@ -915,7 +915,7 @@ codeunit 50304 "TFB Costing Mgmt"
                     ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
                     ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
                     ItemCostingLines.SetRange("Line Key", '-');
-                    Progress.Open(ProgressMsgEXW, desc);
+                    Progress.Open(ProgressEXWMsg, desc);
 
                     if ItemCostingLines.FindSet() then
                         repeat

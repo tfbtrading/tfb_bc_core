@@ -404,7 +404,7 @@ page 50142 "TFB Sample Request"
                     ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request.Warehouse");
                     ReportSelection.SetRange("Use for Email Attachment", true);
                     If ReportSelection.findfirst() then begin
-
+                            //TODO Need to add functionality here
 
 
                     end;

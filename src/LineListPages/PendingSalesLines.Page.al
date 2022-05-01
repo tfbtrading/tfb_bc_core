@@ -382,7 +382,7 @@ page 50147 "TFB Pending Sales Lines"
     procedure OrderPromisingLine()
     var
         SalesHeader: Record "Sales Header";
-        OrderPromisingLine: Record "Order Promising Line" temporary;
+        TempOrderPromisingLine: Record "Order Promising Line" temporary;
         OrderPromisingLines: Page "Order Promising Lines";
         ReleaseSalesDoc: Codeunit "Release Sales Document";
 
@@ -397,12 +397,12 @@ page 50147 "TFB Pending Sales Lines"
             else
                 exit;
 
-        OrderPromisingLine.SetRange("Source Type", Rec."Document Type");
-        OrderPromisingLine.SetRange("Source ID", Rec."Document No.");
-        OrderPromisingLine.SetRange("Source Line No.", Rec."Line No.");
+        TempOrderPromisingLine.SetRange("Source Type", Rec."Document Type");
+        TempOrderPromisingLine.SetRange("Source ID", Rec."Document No.");
+        TempOrderPromisingLine.SetRange("Source Line No.", Rec."Line No.");
 
-        OrderPromisingLines.SetSourceType(OrderPromisingLine."Source Type"::Sales.AsInteger());
-        OrderPromisingLines.SetTableView(OrderPromisingLine);
+        OrderPromisingLines.SetSourceType(TempOrderPromisingLine."Source Type"::Sales.AsInteger());
+        OrderPromisingLines.SetTableView(TempOrderPromisingLine);
         OrderPromisingLines.RunModal();
     end;
 
