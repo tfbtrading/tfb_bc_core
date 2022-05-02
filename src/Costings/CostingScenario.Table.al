@@ -62,8 +62,7 @@ table 50300 "TFB Costing Scenario"
                 if recPostCodeZoneRate.FindSet(true, false) then
                     repeat
                         if "Fuel Surcharge %" > 0 then begin
-                            recPostCodeZoneRate."Fuel Surcharge" := recPostCodeZoneRate."Base Rate" * ("Fuel Surcharge %" / 100);
-                            recPostCodeZoneRate."Total Charge" += recPostCodeZoneRate."Fuel Surcharge";
+                            recPostCodeZoneRate.OnUpdateBaseRate(recPostCodeZoneRate."Base Rate", "Fuel Surcharge %");
                             recPostCodeZoneRate.Modify()
                         end;
                     until recPostCodeZoneRate.Next() = 0;

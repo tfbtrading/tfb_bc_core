@@ -30,8 +30,7 @@ table 50312 "TFB Postcode Zone Rate"
             begin
                 if recCostingScenario.get("Costing Scenario Code") then
                     if recCostingScenario."Fuel Surcharge %" > 0 then begin
-                        "Fuel Surcharge" := "Base Rate" * (recCostingScenario."Fuel Surcharge %" / 100);
-                        "Total Charge" := "Fuel Surcharge" + "Base Rate";
+                        OnUpdateBaseRate("Base Rate", recCostingScenario."Fuel Surcharge %");
                     end;
             end;
         }
@@ -81,6 +80,14 @@ table 50312 "TFB Postcode Zone Rate"
         "Last Modified Date Time" := CURRENTDATETIME();
 
 
+    end;
+
+
+    procedure OnUpdateBaseRate(BaseRate: Decimal; FuelSurcharge: Decimal)
+
+    begin
+        "Fuel Surcharge" := "Base Rate" * (FuelSurcharge / 100);
+        "Total Charge" := "Fuel Surcharge" + "Base Rate";
     end;
 
 
