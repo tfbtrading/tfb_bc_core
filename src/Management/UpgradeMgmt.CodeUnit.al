@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '20.0.1.00'))
+        Exit((GetInstallingVersionNo() = '20.0.1.2'))
     end;
 
     local procedure FixLotSampleStatusRecord(): Boolean

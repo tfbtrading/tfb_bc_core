@@ -30,7 +30,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
         }
 
-        addafter("Lot No.")
+        addbefore("Lot No.")
         {
             field(TrafficLight; getLotTrafficLight())
             {
@@ -101,18 +101,33 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         LotNoInformation: Record "Lot No. Information";
 
     begin
-        If LotNoInformation.Get(Rec."Item No.", Rec."Variant Code", Rec."Lot No.") then
-            If Not LotNoInformation.Blocked then
-                Exit('✅')
-            else
-                If LotNoInformation."TFB Date Available" <> 0D then
-                    Exit('⛔')
+        If CheckValidAvailableEntry() then
+            If LotNoInformation.Get(Rec."Item No.", Rec."Variant Code", Rec."Lot No.") then
+                If Not LotNoInformation.Blocked then
+                    Exit('✅')
                 else
-                    Exit('❓')
+                    If LotNoInformation."TFB Date Available" <> 0D then
+                        Exit('⛔')
+                    else
+                        Exit('❓')
+            else
+                Exit('🗋')
         else
-            Exit('🗋');
+            Exit('⚪');
 
     end;
+
+    local procedure CheckValidAvailableEntry(): Boolean
+
+
+
+    begin
+
+        If IsValidDocumentType(Rec."Document Type") and (Rec."Remaining Quantity" > 0) then exit(true);
+    end;
+
+
+
 
     /// <summary> 
     /// Figures out what lot information to show given a specific set of data 
@@ -172,6 +187,24 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                     end;
         end;
 
+    end;
+
+    local procedure IsValidDocumentType(DocumentType: Enum "Item Ledger Document Type"): Boolean
+    begin
+        case DocumentType of
+            DocumentType::"Direct Transfer":
+                exit(true);
+            DocumentType::"Inventory Receipt":
+                exit(true);
+            DocumentType::"Purchase Receipt":
+                exit(true);
+            DocumentType::"Sales Return Receipt":
+                exit(true);
+            DocumentType::"Transfer Receipt":
+                exit(true);
+            else
+                exit(false);
+        end;
     end;
 
     var
