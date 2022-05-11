@@ -29,6 +29,16 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
             }
 
         }
+
+        addafter("Lot No.")
+        {
+            field(TrafficLight; getLotTrafficLight())
+            {
+                ApplicationArea = All;
+                Caption = 'Lot Status';
+                ToolTip = 'Specifies whether a lot number is currently available for sale or not';
+            }
+        }
         modify("Order Type")
         {
             Visible = false;
@@ -85,7 +95,25 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
     end;
 
-    
+    local procedure GetLotTrafficLight(): text[6]
+
+    var
+        LotNoInformation: Record "Lot No. Information";
+
+    begin
+        If LotNoInformation.Get(Rec."Item No.", Rec."Variant Code", Rec."Lot No.") then
+            If Not LotNoInformation.Blocked then
+                Exit('✅')
+            else
+                If LotNoInformation."TFB Date Available" <> 0D then
+                    Exit('⛔')
+                else
+                    Exit('❓')
+        else
+            Exit('🗋');
+
+    end;
+
     /// <summary> 
     /// Figures out what lot information to show given a specific set of data 
     /// </summary>

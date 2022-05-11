@@ -12403,6 +12403,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TFB Source Desc. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Control 1607218341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Specifies whether a lot number is currently available for sale or not</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TrafficLight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Control 1607218341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Lot Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TrafficLight - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Action 3907474199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Open item costings list for item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12858,6 +12868,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Control TFB OPC Attached - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 813329666 - Control 869502174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901500866">
+          <source>Specifies if a sample image has been attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Control TFB Sample Picture Exists - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 813329666 - Control 869502174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901500866">
+          <source>Image Attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Control TFB Sample Picture Exists - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 813329666 - Control 23818717 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901500866">
           <source>Specifies item description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12872,6 +12892,11 @@
           <source>Specifies date at which lot becomes available</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Control TFB Date Available - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 813329666 - Control 2011346350 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901500866">
+          <source>Sample Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Control SamplePicture - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 813329666 - Change 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3901500866">
           <source>Additional Details</source>
@@ -15623,16 +15648,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Lot No. Information - Field TFB Item Description - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3647021456 - Field 2999580633 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3361278800">
-          <source>Last Date Modified</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Lot No. Information - Field TFB Last Date Modified - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3647021456 - Field 884440214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3361278800">
-          <source>Last DateTime Modified</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Lot No. Information - Field TFB Last DateTime Modified - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 3647021456 - Field 1568416659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3361278800">
           <source>OPC attached</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15642,6 +15657,11 @@
           <source>Sample Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Lot No. Information - Field TFB Sample Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3647021456 - Field 869502174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3361278800">
+          <source>Sample Picture Attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Lot No. Information - Field TFB Sample Picture Exists - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2747708467 - Field 3365280462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1742461299">
           <source>Buying reason</source>

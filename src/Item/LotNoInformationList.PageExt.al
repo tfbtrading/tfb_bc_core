@@ -6,6 +6,13 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
         addafter("Lot No.")
         {
 
+            field("TFB Sample Picture Exists"; Rec."TFB Sample Picture Exists")
+            {
+                Caption = 'Image Attached';
+                ApplicationArea = All;
+                Editable = false;
+                ToolTip = 'Specifies if a sample image has been attached';
+            }
             field("TFB CoA Attached"; IsCoAAvailable)
             {
                 Caption = 'CoA Attached';
@@ -64,7 +71,15 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
                 ToolTip = 'Specifies date at which lot becomes available';
             }
         }
-
+        addlast(factboxes)
+        {
+            part(SamplePicture; "TFB Sample Picture")
+            {
+                ApplicationArea = All;
+                Caption = 'Sample Picture';
+                SubPageLink = SystemId = FIELD(SystemId);
+            }
+        }
 
     }
 

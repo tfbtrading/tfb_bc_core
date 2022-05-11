@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            FixContainerEntries();
+            FixLotSampleStatusRecord();
 
 
     end;
@@ -42,9 +42,25 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '19.0.3.11'))
+        Exit((GetInstallingVersionNo() = '20.0.1.00'))
     end;
 
+    local procedure FixLotSampleStatusRecord(): Boolean
+
+    var
+        LotNoInformation: Record "Lot No. Information";
+
+    begin
+
+        If LotNoInformation.FindSet(true, false) then
+            repeat
+                If LotNoInformation."TFB Sample Picture".Count <> 0 then begin
+                    LotNoInformation."TFB Sample Picture Exists" := true;
+                    LotNoInformation.Modify(false);
+                end;
+            until LotNoInformation.Next() = 0;
+
+    end;
 
     local procedure DeleteExistingSampleRequests(): Boolean
 

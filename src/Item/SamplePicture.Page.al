@@ -159,6 +159,7 @@ page 50155 "TFB Sample Picture"
         OnAfterTakeNewPicture(
             Rec,
             Camera.AddPicture(Rec, Rec.FieldNo("TFB Sample Picture")));
+        If Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
     end;
 
 
@@ -187,6 +188,7 @@ page 50155 "TFB Sample Picture"
 
         Clear(Rec."TFB Sample Picture");
         Rec."TFB Sample Picture".ImportStream(InStream, 'LotImage');
+        If Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
         Rec.Modify(true);
         OnImportFromDeviceOnAfterModify(Rec);
     end;
@@ -215,6 +217,7 @@ page 50155 "TFB Sample Picture"
             exit;
 
         Clear(Rec."TFB Sample Picture");
+        Rec."TFB Sample Picture Exists" := false;
         Rec.Modify(true);
 
         OnAfterDeleteSamplePicture(Rec);

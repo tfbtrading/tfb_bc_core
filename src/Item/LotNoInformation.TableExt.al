@@ -52,7 +52,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             Editable = false;
             Caption = 'Last DateTime Modified';
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by standard system fields';
         }
         field(50060; "TFB Last Date Modified"; Date)
@@ -60,7 +60,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             Editable = false;
             Caption = 'Last Date Modified';
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by standard system fields';
         }
         field(50070; "TFB Sample Picture"; MediaSet)
@@ -68,6 +68,16 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             DataClassification = CustomerContent;
             Editable = false;
             Caption = 'Sample Picture';
+
+
+        }
+
+        field(50075; "TFB Sample Picture Exists"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Editable = false;
+            Caption = 'Sample Picture Attached';
+
         }
 
 
@@ -105,18 +115,12 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
 
     fieldgroups
     {
+
         addlast(Dropdown; Blocked) { }
     }
 
 
 
-    trigger OnAfterModify()
-
-    begin
-
-        "TFB Last DateTime Modified" := CurrentDateTime();
-        "TFB Last Date Modified" := Today();
-    end;
 
     procedure UpdateItemDescriptions()
     var
