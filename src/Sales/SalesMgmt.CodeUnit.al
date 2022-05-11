@@ -634,6 +634,7 @@ codeunit 50122 "TFB Sales Mgmt"
         SalesLine: Record "Sales Line";
         DateFormula: DateFormula;
         BlockDate: Date;
+        ReleaseSalesDoc: Codeunit "Release Sales Document";
 
 
     begin
@@ -689,13 +690,15 @@ codeunit 50122 "TFB Sales Mgmt"
 
                                 SalesHeader.FindFirst();
 
-                                SalesHeader.Status := SalesHeader.Status::Open;
-                                SalesHeader.Modify();
+
+                                ReleaseSalesDoc.PerformManualReopen(SalesHeader);
+
+
+
                                 SalesLine.Validate("Shipment Date", CalcDate(DateFormula, BlockDate));
                                 SalesLine.Modify();
-                                SalesHeader.Status := SalesHeader.Status::Released;
-                                SalesHeader.Modify();
 
+                                ReleaseSalesDoc.PerformManualRelease(SalesHeader);
                             end;
                         end;
 
