@@ -55,12 +55,21 @@ tableextension 50220 "TFB Sales & Receivables Setup" extends "Sales & Receivable
 
         }
 
+
         field(51040; "TFB PL Def. Job Resp. Rec."; Code[10])
         {
             DataClassification = CustomerContent;
             TableRelation = "Job Responsibility";
             ValidateTableRelation = true;
             Caption = 'Price List Job Resp.';
+        }
+
+        field(51045; "TFB QDS Def. Job Resp."; Code[10])
+        {
+            DataClassification = CustomerContent;
+            TableRelation = "Job Responsibility";
+            ValidateTableRelation = true;
+            Caption = 'Quality Docs Subs. Job Resp.';
         }
         field(51050; "TFB Def. Customer Price Group"; Code[20])
         {

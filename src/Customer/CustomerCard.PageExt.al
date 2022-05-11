@@ -142,11 +142,24 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     Description = 'Indicates if they receive a daily stock update';
                     ToolTip = 'Specifies if customer receives a daily stock update';
                 }
-                field("TFB Order Update Preference"; Rec."TFB Order Update Preference")
+                group(OrderUpdate)
+                {
+                    Visible = Rec."TFB Stock Update Recipient";
+                    ShowCaption = false;
+                    field("TFB Order Update Preference"; Rec."TFB Order Update Preference")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Stock update preference';
+                        Importance = Standard;
+                        ToolTip = 'Specifies if customer receives mass order updates';
+                    }
+                }
+                field("TFB Quality Docs Recipient"; Rec."TFB Quality Docs Recipient")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
-                    ToolTip = 'Specifies if customer receives mass order updates';
+                    ToolTip = 'Specifies if the customer receives relevant updates to related quality documents';
+                    AboutText = 'Can be used to automate communication of updates, rather than waiting until an audit';
                 }
                 field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
                 {
@@ -160,17 +173,23 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     Importance = Standard;
                     ToolTip = 'Specifies if customer is eligible to receive a price list';
                 }
-                field("TFB Price List Partial"; Rec."TFB Price List Partial")
+
+                group(PriceList)
                 {
-                    ApplicationArea = All;
-                    Importance = standard;
-                    Tooltip = 'Specifies if customer price list only shows favourite and recently purchased items';
-                }
-                field("TFB Price List Hide Vendor"; Rec."TFB Price List Hide Vendor")
-                {
-                    ApplicationArea = All;
-                    Importance = standard;
-                    ToolTip = 'Specifies if the vendor for the goods should be displayed on their price list';
+                    Visible = Rec."TFB Price List Recipient";
+                    ShowCaption = false;
+                    field("TFB Price List Partial"; Rec."TFB Price List Partial")
+                    {
+                        ApplicationArea = All;
+                        Importance = standard;
+                        Tooltip = 'Specifies if customer price list only shows favourite and recently purchased items';
+                    }
+                    field("TFB Price List Hide Vendor"; Rec."TFB Price List Hide Vendor")
+                    {
+                        ApplicationArea = All;
+                        Importance = standard;
+                        ToolTip = 'Specifies if the vendor for the goods should be displayed on their price list';
+                    }
                 }
             }
         }

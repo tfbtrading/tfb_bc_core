@@ -57,6 +57,11 @@ tableextension 50101 "TFB Customer" extends Customer
             Caption = 'CoA Alt. Email';
             ExtendedDatatype = EMail;
         }
+        field(50115; "TFB Quality Docs Recipient"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Quality Docs Recipients';
+        }
         field(50120; "TFB Show Per Kg Only"; Boolean)
         {
             DataClassification = CustomerContent;
