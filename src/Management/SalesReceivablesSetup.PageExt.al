@@ -112,6 +112,11 @@ pageextension 50221 "TFB Sales & Receivables Setup" extends "Sales & Receivables
                 ApplicationArea = All;
                 ToolTip = 'Specifies the job responsibility for a contact that will receive price lists automatically';
             }
+            field("TFB QDS Def. Job Resp."; Rec."TFB QDS Def. Job Resp.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the job responsibility that will receive emails around quality document updates';
+            }
             field("TFB Def. Customer Price Group"; Rec."TFB Def. Customer Price Group")
             {
                 ApplicationArea = All;
