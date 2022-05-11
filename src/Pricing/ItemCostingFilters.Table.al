@@ -50,7 +50,7 @@ table 50120 "TFB Item Costing Filters"
     var
     begin
    
-       "Price List Code":= PriceListHeader.Code;
+       "Price List Code" := PriceListHeader.Code;
         Validate("Close Existing Lines", CloseExistingLines);
     end;
    

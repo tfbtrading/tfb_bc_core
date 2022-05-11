@@ -2648,6 +2648,146 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales Admin Activities Cue - Field Workday Filter - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1650118938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount Including VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Amount Including VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3048556483 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Campaign No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Campaign No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2725149570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Price Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Customer Price Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1527563463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>External Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field External Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2273653569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Language Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Language Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 4200184881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3616132794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opportunity No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Opportunity No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2628907868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Class</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Order Class - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3146932276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prepayment %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Prepayment % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 304272296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prices Including VAT</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Prices Including VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 581560053 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Accepted</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Quote Accepted - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3388162209 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Accepted Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Quote Accepted Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1786097247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Quote No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1045623542 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quote Valid To Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Quote Valid Until Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 553464652 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Salesperson Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Salesperson Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1006519668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Sell-to Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3128777977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Contact No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Sell-to Contact No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 1225278069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sell-to Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Sell-to Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 993414011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship-to Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Ship-to Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2743501653 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ship-to Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Ship-to Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 2205104606 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Method Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Shipment Method Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 305290726 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Close Opportunity Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field TFB Close Opportunity Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3289845762 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field TFB Close Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 22244033 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Work Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Work Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1278977709 - Field 3001618318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Your Reference</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sales WinLoss - Field Your Reference - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3380206577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sample Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3120,13 +3260,13 @@
         </trans-unit>
         <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reviewing Items: #1#### @2@@@@</source>
-          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Developer" annotates="general" priority="2">%1 = Item No and %2 = Item Description</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressMsg</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 936493466" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 1978675874" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reviewing ExW: #1#### @2@@@@</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressMsgEXW</note>
+          <note from="Developer" annotates="general" priority="2">%1 = Item No and %2 = Item Description</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressEXWMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 2022358305 - Method 2367029192 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -6162,6 +6302,11 @@
           <source>Specifies whether the application or original forex entry are still open</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Open - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 880770545 - Control 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Control Open - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Original Amount field.</source>
@@ -17222,6 +17367,11 @@
           <source>Sample Request to Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 1916448454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Core Permissions TFB PTE</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB CORE EXTENSION - Property Caption</note>
         </trans-unit>
       </group>
     </body>
