@@ -8548,6 +8548,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 1761928370 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the actual due date was incorrect and should be altered</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control CorrectDueDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3386638526 - Control 1761928370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Treat As Correction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Payment Note - Control CorrectDueDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3386638526 - Control 1881986821 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the customer name for which expected payment date is provided</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14232,6 +14242,11 @@
           <source>Specifies the job responsibility for a contact that will receive price lists automatically</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Price List Def. Job Resp. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 791274214 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specifies the job responsibility that will receive emails around quality document updates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB QDS Def. Job Resp. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3704753354 - Control 2096216514 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Specify a valid url using %1 as placement for item code</source>

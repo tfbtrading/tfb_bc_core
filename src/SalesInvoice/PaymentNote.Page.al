@@ -72,6 +72,15 @@ page 50150 "TFB Payment Note"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the date at which the customer says payment will be taken';
                 }
+                field(CorrectDueDate; _CorrectDueDate)
+                {
+                    Editable = true;
+                    ShowCaption = true;
+                    Caption = 'Treat As Correction';
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies that the actual due date was incorrect and should be altered';
+
+                }
             }
         }
     }
@@ -93,6 +102,12 @@ page 50150 "TFB Payment Note"
 
     begin
         Exit(_ExpectedPaymentDate);
+    end;
+
+    procedure GetIsCorrection(): Boolean
+
+    begin
+        Exit(_CorrectDueDate);
     end;
 
 
@@ -132,6 +147,8 @@ page 50150 "TFB Payment Note"
         _CustomerName: Text;
         _ExpectedPaymentNote: Text[512];
         _ExpectedPaymentDate: Date;
+
+        _CorrectDueDate: Boolean;
         _PreviousNoteDate: Text;
         _ShowMobile: Boolean;
         _ShowPhone: Boolean;
