@@ -16,6 +16,7 @@ codeunit 50117 "TFB Pstd. Sales Inv. Hdr. Edit"
                 begin
                     SalesInvoiceHeader."TFB Expected Payment Note" := Rec."TFB Expected Payment Note";
                     SalesInvoiceHeader."TFB Expected Payment Date" := Rec."TFB Expected Payment Date";
+                    SalesInvoiceHeader."Due Date" := Rec."Due Date";
                     SalesInvoiceHeader."TFB Expected Note TimeStamp" := CurrentDateTime;
                 end;
             _Scenario::ExternalDocumentNo:

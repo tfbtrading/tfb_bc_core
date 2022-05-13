@@ -118,6 +118,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                     TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     Customer: Record Customer;
                     CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
+                    CustLedgerEntry: Record "Cust. Ledger Entry";
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
 
@@ -128,8 +129,15 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         If AddPaymentNote.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
                             TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            TempSalesInvoiceHeader."Due Date" := AddPaymentNote.GetExpectedPaymentDate();
                             CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::PaymentNote);
                             CodeUnit.Run(TempSalesInvoiceHeader);
+
+                            If AddPaymentNote.GetIsCorrection() then begin
+                                CustLedgerEntry.Get(TempSalesInvoiceHeader."Cust. Ledger Entry No.");
+                                CustLedgerEntry.Validate("Due Date", AddPaymentNote.GetExpectedPaymentDate());
+                                CustLedgerEntry.Modify(false);
+                            end;
                         end
 
                     end
