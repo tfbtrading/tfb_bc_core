@@ -6213,6 +6213,101 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Cust. Fav. Items - Action CreateSalesOrder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2076849274 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 535105157 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Applies-to Doc No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2865137134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc. Type field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Applies-to Doc. Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Due Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Due Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 4259830144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the application or original forex entry are still open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Open - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Original Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Original Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 3826939645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Currency Factor field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Original Currency Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 1794219516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the remaining amount after </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control RemainingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control RemainingAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2488202391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Control13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 938567880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the accumulated balance of the bank reconciliation, which consists of the Balance Last Statement field, plus the balance in the Statement Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalBalance - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 938567880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2187294026 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total amount of the Difference field for all the lines on the bank reconciliation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalRemaining - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2187294026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Difference</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalRemaining - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Action 1498042317 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sets the filter on the worksheet to this contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Action FilterOnContract - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Action 1498042317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter to this contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Action FilterOnContract - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2324133868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forex Contract Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6237,6 +6332,221 @@
           <source>Uncovered Purchase Orders</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract FB - Control UncoveredPurchases - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Due Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Due Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Entry No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 1527563463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the External Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control External Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 4259830144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the application or original forex entry are still open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Open - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Original Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Original Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 3826939645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Currency Factor field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Original Currency Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 1794219516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the remaining amount after </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control RemainingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control RemainingAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 2488202391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control Control13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 938567880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the accumulated balance of the bank reconciliation, which consists of the Balance Last Statement field, plus the balance in the Statement Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control TotalBalance - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 938567880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control TotalBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 2187294026 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total amount of the Difference field for all the lines on the bank reconciliation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control TotalRemaining - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Control 2187294026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Remaining</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Control TotalRemaining - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Action 1498042317 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sets the filter on the worksheet to this contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Action FilterOnContract - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 839238371 - Action 1498042317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filter to this contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Contract Lines - Action FilterOnContract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 535105157 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Applies-to Doc No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2865137134 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applies-to Doc. Type field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Applies-to Doc. Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2686297204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Applying Entry field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Applying Entry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 4198939294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Currency Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Currency Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Due Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Due Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 883711285 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Entry No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2364051070 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the estimated interest amount to be charged by the trade finance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Est. Interest - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 1213267064 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the anticipated interest rate to be charged for this trade finance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Interest Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 4259830144 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the application or original forex entry are still open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Open - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 4259830144 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 1077555671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Original Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 1077555671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Original Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 3826939645 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Original Currency Factor field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Original Currency Factor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 1794219516 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the remaining amount after </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control RemainingAmount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 1794219516 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remaining Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control RemainingAmount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 4267346559 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Source Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Source Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 3627141058 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Source Entry No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Source Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 245426702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Total - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2488202391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control Control13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 938567880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the accumulated balance of the bank reconciliation, which consists of the Balance Last Statement field, plus the balance in the Statement Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control TotalBalance - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 938567880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control TotalBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2187294026 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total amount of the Difference field for all the lines on the bank reconciliation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control TotalRemaining - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 8756698 - Control 2187294026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Remaining</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Ledger Lines - Control TotalRemaining - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 880770545 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Navigation,Related</source>
@@ -6352,6 +6662,51 @@
           <source>Open Applied Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Entries - Action OpenSource - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Mgmt Worksheet</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 3462677320 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Allows filtering of which Forex Contract is shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContract - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 3462677320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contract</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 788163613 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether open or closed entries are shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowClosedEntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 788163613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Closed Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowClosedEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 3094551276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Candidate Ledger and Order Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control PendingLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 207715302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applied Ledger Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control AppliedLedgerEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 2442999497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contract Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContracts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1928311124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ledger entry</source>
@@ -14232,6 +14587,11 @@
           <source>Specifies the job responsibility for a contact that will receive price lists automatically</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB Price List Def. Job Resp. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3704753354 - Control 791274214 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
+          <source>Specifies the job responsibility that will receive emails around quality document updates</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales &amp; Receivables Setup - Control TFB QDS Def. Job Resp. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3704753354 - Control 2096216514 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4145206282">
           <source>Specify a valid url using %1 as placement for item code</source>
