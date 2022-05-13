@@ -1,10 +1,9 @@
 page 50162 "TFB Forex Contract Lines"
 {
-    ApplicationArea = All;
+
     Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "TFB Forex Mgmt Entry";
-    UsageCategory = Lists;
     AutoSplitKey = true;
     Editable = true;
     InsertAllowed = true;
@@ -129,26 +128,7 @@ page 50162 "TFB Forex Contract Lines"
     {
         area(Processing)
         {
-            action(FilterOnContract)
-            {
-                ApplicationArea = All;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
-                Promoted = true;
-                Image = Open;
-                Caption = 'Filter to this contract';
-                ToolTip = 'Sets the filter on the worksheet to this contract';
-                Enabled = Rec."Entry No." > 0;
 
-                trigger OnAction()
-                var
-
-                begin
-
-                    ApplyContractAsFilter();
-
-                end;
-            }
         }
     }
 
@@ -213,16 +193,15 @@ page 50162 "TFB Forex Contract Lines"
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 
-    procedure ToggleOpenFilter(SetFilterOn: Boolean)
+
+    procedure ToggleShowClosedFilter(SetShowClosedOn: Boolean)
     begin
-        if SetFilterOn then
-            Rec.SetRange(Open, true)
+        if SetShowClosedOn then
+            Rec.SetRange(Open)
         else
-            Rec.SetRange(Open, false);
+            Rec.SetRange(Open, true);
         CurrPage.Update();
     end;
-
-
 
     var
 

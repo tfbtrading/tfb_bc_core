@@ -21,6 +21,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
                     Caption = 'Forex Contract';
                     ToolTip = 'Allows filtering of which Forex Contract is shown';
 
+
                     trigger OnValidate()
                     var
                         ForexMgmtEntry: Record "TFB Forex Mgmt Entry";
@@ -40,8 +41,8 @@ page 50161 "TFB Forex Mgmt Worksheet"
                     trigger OnValidate()
 
                     begin
-                        CurrPage.ForexContracts.Page.ToggleOpenFilter(_ShowClosedEntriesFilter);
-                        CurrPage.AppliedLedgerEntries.Page.ToggleOpenFilter(_ShowClosedEntriesFilter);
+                        CurrPage.ForexContracts.Page.ToggleShowClosedFilter(_ShowClosedEntriesFilter);
+                        CurrPage.AppliedLedgerEntries.Page.ToggleShowClosedFilter(_ShowClosedEntriesFilter);
                     end;
                 }
             }
@@ -127,10 +128,14 @@ page 50161 "TFB Forex Mgmt Worksheet"
     trigger OnOpenPage()
     begin
         SetInitialFilters();
+
+        Codeunit.Run(Codeunit::"TFB Update Forex Entry Status");
     end;
 
     local procedure SetInitialFilters()
     begin
 
     end;
+
+
 }

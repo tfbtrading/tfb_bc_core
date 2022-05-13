@@ -1,10 +1,9 @@
 page 50163 "TFB Forex Ledger Lines"
 {
-    ApplicationArea = All;
+
     Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "TFB Forex Mgmt Entry";
-    UsageCategory = Lists;
     AutoSplitKey = true;
     Editable = true;
     InsertAllowed = true;
@@ -31,7 +30,7 @@ page 50163 "TFB Forex Ledger Lines"
                 {
                     ToolTip = 'Specifies the value of the Source Document No. field.';
                     ApplicationArea = All;
-                    Editable = (Rec.EntryType = Rec.EntryType::PurchaseOrder) or (Rec.EntryType = Rec.EntryType::VendorLedgerEntry) or (Rec.EntryType = Rec.EntryType::Assignment);
+                    Editable = true;
                 }
                 field("Source Entry No."; Rec."Source Entry No.")
                 {
@@ -84,6 +83,7 @@ page 50163 "TFB Forex Ledger Lines"
                     Caption = 'Total';
                     Editable = false;
                     Enabled = false;
+                    ToolTip = 'Specifies the total amount inclusive of finance amount and interest';
                 }
                 field("Interest Rate"; Rec."Interest Rate")
                 {
@@ -118,12 +118,6 @@ page 50163 "TFB Forex Ledger Lines"
 
 
 
-                field("Applying Entry"; Rec."Applying Entry")
-                {
-                    ToolTip = 'Specifies the value of the Applying Entry field.';
-                    ApplicationArea = All;
-                    Editable = false;
-                }
                 field(Open; Rec.IsOpen())
                 {
                     Style = Favorable;
@@ -196,12 +190,12 @@ page 50163 "TFB Forex Ledger Lines"
 
     end;
 
-    procedure ToggleOpenFilter(SetFilterOn: Boolean)
+    procedure ToggleShowClosedFilter(SetShowClosedOn: Boolean)
     begin
-        if SetFilterOn then
-            Rec.SetRange(Open, true)
+        if SetShowClosedOn then
+            Rec.SetRange(Open)
         else
-            Rec.SetRange(Open, false);
+            Rec.SetRange(Open, true);
         CurrPage.Update();
     end;
 

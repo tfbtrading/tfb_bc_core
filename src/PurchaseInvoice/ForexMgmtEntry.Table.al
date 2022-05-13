@@ -318,11 +318,25 @@ table 50119 "TFB Forex Mgmt Entry"
                         end;
 
                 end;
+            "TFB Forex Mgmt Entry Type"::VendorLedgerEntry:
 
+                begin
+                    LedgerEntry.SetLoadFields(Amount);
+                    If LedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
+                        LedgerEntry.CalcFields("Remaining Amount");
+                        Exit(LedgerEntry."Remaining Amount");
+                    end;
+                end;
 
         end;
 
 
+    end;
+
+    internal procedure UpdateOpenStatus()
+
+    begin
+        Rec.Open := IsOpen();
     end;
 
     internal procedure IsOpen() Open: Boolean
@@ -352,6 +366,10 @@ table 50119 "TFB Forex Mgmt Entry"
                                 Exit(LedgerEntry.Open);
                         end;
                 end;
+            Rec.EntryType::ForexContract:
+
+                Exit(not (getRemainingAmount(Rec."Entry No.") = 0));
+
         end;
     end;
 
