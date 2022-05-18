@@ -194,12 +194,12 @@ page 50162 "TFB Forex Contract Lines"
     end;
 
 
-    procedure ToggleShowClosedFilter(SetShowClosedOn: Boolean)
+    procedure ToggleShowOpenEntriesFilter(ShowOpenEntriesOnly: Boolean)
     begin
-        if SetShowClosedOn then
-            Rec.SetRange(Open)
+        if ShowOpenEntriesOnly then
+            Rec.SetRange(Open, true)
         else
-            Rec.SetRange(Open, true);
+            Rec.SetRange(Open);
         CurrPage.Update();
     end;
 

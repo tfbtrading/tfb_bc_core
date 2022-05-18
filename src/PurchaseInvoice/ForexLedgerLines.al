@@ -6,8 +6,9 @@ page 50163 "TFB Forex Ledger Lines"
     SourceTable = "TFB Forex Mgmt Entry";
     AutoSplitKey = true;
     Editable = true;
+
     InsertAllowed = true;
-    LinksAllowed = false;
+    LinksAllowed = true;
     DelayedInsert = true;
     SourceTableView = Where(EntryType = const(Assignment));
 
@@ -31,6 +32,7 @@ page 50163 "TFB Forex Ledger Lines"
                     ToolTip = 'Specifies the value of the Source Document No. field.';
                     ApplicationArea = All;
                     Editable = true;
+                    Enabled = true;
                 }
                 field("Source Entry No."; Rec."Source Entry No.")
                 {
@@ -118,7 +120,7 @@ page 50163 "TFB Forex Ledger Lines"
 
 
 
-                field(Open; Rec.IsOpen())
+                field(Open; Rec.Open)
                 {
                     Style = Favorable;
                     StyleExpr = not Rec.Open;
@@ -175,6 +177,11 @@ page 50163 "TFB Forex Ledger Lines"
         }
     }
 
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        Rec.Validate(EntryType, Enum::"TFB Forex Mgmt Entry Type"::Assignment);
+    end;
+
     trigger OnAfterGetCurrRecord()
     begin
         if Rec."Entry No." <> 0 then
@@ -190,12 +197,12 @@ page 50163 "TFB Forex Ledger Lines"
 
     end;
 
-    procedure ToggleShowClosedFilter(SetShowClosedOn: Boolean)
+    procedure ToggleShowOpenEntriesFilter(ShowOpenEntriesOnly: Boolean)
     begin
-        if SetShowClosedOn then
-            Rec.SetRange(Open)
+        if ShowOpenEntriesOnly then
+            Rec.SetRange(Open, true)
         else
-            Rec.SetRange(Open, true);
+            Rec.SetRange(Open);
         CurrPage.Update();
     end;
 

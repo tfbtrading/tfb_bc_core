@@ -27,15 +27,19 @@ codeunit 50175 "TFB Transfer Order Mgmt"
     var
 
         Container: Record "TFB Container Entry";
+        TransferOrder: record "Transfer Header";
 
     begin
 
-        TransRcptLine."TFB Container Entry No." := TransLine."TFB Container Entry No.";
+        TransferOrder.SetLoadFields("TFB Transfer Type", "TFB Order Reference", "TFB Container Entry No.");
+        If not TransferOrder.Get(TransLine."Document No.") then exit;
+        If not (TransferOrder."TFB Transfer Type" = Enum::"TFB Transfer Order Type"::Container) then exit;
+
+
+        TransRcptLine."TFB Container Entry No." := TransferOrder."TFB Container Entry No.";
 
         If Container.Get(TransLine."TFB Container Entry No.") then
             TransRcptLine."TFB Container No." := Container."Container No.";
-
-
 
 
     end;

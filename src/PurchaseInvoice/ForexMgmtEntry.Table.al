@@ -53,7 +53,7 @@ table 50119 "TFB Forex Mgmt Entry"
                         begin
                             ForexMgmtEntry.Reset();
                             ForexMgmtEntry.SetRange(EntryType, ForexMgmtEntry.EntryType::ForexContract);
-
+                            
                             If Page.RunModal(Page::"TFB Forex Mgmt Entries", ForexMgmtEntry) = Action::LookupOK then
                                 Rec.Validate("Source Document No.", ForexMgmtEntry."External Document No.");
 
@@ -189,6 +189,11 @@ table 50119 "TFB Forex Mgmt Entry"
 
         }
         field(86; "Applying Entry"; Boolean)
+        {
+
+        }
+
+        field(87; "Status"; Enum "TFB Forex Mgmt Entry Status")
         {
 
         }

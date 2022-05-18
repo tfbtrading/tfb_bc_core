@@ -214,7 +214,7 @@ page 50156 "TFB Forex Mgmt Entries"
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 
-
+    
 
     var
 

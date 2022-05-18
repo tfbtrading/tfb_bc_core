@@ -1578,6 +1578,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Source Entry No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 846900315 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Status - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 846900315 - Field 2855641942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total Incl. Interest</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6638,15 +6643,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContract - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3006866973 - Control 788163613 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3006866973 - Control 1226565724 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies whether open or closed entries are shown</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowClosedEntries - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowOpenntries - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3006866973 - Control 788163613 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3006866973 - Control 1226565724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Show Closed Entries</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowClosedEntries - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowOpenntries - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3006866973 - Control 3094551276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Candidate Ledger and Order Lines</source>
@@ -6662,6 +6667,11 @@
           <source>Forex Contract Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContracts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Action 977210763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update entry status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Action UpdateOpenStatus - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1928311124 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ledger entry</source>
@@ -17297,6 +17307,16 @@
           <source>Ledger Entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Applies-To Type - EnumValue VendorLedgerEntry - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 503918383 - EnumValue 1552004469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pre Delivered</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Entry Status - EnumValue PreDelivered - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 503918383 - EnumValue 3431804371 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Scheduled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Forex Mgmt Entry Status - EnumValue Scheduled - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 371909651 - EnumValue 3462677320 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forex Contract</source>

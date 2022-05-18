@@ -31,7 +31,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
                             CurrPage.AppliedLedgerEntries.Page.ToggleContractFilter(ForexMgmtEntry."External Document No.");
                     end;
                 }
-                field(ShowClosedEntries; _ShowClosedEntriesFilter)
+                field(ShowOpenntries; _ShowOpenEntriesFilter)
                 {
                     ApplicationArea = All;
                     Caption = 'Show Closed Entries';
@@ -41,8 +41,8 @@ page 50161 "TFB Forex Mgmt Worksheet"
                     trigger OnValidate()
 
                     begin
-                        CurrPage.ForexContracts.Page.ToggleShowClosedFilter(_ShowClosedEntriesFilter);
-                        CurrPage.AppliedLedgerEntries.Page.ToggleShowClosedFilter(_ShowClosedEntriesFilter);
+                        CurrPage.ForexContracts.Page.ToggleShowOpenEntriesFilter(_ShowOpenEntriesFilter);
+                        CurrPage.AppliedLedgerEntries.Page.ToggleShowOpenEntriesFilter(_ShowOpenEntriesFilter);
                     end;
                 }
             }
@@ -116,13 +116,23 @@ page 50161 "TFB Forex Mgmt Worksheet"
         {
 
         }
+        area(Processing)
+        {
+            action(UpdateOpenStatus)
+            {
+                ApplicationArea = All;
+                Caption = 'Update entry status';
+                RunObject = codeunit "TFB Update Forex Entry Status";
+
+            }
+        }
     }
 
     var
         myInt: Integer;
         _ForexContractFilter: Integer;
 
-        _ShowClosedEntriesFilter: Boolean;
+        _ShowOpenEntriesFilter: Boolean;
 
 
     trigger OnOpenPage()
@@ -134,7 +144,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
 
     local procedure SetInitialFilters()
     begin
-
+        _ShowOpenEntriesFilter := true;
     end;
 
 
