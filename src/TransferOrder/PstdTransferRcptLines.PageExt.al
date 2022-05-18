@@ -13,6 +13,19 @@ pageextension 50158 "TFB Pstd. Transfer Rcpt. Lines" extends "Posted Transfer Re
                 ToolTip = 'Specifies the location details of the transfer';
 
             }
+            field("TFB Container Entry No."; Rec."TFB Container Entry No.")
+            {
+                ApplicationArea = All;
+                Caption = 'Container Entry';
+                TableRelation = "TFB Container Entry";
+                ToolTip = 'Specifies the container entry';
+            }
+            field("TFB Container No."; Rec."TFB Container No.")
+            {
+                ApplicationArea = All;
+                Caption = 'Container No.';
+                ToolTip = 'Specifies the container number';
+            }
         }
     }
 

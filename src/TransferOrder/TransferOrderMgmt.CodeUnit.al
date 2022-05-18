@@ -36,11 +36,12 @@ codeunit 50175 "TFB Transfer Order Mgmt"
         If not (TransferOrder."TFB Transfer Type" = Enum::"TFB Transfer Order Type"::Container) then exit;
 
 
-        TransRcptLine."TFB Container Entry No." := TransferOrder."TFB Container Entry No.";
 
-        If Container.Get(TransLine."TFB Container Entry No.") then
+
+        If Container.Get(TransferOrder."TFB Container Entry No.") then begin
             TransRcptLine."TFB Container No." := Container."Container No.";
-
+            TransRcptLine."TFB Container Entry No." := TransferOrder."TFB Container Entry No.";
+        end;
 
     end;
 
