@@ -177,13 +177,16 @@ page 50210 "TFB Container Entry"
                             ToolTip = 'Specifies related transfer orders';
                         }
 
-                        field("No. of Transfer Receipts"; Rec."No. of Transfer Receipts")
+                        field("Qty. On Transfer Rcpt"; Rec."Qty. On Transfer Rcpt")
                         {
                             ApplicationArea = All;
+                            Caption = 'Qty. On Transf. Rcpt.';
                             Editable = false;
                             DrillDown = true;
-                            DrillDownPageId = "Posted Transfer Receipts";
-                            ToolTip = 'Specifies related transfer receipts';
+                            DrillDownPageId = "Posted Transfer Receipt Lines";
+                            ToolTip = 'Specifies related transfer receipts quantities';
+
+
 
                         }
 

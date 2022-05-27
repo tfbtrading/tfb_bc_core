@@ -386,11 +386,7 @@ table 50181 "TFB Container Entry"
             FieldClass = FlowField;
             CalcFormula = sum("Transfer Receipt Line"."Quantity (Base)" where("TFB Container Entry No." = field("No.")));
         }
-        field(425; "No. of Transfer Receipts"; Integer)
-        {
-            FieldClass = FlowField;
-            CalcFormula = count("Transfer Receipt Header" where("TFB Container Entry No." = field("No.")));
-        }
+
 
         field(430; "Qty. On Transfer Ship."; Decimal)
         {
