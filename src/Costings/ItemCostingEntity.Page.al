@@ -3,7 +3,7 @@ page 50335 "TFB ItemCosting Entity"
     PageType = API;
     caption = 'itemCosting';
     APIPublisher = 'tfb';
-    APIVersion = 'beta';
+    APIVersion = 'v2.0';
     APIGroup = 'costings';
     EntityName = 'itemCosting';
     EntitySetName = 'itemCostings';

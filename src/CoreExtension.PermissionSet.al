@@ -5,6 +5,7 @@ permissionset 50100 "TFB CORE EXTENSION"
     Assignable = true;
     Permissions =
         tabledata "TFB Cust. Fav. Item" = RIMD,
+        tabledata "TFB Custom Picture" = RIMD,
         tabledata "TFB Vendor Certification" = RIMD,
         tabledata "TFB Certification Type" = RIMD,
          tabledata "TFB Sales WinLoss" = RIMD,
@@ -48,6 +49,7 @@ permissionset 50100 "TFB CORE EXTENSION"
             table "TFB Vendor Certification" = X,
         table "TFB Certification Type" = X,
         table "TFB Quality Auditor" = X,
+          table "TFB Custom Picture" = X,
         table "TFB Container LifeCycle Link" = X,
         table "TFB Sales Admin Activities Cue" = X,
         table "TFB Ops Mgr Activities Cue" = X,

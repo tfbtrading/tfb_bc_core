@@ -15,7 +15,7 @@ page 50140 "TFB APIV2 - Generic Items"
     SourceTable = "TFB Generic Item";
     Extensible = false;
     APIPublisher = 'tfb';
-    APIGroup = 'customAPI';
+    APIGroup = 'supplychain';
 
     layout
     {
@@ -112,13 +112,13 @@ page 50140 "TFB APIV2 - Generic Items"
                     Editable = true;
                 }
 
-                part(picture; "APIV2 - Pictures")
+                part(picture; "TFB APIV2 - Custom Pictures")
                 {
                     Caption = 'Picture';
                     Multiplicity = ZeroOrOne;
                     EntityName = 'picture';
                     EntitySetName = 'pictures';
-                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(Item);
+                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(GenericItem);
                 }
 
             }

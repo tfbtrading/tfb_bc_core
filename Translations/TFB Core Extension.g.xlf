@@ -813,11 +813,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field No. Of Transfer Orders - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 3647999246 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>No. of Transfer Receipts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field No. of Transfer Receipts - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1207535885 - Field 3246812794 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>No. Of Transfer Shipments</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5363,15 +5358,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control No. Of Transfer Orders - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1207535885 - Control 3647999246 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies related transfer receipts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control No. of Transfer Receipts - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 1207535885 - Control 15664720 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies qty on rcpt</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Qty. On Purch. Rcpt - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3678962959 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies related transfer receipts quantities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Qty. On Transfer Rcpt - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 3678962959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. On Transf. Rcpt.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Qty. On Transfer Rcpt - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Control 3172070807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies vendor no.</source>
@@ -13887,6 +13887,26 @@
           <source>Remaining Amount</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFBAmtRemaining - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3272223732 - Control 2127744352 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
+          <source>Specifies the container entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Transfer Rcpt. Lines - Control TFB Container Entry No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3272223732 - Control 2127744352 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
+          <source>Container Entry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Transfer Rcpt. Lines - Control TFB Container Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3272223732 - Control 447878212 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
+          <source>Specifies the container number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Transfer Rcpt. Lines - Control TFB Container No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3272223732 - Control 447878212 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
+          <source>Container No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Transfer Rcpt. Lines - Control TFB Container No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3272223732 - Control 3389914503 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2367133653">
           <source>Specifies the location details of the transfer</source>

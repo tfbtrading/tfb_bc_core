@@ -29,9 +29,9 @@ table 50312 "TFB Postcode Zone Rate"
 
             begin
                 if recCostingScenario.get("Costing Scenario Code") then
-                    if recCostingScenario."Fuel Surcharge %" > 0 then begin
+                    if recCostingScenario."Fuel Surcharge %" > 0 then
                         OnUpdateBaseRate("Base Rate", recCostingScenario."Fuel Surcharge %");
-                    end;
+
             end;
         }
         field(3; "ID"; Guid)
