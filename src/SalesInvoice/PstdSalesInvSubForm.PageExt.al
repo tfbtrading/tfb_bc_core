@@ -21,6 +21,18 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
             }
 
         }
+        addafter("Line Discount %")
+        {
+            field("TFB Price Unit Discount"; PriceUnitDiscount)
+            {
+                ApplicationArea = All;
+                BlankNumbers = BlankZero;
+                Editable = false;
+                Caption = 'Per Kg Discount';
+                ToolTip = 'Specifies the discount as a per kilogram price';
+
+            }
+        }
         addafter("Unit of Measure Code")
         {
             field(LineWeight; CalculatedLineWeight)
@@ -74,7 +86,7 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
         PricingCU: CodeUnit "TFB Pricing Calculations";
         PricePerKg: Decimal;
         CalculatedLineWeight: Decimal;
-
+        PriceUnitDiscount: Decimal;
 
 
     trigger OnAfterGetRecord()
@@ -84,10 +96,13 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
         If rec.Type = rec.Type::Item then begin
             PricePerKg := PricingCU.CalcPerKgFromUnit(rec."Unit Price", rec."Net Weight");
             CalculatedLineWeight := rec."Net Weight" * rec.Quantity;
+            PriceUnitDiscount := Rec."Line Discount Amount" / Rec."Net Weight" / Rec.Quantity;
+
         end
         else begin
             PricePerKg := 0;
             CalculatedLineWeight := 0;
+            PriceUnitDiscount := 0;
         end;
 
     end;

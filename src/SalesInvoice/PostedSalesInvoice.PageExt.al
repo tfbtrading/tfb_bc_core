@@ -62,6 +62,16 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
             }
         }
 
+        addbefore("Payment Terms Code")
+        {
+            field("Customer Price Group"; Rec."Customer Price Group")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the customer price group that was used at the header level';
+
+            }
+        }
+
         addbefore("External Document No.")
         {
             group(Brokerage)
