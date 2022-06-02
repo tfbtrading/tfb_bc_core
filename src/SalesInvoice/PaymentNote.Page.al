@@ -142,8 +142,41 @@ page 50150 "TFB Payment Note"
 
     end;
 
+
+    procedure SetupVendorInfo(Vendor: Record Vendor; ExpectedPaymentNote: Text[512]; ExpectedPaymentDate: Date; LastDateTimeTaken: DateTime)
+    var
+        PreviousNote: TextBuilder;
+    begin
+
+        _Vendor := Vendor;
+        _ExpectedPaymentDate := ExpectedPaymentDate;
+
+
+        If (LastDateTimeTaken > 0DT) then
+            if (ExpectedPaymentNote = '') then
+                PreviousNote.AppendLine(StrSubstNo('Previous note from %1.', LastDateTimeTaken))
+            else
+                PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExpectedPaymentNote, LastDateTimeTaken));
+
+        If _ExpectedPaymentDate > 0D then
+            PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExpectedPaymentDate));
+
+        _PreviousNoteDate := PreviousNote.ToText();
+
+        _ShowPhone := Vendor."Phone No." <> '';
+        _ShowMobile := Vendor."Mobile Phone No." <> '';
+
+        If _ShowPhone then _PhoneText := 'Phone on ' + Vendor."Phone No.";
+        If _ShowPhone and _ShowMobile then _PhoneText += ' and mobile ' + Vendor."Mobile Phone No.";
+        If _ShowMobile then _PhoneText += 'Call mobile ' + Vendor."Mobile Phone No.";
+
+
+
+    end;
+
     var
         _Customer: Record Customer;
+        _Vendor: Record Vendor;
         _CustomerName: Text;
         _ExpectedPaymentNote: Text[512];
         _ExpectedPaymentDate: Date;

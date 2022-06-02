@@ -13683,6 +13683,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control TFB Orig. External Doc. No. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Control 2725149570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Specifies the customer price group that was used at the header level</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control Customer Price Group - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Control 4009555772 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Specifies related brokerage shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14008,6 +14013,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control Tasks - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Control 32771041 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Add date and notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control ExpectedDateText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Control 32771041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Expected Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control ExpectedDateText - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3393324683 - Control 1272163355 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
           <source>Original external document number prior to being updated</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14062,6 +14077,16 @@
           <source>Price Per Kg</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFBPricePerKg - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3995517980 - Control 481041314 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
+          <source>Specifies the discount as a per kilogram price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFB Price Unit Discount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3995517980 - Control 481041314 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
+          <source>Per Kg Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFB Price Unit Discount - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3995517980 - Control 301631802 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
           <source>Specifies the line weight</source>

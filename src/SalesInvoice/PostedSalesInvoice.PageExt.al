@@ -254,6 +254,12 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
     trigger OnAfterGetRecord()
 
     begin
+        SetExpectedDateStatus();
+    end;
+
+    local procedure SetExpectedDateStatus()
+
+    begin
         Clear(ExpectedDateText);
 
         If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then

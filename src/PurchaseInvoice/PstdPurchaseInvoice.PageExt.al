@@ -44,6 +44,50 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
             StyleExpr = (Rec."Vendor Invoice No." <> '') or ((Rec."TFB Orig. External Doc. No." <> '') or (Rec."Vendor Invoice No." <> '')) or (Rec."TFB Orig. External Doc. No." = '');
 
         }
+        addafter("Due Date")
+        {
+            field(ExpectedDateText; ExpectedDateText)
+            {
+                ApplicationArea = All;
+                Style = Unfavorable;
+                StyleExpr = IsExpectedDatePastDue;
+                ToolTip = 'Add date and notes';
+                Caption = 'Expected Date';
+                Editable = false;
+                DrillDown = true;
+                trigger OnDrillDown()
+
+                var
+                    TempPurchInvHeader: Record "Purch. Inv. Header" temporary;
+                    Vendor: Record Vendor;
+                    CodeUnit: CodeUnit "TFB Pstd. Purch Inv. Hdr. Edit";
+                    VendLedgerEntry: Record "Vendor Ledger Entry";
+                    AddPaymentNote: Page "TFB Payment Note";
+                begin
+
+                    if not Rec.Closed then begin
+                        Vendor.Get(Rec."Buy-from Vendor No.");
+                        AddPaymentNote.SetupVendorInfo(Vendor, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
+                        TempPurchInvHeader := Rec;
+                        If AddPaymentNote.RunModal() = Action::OK then begin
+                            TempPurchInvHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
+                            TempPurchInvHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            TempPurchInvHeader."Due Date" := AddPaymentNote.GetExpectedPaymentDate();
+                            CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::PaymentNote);
+                            CodeUnit.Run(TempPurchInvHeader);
+
+                            If AddPaymentNote.GetIsCorrection() then begin
+                                VendLedgerEntry.Get(TempPurchInvHeader."Vendor Ledger Entry No.");
+                                VendLedgerEntry.Validate("Due Date", AddPaymentNote.GetExpectedPaymentDate());
+                                VendLedgerEntry.Modify(false);
+                            end;
+                        end
+
+                    end
+
+                end;
+            }
+        }
 
         addafter("Vendor Invoice No.")
         {
@@ -157,6 +201,35 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
                 DueDateIsDifferent := true else
                 DueDateIsDifferent := false;
 
+        SetExpectedDateStatus();
+    end;
+
+    local procedure SetExpectedDateStatus()
+
+    begin
+        Clear(ExpectedDateText);
+
+        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+            IsPastDue := true
+        else
+            IsPastDue := false;
+
+        If not Rec.Closed then begin
+            If Rec."TFB Expected Payment Date" > 0D then
+                ExpectedDateText := format(Rec."TFB Expected Payment Date")
+            else
+                if Rec."TFB Expected Payment Note" = '' then
+                    ExpectedDateText := '➕'
+                else
+                    ExpectedDateText := '📄';
+        end
+        else
+            ExpectedDateText := '';
+
+        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+            IsExpectedDatePastDue := true
+        else
+            IsExpectedDatePastDue := false;
     end;
 
     local procedure GetLedgerEntryDetail(var DueDate: Date; var RemainingAmt: Decimal): Boolean
@@ -177,6 +250,11 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
         Exit(true);
     end;
+
+    var
+        IsPastDue: Boolean;
+        IsExpectedDatePastDue: Boolean;
+        ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text
 
