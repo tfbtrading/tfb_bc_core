@@ -41,6 +41,19 @@ page 50165 "TFB APIV2 - Lot Info"
                 {
                     Caption = 'LotNo';
                 }
+
+                field(LatestReceiptDate; LatestReceiptDate)
+                {
+                    Caption = 'LatestReceiptDate';
+                }
+                field(LatestReceiptReference; LatestReceiptReference)
+                {
+                    Caption = 'LatestReceiptReference';
+                }
+                field(LatestReceiptWarehouseLocation; LatestReceiptWarehouseLocation)
+                {
+                    Caption = 'LatestReceiptWarehouseLocation';
+                }
                 field(displayName; Rec."TFB Item Description")
                 {
                     Caption = 'DisplayName';
@@ -103,6 +116,12 @@ page 50165 "TFB APIV2 - Lot Info"
     actions
     {
     }
+
+    var
+        LatestReceiptDate: Date;
+        LatestReceiptReference: Code[20];
+        LatestReceiptWarehouseLocation: Code[20];
+
 
     trigger OnAfterGetRecord()
     begin
@@ -223,9 +242,28 @@ page 50165 "TFB APIV2 - Lot Info"
     end;
 
     local procedure SetCalculatedFields()
+    var
+        ItemLedgerEntry: Record "Item Ledger Entry";
+        ReceiptLine: Record "Purch. Rcpt. Line";
     begin
         // Inventory
         InventoryValue := Rec.Inventory;
+
+        ItemLedgerEntry.SetRange("Lot No.", Rec."Lot No.");
+        ItemLedgerEntry.SetRange("Item No.", Rec."Item No.");
+        ItemLedgerEntry.SetRange("Variant Code", Rec."Variant Code");
+        ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt", ItemLedgerEntry."Document Type"::"Transfer Receipt");
+
+        ItemLedgerEntry.SetLoadFields("Document Line No.", "Document No.", "Location Code", "Posting Date");
+        If ItemLedgerEntry.FindLast() then begin
+            LatestReceiptDate := ItemLedgerEntry."Posting Date";
+            LatestReceiptWarehouseLocation := ItemLedgerEntry."Location Code";
+            ReceiptLine.SetLoadFields("Order No.");
+            if ReceiptLine.Get(ItemLedgerEntry."Document No.", ItemLedgerEntry."Document Line No.") then
+                LatestReceiptReference := ReceiptLine."Order No.";
+
+        end;
+
     end;
 
     local procedure ClearCalculatedFields()
