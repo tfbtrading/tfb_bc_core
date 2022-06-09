@@ -11,7 +11,7 @@ tableextension 50101 "TFB Customer" extends Customer
 
 
         }
-        field(50102; "PalletExchange"; Boolean)
+        field(50102; "TFB Pallet Exchange"; Boolean)
         {
             DataClassification = CustomerContent;
             Caption = 'Pallet Exchange';
@@ -21,13 +21,13 @@ tableextension 50101 "TFB Customer" extends Customer
             DataClassification = CustomerContent;
             Caption = 'Account Type';
         }
-        field(50103; PalletAccountNo; Text[50])
+        field(50103; "TFB Pallet Account No"; Text[50])
         {
             DataClassification = CustomerContent;
             Caption = 'Pallet Account No';
 
         }
-        field(50104; "Delivery Instructions"; Text[250])
+        field(50104; "TFB Delivery Instructions"; Text[250])
         {
             DataClassification = CustomerContent;
             Caption = 'Delivery Instructions';

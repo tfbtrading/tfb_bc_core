@@ -107,9 +107,10 @@ codeunit 50142 "TFB Common Library"
         Exit(TempBlobCU);
     end;
 
-    procedure GetCustDelInstr(CustomerNo: Code[20]): Text[2048]
+    procedure GetCustDelInstr(CustomerNo: Code[20]; ShipToCode: Code[10]): Text[2048]
     var
         Customer: record Customer;
+        ShipToAddress: record "Ship-to Address";
         DelInstrBuilder: TextBuilder;
 
     begin
@@ -117,15 +118,28 @@ codeunit 50142 "TFB Common Library"
 
         begin
             DelInstrBuilder.Clear();
-            If Customer.get(CustomerNo) then begin
+            If ShipToAddress.Get(CustomerNo, ShipToCode) then begin
+                DelInstrBuilder.Append(ShipToAddress."TFB Delivery Instructions");
+                If ShipToAddress."TFB Override Pallet Details" and (ShipToAddress."TFB Pallet Account No." <> '') then begin
+                    DelInstrBuilder.AppendLine(format(ShipToAddress."TFB Pallet Acct Type"));
+                    DelInstrBuilder.Append('-' + ShipToAddress."TFB Pallet Account No.");
+                end
+                else
+                    If Customer."TFB Pallet Account No" <> '' then begin
+                        DelInstrBuilder.AppendLine(format(Customer."TFB Pallet Acct Type"));
+                        DelInstrBuilder.AppendLine('-' + Customer."TFB Pallet Account No");
+                    end;
+            end
+            else
+                If Customer.get(CustomerNo) then begin
 
-                DelInstrBuilder.Append(Customer."Delivery Instructions");
-                If Customer.PalletAccountNo <> '' then begin
-                    DelInstrBuilder.AppendLine(format(Customer."TFB Pallet Acct Type"));
-                    DelInstrBuilder.AppendLine(Customer.PalletAccountNo);
+                    DelInstrBuilder.Append(Customer."TFB Delivery Instructions");
+                    If Customer."TFB Pallet Account No" <> '' then begin
+                        DelInstrBuilder.AppendLine(format(Customer."TFB Pallet Acct Type"));
+                        DelInstrBuilder.AppendLine(Customer."TFB Pallet Account No");
+                    end;
+
                 end;
-
-            end;
 
             Exit(CopyStr(DelInstrBuilder.ToText(), 1, 2048));
 

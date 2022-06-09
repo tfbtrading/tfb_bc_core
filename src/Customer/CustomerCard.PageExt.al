@@ -15,7 +15,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the type of reservation strategy that will be used by the customer';
             }
-            field("TFB Delivery Instructions"; Rec."Delivery Instructions")
+            field("TFB Delivery Instructions"; Rec."TFB Delivery Instructions")
             {
                 ApplicationArea = All;
                 MultiLine = True;
@@ -36,14 +36,14 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     ToolTip = 'Specifies if there is an alternative email to receive certificates of analysis';
                 }
             }
-            field("TFB PalletExchange"; Rec.PalletExchange)
+            field("TFB PalletExchange"; Rec."TFB Pallet Exchange")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if customer does a pallet exchange';
             }
             group(PalletDetails)
             {
-                Visible = not Rec.PalletExchange;
+                Visible = not Rec."TFB Pallet Exchange";
                 ShowCaption = false;
                 field("TFB PalletAccountType"; Rec."TFB Pallet Acct Type")
                 {
@@ -51,7 +51,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     ToolTip = 'Specifies if customer has a pallet account';
                 }
 
-                field("TFB PalletAccountNo"; Rec.PalletAccountNo)
+                field("TFB PalletAccountNo"; Rec."TFB Pallet Account No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies pallet account number for specific account type';

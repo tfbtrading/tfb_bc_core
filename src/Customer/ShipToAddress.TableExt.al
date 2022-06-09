@@ -30,6 +30,12 @@ tableextension 50109 "TFB Ship-to Address" extends "Ship-to Address"
             Caption = 'Override Pallet Details';
         }
 
+        field(50104; "TFB Delivery Instructions"; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Delivery Instructions';
+        }
+
 
     }
 

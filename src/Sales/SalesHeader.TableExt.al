@@ -20,8 +20,19 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
             var
                 TFBCommonLibrary: Codeunit "TFB Common Library";
             begin
+                If "Sell-to Customer No." <> '' then
+                    "TFB Instructions" := TFBCommonLibrary.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
+            end;
+        }
 
-                "TFB Instructions" := TFBCommonLibrary.GetCustDelInstr("Sell-to Customer No.");
+        modify("Ship-to Code")
+        {
+            trigger OnAfterValidate()
+            var
+                TFBCommonLibrary: Codeunit "TFB Common Library";
+            begin
+                If "Sell-to Customer No." <> '' then
+                    "TFB Instructions" := TFBCommonLibrary.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
             end;
         }
 

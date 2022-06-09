@@ -155,11 +155,24 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
 
             begin
 
-                "TFB Instructions" := TFBCommonCode.GetCustDelInstr("Sell-to Customer No.");
-
-
+                "TFB Instructions" := TFBCommonCode.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
             end;
         }
+
+        modify("Ship-to Code")
+        {
+            trigger OnAfterValidate()
+
+            var
+
+                TFBCommonCode: CodeUnit "TFB Common Library";
+
+            begin
+                If Rec."Sell-to Customer No." <> '' then
+                    "TFB Instructions" := TFBCommonCode.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
+            end;
+        }
+
 
         modify("Buy-from Vendor No.")
         {

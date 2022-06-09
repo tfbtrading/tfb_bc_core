@@ -3993,6 +3993,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - Control lastModifiedDateTime - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2176275388 - Control 2699426101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptDate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - Control LatestReceiptDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2176275388 - Control 1734435808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptReference</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - Control LatestReceiptReference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2176275388 - Control 2262492041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptWarehouseLocation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - Control LatestReceiptWarehouseLocation - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2176275388 - Control 3423136354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>LotNo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15338,6 +15353,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Notify Contact - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 3342891393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Additional Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control AddInfo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2896263782 - Control 1314424333 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Location specific pallet details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15352,6 +15372,11 @@
           <source>Specifies the pallet account type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Pallet Acct Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 3135529153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Specifies delivery instructions specific to this location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Delivery Instructions - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2896263782 - Control 3316829010 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Specifies whether you want to override customer account details</source>
@@ -15808,21 +15833,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Sales Readiness - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 2350454145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Delivery Instructions</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field Delivery Instructions - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 422750020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Pallet Account No</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletAccountNo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 392561952 - Field 3269800125 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
-          <source>Pallet Exchange</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field PalletExchange - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 1681660618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>CoA Alt. Email</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15857,6 +15867,11 @@
           <source>Date of Last Sale</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Date of Last Sale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3135529153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Delivery Instructions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Delivery Instructions - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 3552331494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Enable Online Access</source>
@@ -15913,10 +15928,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Outstanding Brokerage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 812922956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Pallet Account No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Pallet Account No - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 1314643903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Account Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Pallet Acct Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 3000532981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Pallet Exchange</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Pallet Exchange - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 2421326477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Parent Company</source>
@@ -17067,6 +17092,11 @@
           <source>Further details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Segment Line - Field TFB Further Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2896263782 - Field 3135529153 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Delivery Instructions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Delivery Instructions - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2896263782 - Field 3962748877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
           <source>Notify separately</source>
