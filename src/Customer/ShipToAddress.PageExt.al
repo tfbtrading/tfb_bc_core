@@ -25,6 +25,8 @@ pageextension 50161 "TFB Ship-to Address" extends "Ship-to Address"
                 {
                     ApplicationArea = All;
                     Importance = Promoted;
+                    MultiLine = true;
+                    Width = 400;
 
                     ToolTip = 'Specifies delivery instructions specific to this location';
                 }
