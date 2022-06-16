@@ -226,7 +226,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
                     //Check if an entry exists for this purchase order
                     ContainerEntry.SetRange("Order Reference", Rec."No.");
                     ContainerEntry.SetRange("Vendor No.", Rec."Buy-from Vendor No.");
-                    ContainerEntry.SetRange(Type::PurchaseOrder);
+                    ContainerEntry.SetRange(Type, ContainerEntry.Type::PurchaseOrder);
 
                     If ContainerEntry.FindFirst() then begin
                         ContainerEntryPage.SetRecord(ContainerEntry);

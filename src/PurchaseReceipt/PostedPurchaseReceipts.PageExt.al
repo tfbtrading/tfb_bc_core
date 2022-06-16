@@ -29,7 +29,7 @@ pageextension 50220 "TFB Posted Purchase Receipts" extends "Posted Purchase Rece
                         OpenOrderPage.Run();
                     end
                     else begin
-                        ArchiveOrder.SetRange("Document Type"::Order);
+                        ArchiveOrder.SetRange("Document Type", ArchiveOrder."Document Type"::Order);
                         ArchiveOrder.SetRange("No.", Rec."Order No.");
 
                         If ArchiveOrder.FindLast() then begin
