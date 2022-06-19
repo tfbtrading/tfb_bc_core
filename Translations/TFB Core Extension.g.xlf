@@ -678,10 +678,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Arrival Date - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 374422549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bill of Lading</source>
+        <trans-unit id="Table 1207535885 - Field 735946019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BL No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Bill of Lading - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field BL No. - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1207535885 - Field 1507419454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Booking Reference</source>
@@ -712,6 +712,11 @@
           <source>Container Returned</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Container Returned - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 1379811237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Container TEU</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field ContainerTEU - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1207535885 - Field 3904326051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Direct</source>
@@ -838,11 +843,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Origin Reference - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 2532908604 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Receipt No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Purchase Receipt No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1207535885 - Field 15664720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Qty. On Purch. Rcpt</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -893,21 +893,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Status - Method OnValidate - NamedType Msg</note>
         </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 2123103222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Order No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Transfer Order No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 504257036 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Receipt No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Transfer Receipt No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1207535885 - Field 108962024 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Transfer Shipment No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Transfer Shipment No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1207535885 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -937,6 +922,11 @@
           <source>Vessel Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Vessel Details - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1207535885 - Field 2660862003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vessel IMO</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Entry - Field Vessel IMO - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1207535885 - Field 3390984195 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Available to Sell</source>
@@ -5613,6 +5603,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control % Sold - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 374422549 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Bill of Lading field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Bill of Lading - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1207535885 - Control 1507419454 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies booking reference</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -5622,6 +5617,11 @@
           <source>Specifies container no.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Container No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 1379811237 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Container TEU field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control ContainerTEU - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Control 1973128447 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies quarantine reference</source>
@@ -5647,6 +5647,11 @@
           <source>Specifies vessel details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Vessel Details - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1207535885 - Control 2660862003 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Vessel IMO field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry - Control Vessel IMO - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1207535885 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>

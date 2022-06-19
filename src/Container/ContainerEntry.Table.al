@@ -239,7 +239,7 @@ table 50181 "TFB Container Entry"
             DataClassification = CustomerContent;
         }
         field(160; "Container No."; Text[20]) { DataClassification = CustomerContent; }
-        field(170; "Bill of Lading"; Text[20]) { DataClassification = CustomerContent; }
+        field(170; "BL No."; Code[20]) { DataClassification = CustomerContent; }
 
         field(180; "Est. Departure Date"; Date)
         {
@@ -341,25 +341,25 @@ table 50181 "TFB Container Entry"
         field(285; "Purchase Receipt No."; Code[20])
         {
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced with flowfield';
         }
         field(290; "Transfer Order No."; Code[20])
         {
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced with flowfield';
         }
         field(300; "Transfer Receipt No."; Code[20])
         {
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced with flowfield';
         }
         field(310; "Transfer Shipment No."; Code[20])
         {
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Replaced with flowfield';
         }
         field(320; "Quarantine Reference"; Text[20])
@@ -432,6 +432,22 @@ table 50181 "TFB Container Entry"
             CalcFormula = lookup("Sales Header"."Sell-to Customer Name" where("No." = field("Direct Sales Order No."), "Document Type" = const(Order)));
 
         }
+
+
+
+        field(545; "ContainerTEU"; Code[4])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Container TEU';
+            Editable = true;
+        }
+
+        field(550; "Vessel IMO"; Code[10])
+        {
+            DataClassification = CustomerContent;
+            Editable = true;
+        }
+
 
 
     }

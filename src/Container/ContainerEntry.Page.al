@@ -24,6 +24,7 @@ page 50210 "TFB Container Entry"
                     Caption = 'Shipment Details';
 
 
+
                     field("No."; Rec."No.")
                     {
 
@@ -236,6 +237,14 @@ page 50210 "TFB Container Entry"
                         Tooltip = 'Specifies booking reference';
                     }
 
+
+                    field(ContainerTEU; Rec.ContainerTEU)
+                    {
+                        ToolTip = 'Specifies the value of the Container TEU field.';
+                        ApplicationArea = All;
+                        Importance = Additional;
+
+                    }
                     field("Vessel Details"; Rec."Vessel Details")
                     {
                         ApplicationArea = All;
@@ -243,12 +252,24 @@ page 50210 "TFB Container Entry"
                         Tooltip = 'Specifies vessel details';
                     }
 
+                    field("Vessel IMO"; Rec."Vessel IMO")
+                    {
+                        ToolTip = 'Specifies the value of the Vessel IMO field.';
+                        ApplicationArea = All;
+                        Importance = Additional;
+                    }
                     field("Container No."; Rec."Container No.")
                     {
                         ApplicationArea = All;
                         ShowMandatory = true;
                         Importance = Promoted;
                         Tooltip = 'Specifies container no.';
+                    }
+                    field("Bill of Lading"; Rec."BL No.")
+                    {
+                        ToolTip = 'Specifies the value of the Bill of Lading field.';
+                        ApplicationArea = All;
+                        Importance = Additional;
                     }
                     field("Quarantine Reference"; Rec."Quarantine Reference")
                     {
