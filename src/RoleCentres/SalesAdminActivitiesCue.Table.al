@@ -139,13 +139,13 @@ table 50105 "TFB Sales Admin Activities Cue"
 
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Vendor Certification" where("Expiry Date" = field("Overdue Filter")));
+            CalcFormula = Count("TFB Vendor Certification" where("Expiry Date" = field("Overdue Filter"), Archived = const(false), Inherent = const(false)));
         }
 
         field(410; "Lot's without CoA"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Lot No. Information" where("TFB CoA Attach." = const(0)));
+            CalcFormula = Count("Lot No. Information" where("TFB CoA Attach." = const(0), Inventory = filter('>0')));
         }
         field(50100; "TFB Recent Interactions"; Integer)
         {
