@@ -3523,6 +3523,546 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Vendor Mgmt - Method SendOneVendorStatusEmail - NamedType SubtitleTxt</note>
         </trans-unit>
+        <trans-unit id="Page 3357710235 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Report,Contact,Navigate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Property PromotedActionCategories</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 265748244 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of the existing business relation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Business Relation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 3997336476 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the company. If the contact is a person, Specifies the name of the company for which this contact works. This field is not editable.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Company Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 284764054 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the country/region of the address.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 499448942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the county of the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 2500823165 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the contact is coupled to a contact in Dataverse.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Coupled to CRM - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 1541011875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's email.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control E-Mail - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 602795601 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's job title.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Job Title - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 657836278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies last date attempted to reach contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Last Date Attempted - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 352546477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's mobile telephone number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Mobile Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the contact. If the contact is a person, you can click the field to see the Name Details window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 966287263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies an additional part of the name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the involved entry or record, according to the specified number series.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 3986423421 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's phone number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 3660300303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the postal code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 880902346 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether to limit access to data for the data subject during daily operations. This is useful, for example, when protecting data from changes while it is under privacy review.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Privacy Blocked - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 553464652 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the code of the salesperson who normally handles this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Salesperson Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 411528779 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies an alternate name that you can use to search for the record in question when you cannot remember the value in the Name field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control Search Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies contact status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control TFB Contact Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 641158986 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if record is a customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control TFB Is Customer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 3245344756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if a task exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control ToDoExists - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Control 3245344756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Control ToDoExists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1376376002 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Offer items or services to a customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action NewSalesQuote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1376376002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Sales Quote</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action NewSalesQuote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2533560666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C&amp;ontact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action C&amp;ontact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1235454278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add a picture of the contact person or, for example, the company's logo.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action &amp;Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1235454278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action &amp;Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 231599441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alternati&amp;ve Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Alternati&amp;ve Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4125097576 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or change detailed information about the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Card - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2893791852 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specify date ranges that apply to the contact's alternate address.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Date Ranges - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2893791852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Ranges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Date Ranges - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3000180178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add comments for the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Co&amp;mments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1318212747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp&amp;any</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Comp&amp;any - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 397499605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the contact's business relations, such as customers, vendors, banks, lawyers, consultants, competitors, and so on.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Business Relations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 397499605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Relations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Business Relations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2453590266 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the industry groups, such as Retail or Automobile, that the contact belongs to.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Industry Groups - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2453590266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Industry Groups</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Industry Groups - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2439851178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of the web sites with information about the contacts.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Web Sources - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2439851178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Web Sources</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Web Sources - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2860991917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>P&amp;erson</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action P&amp;erson - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1869180799 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the contact's job responsibilities.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Job Responsibilities - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1869180799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Job Responsibilities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Job Responsibilities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3377874146 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the Profile Questionnaires window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Pro&amp;files - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3377874146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pro&amp;files</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Pro&amp;files - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3324780168 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Documents</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Documents - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3354072942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View sales quotes that exist for the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action ShowSalesQuotes - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3354072942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales &amp;Quotes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action ShowSalesQuotes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4201773078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>History</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action History - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3301175925 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the closed sales opportunities that are handled by salespeople for the contact. Opportunities must involve a contact and can be linked to campaigns.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Closed Oppo&amp;rtunities - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3301175925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed Oppo&amp;rtunities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Closed Oppo&amp;rtunities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1642473822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of the interactions that you have logged, for example, when you create an interaction, print a cover sheet, a sales order, and so on.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Interaction Log E&amp;ntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1642473822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interaction Log E&amp;ntries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Interaction Log E&amp;ntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 709229469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of emails that you have sent to this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Sent Emails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 709229469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent Emails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Sent Emails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 84074407 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View statistical information, such as the value of posted entries, for the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Statistics - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 84074407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statistics</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Statistics - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2499942453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Related Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Related Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2525264317 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the mailing groups that the contact is assigned to, for example, for sending price lists or Christmas cards.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Mailing &amp;Groups - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2525264317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mailing &amp;Groups</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Mailing &amp;Groups - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 43034798 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of all contacts.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Relate&amp;d Contacts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 43034798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Relate&amp;d Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Relate&amp;d Contacts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3235063123 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the related bank account that is associated with the current record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedBank - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3235063123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Account</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedBank - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1065452149 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the related customer that is associated with the current record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1065452149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 140709831 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the related employee that is associated with the current record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedEmployee - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 140709831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Employee</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedEmployee - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2402330829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the related vendor that is associated with the current record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedVendor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2402330829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action RelatedVendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4189329402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the segments that are related to the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Segmen&amp;ts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4189329402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Segmen&amp;ts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Segmen&amp;ts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2973329650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tasks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Tasks - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3166992119 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the open sales opportunities that are handled by salespeople for the contact. Opportunities must involve a contact and can be linked to campaigns.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Open Oppo&amp;rtunities - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3166992119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Oppo&amp;rtunities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Open Oppo&amp;rtunities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1057988881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View postponed interactions for the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Postponed &amp;Interactions - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1057988881 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Postponed &amp;Interactions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Postponed &amp;Interactions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2895342588 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View all marketing tasks that involve the contact person.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action T&amp;asks - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2895342588 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>T&amp;asks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action T&amp;asks - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1876160316 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create an interaction with a specified contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Create &amp;Interaction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1876160316 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create &amp;Interaction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Create &amp;Interaction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2593498663 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Register a sales opportunity for the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Create Opportunity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 2593498663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create Opportunity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Create Opportunity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1285973296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send an email to this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Email - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3106002577 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>F&amp;unctions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action F&amp;unctions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3826554098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create as</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Create as - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1994964448 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create the contact as a customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Customer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1994964448 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1936001480 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create the contact as a vendor.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Vendor - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Vendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3447706802 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Search for information about the contact online.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Launch &amp;Web Source - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3447706802 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Launch &amp;Web Source</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Launch &amp;Web Source - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 1289108867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link with existing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Link with existing - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3784628197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link the contact to an existing customer.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action63 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 3784628197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action63 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 596145112 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link the contact to an existing vendor.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action64 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 596145112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action64 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4253415791 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link the contact to an existing bank.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action65 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 4253415791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action Action65 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 588385672 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Call the selected contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action MakePhoneCall - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 588385672 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Make &amp;Phone Call</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action MakePhoneCall - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 970153994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply a Word template on the selected records.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action WordTemplate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - Action 970153994 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Apply Word Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - Action WordTemplate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - View 3970051082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts Requiring Followup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - View ContactsPendingInteraction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3357710235 - View 3396942800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts With Open Tasks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Contacts Review - View ContactWithTasks - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3617064313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PDF Viewer</source>
           <note from="Developer" annotates="general" priority="2"></note>

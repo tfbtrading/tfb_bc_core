@@ -17,4 +17,8 @@ enum 50112 "TFB Contact Stage"
     {
         Caption = 'Converted';
     }
+    value(3; Inactive)
+    {
+        Caption = 'Inactive';
+    }
 }
