@@ -109,6 +109,14 @@ page 50149 "TFB Company Certification List"
                         CurrPage.Update();
                     end;
                 }
+                field("Certification No."; Rec."Certification No.")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    Caption = 'Certification No.';
+                    ToolTip = 'Specifies the unique certification number for organisation if provided';
+
+                }
                 field("Days To Expiry"; _DaysToExpiry)
                 {
                     ApplicationArea = All;

@@ -48,18 +48,23 @@ page 50122 "TFB Cust. Fav. Items"
                     ToolTip = 'Specifies the local sales price per kg';
                     Style = Favorable;
                     StyleExpr = SalesPriceVar < LastPricePaid;
+                    Editable = false;
 
                     trigger OnDrillDown()
 
                     var
-                        Item: Record Item;
-                        SPLD: Page "Sales Price and Line Discounts";
+                        PriceListLine: Record "Price List Line";
+                        PriceListLineReview: Page "Price List Line Review";
 
                     begin
-                        Item.Get(Rec."Item No.");
-                        SPLD.LoadItem(Item);
-                        SPLD.InitPage(True);
-                        SPLD.RunModal();
+                        PriceListLine.SetRange("Asset No.", Rec."Item No.");
+                        PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+                        PriceListLine.SetRange("Price Type", PriceListLine."Price Type"::Sale);
+                        PriceListLine.Setrange(Status, PriceListLine.Status::Active);
+                        PriceListLine.SetFilter("Ending Date", '=%1|>=%2', 0D, WorkDate());
+                        PriceListLineReview.SetTableView(PriceListLine);
+                        PriceListLineReview.LookupMode(false);
+                        PriceListLineReview.RunModal();
 
                     end;
 

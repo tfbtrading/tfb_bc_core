@@ -101,6 +101,10 @@ table 50118 "TFB Company Certification"
                 end;
             end;
         }
+        field(85; "Certification No."; Code[20])
+        {
+            Editable = true;
+        }
         field(80; Archived; Boolean)
         {
             Editable = false;
