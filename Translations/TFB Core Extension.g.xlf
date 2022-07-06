@@ -4453,6 +4453,111 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Generic Items - Control type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3190223990 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemLedgerReceipt</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Property EntityCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemLedgerReceipts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Property EntitySetCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory cannot be changed during on insert.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The item categories values do not match to a specific item category.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoriesValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryCode" does not match to a Item Category.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupCode" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupId" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The tax group values do not match to a specific Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DisplayName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control displayName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 1964026131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DropShipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control dropShipment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2699426101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptDate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control LatestReceiptDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 1734435808 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptReference</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control LatestReceiptReference - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2262492041 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptWarehouseLocation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control LatestReceiptWarehouseLocation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 3423136354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotNo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control lotNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2757394829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control number - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VariantCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control variantCode - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2176275388 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
           <source>LotNoInfo</source>
           <note from="Developer" annotates="general" priority="2"></note>

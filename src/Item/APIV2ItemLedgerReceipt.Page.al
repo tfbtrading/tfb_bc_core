@@ -12,7 +12,7 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
     APIPublisher = 'tfb';
     APIGroup = 'supplychain';
     SourceTable = "Item Ledger Entry";
-    SourceTableView = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Lot No." = filter(<> ''), "Document Type" = const("Purchase Invoice"));
+    SourceTableView = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'));
     Extensible = false;
     InsertAllowed = false;
 
