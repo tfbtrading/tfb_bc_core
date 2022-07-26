@@ -5,6 +5,12 @@ codeunit 50122 "TFB Sales Mgmt"
 {
 
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeValidateShipmentDate', '', false, false)]
+    local procedure OnBeforeValidateShipmentDate(var Sender: Record "Sales Line"; var IsHandled: Boolean; var SalesLine: Record "Sales Line");
+    begin
+
+
+    end;
 
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeInitInsert', '', false, false)]

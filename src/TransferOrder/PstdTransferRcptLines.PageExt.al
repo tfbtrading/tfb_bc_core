@@ -48,6 +48,13 @@ pageextension 50158 "TFB Pstd. Transfer Rcpt. Lines" extends "Posted Transfer Re
 
     end;
 
+    trigger OnOpenPage()
+
+    begin
+        Rec.SetCurrentKey("Receipt Date");
+        Rec.Ascending(false);
+    end;
+
     var
         _locationDetails: Text;
 

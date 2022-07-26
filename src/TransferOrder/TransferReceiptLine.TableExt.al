@@ -25,4 +25,6 @@ tableextension 50173 "TFB Transfer Receipt Line" extends "Transfer Receipt Line"
 
     }
 
+    
+
 }

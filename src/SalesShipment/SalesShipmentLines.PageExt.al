@@ -24,7 +24,7 @@ pageextension 50136 "TFB Sales Shipment Lines" extends "Sales Shipment Lines" //
                 Caption = '3PL Booking No.';
                 Tooltip = 'Specifies 3PL Booking No';
             }
-          
+
             field(TFBFreightCharges; CalculatedFreightCharges)
             {
                 ApplicationArea = All;
@@ -130,6 +130,14 @@ pageextension 50136 "TFB Sales Shipment Lines" extends "Sales Shipment Lines" //
 
     end;
 
+    trigger OnOpenPage()
+
+    begin
+
+        Rec.SetCurrentKey("Posting Date");
+        Rec.Ascending(false);
+
+    end;
 
 
 
