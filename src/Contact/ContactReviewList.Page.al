@@ -713,7 +713,7 @@ page 50167 "Review customer contacts"
 
                 trigger OnAction()
                 begin
-                    CreateSalesQuoteFromContact;
+                    Rec.CreateSalesQuoteFromContact;
                 end;
             }
         }
