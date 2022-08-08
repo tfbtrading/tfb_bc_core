@@ -8,7 +8,7 @@ page 50167 "Review customer contacts"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Contact,Navigate';
     SourceTable = Contact;
-    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "TFB Is Customer" = const(true));
+    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'));
     UsageCategory = Tasks;
 
     layout
