@@ -14273,6 +14273,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Item Tracking Lines - Action TFBOpenLotInfo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2041089306 - Control 1246077090 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
+          <source>Specifies the GST% applied to the line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control VAT % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2041089306 - Control 1844012642 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
+          <source>Specifies the GST posting group to the line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control VAT Bus. Posting Group - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2041089306 - Control 3919711185 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
           <source>Specifies cost in vendors price unit</source>
           <note from="Developer" annotates="general" priority="2"></note>

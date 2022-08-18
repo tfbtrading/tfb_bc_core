@@ -20,10 +20,14 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
             field("VAT %"; Rec."VAT %")
             {
                 Visible = false;
+                ApplicationArea = All;
+                ToolTip = 'Specifies the GST% applied to the line';
             }
             field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
             {
                 Visible = false;
+                ApplicationArea = All;
+                ToolTip = 'Specifies the GST posting group to the line';
             }
         }
 
