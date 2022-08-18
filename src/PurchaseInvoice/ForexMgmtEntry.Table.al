@@ -53,7 +53,7 @@ table 50119 "TFB Forex Mgmt Entry"
                         begin
                             ForexMgmtEntry.Reset();
                             ForexMgmtEntry.SetRange(EntryType, ForexMgmtEntry.EntryType::ForexContract);
-                            
+
                             If Page.RunModal(Page::"TFB Forex Mgmt Entries", ForexMgmtEntry) = Action::LookupOK then
                                 Rec.Validate("Source Document No.", ForexMgmtEntry."External Document No.");
 
@@ -143,7 +143,7 @@ table 50119 "TFB Forex Mgmt Entry"
                     "Applies-to Doc. Type"::VendorLedgerEntry:
                         begin
                             VendorLedgerEntry.SetRange(Open, true);
-                            VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
+                            VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::" ", VendorLedgerEntry."Document Type"::Invoice);
                             VendorLedgerEntry.SetRange("Currency Code", Rec."Currency Code");
 
                             If Page.RunModal(Page::"Vendor Ledger Entries", VendorLedgerEntry) = Action::LookupOK then begin
