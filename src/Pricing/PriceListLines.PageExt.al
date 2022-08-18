@@ -95,7 +95,7 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
         Item: Record Item;
 
     begin
-        If Rec."Asset Type" = Rec."Asset Type"::Item then begin
+        If (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then begin
             Item.Get(Rec."Asset No.");
             If Item."Net Weight" > 0 then
                 Exit(PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight"))

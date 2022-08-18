@@ -9,7 +9,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
 
     begin
 
-        If Rec."Asset Type" = Rec."Asset Type"::Item then
+        If (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then
             case "Price Type" of
                 "Price Type"::Sale:
                     Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
@@ -27,6 +27,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
         _PriceUnit: Enum "TFB Price Unit";
 
     begin
+
         case "Price Type" of
             "Price Type"::Purchase:
                 If "Source Type" = "Source Type"::Vendor then begin
@@ -53,7 +54,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
         Item: Record Item;
 
     begin
-        If "Asset Type" = "Asset Type"::Item then
+        If ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
             If Item.GetBySystemId("Asset ID") then
                 Exit(Item."Net Weight");
 
@@ -62,7 +63,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
     procedure GetPriceAltPriceFromUnitPrice(): Decimal
 
     begin
-        If Rec."Asset Type" = Rec."Asset Type"::Item then
+        If ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
             case "Price Type" of
                 "Price Type"::Sale:
                     Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));

@@ -10,7 +10,7 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
             DecimalPlaces = 2 : 4;
             MinValue = 0;
             MaxValue = 1000;
-            
+
 
             trigger OnValidate()
 
@@ -31,7 +31,7 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
         {
             Caption = 'Net Weight';
             FieldClass = FlowField;
-            CalcFormula = sum (Item."Net Weight" where ("No." = field ("Item No.")));
+            CalcFormula = sum(Item."Net Weight" where("No." = field("Item No.")));
             Editable = False;
         }
 
@@ -63,14 +63,16 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
 
     begin
         PriceUnit := PriceUnit::KG;
-        Rec.Validate("New Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."TFB New Per Kg Price"));
+        If Item."No." <> '' then
+            Rec.Validate("New Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."TFB New Per Kg Price"));
     end;
 
     local procedure UpdatePriceUnitPrice()
 
     begin
         PriceUnit := PriceUnit::KG;
-        "TFB New Per Kg Price" := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."New Unit Price");
+        If Item."No." <> '' then
+            "TFB New Per Kg Price" := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."New Unit Price");
     end;
 
     var
