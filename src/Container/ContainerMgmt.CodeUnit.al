@@ -157,6 +157,113 @@ codeunit 50200 "TFB Container Mgmt"
         end;
     end;
 
+    procedure UpdateLotInfoWithInspectionStatus(ContainerEntry: Record "TFB Container Entry"; Inspected: Boolean)
+
+    var
+        ReceiptLine: Record "Purch. Rcpt. Line";
+        ResEntry: Record "Reservation Entry";
+        OrderLine: Record "Purchase Line";
+        TempLines: Record "TFB ContainerContents";
+        LotInfo: Record "Lot No. Information";
+        ItemLedger: Record "Item Ledger Entry";
+
+
+        RecRef: RecordRef;
+
+        LineLotNo: Text;
+        i: Integer;
+
+
+
+    begin
+        GetContainerContents(TempLines, ContainerEntry);
+        If TempLines.FindSet() then
+            repeat
+                Clear(LineLotNo);
+
+                case TempLines."Link Type" of
+                    TempLines."Link Type"::"Purchase Order Receipt":
+                        begin
+                            RecRef.GetTable(ReceiptLine);
+
+                            ReceiptLine.SetRange("Order No.", TempLines.OrderReference);
+                            ReceiptLine.SetRange("Order Line No.", TempLines.LineNo);
+                            ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
+
+                            If ReceiptLine.FindFirst() then begin
+
+                                ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
+                                ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
+                                ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
+
+                                If ItemLedger.FindFirst() then begin
+
+                                    //Get Lot No
+                                    LineLotNo := ItemLedger."Lot No.";
+
+                                end;
+                            end;
+
+
+
+
+
+                        end;
+
+                    TempLines."Link Type"::"Purchase Order":
+                        begin
+                            RecRef.GetTable(OrderLine);
+                            ResEntry.SetFilter("Reservation Status", '%1|%2', ResEntry."Reservation Status"::Surplus, ResEntry."Reservation Status"::Reservation);
+                            ResEntry.SetRange("Source ID", TempLines.OrderReference);
+                            ResEntry.SetRange("Source Ref. No.", TempLines.LineNo);
+                            ResEntry.SetFilter("Quantity (Base)", '>0');
+                            ResEntry.SetRange("Source Type", RecRef.Number());
+                            ResEntry.SetRange("Item No.", TempLines."Item Code");
+                            ResEntry.SetFilter("Lot No.", '<>%1', '');
+
+                            If ResEntry.FindFirst() then
+
+                                //Get Lot No
+                                LineLotNo := ResEntry."Lot No.";
+
+                        end;
+
+
+                end;
+
+
+                If LineLotNo <> '' then begin
+
+                    //Get Lot Info 
+                    LotInfo.SetRange("Lot No.", LineLotNo);
+                    LotInfo.SetRange("Item No.", TempLines."Item Code");
+
+                    If LotInfo.FindFirst() then begin
+
+                        If Inspected then
+                            LotInfo.Validate(Blocked, false)
+                        else begin
+                            LotInfo.Blocked := true;
+                            If ContainerEntry."Inspection Date" = 0D then
+                                LotInfo."TFB Date Available" := CalcDate('-1D', ContainerEntry."Est. Warehouse")
+                            else
+                                LotInfo."TFB Date Available" := ContainerEntry."Inspection Date";
+                        end;
+
+                        LotInfo.Modify(true);
+
+                    end;
+                end;
+
+
+
+
+
+            until TempLines.Next() < 1;
+
+
+    end;
+
     procedure GetContainerCoAStream(ContainerEntry: Record "TFB Container Entry"; var TempBlob: CodeUnit "Temp Blob"; var FileName: Text): Boolean
 
     var

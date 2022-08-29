@@ -1003,6 +1003,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Container Route - Field Transhipment - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1137783167 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Container Contents</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB ContainerContents - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1137783167 - Field 765483476 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Code</source>
           <note from="Developer" annotates="general" priority="2"></note>

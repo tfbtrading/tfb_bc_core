@@ -1,7 +1,8 @@
 table 50215 "TFB ContainerContents"
 {
     DataClassification = CustomerContent;
-    
+    TableType = Temporary;
+    Caption = 'Container Contents';
 
     fields
     {
