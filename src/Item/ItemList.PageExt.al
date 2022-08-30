@@ -230,6 +230,31 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 end;
 
             }
+            action(TFBLotImages)
+            {
+                ApplicationArea = All;
+                Image = Picture;
+                Caption = 'Lot Images';
+                ToolTip = 'Show lot images stored against this item';
+                Enabled = true;
+
+                trigger OnAction()
+
+                var
+                    LotImage: Record "TFB Lot Image";
+
+
+                begin
+
+                    LotImage.FilterGroup(0);
+                    LotImage.SetFilter("Item No.", Rec."No.");
+                    LotImage.FilterGroup(4);
+                    LotImage.SetAscending(SystemCreatedAt, false);
+
+                    Page.Run(Page::"TFB Lot Images", LotImage);
+
+                end;
+            }
         }
         addfirst(Inventory)
         {

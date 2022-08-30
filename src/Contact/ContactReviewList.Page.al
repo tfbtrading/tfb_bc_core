@@ -221,8 +221,8 @@ page 50167 "Review customer contacts"
                         var
                             ContJobResp: Record "Contact Job Responsibility";
                         begin
-                            CheckContactType(Type::Person);
-                            ContJobResp.SetRange("Contact No.", "No.");
+                            Rec.CheckContactType(Rec.Type::Person);
+                            ContJobResp.SetRange("Contact No.", Rec."No.");
                             PAGE.RunModal(PAGE::"Contact Job Responsibilities", ContJobResp);
                         end;
                     }

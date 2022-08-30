@@ -2198,6 +2198,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Total Costs - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 794278900 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 2351653343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Imported Sequence Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Import Sequence No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 467252664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Isolated Image Blob Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Isol. Image Blob Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 2928187091 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Item Ledger Entry ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 2684044605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Item Ledger Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 1861167488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Ledger Entry Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Item Ledger Entry Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 1482668068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Lot No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 2698204066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Orig. Image Blob Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Orig. Image Blob Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 794278900 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Variant Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 348529970 - Field 927772924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Email Template Active URL</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4548,6 +4598,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control LatestReceiptWarehouseLocation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 2510996621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotImageCount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control lotImageCount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3190223990 - Control 369184645 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotImages</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control lotImages - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3190223990 - Control 3423136354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>LotNo</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4562,6 +4622,106 @@
           <source>VariantCode</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Control variantCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotImage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Property EntityCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotImages</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Property EntitySetCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory cannot be changed during on insert.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The item categories values do not match to a specific item category.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryCode" does not match to a Item Category.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupCode" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupId" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The tax group values do not match to a specific Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 2475235959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LatestReceiptDate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control createdAt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DisplayName</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control displayName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 2230517557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ImportSequenceNo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control importSequenceNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 397965795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ItemLedgerEntryID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control itemLedgerEntryID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 3423136354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>LotNo</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control lotNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 2757394829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control number - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VariantCode</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control variantCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2176275388 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
           <source>LotNoInfo</source>
@@ -8627,6 +8787,196 @@
           <source>Specifies default scenario</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Landed Cost Profile List - Control Scenario - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Welcome to the Lot Image Wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 300852202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control FinishedBanner - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1121962313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control StandardBanner - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1326315983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>First lets get the blob details</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Welcome to PageName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1612614122 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>For a start we are going to collect the blob id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group18 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1612614122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group18 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2521344208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Blob name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control BlobName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2279239964 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next choose types of images to download.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Step2 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2279239964 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Step2 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1922051790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cropped Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control CropActive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 512257656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grid Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control GridActive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2937082995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Isolated Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control IsolatedActive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1365623322 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Secton whether to download or email images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group23 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1365623322 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group23 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 1546979963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>That's it!</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control That's it! - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2641016556 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>To take action, choose Finish.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group25 - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Control 2641016556 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Control Group25 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Action 2438272767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Back</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Action ActionBack - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Action 3259912055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Finish</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Action ActionFinish - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2416363341 - Action 914282563 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Wizard - Action ActionNext - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inventory cannot be changed during on insert.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The item categories values do not match to a specific item category.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryCode" does not match to a Item Category.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
+          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupCode" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "taxGroupId" does not match to a Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The tax group values do not match to a specific Tax Group.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control displayName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 2230517557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Sequence No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control importSequenceNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 2684044605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ledger Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Item Ledger Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 1861167488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Ledger Entry Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Item Ledger Entry Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 3423136354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot No</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control lotNo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 2757394829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control number - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 783251086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control variantCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Image</source>
@@ -13598,6 +13948,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Action TFB Update Sales Line Dates - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Action 2416363341 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Open lot image wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Action TFB Lot Image Wizard - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Action 2416363341 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Lot Image Wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Action TFB Lot Image Wizard - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2630826894 - Control 1527563463 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Specifies external document number</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13643,6 +14003,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TrafficLight - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - View 3883771336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Requiring Lot Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - View PendingLotImages - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Action 3907474199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Open item costings list for item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13682,6 +14047,16 @@
           <source>Generic Item</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBGenericItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 757229533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Show lot images stored against this item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBLotImages - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 757229533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Lot Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBLotImages - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Action 4064320386 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Open up item availability by event view</source>
@@ -16842,6 +17217,11 @@
           <source>Vendor is Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Vendor is Agent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2312545840 - Field 2753545903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
+          <source>No. of Lot Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item Ledger Entry - Field TFB No. Of Lot Images - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 422750020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Pallet Account No</source>
