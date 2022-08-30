@@ -4,6 +4,7 @@ permissionset 50100 "TFB CORE EXTENSION"
     Access = Public;
     Assignable = true;
     Permissions =
+    tabledata "TFB Lot Image" = RIMD,
         tabledata "TFB Cust. Fav. Item" = RIMD,
         tabledata "TFB Custom Picture" = RIMD,
         tabledata "TFB Vendor Certification" = RIMD,
@@ -47,6 +48,7 @@ permissionset 50100 "TFB CORE EXTENSION"
         tabledata "TFB Item Costing Lines" = RIMD,
           table "TFB Cust. Fav. Item" = X,
             table "TFB Vendor Certification" = X,
+            table "TFB Lot Image" = X,
         table "TFB Certification Type" = X,
         table "TFB Quality Auditor" = X,
           table "TFB Custom Picture" = X,
@@ -126,6 +128,9 @@ permissionset 50100 "TFB CORE EXTENSION"
         codeunit "TFB Pstd. Purch Inv. Hdr. Edit" = X,
         codeunit "TFB Pstd. Shipment. Hdr. Edit" = X,
         page "TFB Ops Mgr Role Center" = X,
+        page "TFB Lot Images" = X,
+        page "TFB Lot Add Image Wizard" = X,
+        page "TFB Lot Get Image Wizard" = X,
         page "TFB Ops Mgr Activities" = X,
         page "TFB Item Costing Factbox" = X,
         page "TFB Pending Purch. Order Lines" = X,

@@ -163,7 +163,7 @@ codeunit 50142 "TFB Common Library"
         IStream: InStream;
         OStream: OutStream;
     begin
-
+        TempBlobCU.CreateInStream(IStream);
         HttpClient.Get(GetIsolatedImagesURL(OriginalBlobName), HttpResponseMessage);
         HttpResponseMessage.Content().ReadAs(IStream);
         TempBlobCU.CreateOutStream(OStream);

@@ -2,8 +2,7 @@ page 50172 "TFB Lot Add Image Wizard"
 {
     Caption = 'Welcome to the add Lot Image Wizard';
     PageType = NavigatePage;
-    SourceTable = "TFB Lot Image";
-    SourceTableTemporary = true;
+
     UsageCategory = None;
 
     layout
@@ -47,24 +46,29 @@ page 50172 "TFB Lot Add Image Wizard"
                         Caption = '';
                         InstructionalText = 'For a start we are going to check lot details and get bowl size for the image';
 
-                        field("Item No."; Rec."Item No.")
+                        field("Item No."; TempLotImage."Item No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
+                            ToolTip = 'Specifies the value of the Item No. field.';
 
                         }
-                        field("Lot No."; Rec."Lot No.")
+                        field("Lot No."; TempLotImage."Lot No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
+                            ToolTip = 'Specifies the value of the Lot No field.';
 
                         }
                         field(BowlDiameter; _BowlDiameter)
                         {
+                            ApplicationArea = All;
+                            Caption = 'Bow Diameter (cm)';
                             NotBlank = true;
                             Editable = true;
                             MinValue = 1;
                             MaxValue = 300;
+                            ToolTip = 'Specifies the value of the _BowlDiameter field.';
                         }
                     }
                 }
@@ -78,9 +82,19 @@ page 50172 "TFB Lot Add Image Wizard"
                 Visible = Step2Visible;
                 //You might want to add fields here
 
-                field("Original Image"; Rec."Original Image")
+
+                usercontrol(WebViewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
                     ApplicationArea = All;
+
+                    trigger ControlAddInReady(callbackUrl: Text)
+                    var
+                        TypeHelper: Codeunit "Type Helper";
+                        UrlLbl: Label 'https://tfbmanipulator.blob.core.windows.net/images/%1', Comment = '%1 = message content';
+                    begin
+                        CurrPage.WebViewer.Navigate(StrSubstNo(UrlLbl, TempLotImage."Orig. Image Blob Name"));
+                        CurrPage.WebViewer.InitializeIFrame('4:3');
+                    end;
                 }
             }
 
@@ -112,6 +126,7 @@ page 50172 "TFB Lot Add Image Wizard"
                 Enabled = BackActionEnabled;
                 Image = PreviousRecord;
                 InFooterBar = true;
+                ToolTip = 'Executes the Back action.';
                 trigger OnAction();
                 begin
                     NextStep(true);
@@ -124,6 +139,7 @@ page 50172 "TFB Lot Add Image Wizard"
                 Enabled = NextActionEnabled;
                 Image = NextRecord;
                 InFooterBar = true;
+                ToolTip = 'Executes the Next action.';
                 trigger OnAction();
                 begin
                     NextStep(false);
@@ -136,6 +152,7 @@ page 50172 "TFB Lot Add Image Wizard"
                 Enabled = FinishActionEnabled;
                 Image = Approve;
                 InFooterBar = true;
+                ToolTip = 'Executes the Finish action.';
                 trigger OnAction();
                 begin
                     FinishAction();
@@ -164,6 +181,7 @@ page 50172 "TFB Lot Add Image Wizard"
                 Rec.Insert(); */
 
         Step := Step::Start;
+
         EnableControls();
         ContainerName := 'images';
         StorageAccount := 'tfbmanipulator';
@@ -180,6 +198,7 @@ page 50172 "TFB Lot Add Image Wizard"
         _BlobName: Text[100];
         OriginalBlobGUID: Guid;
         _BowlDiameter: Integer;
+        TempLotImage: Record "TFB Lot Image" temporary;
         ABSClient: CodeUnit "ABS Blob Client";
         Authorization: Interface "Storage Service Authorization";
         MediaRepositoryDone: Record "Media Repository";
@@ -211,17 +230,24 @@ page 50172 "TFB Lot Add Image Wizard"
         end;
     end;
 
+    procedure InitFromItemLedgerID(itemLedgerID: Guid)
+
+    begin
+        TempLotImage.Init();
+        TempLotImage.InitFromItemLedgerEntryID(itemLedgerID);
+        _BowlDiameter := 110;
+    end;
+
     local procedure StoreRecordVar();
     var
-    //RecordVar: Record "TableName";
+        RecordVar: Record "TFB Lot Image";
     begin
-        /*     if not RecordVar.Get() then begin
-                RecordVar.Init();
-                RecordVar.Insert();
-            end;
 
-            RecordVar.TransferFields(Rec, false);
-            RecordVar.Modify(true); */
+        RecordVar.Init();
+        RecordVar.TransferFields(TempLotImage, true);
+        RecordVar."Import Sequence No." := RecordVar.GetNextSequence();
+        RecordVar.Insert();
+
     end;
 
 
@@ -233,13 +259,14 @@ page 50172 "TFB Lot Add Image Wizard"
         InStream: InStream;
         FileName: Text;
     begin
-        StoreRecordVar();
 
 
 
-        TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(OriginalBlobGUID);
 
-        UploadIsolatedFile(TempBlobCU);
+        TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name");
+
+        If UploadIsolatedFile(TempBlobCU) then
+            StoreRecordVar();
 
         CurrPage.Close();
     end;
@@ -332,13 +359,11 @@ page 50172 "TFB Lot Add Image Wizard"
     begin
 
 
-        Rec.Find();
-        Rec.TestField("Lot No.");
-        Rec.TestField("Item No.");
+
         FromFilter := 'Image Files|*.jpg;*.jpeg*;*.png;*.bmp';
 
 
-        if Rec."Original Image".Count > 0 then
+        if TempLotImage."Original Image".Count > 0 then
             if not Confirm(OverrideImageQst) then
                 Error('');
 
@@ -348,8 +373,7 @@ page 50172 "TFB Lot Add Image Wizard"
         OriginalBlobGUID := CreateGuid();
         ABSOperationResponse := ABSClient.PutBlobBlockBlobStream(OriginalBlobGUID, inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
-            Clear(Rec."Original Image");
-            Rec."Original Image".ImportStream(InStream, 'LotImage');
+            TempLotImage."Orig. Image Blob Name" := OriginalBlobGUID;
             exit(true)
         end
         else
@@ -372,11 +396,10 @@ page 50172 "TFB Lot Add Image Wizard"
 
 
 
-        Rec."Isol. Image Blob Name" := CreateGuid();
-        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + OriginalBlobGUID, inStream);
+        TempLotImage."Isol. Image Blob Name" := CreateGuid();
+        TempBlob.CreateInStream(instream);
+        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + TempLotImage."Isol. Image Blob Name", inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
-            Clear(Rec."Isolated Image");
-            Rec."Isolated Image".ImportStream(InStream, 'LotImage');
             exit(true)
         end
         else

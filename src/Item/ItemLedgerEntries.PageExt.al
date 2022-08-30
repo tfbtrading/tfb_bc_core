@@ -87,11 +87,11 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         }
         addlast("F&unctions")
         {
-            action("TFB Lot Image Wizard")
+            action("TFB Get Lot Image Wizard")
             {
                 ApplicationArea = All;
                 Image = Picture;
-                Caption = 'Lot Image Wizard';
+                Caption = 'Get Lot Image Wizard';
                 Enabled = true;
                 ToolTip = 'Open lot image wizard';
 
@@ -103,6 +103,28 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                     Page.run(Page::"TFB Lot Get Image Wizard");
                 end;
             }
+            action("TFB Add Lot Image Wizard")
+            {
+                ApplicationArea = All;
+                Image = Picture;
+                Caption = 'Add Lot Image Wizard';
+                Enabled = true;
+                ToolTip = 'Add lot image wizard';
+
+                trigger OnAction()
+
+                var
+                
+                    AddWizard: Page "TFB Lot Add Image Wizard";
+
+                begin
+                    
+
+                    AddWizard.InitFromItemLedgerID(Rec.SystemId);
+                    AddWizard.RunModal();
+                end;
+            }
+
 
         }
     }

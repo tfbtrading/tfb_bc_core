@@ -19,53 +19,71 @@ page 50170 "TFB Lot Images"
                 field("Item Ledger Entry No."; Rec."Item Ledger Entry No.")
                 {
                     Caption = 'Ledger Entry No.';
-
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Ledger Entry No. field.';
                 }
                 field("Item Ledger Entry Type"; Rec."Item Ledger Entry Type")
                 {
                     Caption = 'Ledger Entry Type';
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Ledger Entry Type field.';
                 }
-                field(number; Rec."Item No.")
+                field("Item No."; Rec."Item No.")
                 {
                     Caption = 'Item No.';
+                    ApplicationArea = All;
                     Editable = false;
+                    ToolTip = 'Specifies the value of the Item No. field.';
                 }
 
-                field(variantCode; Rec."Variant Code")
+                field("Variant Code"; Rec."Variant Code")
                 {
                     Caption = 'Variant Code';
+                    ApplicationArea = All;
                     Editable = false;
+                    ToolTip = 'Specifies the value of the Variant Code field.';
                 }
-                field(displayName; Rec.Description)
+                field(Description; Rec.Description)
                 {
                     Caption = 'Item Description';
+                    ApplicationArea = All;
                     Editable = false;
+                    ToolTip = 'Specifies the value of the Item Description field.';
 
                 }
-                field(lotNo; Rec."Lot No.")
+                field("Lot No."; Rec."Lot No.")
                 {
                     Caption = 'Lot No';
+                    ApplicationArea = All;
                     Editable = false;
+                    ToolTip = 'Specifies the value of the Lot No field.';
 
                 }
-                field(importSequenceNo; Rec."Import Sequence No.")
+                field("Import Sequence No."; Rec."Import Sequence No.")
                 {
                     Caption = 'Import Sequence No';
-
-
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Import Sequence No field.';
                 }
                 field(originalBlobImageName; Rec."Orig. Image Blob Name")
                 {
-
+                    ApplicationArea = All;
+                    Caption = 'Original Image';
+                    ToolTip = 'Specifies the value of the Original Image field.';
                 }
                 field(isolatedBlobImageName; Rec."Isol. Image Blob Name")
                 {
-
+                    ApplicationArea = All;
+                    Caption = 'Isolated Image';
+                    ToolTip = 'Specifies the value of the Isolated Image field.';
                 }
 
                 field(createdAt; Rec.SystemCreatedAt)
                 {
-
+                    ApplicationArea = all;
+                    ToolTip = 'Specifies the value of the SystemCreatedAt field.';
 
                 }
 
@@ -79,7 +97,7 @@ page 50170 "TFB Lot Images"
     actions
     {
 
-        
+
     }
 
     var
