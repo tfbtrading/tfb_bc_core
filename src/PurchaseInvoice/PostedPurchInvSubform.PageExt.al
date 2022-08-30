@@ -14,7 +14,22 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
         {
             Visible = false;
         }
-        
+
+        addbefore("Line Amount")
+        {
+            field("VAT %"; Rec."VAT %")
+            {
+                Visible = false;
+                ApplicationArea = All;
+                ToolTip = 'Specifies the GST% applied to the line';
+            }
+            field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
+            {
+                Visible = false;
+                ApplicationArea = All;
+                ToolTip = 'Specifies the GST posting group to the line';
+            }
+        }
 
         addafter("Direct Unit Cost")
         {
@@ -49,7 +64,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
                 StyleExpr = _RemainingAmt = 0;
                 ApplicationArea = All;
                 Importance = Standard;
-                Visible=true;
+                Visible = true;
             }
 
         }
@@ -62,7 +77,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
     var
 
         CostByVendorPriceUnit: Decimal;
-         VendorPriceUnit: Enum "TFB Price Unit";
+        VendorPriceUnit: Enum "TFB Price Unit";
         _RemainingAmt: Decimal;
 
     local procedure GetLedgerEntryDetail(var RemainingAmt: Decimal): Boolean
@@ -83,7 +98,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
     end;
 
 
-   
+
 
 
     trigger OnAfterGetRecord()

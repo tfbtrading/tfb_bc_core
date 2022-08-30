@@ -111,8 +111,9 @@ table 50181 "TFB Container Entry"
 
             trigger OnValidate()
             var
-
+                ContainerMgmt: CodeUnit "TFB Container Mgmt";
                 Msg: Label 'Do you want to update corresponding date with todays date?';
+
 
             begin
 
@@ -126,6 +127,10 @@ table 50181 "TFB Container Entry"
                     else
                         Closed := false;
                 end;
+
+
+                If Rec.Status = Rec.Status::PendingClearance then
+                    ContainerMgmt.UpdateLotInfoWithInspectionStatus(Rec, false);
 
                 if Confirm(Msg) then
                     case Status of
@@ -295,7 +300,24 @@ table 50181 "TFB Container Entry"
 
         field(234; "Fumigation Date"; Date) { DataClassification = CustomerContent; Caption = 'Fumigation Commenced'; }
         field(235; "Fumigation Release Date"; Date) { DataClassification = CustomerContent; Caption = 'Released from Fumigation'; }
-        field(236; "Inspection Date"; Date) { DataClassification = CustomerContent; Caption = 'Inspection Booked On'; }
+        field(236; "Inspection Date"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Inspection Booked On';
+
+            trigger OnValidate()
+
+            var
+                ContainerMgmt: CodeUnit "TFB Container Mgmt";
+
+            begin
+                If Rec.Status = Rec.Status::PendingClearance then
+                    ContainerMgmt.UpdateLotInfoWithInspectionStatus(Rec, false)
+                else
+                    if Rec.Status = Rec.Status::PendingUnpack then
+                        ContainerMgmt.UpdateLotInfoWithInspectionStatus(Rec, true);
+            end;
+        }
         field(238; "Heat Treatment Date"; Date) { DataClassification = CustomerContent; Caption = 'Heat Treatment Booked On'; }
         field(240; "Clear Date"; Date) { DataClassification = CustomerContent; Caption = 'Available at Wharf'; }
         field(245; "Receipt Date"; Date) { DataClassification = CustomerContent; Caption = 'Received into Warehouse'; }
@@ -807,6 +829,14 @@ table 50181 "TFB Container Entry"
         end;
 
 
+    end;
+
+    local procedure UpdateItemTrackingWithInspectionDate(InspectionDate: Date)
+
+    var
+
+    begin
+        Error('Procedure UpdateItemTrackingWithInspectionDate not implemented.');
     end;
 
 }

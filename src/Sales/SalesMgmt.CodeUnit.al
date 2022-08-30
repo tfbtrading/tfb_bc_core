@@ -502,11 +502,14 @@ codeunit 50122 "TFB Sales Mgmt"
                     PurchaseLine.SetAscending("Planned Receipt Date", true);
 
                     If PurchaseLine.FindFirst() and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) then begin
-                        LocationCode2 := PurchaseLine."Location Code";
+
                         Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
-                        Location.Get(LocationCode2);
-                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then
+                        Location.Get(PurchaseLine."Location Code");
+                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then begin
+
+                            LocationCode2 := PurchaseLine."Location Code";
                             IsHandled := true;
+                        end;
                     end;
 
                 end;
@@ -520,11 +523,13 @@ codeunit 50122 "TFB Sales Mgmt"
                     TransferLine.SetAscending("Receipt Date", true);
 
                     If TransferLine.FindFirst() and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
-                        LocationCode2 := TransferLine."Transfer-to Code";
+
                         Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
-                        Location.Get(LocationCode2);
-                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then
+                        Location.Get(TransferLine."Transfer-to Code");
+                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then begin
+                            LocationCode2 := TransferLine."Transfer-to Code";
                             IsHandled := true;
+                        end;
                     end;
 
                 end;
@@ -534,8 +539,8 @@ codeunit 50122 "TFB Sales Mgmt"
                 LocationCode2 := LocationCode1;
 
         end;
-
-        Exit(LocationCode2);
+        If IsHandled then
+            Exit(LocationCode2);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnBeforeReleaseSalesDoc', '', false, false)]

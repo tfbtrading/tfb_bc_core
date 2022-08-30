@@ -8,7 +8,7 @@ page 50167 "Review customer contacts"
     PageType = List;
     PromotedActionCategories = 'New,Process,Report,Contact,Navigate';
     SourceTable = Contact;
-    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "TFB Is Customer" = const(true));
+    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'));
     UsageCategory = Tasks;
 
     layout
@@ -221,8 +221,8 @@ page 50167 "Review customer contacts"
                         var
                             ContJobResp: Record "Contact Job Responsibility";
                         begin
-                            CheckContactType(Type::Person);
-                            ContJobResp.SetRange("Contact No.", "No.");
+                            Rec.CheckContactType(Rec.Type::Person);
+                            ContJobResp.SetRange("Contact No.", Rec."No.");
                             PAGE.RunModal(PAGE::"Contact Job Responsibilities", ContJobResp);
                         end;
                     }
@@ -713,7 +713,7 @@ page 50167 "Review customer contacts"
 
                 trigger OnAction()
                 begin
-                    CreateSalesQuoteFromContact;
+                    Rec.CreateSalesQuoteFromContact;
                 end;
             }
         }

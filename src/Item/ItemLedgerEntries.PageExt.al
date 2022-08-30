@@ -85,7 +85,47 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 end;
             }
         }
+        addlast("F&unctions")
+        {
+            action("TFB Lot Image Wizard")
+            {
+                ApplicationArea = All;
+                Image = Picture;
+                Caption = 'Lot Image Wizard';
+                Enabled = true;
+                ToolTip = 'Open lot image wizard';
+
+                trigger OnAction()
+
+                var
+
+                begin
+                    Page.run(Page::"TFB Lot Get Image Wizard");
+                end;
+            }
+
+        }
     }
+
+    views
+    {
+        addlast
+        {
+            view(PendingLotImages)
+            {
+                Caption = 'Requiring Lot Image';
+                Filters = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'));
+                SharedLayout = false;
+
+                layout
+                {
+
+
+                }
+            }
+        }
+    }
+
 
     trigger OnAfterGetRecord()
 

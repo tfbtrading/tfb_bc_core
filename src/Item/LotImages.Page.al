@@ -1,20 +1,13 @@
-page 50168 "TFB APIV2 - Item Ledger Rcpt."
+page 50170 "TFB Lot Images"
 {
-    APIVersion = 'v2.0';
-    EntityCaption = 'ItemLedgerReceipt';
-    EntitySetCaption = 'ItemLedgerReceipts';
-    ChangeTrackingAllowed = true;
-    ModifyAllowed = false;
-    EntityName = 'itemLedgerReceipt';
-    EntitySetName = 'itemLedgerReceipts';
-    ODataKeyFields = SystemId;
-    PageType = API;
-    APIPublisher = 'tfb';
-    APIGroup = 'supplychain';
-    SourceTable = "Item Ledger Entry";
-    SourceTableView = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'));
+
+    PageType = List;
+    Caption = 'Lot Images';
+    SourceTable = "TFB Lot Image";
     Extensible = false;
     InsertAllowed = false;
+    ModifyAllowed = false;
+    DelayedInsert = false;
 
     layout
     {
@@ -22,75 +15,58 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
         {
             repeater(Group)
             {
-                field(id; Rec.SystemId)
+
+                field("Item Ledger Entry No."; Rec."Item Ledger Entry No.")
                 {
-                    Caption = 'Id';
-                    Editable = false;
+                    Caption = 'Ledger Entry No.';
+
+                }
+                field("Item Ledger Entry Type"; Rec."Item Ledger Entry Type")
+                {
+                    Caption = 'Ledger Entry Type';
                 }
                 field(number; Rec."Item No.")
                 {
-                    Caption = 'Number';
+                    Caption = 'Item No.';
                     Editable = false;
                 }
 
                 field(variantCode; Rec."Variant Code")
                 {
-                    Caption = 'VariantCode';
+                    Caption = 'Variant Code';
                     Editable = false;
-                }
-                field(lotNo; Rec."Lot No.")
-                {
-                    Caption = 'LotNo';
-                }
-                field(dropShipment; Rec."Drop Shipment")
-                {
-                    Caption = 'DropShipment';
-
-                }
-
-                field(LatestReceiptDate; Rec."Posting Date")
-                {
-                    Caption = 'LatestReceiptDate';
-                }
-                field(LatestReceiptReference; Rec."Order No.")
-                {
-                    Caption = 'LatestReceiptReference';
-                }
-                field(LatestReceiptWarehouseLocation; Rec."Location Code")
-                {
-                    Caption = 'LatestReceiptWarehouseLocation';
                 }
                 field(displayName; Rec.Description)
                 {
-                    Caption = 'DisplayName';
-
-                    trigger OnValidate()
-                    begin
-                        RegisterFieldSet(Rec.FieldNo(Rec.Description));
-                    end;
-                }
-                field(lotImageCount; Rec."TFB No. Of Lot Images")
-                {
-                    Caption = 'LotImageCount';
+                    Caption = 'Item Description';
                     Editable = false;
 
                 }
-
-
-
-                field(lastModifiedDateTime; Rec.SystemModifiedAt)
+                field(lotNo; Rec."Lot No.")
                 {
-                    Caption = 'Last Modified Date';
+                    Caption = 'Lot No';
                     Editable = false;
+
+                }
+                field(importSequenceNo; Rec."Import Sequence No.")
+                {
+                    Caption = 'Import Sequence No';
+
+
+                }
+                field(originalBlobImageName; Rec."Orig. Image Blob Name")
+                {
+
+                }
+                field(isolatedBlobImageName; Rec."Isol. Image Blob Name")
+                {
+
                 }
 
-                part(lotImages; "TFB APIV2 - Lot Images")
+                field(createdAt; Rec.SystemCreatedAt)
                 {
-                    Caption = 'LotImages';
-                    Multiplicity = Many;
-                    EntityName = 'lotImage';
-                    EntitySetName = 'lotImages';
-                    SubPageLink = "Item Ledger Entry ID" = field(SystemId);
+
+
                 }
 
 
@@ -102,6 +78,8 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
 
     actions
     {
+
+        
     }
 
     var
@@ -110,46 +88,70 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
 
     trigger OnAfterGetRecord()
     begin
-        SetCalculatedFields();
+
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-
+        If not Rec.InitFromItemLedgerEntryID(Rec."Item Ledger Entry ID") then
+            error('No valid item ledger entry identifier provided');
+        Rec."Import Sequence No." := Rec.GetNextSequence();
     end;
 
     trigger OnModifyRecord(): Boolean
     var
         ItemLedgerEntry: Record "Item Ledger Entry";
+        LotImage: Record "TFB Lot Image";
     begin
 
 
 
-        ItemLedgerEntry.GetBySystemId(Rec.SystemId);
+        LotImage.GetBySystemId(Rec.SystemId);
 
-        if (Rec."Item No." = ItemLedgerEntry."Item No.") and (Rec."Variant Code" = ItemLedgerEntry."Variant Code") and (Rec."Lot No." = ItemLedgerEntry."Lot No.") then
+        if (Rec."Item No." = LotImage."Item No.") and (Rec."Item Ledger Entry ID" = LotImage."Item Ledger Entry ID") and (Rec."Variant Code" = LotImage."Variant Code") and (Rec."Lot No." = LotImage."Lot No.") then
             Rec.Modify(true)
         else
-            error('Cannot rename a lot no information record');
+            error('Cannot change key details of a lot image record');
 
 
-        SetCalculatedFields();
+
 
         exit(false);
     end;
 
     trigger OnOpenPage()
+
+    var
+        StorageServiceAuth: CodeUnit "Storage Service Authorization";
+        SharedKey: Text;
+        ContainerName: Text;
+        StorageAccount: Text;
+    begin
+        ContainerName := 'images';
+        StorageAccount := 'tfbmanipulator';
+        SharedKey := 'ZcRda2sapxTDjYc3nfGFN0UpDK5XQiq3lDgQ8iP2WEkdnleReEo+pbKVzMbPOpOKj8ZatNM7PugEQrp+MeVkjA==';
+        Authorization := StorageServiceAuth.CreateSharedKey(SharedKey);
+        ABSClient.Initialize(StorageAccount, ContainerName, Authorization);
+    end;
+
+    procedure SetupAzure()
+
     begin
 
     end;
+
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
         IsInsert := true;
-        ClearCalculatedFields();
+
+
+
     end;
 
     var
+        ABSClient: CodeUnit "ABS Blob Client";
+        Authorization: Interface "Storage Service Authorization";
         TempFieldSet: Record 2000000041 temporary;
         ItemCategory: Record "Item Category";
         TaxGroup: Record "Tax Group";
@@ -200,35 +202,16 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
         exit(JToken.AsValue().AsText());
     end;
 
-    local procedure SetCalculatedFields()
-    var
-        ItemLedgerEntry: Record "Item Ledger Entry";
-        ReceiptLine: Record "Purch. Rcpt. Line";
-    begin
-        // Inventory
-        Rec.CalcFields("TFB No. Of Lot Images");
-
-
-
-    end;
-
-    local procedure ClearCalculatedFields()
-    begin
-        Clear(Rec.SystemId);
-
-
-        TempFieldSet.DeleteAll();
-    end;
 
 
 
     local procedure RegisterFieldSet(FieldNo: Integer)
     begin
-        if TempFieldSet.Get(Database::Item, FieldNo) then
+        if TempFieldSet.Get(Database::"TFB Lot Image", FieldNo) then
             exit;
 
         TempFieldSet.Init();
-        TempFieldSet.TableNo := Database::Item;
+        TempFieldSet.TableNo := Database::"TFB Lot Image";
         TempFieldSet.Validate("No.", FieldNo);
         TempFieldSet.Insert(true);
     end;

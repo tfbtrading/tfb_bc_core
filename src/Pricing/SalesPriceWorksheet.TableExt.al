@@ -63,7 +63,7 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
 
     begin
         PriceUnit := PriceUnit::KG;
-        If rec."Item No." <> '' then
+        If Item."No." <> '' then
             Rec.Validate("New Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."TFB New Per Kg Price"));
     end;
 
@@ -71,7 +71,7 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
 
     begin
         PriceUnit := PriceUnit::KG;
-        If rec."Item No." <> '' then
+        If Item."No." <> '' then
             "TFB New Per Kg Price" := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Item No.", rec."Unit of Measure Code", PriceUnit, rec."New Unit Price");
     end;
 

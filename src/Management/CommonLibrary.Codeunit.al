@@ -89,6 +89,35 @@ codeunit 50142 "TFB Common Library"
         Exit(StrSubstNo(urlTok, Item."No."));
     end;
 
+    procedure GetLotImagesURL(type: Text; blobName: Text): Text
+
+    var
+        //SalesSetup: Record "Sales & Receivables Setup";
+        urlTok: text;
+    begin
+        //SalesSetup.Get();
+        //urlTok := SalesSetup."TFB Specification URL Pattern";
+        urlTok := 'https://tfb-manipulator.azurewebsites.net/api/%1?image_path=https://tfbmanipulator.blob.core.windows.net/images/isolated/%2';
+
+        if (urlTok = '') or (type = '') or (blobName = '') then error('Incorrect details provided for url construction');
+        Exit(StrSubstNo(urlTok, type, blobName));
+    end;
+
+
+    procedure GetIsolatedImagesURL(originalBlobName: text): Text
+
+    var
+        //SalesSetup: Record "Sales & Receivables Setup";
+        urlTok: text;
+    begin
+        //SalesSetup.Get();
+        //urlTok := SalesSetup."TFB Specification URL Pattern";
+        urlTok := 'https://tfb-manipulator.azurewebsites.net/api/isolate?image_path=https://tfbmanipulator.blob.core.windows.net/images/%1';
+
+
+        Exit(StrSubstNo(urlTok, originalBlobName));
+    end;
+
     procedure GetSpecificationTempBlob(Item: Record Item): Codeunit "Temp Blob"
     var
 
@@ -100,6 +129,42 @@ codeunit 50142 "TFB Common Library"
     begin
 
         HttpClient.Get(GetSpecificationURL(Item), HttpResponseMessage);
+        HttpResponseMessage.Content().ReadAs(IStream);
+        TempBlobCU.CreateOutStream(OStream);
+        CopyStream(OStream, IStream);
+
+        Exit(TempBlobCU);
+    end;
+
+    procedure GetLotImagesTempBlob(type: text; blobName: text): Codeunit "Temp Blob"
+    var
+
+        TempBlobCU: Codeunit "Temp Blob";
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        IStream: InStream;
+        OStream: OutStream;
+    begin
+
+        HttpClient.Get(GetLotImagesURL(type, blobName), HttpResponseMessage);
+        HttpResponseMessage.Content().ReadAs(IStream);
+        TempBlobCU.CreateOutStream(OStream);
+        CopyStream(OStream, IStream);
+
+        Exit(TempBlobCU);
+    end;
+
+    procedure GetIsolatedImagesTempBlob(OriginalBlobName: text): Codeunit "Temp Blob"
+    var
+
+        TempBlobCU: Codeunit "Temp Blob";
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        IStream: InStream;
+        OStream: OutStream;
+    begin
+
+        HttpClient.Get(GetIsolatedImagesURL(OriginalBlobName), HttpResponseMessage);
         HttpResponseMessage.Content().ReadAs(IStream);
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
