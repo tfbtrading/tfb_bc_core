@@ -12,6 +12,44 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterFinalizePostingOnBeforeCommit', '', false, false)]
+    local procedure OnAfterFinalizePostingOnBeforeCommit(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean; PreviewMode: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var EverythingInvoiced: Boolean);
+
+    var
+
+        GenJnlLine: Record "Gen. Journal Line";
+
+        GLEntry: Record "G/L Entry";
+        GLAccNo: Code[20];
+        GLAmount: Decimal;
+
+
+    begin
+        /* 
+        GLAccNo := '5330';
+        GLAmount := 100;
+        GenJnlLine.Init();
+        GenJnlLine."Posting Date" := SalesInvoiceHeader."Posting Date";
+        GenJnlLine."Document Type" := GenJnlLine."Document Type"::" ";
+        GenJnlLine."Document No." := SalesInvoiceHeader."No.";
+        GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+        GenJnlLine."Account No." := GLAccNo;
+        GenJnlLine.Description := 'Estimated freight provisional charge';
+        GenJnlLine.Amount := GLAmount;
+
+        SalesInvoiceHeader.CalcFields(Amount);
+        If not ((SalesInvoiceHeader."No." <> '') and (SalesInvoiceHeader.Amount > 0)) then exit;
+        Message('About to post %1 for %2', SalesInvoiceHeader."No.", SalesInvoiceHeader.Amount);
+
+        GenJnlPostLine.InitGLEntry(GenJnlLine, GLEntry, GLAccNo, GLAmount, 0, false, false);
+        GenJnlPostLine.CreateGLEntry(GenJnlLine, GLAccNo, GLAmount, 0, false);
+        GenJnlPostLine.ContinuePosting();
+ */
+
+
+    end;
+
+
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeInitInsert', '', false, false)]
     local procedure MyProcedure(var IsHandled: Boolean; var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header")
