@@ -10,6 +10,7 @@ tableextension 50180 "TFB Purchases & Payables Setup" extends "Purchases & Payab
             Caption = 'Cont. Entry No.';
 
         }
+  
     }
 
 

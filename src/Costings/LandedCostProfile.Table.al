@@ -178,6 +178,11 @@ table 50340 "TFB Landed Cost Profile"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(80;"Import Duties Charged";Boolean)
+        {
+            DataClassification = CustomerContent;
+            
+        }
 
     }
 

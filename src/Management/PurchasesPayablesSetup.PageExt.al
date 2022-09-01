@@ -11,6 +11,7 @@ pageextension 50183 "TFB Purchases & Payables Setup" extends "Purchases & Payabl
                 ToolTip = 'Specifies container entry number series';
             }
         }
+      
     }
 
 

@@ -34,7 +34,11 @@ page 50332 "TFB Item Costing Setup"
                     Caption = 'Ex Warehouse Pricing Group';
                     ToolTip = 'Ex warehouse customer pricing group';
                 }
-
+                field("mport Duty Rate"; Rec."Import Duty Rate")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Used to add import duties to landed cost if the switch is setup in profile';
+                }
 
             }
 

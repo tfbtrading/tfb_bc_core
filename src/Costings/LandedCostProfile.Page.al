@@ -77,6 +77,11 @@ page 50341 "TFB Landed Cost Profile"
                             ApplicationArea = All;
                             Tooltip = 'Specifies whether container requires heat treatment';
                         }
+                        field("Import Duties Charged"; Rec."Import Duties Charged")
+                        {
+                            ApplicationArea = All;
+                            ToolTip = 'Specifies if import duties are to be calculated within the landed cost';
+                        }
 
                         field("Financed"; Rec."Financed")
                         {

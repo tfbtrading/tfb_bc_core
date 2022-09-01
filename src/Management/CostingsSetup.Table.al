@@ -78,6 +78,13 @@ table 50330 "TFB Costings Setup"
 
             end;
         }
+        field(50184; "Import Duty Rate"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Import Duty Rate';
+            AutoFormatType = 10;
+            AutoFormatExpression = '<precision, 1:2><standard format,0>%';
+        }
     }
 
     keys
