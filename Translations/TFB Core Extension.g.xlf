@@ -1288,6 +1288,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Fumigation Fees Item Charge - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3097886753 - Field 3933459749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Duty Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Import Duty Rate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3097886753 - Field 967097934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ocean Freight Item Charge</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2117,6 +2122,11 @@
           <source>Heat Treated</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Heat Treated - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3930708050 - Field 3476327035 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Duties Charged</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Import Duties Charged - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3930708050 - Field 2013859617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inspected</source>
@@ -8483,6 +8493,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control ExWarehousePricingGroup - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2868778379 - Control 672476342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Used to add import duties to landed cost if the switch is setup in profile</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control mport Duty Rate - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 980115112 - Control 2969235611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies line key</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -8712,6 +8727,11 @@
           <source>Specifies whether container requires heat treatment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Landed Cost Profile - Control Heat Treated - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3930708050 - Control 3476327035 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if import duties are to be calculated within the landed cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Landed Cost Profile - Control Import Duties Charged - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3930708050 - Control 2013859617 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies whether container requires inspection</source>

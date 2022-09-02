@@ -486,6 +486,7 @@ codeunit 50304 "TFB Costing Mgmt"
         LCProfile: Record "TFB Landed Cost Profile";
         Scenario: Record "TFB Costing Scenario";
         PostCodeZoneRate: Record "TFB Postcode Zone Rate";
+        CostingsSetup: Record "TFB Costings Setup";
 
 
         //CodeUnits
@@ -516,6 +517,9 @@ codeunit 50304 "TFB Costing Mgmt"
         UnitCostLCY: Array[2] of Decimal;
         UnitFinanceCost: Array[2] of Decimal;
 
+        PriceWithDuty: Array[2] of Decimal;
+        DutyMultiplier: Decimal;
+
 
         //Array - 2 dimension - First Average/Market and second Pallet/Direct Container
         TotalLCUnitCostLCY: Array[2, 2] of Decimal;
@@ -527,6 +531,7 @@ codeunit 50304 "TFB Costing Mgmt"
     begin
 
         //Get default details and exit with false if details missing
+        CostingsSetup.Get();
 
         If not CheckValidRecords(Header, Item, Vendor, LCProfile) then exit(false);
 
@@ -554,11 +559,11 @@ codeunit 50304 "TFB Costing Mgmt"
 
         if not Header.Dropship then begin
 
+
+
             //Add landed cost
             LCUnitCostLCY[1] := LCProfile.CalculateUnitCostStandard(ItemWeight, LCProfile.Pallets, ExchRate, Scenario, false, CalcBaseDesc);
             LCUnitCostLCY[2] := LCProfile.CalculateUnitCostStandard(ItemWeight, LCProfile.Pallets, ExchRate, Scenario, true, CalcBaseDesc);
-
-
 
             //Calculate storage costs
             DaysStored := CommonCU.ConvertDurationToDays(Header."Est. Storage Duration");
@@ -574,14 +579,21 @@ codeunit 50304 "TFB Costing Mgmt"
 
         end;
 
-        //Get Standard Cost Basis
-        UnitCost[1] := PricingCU.CalculateUnitPriceByPriceUnit(Item."No.", Item."Base Unit of Measure", Header."Purchase Price Unit", Header."Average Cost");
-        UnitCostLCY[1] := UnitCost[1] / ExchRate;
+        If LCProfile."Import Duties Charged" then
+            DutyMultiplier := 1 + CostingsSetup."Import Duty Rate"
+        else
+            DutyMultiplier := 1;
 
 
-        //Get Market Cost Basis
-        UnitCost[2] := PricingCU.CalculateUnitPriceByPriceUnit(Item."No.", Item."Base Unit of Measure", Header."Purchase Price Unit", Header."Market Price");
-        UnitCostLCY[2] := UnitCost[2] / ExchRate;
+        PriceWithDuty[1] := Header."Average Cost" * DutyMultiplier;
+        PriceWithDuty[2] := Header."Market Price" * DutyMultiplier;
+
+        //Calculate unit cost for both average and market price with duty multiplier
+
+        For i := 1 to 2 do begin
+            UnitCost[i] := PricingCU.CalculateUnitPriceByPriceUnit(Item."No.", Item."Base Unit of Measure", Header."Purchase Price Unit", PriceWithDuty[i]);
+            UnitCostLCY[i] := UnitCost[i] / ExchRate;
+        end;
 
 
         //Calculate effective finance costs 
