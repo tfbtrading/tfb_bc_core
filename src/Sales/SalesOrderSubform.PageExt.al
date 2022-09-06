@@ -109,14 +109,14 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
                 Editable = IsInventoryItem;
                 ToolTip = 'Specifies the price per kilogram of the item';
             }
-            field("TFB Price Unit Discount";Rec."TFB Price Unit Discount")
+            field("TFB Price Unit Discount"; Rec."TFB Price Unit Discount")
             {
                 ApplicationArea = All;
                 BlankNumbers = BlankZero;
                 Editable = Rec."TFB Price Unit Cost" > 0;
                 Caption = 'Per Kg Discount';
                 ToolTip = 'Specifies the discount as a per kilogram price';
-             
+
             }
             field("TFB Pre-Order"; Rec."TFB Pre-Order")
             {
@@ -129,6 +129,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
     }
     actions
     {
+        movelast("&Line"; "Co&mments")
         addlast("&Line")
         {
             action(History)

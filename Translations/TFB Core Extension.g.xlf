@@ -16153,6 +16153,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control DeliveryNotes - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 298881002 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>Specifies the number of sales line comments added if they exist</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFB No. Of Comments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 298881002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>No. Of Comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFB No. Of Comments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3957898749 - Control 3932505410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
           <source>Specifies if an item costings exists and links  to it</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18197,6 +18207,11 @@
           <source>Line Weight</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB Line Total Weight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3348931394 - Field 298881002 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>TFB No. Of Comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB No. Of Comments - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3348931394 - Field 2609059608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Pre-Order</source>
