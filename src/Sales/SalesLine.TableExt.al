@@ -154,6 +154,11 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
                 UpdateLineDiscount();
             end;
         }
+        field(50150; "TFB No. Of Comments"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Sales Comment Line" where("No." = field("Document No."), "Document Type" = field("Document Type"), "Document Line No." = field("Line No.")));
+        }
 
 
         modify("Unit of Measure Code")

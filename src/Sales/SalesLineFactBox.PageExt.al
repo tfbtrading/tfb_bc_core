@@ -7,6 +7,22 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
     {
         addafter("Required Quantity")
         {
+            field("TFB No. Of Comments"; Rec."TFB No. Of Comments")
+            {
+                ToolTip = 'Specifies the number of sales line comments added if they exist';
+                Caption = 'No. Of Comments';
+                ApplicationArea = All;
+
+
+                trigger OnDrillDown()
+
+                begin
+                    Rec.CalcFields("TFB No. Of Comments");
+                    If Rec."TFB No. Of Comments" > 0 then
+                        Rec.ShowLineComments();
+                end;
+
+            }
             group(deliverydetails)
             {
                 Visible = (Rec.type = Rec.Type::Item) and (Rec."Document Type" = Rec."Document Type"::Order);
@@ -19,6 +35,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     ApplicationArea = All;
                     DrillDown = true;
                     MultiLine = true;
+
 
                     trigger OnDrillDown()
 
