@@ -55,8 +55,10 @@ pageextension 50106 "TFB Item Charge Assign.(Purch)" extends "Item Charge Assign
     var
         Shipment: Record "Sales Shipment Header";
         Receipt: Record "Purch. Rcpt. Header";
+        TransferReceipt: Record "Transfer Receipt Header";
         ShipmentPage: Page "Posted Sales Shipment";
         ReceiptPage: Page "Posted Purchase Receipt";
+        TransferReceiptPage: Page "Posted Transfer Receipt";
 
     begin
 
@@ -76,6 +78,14 @@ pageextension 50106 "TFB Item Charge Assign.(Purch)" extends "Item Charge Assign
                     ReceiptPage.Run();
 
                 end;
+            Rec."Applies-to Doc. Type"::"Transfer Receipt":
+                begin
+                    TransferReceipt.Get(Rec."Applies-to Doc. No.");
+                    TransferReceiptPage.SetRecord(TransferReceipt);
+                    TransferReceiptPage.Run();
+
+                end;
+
 
         end;
     end;
