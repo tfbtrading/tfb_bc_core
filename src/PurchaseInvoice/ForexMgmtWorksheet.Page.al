@@ -48,32 +48,39 @@ page 50161 "TFB Forex Mgmt Worksheet"
             }
             group(ForexContractsGroup)
             {
-                ShowCaption = false;
+                ShowCaption = true;
+                Caption = 'Forex Contracts';
                 part(ForexContracts; "TFB Forex Contract Lines")
                 {
                     ApplicationArea = All;
-                    Caption = 'Forex Contract Lines';
+                    Caption = 'Lines';
+                    UpdatePropagation = Both;
+
                 }
 
             }
             group(ForexEntriesGroup)
             {
-                ShowCaption = false;
+                ShowCaption = true;
+                Caption = 'Contract Assignments';
                 part(AppliedLedgerEntries; "TFB Forex Ledger Lines")
                 {
                     ApplicationArea = All;
-                    Caption = 'Applied Ledger Lines';
+                    Caption = 'Lines';
+                    UpdatePropagation = Both;
                 }
             }
 
             group(Pending)
             {
-                ShowCaption = false;
+                ShowCaption = true;
+                Caption = 'Outstanding Invoices';
 
                 part(PendingLedgerEntries; "TFB Forex Candidate Lines")
                 {
                     ApplicationArea = All;
-                    Caption = 'Candidate Ledger and Order Lines';
+                    Caption = 'Lines';
+                    UpdatePropagation = Both;
                 }
             }
         }

@@ -80,7 +80,37 @@ page 50164 "TFB Forex Candidate Lines"
             }
 
 
+            group(Totals)
+            {
+                ShowCaption = false;
+                label(Control13)
+                {
+                    ApplicationArea = Basic, Suite;
+                    ShowCaption = false;
+                    Caption = ' ';
+                }
 
+                field(TotalBalance; TotalBalance)
+                {
+                    ApplicationArea = Basic, Suite;
+                    AutoFormatExpression = GetCurrencyCode();
+                    AutoFormatType = 1;
+                    Caption = 'Total Balance';
+                    Editable = false;
+
+                    ToolTip = 'Specifies the accumulated balance of the bank reconciliation, which consists of the Balance Last Statement field, plus the balance in the Statement Amount field.';
+                }
+                field(TotalRemaining; TotalRemaining)
+                {
+                    ApplicationArea = Basic, Suite;
+                    AutoFormatExpression = GetCurrencyCode();
+                    AutoFormatType = 1;
+                    Caption = 'Total Remaining';
+                    Editable = false;
+
+                    ToolTip = 'Specifies the total amount of the Difference field for all the lines on the bank reconciliation.';
+                }
+            }
 
         }
 
@@ -91,11 +121,13 @@ page 50164 "TFB Forex Candidate Lines"
     {
 
     }
+    trigger OnAfterGetRecord()
 
-    trigger OnAfterGetCurrRecord()
     begin
         RemainingAmount := Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id");
     end;
+
+
 
     procedure GetCurrencyCode(): Code[10]
     var
@@ -148,6 +180,9 @@ page 50164 "TFB Forex Candidate Lines"
                     Rec.validate("Due Date", VendorLedgerEntry."Due Date");
                     Rec.validate(Open, VendorLedgerEntry.Open);
                     Rec.insert();
+
+                    TotalBalance := TotalBalance + (-VendorLedgerEntry."Original Amount");
+                    TotalRemaining := TotalRemaining + Rec.getRemainingAmountByVendorLedgerEntry(VendorLedgerEntry);
                 end;
             until VendorLedgerEntry.Next() = 0;
 
