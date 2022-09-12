@@ -3583,6 +3583,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sample Request Mgmt - Method SendSampleRequest - NamedType TitleTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 401331929 - Method 1665861916 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Updating contracts - ##1####</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Update Forex Entry Status - Method OnRun - NamedType ProgressMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 1740417769 - Method 3010399840 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2">%1=html content for tabledata</note>
@@ -7698,6 +7703,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 2442999497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contract Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContracts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 207715302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Applied Ledger Lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control AppliedLedgerEntries - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3006866973 - Control 3462677320 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Allows filtering of which Forex Contract is shown</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7722,16 +7737,6 @@
           <source>Candidate Ledger and Order Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control PendingLedgerEntries - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3006866973 - Control 207715302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Applied Ledger Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control AppliedLedgerEntries - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3006866973 - Control 2442999497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forex Contract Lines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContracts - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3006866973 - Action 977210763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update entry status</source>

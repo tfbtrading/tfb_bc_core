@@ -129,7 +129,13 @@ page 50161 "TFB Forex Mgmt Worksheet"
             {
                 ApplicationArea = All;
                 Caption = 'Update entry status';
-                RunObject = codeunit "TFB Update Forex Entry Status";
+
+
+                trigger OnAction()
+
+                begin
+                    Codeunit.Run(CodeUnit::"TFB Update Forex Entry Status");
+                end;
 
             }
         }

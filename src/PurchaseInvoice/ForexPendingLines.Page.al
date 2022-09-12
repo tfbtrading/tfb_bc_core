@@ -107,6 +107,7 @@ page 50164 "TFB Forex Candidate Lines"
 
     procedure GetStyle(): Text
     begin
+
         if Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id") = 0 then
             exit('Favorable');
         exit('');
@@ -126,21 +127,21 @@ page 50164 "TFB Forex Candidate Lines"
         VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
         VendorLedgerEntry.SetFilter("Currency Code", '<>%1', '');
         VendorLedgerEntry.SetRange(Open, true);
-        VendorLedgerEntry.LoadFields("Due Date", Open, "Adjusted Currency Factor", "External Document No.", "Currency Code", "Original Amount");
+        VendorLedgerEntry.LoadFields(Amount, "Due Date", Open, "Adjusted Currency Factor", "External Document No.", "Currency Code", "Original Amount");
 
         If VendorLedgerEntry.FindSet(false, false) then
             repeat
-                If Rec.getRemainingAmountByAppliesToId(VendorLedgerEntry.SystemId) > 0 then begin
+                If Rec.getRemainingAmountByVendorLedgerEntry(VendorLedgerEntry) > 0 then begin
                     Rec.Init();
                     Rec."Entry No." := VendorLedgerEntry."Entry No.";
 
-                    VendorLedgerEntry.CalcFields("Remaining Amount", "TFB Forex Amount");
+                    VendorLedgerEntry.CalcFields(Amount, "Remaining Amount", "TFB Forex Amount", "Original Amount");
                     Rec.Validate(EntryType, Rec.EntryType::VendorLedgerEntry);
                     Rec.validate("External Document No.", VendorLedgerEntry."External Document No.");
 
                     Rec.validate("Currency Code", VendorLedgerEntry."Currency Code");
                     Rec."Applies-to id" := VendorLedgerEntry.SystemId;
-                    Rec."Original Amount" := -VendorLedgerEntry.Amount;
+                    Rec."Original Amount" := -VendorLedgerEntry."Original Amount";
                     Rec.validate("Covered Rate", VendorLedgerEntry."Adjusted Currency Factor");
                     Rec."Applies-to id" := VendorLedgerEntry.SystemId;
 
