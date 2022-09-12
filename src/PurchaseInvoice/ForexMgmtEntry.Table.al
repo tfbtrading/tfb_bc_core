@@ -338,6 +338,33 @@ table 50119 "TFB Forex Mgmt Entry"
 
     end;
 
+    procedure getRemainingAmountByAppliesToId(appliesToId: GUID): Decimal
+
+    var
+        ForexMgmtEntry: Record "TFB Forex Mgmt Entry";
+        ForexMgmtEntry2: Record "TFB Forex Mgmt Entry";
+        LedgerEntry: Record "Vendor Ledger Entry";
+
+
+    begin
+
+        if LedgerEntry.GetBySystemId("Applies-to Doc No.") then begin
+
+
+            ForexMgmtEntry2.SetRange(EntryType, ForexMgmtEntry2.EntryType::Assignment);
+            ForexMgmtEntry2.SetRange("Applies-to Doc No.", ForexMgmtEntry."Applies-to Doc No.");
+            ForexMgmtEntry2.SetFilter("Entry No.", '<>%1', ForexMgmtEntry."Entry No.");
+            ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
+            LedgerEntry.CalcFields("Remaining Amount");
+            if LedgerEntry.Open then
+                Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount")
+            else
+                Exit(0);
+
+        end;
+
+    end;
+
     internal procedure UpdateOpenStatus()
 
     begin
@@ -363,11 +390,8 @@ table 50119 "TFB Forex Mgmt Entry"
                 case Rec."Applies-to Doc. Type" of
                     Rec."Applies-to Doc. Type"::VendorLedgerEntry:
                         begin
-
-                            LedgerEntry.SetRange("External Document No.", rec."Applies-to Doc No.");
-                            LedgerEntry.SetRange(Reversed, false);
                             LedgerEntry.SetLoadFields(Open);
-                            If LedgerEntry.FindFirst() then
+                            If LedgerEntry.GetBySystemId("Applies-to id") then
                                 Exit(LedgerEntry.Open);
                         end;
                 end;

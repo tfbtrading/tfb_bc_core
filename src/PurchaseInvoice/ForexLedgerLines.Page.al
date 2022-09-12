@@ -118,8 +118,6 @@ page 50163 "TFB Forex Ledger Lines"
                 }
 
 
-
-
                 field(Open; Rec.Open)
                 {
                     Style = Favorable;
@@ -208,7 +206,7 @@ page 50163 "TFB Forex Ledger Lines"
 
     procedure GetStyle(): Text
     begin
-        if Rec.getRemainingAmount(Rec."Entry No.") = 0 then
+        If Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id") = 0 then
             exit('Favorable');
 
         exit('');

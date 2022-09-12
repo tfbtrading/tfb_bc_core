@@ -46,7 +46,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
                     end;
                 }
             }
-            group(SubPages)
+            group(ForexContractsGroup)
             {
                 ShowCaption = false;
                 part(ForexContracts; "TFB Forex Contract Lines")
@@ -54,6 +54,11 @@ page 50161 "TFB Forex Mgmt Worksheet"
                     ApplicationArea = All;
                     Caption = 'Forex Contract Lines';
                 }
+
+            }
+            group(ForexEntriesGroup)
+            {
+                ShowCaption = false;
                 part(AppliedLedgerEntries; "TFB Forex Ledger Lines")
                 {
                     ApplicationArea = All;
@@ -63,6 +68,8 @@ page 50161 "TFB Forex Mgmt Worksheet"
 
             group(Pending)
             {
+                ShowCaption = false;
+
                 part(PendingLedgerEntries; "TFB Forex Candidate Lines")
                 {
                     ApplicationArea = All;

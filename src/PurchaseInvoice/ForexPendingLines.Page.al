@@ -94,7 +94,7 @@ page 50164 "TFB Forex Candidate Lines"
 
     trigger OnAfterGetCurrRecord()
     begin
-        RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
+        RemainingAmount := Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id");
     end;
 
     procedure GetCurrencyCode(): Code[10]
@@ -107,7 +107,7 @@ page 50164 "TFB Forex Candidate Lines"
 
     procedure GetStyle(): Text
     begin
-        if Rec.getRemainingAmount(Rec."Entry No.") = 0 then
+        if Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id") = 0 then
             exit('Favorable');
         exit('');
     end;
@@ -130,20 +130,24 @@ page 50164 "TFB Forex Candidate Lines"
 
         If VendorLedgerEntry.FindSet(false, false) then
             repeat
-                Rec.Init();
-                Rec."Entry No." += 1000;
-                VendorLedgerEntry.CalcFields("Remaining Amount", "TFB Forex Amount");
-                Rec.Validate(EntryType, Rec.EntryType::VendorLedgerEntry);
-                Rec.validate("External Document No.", VendorLedgerEntry."External Document No.");
+                If Rec.getRemainingAmountByAppliesToId(VendorLedgerEntry.SystemId) > 0 then begin
+                    Rec.Init();
+                    Rec."Entry No." := VendorLedgerEntry."Entry No.";
 
-                Rec.validate("Currency Code", VendorLedgerEntry."Currency Code");
-                Rec."Applies-to id" := VendorLedgerEntry.SystemId;
-                Rec.validate("Original Amount", -VendorLedgerEntry."Original Amount");
-                Rec.validate("Covered Rate", VendorLedgerEntry."Adjusted Currency Factor");
-                Rec.validate("Due Date", VendorLedgerEntry."Due Date");
-                Rec.validate(Open, VendorLedgerEntry.Open);
-                Rec.insert();
+                    VendorLedgerEntry.CalcFields("Remaining Amount", "TFB Forex Amount");
+                    Rec.Validate(EntryType, Rec.EntryType::VendorLedgerEntry);
+                    Rec.validate("External Document No.", VendorLedgerEntry."External Document No.");
 
+                    Rec.validate("Currency Code", VendorLedgerEntry."Currency Code");
+                    Rec."Applies-to id" := VendorLedgerEntry.SystemId;
+                    Rec."Original Amount" := -VendorLedgerEntry.Amount;
+                    Rec.validate("Covered Rate", VendorLedgerEntry."Adjusted Currency Factor");
+                    Rec."Applies-to id" := VendorLedgerEntry.SystemId;
+
+                    Rec.validate("Due Date", VendorLedgerEntry."Due Date");
+                    Rec.validate(Open, VendorLedgerEntry.Open);
+                    Rec.insert();
+                end;
             until VendorLedgerEntry.Next() = 0;
 
     end;

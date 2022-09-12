@@ -59,6 +59,12 @@ page 50228 "TFB Brokerage Shipment Subform"
                     ToolTip = 'Specifies quantity for line item';
                     Visible = not UsingBulkers;
 
+                    trigger OnValidate()
+
+                    begin
+                        CurrPage.Update(false);
+                    end;
+
                 }
 
                 field(Bulkers; Rec.BulkerQuantity)
@@ -68,12 +74,24 @@ page 50228 "TFB Brokerage Shipment Subform"
                     Caption = 'Bulker Quantity';
                     Visible = UsingBulkers;
 
+                    trigger OnValidate()
+
+                    begin
+                        CurrPage.Update(false);
+                    end;
+
                 }
 
                 field("Agreed Price"; Rec."Agreed Price")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies agreed price for line item. Automatically calculated.';
+
+                    trigger OnValidate()
+
+                    begin
+                        CurrPage.Update(false);
+                    end;
                 }
 
                 field("Total MT"; Rec."Total MT")

@@ -469,6 +469,7 @@ page 50229 "TFB Brokerage Shipment"
         }
     }
 
+
     trigger OnAfterGetRecord()
 
     begin
