@@ -104,7 +104,7 @@ codeunit 50142 "TFB Common Library"
     end;
 
 
-    procedure GetIsolatedImagesURL(originalBlobName: text): Text
+    procedure GetIsolatedImagesURL(originalBlobName: text; bowldiameter: Integer): Text
 
     var
         //SalesSetup: Record "Sales & Receivables Setup";
@@ -112,10 +112,10 @@ codeunit 50142 "TFB Common Library"
     begin
         //SalesSetup.Get();
         //urlTok := SalesSetup."TFB Specification URL Pattern";
-        urlTok := 'https://tfb-manipulator.azurewebsites.net/api/isolate?image_path=https://tfbmanipulator.blob.core.windows.net/images/%1';
+        urlTok := 'https://tfb-manipulator.azurewebsites.net/api/isolate?image_path=https://tfbmanipulator.blob.core.windows.net/images/%1&bowl_diameter=%2';
 
 
-        Exit(StrSubstNo(urlTok, originalBlobName));
+        Exit(StrSubstNo(urlTok, originalBlobName, bowldiameter));
     end;
 
     procedure GetSpecificationTempBlob(Item: Record Item): Codeunit "Temp Blob"
@@ -154,7 +154,7 @@ codeunit 50142 "TFB Common Library"
         Exit(TempBlobCU);
     end;
 
-    procedure GetIsolatedImagesTempBlob(OriginalBlobName: text): Codeunit "Temp Blob"
+    procedure GetIsolatedImagesTempBlob(OriginalBlobName: text; BowlDiameter: Integer): Codeunit "Temp Blob"
     var
 
         TempBlobCU: Codeunit "Temp Blob";
@@ -164,7 +164,7 @@ codeunit 50142 "TFB Common Library"
         OStream: OutStream;
     begin
         TempBlobCU.CreateInStream(IStream);
-        HttpClient.Get(GetIsolatedImagesURL(OriginalBlobName), HttpResponseMessage);
+        HttpClient.Get(GetIsolatedImagesURL(OriginalBlobName, BowlDiameter), HttpResponseMessage);
         HttpResponseMessage.Content().ReadAs(IStream);
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);

@@ -6708,6 +6708,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Fumigation Req. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2135441443 - Control 2248839686 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies inspection date for which container was booked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Container Entry List - Control Inspection Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2135441443 - Control 3083651602 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if inspection is required</source>
           <note from="Developer" annotates="general" priority="2"></note>

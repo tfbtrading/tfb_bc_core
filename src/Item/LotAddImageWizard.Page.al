@@ -263,7 +263,7 @@ page 50172 "TFB Lot Add Image Wizard"
 
 
 
-        TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name");
+        TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name", _BowlDiameter);
 
         If UploadIsolatedFile(TempBlobCU) then
             StoreRecordVar();
@@ -349,9 +349,11 @@ page 50172 "TFB Lot Add Image Wizard"
     var
         TempBlob: CodeUnit "Temp Blob";
         ABSOperationResponse: CodeUnit "ABS Operation Response";
+        ABSParams: CodeUnit "ABS Optional Parameters";
         inStream: InStream;
         outStream: OutStream;
         fileName: Text;
+        fileExtension: text;
         FromFilter: Text;
         ClientFileName: Text;
         OverrideImageQst: Label 'Image already exists - do you want to override?';
@@ -369,11 +371,12 @@ page 50172 "TFB Lot Add Image Wizard"
 
         ClientFileName := '';
         If not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
-
+        FileExtension := Text.CopyStr(ClientFileName, Text.StrPos(ClientFileName, '.');
         OriginalBlobGUID := CreateGuid();
-        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream(OriginalBlobGUID, inStream);
+        fileName := Text.ConvertStr(format(OriginalBlobGUID), '}', '') + fileExtension;
+        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream(fileName, inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
-            TempLotImage."Orig. Image Blob Name" := OriginalBlobGUID;
+            TempLotImage."Orig. Image Blob Name" := fileName;
             exit(true)
         end
         else
@@ -398,7 +401,7 @@ page 50172 "TFB Lot Add Image Wizard"
 
         TempLotImage."Isol. Image Blob Name" := CreateGuid();
         TempBlob.CreateInStream(instream);
-        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + TempLotImage."Isol. Image Blob Name", inStream);
+        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + TempLotImage."Isol. Image Blob Name" + '.png', inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
             exit(true)
         end
