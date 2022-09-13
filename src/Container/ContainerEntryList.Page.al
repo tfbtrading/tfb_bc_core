@@ -82,6 +82,8 @@ page 50211 "TFB Container Entry List"
                     ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies status of container';
+                    Style = Attention;
+                    StyleExpr = StatusAttention;
                 }
                 field(DestLocation; _location)
                 {
@@ -114,6 +116,12 @@ page 50211 "TFB Container Entry List"
                     ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies est. date container is available';
+                }
+                field("Inspection Date"; Rec."Inspection Date")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies inspection date for which container was booked';
                 }
                 field("% Sold"; _PercReserved)
                 {
@@ -218,6 +226,7 @@ page 50211 "TFB Container Entry List"
         _QtyReserved := TempContainerContents."Qty Sold (Base)";
         _PercReserved := (_QtyReserved / _QtyOnOrder);
         LineSummary := GetOrderLines();
+        StatusAttention := SetStatusStyle();
     end;
 
 
@@ -238,6 +247,26 @@ page 50211 "TFB Container Entry List"
         exit(LineBuilder.ToText());
     end;
 
+    local procedure SetStatusStyle(): Boolean
+    begin
+
+        case Rec.Status of
+            Rec.Status::PendingClearance:
+                If (Rec."Inspection Req." = true) and (Rec."Inspection Date" = 0D) then
+                    StatusAttention := true
+                else
+                    StatusAttention := false;
+
+            Rec.Status::PendingTreatment:
+                If (Rec."Fumigation Req." = true) and (Rec."Fumigation Date" = 0D) then
+                    StatusAttention := true
+                else
+                    StatusAttention := false;
+        end;
+
+
+    end;
+
 
     var
         TempContainerContents: Record "TFB ContainerContents" temporary;
@@ -246,5 +275,6 @@ page 50211 "TFB Container Entry List"
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
         LineSummary: Text;
         _location: code[20];
+        StatusAttention: Boolean;
 
 }

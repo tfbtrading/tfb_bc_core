@@ -7348,6 +7348,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control RemainingAmount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2488202391 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> </source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control Control13 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 938567880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the accumulated balance of the bank reconciliation, which consists of the Balance Last Statement field, plus the balance in the Statement Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalBalance - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 938567880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalBalance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2187294026 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total amount of the Difference field for all the lines on the bank reconciliation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalRemaining - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2076849274 - Control 2187294026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Remaining</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Candidate Lines - Control TotalRemaining - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2324133868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Forex Contract Details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7703,13 +7728,23 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 1696524900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Forex Contracts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContractsGroup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3006866973 - Control 2442999497 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Forex Contract Lines</source>
+          <source>Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexContracts - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 3530388829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract Assignments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ForexEntriesGroup - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3006866973 - Control 207715302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Applied Ledger Lines</source>
+          <source>Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control AppliedLedgerEntries - Property Caption</note>
         </trans-unit>
@@ -7733,8 +7768,13 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control ShowOpenntries - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3006866973 - Control 3481143665 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Outstanding Invoices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control Pending - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3006866973 - Control 3094551276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Candidate Ledger and Order Lines</source>
+          <source>Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Forex Mgmt Worksheet - Control PendingLedgerEntries - Property Caption</note>
         </trans-unit>
