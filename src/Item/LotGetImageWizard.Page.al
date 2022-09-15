@@ -344,9 +344,9 @@ page 50171 "TFB Lot Get Image Wizard"
     begin
 
         ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
-        FileName := StrSubstNo('Lot Isolated Image for %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
+        FileName := StrSubstNo('Lot Isolated Image for %1 - lot %2.png', LedgerEntry.Description, LedgerEntry."Lot No.");
         IF ABSOperationResponse.IsSuccessful() then begin
-            filename := _BlobName + '.jpeg';
+
             DownloadFromStream(inStream, 'Downloaded File', '', '', fileName);
         end
         else

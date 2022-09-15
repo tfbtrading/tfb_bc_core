@@ -58,6 +58,15 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
 
         }
+        addlast(Control1)
+        {
+            field("TFB No. Of Lot Images"; Rec."TFB No. Of Lot Images")
+            {
+                ApplicationArea = All;
+                Caption = 'No. of Lot Images';
+                Visible = false;
+            }
+        }
 
 
     }
@@ -93,7 +102,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 ApplicationArea = All;
                 Image = Picture;
                 Caption = 'Get Lot Image Wizard';
-                Enabled = Rec."TFB No. Of Lot Images" > 0;
+                Enabled = true;
                 ToolTip = 'Open lot image wizard';
 
                 trigger OnAction()

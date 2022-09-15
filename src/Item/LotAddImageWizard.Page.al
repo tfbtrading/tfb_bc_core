@@ -396,9 +396,10 @@ page 50172 "TFB Lot Add Image Wizard"
     begin
 
         If TempBlob.Length() < 2000 then Error('Error: file returned via API appears to be too small');
+        fileExtension := '.png';
         fileName := Text.DelChr(format(CreateGuid()), '=', '{}') + fileExtension;
         TempLotImage."Isol. Image Blob Name" := fileName;
-        fileExtension := '.png';
+
 
 
         TempBlob.CreateInStream(instream);
