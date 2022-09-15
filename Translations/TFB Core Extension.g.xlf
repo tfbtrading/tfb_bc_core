@@ -14288,6 +14288,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TrafficLight - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Control 2753545903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>No. of Lot Images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control TFB No. Of Lot Images - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2630826894 - View 3883771336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Requiring Lot Image</source>
           <note from="Developer" annotates="general" priority="2"></note>
