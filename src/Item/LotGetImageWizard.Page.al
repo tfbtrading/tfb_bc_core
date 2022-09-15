@@ -10,7 +10,7 @@ page 50171 "TFB Lot Get Image Wizard"
         {
             group(StandardBanner)
             {
-                Caption = '';
+                Caption = 'Get a lot image for item ledger ';
                 Editable = false;
                 Visible = TopBannerVisible and not FinishActionEnabled;
                 field(MediaResourcesStandard; MediaResourcesStandard."Media Reference")
@@ -22,7 +22,7 @@ page 50171 "TFB Lot Get Image Wizard"
             }
             group(FinishedBanner)
             {
-                Caption = '';
+                Caption = 'Nearly finished';
                 Editable = false;
                 Visible = TopBannerVisible and FinishActionEnabled;
                 field(MediaResourcesDone; MediaResourcesDone."Media Reference")
@@ -38,17 +38,26 @@ page 50171 "TFB Lot Get Image Wizard"
                 Visible = Step1Visible;
                 group("Welcome to PageName")
                 {
-                    Caption = 'First lets get the blob details';
+                    Caption = 'First check when you last got an image';
                     Visible = Step1Visible;
                     group(Group18)
                     {
                         Caption = '';
-                        InstructionalText = 'For a start we are going to collect the blob id';
+                        InstructionalText = 'First we will just confirm a few details';
 
-                        field(BlobName; _BlobName)
+                        field(CountOfImages; _Count)
                         {
                             ApplicationArea = All;
-                            Caption = 'Blob name';
+                            Editable = false;
+                            Caption = 'No. of lot images';
+                            ToolTip = 'Specifies how many lot images have been uploaded for this item ledger entry';
+                        }
+                        field(LastCreated; _LastCreated)
+                        {
+                            ApplicationArea = All;
+                            Editable = false;
+                            Caption = 'Last created on';
+                            ToolTip = 'Specifies the date the last image was uploaded';
                         }
                     }
                 }
@@ -161,13 +170,8 @@ page 50171 "TFB Lot Get Image Wizard"
         SharedKey: Text;
         ContainerName: Text;
         StorageAccount: Text;
-    //RecordVar: Record "TableName";
-    begin
-        /*         Rec.Init();
-                if RecordVar.Get() then
-                    Rec.TransferFields(RecordVar);
 
-                Rec.Insert(); */
+    begin
 
         Step := Step::Start;
         EnableControls();
@@ -188,6 +192,10 @@ page 50171 "TFB Lot Get Image Wizard"
         _GridActive: Boolean;
         _IsolatedActive: Boolean;
         _EmailImages: Boolean;
+        _Count: Integer;
+        _LastCreated: DateTime;
+        LotImage: Record "TFB Lot Image";
+        LedgerEntry: Record "Item Ledger Entry";
         ABSClient: CodeUnit "ABS Blob Client";
         Authorization: Interface "Storage Service Authorization";
         MediaRepositoryDone: Record "Media Repository";
@@ -217,23 +225,46 @@ page 50171 "TFB Lot Get Image Wizard"
         end;
     end;
 
-    local procedure StoreRecordVar();
-    var
-    //RecordVar: Record "TableName";
-    begin
-        /*     if not RecordVar.Get() then begin
-                RecordVar.Init();
-                RecordVar.Insert();
-            end;
 
-            RecordVar.TransferFields(Rec, false);
-            RecordVar.Modify(true); */
+    procedure InitFromItemLedger(LedgerEntry: Record "Item Ledger Entry")
+
+    begin
+        LedgerEntry := LedgerEntry;
+        LotImage.SetFiltersFromItemLedgerEntry(LedgerEntry);
+        _Count := LotImage.Count();
+        case _Count of
+            1:
+                begin
+
+                    LotImage.FindFirst();
+                    _BlobName := LotImage."Isol. Image Blob Name";
+                    _LastCreated := LotImage.SystemCreatedAt;
+                end;
+
+            2 .. 100:
+                begin
+
+                    If not Confirm('There are %1 lot images stored for this ledger entry. Choose latest?', true, _Count) then exit;
+
+                    LotImage.FindLast();
+                    _BlobName := LotImage."Isol. Image Blob Name";
+                    _LastCreated := LotImage.SystemCreatedAt;
+                end;
+
+            0:
+                begin
+                    error('No lot image available');
+                end;
+
+        end;
+
+
     end;
 
 
     local procedure FinishAction();
     begin
-        StoreRecordVar();
+
 
         If (_BlobName <> '') and _IsolatedActive then begin
             Message('Now downloading isolated image');
@@ -246,6 +277,8 @@ page 50171 "TFB Lot Get Image Wizard"
         end;
         CurrPage.Close();
     end;
+
+
 
     local procedure NextStep(Backwards: Boolean);
     begin
@@ -311,6 +344,7 @@ page 50171 "TFB Lot Get Image Wizard"
     begin
 
         ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
+        FileName := StrSubstNo('Lot Isolated Image for %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
         IF ABSOperationResponse.IsSuccessful() then begin
             filename := _BlobName + '.jpeg';
             DownloadFromStream(inStream, 'Downloaded File', '', '', fileName);
@@ -334,7 +368,7 @@ page 50171 "TFB Lot Get Image Wizard"
 
         TempBlobCU := CommonCU.GetLotImagesTempBlob('grid', _BlobName);
         TempBlobCu.CreateInStream(InStream);
-        FileName := StrSubstNo('LotImage %1.png', _BlobName);
+        FileName := StrSubstNo('Lot Grid Image for %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
         If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 

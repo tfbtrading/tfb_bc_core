@@ -59,6 +59,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
         }
 
+
     }
 
     actions
@@ -92,15 +93,18 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 ApplicationArea = All;
                 Image = Picture;
                 Caption = 'Get Lot Image Wizard';
-                Enabled = true;
+                Enabled = Rec."TFB No. Of Lot Images" > 0;
                 ToolTip = 'Open lot image wizard';
 
                 trigger OnAction()
 
                 var
+                    GetWizard: Page "TFB Lot Get Image Wizard";
 
                 begin
-                    Page.run(Page::"TFB Lot Get Image Wizard");
+                    GetWizard.InitFromItemLedger(Rec);
+                    GetWizard.RunModal();
+
                 end;
             }
             action("TFB Add Lot Image Wizard")
@@ -114,11 +118,11 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 trigger OnAction()
 
                 var
-                
+
                     AddWizard: Page "TFB Lot Add Image Wizard";
 
                 begin
-                    
+
 
                     AddWizard.InitFromItemLedgerID(Rec.SystemId);
                     AddWizard.RunModal();
@@ -136,7 +140,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
             view(PendingLotImages)
             {
                 Caption = 'Requiring Lot Image';
-                Filters = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'));
+                Filters = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'), "TFB No. Of Lot Images" = filter('=0'));
                 SharedLayout = false;
 
                 layout

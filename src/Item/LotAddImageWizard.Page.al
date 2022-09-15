@@ -260,9 +260,6 @@ page 50172 "TFB Lot Add Image Wizard"
         FileName: Text;
     begin
 
-
-
-
         TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name", _BowlDiameter);
 
         If UploadIsolatedFile(TempBlobCU) then
@@ -371,9 +368,9 @@ page 50172 "TFB Lot Add Image Wizard"
 
         ClientFileName := '';
         If not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
-        FileExtension := Text.CopyStr(ClientFileName, Text.StrPos(ClientFileName, '.');
+        FileExtension := Text.CopyStr(ClientFileName, Text.StrPos(ClientFileName, '.'));
         OriginalBlobGUID := CreateGuid();
-        fileName := Text.ConvertStr(format(OriginalBlobGUID), '}', '') + fileExtension;
+        fileName := Text.DelChr(format(OriginalBlobGUID), '=', '{}') + fileExtension;
         ABSOperationResponse := ABSClient.PutBlobBlockBlobStream(fileName, inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
             TempLotImage."Orig. Image Blob Name" := fileName;
@@ -392,21 +389,28 @@ page 50172 "TFB Lot Add Image Wizard"
         outStream: OutStream;
         fileName: Text;
         FromFilter: Text;
+        fileExtension: text;
         ClientFileName: Text;
         OverrideImageQst: Label 'Image already exists - do you want to override?';
 
     begin
 
+        If TempBlob.Length() < 2000 then Error('Error: file returned via API appears to be too small');
+        fileName := Text.DelChr(format(CreateGuid()), '=', '{}') + fileExtension;
+        TempLotImage."Isol. Image Blob Name" := fileName;
+        fileExtension := '.png';
 
 
-        TempLotImage."Isol. Image Blob Name" := CreateGuid();
         TempBlob.CreateInStream(instream);
-        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + TempLotImage."Isol. Image Blob Name" + '.png', inStream);
+        ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + fileName, inStream);
         IF ABSOperationResponse.IsSuccessful() then begin
+
+            //check size
+
             exit(true)
         end
         else
-            Message('Error from Azure Storage: %1', ABSOperationResponse.GetError());
+            Error('Error from Azure Storage: %1', ABSOperationResponse.GetError());
 
     end;
 

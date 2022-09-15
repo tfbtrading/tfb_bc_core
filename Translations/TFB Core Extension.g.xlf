@@ -8994,22 +8994,22 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1384717055 - Control 300852202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+          <source>Nearly finished</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control FinishedBanner - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1384717055 - Control 1121962313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+          <source>Get a lot image for item ledger </source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control StandardBanner - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1384717055 - Control 1326315983 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>First lets get the blob details</source>
+          <source>First check when you last got an image</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control Welcome to PageName - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1384717055 - Control 1612614122 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
-          <source>For a start we are going to collect the blob id</source>
+          <source>First we will just confirm a few details</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control Group18 - Property InstructionalText</note>
         </trans-unit>
@@ -9018,10 +9018,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control Group18 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1384717055 - Control 2521344208 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Blob name</source>
+        <trans-unit id="Page 1384717055 - Control 1011452650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many lot images have been uploaded for this item ledger entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control BlobName - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control CountOfImages - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1384717055 - Control 1011452650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of lot images</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control CountOfImages - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1384717055 - Control 45029438 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date the last image was uploaded</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control LastCreated - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1384717055 - Control 45029438 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last created on</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control LastCreated - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1384717055 - Control 2279239964 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>Next choose types of images to download.</source>
