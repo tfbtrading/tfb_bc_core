@@ -76,6 +76,11 @@ page 50171 "TFB Lot Get Image Wizard"
                     Caption = 'Grid Image';
                     ApplicationArea = All;
                 }
+                field(GridBowlActive; _GridBowlActive)
+                {
+                    Caption = 'Grid over Bowl Image';
+                    ApplicationArea = All;
+                }
                 field(CropActive; _CropActive)
                 {
                     Caption = 'Cropped Image';
@@ -191,6 +196,7 @@ page 50171 "TFB Lot Get Image Wizard"
         _CropActive: Boolean;
         _GridActive: Boolean;
         _IsolatedActive: Boolean;
+        _GridBowlActive: Boolean;
         _EmailImages: Boolean;
         _Count: Integer;
         _LastCreated: DateTime;
@@ -271,9 +277,14 @@ page 50171 "TFB Lot Get Image Wizard"
             DownloadIsolatedImage();
         end;
 
-        If _GridActive then begin
+        If (_BlobName <> '') and _GridActive then begin
             Message('Now downloading grid image');
             DownloadGridImage();
+        end;
+
+        If (_BlobName <> '') and _GridActive then begin
+            Message('Now downloading grid bowl image');
+            DownloadGridBowlImage();
         end;
         CurrPage.Close();
     end;
@@ -369,6 +380,25 @@ page 50171 "TFB Lot Get Image Wizard"
         TempBlobCU := CommonCU.GetLotImagesTempBlob('grid', _BlobName);
         TempBlobCu.CreateInStream(InStream);
         FileName := StrSubstNo('Lot Grid Image for %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
+        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+            Error('File %1 not downloaded', FileName);
+
+    end;
+
+    procedure DownloadGridBowlImage()
+
+
+    var
+        CommonCU: CodeUnit "TFB Common Library";
+        TempBlobCU: Codeunit "Temp Blob";
+        InStream: InStream;
+        FileName: Text;
+
+    begin
+
+        TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName);
+        TempBlobCu.CreateInStream(InStream);
+        FileName := StrSubstNo('Lot Grid Bowl Image for %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
         If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 

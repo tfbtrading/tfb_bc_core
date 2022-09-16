@@ -4,6 +4,8 @@ page 50170 "TFB Lot Images"
     PageType = List;
     Caption = 'Lot Images';
     SourceTable = "TFB Lot Image";
+    UsageCategory = Administration;
+    ApplicationArea = All;
     Extensible = false;
     InsertAllowed = false;
     ModifyAllowed = false;
@@ -16,6 +18,29 @@ page 50170 "TFB Lot Images"
             repeater(Group)
             {
 
+                field("Item No."; Rec."Item No.")
+                {
+                    Caption = 'Item No.';
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Item No. field.';
+                }
+                field("Variant Code"; Rec."Variant Code")
+                {
+                    Caption = 'Variant Code';
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Variant Code field.';
+                }
+
+                field(Description; Rec.Description)
+                {
+                    Caption = 'Item Description';
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the value of the Item Description field.';
+
+                }
                 field("Item Ledger Entry No."; Rec."Item Ledger Entry No.")
                 {
                     Caption = 'Ledger Entry No.';
@@ -30,29 +55,7 @@ page 50170 "TFB Lot Images"
                     Editable = false;
                     ToolTip = 'Specifies the value of the Ledger Entry Type field.';
                 }
-                field("Item No."; Rec."Item No.")
-                {
-                    Caption = 'Item No.';
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Item No. field.';
-                }
 
-                field("Variant Code"; Rec."Variant Code")
-                {
-                    Caption = 'Variant Code';
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Variant Code field.';
-                }
-                field(Description; Rec.Description)
-                {
-                    Caption = 'Item Description';
-                    ApplicationArea = All;
-                    Editable = false;
-                    ToolTip = 'Specifies the value of the Item Description field.';
-
-                }
                 field("Lot No."; Rec."Lot No.")
                 {
                     Caption = 'Lot No';
@@ -67,20 +70,8 @@ page 50170 "TFB Lot Images"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Import Sequence No field.';
                 }
-                field(originalBlobImageName; Rec."Orig. Image Blob Name")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Original Image';
-                    ToolTip = 'Specifies the value of the Original Image field.';
-                }
-                field(isolatedBlobImageName; Rec."Isol. Image Blob Name")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Isolated Image';
-                    ToolTip = 'Specifies the value of the Isolated Image field.';
-                }
 
-                field(createdAt; Rec.SystemCreatedAt)
+                field(createdAt; getCreatedDateTime())
                 {
                     ApplicationArea = all;
                     ToolTip = 'Specifies the value of the SystemCreatedAt field.';
@@ -96,8 +87,29 @@ page 50170 "TFB Lot Images"
 
     actions
     {
+        area(Processing)
+        {
+            action("TFB Get Lot Image Wizard")
+            {
+                ApplicationArea = All;
+                Image = Picture;
+                Caption = 'Get Lot Image Wizard';
+                Enabled = true;
+                ToolTip = 'Open lot image wizard';
 
+                trigger OnAction()
 
+                var
+                    ItemLedger: Record "Item Ledger Entry";
+                    GetWizard: Page "TFB Lot Get Image Wizard";
+                begin
+                    If not ItemLedger.GetBySystemId(Rec."Item Ledger Entry ID") then exit;
+                    GetWizard.InitFromItemLedger(ItemLedger);
+                    GetWizard.RunModal();
+
+                end;
+            }
+        }
     }
 
     var
@@ -232,5 +244,13 @@ page 50170 "TFB Lot Images"
         TempFieldSet.TableNo := Database::"TFB Lot Image";
         TempFieldSet.Validate("No.", FieldNo);
         TempFieldSet.Insert(true);
+    end;
+
+    local procedure getCreatedDateTime(): Text
+    var
+        TypeHelper: Codeunit "Type Helper";
+    begin
+        Exit(TypeHelper.FormatDateTime(rec.SystemCreatedAt, 'dd/MM/yy HH:mm', TypeHelper.GetCultureName()))
+
     end;
 }
