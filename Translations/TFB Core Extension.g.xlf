@@ -9058,6 +9058,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control GridActive - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1384717055 - Control 2083939446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Grid over Bowl Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Control GridBowlActive - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1384717055 - Control 2937082995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Isolated Image</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9183,16 +9188,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Import Sequence No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2506474997 - Control 2597049842 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Isolated Image field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control isolatedBlobImageName - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - Control 2597049842 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Isolated Image</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control isolatedBlobImageName - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2506474997 - Control 2684044605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Ledger Entry No. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9233,16 +9228,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Lot No. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2506474997 - Control 1963094790 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Original Image field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control originalBlobImageName - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - Control 1963094790 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Original Image</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control originalBlobImageName - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2506474997 - Control 3450651614 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Variant Code field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9252,6 +9237,16 @@
           <source>Variant Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Variant Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 462433615 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open lot image wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action TFB Get Lot Image Wizard - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 462433615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Get Lot Image Wizard</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action TFB Get Lot Image Wizard - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1042251773 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Image</source>

@@ -26,6 +26,17 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
         {
             Visible = false;
         }
+        addlast(Inventory)
+        {
+            field("TFB No. Of Lot Images"; Rec."TFB No. Of Lot Images")
+            {
+                ApplicationArea = All;
+                Visible = true;
+                ToolTip = 'Specifies a count of the lot images taken for item ledger entries matching this lot';
+                DrillDown = true;
+                DrillDownPageId = "TFB Lot Images";
+            }
+        }
 
         addafter("Certificate Number")
         {

@@ -64,6 +64,14 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
         addlast(Control1)
         {
 
+            field("TFB No. Of Lot Images"; Rec."TFB No. Of Lot Images")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                DrillDown = true;
+                DrillDownPageId = "TFB Lot Images";
+                ToolTip = 'Specifies the count of lot images that have been added for item ledger entries related to this lot number';
+            }
             field("TFB Date Available"; Rec."TFB Date Available")
             {
                 ApplicationArea = All;

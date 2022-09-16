@@ -80,6 +80,15 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
 
         }
 
+        field(50100; "TFB No. Of Lot Images"; Integer)
+        {
+            Caption = 'No. Of Lot Images';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Count("TFB Lot Image" where("Item No." = field("Item No."), "Lot No." = field("Lot No."), "Variant Code" = field("Variant Code")));
+
+        }
+
 
         modify("Item No.")
         {

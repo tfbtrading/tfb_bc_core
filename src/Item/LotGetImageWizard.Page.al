@@ -282,7 +282,7 @@ page 50171 "TFB Lot Get Image Wizard"
             DownloadGridImage();
         end;
 
-        If (_BlobName <> '') and _GridActive then begin
+        If (_BlobName <> '') and _GridBowlActive then begin
             Message('Now downloading grid bowl image');
             DownloadGridBowlImage();
         end;

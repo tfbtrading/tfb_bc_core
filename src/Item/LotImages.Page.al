@@ -10,6 +10,8 @@ page 50170 "TFB Lot Images"
     InsertAllowed = false;
     ModifyAllowed = false;
     DelayedInsert = false;
+    Editable = false;
+    InstructionalText = 'Used to view lot images';
 
     layout
     {
@@ -47,6 +49,7 @@ page 50170 "TFB Lot Images"
                     ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Ledger Entry No. field.';
+                    DrillDown = false;
                 }
                 field("Item Ledger Entry Type"; Rec."Item Ledger Entry Type")
                 {
@@ -54,6 +57,7 @@ page 50170 "TFB Lot Images"
                     ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Ledger Entry Type field.';
+                    DrillDown = false;
                 }
 
                 field("Lot No."; Rec."Lot No.")
