@@ -74,7 +74,44 @@ codeunit 50142 "TFB Common Library"
         Exit(HTMLBuilder.ToText())
     end;
 
+    procedure GetHTMLScaledImageTemplate(ImageURL: text; ImageDescription: text): Text
+    var
+        //EmailSetup: Record "TFB Notification Email Setup";
+        TempBlobCU: Codeunit "Temp Blob";
 
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        IStream: InStream;
+        OStream: OutStream;
+        BlobText: Text;
+        urlTok: text;
+        HTMLBuilder: TextBuilder;
+
+    begin
+
+        //EmailSetup.Get();
+        urlTok := 'https://tfbdata001.blob.core.windows.net/pubresources/imgtemplate.html';
+
+        //If urlTok = '' then Error('No URL defined for transactional email template');
+
+        HttpClient.Get(urlTok, HttpResponseMessage);
+        HttpResponseMessage.Content().ReadAs(IStream);
+        TempBlobCU.CreateOutStream(OStream);
+        CopyStream(OStream, IStream);
+
+        TempBlobCU.CreateInStream(IStream);
+
+
+        While not (IStream.EOS()) do begin
+            IStream.ReadText(BlobText);
+            HTMLBuilder.AppendLine(BlobText);
+        end;
+
+
+        HTMLBuilder.Replace('{ImageUrl}', ImageURL);
+        HTMLBuilder.Replace('{ImageDescription}', ImageDescription);
+        Exit(HTMLBuilder.ToText())
+    end;
 
     procedure GetSpecificationURL(Item: Record Item): Text
 

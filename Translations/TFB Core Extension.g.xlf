@@ -14493,6 +14493,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Tracking Entries - Control TFBExternal Document No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1916194322 - Control 2417047727 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 761800018">
+          <source>Specifies date of estimated availability if the lot is blocked</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Tracking Summary - Control TFB Date Available - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1916194322 - Control 2417047727 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 761800018">
+          <source>Date Available (if Blocked)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Tracking Summary - Control TFB Date Available - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1916194322 - Control 3752663569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 761800018">
           <source>Specifies if the lot is blocked from being sold</source>
           <note from="Developer" annotates="general" priority="2"></note>

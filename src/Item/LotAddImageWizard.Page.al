@@ -89,11 +89,16 @@ page 50172 "TFB Lot Add Image Wizard"
 
                     trigger ControlAddInReady(callbackUrl: Text)
                     var
-                        TypeHelper: Codeunit "Type Helper";
+                        //TypeHelper: Codeunit "Type Helper";
+                        CommonLibrary: CodeUnit "TFB Common Library";
+                        HTMLTemplate: Text;
                         UrlLbl: Label 'https://tfbmanipulator.blob.core.windows.net/images/%1', Comment = '%1 = message content';
                     begin
-                        CurrPage.WebViewer.Navigate(StrSubstNo(UrlLbl, TempLotImage."Orig. Image Blob Name"));
+
+
                         CurrPage.WebViewer.InitializeIFrame('4:3');
+                        HTMLTemplate := CommonLibrary.GetHTMLScaledImageTemplate(StrSubstNo(UrlLbl, TempLotImage."Orig. Image Blob Name"), TempLotImage.Description);
+                        CurrPage.WebViewer.SetContent(HTMLTemplate);
                     end;
                 }
             }
