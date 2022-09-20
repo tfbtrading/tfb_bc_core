@@ -86,10 +86,9 @@ table 50124 "TFB Lot Image"
         LotImage2: Record "TFB Lot Image";
 
     begin
-        LotImage2.SetRange("Item No.", Rec."Lot No.");
+        LotImage2.SetRange("Item No.", Rec."Item No.");
         LotImage2.SetRange("Variant Code", Rec."Variant Code");
         LotImage2.SetRange("Lot No.", Rec."Lot No.");
-        LotImage2.SetRange("Item Ledger Entry No.", Rec."Item Ledger Entry No.");
         LotImage2.SetAscending("Import Sequence No.", true);
 
         If LotImage2.FindLast() then
