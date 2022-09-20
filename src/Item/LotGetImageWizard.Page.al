@@ -232,11 +232,11 @@ page 50171 "TFB Lot Get Image Wizard"
     end;
 
 
-    procedure InitFromItemLedger(LedgerEntry: Record "Item Ledger Entry")
+    procedure InitFromItemLedger(LedgerEntry2: Record "Item Ledger Entry")
 
     begin
-        LedgerEntry := LedgerEntry;
-        LotImage.SetFiltersFromItemLedgerEntry(LedgerEntry);
+        LedgerEntry := LedgerEntry2;
+        LotImage.SetFiltersFromItemLedgerEntry(LedgerEntry2);
         _Count := LotImage.Count();
         case _Count of
             1:

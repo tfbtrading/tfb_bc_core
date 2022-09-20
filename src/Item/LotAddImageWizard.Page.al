@@ -109,7 +109,7 @@ page 50172 "TFB Lot Add Image Wizard"
                     group(Group25)
                     {
                         Caption = '';
-                        InstructionalText = 'To take action, choose Finish.';
+                        InstructionalText = 'To take action, choose Finish. Processing of the image make take 3-10 seconds.';
                     }
                 }
             }
