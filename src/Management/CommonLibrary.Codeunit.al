@@ -140,6 +140,20 @@ codeunit 50142 "TFB Common Library"
         Exit(StrSubstNo(urlTok, type, blobName));
     end;
 
+    procedure GetLotImagesURL(type: Text; blobName: Text; lotCode: text; itemNo: text): Text
+
+    var
+        //SalesSetup: Record "Sales & Receivables Setup";
+        urlTok: text;
+    begin
+        //SalesSetup.Get();
+        //urlTok := SalesSetup."TFB Specification URL Pattern";
+        urlTok := 'https://tfb-manipulator.azurewebsites.net/api/%1?image_path=https://tfbmanipulator.blob.core.windows.net/images/isolated/%2&lot_code=%3&product_code=%4';
+
+        if (urlTok = '') or (type = '') or (blobName = '') or (lotCode = '') or (itemNo = '') then error('Incorrect details provided for url construction');
+        Exit(StrSubstNo(urlTok, type, blobName, lotCode, itemNo));
+    end;
+
 
     procedure GetIsolatedImagesURL(originalBlobName: text; bowldiameter: Integer): Text
 
@@ -184,6 +198,24 @@ codeunit 50142 "TFB Common Library"
     begin
 
         HttpClient.Get(GetLotImagesURL(type, blobName), HttpResponseMessage);
+        HttpResponseMessage.Content().ReadAs(IStream);
+        TempBlobCU.CreateOutStream(OStream);
+        CopyStream(OStream, IStream);
+
+        Exit(TempBlobCU);
+    end;
+
+    procedure GetLotImagesTempBlob(type: text; blobName: text; lotCode: text; itemNo: text): Codeunit "Temp Blob"
+    var
+
+        TempBlobCU: Codeunit "Temp Blob";
+        HttpClient: HttpClient;
+        HttpResponseMessage: HttpResponseMessage;
+        IStream: InStream;
+        OStream: OutStream;
+    begin
+
+        HttpClient.Get(GetLotImagesURL(type, blobName, lotCode, itemNo), HttpResponseMessage);
         HttpResponseMessage.Content().ReadAs(IStream);
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
