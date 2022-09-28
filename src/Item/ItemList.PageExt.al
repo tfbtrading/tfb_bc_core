@@ -114,7 +114,6 @@ pageextension 50117 "TFB Item List" extends "Item List"
             Style = Ambiguous;
             StyleExpr = IsDropShipByDefault;
 
-
             trigger OnDrillDown()
 
             var
