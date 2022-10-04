@@ -462,7 +462,7 @@ table 50219 "TFB Brokerage Contract"
     /// 
     /// 
 
-    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; CurrFieldNo: Integer);
+    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; LclCurrFieldNo: Integer);
     var
         Contact: Record Contact;
         ContBusRel: Record "Contact Business Relation";

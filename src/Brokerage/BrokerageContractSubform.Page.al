@@ -3,6 +3,7 @@ page 50225 "TFB Brokerage Contract Subform"
 
 
     PageType = ListPart;
+    Caption = 'Brokerage Contract Line';
     SourceTable = "TFB Brokerage Contract Line";
     RefreshOnActivate = true;
 
@@ -135,12 +136,11 @@ page 50225 "TFB Brokerage Contract Subform"
             action("Item")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
                 Image = Item;
                 ToolTip = 'Opens item card for line item';
                 Caption = 'Item';
-
+                PromotedOnly = true;
+                Promoted = true;
 
                 trigger OnAction()
 
@@ -152,8 +152,6 @@ page 50225 "TFB Brokerage Contract Subform"
                     ItemRec.Get(Rec."Item No.");
                     ItemPage.SetRecord(ItemRec);
                     ItemPage.Run();
-
-
 
                 end;
 

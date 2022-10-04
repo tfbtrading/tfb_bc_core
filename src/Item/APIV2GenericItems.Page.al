@@ -176,7 +176,7 @@ page 50140 "TFB APIV2 - Generic Items"
     /// <param name="GenericItem">VAR Record "TFB Generic Item".</param>
     /// <param name="TempFieldSet">Temporary VAR Record "Field".</param>
     [Scope('Cloud')]
-    procedure InsertGenericItem(var GenericItem: Record "TFB Generic Item"; var TempFieldSet: Record "Field" temporary)
+    procedure InsertGenericItem(var GenericItem: Record "TFB Generic Item"; var LclTempFieldSet: Record "Field" temporary)
     var
         GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
         RecRef: RecordRef;
@@ -187,7 +187,7 @@ page 50140 "TFB APIV2 - Generic Items"
             GenericItem.Insert(true, true);
 
         RecRef.GetTable(GenericItem);
-        GraphMgtGeneralTools.ProcessNewRecordFromAPI(RecRef, TempFieldSet, GenericItem.SystemModifiedAt);
+        GraphMgtGeneralTools.ProcessNewRecordFromAPI(RecRef, LclTempFieldSet, GenericItem.SystemModifiedAt);
         RecRef.SetTable(GenericItem);
 
         GenericItem.Modify(true);

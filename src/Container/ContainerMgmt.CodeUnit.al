@@ -163,7 +163,7 @@ codeunit 50200 "TFB Container Mgmt"
         ReceiptLine: Record "Purch. Rcpt. Line";
         ResEntry: Record "Reservation Entry";
         OrderLine: Record "Purchase Line";
-        TempLines: Record "TFB ContainerContents";
+        TempContainerContents: Record "TFB ContainerContents" temporary;
         LotInfo: Record "Lot No. Information";
         ItemLedger: Record "Item Ledger Entry";
 
@@ -176,18 +176,18 @@ codeunit 50200 "TFB Container Mgmt"
 
 
     begin
-        GetContainerContents(TempLines, ContainerEntry);
-        If TempLines.FindSet() then
+        GetContainerContents(TempContainerContents, ContainerEntry);
+        If TempContainerContents.FindSet() then
             repeat
                 Clear(LineLotNo);
 
-                case TempLines."Link Type" of
-                    TempLines."Link Type"::"Purchase Order Receipt":
+                case TempContainerContents."Link Type" of
+                    TempContainerContents."Link Type"::"Purchase Order Receipt":
                         begin
                             RecRef.GetTable(ReceiptLine);
 
-                            ReceiptLine.SetRange("Order No.", TempLines.OrderReference);
-                            ReceiptLine.SetRange("Order Line No.", TempLines.LineNo);
+                            ReceiptLine.SetRange("Order No.", TempContainerContents.OrderReference);
+                            ReceiptLine.SetRange("Order Line No.", TempContainerContents.LineNo);
                             ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
 
                             If ReceiptLine.FindFirst() then begin
@@ -210,15 +210,15 @@ codeunit 50200 "TFB Container Mgmt"
 
                         end;
 
-                    TempLines."Link Type"::"Purchase Order":
+                    TempContainerContents."Link Type"::"Purchase Order":
                         begin
                             RecRef.GetTable(OrderLine);
                             ResEntry.SetFilter("Reservation Status", '%1|%2', ResEntry."Reservation Status"::Surplus, ResEntry."Reservation Status"::Reservation);
-                            ResEntry.SetRange("Source ID", TempLines.OrderReference);
-                            ResEntry.SetRange("Source Ref. No.", TempLines.LineNo);
+                            ResEntry.SetRange("Source ID", TempContainerContents.OrderReference);
+                            ResEntry.SetRange("Source Ref. No.", TempContainerContents.LineNo);
                             ResEntry.SetFilter("Quantity (Base)", '>0');
                             ResEntry.SetRange("Source Type", RecRef.Number());
-                            ResEntry.SetRange("Item No.", TempLines."Item Code");
+                            ResEntry.SetRange("Item No.", TempContainerContents."Item Code");
                             ResEntry.SetFilter("Lot No.", '<>%1', '');
 
                             If ResEntry.FindFirst() then
@@ -236,7 +236,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                     //Get Lot Info 
                     LotInfo.SetRange("Lot No.", LineLotNo);
-                    LotInfo.SetRange("Item No.", TempLines."Item Code");
+                    LotInfo.SetRange("Item No.", TempContainerContents."Item Code");
 
                     If LotInfo.FindFirst() then begin
 
@@ -259,7 +259,7 @@ codeunit 50200 "TFB Container Mgmt"
 
 
 
-            until TempLines.Next() < 1;
+            until TempContainerContents.Next() < 1;
 
 
     end;
@@ -392,20 +392,20 @@ codeunit 50200 "TFB Container Mgmt"
 
             else begin
 
-                    DataCompCU.CreateZipArchive();
+                DataCompCU.CreateZipArchive();
 
-                    for i := 1 to TempBlobList.Count() do begin
-                        TempBlobList.Get(i, TempBlobCu);
-                        TempBlobCu.CreateInStream(InStream);
-                        FileName := FileNameList.Get(i);
-                        DataCompCU.AddEntry(InStream, FileName);
+                for i := 1 to TempBlobList.Count() do begin
+                    TempBlobList.Get(i, TempBlobCu);
+                    TempBlobCu.CreateInStream(InStream);
+                    FileName := FileNameList.Get(i);
+                    DataCompCU.AddEntry(InStream, FileName);
 
-                    end;
-
-                    DataCompCU.SaveZipArchive(ZipTempBlob);
-                    TempBlob := ZipTempBlob;
-                    FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
                 end;
+
+                DataCompCU.SaveZipArchive(ZipTempBlob);
+                TempBlob := ZipTempBlob;
+                FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
+            end;
         end;
 
 
@@ -543,22 +543,22 @@ codeunit 50200 "TFB Container Mgmt"
 
             else begin
 
-                    DataCompCU.CreateZipArchive();
+                DataCompCU.CreateZipArchive();
 
-                    for i := 1 to TempBlobList.Count() do begin
-                        TempBlobList.Get(i, TempBlobCu);
-                        TempBlobCu.CreateInStream(InStream);
-                        FileName := FileNameList.Get(i);
-                        DataCompCU.AddEntry(InStream, FileName);
+                for i := 1 to TempBlobList.Count() do begin
+                    TempBlobList.Get(i, TempBlobCu);
+                    TempBlobCu.CreateInStream(InStream);
+                    FileName := FileNameList.Get(i);
+                    DataCompCU.AddEntry(InStream, FileName);
 
-                    end;
-
-                    DataCompCU.SaveZipArchive(ZipTempBlob);
-                    ZipTempBlob.CreateInStream(InStream);
-                    FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
-                    If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
-                        Error('File %1 not downloaded', FileName);
                 end;
+
+                DataCompCU.SaveZipArchive(ZipTempBlob);
+                ZipTempBlob.CreateInStream(InStream);
+                FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
+                If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+                    Error('File %1 not downloaded', FileName);
+            end;
         end;
 
 

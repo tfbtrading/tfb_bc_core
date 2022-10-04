@@ -200,16 +200,22 @@ page 50172 "TFB Lot Add Image Wizard"
 
 
     var
-        _BlobName: Text[100];
-        OriginalBlobGUID: Guid;
-        _BowlDiameter: Integer;
+
         TempLotImage: Record "TFB Lot Image" temporary;
-        ABSClient: CodeUnit "ABS Blob Client";
-        Authorization: Interface "Storage Service Authorization";
+
+
         MediaRepositoryDone: Record "Media Repository";
         MediaRepositoryStandard: Record "Media Repository";
         MediaResourcesDone: Record "Media Resources";
         MediaResourcesStandard: Record "Media Resources";
+
+        Authorization: Interface "Storage Service Authorization";
+
+        ABSClient: CodeUnit "ABS Blob Client";
+
+        _BlobName: Text[100];
+        OriginalBlobGUID: Guid;
+        _BowlDiameter: Integer;
 
 
         Step: Option Start,Step2,Finish;

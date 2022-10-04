@@ -65,6 +65,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 ApplicationArea = All;
                 Caption = 'No. of Lot Images';
                 Visible = false;
+                ToolTip = 'Specifies how many lot images have been registered against a specific item ledger entry';
             }
         }
 

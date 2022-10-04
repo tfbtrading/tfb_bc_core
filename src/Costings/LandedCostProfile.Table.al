@@ -213,7 +213,7 @@ table 50340 "TFB Landed Cost Profile"
            LCUnitCostLCY[1] := LCProfile."Pallet Cost" / Header."Pallet Qty";
                 LCUnitCostLCY[2] := LCProfile."Direct Container Costs" / LCProfile.Pallets / Header."Pallet Qty"; */
 
-    procedure CalculateUnitCostStandard(ItemWeight: Decimal; PalletQty: Integer; ExchRate: Decimal; cs: Record "TFB Costing Scenario"; isDirectContainer: Boolean; var CalcBaseDesc: TextBuilder): Decimal
+    procedure CalculateUnitCostStandard(ItemWeight: Decimal; PalletQty: Integer; ExchRate: Decimal; CostingScenario: Record "TFB Costing Scenario"; isDirectContainer: Boolean; var CalcBaseDesc: TextBuilder): Decimal
 
     var
         LclTempPerPallet: Decimal;
@@ -228,23 +228,23 @@ table 50340 "TFB Landed Cost Profile"
         else
             CalcBaseDesc.AppendLine('Calculating For Warehouse Shipment');
 
-        CalcBaseDesc.AppendLine(StrSubstNo('Pallet Putaway of %1 and Labelling of %2', cs."Pallet Putaway Charge", cs.Labelling));
+        CalcBaseDesc.AppendLine(StrSubstNo('Pallet Putaway of %1 and Labelling of %2', CostingScenario."Pallet Putaway Charge", CostingScenario.Labelling));
 
 
 
         If not Palletised then begin
 
-            LclTempPerPallet += cs."Pallet Package Bundle";
-            LclTempPerContainer += cs."Unpack Loose";
-            CalcBaseDesc.AppendLine(StrSubstNo('Requires palletisation - pallet %1, container %2', cs."Pallet Package Bundle", cs."Unpack Loose"));
+            LclTempPerPallet += CostingScenario."Pallet Package Bundle";
+            LclTempPerContainer += CostingScenario."Unpack Loose";
+            CalcBaseDesc.AppendLine(StrSubstNo('Requires palletisation - pallet %1, container %2', CostingScenario."Pallet Package Bundle", CostingScenario."Unpack Loose"));
         end
         else begin
-            LclTempPerPallet += (cs."Pallet In Charge" + cs."Pallet Putaway Charge" + cs.Labelling);
-            CalcBaseDesc.AppendLine(StrSubstNo('Already palletised - just need pallet handling charge of %1', cs."Pallet In Charge" + cs."Pallet Putaway Charge" + LclTempPerPallet + cs.Labelling));
+            LclTempPerPallet += (CostingScenario."Pallet In Charge" + CostingScenario."Pallet Putaway Charge" + CostingScenario.Labelling);
+            CalcBaseDesc.AppendLine(StrSubstNo('Already palletised - just need pallet handling charge of %1', CostingScenario."Pallet In Charge" + CostingScenario."Pallet Putaway Charge" + LclTempPerPallet + CostingScenario.Labelling));
         end;
 
         if Inspected then
-            LclTempPerContainer += cs."Inspection Charge";
+            LclTempPerContainer += CostingScenario."Inspection Charge";
 
         //Exclude total pallet costs having to do with accepting in pallet of goods
 
@@ -253,12 +253,12 @@ table 50340 "TFB Landed Cost Profile"
 
 
         if "Purchase Type" = "Purchase Type"::Imported then begin
-            LclTempPerContainer += cs."Customs Declaration";
+            LclTempPerContainer += CostingScenario."Customs Declaration";
             LclTempPerContainer += "Port Documents";
             LclTempPerContainer += "Quarantine Fees";
-            LclTempPerContainer += cs."Port Cartage";
+            LclTempPerContainer += CostingScenario."Port Cartage";
             if Financed then
-                LclTempPerContainer += cs."Bank Charge";
+                LclTempPerContainer += CostingScenario."Bank Charge";
             If "Freight Currency" <> '' then
                 FreightLCY := "Ocean Freight" / ExchRate
             else
@@ -266,10 +266,10 @@ table 50340 "TFB Landed Cost Profile"
 
             LclTempPerContainer += FreightLCY;
 
-            CalcBaseDesc.AppendLine(StrSubstNo('Added Additional Import Charges of %1 and Freight %2', cs."Customs Declaration" + "Port Documents" + "Quarantine Fees" + cs."Port Cartage", FreightLCY));
-            if "Apply Contingency" then LclTempPerContainer += cs."Container Contingency";
-            if Fumigated then LclTempPerContainer += cs.Fumigation;
-            If "Heat Treated" then LclTempPerContainer += cs."Heat Treatment";
+            CalcBaseDesc.AppendLine(StrSubstNo('Added Additional Import Charges of %1 and Freight %2', CostingScenario."Customs Declaration" + "Port Documents" + "Quarantine Fees" + CostingScenario."Port Cartage", FreightLCY));
+            if "Apply Contingency" then LclTempPerContainer += CostingScenario."Container Contingency";
+            if Fumigated then LclTempPerContainer += CostingScenario.Fumigation;
+            If "Heat Treated" then LclTempPerContainer += CostingScenario."Heat Treatment";
 
         end;
 

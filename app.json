@@ -4,7 +4,7 @@
   "publisher": "TFB Trading",
   "brief": "Expansive changes specific to TFB Trading",
   "description": "",
-  "version": "20.0.4.36",
+  "version": "21.0.0.0",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -12,23 +12,23 @@
   "logo": "./TFB-Trading-_icon.jpg",
   "features":["TranslationFile"],
   "propagateDependencies": true,
-  "platform": "20.0.0.0",
-  "application": "20.0.0.0",
-  "suppressWarnings": ["AL0432","AL0254","ÄA0217","AA0072","DOC0001","AA0217","AW0006","AA0232","AA0137","AA0228"],
+  "platform": "21.0.0.0",
+  "application": "21.0.0.0",
+  "suppressWarnings": ["AL0432","AL0254","AA0202","AA0072","AL0729","AA0217","AW0006","AA0232","AA0137","AA0228"],
  
     "dependencies": [
       {"id": "10cb69d9-bc8a-4d27-970a-9e110e9db2a5",
         "name": "_Exclude_APIV2_",
       "publisher": "Microsoft",
-    "version": "20.0.0.0"},
+    "version": "21.0.0.0"},
     {"id": "deb3e95e-c9f8-45e2-8036-7eebbbd50049",
     "name": "TFB Common Logging Service",
     "publisher": "TFB Trading",
-    "version": "20.0.0.0"},
+    "version": "21.0.0.0"},
     {"id": "4b7fda46-8e45-4e9d-b9ea-0f59c55c34fe",
       "name": "DYCE Record History & Favorites",
       "publisher": "Singhammer IT Consulting AG",
-      "version": "2022.4.0.1"}
+      "version": "2022.9.0.0"}
  
 
   ],
@@ -38,7 +38,7 @@
     "from": 50100,
     "to": 52000
   }],
-  "runtime": "9.0",
+  "runtime": "10.0",
   "target": "Cloud",
   "resourceExposurePolicy": {"includeSourceInSymbolFile": true},
   "supportedLocales": ["en-AU"]
