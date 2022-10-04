@@ -149,11 +149,54 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
             view(PendingLotImages)
             {
                 Caption = 'Requiring Lot Image';
-                Filters = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'), "TFB No. Of Lot Images" = filter('=0'));
+                Filters = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'), "TFB No. Of Lot Images" = filter('=0'), "Remaining Quantity" = filter('>40'));
+                OrderBy = ascending("Posting Date");
                 SharedLayout = false;
 
                 layout
                 {
+                    modify("Entry Type")
+                    {
+                        Visible = false;
+                    }
+                    modify("Document No.")
+                    {
+                        Visible = false;
+                    }
+                    modify("External Document No.")
+                    {
+                        Visible = false;
+                    }
+                    modify("Lot No.")
+                    {
+                        Visible = true;
+                    }
+                    modify("Global Dimension 1 Code")
+                    {
+                        Visible = false;
+                    }
+                    modify("Global Dimension 2 Code")
+                    {
+                        Visible = false;
+                    }
+                    modify("Invoiced Quantity")
+                    {
+                        Visible = false;
+                    }
+                    modify("Sales Amount (Actual)")
+                    {
+                        Visible = false;
+                    }
+                    modify("Cost Amount (Actual)")
+                    {
+                        Visible = false;
+                    }
+                    modify("Cost Amount (Non-Invtbl.)")
+                    {
+                        Visible = false;
+                    }
+                    moveafter("Item No."; "Lot No.", "TFB No. Of Lot Images")
+
 
 
                 }

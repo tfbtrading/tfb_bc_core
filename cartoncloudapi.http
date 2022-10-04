@@ -123,6 +123,56 @@ Content-Type: application/json
     }
 }
 
+
+// THIS IS STANDARD API TO CREATE A PURCHASE ORDER
+######################################################################
+POST {{baseurl}}/tenants/{{tenantId}}/inbound-orders
+Accept-Version: 1
+Authorization: Bearer {{token}}
+If-Match: {version}
+Content-Type: application/json
+
+{
+  "type": "INBOUND",
+  "status": "DRAFT",
+  "references": {
+    "customer": "PO33721"
+  },
+  "customer": {
+    "id": "3da945b0-7fed-4b0a-a37d-ed59f7db950c"
+  },
+  "details": {
+    "urgent": false,
+    "instructions": "auto created by API",
+    "arrivalDate": "2022-10-05"
+  },
+  "properties": {
+    "unload_type": "20' HAND"
+  },
+  "items": [
+    {
+      "properties": {
+        "expiryDate": "2024-08-17",
+        "lotNo.": "137254",
+        "ccid":"TBC"
+      },
+      "details": {
+        "product": {
+          "references": {
+            "code": "1220"
+          }
+        },
+        "unitOfMeasure": {
+          "type": "BAG"
+        }
+      },
+      "measures": {
+        "quantity": 820.0
+      }
+    }
+  ]
+}
+
 // THIS IS STANDARD API TO SEARCH LIST OF INBOUND ORDERS
 ######################################################################
 POST {{baseurl}}/tenants/{{tenantId}}/inbound-orders/search
