@@ -125,10 +125,10 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 trigger OnDrillDown()
 
                 var
-                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
-                    Customer: Record Customer;
-                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     CustLedgerEntry: Record "Cust. Ledger Entry";
+                    Customer: Record Customer;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
 
@@ -223,8 +223,8 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 trigger OnAction()
 
                 var
-                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     Customer: Record Customer;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     CorrectExtDocNo: Page "TFB Correct Ext. Doc. No.";
                 begin
@@ -286,8 +286,8 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
     end;
 
     var
-        IsPastDue: Boolean;
         IsExpectedDatePastDue: Boolean;
+        IsPastDue: Boolean;
         ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text

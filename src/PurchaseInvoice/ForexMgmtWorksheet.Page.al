@@ -135,8 +135,9 @@ page 50161 "TFB Forex Mgmt Worksheet"
             action(UpdateOpenStatus)
             {
                 ApplicationArea = All;
+                Image = UpdateDescription;
                 Caption = 'Update entry status';
-
+                ToolTip = 'Performs a batch update of entry status records';
 
                 trigger OnAction()
 

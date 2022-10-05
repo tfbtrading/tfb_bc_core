@@ -183,6 +183,7 @@ page 50156 "TFB Forex Mgmt Entries"
                 PromotedCategory = Category4;
                 PromotedIsBig = true;
                 Promoted = true;
+                PromotedOnly = true;
                 Image = Open;
                 Caption = 'Open Applied Document';
                 ToolTip = 'Opens the applied document if spceified';
@@ -214,7 +215,7 @@ page 50156 "TFB Forex Mgmt Entries"
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 
-    
+
 
     var
 

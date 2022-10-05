@@ -465,7 +465,7 @@ table 50115 "TFB Sample Request"
                 Opportunity.TestField(Status, Opportunity.Status::"In Progress");
     end;
 
-    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; CurrFieldNo: Integer);
+    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; LclCurrFieldNo: Integer);
     var
         Contact: Record Contact;
         ContBusRel: Record "Contact Business Relation";

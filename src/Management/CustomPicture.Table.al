@@ -177,11 +177,11 @@ table 50123 "TFB Custom Picture"
                     GenericItem.Modify(true);
                 end;
             else begin
-                    IsHandled := false;
+                IsHandled := false;
 
-                    if not IsHandled then
-                        ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
-                end;
+                if not IsHandled then
+                    ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
+            end;
         end;
 
         Clear(Rec);
@@ -264,11 +264,11 @@ table 50123 "TFB Custom Picture"
                         MediaID := GenericItem.Picture.Item(1);
                 end;
             else begin
-                    IsHandled := false;
+                IsHandled := false;
 
-                    if not IsHandled then
-                        ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
-                end;
+                if not IsHandled then
+                    ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
+            end;
         end;
 
         exit(MediaID);
@@ -288,7 +288,7 @@ table 50123 "TFB Custom Picture"
         end;
 
         GenericItem.SetFilter(SystemId, IDFilter);
-        if GenericItem.FindFirst() then begin
+        if not GenericItem.IsEmpty() then begin
             ParentRecordRef.GetTable(LotNoInfo);
             RecordFound := true;
         end;
@@ -345,7 +345,7 @@ table 50123 "TFB Custom Picture"
         AllObjWithCaption.SetRange("Object Type", AllObjWithCaption."Object Type"::Table);
         AllObjWithCaption.SetRange("Object ID", TableID);
         if AllObjWithCaption.FindFirst() then;
-        Error(StrSubstNo(RequestedRecordIsNotSupportedErr, AllObjWithCaption."Object Caption"));
+        Error(RequestedRecordIsNotSupportedErr, AllObjWithCaption."Object Caption");
     end;
 
     procedure GetDefaultMediaDescription(ParentRecord: Variant): Text
@@ -372,11 +372,11 @@ table 50123 "TFB Custom Picture"
 
 
             else begin
-                    IsHandled := false;
-                    OnGetDefaultMediaDescriptionElseCase(ParentRecordRef, MediaDescription, IsHandled);
-                    if not IsHandled then
-                        exit('');
-                end;
+                IsHandled := false;
+                OnGetDefaultMediaDescriptionElseCase(ParentRecordRef, MediaDescription, IsHandled);
+                if not IsHandled then
+                    exit('');
+            end;
         end;
 
         exit(MediaDescription);

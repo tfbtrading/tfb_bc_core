@@ -383,8 +383,8 @@ page 50147 "TFB Pending Sales Lines"
     var
         SalesHeader: Record "Sales Header";
         TempOrderPromisingLine: Record "Order Promising Line" temporary;
-        OrderPromisingLines: Page "Order Promising Lines";
         ReleaseSalesDoc: Codeunit "Release Sales Document";
+        OrderPromisingLines: Page "Order Promising Lines";
 
 
     begin

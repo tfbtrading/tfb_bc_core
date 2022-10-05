@@ -99,6 +99,7 @@ page 50143 "TFB Sample Request Subform"
                     Enabled = Rec."No." <> '';
                     Promoted = true;
                     PromotedIsBig = true;
+                    PromotedOnly = true;
                     ToolTip = 'View how the actual and the projected available balance of an item will develop over time according to supply and demand events.';
 
                     trigger OnAction()
@@ -152,5 +153,5 @@ page 50143 "TFB Sample Request Subform"
 
         Item: Record Item;
         ItemAvailFormsMgt: Codeunit "Item Availability Forms Mgt";
-    
+
 }

@@ -77,6 +77,7 @@ page 50170 "TFB Lot Images"
 
                 field(createdAt; getCreatedDateTime())
                 {
+                    Caption = 'Created on';
                     ApplicationArea = all;
                     ToolTip = 'Specifies the value of the SystemCreatedAt field.';
 
@@ -157,8 +158,8 @@ page 50170 "TFB Lot Images"
 
     var
         StorageServiceAuth: CodeUnit "Storage Service Authorization";
-        SharedKey: Text;
         ContainerName: Text;
+        SharedKey: Text;
         StorageAccount: Text;
     begin
         ContainerName := 'images';
@@ -184,27 +185,27 @@ page 50170 "TFB Lot Images"
     end;
 
     var
-        ABSClient: CodeUnit "ABS Blob Client";
-        Authorization: Interface "Storage Service Authorization";
-        TempFieldSet: Record 2000000041 temporary;
         ItemCategory: Record "Item Category";
         TaxGroup: Record "Tax Group";
+        TempFieldSet: Record 2000000041 temporary;
         ValidateUnitOfMeasure: Record "Unit of Measure";
+        ABSClient: CodeUnit "ABS Blob Client";
         GraphCollectionMgtItem: Codeunit "Graph Collection Mgt - Item";
-        InventoryValue: Decimal;
         BlankGUID: Guid;
-        BaseUnitOfMeasureIdValidated: Boolean;
         BaseUnitOfMeasureCodeValidated: Boolean;
+        BaseUnitOfMeasureIdValidated: Boolean;
         IsInsert: Boolean;
-        TaxGroupValuesDontMatchErr: Label 'The tax group values do not match to a specific Tax Group.';
-        TaxGroupIdDoesNotMatchATaxGroupErr: Label 'The "taxGroupId" does not match to a Tax Group.', Comment = 'taxGroupId is a field name and should not be translated.';
-        TaxGroupCodeDoesNotMatchATaxGroupErr: Label 'The "taxGroupCode" does not match to a Tax Group.', Comment = 'taxGroupCode is a field name and should not be translated.';
-        ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
+        InventoryValue: Decimal;
+        InventoryCannotBeChangedInAPostRequestErr: Label 'Inventory cannot be changed during on insert.';
         ItemCategoriesValuesDontMatchErr: Label 'The item categories values do not match to a specific item category.';
         ItemCategoryCodeDoesNotMatchATaxGroupErr: Label 'The "itemCategoryCode" does not match to a Item Category.', Comment = 'itemCategoryCode is a field name and should not be translated.';
-        InventoryCannotBeChangedInAPostRequestErr: Label 'Inventory cannot be changed during on insert.';
+        ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
+        TaxGroupCodeDoesNotMatchATaxGroupErr: Label 'The "taxGroupCode" does not match to a Tax Group.', Comment = 'taxGroupCode is a field name and should not be translated.';
+        TaxGroupIdDoesNotMatchATaxGroupErr: Label 'The "taxGroupId" does not match to a Tax Group.', Comment = 'taxGroupId is a field name and should not be translated.';
+        TaxGroupValuesDontMatchErr: Label 'The tax group values do not match to a specific Tax Group.';
         UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr: Label 'The "baseUnitOfMeasureId" does not match to a Unit of Measure.', Comment = 'baseUnitOfMeasureId is a field name and should not be translated.';
         UnitOfMeasureValuesDontMatchErr: Label 'The unit of measure values do not match to a specific Unit of Measure.';
+        Authorization: Interface "Storage Service Authorization";
 
 
 
@@ -212,13 +213,13 @@ page 50170 "TFB Lot Images"
     var
         LotNoInfo: Record "Lot No. Information";
         TenantMedia: Record "Tenant Media";
-        PicText: Text;
-        PicInstr: InStream;
+        Base64: Codeunit "Base64 Convert";
+        TempBlob: Codeunit "Temp Blob";
         JObject: JsonObject;
         JToken: JsonToken;
-        TempBlob: Codeunit "Temp Blob";
+        PicInstr: InStream;
         PicOStr: OutStream;
-        Base64: Codeunit "Base64 Convert";
+        PicText: Text;
     begin
         LotNoInfo.Get(LotNoInfoID);
         If LotNoInfo."TFB Sample Picture".Count = 0 then

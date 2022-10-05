@@ -365,6 +365,7 @@ page 50142 "TFB Sample Request"
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
+                PromotedOnly = true;
 
                 trigger OnAction()
                 var
@@ -404,7 +405,7 @@ page 50142 "TFB Sample Request"
                     ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request.Warehouse");
                     ReportSelection.SetRange("Use for Email Attachment", true);
                     If ReportSelection.findfirst() then begin
-                            //TODO Need to add functionality here
+                        //TODO Need to add functionality here
 
 
                     end;
@@ -437,7 +438,7 @@ page 50142 "TFB Sample Request"
 
     local procedure SetDocNoVisible()
     var
-   
+
 
     begin
         DocNoVisible := false;

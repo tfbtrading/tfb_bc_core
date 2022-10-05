@@ -202,17 +202,12 @@ page 50172 "TFB Lot Add Image Wizard"
     var
 
         TempLotImage: Record "TFB Lot Image" temporary;
-
-
         MediaRepositoryDone: Record "Media Repository";
         MediaRepositoryStandard: Record "Media Repository";
         MediaResourcesDone: Record "Media Resources";
         MediaResourcesStandard: Record "Media Resources";
-
-        Authorization: Interface "Storage Service Authorization";
-
         ABSClient: CodeUnit "ABS Blob Client";
-
+        Authorization: Interface "Storage Service Authorization";
         _BlobName: Text[100];
         OriginalBlobGUID: Guid;
         _BowlDiameter: Integer;
@@ -360,7 +355,7 @@ page 50172 "TFB Lot Add Image Wizard"
         ABSParams: CodeUnit "ABS Optional Parameters";
         inStream: InStream;
         outStream: OutStream;
-        fileName: Text;
+        fileName: Text[100];
         fileExtension: text;
         FromFilter: Text;
         ClientFileName: Text;
@@ -398,7 +393,7 @@ page 50172 "TFB Lot Add Image Wizard"
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         instream: instream;
         outStream: OutStream;
-        fileName: Text;
+        fileName: Text[100];
         FromFilter: Text;
         fileExtension: text;
         ClientFileName: Text;
@@ -415,12 +410,8 @@ page 50172 "TFB Lot Add Image Wizard"
 
         TempBlob.CreateInStream(instream);
         ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + fileName, inStream);
-        IF ABSOperationResponse.IsSuccessful() then begin
-
-            //check size
-
+        IF ABSOperationResponse.IsSuccessful() then
             exit(true)
-        end
         else
             Error('Error from Azure Storage: %1', ABSOperationResponse.GetError());
 

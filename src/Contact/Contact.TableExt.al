@@ -136,12 +136,23 @@ tableextension 50110 "TFB Contact" extends Contact
         {
             Caption = 'Online Identity Id';
         }
+
+
+    }
+    keys
+    {
+        key(ContactBusinessRel; "Contact Business Relation", "No.")
+        {
+
+
+        }
     }
     fieldgroups
     {
         addlast(Brick; "TFB Contact Stage", "TFB Contact Status", "E-Mail") { }
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
+
 
     local procedure IsMobilePhoneNoUnique(): Boolean
 

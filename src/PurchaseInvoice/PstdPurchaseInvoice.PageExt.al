@@ -59,9 +59,9 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
                 var
                     TempPurchInvHeader: Record "Purch. Inv. Header" temporary;
+                    VendLedgerEntry: Record "Vendor Ledger Entry";
                     Vendor: Record Vendor;
                     CodeUnit: CodeUnit "TFB Pstd. Purch Inv. Hdr. Edit";
-                    VendLedgerEntry: Record "Vendor Ledger Entry";
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
 
@@ -183,11 +183,11 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     }
 
     var
-
+        [InDataSet]
+DueDateIsDifferent: Boolean;
         _DueDate: Date;
         _RemainingAmt: Decimal;
-        [InDataSet]
-        DueDateIsDifferent: Boolean;
+
 
     trigger OnAfterGetRecord()
 
@@ -252,8 +252,8 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     end;
 
     var
-        IsPastDue: Boolean;
         IsExpectedDatePastDue: Boolean;
+        IsPastDue: Boolean;
         ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text

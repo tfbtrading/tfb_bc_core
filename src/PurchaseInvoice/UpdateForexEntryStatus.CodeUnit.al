@@ -4,7 +4,7 @@ codeunit 50123 "TFB Update Forex Entry Status"
 
     var
         Progress: Dialog;
-        ProgressMsg: Label 'Updating contracts - ##1####';
+        ProgressMsg: Label 'Updating contracts - ##1####', Comment = '%1 - outlines what contract is currently being processed';
     begin
 
         ForexMgmtEntry.SetRange(EntryType, Enum::"TFB Forex Mgmt Entry Type"::Assignment, Enum::"TFB Forex Mgmt Entry Type"::ForexContract);
