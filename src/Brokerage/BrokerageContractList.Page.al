@@ -56,7 +56,7 @@ page 50241 "TFB Brokerage Contract List"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the lines on the order';
-                    MultiLine = false;
+                    MultiLine = true;
                     Editable = false;
                     Caption = 'Lines';
                 }
@@ -110,39 +110,7 @@ page 50241 "TFB Brokerage Contract List"
     {
         area(Processing)
         {
-            action(NewShipment)
-            {
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
-                PromotedIsBig = true;
-                Image = New;
-                Caption = 'New shipment';
-                ApplicationArea = All;
-                ToolTip = 'Create a new shipment against the contract';
 
-                trigger OnAction()
-
-                var
-                    Shipment: Record "TFB Brokerage Shipment";
-                    ShipmentPage: Page "TFB Brokerage Shipment";
-
-                begin
-
-                    Clear(Shipment);
-                    Shipment.Init();
-                    Shipment.Validate("Buy From Vendor No.", Rec."Vendor No.");
-                    Shipment.Validate("Customer No.", Rec."Customer No.");
-                    Shipment.Validate("Contract No.", Rec."No.");
-
-                    Shipment."Document Date" := today();
-                    Shipment.Insert(true);
-
-                    ShipmentPage.Editable := true;
-                    ShipmentPage.SetRecord(Shipment);
-
-                end;
-            }
         }
     }
 

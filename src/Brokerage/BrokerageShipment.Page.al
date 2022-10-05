@@ -4,7 +4,6 @@ page 50229 "TFB Brokerage Shipment"
     SourceTable = "TFB Brokerage Shipment";
     UsageCategory = None;
     Caption = 'Brokerage Shipment';
-    PromotedActionCategories = 'New,Process,Report,Navigate,Print/Send,category6_caption,category7_caption,category8_caption,category9_caption,category10_caption';
     DataCaptionFields = "No.", "Customer Name";
 
     layout
@@ -370,22 +369,17 @@ page 50229 "TFB Brokerage Shipment"
                 RunPageLink = "No." = field("Contract No.");
                 RunPageMode = Edit;
                 Image = FileContract;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
                 ToolTip = 'Opens related contract';
             }
         }
         area(Processing)
         {
-            action("TFBSendEmail")
+            action("Email Supplier")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
+
                 Image = SendConfirmation;
                 Caption = 'Send to Supplier';
                 ToolTip = 'Sends confirmation for brokerage shipment';
@@ -397,13 +391,11 @@ page 50229 "TFB Brokerage Shipment"
                 end;
             }
 
-            action("TFBSendCustomerUpdate")
+            action("Email Customer")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
+
                 Image = SendConfirmation;
                 Enabled = Rec.Status = Rec.Status::"In Progress";
                 Caption = 'Send Update to Customer';
@@ -433,13 +425,10 @@ page 50229 "TFB Brokerage Shipment"
             action("NewDraftInvoice")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 Image = Invoice;
                 Enabled = (Rec.Status = Rec.Status::"In Progress") and (Rec."Vendor Invoice No." <> '');
-                Caption = 'New draft invoice';
+                Caption = 'Make invoice';
                 ToolTip = 'Creates a new draft invoice for brokerage shipment';
 
                 trigger OnAction()
@@ -465,6 +454,45 @@ page 50229 "TFB Brokerage Shipment"
 
                     end;
                 end;
+            }
+        }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+
+                actionref(NewDraftInvoiceRef; NewDraftInvoice)
+                {
+
+                }
+            }
+            group(Category_PrintSend)
+            {
+                Caption = 'Print/Send';
+
+                actionref(EmailSupplierRef; "Email Supplier")
+                {
+
+                }
+                actionref(EmailCustomerRef; "Email Customer")
+                {
+
+                }
+            }
+            group(Category_Shipment)
+            {
+                Caption = 'Shipment';
+
+                actionref(RelatedContractRef; RelatedContract)
+                {
+
+                }
+                actionref(SentEmailRef; "Sent Emails")
+                {
+
+                }
             }
         }
     }

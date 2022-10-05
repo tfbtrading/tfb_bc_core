@@ -133,32 +133,11 @@ page 50225 "TFB Brokerage Contract Subform"
     {
         area(Processing)
         {
-            action("Item")
-            {
-                ApplicationArea = All;
-                Image = Item;
-                ToolTip = 'Opens item card for line item';
-                Caption = 'Item';
-                PromotedOnly = true;
-                Promoted = true;
 
-                trigger OnAction()
-
-                var
-                    ItemRec: Record Item;
-                    ItemPage: Page "Item Card";
-
-                begin
-                    ItemRec.Get(Rec."Item No.");
-                    ItemPage.SetRecord(ItemRec);
-                    ItemPage.Run();
-
-                end;
-
-            }
 
 
         }
+
 
 
     }
