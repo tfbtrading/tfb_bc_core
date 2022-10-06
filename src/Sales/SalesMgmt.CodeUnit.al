@@ -5,12 +5,7 @@ codeunit 50122 "TFB Sales Mgmt"
 {
 
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeValidateShipmentDate', '', false, false)]
-    local procedure OnBeforeValidateShipmentDate(var Sender: Record "Sales Line"; var IsHandled: Boolean; var SalesLine: Record "Sales Line");
-    begin
-
-
-    end;
+   
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterFinalizePostingOnBeforeCommit', '', false, false)]
     local procedure OnAfterFinalizePostingOnBeforeCommit(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean; PreviewMode: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var EverythingInvoiced: Boolean);

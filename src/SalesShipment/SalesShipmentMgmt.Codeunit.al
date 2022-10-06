@@ -904,31 +904,32 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     var
         CommEntry: record "TFB Communication Entry";
-        Header: record "Sales Shipment Header";
-        Lines: record "Sales Shipment Line";
+    //Retrieval of salesshipment not working
+    //Header: record "Sales Shipment Header";
+    //Lines: record "Sales Shipment Line";
 
     begin
-        Header.SetLoadFields("No.");
-        If not Header.Get(RefNo) then
-            exit(false);
+        /*     Header.SetLoadFields("No.");
+            If not Header.Get(RefNo) then
+                exit(false);
 
-        Lines.SetRange("No.", Header."No.");
-        Lines.SetRange(Type, Lines.Type::Item);
-        Lines.SetFilter(Quantity, '>0');
+            Lines.SetRange("No.", Header."No.");
+            Lines.SetRange(Type, Lines.Type::Item);
+            Lines.SetFilter(Quantity, '>0');
 
 
-        If (Lines.IsEmpty()) then exit(true);
+            If (Lines.IsEmpty()) then exit(true); */
 
         //Meant to ignore duplicate of communications
-        /*     CommEntry.SetRange("Record Type", CommEntry."Record Type"::ASN);
-            Commentry.SetRange("Record No.", RefNo);
-            CommEntry.SetRange("Record Table No.", Database::"Sales Shipment Header");
-            CommEntry.SetRange(Direction, CommEntry.Direction::Outbound);
+        CommEntry.SetRange("Record Type", CommEntry."Record Type"::ASN);
+        Commentry.SetRange("Record No.", RefNo);
+        CommEntry.SetRange("Record Table No.", Database::"Sales Shipment Header");
+        CommEntry.SetRange(Direction, CommEntry.Direction::Outbound);
 
-            If CommEntry.IsEmpty() then
-                Exit(false) // no communication sent should not ignore sales shipment
-            else
-                Exit(true); // already sent out - so don't ignore check */
+        If CommEntry.IsEmpty() then
+            Exit(false) // no communication sent should not ignore sales shipment
+        else
+            Exit(true); // already sent out - so don't ignore check
     end;
 
     procedure AddCoAToShipmentStatusEmail(RefNo: Code[20]; var EmailMessage: CodeUnit "Email Message"): Boolean

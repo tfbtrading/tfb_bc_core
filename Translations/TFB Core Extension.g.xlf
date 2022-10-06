@@ -13053,6 +13053,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Query TFB Transfer Lines Outstanding - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2045065493 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2588048341">
+          <source>Specifies the date that the customer ledger is due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Applied Customer Entries - Control Due Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 476780774 - Control 3112212888 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 677538801">
           <source>Description for the Source ID</source>
           <note from="Developer" annotates="general" priority="2"></note>
