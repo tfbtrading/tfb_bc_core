@@ -299,6 +299,37 @@ page 50348 "TFB Item Costing"
                 end;
             }
         }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+
+                actionref(CopyToWorksheetRef; CopyToWorksheet)
+                {
+                    
+                }
+                actionref(RefreshRef; Refresh)
+                {
+                    
+                }
+             
+          
+            }
+            group(Category_ItemCosting)
+            {
+                Caption = 'Item Costing';
+                actionref(ItemRef; "Item ")
+                {
+                    
+                }
+                actionref(CostScenarioRef; "Cost Scenario")
+                {
+                    
+                }
+            }
+        }
     }
     
 

@@ -59,7 +59,6 @@ page 50216 "TFB Container Entry SubForm"
                 Image = Document;
                 Promoted = true;
                 PromotedIsBig = true;
-                PromotedOnly = true;
                 Tooltip = 'Download certificates of analysis for items in container';
                 Caption = 'Download certificates of analysis';
 
@@ -75,9 +74,10 @@ page 50216 "TFB Container Entry SubForm"
             }
 
         }
+
     }
 
-   
+
 
     procedure InitTempTable(var ContainerEntry: Record "TFB Container Entry"): Boolean
     var
@@ -120,13 +120,13 @@ page 50216 "TFB Container Entry SubForm"
 
     end;
 
-  
+
 
 
 
     var
 
-    
+
 
         ContainerStatus: Enum "TFB Container Status";
 

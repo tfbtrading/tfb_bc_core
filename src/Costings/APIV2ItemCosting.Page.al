@@ -1,4 +1,4 @@
-page 50335 "TFB ItemCosting Entity"
+page 50335 "TFB APIV2 Item Costing"
 {
     PageType = API;
     caption = 'itemCosting';

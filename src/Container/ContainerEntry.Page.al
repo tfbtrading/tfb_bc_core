@@ -6,7 +6,7 @@ page 50210 "TFB Container Entry"
     PageType = Document;
     SourceTable = "TFB Container Entry";
     Caption = 'Inbound Shipment';
-    PromotedActionCategories = 'Navigation';
+
     UsageCategory = None;
 
     layout
@@ -513,13 +513,10 @@ page 50210 "TFB Container Entry"
     {
         area(Processing)
         {
-            action("TFBSendWarehouseUpdate")
+            action("Email Warehouse Update")
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 Image = SendConfirmation;
                 Enabled = Rec."Quarantine Reference" <> '';
                 Caption = 'Send Update to Warehouse';
@@ -535,9 +532,7 @@ page 50210 "TFB Container Entry"
             {
                 ApplicationArea = All;
                 Image = ExternalDocument;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
+
 
                 Tooltip = 'Uploads a pdf attachement for unpack report';
 
@@ -555,10 +550,7 @@ page 50210 "TFB Container Entry"
             {
                 ApplicationArea = All;
                 Image = ElectronicDoc;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 Enabled = _unpackReportAttached;
                 Tooltip = 'Downloads a pdf attachment if it exists';
 
@@ -591,10 +583,7 @@ page 50210 "TFB Container Entry"
             {
                 ApplicationArea = All;
                 Image = AdjustEntries;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 Enabled = Rec."Qty. On Purch. Rcpt" > 0;
                 ToolTip = 'Aligns sales lines reserved from container to incoming container date';
 
@@ -610,13 +599,11 @@ page 50210 "TFB Container Entry"
         area(Navigation)
         {
 
-            action("Order")
+            action("Related Order")
             {
                 ApplicationArea = All;
                 Image = Order;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
                 Tooltip = 'Navigate to purchase order';
 
                 trigger OnAction()
@@ -650,23 +637,7 @@ page 50210 "TFB Container Entry"
                 end;
             }
 
-            action("Vendor")
-            {
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedIsBig = true;
-                Image = Vendor;
-                RunObject = page "Vendor Card";
-                RunPageMode = Edit;
-                RunPageLink = "No." = field("Vendor No.");
-                Tooltip = 'Navigate to related vendor';
 
-                trigger OnAction()
-                begin
-
-                end;
-            }
 
 
             action("Purchase Receipt")
@@ -723,6 +694,50 @@ page 50210 "TFB Container Entry"
             }
         }
 
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(UploadUnpackRef; "Upload unpack report")
+                {
+
+                }
+                actionref(DownloadUnpackRef; "Download Unpack Report")
+
+                {
+
+                }
+                actionref(AdjustUnpackRef; "Adjust Reserved Sales")
+                {
+
+                }
+
+            }
+            group(Category_PrintSend)
+            {
+                Caption = 'Print / Send';
+
+                actionref(EmailWarehouseUpdateRef; "Email Warehouse Update")
+                {
+
+                }
+
+            }
+            group(Category_InboundShipment)
+            {
+                Caption = 'Inbound Shipment';
+
+                actionref(RelatedOrderRef; "Related Order")
+                {
+
+                }
+                actionref(HistoryRef; History)
+                {
+
+                }
+            }
+        }
 
     }
 

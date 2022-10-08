@@ -206,12 +206,10 @@ page 50122 "TFB Cust. Fav. Items"
             action(AutoPopulate)
             {
                 ApplicationArea = All;
-                Promoted = True;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
 
                 Image = ExecuteBatch;
-                Caption = 'Auto Populate Favourites';
+                Caption = 'Refresh';
                 ToolTip = 'Populates items in the favourites for customer';
 
                 trigger OnAction()
@@ -227,12 +225,10 @@ page 50122 "TFB Cust. Fav. Items"
             action(CreateSalesOrder)
             {
                 ApplicationArea = All;
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = NewOrder;
 
-                PromotedIsBig = true;
-                Caption = 'New Sales Order';
+                Caption = 'Make Order';
                 ToolTip = 'Create Sales Order from selected from one or more selected items for this customer';
 
                 trigger OnAction()
@@ -280,6 +276,22 @@ page 50122 "TFB Cust. Fav. Items"
                     end
 
                 end;
+            }
+        }
+
+        area(Promoted)
+        {
+            Group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(CreateSalesOrderRef; CreateSalesOrder)
+                {
+
+                }
+                actionref(AutoPopulateRef; AutoPopulate)
+                {
+
+                }
             }
         }
 

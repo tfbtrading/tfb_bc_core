@@ -12,7 +12,16 @@ page 50102 "TFB Item Costing Factbox"
         {
             group(Details)
             {
+
                 Caption = 'Details';
+                field("No."; Rec."No.")
+                {
+                    Caption = 'Item No.';
+                    DrillDown = true;
+                    DrillDownPageId = "Item Card";
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Item No. for drilldown purposes';
+                }
                 field("Purchasing Code"; Rec."Purchasing Code")
                 {
                     ApplicationArea = All;

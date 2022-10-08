@@ -215,19 +215,7 @@ page 50347 "TFB Item Costing List"
 
     actions
     {
-        area(Navigation)
-        {
-            action("Item")
-            {
-                RunObject = Page "Item Card";
-                RunPageLink = "No." = field("Item No.");
-                RunPageMode = Edit;
-                Image = Item;
-                ApplicationArea = All;
-                ToolTip = 'Opens item record';
 
-            }
-        }
 
         area(Processing)
         {
@@ -236,9 +224,7 @@ page 50347 "TFB Item Costing List"
                 Caption = 'Update Costings';
                 Image = UpdateUnitCost;
                 ApplicationArea = All;
-                Promoted = True;
-                PromotedOnly = True;
-                PromotedCategory = Process;
+
                 ToolTip = 'Recalculates all item costings based on specifies scenarios and landed cost profiles';
 
                 trigger OnAction()
@@ -259,6 +245,18 @@ page 50347 "TFB Item Costing List"
                 end;
             }
 
+        }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(UpdateCostingsRef; UpdateCostings)
+                {
+
+                }
+            }
         }
 
     }

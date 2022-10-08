@@ -204,7 +204,7 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Item Costing List" = X,
         page "TFB Item Costing Setup" = X,
         page "TFB Item Costing Subform" = X,
-        page "TFB ItemCosting Entity" = X,
+        page "TFB APIV2 Item Costing" = X,
         page "TFB Suggest Item Costing Lines" = X,
         page "TFB Forex Contract FB" = X,
         page "TFB Communication Entries" = X,

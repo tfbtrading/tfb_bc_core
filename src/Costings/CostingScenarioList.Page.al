@@ -36,21 +36,6 @@ page 50302 "TFB Costing Scenario List"
 
     actions
     {
-        area(Processing)
-        {
-            action("Open")
-            {
-                ApplicationArea = All;
-                Image = Open;
-                PromotedOnly = true;
-                Promoted = true;
-                PromotedCategory = Process;
-                RunObject = Page "TFB Costing Scenario";
-                RunPageOnRec = true;
-                ToolTip = 'Opens costing scenario record';
 
-
-            }
-        }
     }
 }

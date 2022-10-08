@@ -44,9 +44,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
             Action(FavouriteItems)
             {
                 Caption = 'Favourite Items';
-                Promoted = true;
-                PromotedCategory = Category7;
-                PromotedOnly = false;
+
                 Image = List;
                 ApplicationArea = All;
                 ToolTip = 'Managed list of favourite items';
@@ -60,11 +58,10 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
         addafter(PaymentRegistration)
         {
-            action(SendStatementsByEmail)
+            action(TFBSendStatementsByEmail)
             {
                 Caption = 'Send Statements';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Sends statements to all customers';
@@ -82,8 +79,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
             action(SendOrderUpdateByEmail)
             {
                 Caption = 'Send Order Update';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Send order update for the customer who is currently selected';
@@ -100,8 +96,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
             action(SendQualityDocumentsByEmail)
             {
                 Caption = 'Send Quality Certifications';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Send quality certifications for the customer who is currently selected';
@@ -138,7 +133,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
                     Customer.SetLoadFields("No.", "TFB Primary Contact Company ID");
                     Customer.FindSet(true, false);
-                    repeat 
+                    repeat
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
                         ContBusRel.SetRange("No.", Customer."No.");
@@ -151,8 +146,16 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
                 end;
             }
-        }
 
+
+        }
+        addlast(Category_Process)
+        {
+            actionref(ActionRefName; TFBSendStatementsByEmail)
+            {
+
+            }
+        }
 
 
     }
