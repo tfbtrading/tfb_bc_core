@@ -1,6 +1,6 @@
 pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information List"
 {
-    PromotedActionCategories = 'New,Manage,Process,Actions';
+
     layout
     {
         addafter("Lot No.")
@@ -101,9 +101,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
 
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
+
                 Image = Import;
                 Enabled = not IsCoAAvailable;
                 ToolTip = 'Attach a certificate of analysis';
@@ -123,9 +121,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
                 ApplicationArea = All;
                 Visible = True;
                 Enabled = IsCoAAvailable;
-                Promoted = True;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
+
                 Image = SendAsPDF;
                 ToolTip = 'Download a certificate of attachment as a pdf file';
                 trigger OnAction()
@@ -141,9 +137,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
+
                 Image = Delete;
                 ToolTip = 'Remove a certificate of analysis';
                 Enabled = IsCoAAvailable;
@@ -159,26 +153,31 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
                 end;
 
             }
-            action("Update Descriptions")
+
+        }
+        addlast(Promoted)
+        {
+            Group(Category_COA)
             {
-                ApplicationArea = All;
-                Visible = True;
-                Image = Description;
-                ToolTip = 'Update descriptions on lot no information';
-                ObsoleteState = Pending;
-                ObsoleteTag = 'No longer required';
-                ObsoleteReason = 'No longer required';
+                Caption = 'CoA';
+                ShowAs = SplitButton;
 
-                trigger OnAction()
+                actionref(DownloadCOARef; "Download CoA")
+                {
 
-                var
-                    LotInfo: Record "Lot No. Information";
+                }
+                actionref(AttachCOARef; "Attach CoA")
+                {
 
-                begin
-                    LotInfo.UpdateItemDescriptions();
-                end;
+                }
+                actionref(RemoveCOARef; "Remove CoA")
+                {
+
+                }
+
             }
         }
+
     }
 
 

@@ -142,14 +142,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
     actions
     {
 
-        modify("Ledger E&ntries")
-        {
-            Promoted = true;
-            PromotedCategory = Category5;
-            PromotedIsBig = true;
-            PromotedOnly = true;
 
-        }
         addlast(processing)
         {
             action(TFBItemCostings)
@@ -160,9 +153,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 RunObject = page "TFB Item Costing List";
                 RunPageLink = "Item No." = field("No.");
                 RunPageMode = View;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 ToolTip = 'Open item costings list for item';
 
 
@@ -188,8 +179,6 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 Image = ExportFile;
                 Caption = 'Download Specification';
                 ToolTip = 'Find and download specification file';
-                Promoted = true;
-                PromotedCategory = Category4;
 
                 Enabled = true;
 
@@ -211,8 +200,6 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 Image = ExportFile;
                 Caption = 'Download MSDS';
                 ToolTip = 'Find and download Material Safety Data Sheet';
-                Promoted = true;
-                PromotedCategory = Category4;
 
                 Enabled = true;
 
@@ -262,10 +249,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
             action(TFBAvailabilityByEvent)
             {
                 ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = Category5;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
                 Image = ItemAvailabilitybyPeriod;
                 Caption = 'Item Availability By Event';
                 ToolTip = 'Open up item availability by event view';
@@ -281,6 +265,33 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 end;
             }
         }
+        addlast(Category_Category4)
+        {
+            actionref(TFBItemCostingsRef; TFBItemCostings)
+            {
+
+            }
+            actionref(TFBDownloadSpecRef; TFBDownloadSpec)
+            {
+
+            }
+            actionref(TFBDownloadMSDSRef; TFBDownloadMSDS)
+            {
+
+            }
+        }
+        addfirst(Category_Category5)
+        {
+            actionref(LedgerEntryRef; "Ledger E&ntries")
+            {
+
+            }
+            actionref(InventoryAvailRef; "Inventory Availability")
+            {
+
+            }
+        }
+
     }
 
     var

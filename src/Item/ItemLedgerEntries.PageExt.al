@@ -141,6 +141,23 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
 
         }
+
+        addlast(Promoted)
+        {
+            group(Category_Images)
+            {
+                Caption = 'Images';
+                actionref(TFBAddLotImageRef; "TFB Add Lot Image Wizard")
+                {
+
+                }
+                actionref(TFBGetLotImageRef; "TFB Get Lot Image Wizard")
+                {
+
+                }
+
+            }
+        }
     }
 
     views

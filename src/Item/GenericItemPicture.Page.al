@@ -34,9 +34,7 @@ page 50134 "TFB Generic Item Picture"
                 ApplicationArea = All;
                 Caption = 'Take';
                 Image = Camera;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Activate the camera on the device.';
                 Visible = CameraAvailable AND (HideActions = FALSE);
 
@@ -87,6 +85,8 @@ page 50134 "TFB Generic Item Picture"
                 end;
             }
         }
+
+
     }
 
     trigger OnAfterGetCurrRecord()

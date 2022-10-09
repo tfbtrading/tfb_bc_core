@@ -115,6 +115,19 @@ page 50170 "TFB Lot Images"
                 end;
             }
         }
+
+        area(Promoted)
+        {
+            Group(Category_Home)
+            {
+                Caption = 'Home';
+
+                actionref(ActionRefName; "TFB Get Lot Image Wizard")
+                {
+
+                }
+            }
+        }
     }
 
     var

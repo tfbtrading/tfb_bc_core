@@ -1,6 +1,6 @@
 pageextension 50296 "TFB Posted Item Tracking Lines" extends "Posted Item Tracking Lines"
 {
-    PromotedActionCategories = 'Navigation';
+
     layout
     {
 
@@ -17,17 +17,26 @@ pageextension 50296 "TFB Posted Item Tracking Lines" extends "Posted Item Tracki
                 RunPageLink = "Item No." = field("Item No."), "Lot No." = field("Lot No."), "Variant Code" = field("Variant Code");
                 RunPageMode = Edit;
                 Image = LotInfo;
-                Caption = 'Lot no info Card';
+                Caption = 'Lot No. Info Card';
                 ToolTip = 'Open lot number information card';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = New;
+
 
                 trigger OnAction()
                 begin
 
                 end;
+            }
+        }
+        addlast(Promoted)
+        {
+            group(TFBItemTracking)
+            {
+                Caption = 'Item Tracking';
+
+                actionref(ActionRefName; TFBOpenLotInfo)
+                {
+
+                }
             }
         }
     }
