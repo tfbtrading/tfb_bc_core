@@ -15,7 +15,6 @@ page 50147 "TFB Pending Sales Lines"
     ShowFilter = true;
     Editable = false;
 
-    PromotedActionCategories = 'New,Process,Item,Navigation';
 
     layout
     {
@@ -254,10 +253,7 @@ page 50147 "TFB Pending Sales Lines"
                 RunPageLink = "Document Type" = field("Document Type"), "No." = field("Document No.");
                 Caption = 'Sales order';
                 Tooltip = 'Opens related sales order';
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
             }
             action("Customer card")
             {
@@ -268,10 +264,7 @@ page 50147 "TFB Pending Sales Lines"
                 RunPageLink = "No." = field("Sell-to Customer No.");
                 Caption = 'Customer card';
                 Tooltip = 'Opens related customer card';
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
             }
 
 
@@ -299,15 +292,37 @@ page 50147 "TFB Pending Sales Lines"
                 Caption = 'Order &Promising';
                 Image = OrderPromising;
                 ToolTip = 'Calculate the shipment and delivery dates based on the item''s known and expected availability dates, and then promise the dates to the customer.';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
 
                 trigger OnAction()
                 begin
                     OrderPromisingLine();
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            Group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(OrderPromisingRef; OrderPromising)
+                {
+
+                }
+
+            }
+            group(Category_SalesLine)
+            {
+                Caption = 'Sales Line';
+                actionref(SalesOrderRef; "Sales order")
+                {
+
+                }
+                actionref(CustomerCardRef; "Customer card")
+                {
+
+                }
+
             }
         }
     }

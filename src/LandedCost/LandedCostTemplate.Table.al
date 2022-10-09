@@ -23,7 +23,7 @@ table 50160 "TFB Landed Cost Template"
         field(3; "Total Costs"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("TFB Landed Cost Lines"."Estimated Cost" where("Template Code" = FIELD(Code)));
+            CalcFormula = Sum("TFB Landed Cost Lines"."Estimated Cost" where("Template Code" = FIELD(Code)));
         }
         field(4; "Estimated Weight"; Decimal)
         {

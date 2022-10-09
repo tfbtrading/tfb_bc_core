@@ -1,7 +1,7 @@
 table 50170 "TFB Landed Cost Lines"
 {
     DataClassification = CustomerContent;
-    ObsoleteState = Pending;
+    ObsoleteState = Removed;
     ObsoleteReason = 'Duplicate of Item Costing';
 
     fields

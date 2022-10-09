@@ -153,9 +153,7 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 RunObject = Page "Posted Purchase Receipt";
                 RunPageLink = "No." = field("Receipt No.");
                 RunPageMode = View;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 ApplicationArea = All;
                 Image = Receipt;
                 ToolTip = 'Opens posted purchase receipt for invoice';
@@ -163,8 +161,17 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
 
 
         }
-        area(Processing)
+
+        area(Promoted)
         {
+            group(Category_InvoiceLine)
+            {
+                Caption = 'Invoice Line';
+                actionref(ReceiptRef; Receipt)
+                {
+
+                }
+            }
         }
     }
 
