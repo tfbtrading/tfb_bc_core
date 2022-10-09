@@ -1,6 +1,6 @@
-table 50123 "TFB Custom Picture"
+table 50123 "TFB Picture Entity"
 {
-    Caption = 'Custom Picture';
+    Caption = 'Custom Picture Entity';
     TableType = Temporary;
 
     fields
@@ -64,17 +64,7 @@ table 50123 "TFB Custom Picture"
         MediaExtensionWithNumFullNameTxt: Label '%1 %2 %3.%4', Locked = true;
 
 
-    procedure LoadData(IdFilter: Text)
-    var
-        IntegrationRecord: Record "Integration Record";
-        MediaID: Guid;
-    begin
-        FindIntegrationRecordFromFilter(IntegrationRecord, IdFilter);
-        Id := IntegrationRecord."Integration ID";
 
-        MediaID := GetMediaID(IntegrationRecord);
-        SetValuesFromMediaID(MediaID);
-    end;
 
     procedure LoadDataWithParentType(IdFilter: Text; ParentType: Enum "Picture Entity Parent Type")
     var
@@ -87,40 +77,6 @@ table 50123 "TFB Custom Picture"
     end;
 
 
-    procedure SavePicture()
-    var
-        IntegrationRecord: Record "Integration Record";
-        LotNoInfo: Record "Lot No. Information";
-        GenericItem: Record "TFB Generic Item";
-        ImageInStream: InStream;
-        IsHandled: Boolean;
-    begin
-        FindIntegrationRecordFromFilter(IntegrationRecord, StrSubstNo('=%1', Id));
-        Content.CreateInStream(ImageInStream);
-
-        case IntegrationRecord."Table ID" of
-            DATABASE::"Lot No. Information":
-                begin
-                    LotNoInfo.Get(IntegrationRecord."Record ID");
-                    Clear(LotNoInfo."TFB Sample Picture");
-                    LotNoInfo."TFB Sample Picture".ImportStream(ImageInStream, GetDefaultMediaDescription(LotNoInfo));
-                    LotNoInfo.Modify(true);
-                end;
-            DATABASE::"TFB Generic Item":
-                begin
-                    GenericItem.Get(IntegrationRecord."Record ID");
-                    Clear(GenericItem.Picture);
-                    GenericItem.Picture.ImportStream(ImageInStream, GetDefaultMediaDescription(LotNoInfo));
-                    GenericItem.Modify(true);
-                end;
-            else
-                if not IsHandled then
-                    ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
-
-        end;
-
-        LoadData(StrSubstNo('=%1', Id));
-    end;
 
     procedure SavePictureWithParentType()
     var
@@ -152,41 +108,7 @@ table 50123 "TFB Custom Picture"
         LoadDataWithParentType(Format(Id), "Parent Type");
     end;
 
-    procedure DeletePicture()
-    var
-        IntegrationRecord: Record "Integration Record";
 
-        LotNoInfo: Record "Lot No. Information";
-        GenericItem: Record "TFB Generic Item";
-        IsHandled: Boolean;
-    begin
-        FindIntegrationRecordFromFilter(IntegrationRecord, StrSubstNo('=%1', Id));
-
-        case IntegrationRecord."Table ID" of
-            DATABASE::"Lot No. Information":
-                begin
-                    LotNoInfo.Get(IntegrationRecord."Record ID");
-                    Clear(LotNoInfo."TFB Sample Picture");
-                    LotNoInfo."TFB Sample Picture Exists" := false;
-                    LotNoInfo.Modify(true);
-                end;
-            DATABASE::"TFB Generic Item":
-                begin
-                    GenericItem.Get(IntegrationRecord."Record ID");
-                    Clear(GenericItem.Picture);
-                    GenericItem.Modify(true);
-                end;
-            else begin
-                IsHandled := false;
-
-                if not IsHandled then
-                    ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
-            end;
-        end;
-
-        Clear(Rec);
-        Id := IntegrationRecord."Integration ID";
-    end;
 
     procedure DeletePictureWithParentType()
     var
@@ -242,37 +164,6 @@ table 50123 "TFB Custom Picture"
         exit(MediaID);
     end;
 
-    local procedure GetMediaID(var IntegrationRecord: Record "Integration Record"): Guid
-    var
-
-        LotNoInfo: Record "Lot No. Information";
-        GenericItem: Record "TFB Generic Item";
-        MediaID: Guid;
-        IsHandled: Boolean;
-    begin
-        case IntegrationRecord."Table ID" of
-            DATABASE::"Lot No. Information":
-                begin
-                    LotNoInfo.Get(IntegrationRecord."Record ID");
-                    if LotNoInfo."TFB Sample Picture".Count > 0 then
-                        MediaID := LotNoInfo."TFB Sample Picture".Item(1);
-                end;
-            DATABASE::"TFB Generic Item":
-                begin
-                    GenericItem.Get(IntegrationRecord."Record ID");
-                    if GenericItem.Picture.Count > 0 then
-                        MediaID := GenericItem.Picture.Item(1);
-                end;
-            else begin
-                IsHandled := false;
-
-                if not IsHandled then
-                    ThrowEntityNotSupportedError(IntegrationRecord."Table ID");
-            end;
-        end;
-
-        exit(MediaID);
-    end;
 
     local procedure GetRecordRefFromFilter(IDFilter: Text; var ParentRecordRef: RecordRef): Boolean
     var
@@ -317,26 +208,7 @@ table 50123 "TFB Custom Picture"
         Content := TenantMedia.Content;
     end;
 
-    local procedure FindIntegrationRecordFromFilter(var IntegrationRecord: Record "Integration Record"; IDFilter: Text)
-    var
-        IntegrationManagement: Codeunit "Integration Management";
-        ParentRecordRef: RecordRef;
-    begin
-        if IDFilter = '' then
-            Error(IdNotProvidedErr);
-
-        if IntegrationManagement.GetIntegrationIsEnabledOnTheSystem() then begin
-            IntegrationRecord.SetFilter("Integration ID", IDFilter);
-            if not IntegrationRecord.FindFirst() then
-                Error(RequestedRecordDoesNotExistErr);
-        end else begin
-            if not GetRecordRefFromFilter(IDFilter, ParentRecordRef) then
-                Error(RequestedRecordDoesNotExistErr);
-            IntegrationRecord."Table ID" := ParentRecordRef.Number;
-            IntegrationRecord."Record ID" := ParentRecordRef.RecordId;
-            IntegrationRecord."Integration ID" := ParentRecordRef.Field(ParentRecordRef.SystemIdNo).Value;
-        end;
-    end;
+   
 
     local procedure ThrowEntityNotSupportedError(TableID: Integer)
     var

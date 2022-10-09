@@ -140,13 +140,10 @@ page 50102 "TFB Item Costing Factbox"
 
     var
         ItemCosting: Record "TFB Item Costing";
-
-        PurchPrice: Record "Purchase Price";
+        TempPriceListLine: Record "Price List Line" temporary;
         CCU: CodeUnit "TFB Costing Mgmt";
         PricingLogic: CodeUnit "TFB Pricing Calculations";
-        VPC: CodeUnit "Purch. Price Calc. Mgt.";
-
-
+        PriceManagement: CodeUnit "Price Calculation - V16";
 
     begin
 
@@ -177,12 +174,14 @@ page 50102 "TFB Item Costing Factbox"
             _IsDropShipCosting := ItemCosting.Dropship;
 
         end;
+        TempPriceListLine."Source Type" := TempPriceListLine."Source Type"::Vendor;
+        TempPriceListLine."Price Type" := TempPriceListLine."Price Type"::Purchase;
+        TempPriceListLine."Source No." := Rec."Vendor No.";
+        TempPriceListLine."Unit of Measure Code" := Rec."Base Unit of Measure";
+        TempPriceListLine."Starting Date" := today;
 
-
-        VPC.FindPurchPrice(PurchPrice, Rec."Vendor No.", Rec."No.", '', Rec."Base Unit of Measure", '', today(), false);
-
-        If not PurchPrice.IsEmpty() then
-            _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", PurchPrice."Direct Unit Cost")
+        If PriceManagement.FindPrice(TempPriceListLine, false) then
+            _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", TempPriceListLine."Direct Unit Cost")
         else
             _CurrPurchPrice := 0;
     end;

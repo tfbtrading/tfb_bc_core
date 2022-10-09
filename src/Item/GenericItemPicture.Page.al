@@ -111,12 +111,17 @@ page 50134 "TFB Generic Item Picture"
     //MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
 
     procedure TakeNewPicture()
+    var
+        TempBlob: CodeUnit "Temp Blob";
+        InStream: InStream;
+        PictureName: Text;
     begin
         Rec.Find();
         Rec.TestField(Description);
+        TempBlob.CreateInStream();
 
-
-        Camera.AddPicture(Rec, Rec.FieldNo(Picture));
+        Camera.GetPicture(InStream, PictureName);
+        Rec.Picture.ImportStream(InStream, PictureName);
     end;
 
 

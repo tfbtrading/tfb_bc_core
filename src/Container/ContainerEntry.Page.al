@@ -37,13 +37,14 @@ page 50210 "TFB Container Entry"
                         trigger OnAssistEdit()
 
                         var
-                            PurchaseSetup: record "Purchases & Payables Setup";
 
+                            CoreSetup: record "TFB Core Setup";
                         begin
 
-                            PurchaseSetup.TestField("TFB Container Entry Nos.");
 
-                            If NoSeriesMgt.SelectSeries(PurchaseSetup."TFB Container Entry Nos.", xRec."No. Series", Rec."No. Series") then
+                            CoreSetup.TestField("Container Entry Nos.");
+
+                            If NoSeriesMgt.SelectSeries(CoreSetup."Container Entry Nos.", xRec."No. Series", Rec."No. Series") then
                                 NoSeriesMgt.SetSeries(Rec."No.");
 
                         end;

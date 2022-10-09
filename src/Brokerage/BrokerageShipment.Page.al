@@ -577,8 +577,8 @@ page 50229 "TFB Brokerage Shipment"
 
                 TempBlob.CreateInStream(InStream);
                 EmailMessage.AddAttachment(StrSubstNo('Brokerage Shipment %1.pdf', Rec."No."), 'application/pdf', InStream);
-                Email.AddRelation(EmailMessage, Database::"TFB Brokerage Shipment", Rec.SystemId, Enum::"Email Relation Type"::"Primary Source");
-                Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity");
+                Email.AddRelation(EmailMessage, Database::"TFB Brokerage Shipment", Rec.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
+                Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
                 If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
                     CommEntry.Init();

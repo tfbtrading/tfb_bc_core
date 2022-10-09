@@ -17,8 +17,9 @@ table 50181 "TFB Container Entry"
 
             BEGIN
                 IF "No." <> xRec."No." THEN BEGIN
-                    PurchaseSetup.GET();
-                    NoSeriesMgt.TestManual(PurchaseSetup."TFB Container Entry Nos.");
+
+                    CoreSetup.Get();
+                    NoSeriesMgt.TestManual(CoreSetup."Container Entry Nos.");
                     "No. Series" := '';
 
                 END;
@@ -497,6 +498,7 @@ table 50181 "TFB Container Entry"
         {
 
         }
+
     }
 
     fieldgroups
@@ -515,8 +517,8 @@ table 50181 "TFB Container Entry"
     var
 
 
-        PurchaseSetup: Record "Purchases & Payables Setup";
 
+        CoreSetup: Record "TFB Core Setup";
 
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
@@ -524,10 +526,11 @@ table 50181 "TFB Container Entry"
     begin
 
         If "No." = '' then begin
+            CoreSetup.Get();
 
-            PurchaseSetup.Get();
-            PurchaseSetup.TestField("TFB Container Entry Nos.");
-            NoSeriesMgt.InitSeries(PurchaseSetup."TFB Container Entry Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            CoreSetup.TestField("Container Entry Nos.");
+
+            NoSeriesMgt.InitSeries(CoreSetup."Container Entry Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
     end;
 
@@ -831,12 +834,6 @@ table 50181 "TFB Container Entry"
 
     end;
 
-    local procedure UpdateItemTrackingWithInspectionDate(InspectionDate: Date)
-
-    var
-
-    begin
-        Error('Procedure UpdateItemTrackingWithInspectionDate not implemented.');
-    end;
+    
 
 }

@@ -96,15 +96,6 @@ page 50154 "TFB APIV2 - Contact DIL"
                         RegisterFieldSet(Rec.FieldNo("Company Name"));
                     end;
                 }
-                field(businessRelation; Rec."Business Relation")
-                {
-                    Caption = 'Business Relation';
-
-                    trigger OnValidate()
-                    begin
-                        RegisterFieldSet(Rec.FieldNo("Business Relation"));
-                    end;
-                }
 
                 field(mobilePhoneNumber; Rec."Mobile Phone No.")
                 {
@@ -193,9 +184,9 @@ page 50154 "TFB APIV2 - Contact DIL"
 
     var
         TempFieldSet: Record 2000000041 temporary;
-      
+
         TaxRegistrationNumber: Text[50];
-              BlankContactNameErr: Label 'The blank "displayName" is not allowed.', Comment = 'displayName is a field name and should not be translated.';
+        BlankContactNameErr: Label 'The blank "displayName" is not allowed.', Comment = 'displayName is a field name and should not be translated.';
         BECountryCodeLbl: Label 'BE', Locked = true;
 
     local procedure SetCalculatedFields()

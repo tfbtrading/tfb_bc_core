@@ -2,31 +2,7 @@ codeunit 50304 "TFB Costing Mgmt"
 {
 
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Price", 'OnBeforeNewSalesPriceInsert', '', false, false)]
-    local procedure HandleNewSalesPriceInsert(SalesPrice: Record "Sales Price"; var NewSalesPrice: Record "Sales Price")
 
-    var
-        Item: Record Item;
-
-        PriceUnit: Enum "TFB Price Unit";
-        UoMCode: Code[10];
-
-
-
-    begin
-
-        Item.Get(NewSalesPrice."Item No.");
-        PriceUnit := PriceUnit::KG;
-
-        If NewSalesPrice."Unit of Measure Code" = '' then
-            UoMCode := Item."Base Unit of Measure"
-        else
-            UoMCode := NewSalesPrice."Unit of Measure Code";
-
-
-        NewSalesPrice."TFB PriceByWeight" := PricingCU.CalculatePriceUnitByUnitPrice(NewSalesPrice."Item No.", UoMCode, PriceUnit, NewSalesPrice."Unit Price");
-
-    end;
 
     /// <summary>
     /// Update costing details run through all item costs and ensure costing lines reflect the latest profile details
@@ -156,317 +132,9 @@ codeunit 50304 "TFB Costing Mgmt"
 
 
 
-    procedure CopyCurrentCostingToSalesWorkSheet(ItemNo: Code[20]): Boolean
-
-    var
-        ItemCostingLines: Record "TFB Item Costing Lines";
-        PostCodeZone: Record "TFB Postcode Zone";
-        SalesPrices: Record "Sales Price";
-        SalesPriceWksh: Record "Sales Price Worksheet";
-        CostingSetup: Record "TFB Costings Setup";
-        ExistingPrice: Boolean;
-        Dirty: Boolean;
-
-    begin
-        Clear(Dirty);
-        ItemCostingLines.Reset();
-        ItemCostingLines.SetRange(Current, true);
-        ItemCostingLines.SetRange("Item No.", ItemNo);
-        ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::DZP);
-        ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
-        if ItemCostingLines.FindSet() then
-            repeat
-
-                //Check if existing sales price worksheet item exists
-                SalesPriceWksh.Reset();
-                SalesPriceWksh.SetRange("Starting Date", System.WorkDate());
-                SalesPriceWksh.SetRange("Item No.", ItemCostingLines."Item No.");
-                SalesPriceWksh.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-
-
-                IF PostCodeZone.get(ItemCostingLines."Line Key") then
-
-                    //Get the correct customer group mapping for the postcode zone
-                    SalesPriceWksh.SetRange("Sales Code", PostCodeZone."Customer Price Group");
-
-                If SalesPriceWksh.FindFirst() then begin
-
-                    //Update existing price on sales price worksheet
-                    SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                    SalesPriceWksh."Price Includes VAT" := false;
-                    SalesPriceWksh.Modify();
-                    Dirty := true
-                end
-                else begin
-
-                    //Check first if price is different to existing sales price
-                    Clear(SalesPrices);
-                    SalesPrices.SetRange("Item No.", ItemCostingLines."Item No.");
-                    SalesPrices.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-                    SalesPrices.SetRange("Sales Code", PostCodeZone."Customer Price Group");
-                    SalesPrices.SetFilter("Unit of Measure Code", '');
-                    SalesPrices.SetFilter("Ending Date", '');
-
-                    If SalesPrices.FindLast() then begin
-
-                        //Check if price is different
-                        If ItemCostingLines."Price (Base)" <> SalesPrices."Unit Price" then begin
-
-                            //Add new item into sales price worksheet
-                            SalesPriceWksh.Init();
-                            SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                            SalesPriceWksh."Starting Date" := WorkDate();
-                            SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                            SalesPriceWksh."Sales Code" := PostCodeZone."Customer Price Group";
-                            SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                            SalesPriceWksh."Price Includes VAT" := false;
-                            SalesPriceWksh.CalcCurrentPrice(ExistingPrice);
-                            SalesPriceWksh.Insert();
-                            Dirty := true;
-                        end;
-                    end
-                    else begin
-
-                        //No Sales Price Found So Insert
-                        SalesPriceWksh.Init();
-                        SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                        SalesPriceWksh."Starting Date" := System.WorkDate();
-                        SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                        SalesPriceWksh."Sales Code" := PostCodeZone."Customer Price Group";
-                        SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                        SalesPriceWksh."Price Includes VAT" := false;
-                        SalesPriceWksh.Insert();
-                        Dirty := true;
-
-                    end;
-                end;
-
-            until ItemCostingLines.Next() < 1;
-
-        //Process any ex-warehouse line items
-
-        If CostingSetup.FindFirst() then
-            If CostingSetup.ExWarehouseEnabled then
-                if CostingSetup.ExWarehousePricingGroup <> '' then begin
-
-
-                    ItemCostingLines.Reset();
-                    ItemCostingLines.SetRange(Current, true);
-                    ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
-                    ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
-                    ItemCostingLines.SetRange("Line Key", '-');
-                    if ItemCostingLines.FindSet() then
-                        repeat
-
-                            SalesPriceWksh.Reset();
-                            SalesPriceWksh.SetRange("Starting Date", System.WorkDate());
-                            SalesPriceWksh.SetRange("Item No.", ItemCostingLines."Item No.");
-                            SalesPriceWksh.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-
-                            //Get the correct customer group mapping for the ex warehouse pricing type
-                            SalesPriceWksh.SetRange("Sales Code", CostingSetup.ExWarehousePricingGroup);
-
-                            If SalesPriceWksh.FindFirst() then begin
-
-                                SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                SalesPriceWksh."Price Includes VAT" := false;
-                                SalesPriceWksh.Modify();
-                                Dirty := true
-
-                            end
-                            else begin
-
-                                Clear(SalesPrices);
-                                SalesPrices.SetRange("Item No.", ItemCostingLines."Item No.");
-                                SalesPrices.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-                                SalesPrices.SetRange("Sales Code", CostingSetup.ExWarehousePricingGroup);
-                                SalesPrices.SetFilter("Unit of Measure Code", '');
-                                SalesPrices.SetFilter("Ending Date", '');
-
-                                If SalesPrices.FindLast() then begin
-
-                                    //Check if price is different
-                                    If ItemCostingLines."Price (Base)" <> SalesPrices."Unit Price" then begin
-
-                                        SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                                        SalesPriceWksh."Starting Date" := System.WorkDate();
-                                        SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                                        SalesPriceWksh."Sales Code" := CostingSetup.ExWarehousePricingGroup;
-                                        SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                        SalesPriceWksh."Price Includes VAT" := false;
-                                        SalesPriceWksh.Insert();
-                                        Dirty := true;
-
-                                    end;
-                                end
-                                else begin
-                                    SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                                    SalesPriceWksh."Starting Date" := System.WorkDate();
-                                    SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                                    SalesPriceWksh."Sales Code" := CostingSetup.ExWarehousePricingGroup;
-                                    SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                    SalesPriceWksh."Price Includes VAT" := false;
-                                    SalesPriceWksh.Insert();
-                                    Dirty := true;
-                                end;
-                            end;
-                        until ItemCostingLines.Next() < 1;
-                end;
-
-
-        Exit(Dirty);
-    end;
-
-    procedure CopyCurrentCostingToSalesWorkSheet()
-    var
-        ItemCostingLines: Record "TFB Item Costing Lines";
-        PostCodeZone: Record "TFB Postcode Zone";
-        SalesPrices: Record "Sales Price";
-        SalesPriceWksh: Record "Sales Price Worksheet";
-        CostingSetup: Record "TFB Costings Setup";
-        ExistingPrice: Boolean;
 
 
 
-    begin
-        ItemCostingLines.Reset();
-        ItemCostingLines.SetRange(Current, true);
-        ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::DZP);
-        ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
-        if ItemCostingLines.FindSet() then
-            repeat
-
-                //Check if existing sales price worksheet item exists
-                SalesPriceWksh.Reset();
-                SalesPriceWksh.SetRange("Starting Date", System.WorkDate());
-                SalesPriceWksh.SetRange("Item No.", ItemCostingLines."Item No.");
-                SalesPriceWksh.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-
-
-                IF PostCodeZone.get(ItemCostingLines."Line Key") then
-
-                    //Get the correct customer group mapping for the postcode zone
-                    SalesPriceWksh.SetRange("Sales Code", PostCodeZone."Customer Price Group");
-
-                If SalesPriceWksh.FindFirst() then begin
-
-                    //Update existing price on sales price worksheet
-                    SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                    SalesPriceWksh."Price Includes VAT" := false;
-                    SalesPriceWksh.Modify()
-                end
-                else begin
-
-                    //Check first if price is different to existing sales price
-                    Clear(SalesPrices);
-                    SalesPrices.SetRange("Item No.", ItemCostingLines."Item No.");
-                    SalesPrices.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-                    SalesPrices.SetRange("Sales Code", PostCodeZone."Customer Price Group");
-                    SalesPrices.SetFilter("Unit of Measure Code", '');
-                    SalesPrices.SetFilter("Ending Date", '');
-
-                    If SalesPrices.FindLast() then begin
-
-                        //Check if price is different
-                        If ItemCostingLines."Price (Base)" <> SalesPrices."Unit Price" then begin
-
-                            //Add new item into sales price worksheet
-                            SalesPriceWksh.Init();
-                            SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                            SalesPriceWksh."Starting Date" := WorkDate();
-                            SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                            SalesPriceWksh."Sales Code" := PostCodeZone."Customer Price Group";
-                            SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                            SalesPriceWksh."Price Includes VAT" := false;
-                            SalesPriceWksh.CalcCurrentPrice(ExistingPrice);
-                            SalesPriceWksh.Insert();
-                        end;
-                    end
-                    else begin
-
-                        //No Sales Price Found So Insert
-                        SalesPriceWksh.Init();
-                        SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                        SalesPriceWksh."Starting Date" := System.WorkDate();
-                        SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                        SalesPriceWksh."Sales Code" := PostCodeZone."Customer Price Group";
-                        SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                        SalesPriceWksh."Price Includes VAT" := false;
-                        SalesPriceWksh.Insert();
-
-                    end;
-                end;
-
-            until ItemCostingLines.Next() < 1;
-
-        //Process any ex-warehouse line items
-
-        If CostingSetup.FindFirst() then
-            If CostingSetup.ExWarehouseEnabled then
-                if CostingSetup.ExWarehousePricingGroup <> '' then begin
-
-
-                    ItemCostingLines.Reset();
-                    ItemCostingLines.SetRange(Current, true);
-                    ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
-                    ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
-                    ItemCostingLines.SetRange("Line Key", '-');
-                    if ItemCostingLines.FindSet() then
-                        repeat
-
-                            SalesPriceWksh.Reset();
-                            SalesPriceWksh.SetRange("Starting Date", System.WorkDate());
-                            SalesPriceWksh.SetRange("Item No.", ItemCostingLines."Item No.");
-                            SalesPriceWksh.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-
-                            //Get the correct customer group mapping for the ex warehouse pricing type
-                            SalesPriceWksh.SetRange("Sales Code", CostingSetup.ExWarehousePricingGroup);
-
-                            If SalesPriceWksh.FindFirst() then begin
-
-                                SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                SalesPriceWksh."Price Includes VAT" := false;
-                                SalesPriceWksh.Modify()
-
-
-                            end
-                            else begin
-
-                                Clear(SalesPrices);
-                                SalesPrices.SetRange("Item No.", ItemCostingLines."Item No.");
-                                SalesPrices.SetRange("Sales Type", SalesPriceWksh."Sales Type"::"Customer Price Group");
-                                SalesPrices.SetRange("Sales Code", CostingSetup.ExWarehousePricingGroup);
-                                SalesPrices.SetFilter("Unit of Measure Code", '');
-                                SalesPrices.SetFilter("Ending Date", '');
-
-                                If SalesPrices.FindLast() then begin
-
-                                    //Check if price is different
-                                    If ItemCostingLines."Price (Base)" <> SalesPrices."Unit Price" then begin
-
-                                        SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                                        SalesPriceWksh."Starting Date" := System.WorkDate();
-                                        SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                                        SalesPriceWksh."Sales Code" := CostingSetup.ExWarehousePricingGroup;
-                                        SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                        SalesPriceWksh."Price Includes VAT" := false;
-                                        SalesPriceWksh.Insert();
-
-                                    end;
-                                end
-                                else begin
-                                    SalesPriceWksh."Item No." := ItemCostingLines."Item No.";
-                                    SalesPriceWksh."Starting Date" := System.WorkDate();
-                                    SalesPriceWksh."Sales Type" := SalesPriceWksh."Sales Type"::"Customer Price Group";
-                                    SalesPriceWksh."Sales Code" := CostingSetup.ExWarehousePricingGroup;
-                                    SalesPriceWksh.Validate("New Unit Price", ItemCostingLines."Price (Base)");
-                                    SalesPriceWksh."Price Includes VAT" := false;
-                                    SalesPriceWksh.Insert();
-                                end;
-                            end;
-                        until ItemCostingLines.Next() < 1;
-                end;
-    end;
 
     local procedure CheckValidRecords(Header: record "TFB Item Costing"; var Item: Record Item; var Vendor: Record Vendor; var LCProfile: Record "TFB Landed Cost Profile"): Boolean
 
@@ -486,7 +154,7 @@ codeunit 50304 "TFB Costing Mgmt"
         LCProfile: Record "TFB Landed Cost Profile";
         Scenario: Record "TFB Costing Scenario";
         PostCodeZoneRate: Record "TFB Postcode Zone Rate";
-        CostingsSetup: Record "TFB Costings Setup";
+        CoreSetup: Record "TFB Core Setup";
 
 
         //CodeUnits
@@ -531,8 +199,8 @@ codeunit 50304 "TFB Costing Mgmt"
     begin
 
         //Get default details and exit with false if details missing
-        CostingsSetup.Get();
 
+        CoreSetup.Get();
         If not CheckValidRecords(Header, Item, Vendor, LCProfile) then exit(false);
 
 
@@ -580,7 +248,7 @@ codeunit 50304 "TFB Costing Mgmt"
         end;
 
         If LCProfile."Import Duties Charged" then
-            DutyMultiplier := 1 + CostingsSetup."Import Duty Rate"
+            DutyMultiplier := 1 + CoreSetup."Import Duty Rate"
         else
             DutyMultiplier := 1;
 
@@ -802,7 +470,7 @@ codeunit 50304 "TFB Costing Mgmt"
         PostCodeZone: Record "TFB Postcode Zone";
         FromPriceListLine: Record "Price List Line";
         ToPriceListLine: Record "Price List Line";
-        CostingSetup: Record "TFB Costings Setup";
+        CoreSetup: Record "TFB Core Setup";
         PriceAsset: Record "Price Asset";
         DateFormula: DateFormula;
         DayBefore: Date;
@@ -916,106 +584,106 @@ codeunit 50304 "TFB Costing Mgmt"
             until ItemCostingLines.Next() < 1;
         Progress.Close();
         //Process any ex-warehouse line items
+        CoreSetup.Get();
 
-        If CostingSetup.FindFirst() then
-            If CostingSetup.ExWarehouseEnabled then
-                if CostingSetup.ExWarehousePricingGroup <> '' then begin
+        If CoreSetup.ExWarehouseEnabled then
+            if CoreSetup.ExWarehousePricingGroup <> '' then begin
 
 
-                    ItemCostingLines.Reset();
-                    ItemCostingLines.SetRange(Current, true);
-                    ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
-                    ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
-                    ItemCostingLines.SetRange("Line Key", '-');
-                    Progress.Open(ProgressEXWMsg, desc);
+                ItemCostingLines.Reset();
+                ItemCostingLines.SetRange(Current, true);
+                ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
+                ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
+                ItemCostingLines.SetRange("Line Key", '-');
+                Progress.Open(ProgressEXWMsg, desc);
 
-                    if ItemCostingLines.FindSet() then
-                        repeat
-                            Item.Get(ItemCostingLines."Item No.");
-                            Counter += 1;
-                            Progress.Update(1, Item.Description);
-                            Progress.Update(2, Round(Counter / ApproxCount * 10000, 1));
-                            If not (Item."TFB Publishing Block" and Item.Blocked) then begin
+                if ItemCostingLines.FindSet() then
+                    repeat
+                        Item.Get(ItemCostingLines."Item No.");
+                        Counter += 1;
+                        Progress.Update(1, Item.Description);
+                        Progress.Update(2, Round(Counter / ApproxCount * 10000, 1));
+                        If not (Item."TFB Publishing Block" and Item.Blocked) then begin
+                            FromPriceListLine.Reset();
+
+                            FromPriceListLine.SetRange("Price List Code", PriceListHeader.Code);
+                            FromPriceListLine.SetRange("Starting Date", System.WorkDate());
+                            FromPriceListLine.SetRange("Asset No.", ItemCostingLines."Item No.");
+                            FromPriceListLine.SetRange("Asset Type", FromPriceListLine."Asset Type"::Item);
+                            FromPriceListLine.SetRange("Source Type", FromPriceListLine."Source Type"::"Customer Price Group");
+                            FromPriceListLine.SetRange("Source No.", CoreSetup.ExWarehousePricingGroup);
+
+                            If FromPriceListLine.FindFirst() then begin
+                                If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
+                                    ToPriceListLine := FromPriceListLine;
+                                    //Update existing price on sales price worksheet as it was found
+                                    ToPriceListLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
+                                    ToPriceListLine."Price Includes VAT" := false;
+
+                                    If WorkSheet then
+                                        CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
+                                    else
+                                        ToPriceListLine.Modify();
+                                end;
+
+                            end
+                            else begin
                                 FromPriceListLine.Reset();
-
                                 FromPriceListLine.SetRange("Price List Code", PriceListHeader.Code);
-                                FromPriceListLine.SetRange("Starting Date", System.WorkDate());
                                 FromPriceListLine.SetRange("Asset No.", ItemCostingLines."Item No.");
                                 FromPriceListLine.SetRange("Asset Type", FromPriceListLine."Asset Type"::Item);
                                 FromPriceListLine.SetRange("Source Type", FromPriceListLine."Source Type"::"Customer Price Group");
-                                FromPriceListLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
+                                FromPriceListLine.SetRange("Source No.", CoreSetup.ExWarehousePricingGroup);
+                                FromPriceListLine.SetFilter("Unit of Measure Code", '');
+                                FromPriceListLine.SetFilter("Ending Date", '');
 
-                                If FromPriceListLine.FindFirst() then begin
+
+                                If FromPriceListLine.FindLast() then begin
+
+                                    //Check if price is different
                                     If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
-                                        ToPriceListLine := FromPriceListLine;
-                                        //Update existing price on sales price worksheet as it was found
-                                        ToPriceListLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
-                                        ToPriceListLine."Price Includes VAT" := false;
 
-                                        If WorkSheet then
-                                            CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
-                                        else
-                                            ToPriceListLine.Modify();
-                                    end;
-
-                                end
-                                else begin
-                                    FromPriceListLine.Reset();
-                                    FromPriceListLine.SetRange("Price List Code", PriceListHeader.Code);
-                                    FromPriceListLine.SetRange("Asset No.", ItemCostingLines."Item No.");
-                                    FromPriceListLine.SetRange("Asset Type", FromPriceListLine."Asset Type"::Item);
-                                    FromPriceListLine.SetRange("Source Type", FromPriceListLine."Source Type"::"Customer Price Group");
-                                    FromPriceListLine.SetRange("Source No.", CostingSetup.ExWarehousePricingGroup);
-                                    FromPriceListLine.SetFilter("Unit of Measure Code", '');
-                                    FromPriceListLine.SetFilter("Ending Date", '');
-
-
-                                    If FromPriceListLine.FindLast() then begin
-
-                                        //Check if price is different
-                                        If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
-
-                                            //Add new item into sales price worksheet
-                                            PriceAsset."Price Type" := PriceListHeader."Price Type";
-                                            PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
-                                            PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
-                                            PriceAsset.Validate("Unit of Measure Code", '');
-
-
-                                            If PriceAsset."Asset No." <> '' then
-                                                If AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup, false) then begin
-
-                                                    ToPriceListLine := FromPriceListLine;
-                                                    ToPriceListLine.validate("Ending Date", DayBefore);
-                                                    If WorkSheet then
-                                                        CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
-                                                    else
-                                                        ToPriceListLine.Modify(true);
-                                                end;
-
-                                        end;
-                                    end
-                                    else begin
-
-                                        //No Sales Price Found So Insert
-
+                                        //Add new item into sales price worksheet
                                         PriceAsset."Price Type" := PriceListHeader."Price Type";
                                         PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
                                         PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
                                         PriceAsset.Validate("Unit of Measure Code", '');
 
+
                                         If PriceAsset."Asset No." <> '' then
-                                            AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CostingSetup.ExWarehousePricingGroup, true);
+                                            If AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, false) then begin
+
+                                                ToPriceListLine := FromPriceListLine;
+                                                ToPriceListLine.validate("Ending Date", DayBefore);
+                                                If WorkSheet then
+                                                    CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
+                                                else
+                                                    ToPriceListLine.Modify(true);
+                                            end;
+
                                     end;
+                                end
+                                else begin
+
+                                    //No Sales Price Found So Insert
+
+                                    PriceAsset."Price Type" := PriceListHeader."Price Type";
+                                    PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
+                                    PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
+                                    PriceAsset.Validate("Unit of Measure Code", '');
+
+                                    If PriceAsset."Asset No." <> '' then
+                                        AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, true);
                                 end;
                             end;
-                        until ItemCostingLines.Next() < 1;
-                    Progress.Close();
-                end;
+                        end;
+                    until ItemCostingLines.Next() < 1;
+                Progress.Close();
 
 
+
+            end;
     end;
-
 
     local procedure AddLine(var
                                 PriceListHeader: Record "Price List Header";

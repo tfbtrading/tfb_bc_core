@@ -8,9 +8,12 @@ tableextension 50180 "TFB Purchases & Payables Setup" extends "Purchases & Payab
             TableRelation = "No. Series";
             ValidateTableRelation = true;
             Caption = 'Cont. Entry No.';
+            ObsoleteReason = 'Consolidated into single table';
+            ObsoleteState = Pending;
+            ObsoleteTag = '21';
 
         }
-  
+
     }
 
 

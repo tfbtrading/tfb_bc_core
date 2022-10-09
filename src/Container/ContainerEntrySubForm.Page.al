@@ -57,8 +57,7 @@ page 50216 "TFB Container Entry SubForm"
             {
                 ApplicationArea = All;
                 Image = Document;
-                Promoted = true;
-                PromotedIsBig = true;
+           
                 Tooltip = 'Download certificates of analysis for items in container';
                 Caption = 'Download certificates of analysis';
 

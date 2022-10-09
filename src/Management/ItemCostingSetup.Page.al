@@ -8,6 +8,9 @@ page 50332 "TFB Item Costing Setup"
     DeleteAllowed = false;
     UsageCategory = Tasks;
     ApplicationArea = All;
+    ObsoleteReason = 'Consolidated into single table';
+    ObsoleteState = Pending;
+    ObsoleteTag = '21';
 
 
     layout
