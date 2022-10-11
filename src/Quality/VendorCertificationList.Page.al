@@ -71,12 +71,12 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
-                    Enabled = Rec."Certification Class" = Rec."Certificate Class"::Religous;
+                    Enabled = Rec."Certificate Class" = Rec."Certificate Class"::Religous;
 
                     trigger OnValidate()
                     begin
                         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
@@ -85,19 +85,19 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
                     StyleExpr = (_DaysToExpiry < 30) and (not Rec.Archived);
 
@@ -105,7 +105,7 @@ page 50107 "TFB Vendor Certification List"
 
                     begin
 
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
@@ -310,14 +310,14 @@ page 50107 "TFB Vendor Certification List"
     begin
 
         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
 
     end;
 
 
- 
+
     local procedure ToggleArchiveStatus()
 
     var
@@ -342,7 +342,7 @@ page 50107 "TFB Vendor Certification List"
         else
             Message('Only valid for expired or expired, inherent or archived certificates');
 
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
     end;
 

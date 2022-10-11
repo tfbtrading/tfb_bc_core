@@ -75,7 +75,7 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
         addafter("Planned Receipt Date")
         {
 
-            field("TFB Sales External No."; Rec."TFB Sales External No.")
+            field("TFB Sales External No."; Rec."TFB SO Ext. No. Lookup")
             {
                 ApplicationArea = All;
                 Visible = Rec."Drop Shipment";

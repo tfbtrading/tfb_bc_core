@@ -12,8 +12,8 @@ table 50226 "TFB Brokerage Shipment"
 
             BEGIN
                 IF "No." <> xRec."No." THEN BEGIN
-                    SalesSetup.GET();
-                    NoSeriesMgt.TestManual(SalesSetup."TFB Brokerage Shipment Nos.");
+                    CoreSetup.GET();
+                    NoSeriesMgt.TestManual(CoreSetup."Brokerage Shipment Nos.");
                     "No. Series" := '';
                     NoSeriesMgt.SetSeries("No.");
 
@@ -292,7 +292,7 @@ table 50226 "TFB Brokerage Shipment"
 
     var
 
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
 
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
@@ -334,9 +334,9 @@ table 50226 "TFB Brokerage Shipment"
     begin
         If "No." = '' then begin
 
-            SalesSetup.Get();
-            SalesSetup.TestField("TFB Brokerage Shipment Nos.");
-            NoSeriesMgt.InitSeries(SalesSetup."TFB Brokerage Shipment Nos.", Rec."No. Series", 0D, "No.", "No. Series");
+            CoreSetup.Get();
+            CoreSetup.TestField("Brokerage Shipment Nos.");
+            NoSeriesMgt.InitSeries(CoreSetup."Brokerage Shipment Nos.", Rec."No. Series", 0D, "No.", "No. Series");
         end
         else
             If "Document Date" = 0D then

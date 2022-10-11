@@ -52,7 +52,7 @@ codeunit 50111 "TFB Contact Mgmt"
         Contact: Record Contact;
         StatusCurrent: Record "TFB Contact Status";
         StatusNew: Record "TFB Contact Status";
-        Setup: Record "Sales & Receivables Setup";
+        Setup: Record "TFB Core Setup";
         Customer: Record Customer;
         Vendor: Record Vendor;
         BusRel: Record "Contact Business Relation";
@@ -84,7 +84,7 @@ codeunit 50111 "TFB Contact Mgmt"
 
                     If not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0))) then
                         If (StatusCurrent.Probability < 1) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0)) then
-                            Contact."TFB Contact Status" := Setup."TFB Converted Status";
+                            Contact."TFB Contact Status" := Setup."Converted Status";
 
 
                 end;
@@ -101,7 +101,7 @@ codeunit 50111 "TFB Contact Mgmt"
 
                     If not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0))) then
                         If (StatusCurrent.Probability < 1) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0)) then
-                            Contact."TFB Contact Status" := Setup."TFB Converted Status";
+                            Contact."TFB Contact Status" := Setup."Converted Status";
 
 
                 end;

@@ -146,7 +146,6 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Vend. Ledg. Appl. FactBox" = X,
         page "TFB Bank Account Part List" = X,
         page "TFB Post Dropship from Sale" = X,
-        page "TFB Notification Email Setup" = X,
         page "TFB Report Sel - Brokerage" = X,
         page "PDF Viewer" = X,
         page "PDF Viewer Part" = X,
@@ -224,11 +223,5 @@ permissionset 50100 "TFB CORE EXTENSION"
         query "TFB Purchase Lines Outstanding" = X,
         query "TFB Sales Lines Outstanding" = X,
         query "TFB Transfer Lines Outstanding" = X;
-
-
-
-
-
-
 
 }

@@ -72,7 +72,7 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
                 var
                     Item: Record Item;
                     CustCal: Record "Customized Calendar Change";
-                    CU: CodeUnit "Available to Promise";
+                    AvailableToPromise: CodeUnit "Available to Promise";
                     CalCU: Codeunit "Calendar Management";
                     DF, DF2 : DateFormula;
                     FoundDate: Boolean;
@@ -85,7 +85,7 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
                     Evaluate(DF, '+3M');
                     Evaluate(DF2, '+1D');
                     If Item.Get(rec."No.") then begin
-                        AvailableDate := cu.EarliestAvailabilityDate(Item, rec.Quantity, rec."Planned Shipment Date", 0, 0D, AvailableQty, 1, DF);
+                        AvailableDate := AvailableToPromise.CalcEarliestAvailabilityDate(Item, rec.Quantity, rec."Planned Shipment Date", 0, 0D, AvailableQty, Enum::"Analysis Period Type"::Day, DF);
 
 
                         If AvailableDate > 0D then

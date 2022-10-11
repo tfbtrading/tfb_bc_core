@@ -34,7 +34,7 @@ table 50115 "TFB Sample Request"
             trigger OnValidate()
             begin
                 if "No." <> xRec."No." then begin
-                    SalesSetup.Get();
+                    CoreSetup.Get();
                     NoSeriesMgt.TestManual(GetNoSeriesCode());
                     "No. Series" := '';
                 end;
@@ -82,7 +82,7 @@ table 50115 "TFB Sample Request"
                 Cont.Get("Sell-to Contact No.");
 
 
-                if GetHideValidationDialog() or not GuiAllowed() or (xRec."Sell-to Contact No." = '') then
+                if not GuiAllowed() or (xRec."Sell-to Contact No." = '') then
                     Confirmed := true
                 else
                     Confirmed := Confirm(ConfirmChangeQst, false, FieldCaption("Sell-to Contact No."));
@@ -135,7 +135,7 @@ table 50115 "TFB Sample Request"
             trigger OnLookup()
             begin
                 TFBSampleRequest := Rec;
-                GetSalesSetup();
+                GetCoreSetup();
                 TFBSampleRequest.TestNoSeries();
                 if NoSeriesMgt.LookupSeries(GetPostingNoSeriesCode(), TFBSampleRequest."Posting No. Series") then
                     TFBSampleRequest.Validate("Posting No. Series");
@@ -145,7 +145,7 @@ table 50115 "TFB Sample Request"
             trigger OnValidate()
             begin
                 if "Posting No. Series" <> '' then begin
-                    GetSalesSetup();
+                    GetCoreSetup();
                     TestNoSeries();
                     NoSeriesMgt.TestSeries(GetPostingNoSeriesCode(), "Posting No. Series");
                 end;
@@ -240,7 +240,7 @@ table 50115 "TFB Sample Request"
             trigger OnValidate()
             begin
 
-                PostCodeCheck.ValidatePostCode(
+                PostCodeCheck.VerifyPostCode(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition(), 3,
                   Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
                   Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
@@ -379,7 +379,7 @@ table 50115 "TFB Sample Request"
     var
         Cust: Record Customer;
         PostCode: Record "Post Code";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         TFBSampleRequest: Record "TFB Sample Request";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         PostCodeCheck: Codeunit "Post Code Check";
@@ -399,9 +399,9 @@ table 50115 "TFB Sample Request"
 
 
 
-    local procedure GetSalesSetup()
+    local procedure GetCoreSetup()
     begin
-        SalesSetup.Get();
+        CoreSetup.Get();
 
     end;
 
@@ -413,7 +413,7 @@ table 50115 "TFB Sample Request"
 
 
         TFBSampleRequest.Copy(Rec);
-        GetSalesSetup();
+        GetCoreSetup();
         TestNoSeries();
         if NoSeriesMgt.SelectSeries(GetNoSeriesCode(), OldSampleRequest."No. Series", "No. Series") then begin
             NoSeriesMgt.SetSeries("No.");
@@ -465,28 +465,9 @@ table 50115 "TFB Sample Request"
                 Opportunity.TestField(Status, Opportunity.Status::"In Progress");
     end;
 
-    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; LclCurrFieldNo: Integer);
-    var
-        Contact: Record Contact;
-        ContBusRel: Record "Contact Business Relation";
 
-    begin
 
-        Contact.Get(ContactNo);
-        if ContBusRel.FindByRelation(ContBusRel."Link to Table"::Customer, CustomerNo) then
-            if (ContBusRel."Contact No." <> Contact."Company No.") and (ContBusRel."Contact No." <> Contact."No.") then
-                Error(NoRelationMsg, Contact."No.", Contact.Name, CustomerNo);
-    end;
 
-    local procedure GetContactAsCompany(Contact: Record Contact; var SearchContact: Record Contact): Boolean;
-    var
-        IsHandled: Boolean;
-    begin
-
-        if not IsHandled then
-            if Contact."Company No." <> '' then
-                exit(SearchContact.Get(Contact."Company No."));
-    end;
 
     local procedure UpdateAddressFromContact(ContactNo: Code[20])
     var
@@ -522,7 +503,7 @@ table 50115 "TFB Sample Request"
             if not SampleRequestLine.IsEmpty() then
                 Error(NoResetMsg, ContactCaption);
             Init();
-            GetSalesSetup();
+            GetCoreSetup();
             "No. Series" := xRec."No. Series";
             InitRecord();
             InitNoSeries();
@@ -593,20 +574,14 @@ table 50115 "TFB Sample Request"
 
     end;
 
-    procedure GetHideValidationDialog(): Boolean
-    var
-        EnvInfoProxy: Codeunit "Env. Info Proxy";
-    begin
-        exit(HideValidationDialog or EnvInfoProxy.IsInvoicing());
-    end;
 
     local procedure GetPostingNoSeriesCode() PostingNos: Code[20]
     var
         IsHandled: Boolean;
     begin
-        GetSalesSetup();
+        GetCoreSetup();
 
-        PostingNos := SalesSetup."TFB Posted Sample Request Nos.";
+        PostingNos := CoreSetup."Posted Sample Request Nos.";
 
     end;
 
@@ -614,10 +589,10 @@ table 50115 "TFB Sample Request"
     var
 
     begin
-        GetSalesSetup();
+        GetCoreSetup();
 
-        SalesSetup.TestField("TFB Sample Request Nos.");
-        SalesSetup.TestField("TFB Posted Sample Request Nos.");
+        CoreSetup.TestField("Sample Request Nos.");
+        CoreSetup.TestField("Posted Sample Request Nos.");
 
     end;
 
@@ -628,8 +603,7 @@ table 50115 "TFB Sample Request"
 
     procedure GetCust(CustNo: Code[20])
     var
-        O365SalesInitialSetup: Record "O365 Sales Initial Setup";
-        EnvInfoProxy: Codeunit "Env. Info Proxy";
+
     begin
         if not ((CustNo = '')) then begin
             if CustNo <> Cust."No." then
@@ -646,11 +620,11 @@ table 50115 "TFB Sample Request"
         ArchiveManagement: Codeunit ArchiveManagement;
 
     begin
-        GetSalesSetup();
+        GetCoreSetup();
 
 
 
-        NoSeriesMgt.SetDefaultSeries("Posting No. Series", SalesSetup."Posted Invoice Nos.");
+        NoSeriesMgt.SetDefaultSeries("Posting No. Series", CoreSetup."Sample Request Nos.");
 
 
         "Order Date" := WorkDate();
@@ -667,8 +641,8 @@ table 50115 "TFB Sample Request"
         IsHandled: Boolean;
         NoSeriesCode: Code[20];
     begin
-        GetSalesSetup();
-        NoSeriesCode := SalesSetup."TFB Sample Request Nos.";
+        GetCoreSetup();
+        NoSeriesCode := CoreSetup."Sample Request Nos.";
 
         exit(NoSeriesMgt.GetNoSeriesWithCheck(NoSeriesCode, SelectNoSeriesAllowed, "No. Series"));
     end;

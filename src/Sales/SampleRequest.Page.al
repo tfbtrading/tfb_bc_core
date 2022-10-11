@@ -384,7 +384,7 @@ page 50142 "TFB Sample Request"
                 end;
             }
 
-            action(EmailRequest)
+            /* action(EmailRequest)
             {
                 ApplicationArea = All;
                 Image = Print;
@@ -411,10 +411,10 @@ page 50142 "TFB Sample Request"
                     end;
 
 
+  }
 
+                end; */
 
-                end;
-            }
         }
     }
 

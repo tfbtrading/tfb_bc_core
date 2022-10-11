@@ -62,19 +62,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-    local procedure DeleteExistingSampleRequests(): Boolean
-
-    var
-
-        SampleRequestLines: Record "TFB Sample Request Line";
-        SampleRequest: Record "TFB Sample Request";
-
-    begin
-
-        SampleRequestLines.DeleteAll(false);
-        SampleRequest.DeleteAll(false);
-
-    end;
+  
 
     procedure CopyQualityAttachToPersBlob()
 
@@ -136,24 +124,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
 
 
-    local procedure SetAllItemstoGenericItem()
-    var
-        Item: Record Item;
-
-    begin
-
-        if not Item.FindSet(true, false) then exit;
-
-        repeat
-
-            If not IsNullGuid(Item."TFB Generic Item ID") then exit;
-
-            Item.validate("TFB Act As Generic", true);
-            Item.Modify(true);
-
-        until Item.Next() = 0;
-
-    end;
+    
 
     local procedure UpdateSystemIDForForexMgmg()
     var
@@ -179,35 +150,5 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-    local procedure FixContainerEntries()
-
-    var
-        ContainerEntry: Record "TFB Container Entry";
-
-    begin
-        ContainerEntry.SetRange(Closed, false);
-
-        if ContainerEntry.FindSet(true, false) then
-            repeat
-
-                //Check if it should be closed
-
-                case ContainerEntry.Status of
-                    ContainerEntry.Status::Closed:
-                        begin
-
-
-                            ContainerEntry.Closed := true;
-                            ContainerEntry.Modify(false);
-                        end;
-                    ContainerEntry.Status::Cancelled:
-                        begin
-                            ContainerEntry.Closed := true;
-                            ContainerEntry.Modify(false);
-                        end;
-                end;
-
-
-            until ContainerEntry.Next() = 0;
-    end;
+    
 }

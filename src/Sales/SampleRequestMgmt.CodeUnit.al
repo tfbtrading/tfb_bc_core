@@ -101,8 +101,8 @@ codeunit 50114 "TFB Sample Request Mgmt"
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
                 TempBlob.CreateInStream(InStream);
                 EmailMessage.AddAttachment(StrSubstNo('Sample Request %1.pdf', SampleRequest."No."), 'application/pdf', InStream);
-                Email.AddRelation(EmailMessage, Database::"TFB Sample Request", SampleRequest.SystemId, Enum::"Email Relation Type"::"Primary Source");
-                Email.AddRelation(EmailMessage, Database::Contact, Contact.SystemId, Enum::"Email Relation Type"::"Related Entity");
+                Email.AddRelation(EmailMessage, Database::"TFB Sample Request", SampleRequest.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
+                Email.AddRelation(EmailMessage, Database::Contact, Contact.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
                 Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics);
 
 

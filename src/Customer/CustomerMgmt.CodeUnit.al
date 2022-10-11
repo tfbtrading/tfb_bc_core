@@ -278,26 +278,26 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
 
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         BalanceAfterShipment: Decimal;
 
     begin
 
         Clear(overdue);
         Clear(overCreditLimit);
-        SalesSetup.Get();
+        CoreSetup.Get();
         Customer.SetRange("Date Filter", 0D, today());
         Customer.CalcFields("Balance (LCY)");
         Customer.CalcFields("Balance Due (LCY)");
 
         //Check if any invoices are overdue
         If Customer."Balance Due (LCY)" > 0 then
-            if Customer."Balance Due (LCY)" > SalesSetup."TFB Credit Tolerance" then
+            if Customer."Balance Due (LCY)" > CoreSetup."Credit Tolerance" then
                 overdue := true;
 
         //Check if new order to be shipped take customer over credit limit
         BalanceAfterShipment := Customer."Balance (LCY)" + NewShipmentValue;
-        if BalanceAfterShipment > (Customer."Credit Limit (LCY)" + SalesSetup."TFB Credit Tolerance") then
+        if BalanceAfterShipment > (Customer."Credit Limit (LCY)" + CoreSetup."Credit Tolerance") then
             overCreditLimit := true;
 
         If overdue or overCreditLimit then exit(true) else exit(false);
@@ -346,7 +346,7 @@ codeunit 50120 "TFB Customer Mgmt"
         DemandResEntry: Record "Reservation Entry";
         SupplyResEntry: Record "Reservation Entry";
         LedgerEntry: Record "Item Ledger Entry";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         Vendor: Record Vendor;
 
         PricingCU: CodeUnit "TFB Pricing Calculations";
@@ -375,7 +375,7 @@ codeunit 50120 "TFB Customer Mgmt"
         If not Customer.Get(CustNo) then
             exit;
 
-        SalesSetup.Get();
+        CoreSetup.Get();
 
         //First get open pending sales lines
 
@@ -399,7 +399,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         If CheckIfCreditHoldApplies(Customer, GetValueOfShipment(Customer), overdue, overCreditLimit) and OverDue then
-            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", SalesSetup."TFB Credit Tolerance"))
+            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
 
@@ -637,7 +637,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
 
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         BodyBuilder: TextBuilder;
         overdue, overCreditLimit : Boolean;
 
@@ -646,7 +646,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         //Start with content introducing customer
 
-        SalesSetup.Get();
+        CoreSetup.Get();
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
         HTMLBuilder.Replace('%{ExplanationValue}', 'Customer Statement');
         HTMLBuilder.Replace('%{DateCaption}', 'Generated On');
@@ -655,7 +655,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         If CheckIfCreditHoldApplies(Customer, 0, overdue, overCreditLimit) and OverDue then
-            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", SalesSetup."TFB Credit Tolerance"))
+            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
 

@@ -7,6 +7,8 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
         {
             Caption = 'New Per Kg Price';
             DataClassification = CustomerContent;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Old code no longer used';
             DecimalPlaces = 2 : 4;
             MinValue = 0;
             MaxValue = 1000;
@@ -22,6 +24,8 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
         {
             Caption = 'Existing Per Kg Price';
             DataClassification = CustomerContent;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Old code no longer used';
             DecimalPlaces = 2 : 4;
             MinValue = 0;
             MaxValue = 1000;
@@ -31,6 +35,8 @@ tableextension 50147 "TFB Sales Price Worksheet" extends "Sales Price Worksheet"
         {
             Caption = 'Net Weight';
             FieldClass = FlowField;
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Old code no longer used';
             CalcFormula = sum(Item."Net Weight" where("No." = field("Item No.")));
             Editable = False;
         }

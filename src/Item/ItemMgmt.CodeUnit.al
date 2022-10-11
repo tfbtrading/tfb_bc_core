@@ -73,7 +73,7 @@ codeunit 50107 "TFB Item Mgmt"
     internal procedure DownloadItemMSDS(Item: Record Item)
 
     var
-        InventorySetup: Record "Inventory Setup";
+        CoreSetup: Record "TFB Core Setup";
         CommonCU: CodeUnit "TFB Common Library";
         WordTemplate: CodeUnit "Word Template";
 
@@ -83,8 +83,8 @@ codeunit 50107 "TFB Item Mgmt"
         NoRecordsSelectedMsg: Label 'No records have been selected for the merge';
     begin
         Item.SetRecFilter();
-        InventorySetup.Get();
-        If InventorySetup."TFB MSDS Word Template" = '' then begin
+        CoreSetup.Get();
+        If CoreSetup."MSDS Word Template" = '' then begin
             Message(NoTemplateSetupMsg);
             exit;
         end;
@@ -94,7 +94,7 @@ codeunit 50107 "TFB Item Mgmt"
             Exit;
         end;
 
-        WordTemplate.Load(InventorySetup."TFB MSDS Word Template");
+        WordTemplate.Load(CoreSetup."MSDS Word Template");
         If Item.Count > 1 then
             WordTemplate.Merge(Item, true, Enum::"Word Templates Save Format"::PDF)
         else
@@ -148,21 +148,21 @@ codeunit 50107 "TFB Item Mgmt"
     procedure GetItemDynamicDetails(ItemNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date)
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         Item: Record Item;
         PriceListLine: Record "Price List Line";
 
         PricingCU: CodeUnit "TFB Pricing Calculations";
     begin
-        SalesSetup.Get();
+        CoreSetup.Get();
 
-        If (SalesSetup."TFB Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
+        If (CoreSetup."Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
             PriceListLine.SetRange("Asset No.", ItemNo);
             PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
             PriceListLine.SetRange("Price Type", PriceListLine."Price Type"::Sale);
             PriceListLine.Setrange(Status, PriceListLine.Status::Active);
             PriceListLine.SetRange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
-            PriceListLine.SetRange("Source No.", SalesSetup."TFB Def. Customer Price Group");
+            PriceListLine.SetRange("Source No.", CoreSetup."Def. Customer Price Group");
             PriceListLine.SetFilter("Ending Date", '=%1|>=%2', 0D, WorkDate());
 
 

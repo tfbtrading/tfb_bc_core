@@ -266,7 +266,7 @@ codeunit 50104 "TFB Quality Mgmt"
             until VendorCerts.Next() < 1;
 
         If not IsNullGuid(CustomerSystemID) then
-            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;
@@ -315,7 +315,7 @@ codeunit 50104 "TFB Quality Mgmt"
             until CompanyCerts.Next() < 1;
 
         If not IsNullGuid(CustomerSystemID) then
-            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;

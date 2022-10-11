@@ -18,23 +18,7 @@ table 50102 "TFB Certification Type"
         field(25; "Class"; Enum "TFB Certification Class")
         {
 
-            trigger OnValidate()
 
-            var
-                Certification: Record "TFB Vendor Certification";
-
-            begin
-
-                //Ensure class is updated on all the vendor certificates
-                Certification.SetRange("Certification Type", Code);
-
-                if Certification.FindSet(true, false) then
-                    repeat
-                        Certification."Certification Class" := Class;
-                        Certification.Modify();
-
-                    until Certification.Next() < 1;
-            end;
 
         }
         field(30; "GFSI Accredited"; Boolean)

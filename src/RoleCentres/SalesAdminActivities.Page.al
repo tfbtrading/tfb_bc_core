@@ -227,9 +227,7 @@ page 50110 "TFB Sales Admin Activities"
 
                 trigger OnAction()
                 begin
-                    Rec."Last Date/Time Modified" := 0DT;
-                    Rec.Modify();
-
+             
                     CODEUNIT.Run(CODEUNIT::"Activities Mgt.");
                     CurrPage.Update(false);
                 end;
@@ -252,13 +250,7 @@ page 50110 "TFB Sales Admin Activities"
         }
     }
 
-    trigger OnAfterGetCurrRecord()
-    var
-        RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
-    begin
 
-        RoleCenterNotificationMgt.HideEvaluationNotificationAfterStartingTrial();
-    end;
 
     trigger OnAfterGetRecord()
     begin

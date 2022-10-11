@@ -165,25 +165,8 @@ table 50101 "TFB Vendor Certification"
         fieldgroup(Brick; "Vendor No.", "Vendor Name", "Certification Type", "Expiry Date", CertificationLogo) { }
     }
 
-    trigger OnInsert()
 
-    begin
-
-        MarkAsModified();
-
-    end;
-
-    trigger OnModify()
-
-    begin
-        MarkAsModified();
-    end;
-
-    local procedure MarkAsModified()
-
-    begin
-        "Last Date Modified" := today();
-        "Last Modified Date Time" := CurrentDateTime();
-    end;
+   
+    
 
 }

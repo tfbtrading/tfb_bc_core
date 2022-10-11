@@ -60,12 +60,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
                 Image = LedgerEntries;
                 Caption = 'Item Ledger Entries';
                 ToolTip = 'View Item Ledger Entries';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-
-
-
+                Scope = Repeater;
                 trigger onAction()
 
                 begin
@@ -80,10 +75,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
                 Image = Invoice;
                 Caption = 'Purchase Invoice';
                 ToolTip = 'View Purchase Invoice';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-
+                Scope = Repeater;
 
 
                 trigger onAction()

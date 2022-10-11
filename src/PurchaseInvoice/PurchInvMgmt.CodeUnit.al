@@ -290,7 +290,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
     begin
 
-        Lines.SetRange("TFB Container No.", Reference);
+        Lines.SetRange("TFB Container No. LookUp", Reference);
         Lines.SetRange(Type, Lines.Type::Item);
         Lines.SetFilter(Quantity, '>0');
 

@@ -57,20 +57,20 @@ codeunit 50304 "TFB Costing Mgmt"
     procedure GetCurrPricePerKg(Item: Record Item): Decimal;
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         PriceListLine: Record "Price List Line";
         PCE: CodeUnit "TFB Pricing Calculations";
 
     begin
 
-        SalesSetup.Get();
+        CoreSetup.Get();
 
-        If SalesSetup."TFB Def. Customer Price Group" <> '' then begin
+        If CoreSetup."Def. Customer Price Group" <> '' then begin
 
             PriceListLine.SetRange("Asset ID", Item.SystemId);
             PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
             PriceListLine.SetRange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
-            PriceListLine.SetRange("Source No.", SalesSetup."TFB Def. Customer Price Group");
+            PriceListLine.SetRange("Source No.", CoreSetup."Def. Customer Price Group");
             PriceListLine.SetRange("Ending Date", 0D);
             PriceListLine.SetRange(Status, PriceListLine.Status::Active);
 
