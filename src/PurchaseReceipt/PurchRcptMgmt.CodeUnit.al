@@ -137,15 +137,15 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
     procedure OpenRelatedContainer(EntryNo: Code[20])
     var
-        Entry: Record "TFB Container Entry";
-        Container: Page "TFB Container Entry";
+        ContainerEntry: Record "TFB Container Entry";
+        ContainerEntryPage: Page "TFB Container Entry";
     begin
 
-        Entry.SetRange("No.", EntryNo);
+        ContainerEntry.SetRange("No.", EntryNo);
 
-        If Entry.FindFirst() then begin
-            Container.SetRecord(Entry);
-            Container.Run();
+        If ContainerEntry.FindFirst() then begin
+            ContainerEntryPage.SetRecord(ContainerEntry);
+            ContainerEntryPage.Run();
         end;
 
     end;

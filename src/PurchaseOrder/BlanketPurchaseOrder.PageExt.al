@@ -60,12 +60,12 @@ pageextension 50122 "TFB Blanket Purchase Order" extends "Blanket Purchase Order
     {
         addlast(Navigation)
         {
-            action("TFBBlanket Sales Order")
+            action("TFBBlanketSalesOrder")
             {
                 Enabled = Rec."TFB Sales Blanket Order No." <> '';
                 Image = BlanketOrder;
                 ApplicationArea = All;
-                Caption = 'Blanket sales order';
+                Caption = 'Blanket Sales Order';
                 ToolTip = 'Opens blanket sales order if drop shipment';
 
                 trigger OnAction()
@@ -84,6 +84,13 @@ pageextension 50122 "TFB Blanket Purchase Order" extends "Blanket Purchase Order
                         BlanketSO.Run();
                     end;
                 end;
+            }
+        }
+        addlast(Category_Category8)
+        {
+            actionref(ActionRefName; "TFBBlanketSalesOrder")
+            {
+
             }
         }
     }

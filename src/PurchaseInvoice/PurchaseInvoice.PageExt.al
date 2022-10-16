@@ -101,8 +101,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category5;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new marketing task for the contact.';
@@ -118,11 +117,10 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         {
             action(TFBCopyFromInboundDoc)
             {
-                Caption = 'Copy from inbound document';
+                Caption = 'Copy From Inbound Document';
                 Enabled = InboundExists;
                 Image = CopyFromTask;
-                Promoted = true;
-                PromotedCategory = Process;
+
                 ApplicationArea = All;
                 ToolTip = 'Copies data that is specifies on incoming document to purchase invoice';
 
@@ -143,8 +141,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
                 Caption = 'Apply Header Charge Assignment';
                 Enabled = _AssigmentIsValid and _VendorCanChargeAssignment;
                 Image = ApplyEntries;
-                Promoted = true;
-                PromotedCategory = Process;
+
                 ApplicationArea = All;
                 ToolTip = 'Applies header level token automatically';
 
@@ -170,7 +167,18 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
 
             }
         }
+        addafter(Category_Prepare)
 
+        {
+            actionref(TFBCopyFromInboundDoc_Promoted; TFBCopyFromInboundDoc)
+            {
+
+            }
+            actionref(TFBApplyToken_Promoted; TFBApplyToken)
+            {
+
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

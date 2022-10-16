@@ -10,7 +10,7 @@ page 50107 "TFB Vendor Certification List"
     DeleteAllowed = true;
     ModifyAllowed = true;
     DelayedInsert = true;
-    PromotedActionCategories = 'New,Certificate';
+
 
     layout
     {
@@ -163,16 +163,14 @@ page 50107 "TFB Vendor Certification List"
         area(Processing)
         {
 
-            action("Upload Attachment")
+            action("UploadAttach")
             {
 
                 ApplicationArea = All;
+                Caption = 'Upload Attachment';
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
                 Image = Import;
                 Enabled = (AttachmentExists = false);
-                PromotedOnly = true;
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
                 trigger OnAction()
@@ -182,15 +180,13 @@ page 50107 "TFB Vendor Certification List"
                 end;
 
             }
-            action("Download Attachment(s)")
+            action("DownloadAttach")
             {
                 ApplicationArea = All;
+                Caption = 'Download Attachment';
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
                 Image = SendAsPDF;
                 Enabled = AttachmentExists;
-                PromotedOnly = true;
 
                 tooltip = 'Download one or more attachments (in pdf form) from certification record';
                 trigger OnAction()
@@ -200,13 +196,11 @@ page 50107 "TFB Vendor Certification List"
                 end;
             }
 
-            action("Send to Contact(s)")
+            action("SendToContact")
             {
                 ApplicationArea = All;
+                Caption = 'Send to Contacts';
                 Visible = True;
-                Promoted = true;
-                promotedCategory = Process;
-                PromotedOnly = true;
                 Image = SendEmailPDF;
                 ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
 
@@ -216,47 +210,13 @@ page 50107 "TFB Vendor Certification List"
                     SendSelectedDocs();
                 end;
             }
-            action("Replace File")
+
+            action("ToggleArchived")
             {
                 ApplicationArea = All;
-                Visible = True;
-                Image = DocumentEdit;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment and replace with new file';
-
-                trigger OnAction()
-
-                begin
-                    ReplaceFile();
-                end;
-
-            }
-            action("Remove File")
-            {
-                ApplicationArea = All;
-                Visible = True;
-                Image = Delete;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment';
-
-                trigger OnAction()
-
-                begin
-                    RemoveFile();
-                end;
-
-            }
-
-            action("Toggle Archived")
-            {
-                ApplicationArea = All;
+                Caption = 'Toggle Archived';
                 Visible = True;
                 Image = Archive;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-
 
                 ToolTip = 'Set current vendor certificate to be archived';
 
@@ -269,6 +229,21 @@ page 50107 "TFB Vendor Certification List"
             }
 
 
+        }
+        area(Promoted)
+        {
+            actionref(UploadAttach_Promoted; UploadAttach)
+            {
+
+            }
+            actionref(SendToContact_Promoted; SendToContact)
+            {
+
+            }
+            actionref(ToggleArchived_Promoted; ToggleArchived)
+            {
+
+            }
         }
     }
 

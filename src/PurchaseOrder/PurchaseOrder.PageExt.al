@@ -195,8 +195,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category8;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new marketing task for the contact.';
@@ -209,10 +208,11 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
         }
         addlast(Navigation)
         {
-            action("&Container Entry")
+            action("TFB&ContainerEntry")
             {
                 ApplicationArea = All;
                 Enabled = Rec."Buy-from Country/Region Code" <> 'AU';
+                Caption = 'Inbound Shipment';
                 Image = CreateMovement;
                 ToolTip = 'Opens or creates a new container entry';
 
@@ -249,6 +249,14 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
 
 
                 end;
+            }
+        }
+
+        addlast(Category_Process)
+        {
+            actionref(ActionRefName; "TFB&ContainerEntry")
+            {
+
             }
         }
     }

@@ -53,15 +53,13 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
     {
         addlast(navigation)
         {
-            action(Container)
+            action(TFBContainer)
             {
                 ApplicationArea = All;
                 Caption = 'Container';
                 ToolTip = 'Opens up the related container for the purchase receipt';
                 Visible = ContainerEntryNo <> '';
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
+
                 Image = Navigate;
 
                 trigger OnAction()
@@ -70,6 +68,14 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
                     PurchCU.OpenRelatedContainer(ContainerEntryNo);
 
                 end;
+            }
+        }
+
+        addlast(Category_Category4)
+        {
+            actionref(TFBContainer_Promoted; TFBContainer)
+            {
+
             }
         }
 

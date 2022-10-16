@@ -58,9 +58,7 @@ page 50105 "TFB Certification Types"
 
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 Image = Import;
                 Enabled = not LogoExists;
                 Tooltip = 'Add a logo to the certification type';
@@ -77,9 +75,7 @@ page 50105 "TFB Certification Types"
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedOnly = True;
-                PromotedCategory = Process;
+
                 Image = Delete;
                 Enabled = LogoExists;
                 ToolTip = 'Removes a logo from the certfiication type';
@@ -89,6 +85,18 @@ page 50105 "TFB Certification Types"
                 begin
                     RemoveFile();
                 end;
+
+            }
+        }
+
+        area(Promoted)
+        {
+            actionref(AddLogo_Promoted; "Add logo")
+            {
+
+            }
+            actionref(RemoveLogo_Promoted; "Remove logo")
+            {
 
             }
         }

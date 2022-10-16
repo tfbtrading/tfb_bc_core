@@ -271,8 +271,8 @@ codeunit 50200 "TFB Container Mgmt"
         ResEntry: Record "Reservation Entry";
         OrderLine: Record "Purchase Line";
         TempLines: Record "TFB ContainerContents" temporary;
-        LotInfo: Record "Lot No. Information";
-        ItemLedger: Record "Item Ledger Entry";
+        LotNoInformation: Record "Lot No. Information";
+        ItemLedgerEntry: Record "Item Ledger Entry";
         TempBlobList: CodeUnit "Temp Blob List";
         TempBlobCu: CodeUnit "Temp Blob";
         PersBlobCU: CodeUnit "Persistent Blob";
@@ -307,14 +307,14 @@ codeunit 50200 "TFB Container Mgmt"
 
                             If ReceiptLine.FindFirst() then begin
 
-                                ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
-                                ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
-                                ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
+                                ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
+                                ItemLedgerEntry.SetRange("Document No.", ReceiptLine."Document No.");
+                                ItemLedgerEntry.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                                If ItemLedger.FindFirst() then
+                                If ItemLedgerEntry.FindFirst() then
 
                                     //Get Lot No
-                                    LineLotNo := ItemLedger."Lot No.";
+                                    LineLotNo := ItemLedgerEntry."Lot No.";
                             end;
 
 
@@ -348,15 +348,15 @@ codeunit 50200 "TFB Container Mgmt"
                 If LineLotNo <> '' then begin
 
                     //Get Lot Info 
-                    LotInfo.SetRange("Lot No.", LineLotNo);
-                    LotInfo.SetRange("Item No.", TempLines."Item Code");
+                    LotNoInformation.SetRange("Lot No.", LineLotNo);
+                    LotNoInformation.SetRange("Item No.", TempLines."Item Code");
 
-                    If LotInfo.FindFirst() then begin
+                    If LotNoInformation.FindFirst() then begin
 
-                        RecRef.GetTable(LotInfo);
+                        RecRef.GetTable(LotNoInformation);
                         TempBlobCu.CreateInStream(InStream);
                         TempBlobCu.CreateOutStream(OutStream);
-                        PersBlobCU.CopyToOutStream(LotInfo."TFB CoA Attach.", OutStream);
+                        PersBlobCU.CopyToOutStream(LotNoInformation."TFB CoA Attach.", OutStream);
                         CopyStream(OutStream, InStream);
 
                         If TempBlobCu.HasValue() then begin
