@@ -10,7 +10,7 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
     begin
 
         if ContainerEntry.Get(PurchRcptLine."TFB Container Entry No.") then
-            PurchRcptLine."TFB Container No." := ContainerEntry."Container No.";
+            PurchRcptLine."TFB Container Entry No." := ContainerEntry."No.";
 
 
     end;

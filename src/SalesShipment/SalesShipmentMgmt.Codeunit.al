@@ -287,10 +287,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 User.Get(UserSecurityId());
                 CCRecipients.Add(User."Contact Email");
 
-
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
-                Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source");
-                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+                Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source", enum::"Email Relation Origin"::"Compose Context");
+                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
                 If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
 
                     CommEntry.Init();
@@ -345,7 +344,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         OtherContacts: Record Contact;
         PrimaryContact: Record Contact;
         Responsibility: record "Contact Job Responsibility";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
 
 
     begin
@@ -365,10 +364,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         //Iterate through other contacts with the same company contact to check for their purchasing responsibilities
         if OtherContacts.FindSet() then begin
 
-            SalesSetup.Get();
+            CoreSetup.Get();
             repeat
-                If SalesSetup."TFB PL Def. Job Resp. Rec." <> '' then begin
-                    Responsibility.SetRange("Job Responsibility Code", SalesSetup."TFB ASN Def. Job Resp. Rec.");
+                If CoreSetup."PL Def. Job Resp. Rec." <> '' then begin
+                    Responsibility.SetRange("Job Responsibility Code", CoreSetup."ASN Def. Job Resp. Rec.");
                     Responsibility.SetRange("Contact No.", OtherContacts."No.");
 
                     If not Responsibility.IsEmpty() then
@@ -591,8 +590,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         end;
 
 
-        Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source");
-        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+        Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source", enum::"Email Relation Origin"::"Compose Context");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
 

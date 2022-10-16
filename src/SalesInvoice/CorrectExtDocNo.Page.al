@@ -70,7 +70,7 @@ page 50152 "TFB Correct Ext. Doc. No."
     end;
 
 
-    procedure SetupCustomerInfo(Customer: Record Customer; ExternalDocNo: Code[35])
+    procedure SetupCustomerInfo(Customer: Record Customer; ExistingExternalDocNo: Code[35])
     var
         PreviousNote: TextBuilder;
     begin
@@ -78,8 +78,8 @@ page 50152 "TFB Correct Ext. Doc. No."
         _EntityName := Customer.Name;
 
 
-        if not (ExternalDocNo = '') then
-            PreviousNote.AppendLine(StrSubstNo('Previous external document no was %1', ExternalDocNo))
+        if not (ExistingExternalDocNo = '') then
+            PreviousNote.AppendLine(StrSubstNo('Previous external document no was %1', ExistingExternalDocNo))
         else
             PreviousNote.AppendLine('No prior external document number');
 
@@ -89,7 +89,7 @@ page 50152 "TFB Correct Ext. Doc. No."
 
     end;
 
-    procedure SetupVendorInfo(Vendor: Record Vendor; ExternalDocNo: Code[35])
+    procedure SetupVendorInfo(Vendor: Record Vendor; ExistingExternalDocNo: Code[35])
     var
         PreviousNote: TextBuilder;
     begin
@@ -97,8 +97,8 @@ page 50152 "TFB Correct Ext. Doc. No."
         _EntityName := Vendor.Name;
 
 
-        if not (ExternalDocNo = '') then
-            PreviousNote.AppendLine(StrSubstNo('Previous external document no was %1', ExternalDocNo))
+        if not (ExistingExternalDocNo = '') then
+            PreviousNote.AppendLine(StrSubstNo('Previous external document no was %1', ExistingExternalDocNo))
         else
             PreviousNote.AppendLine('No prior external document number');
 

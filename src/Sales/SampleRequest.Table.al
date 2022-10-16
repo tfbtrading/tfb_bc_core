@@ -596,10 +596,7 @@ table 50115 "TFB Sample Request"
 
     end;
 
-    local procedure ValidateDocumentDate()
-    begin
-
-    end;
+   
 
     procedure GetCust(CustNo: Code[20])
     var

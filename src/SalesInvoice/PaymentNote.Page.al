@@ -111,23 +111,23 @@ page 50150 "TFB Payment Note"
     end;
 
 
-    procedure SetupCustomerInfo(Customer: Record Customer; ExpectedPaymentNote: Text[512]; ExpectedPaymentDate: Date; LastDateTimeTaken: DateTime)
+    procedure SetupCustomerInfo(Customer: Record Customer; ExistingExpectedPaymentNote: Text[512]; ExistingExpectedPaymentDate: Date; LastDateTimeTaken: DateTime)
     var
         PreviousNote: TextBuilder;
     begin
 
         _Customer := Customer;
-        _ExpectedPaymentDate := ExpectedPaymentDate;
+        _ExpectedPaymentDate := ExistingExpectedPaymentDate;
 
 
         If (LastDateTimeTaken > 0DT) then
-            if (ExpectedPaymentNote = '') then
+            if (ExistingExpectedPaymentNote = '') then
                 PreviousNote.AppendLine(StrSubstNo('Previous note from %1.', LastDateTimeTaken))
             else
-                PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExpectedPaymentNote, LastDateTimeTaken));
+                PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExistingExpectedPaymentNote, LastDateTimeTaken));
 
         If _ExpectedPaymentDate > 0D then
-            PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExpectedPaymentDate));
+            PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExistingExpectedPaymentDate));
 
         _PreviousNoteDate := PreviousNote.ToText();
 
@@ -143,23 +143,23 @@ page 50150 "TFB Payment Note"
     end;
 
 
-    procedure SetupVendorInfo(Vendor: Record Vendor; ExpectedPaymentNote: Text[512]; ExpectedPaymentDate: Date; LastDateTimeTaken: DateTime)
+    procedure SetupVendorInfo(Vendor: Record Vendor; ExistingExpectedPaymentNote: Text[512]; ExistingExpectedPaymentDate: Date; LastDateTimeTaken: DateTime)
     var
         PreviousNote: TextBuilder;
     begin
 
         _Vendor := Vendor;
-        _ExpectedPaymentDate := ExpectedPaymentDate;
+        _ExpectedPaymentDate := ExistingExpectedPaymentDate;
 
 
         If (LastDateTimeTaken > 0DT) then
-            if (ExpectedPaymentNote = '') then
+            if (ExistingExpectedPaymentNote = '') then
                 PreviousNote.AppendLine(StrSubstNo('Previous note from %1.', LastDateTimeTaken))
             else
-                PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExpectedPaymentNote, LastDateTimeTaken));
+                PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExistingExpectedPaymentNote, LastDateTimeTaken));
 
         If _ExpectedPaymentDate > 0D then
-            PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExpectedPaymentDate));
+            PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExistingExpectedPaymentDate));
 
         _PreviousNoteDate := PreviousNote.ToText();
 

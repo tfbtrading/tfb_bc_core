@@ -141,7 +141,7 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
     actions
     {
         // Add changes to page actions here
-        addafter(Prices)
+        addafter(PriceLines)
         {
             action("TFB ZoneModifiers")
             {

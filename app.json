@@ -14,7 +14,7 @@
   "propagateDependencies": true,
   "platform": "21.0.0.0",
   "application": "21.0.0.0",
-  "suppressWarnings": ["AA0072","AA0137","AA0217","AW0006","AA0139","AA0202","AL0254"],
+  "suppressWarnings": ["AA0072","AA0137","AA0217","AW0006","AA0139","AA0202","AL0254","AA0232","AA0228"],
  
     "dependencies": [
       {"id": "10cb69d9-bc8a-4d27-970a-9e110e9db2a5",

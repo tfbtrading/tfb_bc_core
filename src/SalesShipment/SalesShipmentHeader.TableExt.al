@@ -35,7 +35,7 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
 
     var
         InventorySetup: Record "Inventory Setup";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         ABSResponse: CodeUnit "ABS Operation Response";
         AzureBlob: CodeUnit "ABS Blob Client";
         StorageServiceAuthorization: CodeUnit "Storage Service Authorization";
@@ -50,10 +50,10 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
 
     begin
 
-        SalesSetup.SetLoadFields("TFB ABS POD Container", "TFB ABS POD Access Key", "TFB ABS POD Account");
-        SalesSetup.Get();
-        Authorization := StorageServiceAuthorization.CreateSharedKey(SalesSetup."TFB ABS POD Access Key");
-        AzureBlob.Initialize(SalesSetup."TFB ABS POD Account", SalesSetup."TFB ABS POD Container", Authorization);
+        CoreSetup.SetLoadFields("ABS POD Container", "ABS POD Access Key", "ABS POD Account");
+        CoreSetup.Get();
+        Authorization := StorageServiceAuthorization.CreateSharedKey(CoreSetup."ABS POD Access Key");
+        AzureBlob.Initialize(CoreSetup."ABS POD Account", CoreSetup."ABS POD Container", Authorization);
 
         ABSResponse := AzureBlob.GetBlobAsStream(Rec."TFB POD Filename", Instream);
         Exit(ABSResponse.IsSuccessful());
@@ -73,10 +73,10 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
             If "TFB POD Received" then
                 If not Confirm(ConfirmOverwriteMsg, true, "TFB POD Filename") then exit;
 
-        SalesSetup.SetLoadFields("TFB ABS POD Container", "TFB ABS POD Access Key", "TFB ABS POD Account");
-        SalesSetup.Get();
-        Authorization := StorageServiceAuthorization.CreateSharedKey(SalesSetup."TFB ABS POD Access Key");
-        AzureBlob.Initialize(SalesSetup."TFB ABS POD Account", SalesSetup."TFB ABS POD Container", Authorization);
+        CoreSetup.SetLoadFields("ABS POD Container", "ABS POD Access Key", "ABS POD Account");
+        CoreSetup.Get();
+        Authorization := StorageServiceAuthorization.CreateSharedKey(CoreSetup."ABS POD Access Key");
+        AzureBlob.Initialize(CoreSetup."ABS POD Account", CoreSetup."ABS POD Container", Authorization);
 
         ABSResponse := AzureBlob.PutBlobBlockBlobStream(Rec."TFB POD Filename", Instream);
         If ABSResponse.IsSuccessful() then begin
