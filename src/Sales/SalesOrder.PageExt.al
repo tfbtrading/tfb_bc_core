@@ -93,13 +93,12 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
     {
         addafter("Print Confirmation")
         {
-            action("Send CoA's")
+            action("TFBSendCOA")
             {
                 ApplicationArea = All;
                 Image = SendAsPDF;
-                Promoted = True;
-                PromotedIsBig = true;
-                PromotedCategory = Category7;
+                Caption = 'TFB Send CoA';
+
                 ToolTip = 'Send certificates of analysis for sales order if lots are specified';
 
 
@@ -119,12 +118,11 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         }
         addfirst("F&unctions")
         {
-            action("Create &Task")
+            action("TFBCreateTask")
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category8;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new marketing task for the contact.';
@@ -133,6 +131,21 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                 begin
                     Rec.CreateTask();
                 end;
+            }
+        }
+
+        addlast(Category_Category11)
+        {
+            actionref(TFBSendCOA_Promoted; TFBSendCOA)
+            {
+
+            }
+        }
+        addlast(Category_Process)
+        {
+            actionref(TFBCfreateTask_Promoted; TFBCreateTask)
+            {
+
             }
         }
     }

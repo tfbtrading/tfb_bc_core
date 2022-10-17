@@ -6,7 +6,7 @@ page 50144 "TFB Sample Request List"
     DataCaptionExpression = 'Sample Requests';
     Editable = false;
     PageType = List;
-    PromotedActionCategories = 'New,Process,Report,Request Approval,Order,Release,Posting,Print/Send,Navigate';
+
     SourceTable = "TFB Sample Request";
     UsageCategory = Lists;
 

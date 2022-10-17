@@ -2,7 +2,7 @@ page 50142 "TFB Sample Request"
 {
     Caption = 'Sample Request';
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,History,Print/Send,Navigate';
+
     RefreshOnActivate = true;
     SourceTable = "TFB Sample Request";
 
@@ -362,10 +362,7 @@ page 50142 "TFB Sample Request"
                 Image = Print;
                 Caption = 'Print Packing Slip';
                 ToolTip = 'Print a packing slip';
-                Promoted = true;
-                PromotedCategory = Report;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
 
                 trigger OnAction()
                 var
@@ -415,6 +412,14 @@ page 50142 "TFB Sample Request"
 
                 end; */
 
+        }
+
+        area(Promoted)
+        {
+            actionref(Print_Promoted; Print)
+            {
+
+            }
         }
     }
 

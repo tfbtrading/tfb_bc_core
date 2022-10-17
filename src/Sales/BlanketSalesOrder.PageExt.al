@@ -97,10 +97,10 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
     {
         addlast(Navigation)
         {
-            action("BlanketPO")
+            action("TFBPBlanketPO")
             {
                 Enabled = Rec."TFB Blanket DropShip";
-                Caption = 'Blanket purchase order';
+                Caption = 'Blanket Purchase Order';
                 Image = BlanketOrder;
                 ApplicationArea = All;
                 ToolTip = 'Opens related blanket order';
@@ -125,6 +125,14 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
 
 
                 end;
+            }
+        }
+
+        addlast(Category_Category8)
+        {
+            actionref(TFBBlanketPO_Promoted; TFBPBlanketPO)
+            {
+
             }
         }
 

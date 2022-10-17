@@ -174,7 +174,6 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Sample Request" = X,
         page "TFB Sample Request Subform" = X,
         page "TFB Sample Request List" = X,
-        page "TFB Sample Request Sizes" = X,
         page "TFB Rep. Sel - Sample Req." = X,
         page "TFB Pending Sales Lines" = X,
         page "TFB Segment Generic Items" = X,
