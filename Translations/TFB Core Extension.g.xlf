@@ -1123,11 +1123,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1109046048 - Field 149655782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ABS Shared Access Key for Lot Samples</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field ABS Lot Sample Access Key - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 2014913108 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ABS Account Name for Lot Samples</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1153,6 +1148,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field ABS POD Container - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 33144814 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABS Shared Access Key for Lot Samples</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field ABSLotSampleAccessKey - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 1739816574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Shipment Notification Job Resp.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1168,11 +1168,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Brokerage Contract Nos. - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1109046048 - Field 3911854930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brokerage Cust. Updates</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Brokerage Cust. Update - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 158516770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brokerage Default %</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1187,11 +1182,6 @@
           <source>Brokerage Shipment Nos.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Brokerage Shipment Nos. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1109046048 - Field 4058200882 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Certificate of Analysis</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Certificate of Analysis - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1109046048 - Field 285134201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Container Entry Nos.</source>
@@ -1332,16 +1322,6 @@
           <source>Sample Request Nos.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Sample Request Nos. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1109046048 - Field 1801039283 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Shipment Status Enquiries</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Shipment Status Enquiry - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1109046048 - Field 1968669572 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Show External Ids</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Show External IDs - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1109046048 - Field 527448834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specification URL Pattern</source>
@@ -3337,21 +3317,6 @@
           <source>Use Inventory</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Use Inventory - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3902644822 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Size - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3902644822 - Field 3630828880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>IsUnit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Size - Field IsUnit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3902644822 - Field 1628806304 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>WeightKg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Size - Field WeightKg - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1253574205 - Field 2006108605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attribute Name</source>
@@ -5683,35 +5648,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Control Status - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 87242591 - Action 2110440217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 87242591 - Action 245792657 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Download one or more attachments (in pdf form) from certification record</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Download Attachment(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action DownloadAttach - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 87242591 - Action 3510473988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment</source>
+        <trans-unit id="Page 87242591 - Action 245792657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download Attachment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Remove File - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action DownloadAttach - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 87242591 - Action 2131725342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment and replace with new file</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Replace File - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 87242591 - Action 3433119487 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 87242591 - Action 4119456001 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Send to Contact(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action SendToContact - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 87242591 - Action 2847184576 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 87242591 - Action 4119456001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send to Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action SendToContact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 87242591 - Action 3478810536 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set current vendor certificate to be archived</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Toggle Archived - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action ToggleArchived - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 87242591 - Action 3694725606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 87242591 - Action 1692176988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attaches a certificate (in pdf form) to vendor certfication record</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action Upload Attachment - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action UploadAttach - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 87242591 - Action 1692176988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload Attachment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Company Certification List - Action UploadAttach - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 87242591 - View 3134804177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attention Required</source>
@@ -5907,16 +5877,6 @@
           <source>Attachments</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Confirm Purchase Orders - Control Attached Documents - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 392401144 - Action 1062429549 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Add a file as an attachment. You can attach images as well as documents.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Confirm Purchase Orders - Action DocAttach - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 392401144 - Action 1062429549 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Attachments</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Confirm Purchase Orders - Action DocAttach - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 392401144 - View 3058585972 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unconfirmed orders</source>
@@ -7278,11 +7238,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control mport Duty Rate - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 4058200882 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Certificate of Analysis field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Certificate of Analysis - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 1109046048 - Control 2536906153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Item Unit Price Group field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7297,16 +7252,6 @@
           <source>Specifies the value of the Quality Docs Subs. Job Resp. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control QDS Def. Job Resp. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 1801039283 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Shipment Status Enquiries field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Shipment Status Enquiry - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 1968669572 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Show External Ids field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Show External IDs - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 527448834 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Specification URL Pattern field.</source>
@@ -7347,11 +7292,6 @@
           <source>Specifies the value of the Brokerage Contract Nos. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Contract Nos. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 3911854930 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Brokerage Cust. Updates field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Cust. Update - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 158516770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Brokerage Default % field.</source>
@@ -12878,26 +12818,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request List - Control Status - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 607430851 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sample Request Sizes</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Sizes - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 607430851 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Description field</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Sizes - Control Description - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 607430851 - Control 3630828880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the IsUnit field</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Sizes - Control IsUnit - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 607430851 - Control 1628806304 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the WeightKg field</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Request Sizes - Control WeightKg - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 1376206855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lines</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -13288,35 +13208,45 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Control Vendor Name - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 2110440217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Action 245792657 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Download one or more attachments (in pdf form) from certification record</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Download Attachment(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action DownloadAttach - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3510473988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment</source>
+        <trans-unit id="Page 3127187514 - Action 245792657 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download Attachment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Remove File - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action DownloadAttach - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 2131725342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Remove current attachment and replace with new file</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Replace File - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3433119487 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Action 4119456001 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Send to Contact(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action SendToContact - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 2847184576 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Action 4119456001 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send to Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action SendToContact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 3478810536 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Set current vendor certificate to be archived</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Toggle Archived - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action ToggleArchived - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Action 3694725606 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Action 3478810536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Toggle Archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action ToggleArchived - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 1692176988 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attaches a certificate (in pdf form) to vendor certfication record</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action Upload Attachment - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action UploadAttach - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 1692176988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Upload Attachment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action UploadAttach - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - View 3134804177 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Attention Required</source>
@@ -13578,15 +13508,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purch. SubForm - Control _RemainingQty - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+        <trans-unit id="PageExtension 3771422186 - Action 3973649215 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
           <source>Opens blanket sales order if drop shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanketSalesOrder - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3771422186 - Action 3744680671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
-          <source>Blanket sales order</source>
+        <trans-unit id="PageExtension 3771422186 - Action 3973649215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
+          <source>Blanket Sales Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanket Sales Order - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Order - Action TFBBlanketSalesOrder - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3771422186 - Control 2482778060 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2965669802">
           <source>Contract Details</source>
@@ -13628,15 +13558,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Purchase Orders - Control LinesDesc - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3920438679 - Action 4100951376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
+        <trans-unit id="PageExtension 3920438679 - Action 1171238368 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
           <source>Opens related blanket order</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Action BlanketPO - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Action TFBPBlanketPO - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3920438679 - Action 4100951376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
-          <source>Blanket purchase order</source>
+        <trans-unit id="PageExtension 3920438679 - Action 1171238368 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
+          <source>Blanket Purchase Order</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Action BlanketPO - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blanket Sales Order - Action TFBPBlanketPO - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3920438679 - Control 3691525173 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2259427799">
           <source>Specifies any specific instructions related to the blanket contract</source>
@@ -14248,15 +14178,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer List - Control TFB Price List Recipient - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1798961235 - Action 367678699 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1182696142">
+        <trans-unit id="PageExtension 1798961235 - Action 1740029987 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1182696142">
           <source>Opens any applied entries to the ledger entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Det. Vendor Ledg. Entries - Action TFB Applied Entry - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Det. Vendor Ledg. Entries - Action TFBAppliedEntry - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1798961235 - Action 367678699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1182696142">
+        <trans-unit id="PageExtension 1798961235 - Action 1740029987 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1182696142">
           <source>Applied entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Det. Vendor Ledg. Entries - Action TFB Applied Entry - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Det. Vendor Ledg. Entries - Action TFBAppliedEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1798961235 - Control 1052507686 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1182696142">
           <source>Specifies external reference for vendor</source>
@@ -15348,15 +15278,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control _RemainingAmt - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2634877682 - Action 394351785 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
+        <trans-unit id="PageExtension 2634877682 - Action 1720920161 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Opens up the related container for the purchase receipt</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purchase Receipt - Action Container - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purchase Receipt - Action TFBContainer - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2634877682 - Action 394351785 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
+        <trans-unit id="PageExtension 2634877682 - Action 1720920161 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Container</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purchase Receipt - Action Container - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purchase Receipt - Action TFBContainer - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2634877682 - Control 1658766258 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2344297010">
           <source>Attachments</source>
@@ -15389,7 +15319,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action TFBCorrectExternalDocNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Action 940523622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
-          <source>Correct External Document No.</source>
+          <source>Update External Document No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action TFBCorrectExternalDocNo - Property Caption</note>
         </trans-unit>
@@ -15402,6 +15332,11 @@
           <source>Send POD Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action TFBSendPODRequest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Action 489317450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Update</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Action Category_TFBUpdate - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Control 2973329650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Opens up a task list</source>
@@ -15478,15 +15413,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control PODInfo - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1167537379 - Action 747683197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
+        <trans-unit id="PageExtension 1167537379 - Action 3167560065 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Emails a details notification about the shipment to the customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Action Notify - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Action TFBNotifyCustomer - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1167537379 - Action 747683197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
+        <trans-unit id="PageExtension 1167537379 - Action 3167560065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Email shipment notification</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Action Notify - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Action TFBNotifyCustomer - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1167537379 - Control 3825379891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Specifies 3PL booking number reference</source>
@@ -15518,25 +15453,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action TFBOpenOrder - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1833076718 - Action 747683197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+        <trans-unit id="PageExtension 1833076718 - Action 3167560065 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Email shipment notification to customer that shipment has occured</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action Notify - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action TFBNotifyCustomer - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1833076718 - Action 747683197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
-          <source>Email notification</source>
+        <trans-unit id="PageExtension 1833076718 - Action 3167560065 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+          <source>Email Customer Notification</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action Notify - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action TFBNotifyCustomer - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1833076718 - Action 2545456069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+        <trans-unit id="PageExtension 1833076718 - Action 4056199995 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Email certificates of analysis to customer for items in shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action Send CoA(s) - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action TFBSendCOA - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1833076718 - Action 2545456069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
+        <trans-unit id="PageExtension 1833076718 - Action 4056199995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Send CoA(s)</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action Send CoA(s) - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipments - Action TFBSendCOA - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1833076718 - Control 2202932243 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1840709038">
           <source>Specifies sales order number for the shipment</source>
@@ -15734,7 +15669,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Action TFBCorrectExternalDocNo - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3393324683 - Action 940523622 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
-          <source>Correct Vendor Invoice No.</source>
+          <source>Update Invoice No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Action TFBCorrectExternalDocNo - Property Caption</note>
         </trans-unit>
@@ -15772,6 +15707,11 @@
           <source>Modified due date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Control TFBDueDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3393324683 - Change 1282942290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4048657685">
+          <source>Update Other Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Change Update Document - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1842795387 - Control 520273518 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461434549">
           <source>Specifies the corresponding container number</source>
@@ -15984,7 +15924,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Invoice - Action TFBCopyFromInboundDoc - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3037618038 - Action 1822369082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2437096118">
-          <source>Copy from inbound document</source>
+          <source>Copy From Inbound Document</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Invoice - Action TFBCopyFromInboundDoc - Property Caption</note>
         </trans-unit>
@@ -16063,10 +16003,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Action Create &amp;Task - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1856114087 - Action 3858291599 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+        <trans-unit id="PageExtension 1856114087 - Action 1117928807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Opens or creates a new container entry</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Action &amp;Container Entry - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Action TFB&amp;ContainerEntry - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1856114087 - Action 1117928807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
+          <source>Inbound Shipment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order - Action TFB&amp;ContainerEntry - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1856114087 - Control 2973329650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 387971303">
           <source>Opens up a task list</source>
@@ -16468,20 +16413,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Lines - Control TFB CustomerName - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3575399586 - Action 2398205503 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+        <trans-unit id="PageExtension 3575399586 - Action 4056199995 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Send certificates of analysis for sales order if lots are specified</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action Send CoA's - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBSendCOA - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3575399586 - Action 940793929 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+        <trans-unit id="PageExtension 3575399586 - Action 4056199995 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>TFB Send CoA</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBSendCOA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Action 205603635 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Create a new marketing task for the contact.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action Create &amp;Task - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBCreateTask - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3575399586 - Action 940793929 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+        <trans-unit id="PageExtension 3575399586 - Action 205603635 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Create &amp;Task</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action Create &amp;Task - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBCreateTask - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3575399586 - Control 2973329650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Opens up a task list</source>
@@ -16517,6 +16467,11 @@
           <source>Specifies customer price group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Archive - Control Price Group Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1113301824 - Control 3691525173 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2079885696">
+          <source>Specifies instructions that were specific to this order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Archive - Control TFB Instructions - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 86912555 - Control 3410988599 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4117186890">
           <source>Specifies the net weight of the line item</source>
@@ -17078,15 +17033,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Action TFB ZoneModifiers - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1765208732 - Action 3804426408 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+        <trans-unit id="PageExtension 1765208732 - Action 2437781920 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Send order update to vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Action SendOrderUpdateByEmail - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Action TFBSendOrderUpdateByEmail - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1765208732 - Action 3804426408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+        <trans-unit id="PageExtension 1765208732 - Action 2437781920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Send order update</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Action SendOrderUpdateByEmail - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Card - Action TFBSendOrderUpdateByEmail - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1765208732 - Control 4176847048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Specifies the type of vendor. This will support which fields are shown and when the vendor is listed</source>
@@ -17173,15 +17128,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor Ledger Entries - Control Original Currency Factor - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1202792570 - Action 3804426408 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
+        <trans-unit id="PageExtension 1202792570 - Action 2437781920 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Sends an order update to the selected vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Action SendOrderUpdateByEmail - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Action TFBSendOrderUpdateByEmail - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1202792570 - Action 3804426408 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
+        <trans-unit id="PageExtension 1202792570 - Action 2437781920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Send order update</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Action SendOrderUpdateByEmail - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Action TFBSendOrderUpdateByEmail - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1202792570 - Action 1303082024 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Updates all of the contact IDs against related Vendors</source>
@@ -18332,6 +18287,11 @@
           <source>Start Date</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Header - Field TFB Start Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2051541175 - Field 3691525173 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1948788855">
+          <source>Instructions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Header Archive - Field TFB Instructions - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3817895786 - Field 4009555772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Brokerage Shipment</source>

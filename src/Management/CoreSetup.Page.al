@@ -9,16 +9,23 @@ page 50173 "TFB Core Setup"
     UsageCategory = Tasks;
     ApplicationArea = All;
 
+
     layout
     {
         area(content)
         {
             group(NumberSeries)
             {
+                Caption = 'Additional Number Series';
                 field("Brokerage Shipment Nos."; Rec."Brokerage Shipment Nos.")
                 {
                     ToolTip = 'Specifies the value of the Brokerage Shipment Nos. field.';
                 }
+                field("Brokerage Contract Nos."; Rec."Brokerage Contract Nos.")
+                {
+                    ToolTip = 'Specifies the value of the Brokerage Contract Nos. field.';
+                }
+
                 field("Container Entry Nos."; Rec."Container Entry Nos.")
                 {
                     ToolTip = 'Specifies the value of the Cont. Entry No. field.';
@@ -51,8 +58,9 @@ page 50173 "TFB Core Setup"
                         ToolTip = 'Specifies the value of the ABS Container Name for Lot Samples field.';
                     }
                 }
-                group("Proof of Deliveries")
+                group("ProofofDeliveries")
                 {
+                    Caption = 'Proof of Delivery';
                     field("ABS POD Access Key"; Rec."ABS POD Access Key")
                     {
                         ToolTip = 'Specifies the value of the ABS Shared Access Key field.';
@@ -69,78 +77,90 @@ page 50173 "TFB Core Setup"
             }
             group(SalesReceivables)
             {
-                field("ASN Def. Job Resp. Rec."; Rec."ASN Def. Job Resp. Rec.")
+                Caption = 'Sales & Receivable';
+
+
+                group(LeadMgmt)
                 {
-                    ToolTip = 'Specifies the value of the Shipment Notification Job Resp. field.';
-                }
-                field("Auto Shipment Notification"; Rec."Auto Shipment Notification")
-                {
-                    ToolTip = 'Specifies the value of the Notify Customer on Shipment field.';
-                }
-                field("Brokerage Contract Nos."; Rec."Brokerage Contract Nos.")
-                {
-                    ToolTip = 'Specifies the value of the Brokerage Contract Nos. field.';
+                    Caption = 'Lead Management';
+                    field("Lead Status"; Rec."Lead Status")
+                    {
+                        ToolTip = 'Specifies the value of the Lead Status Default field.';
+                    }
+                    field("Prospect Status - New"; Rec."Prospect Status - New")
+                    {
+                        ToolTip = 'Specifies the value of the Prospect (New) Status Default field.';
+                    }
+                    field("Prospect Status - Opp"; Rec."Prospect Status - Opp")
+                    {
+                        ToolTip = 'Specifies the value of the Prospect (Opportunity) Status Default field.';
+                    }
+                    field("Prospect Status - Quote"; Rec."Prospect Status - Quote")
+                    {
+                        ToolTip = 'Specifies the value of the Prospect (Quote) Status Default field.';
+                    }
+                    field("Converted Status"; Rec."Converted Status")
+                    {
+                        ToolTip = 'Specifies the value of the Customer/Vendor Status Default field.';
+                    }
                 }
 
-                field("Brokerage Default %"; Rec."Brokerage Default %")
+                group(Pricing)
                 {
-                    ToolTip = 'Specifies the value of the Brokerage Default % field.';
-                }
-                field("Brokerage Service Item"; Rec."Brokerage Service Item")
-                {
-                    ToolTip = 'Specifies the value of the Brokerage Service Item field.';
-                }
-
-                field("Converted Status"; Rec."Converted Status")
-                {
-                    ToolTip = 'Specifies the value of the Customer/Vendor Status Default field.';
-                }
-                field("Credit Tolerance"; Rec."Credit Tolerance")
-                {
-                    ToolTip = 'Specifies the value of the Credit Tolerance field.';
-                }
-                field("Def. Customer Price Group"; Rec."Def. Customer Price Group")
-                {
-                    ToolTip = 'Specifies the value of the Def. Cust. Price Group field.';
-                }
-                field("Email Template Active"; Rec."Email Template Active")
-                {
-                    ToolTip = 'Specifies the value of the Email Template Active URL field.';
-                }
-                field("Email Template Test"; Rec."Email Template Test")
-                {
-                    ToolTip = 'Specifies the value of the Email Template Test URL field.';
-                }
-                field("Image URL Pattern"; Rec."Image URL Pattern")
-                {
-                    ToolTip = 'Specifies the value of the Item Image URL Pattern field.';
-                }
-                field("Lead Status"; Rec."Lead Status")
-                {
-                    ToolTip = 'Specifies the value of the Lead Status Default field.';
+                    field("Brokerage Default %"; Rec."Brokerage Default %")
+                    {
+                        ToolTip = 'Specifies the value of the Brokerage Default % field.';
+                    }
+                    field("Brokerage Service Item"; Rec."Brokerage Service Item")
+                    {
+                        ToolTip = 'Specifies the value of the Brokerage Service Item field.';
+                    }
+                    field("Credit Tolerance"; Rec."Credit Tolerance")
+                    {
+                        ToolTip = 'Specifies the value of the Credit Tolerance field.';
+                    }
+                    field("Def. Customer Price Group"; Rec."Def. Customer Price Group")
+                    {
+                        ToolTip = 'Specifies the value of the Def. Cust. Price Group field.';
+                    }
                 }
 
-                field("PL Def. Job Resp. Rec."; Rec."PL Def. Job Resp. Rec.")
+                group(Communications)
                 {
-                    ToolTip = 'Specifies the value of the Price List Job Resp. field.';
+                    field("ASN Def. Job Resp. Rec."; Rec."ASN Def. Job Resp. Rec.")
+                    {
+                        ToolTip = 'Specifies the value of the Shipment Notification Job Resp. field.';
+                    }
+                    field("PL Def. Job Resp. Rec."; Rec."PL Def. Job Resp. Rec.")
+                    {
+                        ToolTip = 'Specifies the value of the Price List Job Resp. field.';
+                    }
+                    field("Auto Shipment Notification"; Rec."Auto Shipment Notification")
+                    {
+                        ToolTip = 'Specifies the value of the Notify Customer on Shipment field.';
+                    }
+                    field("Email Template Active"; Rec."Email Template Active")
+                    {
+                        ToolTip = 'Specifies the value of the Email Template Active URL field.';
+                    }
+                    field("Email Template Test"; Rec."Email Template Test")
+                    {
+                        ToolTip = 'Specifies the value of the Email Template Test URL field.';
+                    }
+
                 }
-                field("Prospect Status - New"; Rec."Prospect Status - New")
-                {
-                    ToolTip = 'Specifies the value of the Prospect (New) Status Default field.';
-                }
-                field("Prospect Status - Opp"; Rec."Prospect Status - Opp")
-                {
-                    ToolTip = 'Specifies the value of the Prospect (Opportunity) Status Default field.';
-                }
-                field("Prospect Status - Quote"; Rec."Prospect Status - Quote")
-                {
-                    ToolTip = 'Specifies the value of the Prospect (Quote) Status Default field.';
-                }
+
+
+
+
+
+
             }
 
 
-            group(ItemSetup)
+            group(Inventory)
             {
+
 
                 field("Item Price Group"; Rec."Item Price Group")
                 {
@@ -159,12 +179,17 @@ page 50173 "TFB Core Setup"
                 {
                     ToolTip = 'Specifies the value of the Quality Docs Subs. Job Resp. field.';
                 }
+                field("Image URL Pattern"; Rec."Image URL Pattern")
+                {
+                    ToolTip = 'Specifies the value of the Item Image URL Pattern field.';
+                }
 
 
             }
 
-            Group(Costings)
+            Group(ItemCostings)
             {
+                Caption = 'Item Costings';
                 GROUP(General)
                 {
 
