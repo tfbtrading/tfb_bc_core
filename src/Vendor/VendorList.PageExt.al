@@ -32,12 +32,11 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
     {
         addafter(PayVendor)
         {
-            action(SendOrderUpdateByEmail)
+            action(TFBSendOrderUpdateByEmail)
             {
                 Caption = 'Send order update';
                 Tooltip = 'Sends an order update to the selected vendor';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
 
@@ -70,7 +69,7 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
 
                     Vendor.SetLoadFields("No.", "TFB Primary Contact Company ID");
                     Vendor.FindSet(true, false);
-                    repeat 
+                    repeat
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Vendor);
                         ContBusRel.SetRange("No.", Vendor."No.");
@@ -79,9 +78,17 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
                             Vendor.Modify();
                         end;
 
-                     until Vendor.Next() = 0;
+                    until Vendor.Next() = 0;
 
                 end;
+            }
+        }
+
+        addlast(Category_Process)
+        {
+            actionref(TFBSendOrderUpdateByEmail_Promoted; TFBSendOrderUpdateByEmail)
+            {
+
             }
         }
     }

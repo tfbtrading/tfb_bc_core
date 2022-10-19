@@ -91,19 +91,44 @@ codeunit 50122 "TFB Sales Mgmt"
     /// </summary>
     /// <param name="DuplicateNotification">Notification.</param>
     /// <returns>Return value of type Text.</returns>
-    procedure OpenExistingSalesOrder(DuplicateNotification: Notification): Text
+
+
+    procedure OpenOpenOrArchivedOrder(DocumentType: Enum "Sales Document Type"; DocumentNo: Code[20])
+
     var
         SalesHeader: Record "Sales Header";
-        SalesOrderPage: Page "Sales Order";
-        SalesOrderSystemID: Guid;
+        SalesOrder: Page "Sales Order";
 
     begin
-        SalesOrderSystemID := DuplicateNotification.GetData('SystemId');
-        SalesHeader.GetBySystemId(SalesOrderSystemID);
-        SalesOrderPage.SetRecord(SalesHeader);
-        SalesOrderPage.Run();
+
+        case SalesHeader.Get(DocumentType, DocumentNo) of
+            True:
+                begin
+                    SalesOrder.SetRecord(SalesHeader);
+                    SalesOrder.Run();
+                end;
+            False:
+                OpenArchivedOrder(DocumentType, DocumentNo);
+
+        end;
     end;
 
+    local procedure OpenArchivedOrder(DocumentType: Enum "Sales Document Type"; DocumentNo: Code[20])
+    var
+        SalesHeaderArchive: Record "Sales Header Archive";
+        SalesOrderArchives: Page "Sales Order Archives";
+
+    begin
+        SalesHeaderArchive.FilterGroup(10);
+        SalesHeaderArchive.SetRange("Document Type", DocumentType);
+        SalesHeaderArchive.SetRange("No.", DocumentNo);
+        SalesHeaderArchive.FilterGroup(0);
+
+        If SalesHeaderArchive.IsEmpty() then exit;
+
+        SalesOrderArchives.SetTableView(SalesHeaderArchive);
+        SalesOrderArchives.Run();
+    end;
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeSalesShptHeaderInsert', '', false, false)]
@@ -439,6 +464,8 @@ codeunit 50122 "TFB Sales Mgmt"
         ItemUoM.Get(Item."No.", Item."Sales Unit of Measure");
 
     end;
+
+
 
     /// <summary>
     /// GetIntelligentLocation.

@@ -175,12 +175,11 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
 
         addafter(PayVendor)
         {
-            action(SendOrderUpdateByEmail)
+            action(TFBSendOrderUpdateByEmail)
             {
                 Caption = 'Send order update';
                 Tooltip = 'Send order update to vendor';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
 
@@ -192,6 +191,14 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                 begin
                     VendorCU.SendOneVendorStatusEmail(Rec."No.");
                 end;
+            }
+        }
+
+        addlast(Category_Process)
+        {
+            actionref(TFBSendOrderUpdateByEmail_Promoted; TFBSendOrderUpdateByEmail)
+            {
+
             }
         }
     }

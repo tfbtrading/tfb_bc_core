@@ -34,6 +34,21 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
             }
         }
 
+        modify("Order No.")
+        {
+
+            trigger OnDrillDown()
+
+
+            var
+                SalesMgmt: CodeUnit "TFB Sales Mgmt";
+            begin
+
+                SalesMgmt.OpenOpenOrArchivedOrder(Enum::"Sales Document Type"::Order, Rec."Order No.");
+
+            end;
+        }
+
     }
 
     actions
@@ -41,14 +56,12 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
         addafter("&Track Package")
 
         {
-            Action(Notify)
+            Action(TFBNotifyCustomer)
             {
                 Caption = 'Email shipment notification';
                 Tooltip = 'Emails a details notification about the shipment to the customer';
                 Image = Email;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ApplicationArea = All;
 
                 trigger OnAction()
@@ -67,6 +80,16 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
 
             }
         }
+
+        addafter("&Track Package_Promoted")
+        {
+            actionref(TFBNotifyCustomer_Promoted; TFBNotifyCustomer)
+            {
+
+            }
+        }
+
+
     }
     var
         ShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";
