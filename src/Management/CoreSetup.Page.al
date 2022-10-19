@@ -38,7 +38,7 @@ page 50173 "TFB Core Setup"
                 Caption = 'Azure Storage Config';
                 group("Lot Samples")
                 {
-                    field("ABS Lot Sample Access Key"; Rec."ABS Lot Sample Access Key")
+                    field("ABS Lot Sample Access Key"; Rec.ABSLotSampleAccessKey)
                     {
                         ToolTip = 'Specifies the value of the ABS Shared Access Key for Lot Samples field.';
                     }
@@ -81,10 +81,7 @@ page 50173 "TFB Core Setup"
                 {
                     ToolTip = 'Specifies the value of the Brokerage Contract Nos. field.';
                 }
-                field("Brokerage Cust. Update"; Rec."Brokerage Cust. Update")
-                {
-                    ToolTip = 'Specifies the value of the Brokerage Cust. Updates field.';
-                }
+
                 field("Brokerage Default %"; Rec."Brokerage Default %")
                 {
                     ToolTip = 'Specifies the value of the Brokerage Default % field.';
@@ -93,7 +90,7 @@ page 50173 "TFB Core Setup"
                 {
                     ToolTip = 'Specifies the value of the Brokerage Service Item field.';
                 }
-              
+
                 field("Converted Status"; Rec."Converted Status")
                 {
                     ToolTip = 'Specifies the value of the Customer/Vendor Status Default field.';
@@ -144,10 +141,7 @@ page 50173 "TFB Core Setup"
 
             group(ItemSetup)
             {
-                field("Certificate of Analysis"; Rec."Certificate of Analysis")
-                {
-                    ToolTip = 'Specifies the value of the Certificate of Analysis field.';
-                }
+
                 field("Item Price Group"; Rec."Item Price Group")
                 {
                     ToolTip = 'Specifies the value of the Item Unit Price Group field.';
@@ -156,10 +150,7 @@ page 50173 "TFB Core Setup"
                 {
                     ToolTip = 'Specifies the value of the MSDS Word Template field.';
                 }
-                field("Show External IDs"; Rec."Show External IDs")
-                {
-                    ToolTip = 'Specifies the value of the Show External Ids field.';
-                }
+
                 field("Specification URL Pattern"; Rec."Specification URL Pattern")
                 {
                     ToolTip = 'Specifies the value of the Specification URL Pattern field.';
@@ -168,10 +159,7 @@ page 50173 "TFB Core Setup"
                 {
                     ToolTip = 'Specifies the value of the Quality Docs Subs. Job Resp. field.';
                 }
-                field("Shipment Status Enquiry"; Rec."Shipment Status Enquiry")
-                {
-                    ToolTip = 'Specifies the value of the Shipment Status Enquiries field.';
-                }
+
 
             }
 

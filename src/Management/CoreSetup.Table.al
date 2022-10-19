@@ -86,21 +86,7 @@ table 50125 "TFB Core Setup"
             AutoFormatExpression = '<precision, 1:2><standard format,0>%';
         }
 
-        field(120; "Brokerage Cust. Update"; Code[10])
-        {
-            Caption = 'Brokerage Cust. Updates';
-            TableRelation = "Interaction Template" WHERE("Attachment No." = CONST(0));
-        }
-        field(130; "Certificate of Analysis"; Code[10])
-        {
-            Caption = 'Certificate of Analysis';
-            TableRelation = "Interaction Template" WHERE("Attachment No." = CONST(0));
-        }
-        field(140; "Shipment Status Enquiry"; Code[10])
-        {
-            Caption = 'Shipment Status Enquiries';
-            TableRelation = "Interaction Template" WHERE("Attachment No." = CONST(0));
-        }
+
 
         field(150; "MSDS Word Template"; Code[30])
         {
@@ -115,7 +101,7 @@ table 50125 "TFB Core Setup"
             DataClassification = CustomerContent;
             Caption = 'ABS Account Name for Lot Samples';
         }
-        field(170; "ABS Lot Sample Access Key"; Text[100])
+        field(170; ABSLotSampleAccessKey; Text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'ABS Shared Access Key for Lot Samples';
@@ -326,11 +312,7 @@ table 50125 "TFB Core Setup"
             DataClassification = CustomerContent;
             Caption = 'ABS Container Name';
         }
-        field(480; "Show External IDs"; Boolean)
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Show External Ids';
-        }
+
     }
 
     keys

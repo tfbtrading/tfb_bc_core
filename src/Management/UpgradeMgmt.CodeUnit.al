@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            FixLotSampleStatusRecord();
+            TransferSetupFields();
 
 
     end;
@@ -42,7 +42,93 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '20.0.1.2'))
+        Exit((GetInstallingVersionNo() = '21.0.0.0'))
+    end;
+
+    local procedure TransferSetupFields(): Boolean
+
+
+    var
+        CoreSetup: Record "TFB Core Setup";
+        CostingSetup: Record "TFB Costings Setup";
+        NotifySetup: Record "TFB Notification Email Setup";
+        SalesSetup: Record "Sales & Receivables Setup";
+        PurchSetup: Record "Purchases & Payables Setup";
+        ItemSetup: Record "Inventory Setup";
+        InteractionSetup: Record "Interaction Template Setup";
+        UserSetup: Record "User Setup";
+
+    begin
+
+        CoreSetup.InsertIfNotExists();
+
+
+
+
+        If CostingSetup.Get() then begin
+            CoreSetup."Cust. Decl. Item Charge" := CostingSetup."Cust. Decl. Item Charge";
+            CoreSetup."Default Postal Zone" := CostingSetup."Default Postal Zone";
+            CoreSetup.ExWarehouseEnabled := CostingSetup.ExWarehouseEnabled;
+            CoreSetup.ExWarehousePricingGroup := CostingSetup.ExWarehousePricingGroup;
+            CoreSetup."Fumigation Fees Item Charge" := CostingSetup."Fumigation Fees Item Charge";
+            CoreSetup."Import Duty Rate" := CostingSetup."Import Duty Rate";
+            CoreSetup."Ocean Freight Item Charge" := CostingSetup."Ocean Freight Item Charge";
+            CoreSetup."Port Cartage Item Charge" := CostingSetup."Port Cartage Item Charge";
+            CoreSetup."Port Documents" := CostingSetup."Port Documents";
+            CoreSetup."Quarantine Fees Item Charge" := CostingSetup."Quarantine Fees Item Charge";
+            CoreSetup."Unpack Item Charge" := CostingSetup."Unpack Item Charge";
+        end;
+
+        if ItemSetup.Get() then begin
+
+            CoreSetup.ABSLotSampleAccessKey := ItemSetup."TFB ABS Lot Sample Access Key";
+            CoreSetup."ABS Lot Sample Account" := ItemSetup."TFB ABS Lot Sample Account";
+            CoreSetup."ABS Lot Sample Container" := ItemSetup."TFB ABS Lot Sample Container";
+            CoreSetup."MSDS Word Template" := ItemSetup."TFB MSDS Word Template";
+        end;
+
+        if PurchSetup.Get() then
+            CoreSetup."Container Entry Nos." := PurchSetup."TFB Container Entry Nos.";
+
+        if SalesSetup.Get() then begin
+            CoreSetup."ABS POD Access Key" := SalesSetup."TFB ABS POD Access Key";
+            CoreSetup."ABS POD Account" := SalesSetup."TFB ABS POD Account";
+            CoreSetup."ABS POD Container" := SalesSetup."TFB ABS POD Container";
+            CoreSetup."ASN Def. Job Resp. Rec." := SalesSetup."TFB ASN Def. Job Resp. Rec.";
+            CoreSetup."Auto Shipment Notification" := SalesSetup."TFB Auto Shipment Notification";
+            CoreSetup."Brokerage Contract Nos." := SalesSetup."TFB Brokerage Contract Nos.";
+            CoreSetup."Brokerage Default %" := SalesSetup."Brokerage Default %";
+            CoreSetup."Brokerage Service Item" := SalesSetup."TFB Brokerage Service Item";
+            CoreSetup."Brokerage Shipment Nos." := SalesSetup."TFB Brokerage Shipment Nos.";
+            CoreSetup."Converted Status" := SalesSetup."TFB Converted Status";
+            CoreSetup."Credit Tolerance" := SalesSetup."TFB Credit Tolerance";
+            CoreSetup."Def. Customer Price Group" := SalesSetup."TFB Def. Customer Price Group";
+            CoreSetup."Image URL Pattern" := SalesSetup."TFB Image URL Pattern";
+            CoreSetup."Item Price Group" := SalesSetup."TFB Item Price Group";
+            CoreSetup."Lead Status" := SalesSetup."TFB Lead Status";
+            CoreSetup."PL Def. Job Resp. Rec." := SalesSetup."TFB PL Def. Job Resp. Rec.";
+            CoreSetup."Posted Sample Request Nos." := SalesSetup."TFB Posted Sample Request Nos.";
+            CoreSetup."Price List Def. Job Resp." := SalesSetup."TFB Price List Def. Job Resp.";
+            CoreSetup."Prospect Status - New" := SalesSetup."TFB Prospect Status - New";
+            CoreSetup."Prospect Status - Opp" := SalesSetup."TFB Prospect Status - Opp";
+            CoreSetup."Prospect Status - Quote" := SalesSetup."TFB Prospect Status - Quote";
+            CoreSetup."QDS Def. Job Resp." := SalesSetup."TFB QDS Def. Job Resp.";
+            CoreSetup."Sample Request Nos." := SalesSetup."TFB Sample Request Nos.";
+            CoreSetup."Specification URL Pattern" := SalesSetup."TFB Specification URL Pattern";
+        end;
+
+        If NotifySetup.Get() then begin
+            CoreSetup."Test Table" := NotifySetup."Test Table";
+            CoreSetup."Email Template Active" := NotifySetup."Email Template Active";
+            CoreSetup."Email Template Test" := NotifySetup."Email Template Test";
+        end;
+
+
+
+        CoreSetup.Modify(true);
+
+
+
     end;
 
     local procedure FixLotSampleStatusRecord(): Boolean
@@ -62,7 +148,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-  
+
 
     procedure CopyQualityAttachToPersBlob()
 
@@ -124,7 +210,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
 
 
-    
+
 
     local procedure UpdateSystemIDForForexMgmg()
     var
@@ -150,5 +236,5 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
-    
+
 }
