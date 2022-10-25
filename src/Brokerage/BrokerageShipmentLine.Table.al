@@ -190,7 +190,7 @@ table 50227 "TFB Brokerage Shipment Line"
         BrokerageContract: record "TFB Brokerage Contract";
         BrokerageContractLine: record "TFB Brokerage Contract Line";
         BrokerageShipment: record "TFB Brokerage Shipment";
-        ItemRecord: record Item;
+        Item: record Item;
 
         BrokerageCodeUnit: Codeunit "TFB Brokerage Mgmt";
 
@@ -198,12 +198,12 @@ table 50227 "TFB Brokerage Shipment Line"
     begin
         BrokerageShipment.get("Document No.");
 
-        if (BrokerageContract.get(BrokerageShipment."Contract No.")) and (BrokerageContractLine.get(BrokerageShipment."Contract No.", "Item No.")) and (ItemRecord.Get("Item No.")) and (Quantity > 0) then begin
+        if (BrokerageContract.get(BrokerageShipment."Contract No.")) and (BrokerageContractLine.get(BrokerageShipment."Contract No.", "Item No.")) and (Item.Get("Item No.")) and (Quantity > 0) then begin
 
             "Brokerage Fee" := BrokerageCodeUnit.CalculateBrokerage("Item No.", Quantity, BrokerageContractLine."Agreed Price", BrokerageShipment."Contract No.");
             "Agreed Price" := BrokerageContractLine."Agreed Price";
 
-            "Total MT" := (ItemRecord."Net Weight" * Quantity) / 1000;
+            "Total MT" := (Item."Net Weight" * Quantity) / 1000;
             Amount := BrokerageContractLine."Agreed Price" * "Total MT";
         end
         else begin

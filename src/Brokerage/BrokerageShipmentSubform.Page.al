@@ -59,11 +59,7 @@ page 50228 "TFB Brokerage Shipment Subform"
                     ToolTip = 'Specifies quantity for line item';
                     Visible = not UsingBulkers;
 
-                    trigger OnValidate()
 
-                    begin
-                        CurrPage.Update(false);
-                    end;
 
                 }
 
