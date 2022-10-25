@@ -3523,6 +3523,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Brokerage Mgmt - Method SendOneBrokerageUpdateEmail - NamedType TitleTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 4103780380 - Method 627622969 - NamedType 1689235809" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup Core TFB</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Core Application Install - Method AddGuidedExperienceItems - NamedType AssistedSetupDescriptionTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4103780380 - Method 627622969 - NamedType 2507620317" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Core Application Install - Method AddGuidedExperienceItems - NamedType AssistedSetupShortTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 4103780380 - Method 627622969 - NamedType 3160010795" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Extension Setup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Core Application Install - Method AddGuidedExperienceItems - NamedType AssistedSetupTitleTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3769070428 - Method 2624807413 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reviewing Items: #1#### @2@@@@</source>
           <note from="Developer" annotates="general" priority="2">%1 = Item No and %2 = Item Description</note>
@@ -7153,6 +7168,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control ABS Lot Sample Container - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 3570238313 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Proof of Delivery</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control ProofofDeliveries - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1109046048 - Control 901778572 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the ABS Shared Access Key field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7167,6 +7187,36 @@
           <source>Specifies the value of the ABS Container Name field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control ABS POD Container - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 4003703248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Item Image URL Pattern field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Image URL Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2536906153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Item Unit Price Group field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Item Price Group - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2405338385 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the MSDS Word Template field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control MSDS Word Template - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 4161933350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quality Docs Subs. Job Resp. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control QDS Def. Job Resp. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 527448834 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Specification URL Pattern field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Specification URL Pattern - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 4240073327 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Costings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control ItemCostings - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 867660531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Charge Allocations</source>
@@ -7238,25 +7288,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control mport Duty Rate - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 2536906153 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Item Unit Price Group field.</source>
+        <trans-unit id="Page 1109046048 - Control 1833901164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Additional Number Series</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Item Price Group - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control NumberSeries - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 2405338385 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the MSDS Word Template field.</source>
+        <trans-unit id="Page 1109046048 - Control 2501984570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Brokerage Contract Nos. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control MSDS Word Template - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 4161933350 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Quality Docs Subs. Job Resp. field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control QDS Def. Job Resp. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 527448834 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Specification URL Pattern field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Specification URL Pattern - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Contract Nos. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 2523501760 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Brokerage Shipment Nos. field.</source>
@@ -7278,6 +7318,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Sample Request Nos. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 4112797369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales &amp; Receivable</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control SalesReceivables - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1109046048 - Control 1739816574 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Shipment Notification Job Resp. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7287,36 +7332,6 @@
           <source>Specifies the value of the Notify Customer on Shipment field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Auto Shipment Notification - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 2501984570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Brokerage Contract Nos. field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Contract Nos. - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 158516770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Brokerage Default % field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Default % - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 1298953668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Brokerage Service Item field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Service Item - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 3990334814 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Customer/Vendor Status Default field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Converted Status - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 584100200 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Credit Tolerance field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Credit Tolerance - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 1348113953 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Def. Cust. Price Group field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Def. Customer Price Group - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 927772924 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Email Template Active URL field.</source>
@@ -7328,20 +7343,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Email Template Test - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 4003703248 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Item Image URL Pattern field.</source>
+        <trans-unit id="Page 1109046048 - Control 1810330894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price List Job Resp. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Image URL Pattern - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control PL Def. Job Resp. Rec. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2653441561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Management</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control LeadMgmt - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 3990334814 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Customer/Vendor Status Default field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Converted Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 909697316 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Lead Status Default field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Lead Status - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 1109046048 - Control 1810330894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the value of the Price List Job Resp. field.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control PL Def. Job Resp. Rec. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 1683397931 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Prospect (New) Status Default field.</source>
@@ -7357,6 +7377,26 @@
           <source>Specifies the value of the Prospect (Quote) Status Default field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Prospect Status - Quote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 158516770 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Brokerage Default % field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Default % - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 1298953668 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Brokerage Service Item field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Brokerage Service Item - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 584100200 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Credit Tolerance field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Credit Tolerance - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 1348113953 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Def. Cust. Price Group field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Def. Customer Price Group - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2735775500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Update Invoice External Document No.</source>

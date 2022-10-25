@@ -58,6 +58,8 @@ pageextension 50100 "TFB Det. Vendor Ledg. Entries" extends "Detailed Vendor Led
 
                 begin
                     VendorLedger.GetAppliedVendLedgerEntries(TempAppliedVendLedgerEntries, Rec."Vendor Ledger Entry No.");
+                    If TempAppliedVendLedgerEntries.IsEmpty() then exit;
+
                     VendorLedgerEntries.SetRecord(TempAppliedVendLedgerEntries);
                     VendorLedgerEntries.Run();
                 end;
