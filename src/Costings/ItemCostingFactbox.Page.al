@@ -144,7 +144,7 @@ page 50102 "TFB Item Costing Factbox"
         CCU: CodeUnit "TFB Costing Mgmt";
         PricingLogic: CodeUnit "TFB Pricing Calculations";
         PriceManagement: CodeUnit "Price Calculation - V16";
-
+        PriceCalculationSetup: Record "Price Calculation Setup";
     begin
 
         clear(_CurrentLandedCost);
@@ -179,21 +179,19 @@ page 50102 "TFB Item Costing Factbox"
         TempPriceListLine."Source No." := Rec."Vendor No.";
         TempPriceListLine."Unit of Measure Code" := Rec."Base Unit of Measure";
         TempPriceListLine."Starting Date" := today;
-
-        If PriceManagement.FindPrice(TempPriceListLine, false) then
-            _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", TempPriceListLine."Direct Unit Cost")
-        else
-            _CurrPurchPrice := 0;
+        //TODO: TO be fixed with working price management. Currently errors due to interface not being initialised.
+        /*  PriceManagement.Init();
+         If PriceManagement.FindPrice(TempPriceListLine, false) then
+             _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", TempPriceListLine."Direct Unit Cost")
+         else
+             _CurrPurchPrice := 0; */
     end;
 
-    trigger OnOpenPage()
 
-    begin
-        SalesSetup.Get();
-    end;
+
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+
         _CurrentLandedCost: Decimal;
         _CurrPricePerKg: Decimal;
         _CostingPricePerKg: Decimal;
