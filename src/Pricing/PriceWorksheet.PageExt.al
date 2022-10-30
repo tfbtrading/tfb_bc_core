@@ -119,8 +119,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
                 Caption = 'Suggest based on item costings';
                 Image = CostBudget;
                 Ellipsis = true;
-                Promoted = True;
-                PromotedCategory = Process;
+
                 ToolTip = 'Add suggested sales prices based on item costing worksheets';
 
                 trigger OnAction()
@@ -148,6 +147,14 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
 
             }
 
+        }
+
+        addfirst(Promoted)
+        {
+            actionref(TFBCopyItemCostings_Promoted; TFBCopyItemCostings)
+            {
+
+            }
         }
     }
 

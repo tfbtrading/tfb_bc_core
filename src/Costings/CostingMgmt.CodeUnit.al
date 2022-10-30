@@ -701,10 +701,10 @@ codeunit 50304 "TFB Costing Mgmt"
         PriceListHeader."Allow Updating Defaults" := false; // to copy defaults
         ToPriceListLine.CopyFrom(PriceListHeader);
         ToPriceListLine."Amount Type" := "Price Amount Type"::Price;
-        ToPriceListLine.Validate("Minimum Quantity", 0);
-        ToPriceListLine.validate("Starting Date", WorkDate());
-        ToPriceListLine.validate("Source Type", ToPriceListLine."Source Type"::"Customer Price Group");
-        ToPriceListLine.validate("Source No.", customerPriceGroup);
+        ToPriceListLine."Minimum Quantity" := 0;
+        ToPriceListLine."Starting Date" := WorkDate();
+        ToPriceListLine."Source Type" := ToPriceListLine."Source Type"::"Customer Price Group";
+        ToPriceListLine."Source No." := customerPriceGroup;
         ToPriceListLine.CopyFrom(PriceAsset);
         ToPriceListLine.Validate("Unit Price", ItemCostingLine."Price (Base)");
 
