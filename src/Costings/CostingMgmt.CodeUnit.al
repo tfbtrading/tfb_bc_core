@@ -654,7 +654,7 @@ codeunit 50304 "TFB Costing Mgmt"
                                             If AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, false) then begin
 
                                                 ToPriceListLine := FromPriceListLine;
-                                                ToPriceListLine.validate("Ending Date", DayBefore);
+                                                ToPriceListLine."Ending Date" := DayBefore;
                                                 If WorkSheet then
                                                     CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
                                                 else
