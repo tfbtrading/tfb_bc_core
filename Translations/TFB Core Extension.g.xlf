@@ -11178,6 +11178,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - View Ready to Ship - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3931092162 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New,Process,Item,Navigation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Post Dropship from Sale - Property PromotedActionCategories</note>
+        </trans-unit>
         <trans-unit id="Page 3931092162 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Post drop ship sales lines</source>
           <note from="Developer" annotates="general" priority="2"></note>

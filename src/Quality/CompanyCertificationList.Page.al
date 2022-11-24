@@ -178,7 +178,7 @@ page 50149 "TFB Company Certification List"
                 Caption = 'Upload Attachment';
 
                 Image = Import;
-                Enabled = (AttachmentExists = false);
+                Enabled = true;
 
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
@@ -439,7 +439,8 @@ page 50149 "TFB Company Certification List"
 
     begin
 
-
+        If AttachmentExists then
+            if not Confirm('Attachment already exist - replace?', true) then exit;
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
 
