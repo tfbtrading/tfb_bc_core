@@ -228,11 +228,46 @@ page 50107 "TFB Vendor Certification List"
 
             }
 
+            action("ReplaceFile")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = DocumentEdit;
+                Enabled = AttachmentExists;
+                ToolTip = 'Removes current attachment and replace with new file';
+
+                trigger OnAction()
+
+                begin
+                    HandleReplaceFile();
+                end;
+
+            }
+            action("RemoveFile")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = Delete;
+                Enabled = AttachmentExists;
+                ToolTip = 'Remove current attachment';
+
+                trigger OnAction()
+
+                begin
+                    HandleRemoveFile();
+                end;
+
+            }
+
 
         }
         area(Promoted)
         {
             actionref(UploadAttach_Promoted; UploadAttach)
+            {
+
+            }
+            actionRef(ReplaceFile_Promoted; ReplaceFile)
             {
 
             }
@@ -379,7 +414,7 @@ page 50107 "TFB Vendor Certification List"
 
     end;
 
-    local procedure ReplaceFile()
+    local procedure HandleReplaceFile()
 
     var
         FileManagement: CodeUnit "File Management";
@@ -510,7 +545,7 @@ page 50107 "TFB Vendor Certification List"
             end;
     end;
 
-    local procedure RemoveFile()
+    local procedure HandleRemoveFile()
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";

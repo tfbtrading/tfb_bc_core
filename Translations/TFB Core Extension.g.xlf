@@ -13148,20 +13148,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method AttachFile - NamedType ExtFilterTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Method 565754252 - NamedType 3865442186" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select Certificate File to Upload</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileDialogTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method HandleReplaceFile - NamedType FileDialogTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Method 565754252 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType FileFilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method HandleReplaceFile - NamedType FileFilterTxt</note>
         </trans-unit>
-        <trans-unit id="Page 3127187514 - Method 2862826902 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3127187514 - Method 565754252 - NamedType 4161182907" size-unit="char" translate="yes" xml:space="preserve">
           <source>pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method ReplaceFile - NamedType ExtFilterTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Method HandleReplaceFile - NamedType ExtFilterTxt</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Method 2390587858 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
@@ -13262,6 +13262,16 @@
           <source>Download Attachment</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action DownloadAttach - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 107595884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remove current attachment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action RemoveFile - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3127187514 - Action 2862826902 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Removes current attachment and replace with new file</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Vendor Certification List - Action ReplaceFile - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3127187514 - Action 4119456001 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send one or more selected vendor certificates based on a prompt for a contact</source>
@@ -15283,15 +15293,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Item Tracking Lines - Action TFBItemTracking - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2041089306 - Control 1246077090 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
-          <source>Specifies the GST% applied to the line</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control VAT % - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2041089306 - Control 1844012642 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
+        <trans-unit id="PageExtension 2041089306 - Control 3153264100 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
           <source>Specifies the GST posting group to the line</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control VAT Bus. Posting Group - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Purch Inv Subform - Control TFBVatBusPostingGroup - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2041089306 - Control 3919711185 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2410131092">
           <source>Specifies cost in vendors price unit</source>
