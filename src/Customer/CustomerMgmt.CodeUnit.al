@@ -112,16 +112,21 @@ codeunit 50120 "TFB Customer Mgmt"
         RepSelEmail: Record "Report Selections";
         Customer: Record Customer;
         CustomerLayouts: Record "Custom Report Selection";
+        CustomReportSelection: Record "Custom Report Selection";
+        ReportLayoutSelection: Record "Report Layout Selection";
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         TempBlobCU: Codeunit "Temp Blob";
         TempBlobEmail: CodeUnit "Temp Blob";
+        Base64Convert: CodeUnit "Base64 Convert";
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
         EmailScenEnum: Enum "Email Scenario";
         EmailID: Text;
+        Base64: Text;
+
         IStream: InStream;
         OStream: OutStream;
         I2Stream: InStream;
@@ -131,6 +136,7 @@ codeunit 50120 "TFB Customer Mgmt"
         SubjectNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         Recipients: List of [Text];
+
 
     begin
 
@@ -194,11 +200,14 @@ codeunit 50120 "TFB Customer Mgmt"
                 RepSelEmail.SetRange("Use for Email Body", true);
 
                 If RepSelEmail.FindFirst() then begin
-                    O2Stream := TempBlobCU.CreateOutStream();
-                    Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, O2Stream, VarEmailRecordRef);
-                    I2Stream := TempBlobCU.CreateInStream();
+                    ReportLayoutSelection.SetTempLayoutSelected(RepSelEmail."Email Body Layout Code");
+                    TempBlobEmail.CreateOutStream(O2Stream);
+                    If not Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, O2Stream, VarEmailRecordRef) then
+                        Message('No content returned for email body by report');
+                    TempBlobEmail.CreateInStream(I2Stream);
                     HTMLBuilder.Clear();
-                    I2Stream.ReadText(HTML);
+                    I2Stream.Read(HTML);
+
                     HTMLBuilder.Append(HTML);
                 end
                 else

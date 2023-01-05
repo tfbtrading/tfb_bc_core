@@ -19308,10 +19308,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Brokerage Shipment - Vendor - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 3980588416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Company Certifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 1499214308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Customer Status - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 3123961560 - EnumValue 3258612407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inbound Shipment - Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Inbound Shipment - Warehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 899904521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Vendor Certifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 807647628 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Vendor Status - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3123961560 - EnumValue 3282722852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Warehouse Notification</source>
