@@ -49,11 +49,14 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
         RepSelSales: Record "Report Selections";
+        RepSelEmail: Record "Report Selections";
         Common: CodeUnit "TFB Common Library";
         XmlParameters: Text;
         SubTitleTxt: Label 'Please find below your latest statement';
+        EditEmailMsg: Label 'Edit email before sending?';
         TitleTxt: Label 'Statement';
         HTMLTemplate: Text;
+
 
     begin
 
@@ -63,10 +66,11 @@ codeunit 50120 "TFB Customer Mgmt"
 
         HTMLTemplate := Common.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
+
         If RepSelSales.FindFirst() then
             XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
 
-        SendCustomerStatement(CustomerNo, Today(), XmlParameters, HTMLTemplate);
+        SendCustomerStatement(CustomerNo, Today(), XmlParameters, HTMLTemplate, Confirm(EditEmailMsg, true));
     end;
 
     procedure SendCustomerStatementBatch()
@@ -94,23 +98,25 @@ codeunit 50120 "TFB Customer Mgmt"
         if Customer.FindSet() then
             repeat
 
-                SendCustomerStatement(Customer."No.", Today(), XmlParameters, HTMLTemplate);
+                SendCustomerStatement(Customer."No.", Today(), XmlParameters, HTMLTemplate, false);
             until Customer.Next() < 1;
     end;
 
 
 
-    procedure SendCustomerStatement(CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text): Boolean
+    procedure SendCustomerStatement(CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text; EditEmail: Boolean): Boolean
 
     var
 
         RepSelSales: Record "Report Selections";
+        RepSelEmail: Record "Report Selections";
         Customer: Record Customer;
         CustomerLayouts: Record "Custom Report Selection";
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         TempBlobCU: Codeunit "Temp Blob";
+        TempBlobEmail: CodeUnit "Temp Blob";
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
@@ -118,6 +124,9 @@ codeunit 50120 "TFB Customer Mgmt"
         EmailID: Text;
         IStream: InStream;
         OStream: OutStream;
+        I2Stream: InStream;
+        O2Stream: OutStream;
+        HTML: Text;
         FileNameBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
@@ -180,12 +189,29 @@ codeunit 50120 "TFB Customer Mgmt"
                 Recipients := EmailID.Split(';');
                 Clear(HTMLBuilder);
                 HTMLBuilder.Append(HTMLTemplate);
-                GenerateCustomerStatementContent(Customer, HTMLBuilder);
+
+                RepSelEmail.SetRange(Usage, RepSelEmail.Usage::"C.Statement");
+                RepSelEmail.SetRange("Use for Email Body", true);
+
+                If RepSelEmail.FindFirst() then begin
+                    O2Stream := TempBlobCU.CreateOutStream();
+                    Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, OStream, VarEmailRecordRef);
+                    I2Stream := TempBlobCU.CreateInStream();
+                    HTMLBuilder.Clear();
+                    I2Stream.ReadText(HTML);
+                    HTMLBuilder.Append(HTML);
+                end
+                else
+                    GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
                 EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', IStream);
                 Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
-                Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
+
+                If EditEmail then
+                    Email.OpenInEditorModally(EmailMessage, EmailScenEnum::"Customer Statement")
+                else
+                    Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
 
 
             end;

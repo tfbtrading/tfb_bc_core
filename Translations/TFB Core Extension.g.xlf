@@ -3588,6 +3588,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Customer Mgmt - Method SendStatementToOneCustomer - NamedType SubTitleTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2022358305 - Method 3111682982 - NamedType 3048076843" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Edit email before sending?</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Customer Mgmt - Method SendStatementToOneCustomer - NamedType EditEmailMsg</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2022358305 - Method 3111682982 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
           <source>Statement</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11828,6 +11833,46 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel - Containers - Control ReportUsage - Property OptionCaption</note>
         </trans-unit>
+        <trans-unit id="Page 1379879245 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Selection - Misc Notifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 3318038509 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the ID of the email body layout that is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control Email Body Layout Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 3004246684 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a description of the email body layout that is used.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control Email Body Layout Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 3046817188 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the display name of the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control Report Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 1272245069 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the object ID of the report.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control Report ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 4154341761 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a number that indicates where this report is in the printing order.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control Sequence - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 3362749197 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which type of document the report is used for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control ReportUsage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1379879245 - Control 3362749197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Usage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Report Sel. - Notif. - Control ReportUsage - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 998216197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reservation Strategy</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19253,6 +19298,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Order Update Preference - EnumValue OptOut - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 475951419 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Shipment - Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Brokerage Shipment - Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 1071885971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Brokerage Shipment - Vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Brokerage Shipment - Vendor - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 3258612407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inbound Shipment - Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Inbound Shipment - Warehouse - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 3123961560 - EnumValue 3282722852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Notification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Report Sel. Usage Notify - EnumValue Warehouse Notification - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 2492511585 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reservation Method</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19548,35 +19613,40 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Quality Comm Record - EnumValue COA - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 1930130178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 2463632730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Warehouse Email Notification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue N.Warehouse.Notification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 1930130178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Inbound Shipment - Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue P.Inbound.Shipment.Warehouse - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue P.Inbound.Shipment.Warehouse - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 2416040823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 2416040823 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Brokerage Contract</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Brok.Contract - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Brok.Contract - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 3677007185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 3677007185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Brokerage Shipment</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Brok.Shipment - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Brok.Shipment - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 4138928704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 4138928704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Sample Packing Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 1361856706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 1361856706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Sample Request to Supplier</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request.Supplier - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Supplier - Property Caption</note>
         </trans-unit>
-        <trans-unit id="EnumExtension 1092060365 - EnumValue 2645827697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 2645827697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Sample Request to Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB REport Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
         </trans-unit>
         <trans-unit id="PermissionSet 1916448454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Core Permissions TFB PTE</source>
