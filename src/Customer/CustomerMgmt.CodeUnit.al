@@ -195,7 +195,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
                 If RepSelEmail.FindFirst() then begin
                     O2Stream := TempBlobCU.CreateOutStream();
-                    Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, OStream, VarEmailRecordRef);
+                    Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, O2Stream, VarEmailRecordRef);
                     I2Stream := TempBlobCU.CreateInStream();
                     HTMLBuilder.Clear();
                     I2Stream.ReadText(HTML);
