@@ -35,39 +35,19 @@ page 50123 "TFB Purch. Inv. Line Factbox"
 
                     trigger OnDrillDown()
 
-                    var
-                        OpenOrder: Record "Purchase Header";
-                        ArchiveOrder: Record "Purchase Header Archive";
-                        OpenOrderPage: Page "Purchase Order";
-                        ArchiveOrderPage: Page "Purchase Order Archive";
-
                     begin
-
-                        OpenOrder.SetRange("Document Type", OpenOrder."Document Type"::Order);
-                        OpenOrder.SetRange("No.", Rec."Order No.");
-
-                        If OpenOrder.FindFirst() then begin
-
-                            OpenOrderPage.SetRecord(OpenOrder);
-                            OpenOrderPage.Run();
-                        end
-                        else begin
-                            ArchiveOrder.SetRange("Document Type", ArchiveOrder."Document Type"::Order);
-                            ArchiveOrder.SetRange("No.", Rec."Order No.");
-
-                            If ArchiveOrder.FindLast() then begin
-                                ArchiveOrderPage.SetRecord(ArchiveOrder);
-                                ArchiveOrderPage.Run();
-                            end;
-
-                        end;
-
+                        PurchRcptCU.OpenRelatedPurchaseOrder(_OrderNo);
                     end;
                 }
                 field("Drop Shipment"; Rec."Drop Shipment")
                 {
                     ApplicationArea = All;
                     Tooltip = 'Specifies whether the line is part of a drop shipment';
+                }
+                field("Special Order"; Rec."Special Order")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether the line is part of a special order';
                 }
                 field(_SalesOrderNo; _SalesOrderNo)
                 {
@@ -108,14 +88,18 @@ page 50123 "TFB Purch. Inv. Line Factbox"
         if Rec."Receipt No." <> '' then begin
             _SourcedFrom := true;
             If ReceiptLine.Get(Rec."Receipt No.", Rec."Receipt Line No.") then begin
+
                 _OrderNo := ReceiptLine."Order No.";
-                _SalesOrderNo := ReceiptLine."Sales Order No.";
+                _SalesOrderNo := PurchRcptCU.GetSalesOrderReferenceFromReceiptLine(ReceiptLine);
+
             end
         end
         else
             _SourcedFrom := false;
 
     end;
+
+
 
     var
         PurchRcptCU: CodeUnit "TFB Purch. Rcpt. Mgmt";

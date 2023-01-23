@@ -15,6 +15,18 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
     end;
 
+    procedure GetSalesOrderReferenceFromReceiptLine(ReceiptLine: record "Purch. Rcpt. Line"): code[20]
+
+    begin
+        If (ReceiptLine."Special Order Sales No." <> '') and (ReceiptLine."Special Order Sales Line No." > 0) then
+            exit(ReceiptLine."Special Order Sales No.")
+        else
+            if (ReceiptLine."Sales Order No." <> '') and (ReceiptLine."Sales Order Line No." > 0) then
+                exit(ReceiptLine."Sales Order No.")
+            else
+                exit('');
+    end;
+
     procedure OpenRelatedSalesOrder(DocNo: Code[20])
 
     var
@@ -37,6 +49,34 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
             If SOA.FindLast() then
                 PAGE.Run(Page::"Sales Order Archive", SOA);
+
+        end;
+
+
+    end;
+
+    procedure OpenRelatedPurchaseOrder(DocNo: Code[20])
+
+    var
+        Header: Record "Purchase Header";
+        ArchiveHeader: Record "Purchase Header Archive";
+
+    begin
+
+        //Check if sales order is still open
+        Header.SetRange("No.", DocNo);
+        Header.SetRange("Document Type", Header."Document Type"::Order);
+
+        If Header.FindFirst() then
+            PAGE.Run(Page::"Purchase Order", Header)
+
+        else begin
+
+            ArchiveHeader.SetRange("No.", DocNo);
+            ArchiveHeader.SetRange("Document Type", ArchiveHeader."Document Type"::Order);
+
+            If ArchiveHeader.FindLast() then
+                PAGE.Run(Page::"Purchase Order Archive", ArchiveHeader);
 
         end;
 
