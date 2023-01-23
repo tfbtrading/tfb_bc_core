@@ -12,6 +12,7 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
                 Visible = true;
                 Importance = Standard;
                 ToolTip = 'Speciefies the sell-to customer no.';
+                ApplicationArea = all;
 
             }
         }
