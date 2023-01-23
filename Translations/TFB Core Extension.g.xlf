@@ -11608,11 +11608,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3730473282 - Control 121744499 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies whether the line is part of a drop shipment</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control Drop Shipment - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3730473282 - Control 2262176353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the related purchase order</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11623,6 +11618,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control OriginalOrder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3730473282 - Control 3909712678 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the line is part of a drop shipment or special order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control ReceiptLineType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3730473282 - Control 3909712678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Receipt Line Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control ReceiptLineType - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3730473282 - Control 1791729889 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the type of document the line was sourced from</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11632,11 +11637,6 @@
           <source>Sourced from Receipt</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control SourcedFrom - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3730473282 - Control 4011591569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies whether the line is part of a special order</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control Special Order - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3730473282 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the type of line item</source>

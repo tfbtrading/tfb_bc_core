@@ -3,6 +3,19 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
     layout
     {
 
+        addbefore("Sell-to Customer Name")
+        {
+            field(TFBSellToCustomerNo; Rec."Sell-to Customer No.")
+            {
+                Caption = 'Sell-to Customer No.';
+                DrillDown = true;
+                Visible = true;
+                Importance = Standard;
+                ToolTip = 'Speciefies the sell-to customer no.';
+
+            }
+        }
+
         moveafter("Sell-to Customer Name"; "Ship-to Code", "Ship-to Name")
         modify("Ship-to Name")
         {
@@ -47,6 +60,12 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
                 SalesMgmt.OpenOpenOrArchivedOrder(Enum::"Sales Document Type"::Order, Rec."Order No.");
 
             end;
+        }
+
+        modify("Sell-to Customer Name")
+        {
+            DrillDownPageId = "Customer Card";
+            LookupPageId = "Customer Card";
         }
 
     }
