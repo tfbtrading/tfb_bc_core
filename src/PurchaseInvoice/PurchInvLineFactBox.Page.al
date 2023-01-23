@@ -39,15 +39,11 @@ page 50123 "TFB Purch. Inv. Line Factbox"
                         PurchRcptCU.OpenRelatedPurchaseOrder(_OrderNo);
                     end;
                 }
-                field("Drop Shipment"; Rec."Drop Shipment")
+                field(ReceiptLineType; _ReceiptLineType)
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Specifies whether the line is part of a drop shipment';
-                }
-                field("Special Order"; Rec."Special Order")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies whether the line is part of a special order';
+                    Caption = 'Receipt Line Type';
+                    Tooltip = 'Specifies whether the line is part of a drop shipment or special order';
                 }
                 field(_SalesOrderNo; _SalesOrderNo)
                 {
@@ -91,6 +87,7 @@ page 50123 "TFB Purch. Inv. Line Factbox"
 
                 _OrderNo := ReceiptLine."Order No.";
                 _SalesOrderNo := PurchRcptCU.GetSalesOrderReferenceFromReceiptLine(ReceiptLine);
+                _ReceiptLineType := PurchRcptCU.GetReceiptLineType(ReceiptLine);
 
             end
         end
@@ -106,4 +103,5 @@ page 50123 "TFB Purch. Inv. Line Factbox"
         _SourcedFrom: Boolean;
         _OrderNo: Code[20];
         _SalesOrderNo: Code[20];
+        _ReceiptLineType: Text[40];
 }

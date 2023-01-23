@@ -189,4 +189,15 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
         end;
 
     end;
+
+    internal procedure GetReceiptLineType(ReceiptLine: Record "Purch. Rcpt. Line"): Text[40]
+    begin
+        If (ReceiptLine."Special Order Sales No." <> '') and (ReceiptLine."Special Order Sales Line No." > 0) then
+            exit('Special Order')
+        else
+            if (ReceiptLine."Sales Order No." <> '') and (ReceiptLine."Sales Order Line No." > 0) then
+                exit('Drop Shipment')
+            else
+                exit('Normal');
+    end;
 }

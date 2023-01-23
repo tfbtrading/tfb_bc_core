@@ -11633,6 +11633,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control SourcedFrom - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3730473282 - Control 4011591569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the line is part of a special order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Purch. Inv. Line Factbox - Control Special Order - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3730473282 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the type of line item</source>
           <note from="Developer" annotates="general" priority="2"></note>
