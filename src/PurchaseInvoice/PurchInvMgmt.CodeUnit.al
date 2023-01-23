@@ -589,8 +589,11 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment: Record "Item Charge Assignment (Purch)" temporary;
         ShipLine: Record "Sales Shipment Line";
         ICAssignmentCU: CodeUnit "Item Charge Assgnt. (Purch.)";
+        SalesShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";
         CustomerList: Text;
         PostingDate: Date;
+        TotalExistingItemCharges, SameExistingItemCharges : Decimal;
+
 
     begin
 
@@ -611,6 +614,9 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         If GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
             If ShipLine.FindSet(False, false) then begin
+                If SalesShipmentCU.GetItemChargesForShipment(PurchLine."No.", ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                    If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
+                        exit(false);
 
                 ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());

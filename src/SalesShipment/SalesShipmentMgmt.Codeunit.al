@@ -1172,6 +1172,45 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     end;
 
+    internal procedure GetItemChargesForShipment(ItemChargeNo: Code[10]; DocumentNo: Code[20]; var TotalChargeAmount: Decimal; var SameChargeAmount: Decimal): Boolean
+    var
+        ItemLedger: Record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
+
+    begin
+        TotalChargeAmount := 0;
+        SameChargeAmount := 0;
+
+        //Find corresponding item ledger entry
+        ItemLedger.SetRange("Document No.", DocumentNo);
+        ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
+
+        If ItemLedger.FindSet(false) then
+            repeat
+
+                //Calculate total charges
+                Clear(ValueEntry);
+                ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Sale);
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemLedger."Entry No.");
+                ValueEntry.SetFilter("Item Charge No.", '<>%1', '');
+                ValueEntry.CalcSums("Cost Amount (Actual)"); //Total up values in column
+                TotalChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
+
+                //Calculate same charges
+                Clear(ValueEntry);
+                ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Sale);
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemLedger."Entry No.");
+                ValueEntry.SetRange("Item Charge No.", ItemChargeNo);
+                ValueEntry.CalcSums("Cost Amount (Actual)"); //Total up values in column
+                SameChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
+
+            until ItemLedger.Next() < 1;
+        If (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
+            Exit(true)
+        else
+            Exit(false);
+    end;
+
 
     [EventSubscriber(ObjectType::Codeunit, CodeUnit::"Shipment Header - Edit", 'OnBeforeSalesShptHeaderModify', '', false, false)]
     local procedure HandeShipmentHeaderUpdate(FromSalesShptHeader: Record "Sales Shipment Header"; var SalesShptHeader: Record "Sales Shipment Header")
