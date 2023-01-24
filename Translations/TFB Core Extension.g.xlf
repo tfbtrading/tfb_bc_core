@@ -8548,6 +8548,161 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Items - Action Category_Home - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3038739163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gross Profit on Sales</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 636392376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total sale price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 636392376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Excl. GST</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3737244698 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the cost price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Cost Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3737244698 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estimated Cost Per Kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Cost Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 772628255 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how cost price is determined</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Cost Price By - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 772628255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Price By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Cost Price By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the description of the item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1549817757 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the delivery cost per kg additional to cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Est. Delivery Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1549817757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estimated Delivery Per Kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Est. Delivery Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1485084648 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the estimated gross profit for the line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control GrossProfit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1485084648 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estimated Profit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control GrossProfit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1721084460 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the estimated percentage of profit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control GrossProfitPerc - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1721084460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Estimated Profit %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control GrossProfitPerc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the item number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 184790795 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the outstanding quantity in the sales unit of measure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Outstanding Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2877945414 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the drop shipment purchase order related to the sales line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Purchase Order No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 806193894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies base quantity per unit of measure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Qty. per Unit of Measure - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 806193894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. per UoM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Qty. per Unit of Measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2714914692 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the price per kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TFB Price Unit Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2714914692 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Per Kg</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TFB Price Unit Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3694632347 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total cost of the line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TotalCost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3694632347 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Cost Excl. GST</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TotalCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2385270358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sales unit of measure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Unit of Measure Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2555683339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Summary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Control35 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2815352059 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the estimated profit across all the lines as a percentage.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Overall Profit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 2815352059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Overall Profit %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Overall Profit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3996842083 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sum of the estimated total cost.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3996842083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1370312048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the total profit shown for all the lines.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Profit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 1370312048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Profit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Profit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1857308130 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Costing</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16533,6 +16688,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBSendCOA - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Action 1299276522 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Review line item profitability analysis</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBEstimatedProfitability - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Action 1299276522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Profitability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Action TFBEstimatedProfitability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3575399586 - Action 205603635 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Create a new marketing task for the contact.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19092,6 +19257,26 @@
           <source>Shipped from Port</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Container Status - EnumValue ShippedFromPort - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4130997215 - EnumValue 2180019962 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> Item Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cost Price By - EnumValue ItemCost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4130997215 - EnumValue 636919938 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> Item Costing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cost Price By - EnumValue ItemCosting - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4130997215 - EnumValue 1167913792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Purchase Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cost Price By - EnumValue LastPurchasePrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 4130997215 - EnumValue 1508634494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source> Manual</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Cost Price By - EnumValue Manual - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 4048911695 - EnumValue 1580537849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Direct Load Price</source>

@@ -501,6 +501,18 @@ table 50345 "TFB Item Costing"
 
     end;
 
+    procedure GetRelatedScenario() Scenario: Record "TFB Costing Scenario"
+
+    var
+        LandedProfile: Record "TFB Landed Cost Profile";
+
+    begin
+        If not Scenario.Get(Rec."Scenario Override") then
+            If LandedProfile.Get(Rec."Landed Cost Profile") then
+                Scenario.Get(LandedProfile.Scenario);
+
+    end;
+
     var
         CostingCU: CodeUnit "TFB Costing Mgmt";
 

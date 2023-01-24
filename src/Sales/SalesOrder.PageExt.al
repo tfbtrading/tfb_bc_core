@@ -116,6 +116,33 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                 end;
             }
         }
+
+        addafter(Statistics)
+        {
+            action("TFBEstimatedProfitability")
+            {
+                Caption = 'Profitability';
+                Image = AnalysisView;
+                ToolTip = 'Review line item profitability analysis';
+                ApplicationArea = All;
+
+                trigger OnAction()
+
+                var
+                    SalesLine: Record "Sales Line";
+
+                begin
+                    SalesLine.SetRange("Document Type", Rec."Document Type");
+                    SalesLine.SetRange("Document No.", Rec."No.");
+                    SalesLine.SetRange(Type, SalesLine.type::Item);
+
+                    If Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
+                        message('Did something');
+
+                end;
+
+            }
+        }
         addfirst("F&unctions")
         {
             action("TFBCreateTask")
@@ -143,7 +170,16 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         }
         addlast(Category_Process)
         {
-            actionref(TFBCfreateTask_Promoted; TFBCreateTask)
+            actionref(TFBCreateTask_Promoted; TFBCreateTask)
+            {
+
+            }
+
+        }
+
+        addafter(Statistics_Promoted)
+        {
+            actionref(TFBProfit_Promoted; "TFBEstimatedProfitability")
             {
 
             }
