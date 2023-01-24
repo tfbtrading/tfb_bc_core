@@ -97,6 +97,9 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
         ItemLedger.SetRange("Document No.", DocNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Purchase Receipt");
 
+        if LineNo > 0 then
+            ItemLedger.SetRange("Document Line No.", LineNo);
+
         If ItemLedger.FindSet(false) then
             repeat
 

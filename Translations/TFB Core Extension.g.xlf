@@ -15523,6 +15523,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Action TFBNotifyCustomer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1167537379 - Control 2549933404 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
+          <source>Speciefies the sell-to customer no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Control TFBSellToCustomerNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1167537379 - Control 2549933404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
+          <source>Sell-to Customer No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Shipment - Control TFBSellToCustomerNo - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1167537379 - Control 3825379891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3373253667">
           <source>Specifies 3PL booking number reference</source>
           <note from="Developer" annotates="general" priority="2"></note>
