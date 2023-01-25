@@ -8683,15 +8683,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Overall Profit - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3038739163 - Control 3996842083 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3038739163 - Control 651478175 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the sum of the estimated total cost for delivery.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Delivery Cost - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 651478175 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Delivery Cost</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Delivery Cost - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3038739163 - Control 3747302984 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the sum of the estimated total cost.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Cost - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Item Cost - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="Page 3038739163 - Control 3996842083 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 3038739163 - Control 3747302984 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total Cost</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Cost - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Item Cost - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3038739163 - Control 1370312048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the total profit shown for all the lines.</source>

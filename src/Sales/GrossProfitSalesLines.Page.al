@@ -163,7 +163,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                 {
                     Caption = 'Total Summary';
                     ShowCaption = true;
-                    field("Total Cost"; _totalcost)
+                    field("Total Item Cost"; _totalcost)
                     {
                         ApplicationArea = Basic, Suite;
                         AutoFormatExpression = Rec."Currency Code";
@@ -172,6 +172,16 @@ page 50145 "TFB Gross Profit Sales Lines"
                         Caption = 'Total Cost';
                         Editable = false;
                         ToolTip = 'Specifies the sum of the estimated total cost.';
+                    }
+                    field("Total Delivery Cost"; _totaldeliverycost)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        AutoFormatExpression = Rec."Currency Code";
+                        AutoFormatType = 1;
+
+                        Caption = 'Total Delivery Cost';
+                        Editable = false;
+                        ToolTip = 'Specifies the sum of the estimated total cost for delivery.';
                     }
                     field("Total Profit"; _TotalGrossProfit)
                     {
@@ -240,6 +250,12 @@ page 50145 "TFB Gross Profit Sales Lines"
         _estDeliveryCost: Decimal;
         _linedeliverycost: Decimal;
 
+        CostPriceByDictionary: dictionary of [integer, enum "TFB Cost Price By"];
+        CostPriceDictionary: dictionary of [integer, Decimal];
+        DeliveryPriceDictionary: dictionary of [integer, Decimal];
+
+
+        _totaldeliverycost: Decimal;
 
 
     trigger OnAfterGetRecord()
@@ -252,6 +268,8 @@ page 50145 "TFB Gross Profit Sales Lines"
 
 
     end;
+
+
 
     local procedure updateLineVariables()
     var
@@ -334,6 +352,41 @@ page 50145 "TFB Gross Profit Sales Lines"
                 end;
 
         end;
+
+        CostPriceByDictionary.Add(Rec."Line No.", _costpriceBy);
+        CostPriceDictionary.Add(Rec."Line No.", _CostPricePerKg);
+        DeliveryPriceDictionary.Add(Rec."Line No.", _estDeliveryCost);
+
+        If CostPriceByDictionary.Count() = Rec.Count() then
+            updateProfitTotals();
+    end;
+
+    local procedure updateProfitTotals()
+
+    var
+        SalesLine2: Record "Sales Line";
+        Item: Record Item;
+        PricingCU: Codeunit "TFB Pricing Calculations";
+
+
+    begin
+
+        SalesLine2 := Rec;
+        _totalcost := 0;
+        _totalgrossprofit := 0;
+        _totaldeliverycost := 0;
+        _totalprofitperc := 0;
+
+        If SalesLine2.FindSet() then
+            repeat
+                If SalesLine2.Type = Salesline2.type::Item then begin
+                    _totalcost := _totalcost + (CostPriceDictionary.get(SalesLine2."Line No.") * Item."Net Weight" * SalesLine2."Quantity (Base)");
+                    _totaldeliverycost := _totaldeliverycost + (DeliveryPriceDictionary.get(SalesLine2."Line No.") * Item."Net Weight" * SalesLine2."Quantity (Base)");
+                    _totalgrossprofit := SalesLine2.Amount - _totalcost - _totaldeliverycost;
+                    _totalprofitperc := _totalgrossprofit / SalesLine2.Amount;
+                end;
+            until SalesLine2.Next() = 0;
+
     end;
 
     local procedure OpenRelatedPurchaseOrder()
