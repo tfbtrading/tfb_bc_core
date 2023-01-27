@@ -11,6 +11,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     DeleteAllowed = false;
     ShowFilter = false;
     Editable = true;
+
     DataCaptionFields = "Sell-to Customer No.", "Document No.";
 
     layout
@@ -25,7 +26,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     Editable = false;
                     width = 10;
 
-                    DrillDown = true;
+                    DrillDown = false;
                     ToolTip = 'Specifies the item number';
                 }
                 field("Description"; Rec."Description")
@@ -33,31 +34,29 @@ page 50145 "TFB Gross Profit Sales Lines"
                     ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies the description of the item';
+                    Enabled = false;
                 }
 
 
-                field("Outstanding Quantity"; Rec."Outstanding Quantity")
+                field("Quantity (Base)"; Rec."Quantity (Base)")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the outstanding quantity in the sales unit of measure';
+                    Editable = false;
+                    Enabled = false;
+                }
+                field("Net Weight"; Rec."Net Weight")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the net weight per unit';
+                    Editable = false;
+                    Enabled = false;
                 }
 
-                field("Unit of Measure Code"; Rec."Unit of Measure Code")
+                field("Cost Using"; Rec."TFB Cost Using")
                 {
                     ApplicationArea = All;
-                    Tooltip = 'Specifies the sales unit of measure';
-                }
-                field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Qty. per UoM';
-                    ToolTip = 'Specifies base quantity per unit of measure';
-                }
-
-                field("Cost Price By"; _CostPriceBy)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Cost Price By';
+                    Caption = 'Cost Using';
                     ToolTip = 'Specifies how cost price is determined';
                     Editable = true;
 
@@ -72,38 +71,54 @@ page 50145 "TFB Gross Profit Sales Lines"
                 field("Cost Price"; _CostPricePerKg)
                 {
                     ApplicationArea = All;
-                    Caption = 'Estimated Cost Per Kg';
+                    Caption = 'Est. Cost Per Kg';
                     ToolTip = 'Specifies the cost price';
                     Editable = true;
                 }
                 field("Est. Delivery Cost"; _EstDeliveryCost)
                 {
                     ApplicationArea = All;
-                    Caption = 'Estimated Delivery Per Kg';
+                    Caption = 'Est. Delivery Cost Per Kg';
                     ToolTip = 'Specifies the delivery cost per kg additional to cost';
-                    Editable = true;
+                    Editable = false;
+                    Enabled = false;
                 }
                 field(TotalCost; _linecost)
                 {
                     ApplicationArea = All;
-                    Caption = 'Total Cost Excl. GST';
-                    ToolTip = 'Specifies the total cost of the line';
+                    Caption = 'Est. Item Costs excl. Delivery';
+                    ToolTip = 'Specifies the total cost of the line excl. GST';
                     Editable = false;
                     width = 20;
                 }
                 field("TFB Price Unit Cost"; Rec."TFB Price Unit Cost")
                 {
                     ApplicationArea = All;
-                    Caption = 'Price Per Kg';
+                    Caption = 'Sales Price Per Kg';
                     ToolTip = 'Specifies the price per kg';
                     Editable = true;
                     width = 10;
+
+                    trigger OnValidate()
+
+                    begin
+
+                        updateLineVariables();
+                    end;
+                }
+                field("TFB Price Unit Discount"; Rec."TFB Price Unit Discount")
+                {
+                    ApplicationArea = All;
+                    BlankNumbers = BlankZero;
+                    Editable = Rec."TFB Price Unit Cost" > 0;
+                    Caption = 'Per Kg Discount';
+                    ToolTip = 'Specifies the discount as a per kilogram price';
 
                 }
                 field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
-                    Caption = 'Total Excl. GST';
+                    Caption = 'Sales Amount';
                     ToolTip = 'Specifies the total sale price';
                     Editable = false;
                     Enabled = false;
@@ -111,19 +126,23 @@ page 50145 "TFB Gross Profit Sales Lines"
                 field(GrossProfit; _GrossProfit)
                 {
                     ApplicationArea = All;
-                    Caption = 'Estimated Profit';
+                    Caption = 'Est. Profit';
                     ToolTip = 'Specifies the estimated gross profit for the line';
                     Enabled = false;
                     Editable = false;
+                    Style = Unfavorable;
+                    StyleExpr = _grossprofitperc < 0;
                     width = 10;
                 }
                 field(GrossProfitPerc; _GrossProfitPerc)
                 {
                     ApplicationArea = All;
-                    Caption = 'Estimated Profit %';
+                    Caption = 'Est.Profit %';
                     ToolTip = 'Specifies the estimated percentage of profit';
                     AutoFormatExpression = '<precision,2:2><standard format,0>%';
                     AutoFormatType = 10;
+                    Style = Unfavorable;
+                    StyleExpr = _grossprofitperc < 0;
                     Enabled = false;
                     Editable = false;
                     width = 10;
@@ -132,8 +151,10 @@ page 50145 "TFB Gross Profit Sales Lines"
                 field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     DrillDown = True;
+                    Caption = 'Drop Ship P.O.';
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
+                    Visible = Rec."Drop Shipment";
 
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -163,13 +184,23 @@ page 50145 "TFB Gross Profit Sales Lines"
                 {
                     Caption = 'Total Summary';
                     ShowCaption = true;
+                    field("Total Sales Amount"; _totalsalesamount)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        AutoFormatExpression = Rec."Currency Code";
+                        AutoFormatType = 1;
+
+                        Caption = 'Total Sales Amount';
+                        Editable = false;
+                        ToolTip = 'Specifies the sum of the total sales revenue on order.';
+                    }
                     field("Total Item Cost"; _totalcost)
                     {
                         ApplicationArea = Basic, Suite;
                         AutoFormatExpression = Rec."Currency Code";
                         AutoFormatType = 1;
 
-                        Caption = 'Total Cost';
+                        Caption = 'Total Est. Cost';
                         Editable = false;
                         ToolTip = 'Specifies the sum of the estimated total cost.';
                     }
@@ -179,17 +210,28 @@ page 50145 "TFB Gross Profit Sales Lines"
                         AutoFormatExpression = Rec."Currency Code";
                         AutoFormatType = 1;
 
-                        Caption = 'Total Delivery Cost';
+                        Caption = 'Total Est. Delivery Cost';
                         Editable = false;
                         ToolTip = 'Specifies the sum of the estimated total cost for delivery.';
+                    }
+                    field("Total Discount"; _totaldiscount)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        AutoFormatExpression = Rec."Currency Code";
+                        AutoFormatType = 1;
+
+                        Caption = 'Total Invoice and Line Discount';
+                        Editable = false;
+                        ToolTip = 'Specifies the total discount incorporated in the sales amount on a line.';
                     }
                     field("Total Profit"; _TotalGrossProfit)
                     {
                         ApplicationArea = Basic, Suite;
                         AutoFormatExpression = Rec."Currency Code";
                         AutoFormatType = 1;
-
-                        Caption = 'Total Profit';
+                        Style = Unfavorable;
+                        StyleExpr = _grossprofitperc < 0;
+                        Caption = 'Total Est. Profit';
                         Editable = false;
                         ToolTip = 'Specifies the total profit shown for all the lines.';
 
@@ -199,9 +241,11 @@ page 50145 "TFB Gross Profit Sales Lines"
                         ApplicationArea = Basic, Suite;
                         AutoFormatExpression = '<precision,2:2><standard format,0>%';
                         AutoFormatType = 10;
-                        Caption = 'Overall Profit %';
+                        Caption = 'Overall Est. Profit %';
                         DrillDown = false;
                         Editable = false;
+                        Style = Unfavorable;
+                        StyleExpr = _grossprofitperc < 0;
                         ToolTip = 'Specifies the estimated profit across all the lines as a percentage.';
                     }
 
@@ -233,37 +277,54 @@ page 50145 "TFB Gross Profit Sales Lines"
     }
 
     var
-        notdefaultcostby: Boolean;
         SalesCU: CodeUnit "TFB Sales Mgmt";
-        _availability: Text;
-        _statusUpdate: Text;
-        _costpriceBy: Enum "TFB Cost Price By";
+        notdefaultcostby: Boolean;
+
+        LineDictionary: dictionary of [integer, Dictionary of [code[20], decimal]];
+
+
         _CostPricePerKg: Decimal;
-        _linecost: Decimal;
+        _estDeliveryCost: Decimal;
         _grossprofit: Decimal;
         _grossprofitperc: Decimal;
-
-        _totalprofitperc: Decimal;
-        _totalgrossprofit: Decimal;
-
-        _totalcost: Decimal;
-        _estDeliveryCost: Decimal;
+        _linecost: Decimal;
         _linedeliverycost: Decimal;
-
-        CostPriceByDictionary: dictionary of [integer, enum "TFB Cost Price By"];
-        CostPriceDictionary: dictionary of [integer, Decimal];
-        DeliveryPriceDictionary: dictionary of [integer, Decimal];
-
-
+        _totalcost: Decimal;
         _totaldeliverycost: Decimal;
+        _totaldiscount: Decimal;
+        _totaldiscountperc: Decimal;
+        _totalgrossprofit: Decimal;
+        _totalprofitperc: Decimal;
+        _totalsalesamount: Decimal;
 
+        _availability: Text;
+        _statusUpdate: Text;
+
+
+
+
+
+
+
+
+
+    trigger OnAfterGetCurrRecord()
+
+
+
+    begin
+
+        updateLineVariables();
+
+
+    end;
 
     trigger OnAfterGetRecord()
 
 
 
     begin
-        _costpriceBy := _costpriceBy::ItemCost;
+
         updateLineVariables();
 
 
@@ -271,16 +332,19 @@ page 50145 "TFB Gross Profit Sales Lines"
 
 
 
+
+
     local procedure updateLineVariables()
     var
+        LineDetailDictionary: dictionary of [code[20], Decimal];
         Item: Record Item;
-        PurchaseLine: Record "Purchase Line";
         ItemCosting: Record "TFB Item Costing";
         ItemCostingLine: Record "TFB Item Costing Lines";
-        PostCodeZoneRate: Record "TFB Postcode Zone Rate";
-
         PostCodeZone: Record "TFB Postcode Zone";
+        PostCodeZoneRate: Record "TFB Postcode Zone Rate";
+        PurchaseLine: Record "Purchase Line";
         PricingCU: Codeunit "TFB Pricing Calculations";
+
 
 
     begin
@@ -289,9 +353,6 @@ page 50145 "TFB Gross Profit Sales Lines"
         _grossprofit := 0;
         _grossprofitperc := 0;
 
-        _totalcost := 100;
-        _totalgrossprofit := 100;
-        _totalprofitperc := 0.2;
         ItemCosting.SetRange("Item No.", Rec."No.");
         ItemCosting.Setrange(Current, true);
         ItemCosting.Setrange("Costing Type", ItemCosting."Costing Type"::Standard);
@@ -313,8 +374,8 @@ page 50145 "TFB Gross Profit Sales Lines"
 
 
 
-        case _costpriceBy of
-            _costpriceBy::ItemCost:
+        case Rec."TFB Cost Using" of
+            Rec."TFB Cost Using"::ItemCost:
                 begin
                     if Rec."Drop Shipment" and Purchaseline.Get(PurchaseLine."Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then
                         _CostPricePerKg := PricingCU.CalcPerKgFromUnit(PurchaseLine."Unit Cost", Item."Net Weight")
@@ -323,15 +384,30 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                     _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                     _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
-                    _grossprofit := Rec.Amount - (_linecost - _linedeliverycost);
+                    _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                     _grossprofitperc := _grossprofit / rec.Amount;
 
 
                 end;
-
-
-            _costpriceBy::ItemCosting:
+            Rec."TFB Cost Using"::LastPurchasePrice:
                 begin
+                    //TODO Same as item cost for now - but will be changed in the future to run an item based on the most recent purchase price
+                    if Rec."Drop Shipment" and Purchaseline.Get(PurchaseLine."Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then
+                        _CostPricePerKg := PricingCU.CalcPerKgFromUnit(PurchaseLine."Unit Cost", Item."Net Weight")
+                    else
+                        _CostPricePerKg := PricingCu.CalcPerKgFromUnit(Item."Unit Cost", Item."Net Weight");
+
+                    _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                    _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
+                    _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
+                    _grossprofitperc := _grossprofit / rec.Amount;
+
+                end;
+
+            Rec."TFB Cost Using"::ItemCosting:
+                begin
+
+                    //Uses the item costing - which calculated out the basis for the current pricing
                     ItemCostingLine.SetRange("Item No.", Rec."No.");
                     ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
                     ItemCostingLine.SetRange(Current, true);
@@ -340,7 +416,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                         _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)", Item."Net Weight");
                         _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                         _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
-                        _grossprofit := Rec.Amount - (_linecost - _linedeliverycost);
+                        _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                         _grossprofitperc := _grossprofit / rec.Amount;
                     end
                     else begin
@@ -353,37 +429,47 @@ page 50145 "TFB Gross Profit Sales Lines"
 
         end;
 
-        CostPriceByDictionary.Add(Rec."Line No.", _costpriceBy);
-        CostPriceDictionary.Add(Rec."Line No.", _CostPricePerKg);
-        DeliveryPriceDictionary.Add(Rec."Line No.", _estDeliveryCost);
+        LineDetailDictionary.Add('SALE', Rec.Amount);
+        LineDetailDictionary.Add('ITEMCOST', _CostPricePerKg);
+        LineDetailDictionary.Add('DELIVERYCOST', _estDeliveryCost);
 
-        If CostPriceByDictionary.Count() = Rec.Count() then
-            updateProfitTotals();
+        If LineDictionary.ContainsKey(Rec."Line No.") then
+            LineDictionary.Set(Rec."Line No.", LineDetailDictionary)
+        else
+            LineDictionary.Add(Rec."Line No.", LineDetailDictionary);
+
+
+        updateProfitTotals();
     end;
 
     local procedure updateProfitTotals()
 
     var
-        SalesLine2: Record "Sales Line";
         Item: Record Item;
+        SalesLine2: Record "Sales Line";
         PricingCU: Codeunit "TFB Pricing Calculations";
+        LineDetailDictionary: dictionary of [code[20], Decimal];
 
 
     begin
-
-        SalesLine2 := Rec;
+        SalesLine2.Reset();
+        SalesLine2.CopyFilters(Rec);
         _totalcost := 0;
         _totalgrossprofit := 0;
         _totaldeliverycost := 0;
         _totalprofitperc := 0;
+        _totalsalesamount := 0;
 
         If SalesLine2.FindSet() then
             repeat
-                If SalesLine2.Type = Salesline2.type::Item then begin
-                    _totalcost := _totalcost + (CostPriceDictionary.get(SalesLine2."Line No.") * Item."Net Weight" * SalesLine2."Quantity (Base)");
-                    _totaldeliverycost := _totaldeliverycost + (DeliveryPriceDictionary.get(SalesLine2."Line No.") * Item."Net Weight" * SalesLine2."Quantity (Base)");
-                    _totalgrossprofit := SalesLine2.Amount - _totalcost - _totaldeliverycost;
-                    _totalprofitperc := _totalgrossprofit / SalesLine2.Amount;
+                If (SalesLine2.Type = Salesline2.type::Item) and LineDictionary.ContainsKey(SalesLine2."Line No.") then begin
+                    Item.Get(SalesLine2."No.");
+                    _totalcost := _totalcost + (LineDictionary.Get(SalesLine2."Line No.").Get('ITEMCOST') * Item."Net Weight" * SalesLine2."Quantity (Base)");
+                    _totaldeliverycost := _totaldeliverycost + (LineDictionary.Get(SalesLine2."Line No.").Get('DELIVERYCOST') * Item."Net Weight" * SalesLine2."Quantity (Base)");
+                    _totalsalesamount := _totalsalesamount + LineDictionary.Get(SalesLine2."Line No.").Get('SALE');
+                    _totaldiscount := _totaldiscount + SalesLine2."Inv. Discount Amount" + SalesLine2."Line Discount Amount";
+                    _totalgrossprofit := _totalsalesamount - (_totalcost + _totaldeliverycost);
+                    _totalprofitperc := _totalgrossprofit / _totalsalesamount;
                 end;
             until SalesLine2.Next() = 0;
 
