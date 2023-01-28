@@ -377,8 +377,24 @@ page 50145 "TFB Gross Profit Sales Lines"
         case Rec."TFB Cost Using" of
             Rec."TFB Cost Using"::ItemCost:
                 begin
-                    if Rec."Drop Shipment" and Purchaseline.Get(PurchaseLine."Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then
-                        _CostPricePerKg := PricingCU.CalcPerKgFromUnit(PurchaseLine."Unit Cost", Item."Net Weight")
+                    if Rec."Drop Shipment" then
+                        if Purchaseline.Get(PurchaseLine."Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then
+                            _CostPricePerKg := PricingCU.CalculatePriceUnitByUnitPrice(Item."No.", PurchaseLine."Unit of Measure Code", Enum::"TFB Price Unit"::KG, PurchaseLine."Unit Cost")
+                        else begin
+
+                            ItemCostingLine.SetRange("Item No.", Rec."No.");
+                            ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
+                            ItemCostingLine.SetRange(Current, true);
+                            ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
+                            If ItemCostingLine.FindFirst() then begin
+                                _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)" + PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"), Item."Net Weight");
+                                _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                                _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
+                                _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
+                                _grossprofitperc := _grossprofit / rec.Amount;
+                            end
+                        end
+
                     else
                         _CostPricePerKg := PricingCu.CalcPerKgFromUnit(Item."Unit Cost", Item."Net Weight");
 
