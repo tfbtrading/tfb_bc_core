@@ -15633,6 +15633,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control Tasks - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3238419956 - Control 4127376720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
+          <source>Prepayment for Order No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoice - Control Prepayment Order No. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3238419956 - Control 1272163355 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2420212404">
           <source>Original external document number prior to being updated</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15697,6 +15702,11 @@
           <source>Specifies brokerage shipment if relevant</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control TFB Brokerage Shipment - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3543807989 - Control 2819606560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
+          <source>Pre-payment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Posted Sales Invoices - Control Prepayment Invoice - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3543807989 - Control 1526968527 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3434938165">
           <source>POD Info</source>

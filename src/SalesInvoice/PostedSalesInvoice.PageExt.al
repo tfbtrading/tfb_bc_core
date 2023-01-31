@@ -43,6 +43,20 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
             }
         }
+        addbefore("External Document No.")
+        {
+            group(PrepaymentDetails)
+            {
+                Visible = Rec."Prepayment Invoice";
+                field("Prepayment Order No."; Rec."Prepayment Order No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Prepayment for Order No.';
+                    Style = Strong;
+                    StyleExpr = true;
+                }
+            }
+        }
 
         addafter("External Document No.")
         {

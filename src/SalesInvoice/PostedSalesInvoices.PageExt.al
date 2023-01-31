@@ -50,6 +50,17 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
 
         }
 
+        addbefore("Amount Including VAT")
+        {
+            field("Prepayment Invoice"; Rec."Prepayment Invoice")
+            {
+                Caption = 'Pre-payment';
+                Width = 8;
+                ApplicationArea = All;
+                Visible = Rec."Prepayment Invoice";
+            }
+        }
+
         modify("Due Date")
         {
             Style = Unfavorable;
