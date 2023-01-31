@@ -61,8 +61,24 @@ page 50102 "TFB Item Costing Factbox"
                     ApplicationArea = All;
                     ToolTip = 'Specifies qty of inventory on hand';
 
+                    trigger OnDrillDown()
 
+                    var
+                        ItemLedgerEntry: Record "Item Ledger Entry";
+                        ItemLedgerEntries: Page "Item Ledger Entries";
+
+                    begin
+                        ItemLedgerEntry.FilterGroup(10);
+                        ItemLedgerEntry.SetRange("Item No.", Rec."No.");
+                        ItemLedgerEntry.SetFilter("Location Code", Rec."Location Filter");
+                        ItemLedgerEntry.SetFilter("Variant Code", Rec."Variant Filter");
+                        ItemLedgerEntry.SetFilter("Lot No.", Rec."Lot No. Filter");
+                        ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+                        ItemLedgerEntry.FilterGroup(0);
+                        PAGE.Run(PAGE::"Item Ledger Entries", ItemLedgerEntry);
+                    end;
                 }
+
                 field("Reserved Qty. on Inventory"; Rec."Reserved Qty. on Inventory")
                 {
                     ApplicationArea = All;
