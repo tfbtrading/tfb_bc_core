@@ -187,6 +187,12 @@ codeunit 50120 "TFB Customer Mgmt"
             If EmailRecordRef.Count() > 0 then begin
 
                 VarEmailRecordRef := EmailRecordRef;
+                RepSelEmail.SetRange(Usage, RepSelEmail.Usage::"C.Statement");
+                RepSelEmail.SetRange("Use for Email Body", false);
+                If RepSelEmail.FindFirst() then
+                    ReportLayoutSelection.SetTempLayoutSelected(RepSelEmail."Custom Report Layout Code")
+                else
+                    Exit(false);
 
 
                 Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
