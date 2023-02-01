@@ -187,12 +187,7 @@ codeunit 50120 "TFB Customer Mgmt"
             If EmailRecordRef.Count() > 0 then begin
 
                 VarEmailRecordRef := EmailRecordRef;
-                RepSelEmail.SetRange(Usage, RepSelEmail.Usage::"C.Statement");
-                RepSelEmail.SetRange("Use for Email Body", false);
-                If RepSelEmail.FindFirst() then
-                    ReportLayoutSelection.SetTempLayoutSelected(RepSelEmail."Custom Report Layout Code")
-                else
-                    Exit(false);
+
 
 
                 Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
@@ -205,19 +200,8 @@ codeunit 50120 "TFB Customer Mgmt"
                 RepSelEmail.SetRange(Usage, RepSelEmail.Usage::"C.Statement");
                 RepSelEmail.SetRange("Use for Email Body", true);
 
-                If RepSelEmail.FindFirst() then begin
-                    ReportLayoutSelection.SetTempLayoutSelected(RepSelEmail."Email Body Layout Code");
-                    TempBlobEmail.CreateOutStream(O2Stream);
-                    If not Report.SaveAs(RepSelEmail."Report ID", XmlParameters, ReportFormat::Html, O2Stream, VarEmailRecordRef) then
-                        Message('No content returned for email body by report');
-                    TempBlobEmail.CreateInStream(I2Stream);
-                    HTMLBuilder.Clear();
-                    I2Stream.Read(HTML);
 
-                    HTMLBuilder.Append(HTML);
-                end
-                else
-                    GenerateCustomerStatementContent(Customer, HTMLBuilder);
+                GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
                 EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', IStream);
