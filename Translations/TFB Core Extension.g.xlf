@@ -15388,6 +15388,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Lot No. Information List - Change Description - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1347604595 - Control 759834028 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2805196211">
+          <source>Required for new validation check error</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB No. Series Lines - Control TFBSequenceName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1347604595 - Control 759834028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2805196211">
+          <source>Sequence Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB No. Series Lines - Control TFBSequenceName - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2173142200 - Method 716454850 - NamedType 4034883110" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2173142200">
           <source>&lt;-14D&gt;</source>
           <note from="Developer" annotates="general" priority="2"></note>
