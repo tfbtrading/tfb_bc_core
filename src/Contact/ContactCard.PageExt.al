@@ -131,7 +131,7 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 }
                 group(ReviewHistory)
                 {
-                    Visible = (Rec."TFB Review Date Last Compl." > 0D) and (not Rec."TFB In Review");
+                    Visible = true;
                     ShowCaption = false;
 
                     field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")

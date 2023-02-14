@@ -22,7 +22,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
         addafter("Company Name")
         {
-          
+
             field("TFB Is Customer"; Rec."TFB Is Customer")
             {
                 ApplicationArea = All;
@@ -55,6 +55,20 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 Tooltip = 'Specifies contact status';
 
             }
+            field("TFB In Review"; Rec."TFB In Review")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                ToolTip = 'Specifies if contact is in review';
+
+            }
+            field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                ToolTip = 'Specifies date next review is planned';
+            }
+
             field("Last Date Attempted"; Rec."Last Date Attempted")
             {
                 ApplicationArea = All;
@@ -71,6 +85,45 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
     actions
     {
+
+        addlast(Tasks)
+        {
+            action(SetToInReview)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies that contact is now in review';
+                Enabled = not Rec."TFB In Review";
+                trigger OnAction()
+                begin
+
+                    Rec."TFB In Review" := true;
+                    Rec.Modify(false);
+
+
+                end;
+            }
+
+            action(CompleteReview)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Initiate wizard to get details for finish of review';
+                Enabled = Rec."TFB In Review";
+                trigger OnAction()
+
+                var
+
+                    WizardReview: Page "TFB Contact Review Wizard";
+                begin
+
+                    WizardReview.InitFromContact(Rec);
+                    if WizardReview.RunModal() = Action::OK then
+                        CurrPage.Update(false);
+
+
+
+                end;
+            }
+        }
     }
     views
     {
