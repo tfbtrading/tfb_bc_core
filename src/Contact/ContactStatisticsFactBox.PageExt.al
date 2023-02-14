@@ -23,6 +23,7 @@ pageextension 50181 "TFB Contact Statistics Factbox" extends "Contact Statistics
 
         addlast(General)
         {
+
             field("Date of Last Interaction"; Rec."Date of Last Interaction")
             {
                 ApplicationArea = RelationshipMgmt;

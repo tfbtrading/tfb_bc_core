@@ -132,10 +132,50 @@ tableextension 50110 "TFB Contact" extends Contact
 
         }
 
+
+
         field(50420; "TFB Online Identity Id"; Text[100])
         {
             Caption = 'Online Identity Id';
         }
+
+        field(50425; "TFB In Review"; Boolean)
+        {
+            Caption = 'In Review';
+        }
+        field(50430; "TFB Review Date - Planned"; Date)
+        {
+            Caption = 'Revew Date - Planned';
+        }
+        field(50432; "TFB Review Date Exp. Compl."; Date)
+        {
+            Caption = 'Review Date - Expected Completion';
+
+        }
+        field(50435; "TFB Review Date Last Compl."; Date)
+        {
+            Caption = 'Review Date - Last Completed';
+        }
+
+        field(50440; "TFB No. Rlshp. Mgt. Comments"; Integer)
+        {
+            FieldClass = FlowField;
+            Caption = 'No. of Comments';
+            CalcFormula = Count("Rlshp. Mgt. Comment Line" where("Table Name" = const(Contact), "No." = field("No.")));
+        }
+        field(50450; "TFB Industry Group Filter"; Code[10])
+        {
+            Caption = 'Industry Group Filter';
+            FieldClass = FlowFilter;
+            TableRelation = "Industry Group";
+        }
+        field(50451; "TFB No. Of Industry Groups"; Integer)
+        {
+            Caption = 'No. of Industry Groups - Filtered';
+            FieldClass = FlowField;
+            CalcFormula = Count("Contact Industry Group" where("Industry Group Code" = field("TFB Industry Group Filter"), "Contact No." = field("No.")));
+        }
+
 
 
     }
