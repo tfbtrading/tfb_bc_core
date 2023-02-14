@@ -16093,6 +16093,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control LineWeight - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3995517980 - Control 2518552199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
+          <source>Specifies the blanket sales order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFBBlanketOrder - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3995517980 - Control 2518552199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
+          <source>Blanket Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Sales Inv. SubForm - Control TFBBlanketOrder - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3995517980 - Control 3697688496 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1379883806">
           <source>Specifies amount remaining to be paid on invoice</source>
           <note from="Developer" annotates="general" priority="2"></note>
