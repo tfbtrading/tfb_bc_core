@@ -235,8 +235,11 @@ page 50174 "TFB Contact Review Wizard"
 
         RelComment.Init();
         RelComment.Date := WorkDate();
+        RelComment."Table Name" := RelComment."Table Name"::Contact;
+        RelComment."No." := Contact."No.";
         RelComment.Comment := _ReviewComment;
         RelComment."Line No." := LineNo;
+
         RelComment.Insert(true);
 
         Contact."TFB In Review" := false;

@@ -59,6 +59,34 @@ page 50167 "TFB Contact Review List"
                     Tooltip = 'Specifies contact status';
 
                 }
+                field("TFB In Review"; Rec."TFB In Review")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies whether contact is currently being reviewed';
+                }
+                field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    StyleExpr = Rec."TFB In Review";
+                    Style = Favorable;
+                    ToolTip = 'Specifies date on which next review is planned for contact';
+                }
+                field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    ToolTip = 'Specifies the date on which review should be completed';
+                    StyleExpr = Rec."TFB In Review";
+                    Style = Attention;
+                }
+                field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    ToolTip = 'Specifies the date review was last completed';
+                }
                 field("Last Date Attempted"; Rec."Last Date Attempted")
                 {
                     ApplicationArea = All;
@@ -517,9 +545,20 @@ page 50167 "TFB Contact Review List"
                     Enabled = not Rec."TFB In Review";
                     Visible = Rec.Type = Rec.Type::Company;
                     trigger OnAction()
+                    var
+
+                        DialogP: Page "Date-Time Dialog";
+                        DefaultWeek: DateFormula;
                     begin
 
                         Rec."TFB In Review" := true;
+                        DialogP.UseDateOnly();
+                        Evaluate(DefaultWeek, '<7D>');
+                        DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
+                        If DialogP.RunModal() = ACTION::OK then
+                            Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
+                        else
+                            Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
                         Rec.Modify(false);
 
 
@@ -733,6 +772,14 @@ page 50167 "TFB Contact Review List"
                 {
 
                 }
+                actionref(PTFBSetToInReview; TFBSetToInReview)
+                {
+
+                }
+                actionref(PTFBCompleteReview; TFBCompleteReview)
+                {
+
+                }
                 group(InitiateAction)
                 {
                     Caption = 'Initiate Action';
@@ -755,14 +802,7 @@ page 50167 "TFB Contact Review List"
 
                     }
 
-                    actionref(PTFBSetToInReview; TFBSetToInReview)
-                    {
 
-                    }
-                    actionref(PTFBCompleteReview; TFBCompleteReview)
-                    {
-
-                    }
                 }
 
             }

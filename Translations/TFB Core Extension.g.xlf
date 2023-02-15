@@ -6388,6 +6388,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action MakePhoneCall - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 2457929517 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Initiate wizard to get details for finish of review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBCompleteReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 2457929517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Complete Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBCompleteReview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 325359480 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that contact is now in review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBSetToInReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 325359480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Initiate Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBSetToInReview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 970153994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apply a Word template on the selected records.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14123,6 +14143,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action CheckOnlineStatus - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 2457929517 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Initiate wizard to get details for finish of review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action TFBCompleteReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 2457929517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Complete Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action TFBCompleteReview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 325359480 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies that contact is now in review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action TFBSetToInReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Action 325359480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Initiate Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action TFBSetToInReview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1976311139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Active ✔️</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14233,15 +14273,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Statistics Factbox - Control TFB No. Of Tasks - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3190613190 - Action 2571948053 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+        <trans-unit id="PageExtension 3856507940 - Control 1542747240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 862853572">
+          <source>Shows the total number of relationship comments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Statistics Factbox - Control TFB No. Rlshp. Mgt. Comments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Action 2457929517 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Initiate wizard to get details for finish of review</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action CompleteReview - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action TFBCompleteReview - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3190613190 - Action 2367645504 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+        <trans-unit id="PageExtension 3190613190 - Action 2457929517 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Complete Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action TFBCompleteReview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Action 325359480 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Specifies that contact is now in review</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action SetToInReview - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action TFBSetToInReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Action 325359480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Initiate Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Action TFBSetToInReview - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3190613190 - Control 3245344756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Specifies if a task exists</source>
