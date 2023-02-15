@@ -39,6 +39,7 @@ page 50174 "TFB Contact Review Wizard"
                 group("Welcome to the Contact Review Wizard")
                 {
                     Caption = 'Get details on review';
+                    ShowCaption = false;
                     Visible = Step1Visible;
                     group(Group18)
                     {
@@ -48,16 +49,31 @@ page 50174 "TFB Contact Review Wizard"
                         field(ReviewComment; _ReviewComment)
                         {
                             ApplicationArea = All;
-                            Editable = false;
+                            MultiLine = true;
+                            Editable = true;
                             Caption = 'Review outcome';
                             ToolTip = 'Specifies in less than 80 characters summary of review outcome';
+
+                            trigger OnValidate()
+
+                            begin
+                                If _ReviewComment = '' then
+                                    error('You must provide a review outcome description');
+                            end;
                         }
                         field(NextReview; _NextReview)
                         {
                             ApplicationArea = All;
-                            Editable = false;
+                            Editable = true;
                             Caption = 'Next review date';
                             ToolTip = 'Specifies the date the next contact review should take place';
+
+                            trigger OnValidate()
+
+                            begin
+                                if _NextReview < WorkDate() then
+                                    error('You must provide a date which is greater than todays date');
+                            end;
                         }
                     }
                 }

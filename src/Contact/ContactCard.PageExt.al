@@ -207,6 +207,65 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 end;
             }
         }
+
+        addlast(Tasks)
+        {
+            action(TFBSetToInReview)
+            {
+                ApplicationArea = All;
+                Image = ReviewWorksheet;
+                ToolTip = 'Specifies that contact is now in review';
+                Caption = 'Initiate Review';
+                Enabled = not Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+                begin
+
+                    Rec."TFB In Review" := true;
+                    Rec.Modify(false);
+
+
+                end;
+            }
+
+            action(TFBCompleteReview)
+            {
+                ApplicationArea = All;
+                Image = Completed;
+                Caption = 'Complete Review';
+                ToolTip = 'Initiate wizard to get details for finish of review';
+                Enabled = Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+
+                var
+
+                    WizardReview: Page "TFB Contact Review Wizard";
+                begin
+
+                    WizardReview.InitFromContact(Rec);
+                    if WizardReview.RunModal() = Action::OK then
+                        CurrPage.Update(false);
+
+
+
+                end;
+            }
+
+
+        }
+        addlast(Category_Process)
+        {
+            actionref(PTFBSetToInReview; TFBSetToInReview)
+            {
+
+            }
+            actionref(PTFBCompleteReview; TFBCompleteReview)
+            {
+
+            }
+        }
+
     }
 
 

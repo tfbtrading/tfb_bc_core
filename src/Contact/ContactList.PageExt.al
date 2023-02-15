@@ -88,11 +88,14 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
         addlast(Tasks)
         {
-            action(SetToInReview)
+            action(TFBSetToInReview)
             {
                 ApplicationArea = All;
+                Image = ReviewWorksheet;
                 ToolTip = 'Specifies that contact is now in review';
+                Caption = 'Initiate Review';
                 Enabled = not Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
                 trigger OnAction()
                 begin
 
@@ -103,11 +106,14 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 end;
             }
 
-            action(CompleteReview)
+            action(TFBCompleteReview)
             {
                 ApplicationArea = All;
+                Image = Completed;
+                Caption = 'Complete Review';
                 ToolTip = 'Initiate wizard to get details for finish of review';
                 Enabled = Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
                 trigger OnAction()
 
                 var
@@ -122,6 +128,19 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
 
                 end;
+            }
+
+
+        }
+        addlast(Category_Process)
+        {
+            actionref(ActionRefName; TFBSetToInReview)
+            {
+
+            }
+            actionref(Complete; TFBCompleteReview)
+            {
+
             }
         }
     }
@@ -175,4 +194,8 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
             else
                 Exit('');
     end;
+
+    var
+
+        isCompany: Boolean;
 }

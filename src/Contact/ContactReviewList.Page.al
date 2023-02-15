@@ -326,6 +326,13 @@ page 50167 "TFB Contact Review List"
                 }
 #if not CLEAN18
 
+
+
+
+
+
+
+
 #endif
                 action(RelatedCustomer)
                 {
@@ -499,6 +506,47 @@ page 50167 "TFB Contact Review List"
                         TAPIManagement: Codeunit TAPIManagement;
                     begin
                         TAPIManagement.DialContCustVendBank(DATABASE::Contact, Rec."No.", Rec.GetDefaultPhoneNo(), '');
+                    end;
+                }
+                action(TFBSetToInReview)
+                {
+                    ApplicationArea = All;
+                    Image = ReviewWorksheet;
+                    ToolTip = 'Specifies that contact is now in review';
+                    Caption = 'Initiate Review';
+                    Enabled = not Rec."TFB In Review";
+                    Visible = Rec.Type = Rec.Type::Company;
+                    trigger OnAction()
+                    begin
+
+                        Rec."TFB In Review" := true;
+                        Rec.Modify(false);
+
+
+                    end;
+                }
+
+                action(TFBCompleteReview)
+                {
+                    ApplicationArea = All;
+                    Image = Completed;
+                    Caption = 'Complete Review';
+                    ToolTip = 'Initiate wizard to get details for finish of review';
+                    Enabled = Rec."TFB In Review";
+                    Visible = Rec.Type = Rec.Type::Company;
+                    trigger OnAction()
+
+                    var
+
+                        WizardReview: Page "TFB Contact Review Wizard";
+                    begin
+
+                        WizardReview.InitFromContact(Rec);
+                        if WizardReview.RunModal() = Action::OK then
+                            CurrPage.Update(false);
+
+
+
                     end;
                 }
                 action("Launch &Web Source")
@@ -703,6 +751,15 @@ page 50167 "TFB Contact Review List"
 
                     }
                     actionref(PMakeOpportunity; "Create Opportunity")
+                    {
+
+                    }
+
+                    actionref(PTFBSetToInReview; TFBSetToInReview)
+                    {
+
+                    }
+                    actionref(PTFBCompleteReview; TFBCompleteReview)
                     {
 
                     }
