@@ -91,20 +91,20 @@ codeunit 50122 "TFB Sales Mgmt"
     /// </summary>
     /// <param name="DuplicateNotification">Notification.</param>
     /// <returns>Return value of type Text.</returns>
-    local procedure OpenExistingSalesOrder(MyNotification: Notification)
+    procedure OpenExistingSalesOrder(MyNotification: Notification)
     var
         SalesHeader: Record "Sales Header";
         PageRunner: CodeUnit "Page Management";
 
     begin
-    
+
         If not MyNotification.HasData('SystemId') then exit;
 
         If not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
 
         PageRunner.PageRun(SalesHeader);
 
-    
+
     end;
 
 
