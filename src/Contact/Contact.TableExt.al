@@ -176,6 +176,12 @@ tableextension 50110 "TFB Contact" extends Contact
             CalcFormula = Count("Contact Industry Group" where("Industry Group Code" = field("TFB Industry Group Filter"), "Contact No." = field("No.")));
         }
 
+        field(50460; "TFB Default Review Period"; enum "TFB Periodic Review")
+        {
+            Caption = 'Default Review Period';
+
+        }
+
 
 
     }

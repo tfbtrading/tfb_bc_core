@@ -68,7 +68,7 @@ page 50167 "TFB Contact Review List"
                 field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                    Editable = not rec."TFB In Review";
                     StyleExpr = Rec."TFB In Review";
                     Style = Favorable;
                     ToolTip = 'Specifies date on which next review is planned for contact';
@@ -76,7 +76,7 @@ page 50167 "TFB Contact Review List"
                 field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                    Editable = rec."TFB In Review";
                     ToolTip = 'Specifies the date on which review should be completed';
                     StyleExpr = Rec."TFB In Review";
                     Style = Attention;
@@ -84,7 +84,7 @@ page 50167 "TFB Contact Review List"
                 field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
                 {
                     ApplicationArea = All;
-                    Editable = true;
+                    Editable = false;
                     ToolTip = 'Specifies the date review was last completed';
                 }
                 field("Last Date Attempted"; Rec."Last Date Attempted")
@@ -174,16 +174,19 @@ page 50167 "TFB Contact Review List"
         {
             part(Control128; "Contact Statistics FactBox")
             {
+                UpdatePropagation = both;
                 ApplicationArea = RelationshipMgmt;
                 SubPageLink = "No." = FIELD("No."),
                               "Date Filter" = FIELD("Date Filter");
             }
             systempart(Control1900383207; Links)
             {
+                UpdatePropagation = both;
                 ApplicationArea = RecordLinks;
             }
             systempart(Control1905767507; Notes)
             {
+                UpdatePropagation = both;
                 ApplicationArea = Notes;
             }
         }
@@ -547,20 +550,10 @@ page 50167 "TFB Contact Review List"
                     trigger OnAction()
                     var
 
-                        DialogP: Page "Date-Time Dialog";
-                        DefaultWeek: DateFormula;
+                        ContactCU: Codeunit "TFB Contact Mgmt";
                     begin
 
-                        Rec."TFB In Review" := true;
-                        DialogP.UseDateOnly();
-                        Evaluate(DefaultWeek, '<7D>');
-                        DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
-                        If DialogP.RunModal() = ACTION::OK then
-                            Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
-                        else
-                            Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
-                        Rec.Modify(false);
-
+                        ContactCu.InitiateReview(Rec);
 
                     end;
                 }
@@ -576,15 +569,11 @@ page 50167 "TFB Contact Review List"
                     trigger OnAction()
 
                     var
+                        ContactCU: Codeunit "TFB Contact Mgmt";
 
-                        WizardReview: Page "TFB Contact Review Wizard";
                     begin
-
-                        WizardReview.InitFromContact(Rec);
-                        if WizardReview.RunModal() = Action::OK then
+                        If ContactCU.CompleteReview(Rec) then
                             CurrPage.Update(false);
-
-
 
                     end;
                 }

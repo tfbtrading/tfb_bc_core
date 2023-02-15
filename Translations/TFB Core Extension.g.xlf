@@ -5993,6 +5993,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Contact Status - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 1019636607 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether contact is currently being reviewed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB In Review - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 1582544569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies date on which next review is planned for contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Review Date - Planned - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 493241850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date on which review should be completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Review Date Exp. Compl. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 1864266193 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date review was last completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Review Date Last Compl. - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Control 3245344756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if a task exists</source>
           <note from="Developer" annotates="general" priority="2"></note>

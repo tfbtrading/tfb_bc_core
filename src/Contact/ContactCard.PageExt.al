@@ -157,6 +157,11 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies where the lead originated from';
                 }
+                field("TFB Default Review Period"; Rec."TFB Default Review Period")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the default review period for next date planned date';
+                }
 
             }
         }
@@ -219,11 +224,12 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 Enabled = not Rec."TFB In Review";
                 Visible = Rec.Type = Rec.Type::Company;
                 trigger OnAction()
+                var
+
+                    ContactCU: Codeunit "TFB Contact Mgmt";
                 begin
 
-                    Rec."TFB In Review" := true;
-                    Rec.Modify(false);
-
+                    ContactCu.InitiateReview(Rec);
 
                 end;
             }
@@ -239,15 +245,10 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 trigger OnAction()
 
                 var
-
-                    WizardReview: Page "TFB Contact Review Wizard";
+                    ContactCU: Codeunit "TFB Contact Mgmt";
                 begin
-
-                    WizardReview.InitFromContact(Rec);
-                    if WizardReview.RunModal() = Action::OK then
+                    If ContactCU.CompleteReview(Rec) then
                         CurrPage.Update(false);
-
-
 
                 end;
             }

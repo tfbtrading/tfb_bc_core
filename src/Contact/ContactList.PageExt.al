@@ -97,11 +97,12 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 Enabled = not Rec."TFB In Review";
                 Visible = Rec.Type = Rec.Type::Company;
                 trigger OnAction()
+                var
+
+                    ContactCU: Codeunit "TFB Contact Mgmt";
                 begin
 
-                    Rec."TFB In Review" := true;
-                    Rec.Modify(false);
-
+                    ContactCu.InitiateReview(Rec);
 
                 end;
             }
@@ -117,15 +118,11 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 trigger OnAction()
 
                 var
+                    ContactCU: Codeunit "TFB Contact Mgmt";
 
-                    WizardReview: Page "TFB Contact Review Wizard";
                 begin
-
-                    WizardReview.InitFromContact(Rec);
-                    if WizardReview.RunModal() = Action::OK then
+                    If ContactCU.CompleteReview(Rec) then
                         CurrPage.Update(false);
-
-
 
                 end;
             }

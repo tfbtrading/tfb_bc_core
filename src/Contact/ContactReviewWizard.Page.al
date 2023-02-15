@@ -61,6 +61,19 @@ page 50174 "TFB Contact Review Wizard"
                                     error('You must provide a review outcome description');
                             end;
                         }
+                        field(PeriodicReviewSelection; _PeriodicReviewSelection)
+                        {
+                            ApplicationArea = All;
+                            Editable = true;
+                            Caption = 'Review period';
+                            ToolTip = 'Helps set the next planned review date';
+
+                            trigger OnValidate()
+
+                            begin
+                                ResetNextReviewDate(_PeriodicReviewSelection);
+                            end;
+                        }
                         field(NextReview; _NextReview)
                         {
                             ApplicationArea = All;
@@ -195,6 +208,8 @@ page 50174 "TFB Contact Review Wizard"
 
         _ReviewComment: Text[80];
         _NextReview: Date;
+
+        _PeriodicReviewSelection: Enum "TFB Periodic Review";
         _NextStepConfirmation: Text[1000];
         TopBannerVisible: Boolean;
 
@@ -217,6 +232,10 @@ page 50174 "TFB Contact Review Wizard"
 
     begin
         contact := _contact;
+
+        _PeriodicReviewSelection := contact."TFB Default Review Period";
+
+        ResetNextReviewDate(_PeriodicReviewSelection);
     end;
 
 
@@ -311,6 +330,20 @@ page 50174 "TFB Contact Review Wizard"
 
         CRLF := TypeHelper.CRLFSeparator();
         Exit(InstructionTxt + CRLF + Instruction1Txt + CRLF + Instruction2Txt + CRLF + Instruction3Txt + CRLF + Instruction4Txt);
+    end;
+
+    local procedure ResetNextReviewDate(_PeriodicReviewSelection: Enum "TFB Periodic Review")
+
+    var
+        PeriodicDateFormula: DateFormula;
+
+        IValueName: Text;
+        IIndex: Integer;
+    begin
+        IIndex := _PeriodicReviewSelection.Ordinals().IndexOf(_PeriodicReviewSelection.AsInteger());
+        _PeriodicReviewSelection.Names().Get(IIndex, IValueName);
+        Evaluate(PeriodicDateFormula, IValueName);
+        _NextReview := CalcDate(PeriodicDateFormula, WorkDate());
     end;
 
 
