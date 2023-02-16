@@ -6533,15 +6533,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control Group18 - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3193956155 - Control 3723891399 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the date the next contact review should take place</source>
+        <trans-unit id="Page 3193956155 - Control 2741274932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last review details</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextReview - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control LastReview - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3193956155 - Control 3723891399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Next review date</source>
+        <trans-unit id="Page 3193956155 - Control 759201824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextReview - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewComment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3857743901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Completed On</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3494135795 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies in less than 80 characters summary of review outcome</source>
@@ -6563,10 +6568,30 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control Step2 - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3723891399 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the date the next contact review should take place</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3723891399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next review date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextReview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3193956155 - Control 392783278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gives details of the next step</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextStepConfirmation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3844408567 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Helps set the next planned review date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control PeriodicReviewSelection - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3844408567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control PeriodicReviewSelection - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Action 2438272767 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Back action.</source>
@@ -14208,15 +14233,60 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control AdditionalInfo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1814722664 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the default review period for next date planned date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Default Review Period - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1908654979 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Specifies where the lead originated from</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Lead Source - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 156978454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control Review - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 493241850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies when planned date for when review will be completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date Exp. Compl. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 493241850 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Finish By</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date Exp. Compl. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1864266193 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Specifies date the last review was completed</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date Last Compl. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1864266193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Last Date Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date Last Compl. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 250672526 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies details about the relationship captured during review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Note - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 250672526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Note - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1582544569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the next date in which a contact should be reviewed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date - Planned - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1582544569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Next Date Planned</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date - Planned - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Specifies the contact status</source>
@@ -14232,16 +14302,6 @@
           <source>Specifies whether a review is currently being undertaken of contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB In Review - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 1582544569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies the next date in which a contact should be reviewed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date - Planned - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 493241850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies when planned date for when review will be completed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Review Date Exp. Compl. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 917647956 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Specifies the sales readiness for the contact</source>
@@ -17833,6 +17893,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Contact Status - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 1814722664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Default Review Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Default Review Period - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 3552331494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Enable Online Access</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17852,6 +17917,11 @@
           <source>Is A Customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Is Customer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 4242545796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Last Review Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Last Review Note - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 1908654979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Lead Source</source>
@@ -17907,6 +17977,11 @@
           <source>Review Date - Last Completed</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Review Date Last Compl. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 250672526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Review Notes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Review Note - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 917647956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Sales Readiness</source>
@@ -19847,6 +19922,26 @@
           <source>Opt Out</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Order Update Preference - EnumValue OptOut - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1918552079 - EnumValue 3261106048 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Monthly</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Periodic Review - EnumValue 1M - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1918552079 - EnumValue 3392075596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quarterly</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Periodic Review - EnumValue 1Q - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1918552079 - EnumValue 4198681236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Annually</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Periodic Review - EnumValue 1Y - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 1918552079 - EnumValue 1981970942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Weekly</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Periodic Review - EnumValue WD1 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 3123961560 - EnumValue 475951419 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Brokerage Shipment - Customer</source>

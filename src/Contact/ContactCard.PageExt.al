@@ -114,35 +114,66 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                     StyleExpr = Rec."TFB In Review";
                     Editable = false;
                 }
-
-                field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+            }
+            group(Review)
+            {
+                ShowCaption = true;
+                Caption = 'Review';
+                visible = rec.type = rec.type::Company;
+                group(NotInReviewDetails)
                 {
-                    ApplicationArea = All;
-                    Importance = Standard;
-                    ToolTip = 'Specifies the next date in which a contact should be reviewed';
-                    Editable = not Rec."TFB In Review";
-                }
-                field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
-                {
-                    ApplicationArea = All;
-                    Importance = Standard;
-                    ToolTip = 'Specifies when planned date for when review will be completed';
-                    Editable = Rec."TFB In Review";
-                }
-                group(ReviewHistory)
-                {
-                    Visible = true;
+                    Visible = not rec."TFB In Review";
                     ShowCaption = false;
-
-                    field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
+                    field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
                     {
                         ApplicationArea = All;
                         Importance = Standard;
-                        ToolTip = 'Specifies date the last review was completed';
-                        Editable = false;
+                        Caption = 'Next Date Planned';
+                        ToolTip = 'Specifies the next date in which a contact should be reviewed';
+                        Editable = not Rec."TFB In Review";
 
                     }
+
+                    group(ReviewHistory)
+                    {
+                        Visible = Rec."TFB Review Note" <> '';
+                        ShowCaption = false;
+
+                        field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
+                        {
+                            ApplicationArea = All;
+                            Importance = Standard;
+                            Caption = 'Last Date Completed';
+                            ToolTip = 'Specifies date the last review was completed';
+                            Editable = false;
+
+                        }
+                        field("TFB Review Note"; Rec."TFB Review Note")
+                        {
+                            ApplicationArea = All;
+                            Importance = Standard;
+                            MultiLine = true;
+                            Editable = false;
+                            Caption = 'Notes';
+                            ToolTip = 'Specifies details about the relationship captured during review';
+                        }
+                    }
                 }
+
+                group(InReviewDetails)
+                {
+                    Visible = Rec."TFB In Review";
+                    ShowCaption = false;
+                    field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
+                    {
+                        ApplicationArea = All;
+                        Importance = Standard;
+                        Caption = 'Finish By';
+                        ToolTip = 'Specifies when planned date for when review will be completed';
+                        Editable = Rec."TFB In Review";
+                    }
+                }
+
 
 
             }
@@ -226,10 +257,11 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 trigger OnAction()
                 var
 
-                    ContactCU: Codeunit "TFB Contact Mgmt";
+
                 begin
 
-                    ContactCu.InitiateReview(Rec);
+                    Rec.InitiateReview();
+                    Rec.Modify(false);
 
                 end;
             }
@@ -245,10 +277,10 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 trigger OnAction()
 
                 var
-                    ContactCU: Codeunit "TFB Contact Mgmt";
+
                 begin
-                    If ContactCU.CompleteReview(Rec) then
-                        CurrPage.Update(false);
+                    Rec.CompleteReview();
+                    Rec.Modify(false);
 
                 end;
             }

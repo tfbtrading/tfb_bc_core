@@ -550,10 +550,10 @@ page 50167 "TFB Contact Review List"
                     trigger OnAction()
                     var
 
-                        ContactCU: Codeunit "TFB Contact Mgmt";
+
                     begin
 
-                        ContactCu.InitiateReview(Rec);
+                        Rec.InitiateReview();
 
                     end;
                 }
@@ -572,8 +572,7 @@ page 50167 "TFB Contact Review List"
                         ContactCU: Codeunit "TFB Contact Mgmt";
 
                     begin
-                        If ContactCU.CompleteReview(Rec) then
-                            CurrPage.Update(false);
+                        Rec.CompleteReview();
 
                     end;
                 }

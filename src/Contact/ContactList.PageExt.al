@@ -99,10 +99,11 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 trigger OnAction()
                 var
 
-                    ContactCU: Codeunit "TFB Contact Mgmt";
+
                 begin
 
-                    ContactCu.InitiateReview(Rec);
+                    Rec.InitiateReview();
+                    Rec.Modify();
 
                 end;
             }
@@ -118,11 +119,11 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 trigger OnAction()
 
                 var
-                    ContactCU: Codeunit "TFB Contact Mgmt";
+
 
                 begin
-                    If ContactCU.CompleteReview(Rec) then
-                        CurrPage.Update(false);
+                    Rec.CompleteReview();
+                    Rec.Modify();
 
                 end;
             }
@@ -169,6 +170,34 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
             }
         }
     }
+
+    local procedure FinishAction(_ReviewComment: Text[80]; _NextReview: Date)
+    var
+        RelComment: Record "Rlshp. Mgt. Comment Line";
+        LineNo: Integer;
+
+    begin
+        RelComment.SetRange("Table Name", RelComment."Table Name"::Contact);
+        RelComment.SetRange("No.", Rec."No.");
+        RelComment.SetRange("Sub No.", 0);
+        If RelComment.FindLast() then
+            LineNo := RelComment."Line No." + 10000
+        else
+            LineNo := 10000;
+
+        RelComment.Init();
+        RelComment.Date := WorkDate();
+        RelComment."Table Name" := RelComment."Table Name"::Contact;
+        RelComment."No." := Rec."No.";
+        RelComment.Comment := _ReviewComment;
+        RelComment."Line No." := LineNo;
+
+        RelComment.Insert(true);
+
+        Rec."TFB In Review" := false;
+        Rec."TFB Review Date - Planned" := _NextReview;
+        Rec."TFB Review Date Last Compl." := WorkDate();
+    end;
 
     local procedure GetTaskSymbol(): Text
 

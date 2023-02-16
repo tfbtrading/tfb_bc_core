@@ -113,35 +113,6 @@ codeunit 50111 "TFB Contact Mgmt"
         until Contact.Next() = 0;
     end;
 
-    procedure InitiateReview(var Contact: Record Contact)
-    var
 
-        DialogP: Page "Date-Time Dialog";
-        DefaultWeek: DateFormula;
-    begin
-
-        DialogP.UseDateOnly();
-        Evaluate(DefaultWeek, '<7D>');
-        DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
-        If DialogP.RunModal() = ACTION::OK then
-            Contact."TFB Review Date Exp. Compl." := DialogP.GetDate()
-        else
-            Contact."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
-        Contact."TFB In Review" := true;
-        Contact.Modify(false);
-    end;
-
-    procedure CompleteReview(var Contact: Record Contact): Boolean
-
-    var
-
-        WizardReview: Page "TFB Contact Review Wizard";
-    begin
-
-        WizardReview.InitFromContact(Contact);
-        exit(WizardReview.RunModal() = Action::OK);
-
-
-    end;
 
 }

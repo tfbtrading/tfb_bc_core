@@ -181,6 +181,16 @@ tableextension 50110 "TFB Contact" extends Contact
             Caption = 'Default Review Period';
 
         }
+        field(50470; "TFB Review Note"; Text[256])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Review Notes';
+        }
+        field(50475; "TFB Last Review Note"; Text[256])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Last Review Notes';
+        }
 
 
 
@@ -198,6 +208,61 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(Brick; "TFB Contact Stage", "TFB Contact Status", "E-Mail") { }
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
+
+    local procedure FinishAction(_ReviewComment: Text[80]; _NextReview: Date)
+    var
+        RelComment: Record "Rlshp. Mgt. Comment Line";
+        LineNo: Integer;
+
+    begin
+
+
+        Rec."TFB In Review" := false;
+        Rec."TFB Review Date - Planned" := _NextReview;
+        Rec."TFB Review Date Last Compl." := WorkDate();
+        If rec."TFB Review Note" <> '' then
+            Rec."TFB Last Review Note" := Rec."TFB Review Note";
+
+        Rec."TFB Review Note" := _ReviewComment;
+
+
+    end;
+
+    procedure InitiateReview()
+    var
+
+        DialogP: Page "Date-Time Dialog";
+        DefaultWeek: DateFormula;
+    begin
+
+        DialogP.UseDateOnly();
+        Evaluate(DefaultWeek, '<7D>');
+        DialogP.Caption('Select when review will finish');
+        DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
+        If DialogP.RunModal() = ACTION::OK then
+            Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
+        else
+            Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
+        Rec."TFB In Review" := true;
+
+    end;
+
+    procedure CompleteReview(): Boolean
+
+    var
+
+        WizardReview: Page "TFB Contact Review Wizard";
+    begin
+
+        WizardReview.InitFromContact(Rec);
+        If WizardReview.RunModal() = Action::OK then begin
+            FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate());
+            exit(true);
+
+        end;
+    end;
+
+
 
 
     local procedure IsMobilePhoneNoUnique(): Boolean

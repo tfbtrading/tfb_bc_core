@@ -45,6 +45,22 @@ page 50174 "TFB Contact Review Wizard"
                     {
                         Caption = '';
                         InstructionalText = 'First we will just confirm a few details';
+                        group(LastReview)
+                        {
+                            Caption = 'Last review details';
+                            Visible = _ExistingReview;
+                            field(_LastReviewComment; _LastReviewComment)
+                            {
+                                Caption = 'Last Review';
+                                Editable = false;
+                                MultiLine = true;
+                            }
+                            field(_LastReviewDate; _LastReviewDate)
+                            {
+                                Caption = 'Last Completed On';
+                                Editable = false;
+                            }
+                        }
 
                         field(ReviewComment; _ReviewComment)
                         {
@@ -61,33 +77,7 @@ page 50174 "TFB Contact Review Wizard"
                                     error('You must provide a review outcome description');
                             end;
                         }
-                        field(PeriodicReviewSelection; _PeriodicReviewSelection)
-                        {
-                            ApplicationArea = All;
-                            Editable = true;
-                            Caption = 'Review period';
-                            ToolTip = 'Helps set the next planned review date';
 
-                            trigger OnValidate()
-
-                            begin
-                                ResetNextReviewDate(_PeriodicReviewSelection);
-                            end;
-                        }
-                        field(NextReview; _NextReview)
-                        {
-                            ApplicationArea = All;
-                            Editable = true;
-                            Caption = 'Next review date';
-                            ToolTip = 'Specifies the date the next contact review should take place';
-
-                            trigger OnValidate()
-
-                            begin
-                                if _NextReview < WorkDate() then
-                                    error('You must provide a date which is greater than todays date');
-                            end;
-                        }
                     }
                 }
 
@@ -99,7 +89,33 @@ page 50174 "TFB Contact Review Wizard"
                 InstructionalText = 'Confirm next actions.';
                 Visible = Step2Visible;
                 //You might want to add fields here
+                field(PeriodicReviewSelection; _PeriodicReviewSelection)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    Caption = 'Review period';
+                    ToolTip = 'Helps set the next planned review date';
 
+                    trigger OnValidate()
+
+                    begin
+                        ResetNextReviewDate(_PeriodicReviewSelection);
+                    end;
+                }
+                field(NextReview; _NextReview)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    Caption = 'Next review date';
+                    ToolTip = 'Specifies the date the next contact review should take place';
+
+                    trigger OnValidate()
+
+                    begin
+                        if _NextReview < WorkDate() then
+                            error('You must provide a date which is greater than todays date');
+                    end;
+                }
 
                 field(NextStepConfirmation; getInstruction())
                 {
@@ -181,7 +197,7 @@ page 50174 "TFB Contact Review Wizard"
 
 
     var
-        Contact: Record Contact;
+
         InstructionTxt: Label 'When you click finish we will:';
 
         Instruction1Txt: Label '1) Update contact to say they are no longer in review';
@@ -206,8 +222,13 @@ page 50174 "TFB Contact Review Wizard"
         Step1Visible: Boolean;
         Step2Visible: Boolean;
 
-        _ReviewComment: Text[80];
+        _ReviewComment: Text[256];
+        _LastReviewComment: Text[256];
+
+        _LastReviewDate: Date;
         _NextReview: Date;
+        [InDataSet]
+        _ExistingReview: Boolean;
 
         _PeriodicReviewSelection: Enum "TFB Periodic Review";
         _NextStepConfirmation: Text[1000];
@@ -228,43 +249,39 @@ page 50174 "TFB Contact Review Wizard"
     end;
 
 
-    procedure InitFromContact(var _contact: Record Contact)
+    procedure InitFromContact(_contact: Record Contact)
 
     begin
-        contact := _contact;
 
-        _PeriodicReviewSelection := contact."TFB Default Review Period";
+
+        _PeriodicReviewSelection := _contact."TFB Default Review Period";
+
+        _LastReviewDate := _contact."TFB Review Date Last Compl.";
+
+        If _LastReviewDate > 0D then
+            _ExistingReview := true
+        else
+            _ExistingReview := false;
 
         ResetNextReviewDate(_PeriodicReviewSelection);
+    end;
+
+    internal procedure GetReviewComment(): Text[80]
+    begin
+        Exit(_ReviewComment);
+    end;
+
+    internal procedure GetNextPlannedDate(): Date
+    begin
+        Exit(_NextReview);
     end;
 
 
     local procedure FinishAction();
     var
-        RelComment: Record "Rlshp. Mgt. Comment Line";
-        LineNo: Integer;
+
     begin
-        RelComment.SetRange("Table Name", RelComment."Table Name"::Contact);
-        RelComment.SetRange("No.", Contact."No.");
-        RelComment.SetRange("Sub No.", 0);
-        If RelComment.FindLast() then
-            LineNo := RelComment."Line No." + 10000
-        else
-            LineNo := 10000;
 
-        RelComment.Init();
-        RelComment.Date := WorkDate();
-        RelComment."Table Name" := RelComment."Table Name"::Contact;
-        RelComment."No." := Contact."No.";
-        RelComment.Comment := _ReviewComment;
-        RelComment."Line No." := LineNo;
-
-        RelComment.Insert(true);
-
-        Contact."TFB In Review" := false;
-        Contact."TFB Review Date - Planned" := _NextReview;
-        Contact."TFB Review Date Last Compl." := WorkDate();
-        Contact.Modify(false);
 
         CurrPage.Close();
     end;
