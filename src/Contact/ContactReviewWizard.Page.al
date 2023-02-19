@@ -70,7 +70,7 @@ page 50174 "TFB Contact Review Wizard"
                             MultiLine = true;
                             Editable = true;
                             Caption = 'Review outcome';
-                            ToolTip = 'Specifies in less than 80 characters summary of review outcome';
+                            ToolTip = 'Specifies in less than 256 characters summary of review outcome';
 
                             trigger OnValidate()
 
@@ -204,7 +204,7 @@ page 50174 "TFB Contact Review Wizard"
 
         Instruction1Txt: Label '1) Update contact to say they are no longer in review';
 
-        Instruction2Txt: Label '2) Add a relationship comment up to 80 characters';
+        Instruction2Txt: Label '2) Add a relationship comment up to 256 characters';
 
         Instruction3Txt: Label '3) Set the next date of the review';
 
@@ -268,7 +268,7 @@ page 50174 "TFB Contact Review Wizard"
         ResetNextReviewDate(_PeriodicReviewSelection);
     end;
 
-    internal procedure GetReviewComment(): Text[80]
+    internal procedure GetReviewComment(): Text[256]
     begin
         Exit(_ReviewComment);
     end;

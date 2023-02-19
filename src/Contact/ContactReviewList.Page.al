@@ -858,6 +858,31 @@ page 50167 "TFB Contact Review List"
 
             }
         }
+        view(ContactsInReview)
+        {
+            Caption = 'Review - In Progress';
+            Filters = where("TFB In Review" = const(true));
+            SharedLayout = true;
+        }
+        view(ContactsInReviewOverdue)
+        {
+            Caption = 'Review - In Progress but Late';
+            Filters = where("TFB In Review" = const(true), "TFB Review Date Exp. Compl." = filter('<t'));
+            SharedLayout = true;
+        }
+        view(RequiringReview)
+        {
+            Caption = 'Review - Past Due';
+            Filters = where("TFB Review Date - Planned" = filter('<t'), "TFB In Review" = const(false));
+            SharedLayout = true;
+        }
+        view(RequiringPlannedDate)
+        {
+            Caption = 'Review - No Date Set';
+            Filters = where("TFB Review Date - Planned" = filter('=0D'));
+            SharedLayout = true;
+        }
+
     }
 
 

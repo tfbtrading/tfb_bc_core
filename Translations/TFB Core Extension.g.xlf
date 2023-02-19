@@ -6468,6 +6468,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsInPursuit - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - View 4080922538 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review - In Progress</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsInReview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - View 3978542160 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review - In Progress but Late</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsInReviewOverdue - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - View 3970051082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contacts Requiring Followup</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6477,6 +6487,16 @@
           <source>Contacts With Open Tasks</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactWithTasks - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - View 749302860 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review - No Date Set</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View RequiringPlannedDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - View 3296084038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review - Past Due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View RequiringReview - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Welcome to the Contact Review Wizard</source>
@@ -6489,7 +6509,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - NamedType Instruction1Txt</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - NamedType 3154670622" size-unit="char" translate="yes" xml:space="preserve">
-          <source>2) Add a relationship comment up to 80 characters</source>
+          <source>2) Add a relationship comment up to 256 characters</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - NamedType Instruction2Txt</note>
         </trans-unit>
@@ -6549,7 +6569,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3494135795 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies in less than 80 characters summary of review outcome</source>
+          <source>Specifies in less than 256 characters summary of review outcome</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control ReviewComment - Property ToolTip</note>
         </trans-unit>
