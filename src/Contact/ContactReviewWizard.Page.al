@@ -52,12 +52,14 @@ page 50174 "TFB Contact Review Wizard"
                             field(_LastReviewComment; _LastReviewComment)
                             {
                                 Caption = 'Last Review';
+                                ApplicationArea = All;
                                 Editable = false;
                                 MultiLine = true;
                             }
                             field(_LastReviewDate; _LastReviewDate)
                             {
                                 Caption = 'Last Completed On';
+                                ApplicationArea = All;
                                 Editable = false;
                             }
                         }

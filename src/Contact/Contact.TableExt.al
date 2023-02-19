@@ -239,7 +239,7 @@ tableextension 50110 "TFB Contact" extends Contact
         Evaluate(DefaultWeek, '<7D>');
         DialogP.Caption('Select when review will finish');
         DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
-        If DialogP.RunModal() = ACTION::OK then
+        If (DialogP.RunModal() = ACTION::OK) and (DialogP.GetDate() > 0D) then
             Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
         else
             Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
