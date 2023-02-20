@@ -209,7 +209,7 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
 
-    local procedure FinishAction(_ReviewComment: Text[80]; _NextReview: Date)
+    local procedure FinishAction(_ReviewComment: Text[256]; _NextReview: Date)
     var
         RelComment: Record "Rlshp. Mgt. Comment Line";
         LineNo: Integer;
@@ -219,6 +219,7 @@ tableextension 50110 "TFB Contact" extends Contact
 
         Rec."TFB In Review" := false;
         Rec."TFB Review Date - Planned" := _NextReview;
+        Rec."TFB Review Date Exp. Compl." := 0D;
         Rec."TFB Review Date Last Compl." := WorkDate();
         If rec."TFB Review Note" <> '' then
             Rec."TFB Last Review Note" := Rec."TFB Review Note";
@@ -239,12 +240,15 @@ tableextension 50110 "TFB Contact" extends Contact
         Evaluate(DefaultWeek, '<7D>');
         DialogP.Caption('Select when review will finish');
         DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
-        If (DialogP.RunModal() = ACTION::OK) and (DialogP.GetDate() > 0D) then
+        If not (DialogP.RunModal() = ACTION::OK) then exit;
+
+        if (DialogP.GetDate() > 0D) then
             Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
         else
             Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
-        Rec."TFB In Review" := true;
 
+        Rec."TFB In Review" := true;
+        Rec.Modify(false);
     end;
 
     procedure CompleteReview(): Boolean
@@ -257,6 +261,7 @@ tableextension 50110 "TFB Contact" extends Contact
         WizardReview.InitFromContact(Rec);
         If WizardReview.RunModal() = Action::OK then begin
             FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate());
+            Rec.Modify(false);
             exit(true);
 
         end;

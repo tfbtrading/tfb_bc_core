@@ -879,7 +879,7 @@ page 50167 "TFB Contact Review List"
         view(RequiringPlannedDate)
         {
             Caption = 'Review - No Date Set';
-            Filters = where("TFB Review Date - Planned" = filter('=0D'));
+            Filters = where("TFB Review Date - Planned" = filter(= '='''));
             SharedLayout = true;
         }
 
