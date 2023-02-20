@@ -15848,6 +15848,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Opportunity Stat. FactBox - Control TFBActiveStage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2851172467 - Control 1940538948 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2431002931">
+          <source>Specifies all the recordings for this order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Physical Inventory Order - Control TFB No. of Recordings - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2395375266 - Action 2015349023 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 56761826">
           <source>Open lot number information card</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17827,6 +17832,11 @@
           <source>Specifies the type of vendor</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Control TFB Vendor Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4142435239 - Field 1940538948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1158794234">
+          <source>No. of Recordings</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension MyExtension - Field TFB No. of Recordings - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3680995205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>Recent Filter</source>

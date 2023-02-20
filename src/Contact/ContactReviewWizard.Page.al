@@ -260,8 +260,11 @@ page 50174 "TFB Contact Review Wizard"
 
         _LastReviewDate := _contact."TFB Review Date Last Compl.";
 
-        If _LastReviewDate > 0D then
-            _ExistingReview := true
+        If _LastReviewDate > 0D then begin
+            _ExistingReview := true;
+            _LastReviewComment := _contact."TFB Review Note";
+
+        end
         else
             _ExistingReview := false;
 
