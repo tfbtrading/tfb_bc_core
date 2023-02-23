@@ -46,7 +46,7 @@ codeunit 50120 "TFB Customer Mgmt"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo: Code[20]; Today: Date; HTMLTemplate: Text; Confirm: Boolean; var isHandled: Boolean)
+    local procedure OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo: Code[20]; Today: Date; HTMLTemplate: Text; Confirm: Boolean; var SkipRequest: Boolean)
     begin
     end;
 
@@ -66,7 +66,7 @@ codeunit 50120 "TFB Customer Mgmt"
         EditEmailMsg: Label 'Edit email before sending?';
         TitleTxt: Label 'Statement';
         HTMLTemplate: Text;
-        isHandled: Boolean;
+        SkipRequest: Boolean;
 
 
     begin
@@ -77,12 +77,13 @@ codeunit 50120 "TFB Customer Mgmt"
 
         HTMLTemplate := Common.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
-        OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo, Today(), HTMLTemplate, Confirm(EditEmailMsg, true), isHandled);
 
-        If isHandled then exit;
+        If RepSelSales.FindFirst() then begin
+            OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo, Today(), HTMLTemplate, Confirm(EditEmailMsg, true), SkipRequest);
+            If not SkipRequest then
+                XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
+        end;
 
-        If RepSelSales.FindFirst() then
-            XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
 
         SendCustomerStatement(CustomerNo, Today(), XmlParameters, HTMLTemplate, Confirm(EditEmailMsg, true));
     end;
