@@ -46,7 +46,7 @@ codeunit 50120 "TFB Customer Mgmt"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo: Code[20]; Today: Date; HTMLTemplate: Text; Confirm: Boolean; var SkipRequest: Boolean)
+    local procedure OnSendCustomerStatementeBeforeRunRequestPage(ReportID: Integer; var SkipRequest: Boolean)
     begin
     end;
 
@@ -79,7 +79,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
         If RepSelSales.FindFirst() then begin
-            OnSendCustomerStatementeBeforeRunRequestPage(CustomerNo, Today(), HTMLTemplate, Confirm(EditEmailMsg, true), SkipRequest);
+            OnSendCustomerStatementeBeforeRunRequestPage(RepSelSales."Report ID", SkipRequest);
             If not SkipRequest then
                 XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
         end;
