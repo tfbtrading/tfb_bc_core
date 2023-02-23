@@ -50,6 +50,11 @@ codeunit 50120 "TFB Customer Mgmt"
     begin
     end;
 
+    [IntegrationEvent(false, false)]
+    local procedure OnGenerateCustomerStatement(ReportID: Integer; XmlParameters: Text; var OStream: OutStream; VarEmailRecordRef: RecordRef; var isHandled: Boolean)
+    begin
+    end;
+
     procedure SendStatementToOneCustomer(CustomerNo: Code[20])
 
     var
@@ -145,7 +150,7 @@ codeunit 50120 "TFB Customer Mgmt"
         SubjectNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         Recipients: List of [Text];
-
+        isHandled: Boolean;
 
     begin
 
@@ -197,9 +202,9 @@ codeunit 50120 "TFB Customer Mgmt"
 
                 VarEmailRecordRef := EmailRecordRef;
 
-
-
-                Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
+                OnGenerateCustomerStatement(RepSelSales."Report ID", XmlParameters, OStream, VarEmailRecordRef, isHandled);
+                If not isHandled then
+                    Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
 
 
                 Recipients := EmailID.Split(';');
