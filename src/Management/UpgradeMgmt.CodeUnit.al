@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '21.0.0.40'))
+        Exit((GetInstallingVersionNo() = '21.0.0.42'))
     end;
 
     local procedure FixStatus(): Boolean
@@ -53,25 +53,23 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
 
-        Customer.Findset(true, true);
+        If Customer.Findset(true, false) then
+            repeat begin
 
-        repeat begin
+                Customer.validate("TFB Contact Status", Customer."TFB Contact Status");
+                Customer.modify(false);
 
-            Customer.validate("TFB Contact Status", Customer."TFB Contact Status");
-            Customer.modify(false);
-
-        end until Customer.Next() = 0;
+            end until Customer.Next() = 0;
 
         Contact.SetRange(Type, Contact.Type::Company);
 
-        Contact.FindSet(true, true);
+        If Contact.FindSet(true, false) then
+            repeat begin
 
-        repeat begin
+                Contact.Validate("TFB Contact Status", Contact."TFB Contact Status");
+                Contact.Modify(false);
 
-            Contact.Validate("TFB Contact Status", Contact."TFB Contact Status");
-            Contact.Modify(false);
-
-        end until Contact.Next() = 0;
+            end until Contact.Next() = 0;
 
     end;
 
