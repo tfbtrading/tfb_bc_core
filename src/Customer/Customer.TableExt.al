@@ -9,6 +9,12 @@ tableextension 50101 "TFB Customer" extends Customer
             Caption = 'Contact Status';
             TableRelation = "TFB Contact Status".Status;
 
+            trigger OnValidate()
+
+            begin
+                validateContactStatus();
+            end;
+
 
         }
         field(50102; "TFB Pallet Exchange"; Boolean)
@@ -206,4 +212,24 @@ tableextension 50101 "TFB Customer" extends Customer
     {
         addlast(Brick; Blocked) { }
     }
+
+    local procedure validateContactStatus()
+
+    var
+        Status: Record "TFB Contact Status";
+
+    begin
+
+
+
+        Status.SetRange(Status, Rec."TFB Contact Status");
+
+        If Status.FindFirst() then
+            Rec.validate("TFB Contact Stage", Status.Stage);
+
+
+
+    end;
+
+
 }
