@@ -897,16 +897,15 @@ page 50167 "TFB Contact Review List"
         CurrPage.SetSelectionFilter(Contact);
         CanSendEmail := Contact.Count() = 1;
 
-        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < Today());
-        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < today());
+
     end;
 
     trigger OnAfterGetRecord()
     begin
         StyleIsStrong := Rec.Type = Rec.Type::Company;
 
-        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < Today());
-        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < today());
+        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < WorkDate());
+        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < WorkDate());
     end;
 
     trigger OnOpenPage()
