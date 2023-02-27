@@ -706,6 +706,15 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         Exit(true);
     end;
+
+
+
+    [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeIsContactUpdateNeeded', '', false, false)]
+    local procedure OnBeforeIsContactUpdateNeeded(Customer: Record Customer; xCustomer: Record Customer; var UpdateNeeded: Boolean; ForceUpdateContact: Boolean);
+    begin
+
+        If Customer."TFB Contact Status" <> xCustomer."TFB Contact Status" then UpdateNeeded := true;
+    end;
 }
 
 

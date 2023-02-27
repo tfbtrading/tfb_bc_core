@@ -181,12 +181,12 @@ page 50175 "TFB APIV2 - Contact Review"
                         RegisterFieldSet(Rec.FieldNo("TFB Review Note"));
                     end;
                 }
-                field(balance; Customer.Balance)
+                field(balance; Rec.GetCustomerRelation().Balance)
                 {
                     Editable = false;
                     Caption = 'Balance';
                 }
-                field(balanceDue; Customer."Balance Due")
+                field(balanceDue; Rec.GetCustomerRelation()."Balance Due")
                 {
                     Editable = false;
                     Caption = 'Balance Due';

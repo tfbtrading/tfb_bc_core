@@ -222,21 +222,24 @@ tableextension 50110 "TFB Contact" extends Contact
             ContBusRel.SetRange("Link to Table", LinkToTable);
     end;
 
-    procedure GetCustomerRelation() Customer: Record Customer
+    procedure GetCustomerRelation(): Record Customer
     var
         ContBusRel: Record "Contact Business Relation";
+        Customer: Record Customer;
         RecSelected: Boolean;
 
     begin
         ContBusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Customer);
-        ContBusRel.SetRange("Contact No.", "No.");
+        ContBusRel.SetRange("Contact No.", Rec."Company No.");
 
         If ContBusRel.IsEmpty then exit;
 
         ContBusRel.FindFirst();
-        Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due");
         Customer.SetLoadFields("Primary Contact No.", "No.");
         Customer.Get(ContBusRel."No.");
+        Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due");
+
+        Exit(Customer);
 
     end;
 
