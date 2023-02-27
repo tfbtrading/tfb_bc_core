@@ -69,8 +69,8 @@ page 50167 "TFB Contact Review List"
                 {
                     ApplicationArea = All;
                     Editable = not rec."TFB In Review";
-                    StyleExpr = Rec."TFB In Review";
-                    Style = Favorable;
+                    StyleExpr = FlagPastPlanningDate;
+                    Style = Unfavorable;
                     ToolTip = 'Specifies date on which next review is planned for contact';
                 }
                 field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
@@ -78,7 +78,7 @@ page 50167 "TFB Contact Review List"
                     ApplicationArea = All;
                     Editable = rec."TFB In Review";
                     ToolTip = 'Specifies the date on which review should be completed';
-                    StyleExpr = Rec."TFB In Review";
+                    StyleExpr = FlagPastReviewDate;
                     Style = Attention;
                 }
                 field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
@@ -896,11 +896,17 @@ page 50167 "TFB Contact Review List"
 
         CurrPage.SetSelectionFilter(Contact);
         CanSendEmail := Contact.Count() = 1;
+
+        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < Today());
+        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < today());
     end;
 
     trigger OnAfterGetRecord()
     begin
         StyleIsStrong := Rec.Type = Rec.Type::Company;
+
+        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < Today());
+        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < today());
     end;
 
     trigger OnOpenPage()
@@ -996,5 +1002,7 @@ page 50167 "TFB Contact Review List"
                 Exit('');
     end;
 
-
+    var
+        flagPastPlanningDate: boolean;
+        FlagPastReviewDate: Boolean;
 }
