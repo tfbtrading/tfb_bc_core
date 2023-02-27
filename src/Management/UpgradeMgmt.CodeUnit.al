@@ -17,7 +17,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
         If CheckIfUpgradeCodeRequired() then
-            TransferSetupFields();
+            FixStatus();
 
 
     end;
@@ -42,7 +42,37 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '21.0.0.0'))
+        Exit((GetInstallingVersionNo() = '21.0.0.40'))
+    end;
+
+    local procedure FixStatus(): Boolean
+
+    var
+        Customer: Record Customer;
+        Contact: Record Contact;
+
+    begin
+
+        Customer.Findset(true, true);
+
+        repeat begin
+
+            Customer.validate("TFB Contact Status", Customer."TFB Contact Status");
+            Customer.modify(false);
+
+        end until Customer.Next() = 0;
+
+        Contact.SetRange(Type, Contact.Type::Company);
+
+        Contact.FindSet(true, true);
+
+        repeat begin
+
+            Contact.Validate("TFB Contact Status", Contact."TFB Contact Status");
+            Contact.Modify(false);
+
+        end until Contact.Next() = 0;
+
     end;
 
     local procedure TransferSetupFields(): Boolean
