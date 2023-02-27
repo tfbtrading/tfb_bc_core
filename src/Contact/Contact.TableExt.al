@@ -209,6 +209,38 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
 
+    local procedure FilterBusinessRelations(var ContBusRel: Record "Contact Business Relation"; LinkToTable: Enum "Contact Business Relation Link To Table"; All: Boolean)
+    begin
+        ContBusRel.Reset();
+        if ("Company No." = '') or ("Company No." = "No.") then
+            ContBusRel.SetRange("Contact No.", "No.")
+        else
+            ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
+        if not All then
+            ContBusRel.SetFilter("No.", '<>''''');
+        if LinkToTable <> LinkToTable::" " then
+            ContBusRel.SetRange("Link to Table", LinkToTable);
+    end;
+
+    procedure GetCustomerRelation() Customer: Record Customer
+    var
+        ContBusRel: Record "Contact Business Relation";
+        RecSelected: Boolean;
+
+    begin
+        ContBusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Customer);
+        ContBusRel.SetRange("Contact No.", "No.");
+
+        If ContBusRel.IsEmpty then exit;
+
+        ContBusRel.FindFirst();
+        Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due");
+        Customer.SetLoadFields("Primary Contact No.", "No.");
+        Customer.Get(ContBusRel."No.");
+
+    end;
+
+
     local procedure FinishAction(_ReviewComment: Text[256]; _NextReview: Date)
     var
         RelComment: Record "Rlshp. Mgt. Comment Line";

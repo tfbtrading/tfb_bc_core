@@ -4033,6 +4033,151 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact DIL - Control picture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1997251925 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Property EntityCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Property 631549417" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Property EntitySetCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - NamedType 4261500932" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The blank "displayName" is not allowed.</source>
+          <note from="Developer" annotates="general" priority="2">displayName is a field name and should not be translated.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - NamedType BlankContactNameErr</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2130846610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Balance</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control balance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 412705190 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Balance Due</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control balanceDue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 1408747468 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control companyName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 4084316176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Number</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control companyNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2986741400 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Stage</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control contactStage - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 4141670928 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control contactStatus - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 256449576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of First Sale</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control dateOfFirstSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 3510179239 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of Last Open Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control dateofLastOpenOrder - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2415821376 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date of Last Sale</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control dateOfLastSale - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 1850162520 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default Review Period</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control defaultReviewPeriod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Display Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control displayName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 3163706192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2866843126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Relationship</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control hasCustomerRelationship - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control id - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 532126095 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>In Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control inReview - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2245436958 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Modified Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control lastModifiedDateTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 662401169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mobile Phone No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control mobilePhoneNumber - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 1764644103 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No. of Orders</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control noOfOrders - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2757394829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control number - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 1463933576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2258711624 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Date Expected Completion</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control reviewDateExpectedCompletion - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 711459811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Date Last Completed</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control reviewDateLastCompleted - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 3750171038 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Date Planned</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control reviewDatePlanned - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 3102208214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Review Note</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control reviewNote - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 2244308783 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Person</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control salesPerson - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 1241721228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Readiness</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control salesReadiness - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3906169279 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
