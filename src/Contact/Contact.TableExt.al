@@ -237,7 +237,7 @@ tableextension 50110 "TFB Contact" extends Contact
         ContBusRel.FindFirst();
         Customer.SetLoadFields("Primary Contact No.", "No.");
         Customer.Get(ContBusRel."No.");
-        Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due");
+        Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due", "Sales (LCY)");
 
         Exit(Customer);
 
