@@ -4178,6 +4178,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control salesReadiness - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1997251925 - Control 4037713214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Total Sales</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Contact Review - Control totalSales - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3906169279 - Property 3446740159" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15238,6 +15243,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Card - Control TFB Long Desc. - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2423888837 - Control 533845867 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3657300613">
+          <source>Used for sorting first and then by description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Categories - Control TFB Catalogue Priority - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2305511631 - Action 1936340966 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1150245427">
           <source>Open source document</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18497,6 +18507,11 @@
           <source>Vendor is Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Vendor is Agent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1275221543 - Field 533845867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1487222247">
+          <source>Catalogue Priority</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item Category - Field TFB Catalogue Priority - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2312545840 - Field 2753545903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>No. of Lot Images</source>
