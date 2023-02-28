@@ -192,6 +192,11 @@ page 50175 "TFB APIV2 - Contact Review"
                     Caption = 'Balance Due';
 
                 }
+                field(totalSales; Rec.GetCustomerRelation()."Sales (LCY)")
+                {
+                    Editable = false;
+                    Caption = 'Total Sales';
+                }
                 field(noOfOrders; Customer."No. of Orders")
                 {
                     Editable = false;
