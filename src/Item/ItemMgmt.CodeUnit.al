@@ -13,11 +13,13 @@ codeunit 50107 "TFB Item Mgmt"
     local procedure HandleOnAfterCopyFromItem(Item: Record Item; var SalesLine: Record "Sales Line")
 
     var
-
+        NotificationId: Guid;
 
     begin
         //SalesLine.Validate("Purchasing Code", Item."TFB Default Purch. Code"); //No longer required
         UpdateDropShipSalesLineAgent(Item, SalesLine);
+
+        CheckAndWarnIfItemOnQuote(Item, SalesLine, NotificationId);
     end;
 
 
@@ -126,6 +128,42 @@ codeunit 50107 "TFB Item Mgmt"
             If PostcodeZone.FindFirst() then
                 Exit(true);
         end;
+
+    end;
+
+    local procedure CheckAndWarnIfItemOnQuote(Item: Record Item; var SalesLine: Record "Sales Line"; var NotificationID: Guid)
+
+    var
+
+        NotificationLifecycleMgt: Codeunit "Notification Lifecycle Mgt.";
+        QuoteDocumentNo: Code[20];
+        NotificationMsg: Label 'This customer has a quote %1 that includes item %2 already.', Comment = '%1 = quote number, %2 = item name';
+        ItemAlreadyQuotedNotification: Notification;
+
+        NotificationFunctionTok: Label 'NotifyItemOnQuote';
+        NotificationLbl: Label 'Open quote';
+    begin
+
+        If not (SalesLine."Document Type" = SalesLine."Document Type"::Order) then exit;
+
+        If not quoteforitemexists(Item, SalesLine, QuoteDocumentNo) then exit;
+
+        ItemAlreadyQuotedNotification.Id := NotificationID;
+        ItemAlreadyQuotedNotification.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name");
+        ItemAlreadyQuotedNotification.AddAction(NotificationLbl, CODEUNIT::"Document Notifications", NotificationFunctionTok);
+        ItemAlreadyQuotedNotification.Scope := NOTIFICATIONSCOPE::LocalScope;
+        ItemAlreadyQuotedNotification.SetData('No.', QuoteDocumentNo);
+        NotificationLifecycleMgt.SendNotification(ItemAlreadyQuotedNotification, SalesLine.RecordId);
+    end;
+
+    local procedure quoteforitemexists(Item: record Item; var SalesLine: Record "Sales Line"; QuoteDocumentNo: Code[20]): Boolean
+    var
+        SalesQuoteLine: Record "Sales Line";
+    begin
+        SalesQuoteLine.SetRange("Sell-to Customer No.", SalesLine."Sell-to Customer No.");
+        SalesQuoteLine.SetRange("Document Type", SalesQuoteLine."Document Type"::Quote);
+        SalesQuoteLine.SetRange("No.", Item."No.");
+
 
     end;
 

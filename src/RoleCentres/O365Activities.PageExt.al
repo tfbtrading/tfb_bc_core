@@ -74,6 +74,13 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
         addafter("Purchase Orders")
         {
+            field("TFB Purchase Pending Confirm."; Rec."TFB Purchase Pending Confirm.")
+            {
+                ApplicationArea = All;
+                DrillDown = true;
+                DrillDownPageId = "TFB Confirm Purchase Orders";
+                ToolTip = 'Specifies the number of purchase orders pending confirmation';
+            }
             field("TFBContainers In Progress"; Rec."TFB Containers In Progress")
             {
                 ApplicationArea = All;
