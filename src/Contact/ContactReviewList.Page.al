@@ -7,7 +7,7 @@ page 50167 "TFB Contact Review List"
     Editable = true;
     PageType = List;
     SourceTable = Contact;
-    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'));
+    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false));
     UsageCategory = Tasks;
 
     layout
@@ -178,6 +178,14 @@ page 50167 "TFB Contact Review List"
                 ApplicationArea = RelationshipMgmt;
                 SubPageLink = "No." = FIELD("No."),
                               "Date Filter" = FIELD("Date Filter");
+            }
+
+            part(CustomerDetails; "Customer Statistics FactBox")
+            {
+                UpdatePropagation = SubPart;
+                ApplicationArea = RelationshipMgmt;
+                SubPageLink = "TFB Primary Contact Company ID" = field("No.");
+                Visible = RelatedCustomerEnabled;
             }
             systempart(Control1900383207; Links)
             {
@@ -729,6 +737,24 @@ page 50167 "TFB Contact Review List"
                     TempEmailItem.Send(false, EmailScenario::Default);
                 end;
             }
+            action(TFBArchive)
+            {
+                ApplicationArea = All;
+                Caption = 'Archive';
+                Image = Email;
+                ToolTip = 'Archive a contact so it is not seen in reviews.';
+                Enabled = not Rec."TFB Archived";
+
+
+                trigger OnAction()
+                var
+                    Confirm: Codeunit "Confirm Management";
+
+                begin
+                    If Confirm.GetResponse('Are you sure you want to archive?', false) then
+                        Rec.validate("TFB Archived", true);
+                end;
+            }
 
         }
         area(creation)
@@ -765,6 +791,10 @@ page 50167 "TFB Contact Review List"
 
                 }
                 actionref(PTFBCompleteReview; TFBCompleteReview)
+                {
+
+                }
+                actionref(PTFBArchive; TFBArchive)
                 {
 
                 }

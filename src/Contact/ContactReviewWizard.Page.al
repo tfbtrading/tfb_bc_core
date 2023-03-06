@@ -91,6 +91,18 @@ page 50174 "TFB Contact Review Wizard"
                 InstructionalText = 'Confirm next actions.';
                 Visible = Step2Visible;
                 //You might want to add fields here
+
+                field(UpdateContactStatus; _UpdateContactStatus)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    Lookup = true;
+                    LookupPageId = "TFB Contact Status List";
+                    TableRelation = "TFB Contact Status".Status;
+                    Caption = 'New Contact Status';
+                    ToolTip = 'Specifies the new contact status';
+
+                }
                 field(PeriodicReviewSelection; _PeriodicReviewSelection)
                 {
                     ApplicationArea = All;
@@ -226,7 +238,7 @@ page 50174 "TFB Contact Review Wizard"
 
         _ReviewComment: Text[256];
         _LastReviewComment: Text[256];
-
+        _UpdateContactStatus: Code[20];
         _LastReviewDate: Date;
         _NextReview: Date;
         [InDataSet]
@@ -279,6 +291,11 @@ page 50174 "TFB Contact Review Wizard"
     internal procedure GetNextPlannedDate(): Date
     begin
         Exit(_NextReview);
+    end;
+
+    internal procedure GetContactStatus(): Code[20]
+    begin
+        Exit(_UpdateContactStatus);
     end;
 
 

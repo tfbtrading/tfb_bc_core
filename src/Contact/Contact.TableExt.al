@@ -191,6 +191,11 @@ tableextension 50110 "TFB Contact" extends Contact
             DataClassification = CustomerContent;
             Caption = 'Last Review Notes';
         }
+        field(50480; "TFB Archived"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Archived';
+        }
 
 
 
@@ -212,10 +217,10 @@ tableextension 50110 "TFB Contact" extends Contact
     local procedure FilterBusinessRelations(var ContBusRel: Record "Contact Business Relation"; LinkToTable: Enum "Contact Business Relation Link To Table"; All: Boolean)
     begin
         ContBusRel.Reset();
-        if ("Company No." = '') or ("Company No." = "No.") then
+        if("Company No." = '') or ("Company No." = "No.") then
             ContBusRel.SetRange("Contact No.", "No.")
         else
-            ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
+        ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
         if not All then
             ContBusRel.SetFilter("No.", '<>''''');
         if LinkToTable <> LinkToTable::" " then
@@ -244,7 +249,7 @@ tableextension 50110 "TFB Contact" extends Contact
     end;
 
 
-    local procedure FinishAction(_ReviewComment: Text[256]; _NextReview: Date)
+    local procedure FinishAction(_ReviewComment: Text[256]; _NextReview: Date; _NextContactStatus: Code[20])
     var
         RelComment: Record "Rlshp. Mgt. Comment Line";
         LineNo: Integer;
@@ -256,6 +261,8 @@ tableextension 50110 "TFB Contact" extends Contact
         Rec."TFB Review Date - Planned" := _NextReview;
         Rec."TFB Review Date Exp. Compl." := 0D;
         Rec."TFB Review Date Last Compl." := WorkDate();
+        If _NextContactStatus <> '' then
+            Rec."TFB Contact Status" := _NextContactStatus;
         If rec."TFB Review Note" <> '' then
             Rec."TFB Last Review Note" := Rec."TFB Review Note";
 
@@ -295,7 +302,7 @@ tableextension 50110 "TFB Contact" extends Contact
 
         WizardReview.InitFromContact(Rec);
         If WizardReview.RunModal() = Action::OK then begin
-            FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate());
+            FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate(), WizardReview.GetContactStatus());
             Rec.Modify(false);
             exit(true);
 

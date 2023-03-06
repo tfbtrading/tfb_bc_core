@@ -3613,6 +3613,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - Method SendMessage - NamedType SuccessMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 1983435042 - NamedType 1304771032" size-unit="char" translate="yes" xml:space="preserve">
+          <source>This customer has a quote %1 that includes item %2 already.</source>
+          <note from="Developer" annotates="general" priority="2">%1 = quote number, %2 = item name</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method CheckAndWarnIfItemOnQuote - NamedType NotificationMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 1983435042 - NamedType 4238940497" size-unit="char" translate="yes" xml:space="preserve">
+          <source>NotifyItemOnQuote</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method CheckAndWarnIfItemOnQuote - NamedType NotificationFunctionTok</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 1983435042 - NamedType 245349025" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open quote</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method CheckAndWarnIfItemOnQuote - NamedType NotificationLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 706961860 - NamedType 2373722505" size-unit="char" translate="yes" xml:space="preserve">
           <source>No word template has been configured in inventory setup for the MSDS</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6762,6 +6777,16 @@
           <source>Review period</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control PeriodicReviewSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3713364295 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the new contact status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control UpdateContactStatus - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3713364295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>New Contact Status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control UpdateContactStatus - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Action 2438272767 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Executes the Back action.</source>
@@ -15953,6 +15978,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB Ongoing Whse. Shipments - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Control 802463356 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
+          <source>Specifies the number of purchase orders pending confirmation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB Purchase Pending Confirm. - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2173142200 - Control 2137002914 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
           <source>Specifies number of containers in progress</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18038,6 +18068,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB Open Opportunities - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 802463356 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>Purchases Pending Confirmation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB Purchase Pending Confirm. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3513503260 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>Salesperson Code Filter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18447,6 +18482,11 @@
           <source>Inventory - Excl. Transfers</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Inventory - Excl. Transit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1533492071 - Field 2071856961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Item Category Priority</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Item - Field TFB Item Category Priority - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 1533492071 - Field 1881801898 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Item Manufacturer/Brand</source>
