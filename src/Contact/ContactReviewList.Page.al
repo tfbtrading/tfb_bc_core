@@ -741,7 +741,7 @@ page 50167 "TFB Contact Review List"
             {
                 ApplicationArea = All;
                 Caption = 'Archive';
-                Image = Email;
+                Image = Archive;
                 ToolTip = 'Archive a contact so it is not seen in reviews.';
                 Enabled = not Rec."TFB Archived";
 

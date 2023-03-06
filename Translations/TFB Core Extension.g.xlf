@@ -6593,6 +6593,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBSetToInReview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 3246988214 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive a contact so it is not seen in reviews.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBArchive - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 3246988214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action TFBArchive - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 970153994 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Apply a Word template on the selected records.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18093,6 +18103,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Bank Account - Field TFB No. Open Trans. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 2386644114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Archived - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 3365280462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Buying Reason</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18207,6 +18222,11 @@
           <source>Sales Readiness</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Sales Readiness - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 2386644114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Archived</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Archived - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 1681660618 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>CoA Alt. Email</source>
