@@ -714,6 +714,7 @@ codeunit 50120 "TFB Customer Mgmt"
     begin
 
         If Customer."TFB Contact Status" <> xCustomer."TFB Contact Status" then UpdateNeeded := true;
+
     end;
 
     [EventSubscriber(ObjectType::Table, Database::Contact, 'OnBeforeIsUpdateNeeded', '', false, false)]
@@ -721,6 +722,7 @@ codeunit 50120 "TFB Customer Mgmt"
     begin
 
         If Contact."TFB Contact Status" <> xContact."TFB Contact Status" then UpdateNeeded := true;
+        If Contact."TFB Archived" <> xContact."TFB Archived" then UpdateNeeded := true;
     end;
 
 }

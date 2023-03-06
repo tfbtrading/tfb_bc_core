@@ -51,7 +51,11 @@ tableextension 50101 "TFB Customer" extends Customer
             CalcFormula = count("Sales Invoice Line" where("Sell-to Customer No." = field("No."), Type = filter(Item)));
             Caption = 'Posted Sales Inv. Lines';
         }
-
+        field(50480; "TFB Archived"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Archived';
+        }
         field(50108; "TFB CoA Required"; Boolean)
         {
             DataClassification = CustomerContent;
