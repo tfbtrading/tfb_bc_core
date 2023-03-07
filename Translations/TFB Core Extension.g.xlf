@@ -17468,6 +17468,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote - Action VendorQuote - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 39067894 - Action 1299276522 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Review line item profitability analysis</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote - Action TFBEstimatedProfitability - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 39067894 - Action 1299276522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
+          <source>Profitability</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote - Action TFBEstimatedProfitability - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 39067894 - Control 2590086714 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 280137910">
           <source>Specifies the customers price group</source>
           <note from="Developer" annotates="general" priority="2"></note>

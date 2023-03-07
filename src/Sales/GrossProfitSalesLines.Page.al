@@ -4,7 +4,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     Caption = 'Gross Profit on Sales';
 
     SourceTable = "Sales Line";
-    SourceTableView = sorting("Shipment Date", "Sell-to Customer No.") order(ascending) where("Quantity (Base)" = filter(> 0), Type = const(Item), "Document Type" = const(Order));
+    SourceTableView = sorting("Shipment Date", "Sell-to Customer No.") order(ascending) where("Quantity (Base)" = filter(> 0), Type = const(Item));
 
     ModifyAllowed = true;
     InsertAllowed = false;
@@ -65,6 +65,8 @@ page 50145 "TFB Gross Profit Sales Lines"
                     begin
                         updateLineVariables();
                         notdefaultcostby := true;
+                        CurrPage.Update();
+
                     end;
                 }
 
@@ -114,6 +116,13 @@ page 50145 "TFB Gross Profit Sales Lines"
                     Caption = 'Per Kg Discount';
                     ToolTip = 'Specifies the discount as a per kilogram price';
 
+                    trigger OnValidate()
+
+                    begin
+                        updateLineVariables();
+                        CurrPage.Update();
+                    end;
+
                 }
                 field(Amount; Rec.Amount)
                 {
@@ -154,8 +163,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     Caption = 'Drop Ship P.O.';
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
-                    Visible = Rec."Drop Shipment";
-
+                    visible = (Rec."Document Type" = Rec."Document Type"::Order) and Rec."Drop Shipment";
                     ApplicationArea = All;
                     trigger OnDrillDown()
 
@@ -326,7 +334,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     begin
 
         updateLineVariables();
-
+        CurrPage.Update();
 
     end;
 
