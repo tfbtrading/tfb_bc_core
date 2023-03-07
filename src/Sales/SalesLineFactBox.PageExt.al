@@ -50,6 +50,78 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         // Add changes to page layout here
         addlast(Item)
         {
+            field(TFBOnQuote; GetNoOfQuotesOpen())
+            {
+                Caption = 'No. of Open Quotes';
+                ToolTip = 'Specifies number of quotes that include this item';
+                ApplicationArea = All;
+                DrillDown = true;
+
+                trigger OnDrillDown()
+
+                var
+
+                    QuoteLine: record "Sales Line";
+                    FilterToken: TextBuilder;
+                    Quote: record "Sales Header";
+                    QuoteList: page "Sales Quotes";
+                begin
+
+                    QuoteLine.SetRange("No.", Rec."No.");
+                    QuoteLine.SetRange("Document Type", Rec."Document Type"::Quote);
+                    If QuoteLine.IsEmpty() then exit;
+                    QuoteLine.SetLoadFields("Document No.");
+                    QuoteLine.FindSet();
+                    repeat begin
+                        If FilterToken.Length = 0 then
+                            FilterToken.Append('=' + QuoteLine."Document No.")
+                        else
+                            FilterToken.Append('|' + QuoteLine."Document No.");
+                    end until QuoteLine.Next = 0;
+
+                    Quote.SetFilter("No.", FilterToken.ToText());
+                    Quote.SetRange("Document Type", Quote."Document Type"::Order);
+                    QuoteList.SetTableView(Quote);
+                    QuoteList.Run();
+
+                end;
+            }
+
+            field(TFBBlanketOrder; GetNoOpenOpenBlanketOrders())
+            {
+                Caption = 'No. of blanket orders';
+                ToolTip = 'Specifies blanket orders applicable to this item';
+                ApplicationArea = All;
+                DrillDown = true;
+
+                trigger OnDrillDown()
+                var
+                    SalesLine: Record "Sales Line";
+                    FilterToken: TextBuilder;
+                    BlanketOrder: record "Sales Header";
+                    BlanketOrderList: page "Blanket Sales Orders";
+                begin
+
+                    SalesLine.SetRange("No.", Rec."No.");
+                    SalesLine.SetRange("Document Type", Rec."Document Type"::"Blanket Order");
+                    If SalesLine.IsEmpty() then exit;
+                    SalesLine.SetLoadFields("Document No.");
+                    SalesLine.FindSet();
+                    repeat begin
+                        If FilterToken.Length = 0 then
+                            FilterToken.Append('=' + SalesLine."Document No.")
+                        else
+                            FilterToken.Append('|' + SalesLine."Document No.");
+                    end until SalesLine.Next = 0;
+
+                    BlanketOrder.SetFilter("No.", FilterToken.ToText());
+                    BlanketOrder.SetRange("Document Type", BlanketOrder."Document Type"::"Blanket Order");
+                    BlanketOrderList.SetTableView(BlanketOrder);
+                    BlanketOrderList.Run();
+
+
+                end;
+            }
             field(TFBItemCostingSystemID; GetStandardItemCostingDescription())
             {
                 Caption = 'Costing calculation';
@@ -196,6 +268,35 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
             Exit('Exists')
         else
             Exit('Create Item Costing...');
+
+    end;
+
+    local procedure GetNoOfQuotesOpen(): Integer
+
+    var
+
+        QuoteLine: record "Sales Line";
+
+    begin
+
+        QuoteLine.SetRange("No.", Rec."No.");
+        QuoteLine.SetRange("Document Type", Rec."Document Type"::Quote);
+        Exit(QuoteLine.Count());
+
+    end;
+
+    local procedure GetNoOpenOpenBlanketOrders(): Integer
+
+    var
+
+        SalesMgmt: CodeUnit "TFB Sales Mgmt";
+        SalesLine: Record "Sales Line";
+    begin
+
+        SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Blanket Order");
+        SalesLine.SetRange("No.", Rec."No.");
+        SalesLine.SetFilter("Outstanding Quantity", '>0');
+        Exit(SalesLine.Count());
 
     end;
 }

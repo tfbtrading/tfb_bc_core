@@ -43,6 +43,8 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
 
     }
 
+
+
     actions
     {
         modify("Assemble to Order")
