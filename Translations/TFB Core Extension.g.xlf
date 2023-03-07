@@ -17253,6 +17253,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFB No. Of Comments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 2518552199 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>Specifies blanket orders applicable to this item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBBlanketOrder - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 2518552199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>No. of blanket orders</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBBlanketOrder - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3957898749 - Control 3932505410 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
           <source>Specifies if an item costings exists and links  to it</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17262,6 +17272,16 @@
           <source>Costing calculation</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBItemCostingSystemID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 216958733 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>Specifies number of quotes that include this item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBOnQuote - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3957898749 - Control 216958733 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
+          <source>No. of Open Quotes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBOnQuote - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3949186735 - Control 2748120901 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2047188335">
           <source>Specifies customer name</source>

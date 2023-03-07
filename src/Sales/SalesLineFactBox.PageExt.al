@@ -69,6 +69,8 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
                     QuoteLine.SetRange("No.", Rec."No.");
                     QuoteLine.SetRange("Document Type", Rec."Document Type"::Quote);
+                    QuoteLine.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
+
                     If QuoteLine.IsEmpty() then exit;
                     QuoteLine.SetLoadFields("Document No.");
                     QuoteLine.FindSet();
@@ -80,7 +82,8 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     end until QuoteLine.Next = 0;
 
                     Quote.SetFilter("No.", FilterToken.ToText());
-                    Quote.SetRange("Document Type", Quote."Document Type"::Order);
+                    Quote.SetRange("Document Type", Quote."Document Type"::Quote);
+                    Quote.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
                     QuoteList.SetTableView(Quote);
                     QuoteList.Run();
 
@@ -89,7 +92,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
             field(TFBBlanketOrder; GetNoOpenOpenBlanketOrders())
             {
-                Caption = 'No. of blanket orders';
+                Caption = 'No. Of Blanket Orders';
                 ToolTip = 'Specifies blanket orders applicable to this item';
                 ApplicationArea = All;
                 DrillDown = true;
@@ -104,6 +107,8 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
                     SalesLine.SetRange("No.", Rec."No.");
                     SalesLine.SetRange("Document Type", Rec."Document Type"::"Blanket Order");
+                    SalesLine.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
+
                     If SalesLine.IsEmpty() then exit;
                     SalesLine.SetLoadFields("Document No.");
                     SalesLine.FindSet();
@@ -116,6 +121,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
                     BlanketOrder.SetFilter("No.", FilterToken.ToText());
                     BlanketOrder.SetRange("Document Type", BlanketOrder."Document Type"::"Blanket Order");
+                    BlanketOrder.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
                     BlanketOrderList.SetTableView(BlanketOrder);
                     BlanketOrderList.Run();
 
