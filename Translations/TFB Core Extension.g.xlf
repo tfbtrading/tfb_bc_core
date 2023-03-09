@@ -3548,6 +3548,11 @@
           <note from="Developer" annotates="general" priority="2">%1 = Item No and %2 = Item Description</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Costing Mgmt - Method CopyCurrentCostingToPriceList - NamedType ProgressEXWMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 740577619 - Method 1612822304 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoices for Collection</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Cust. Collections Mgmt - Method SendDraftEmailWithSelectedInvoices - NamedType TitleTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2022358305 - Method 2367029192 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2">%1 = html content for the content of the table data cell</note>
@@ -14903,6 +14908,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Ledger Entries - Action TFBRegisterPayments - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 341501853 - Action 672733187 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Gathers up selected invoices and prepares an email to be sent to the customer with those invoices already attached</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Ledger Entries - Action TFBSendInvoicesToCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 341501853 - Action 672733187 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
+          <source>Send Invoices to Accounts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Ledger Entries - Action TFBSendInvoicesToCustomer - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2157136786 - Action 3800347225 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>Managed list of favourite items</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17259,7 +17274,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBBlanketOrder - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3957898749 - Control 2518552199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3573230301">
-          <source>No. of blanket orders</source>
+          <source>No. Of Blanket Orders</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Line Factbox - Control TFBBlanketOrder - Property Caption</note>
         </trans-unit>
