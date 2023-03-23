@@ -321,10 +321,7 @@ page 50145 "TFB Gross Profit Sales Lines"
 
 
     begin
-
         updateLineVariables();
-
-
     end;
 
     trigger OnAfterGetRecord()
@@ -332,10 +329,7 @@ page 50145 "TFB Gross Profit Sales Lines"
 
 
     begin
-
         updateLineVariables();
-        CurrPage.Update();
-
     end;
 
 
@@ -484,7 +478,7 @@ page 50145 "TFB Gross Profit Sales Lines"
         _totalprofitperc := 0;
         _totalsalesamount := 0;
 
-        If SalesLine2.FindSet() then
+        If SalesLine2.FindSet(false, false) then
             repeat
                 If (SalesLine2.Type = Salesline2.type::Item) and LineDictionary.ContainsKey(SalesLine2."Line No.") then begin
                     Item.Get(SalesLine2."No.");
