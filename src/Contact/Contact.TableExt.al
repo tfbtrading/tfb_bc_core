@@ -217,10 +217,10 @@ tableextension 50110 "TFB Contact" extends Contact
     local procedure FilterBusinessRelations(var ContBusRel: Record "Contact Business Relation"; LinkToTable: Enum "Contact Business Relation Link To Table"; All: Boolean)
     begin
         ContBusRel.Reset();
-        if("Company No." = '') or ("Company No." = "No.") then
+        if ("Company No." = '') or ("Company No." = "No.") then
             ContBusRel.SetRange("Contact No.", "No.")
         else
-        ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
+            ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
         if not All then
             ContBusRel.SetFilter("No.", '<>''''');
         if LinkToTable <> LinkToTable::" " then
@@ -301,9 +301,9 @@ tableextension 50110 "TFB Contact" extends Contact
     begin
 
         WizardReview.InitFromContact(Rec);
-        If WizardReview.RunModal() = Action::OK then begin
+        If (WizardReview.RunModal() = Action::OK) and WizardReview.IsFinished() then begin
             FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate(), WizardReview.GetContactStatus());
-            Rec.Modify(false);
+            Rec.Modify(true);
             exit(true);
 
         end;

@@ -7,6 +7,7 @@ pageextension 50159 "TFB Value Entries" extends "Value Entries"
             Visible = false;
         }
         moveafter("Document Type"; "External Document No.")
+
         addbefore("Cost per Unit")
         {
             field(TFBPricePerKg; _PricePerKg)
@@ -21,6 +22,27 @@ pageextension 50159 "TFB Value Entries" extends "Value Entries"
 
     actions
     {
+        Addafter("Ent&ry")
+        {
+            action(TFBItemLedger)
+            {
+                ApplicationArea = All;
+                Caption = 'Item Ledger';
+                RunObject = page "Item Ledger Entries";
+                RunPageLink = "Entry No." = field("Item Ledger Entry No.");
+                Image = ItemLedger;
+                Visible = true;
+                Enabled = Rec."Item Ledger Entry No." > 0;
+            }
+        }
+
+        addafter("General Ledger_Promoted")
+        {
+            actionref(TFBPItemLedger; TFBItemLedger)
+            {
+
+            }
+        }
         // Add changes to page actions here
     }
 

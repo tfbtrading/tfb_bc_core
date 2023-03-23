@@ -248,6 +248,7 @@ page 50174 "TFB Contact Review Wizard"
         _NextStepConfirmation: Text[1000];
         TopBannerVisible: Boolean;
 
+        _IsFinished: Boolean;
 
 
     local procedure EnableControls();
@@ -271,6 +272,8 @@ page 50174 "TFB Contact Review Wizard"
         _PeriodicReviewSelection := _contact."TFB Default Review Period";
 
         _LastReviewDate := _contact."TFB Review Date Last Compl.";
+
+        _UpdateContactStatus := _contact."TFB Contact Status";
 
         If _LastReviewDate > 0D then begin
             _ExistingReview := true;
@@ -304,7 +307,7 @@ page 50174 "TFB Contact Review Wizard"
 
     begin
 
-
+        _IsFinished := true;
         CurrPage.Close();
     end;
 
@@ -359,6 +362,10 @@ page 50174 "TFB Contact Review Wizard"
     end;
 
 
+    procedure isFinished(): Boolean
+    begin
+        exit(_IsFinished);
+    end;
 
     local procedure getInstruction(): Text[1000]
 
