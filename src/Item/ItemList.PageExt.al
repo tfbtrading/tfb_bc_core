@@ -194,6 +194,28 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 end;
 
             }
+            action("TFBEmailSpec")
+            {
+                ApplicationArea = All;
+                Image = SendEmailPDF;
+                Caption = 'Email Specification';
+                ToolTip = 'Find and email specifications to selected contact';
+
+                Enabled = true;
+
+                trigger OnAction()
+
+                var
+                    ItemCU: CodeUnit "TFB Item Mgmt";
+                    Item: Record Item;
+
+                begin
+                    CurrPage.SetSelectionFilter(Item);
+                    ItemCU.SendSelectedItemSpecifications(Item);
+
+                end;
+
+            }
             action("TFBDownloadMSDS")
             {
                 ApplicationArea = All;
@@ -271,14 +293,24 @@ pageextension 50117 "TFB Item List" extends "Item List"
             {
 
             }
-            actionref(TFBDownloadSpecRef; TFBDownloadSpec)
+            group(Specification)
             {
+                ShowAs = SplitButton;
 
-            }
-            actionref(TFBDownloadMSDSRef; TFBDownloadMSDS)
-            {
+                actionref(TFBPEmailSpecification; TFBEmailSpec)
+                {
 
+                }
+                actionref(TFBDownloadSpecRef; TFBDownloadSpec)
+                {
+
+                }
+                actionref(TFBDownloadMSDSRef; TFBDownloadMSDS)
+                {
+
+                }
             }
+
         }
         addfirst(Category_Category5)
         {

@@ -112,6 +112,96 @@ codeunit 50107 "TFB Item Mgmt"
             Error('File %1 not downloaded', FileName);
     end;
 
+    internal procedure EmailSpecification(Item: Record Item; Recipients: List of [Text]; HTMLTemplate: Text; ContactIds: List of [Guid])
+
+    var
+        CompanyInfo: Record "Company Information";
+        CommonCU: CodeUnit "TFB Common Library";
+        TempBlobCU: Codeunit "Temp Blob";
+        Email: CodeUnit Email;
+        EmailMessage: CodeUnit "Email Message";
+        InStream: InStream;
+        OutStream: OutStream;
+        FileName: Text;
+        TitleTxt: Label 'Quality Documents Request';
+        FileNameBuilder: TextBuilder;
+        HTMLBuilder: TextBuilder;
+        SubjectNameBuilder: TextBuilder;
+        ContactID: Guid;
+
+    begin
+
+        HTMLBuilder.Append(HTMLTemplate);
+        EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+
+
+
+        If Item.FindSet(false, false) then
+            repeat
+                TempBlobCU := CommonCU.GetSpecificationTempBlob(Item);
+                If TempBlobCU.HasValue() then begin
+                    TempBlobCu.CreateInStream(InStream);
+                    Clear(FileNameBuilder);
+                    FileNameBuilder.Append(StrSubstNo('Spec For %1 (%2).pdf', Item.Description, Item."No."));
+                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
+                end;
+            until Item.Next() < 1;
+
+        foreach ContactID in ContactIds do begin
+
+            Email.AddRelation(EmailMessage, Database::Contact, ContactID, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
+        end;
+
+        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
+
+
+    end;
+
+    procedure SendSelectedItemSpecifications(Item: Record Item)
+
+    var
+        Contact: Record Contact;
+
+        CLib: CodeUnit "TFB Common Library";
+        ItemMgmt: CodeUnit "TFB Item Mgmt";
+        ContactList: Page "Contact List";
+        Recipients: List of [Text];
+        ContactIds: List of [Guid];
+        SubTitleTxt: Label '';
+        TitleTxt: Label 'Company Certifications Email';
+
+
+    begin
+
+        //Determine if multiple items have been selected
+
+
+        If Item.Count() = 0 then exit;
+        Contact.SetFilter("E-Mail", '>%1', '');
+        ContactList.LookupMode(true);
+        ContactList.SetTableView(Contact);
+
+        If ContactList.RunModal() = Action::LookupOK then begin
+            ContactList.getrecord(Contact);
+            Contact.SetFilter("No.", ContactList.GetSelectionFilter());
+
+            If Contact.FindSet(false, false) then
+                repeat
+                    If Contact."E-Mail" <> '' then
+                        If not Recipients.Contains(Contact."E-Mail") then begin
+                            Recipients.Add(Contact."E-Mail");
+                            ContactIds.Add(Contact.SystemId);
+                        end;
+                until Contact.Next() = 0;
+
+            If Recipients.Count > 0 then
+                ItemMgmt.EmailSpecification(Item, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), ContactIds);
+
+        end;
+
+
+    end;
+
     local procedure GetZoneRateForSalesLine(SalesLine: Record "Sales Line"; var PostcodeZone: Record "TFB Postcode Zone"): Boolean
 
     var
