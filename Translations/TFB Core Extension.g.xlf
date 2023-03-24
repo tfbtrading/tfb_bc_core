@@ -3643,6 +3643,21 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method DownloadItemMSDS - NamedType NoRecordsSelectedMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Documents Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 2923023594 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method SendSelectedItemSpecifications - NamedType SubTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 2923023594 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Company Certifications Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method SendSelectedItemSpecifications - NamedType TitleTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 4039246262 - Method 3445273183 - NamedType 3014721114" size-unit="char" translate="yes" xml:space="preserve">
           <source>All files (*.pdf)|*.pdf</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3732,6 +3747,11 @@
           <source>🔐</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetSalesLineStatusEmoji - NamedType emojiSpecialTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3239335012 - Method 467006259 - NamedType 1978664471" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There are %1 quote lines for this %3. The latest one is %2</source>
+          <note from="Developer" annotates="general" priority="2">%1 = count of quotes, %2 = quote number, %3 = item description</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Order Notifications - Method OnValidateNoOnAfterUpdateUnitPrice - NamedType NotificationTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 1605321605 - Method 1740634897 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -15433,6 +15453,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBDownloadSpec - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 1166981875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Find and email specifications to selected contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBEmailSpec - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - Action 1166981875 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Email Specification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Action TFBEmailSpec - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1030615729 - Action 3549265048 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Open related generic item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17912,6 +17942,11 @@
           <source>Specifies if pages that can display external IDs show then or not</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB User Setup - Control TFB Show External IDs - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3887926931 - Action 1143447932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
+          <source>Item Ledger</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Value Entries - Action TFBItemLedger - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3887926931 - Control 2558165818 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2513602899">
           <source>Specifies the cost per unit in per kg terms</source>

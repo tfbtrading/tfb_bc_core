@@ -112,7 +112,7 @@ codeunit 50107 "TFB Item Mgmt"
             Error('File %1 not downloaded', FileName);
     end;
 
-    internal procedure EmailSpecification(Item: Record Item; Recipients: List of [Text]; HTMLTemplate: Text; ContactIds: List of [Guid])
+    internal procedure EmailSpecification(var Item: Record Item; Recipients: List of [Text]; HTMLTemplate: Text; ContactIds: List of [Guid])
 
     var
         CompanyInfo: Record "Company Information";
@@ -123,7 +123,8 @@ codeunit 50107 "TFB Item Mgmt"
         InStream: InStream;
         OutStream: OutStream;
         FileName: Text;
-        TitleTxt: Label 'Quality Documents Request';
+        TitleTxt: Label 'Item Specifications';
+        SubTitleTxt: Label '';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
@@ -132,6 +133,9 @@ codeunit 50107 "TFB Item Mgmt"
     begin
 
         HTMLBuilder.Append(HTMLTemplate);
+
+
+        GenerateItemSpecificationDocumentsContent(Item, HTMLBuilder);
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
 
 
@@ -147,17 +151,18 @@ codeunit 50107 "TFB Item Mgmt"
                 end;
             until Item.Next() < 1;
 
-        foreach ContactID in ContactIds do begin
+        foreach ContactID in ContactIds do
 
             Email.AddRelation(EmailMessage, Database::Contact, ContactID, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
-        end;
+
+
 
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
 
     end;
 
-    procedure SendSelectedItemSpecifications(Item: Record Item)
+    procedure SendSelectedItemSpecifications(var Item: Record Item)
 
     var
         Contact: Record Contact;
@@ -168,7 +173,7 @@ codeunit 50107 "TFB Item Mgmt"
         Recipients: List of [Text];
         ContactIds: List of [Guid];
         SubTitleTxt: Label '';
-        TitleTxt: Label 'Company Certifications Email';
+        TitleTxt: Label 'Item Specifications';
 
 
     begin
@@ -255,6 +260,53 @@ codeunit 50107 "TFB Item Mgmt"
         SalesQuoteLine.SetRange("No.", Item."No.");
 
 
+    end;
+
+    local procedure GenerateItemSpecificationDocumentsContent(var Item: Record Item; HTMLBuilder: TextBuilder): Boolean
+    var
+        PersBlob: CodeUnit "Persistent Blob";
+        BodyBuilder: TextBuilder;
+        CommentBuilder: TextBuilder;
+        LineBuilder: TextBuilder;
+        tdTxt: label '<td valign="top" class="tfbdata" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
+    begin
+
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Item Specifications');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', '');
+        HTMLBuilder.Replace('%{ReferenceValue}', '');
+        HTMLBuilder.Replace('%{AlertText}', '');
+
+        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find selected item specifications</h2><br>'));
+
+        BodyBuilder.AppendLine('<table class="tfbdata" width="60%" cellspacing="10" cellpadding="10" border="0">');
+        BodyBuilder.AppendLine('<thead>');
+
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="30%">Item Code</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="70%">Description</th>');
+
+        if Item.FindSet(false, false) then begin
+            repeat
+
+                Clear(LineBuilder);
+                Clear(CommentBuilder);
+                LineBuilder.AppendLine('<tr>');
+
+                LineBuilder.Append(StrSubstNo(tdTxt, Item."No."));
+                LineBuilder.Append(StrSubstNo(tdTxt, Item.Description));
+                LineBuilder.AppendLine('</tr>');
+                BodyBuilder.AppendLine(LineBuilder.ToText());
+
+            until Item.Next() < 1;
+            BodyBuilder.AppendLine('</table>');
+        end
+        else
+            BodyBuilder.AppendLine('<h2>No item specifications selected</h2>');
+
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        Exit(true);
     end;
 
     procedure GetVendorShippingAgentOverride(VendorNo: Code[20]; ShippingZone: Code[20]; var ShippingAgentService: Record "Shipping Agent Services"): Boolean
