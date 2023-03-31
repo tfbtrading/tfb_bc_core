@@ -803,6 +803,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
+
+
                                 SalesLine.Validate("Shipment Date", CalcDate(DateFormula, BlockDate));
                                 SalesLine.Modify();
 
