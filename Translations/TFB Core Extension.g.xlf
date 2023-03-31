@@ -3644,9 +3644,19 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method DownloadItemMSDS - NamedType NoRecordsSelectedMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quality Documents Request</source>
+          <source>Item Specifications</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType SubTitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3910736978 - Method 4011279994 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2">%1=Table data html content</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method GenerateItemSpecificationDocumentsContent - NamedType tdTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 2923023594 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
@@ -3654,7 +3664,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method SendSelectedItemSpecifications - NamedType SubTitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 2923023594 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Company Certifications Email</source>
+          <source>Item Specifications</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method SendSelectedItemSpecifications - NamedType TitleTxt</note>
         </trans-unit>

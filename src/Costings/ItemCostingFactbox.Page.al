@@ -17,10 +17,17 @@ page 50102 "TFB Item Costing Factbox"
                 field("No."; Rec."No.")
                 {
                     Caption = 'Item No.';
-                    DrillDown = true;
-                    DrillDownPageId = "Item Card";
+
                     ApplicationArea = All;
                     ToolTip = 'Specifies the Item No. for drilldown purposes';
+
+                    trigger OnDrillDown()
+
+                    var
+
+                    begin
+                        Page.Run(Page::"Item Card", Rec);
+                    end;
                 }
                 field("Purchasing Code"; Rec."Purchasing Code")
                 {

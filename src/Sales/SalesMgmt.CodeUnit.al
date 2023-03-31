@@ -480,6 +480,23 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    local procedure HasLinePrepaymentBeenPaid(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"): Boolean
+    var
+        PrepaymentInvoice: Record "Sales Invoice Header";
+        PrepaymentInvoiceLine: Record "Sales Invoice Line";
+
+    begin
+
+        If PrepaymentInvoice.Get(SalesHeader."Last Prepayment No.") and PrepaymentInvoiceLine.Get(PrepaymentInvoice."No.", SalesLine."Line No.") then
+            If PrepaymentInvoiceLine."Prepayment Line" and (PrepaymentInvoiceLine."Prepayment %" = 100) then begin
+                PrepaymentInvoice.CalcFields("Remaining Amount");
+                If PrepaymentInvoice."Remaining Amount" = 0 then
+                    exit(true);
+            end;
+
+
+    end;
+
 
 
     /// <summary>
@@ -789,7 +806,13 @@ codeunit 50122 "TFB Sales Mgmt"
                                 SalesLine.Validate("Shipment Date", CalcDate(DateFormula, BlockDate));
                                 SalesLine.Modify();
 
-                                ReleaseSalesDoc.PerformManualRelease(SalesHeader);
+                                If not (SalesLine."Prepayment %" > 0) then
+                                    ReleaseSalesDoc.PerformManualRelease(SalesHeader)
+                                else
+                                    if (Salesline."Prepayment Amount" = SalesLine.Amount) then
+                                        If HasLinePrepaymentBeenPaid(SalesHeader, SalesLine) then
+                                            ReleaseSalesDoc.PerformManualRelease(SalesHeader);
+
                             end;
                         end;
 
