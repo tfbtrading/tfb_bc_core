@@ -9,6 +9,7 @@ page 50170 "TFB Lot Images"
     Extensible = false;
     InsertAllowed = false;
     ModifyAllowed = false;
+    DeleteAllowed = true;
     DelayedInsert = false;
     Editable = false;
     InstructionalText = 'Used to view lot images';

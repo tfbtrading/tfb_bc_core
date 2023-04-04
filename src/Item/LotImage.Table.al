@@ -63,6 +63,8 @@ table 50124 "TFB Lot Image"
 
         }
 
+
+
     }
 
     keys
@@ -70,14 +72,13 @@ table 50124 "TFB Lot Image"
         key(PK; "Item No.", "Variant Code", "Lot No.", "Import Sequence No.")
         {
             Clustered = true;
+
         }
         key(Key2; "Item No.", "Variant Code", "Lot No.", SystemCreatedAt)
         {
 
         }
     }
-
-    var
 
 
     procedure GetNextSequence(): Integer
