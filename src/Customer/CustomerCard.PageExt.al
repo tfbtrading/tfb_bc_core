@@ -226,9 +226,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 ApplicationArea = RelationshipMgmt;
                 Caption = 'Opportunity';
                 Image = NewOpportunity;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 RunObject = Page "Opportunity Card";
                 RunPageLink = "Contact No." = FIELD("TFB Primary Contact Company ID"),
                               "Contact Company No." = FIELD("TFB Primary Contact Company ID");
@@ -242,10 +240,9 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             action(AutoPopulate)
             {
                 ApplicationArea = All;
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Item;
-                Caption = 'Auto Populate Favourites';
+                Caption = 'Refresh Favourites';
                 ToolTip = 'Populates items in the favourites for customer';
 
                 trigger OnAction()
@@ -285,12 +282,10 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
         }
         addafter("Co&mments")
         {
-            Action(FavouriteItems)
+            Action(TFBFavouriteItems)
             {
                 Caption = 'Favourite Items';
-                Promoted = true;
-                PromotedCategory = Category8;
-                PromotedOnly = false;
+
                 Image = List;
                 ApplicationArea = All;
                 ToolTip = 'Managed list of favourite items';
@@ -303,11 +298,10 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
         }
         addafter(PaymentRegistration)
         {
-            action(SendStatementsByEmail)
+            action(TFBSendStatementByEmail)
             {
                 Caption = 'Send Statement';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Sends an account statement to the customer';
@@ -321,11 +315,10 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
 
                 end;
             }
-            action(SendOrderUpdateByEmail)
+            action(TFBSendOrderUpdateByEmail)
             {
                 Caption = 'Send Order Update';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Sends a update on outstanding orders and recently invoiced orders';
@@ -339,11 +332,10 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     CustomerCU.SendOneCustomerStatusEmail(Rec."No.");
                 end;
             }
-            action(SendQualityDocumentsByEmail)
+            action(TFBSendQualityDocumentsByEmail)
             {
                 Caption = 'Send Quality Certifications';
-                Promoted = True;
-                PromotedCategory = Process;
+
                 Image = Email;
                 ApplicationArea = All;
                 ToolTip = 'Sends any relevant quality certifications for vendors to customer';
@@ -358,7 +350,35 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 end;
             }
 
+
+
         }
+        addlast(Category_Process)
+        {
+            actionref(TFBSendStatementByEmail_Promoted; TFBSendStatementByEmail)
+            {
+
+            }
+            actionref(TFBSendQualityDocumentsByEmail_Promoted; TFBSendQualityDocumentsByEmail)
+            {
+
+            }
+            actionref(TFBSendOrderUpdateByEmail_Promoted; TFBSendOrderUpdateByEmail)
+            {
+
+            }
+
+        }
+        addlast(Category_Category9)
+        {
+            actionref(ActionRefName; TFBFavouriteItems)
+            {
+
+            }
+        }
+
+
+
     }
 
 

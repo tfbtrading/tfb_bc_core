@@ -266,7 +266,7 @@ codeunit 50104 "TFB Quality Mgmt"
             until VendorCerts.Next() < 1;
 
         If not IsNullGuid(CustomerSystemID) then
-            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;
@@ -280,7 +280,7 @@ codeunit 50104 "TFB Quality Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
-        OutStream: OutStream;
+        OutStream: OutStream; 
         TitleTxt: Label 'Quality Documents Request';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
@@ -298,7 +298,7 @@ codeunit 50104 "TFB Quality Mgmt"
         GenerateQualityDocumentsContent(CompanyCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if CompanyCerts.FindSet(false, false) then
+        if CompanyCerts.FindSet(false, false) then 
             repeat
                 If PersBlobCU.Exists(CompanyCerts."Certificate Attach.") then begin
                     Clear(FileNameBuilder);
@@ -315,7 +315,7 @@ codeunit 50104 "TFB Quality Mgmt"
             until CompanyCerts.Next() < 1;
 
         If not IsNullGuid(CustomerSystemID) then
-            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity");
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
     end;

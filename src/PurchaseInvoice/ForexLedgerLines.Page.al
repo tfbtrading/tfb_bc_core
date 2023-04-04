@@ -217,19 +217,19 @@ page 50163 "TFB Forex Ledger Lines"
     local procedure CalcBalance(EntryNo: Integer)
 
     var
-        TempForexMgmtEntry: Record "TFB Forex Mgmt Entry";
+        ForexMgmtEntryTemp: Record "TFB Forex Mgmt Entry";
     begin
         TotalRemaining := 0;
-        TempForexMgmtEntry.Copy(Rec);
+        ForexMgmtEntryTemp.Copy(Rec);
 
 
-        if TempForexMgmtEntry.CalcSums("Original Amount") then
-            TotalBalance := TempForexMgmtEntry."Original Amount";
+        if ForexMgmtEntryTemp.CalcSums("Original Amount") then
+            TotalBalance := ForexMgmtEntryTemp."Original Amount";
 
-        If TempForexMgmtEntry.FindSet() then
+        If ForexMgmtEntryTemp.FindSet() then
             repeat
-                TotalRemaining += TempForexMgmtEntry.getRemainingAmount(TempForexMgmtEntry."Entry No.");
-            until TempForexMgmtEntry.Next() = 0;
+                TotalRemaining += ForexMgmtEntryTemp.getRemainingAmount(ForexMgmtEntryTemp."Entry No.");
+            until ForexMgmtEntryTemp.Next() = 0;
 
     end;
 

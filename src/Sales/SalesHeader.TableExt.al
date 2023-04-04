@@ -119,7 +119,7 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
 
 
 
-    procedure CheckDuplicateExtDocNo(var DuplicateSystemID: Guid): Boolean
+    procedure CheckDuplicateExtDocNo(var DuplicateSystemID: Guid; var DocumentNo: Code[20]): Boolean
 
     var
         SalesHeader: Record "Sales Header";

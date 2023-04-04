@@ -11,8 +11,9 @@ table 50219 "TFB Brokerage Contract"
 
             BEGIN
                 IF "No." <> xRec."No." THEN BEGIN
-                    SalesSetup.GET();
-                    NoSeriesMgt.TestManual(SalesSetup."TFB Brokerage Contract Nos.");
+                    CoreSetup.GET();
+
+                    NoSeriesMgt.TestManual(CoreSetup."Brokerage Contract Nos.");
                     "No. Series" := '';
                     NoSeriesMgt.SetSeries("No.");
 
@@ -433,7 +434,8 @@ table 50219 "TFB Brokerage Contract"
     end;
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+
+        CoreSetup: Record "TFB Core Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
         Confirmed: Boolean;
         ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
@@ -462,7 +464,7 @@ table 50219 "TFB Brokerage Contract"
     /// 
     /// 
 
-    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; CurrFieldNo: Integer);
+    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; LclCurrFieldNo: Integer);
     var
         Contact: Record Contact;
         ContBusRel: Record "Contact Business Relation";
@@ -503,9 +505,9 @@ table 50219 "TFB Brokerage Contract"
 
         If "No." = '' then begin
 
-            SalesSetup.Get();
-            SalesSetup.TestField("TFB Brokerage Contract Nos.");
-            NoSeriesMgt.InitSeries(SalesSetup."TFB Brokerage Contract Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            CoreSetup.Get();
+            CoreSetup.TestField("Brokerage Contract Nos.");
+            NoSeriesMgt.InitSeries(CoreSetup."Brokerage Contract Nos.", xRec."No. Series", 0D, "No.", "No. Series");
         end;
 
     end;

@@ -43,6 +43,20 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
             }
         }
+        addbefore("External Document No.")
+        {
+            group(PrepaymentDetails)
+            {
+                Visible = Rec."Prepayment Invoice";
+                field("Prepayment Order No."; Rec."Prepayment Order No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Prepayment for Order No.';
+                    Style = Strong;
+                    StyleExpr = true;
+                }
+            }
+        }
 
         addafter("External Document No.")
         {
@@ -125,10 +139,10 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 trigger OnDrillDown()
 
                 var
-                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
-                    Customer: Record Customer;
-                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     CustLedgerEntry: Record "Cust. Ledger Entry";
+                    Customer: Record Customer;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
+                    CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
 
@@ -177,8 +191,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category4;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new relationship task for the contact.';
@@ -196,9 +209,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 Caption = 'Send POD Request';
                 ApplicationArea = All;
                 Image = SendMail;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Send a POD request to warehouse or supplier depending on how invoice was fulfilled';
 
                 trigger OnAction()
@@ -212,19 +223,17 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
             action(TFBCorrectExternalDocNo)
             {
-                Caption = 'Correct External Document No.';
+                Caption = 'Update External Document No.';
                 ApplicationArea = All;
                 Image = UpdateDescription;
-                Promoted = true;
-                PromotedCategory = process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Handle scenario when customer has changed their purchase order reference without reissuing doc';
 
                 trigger OnAction()
 
                 var
-                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     Customer: Record Customer;
+                    TempSalesInvoiceHeader: Record "Sales Invoice Header" temporary;
                     CodeUnit: CodeUnit "TFB Pstd. Sales Inv. Hdr. Edit";
                     CorrectExtDocNo: Page "TFB Correct Ext. Doc. No.";
                 begin
@@ -245,6 +254,31 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                 end;
             }
         }
+
+        addlast(Category_Category6)
+        {
+
+
+            actionref(TFBSendPODRequest_Promoted; TFBSendPODRequest)
+            {
+
+            }
+        }
+
+        addafter(Category_Category5)
+        {
+            Group(Category_TFBUpdate)
+            {
+                Caption = 'Update';
+                ShowAs = SplitButton;
+
+                actionref(TFBCorrectExternalDocNo_Promoted; TFBCorrectExternalDocNo)
+                {
+
+                }
+            }
+        }
+        moveafter(TFBCorrectExternalDocNo_Promoted; ChangePaymentService_Promoted)
     }
 
 
@@ -286,8 +320,8 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
     end;
 
     var
-        IsPastDue: Boolean;
         IsExpectedDatePastDue: Boolean;
+        IsPastDue: Boolean;
         ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text

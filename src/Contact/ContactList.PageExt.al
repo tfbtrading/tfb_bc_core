@@ -22,7 +22,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
         addafter("Company Name")
         {
-          
+
             field("TFB Is Customer"; Rec."TFB Is Customer")
             {
                 ApplicationArea = All;
@@ -55,6 +55,20 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 Tooltip = 'Specifies contact status';
 
             }
+            field("TFB In Review"; Rec."TFB In Review")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                ToolTip = 'Specifies if contact is in review';
+
+            }
+            field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                ToolTip = 'Specifies date next review is planned';
+            }
+
             field("Last Date Attempted"; Rec."Last Date Attempted")
             {
                 ApplicationArea = All;
@@ -71,6 +85,62 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
     actions
     {
+
+        addlast(Tasks)
+        {
+            action(TFBSetToInReview)
+            {
+                ApplicationArea = All;
+                Image = ReviewWorksheet;
+                ToolTip = 'Specifies that contact is now in review';
+                Caption = 'Initiate Review';
+                Enabled = not Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+                var
+
+
+                begin
+
+                    Rec.InitiateReview();
+                    Rec.Modify();
+
+                end;
+            }
+
+            action(TFBCompleteReview)
+            {
+                ApplicationArea = All;
+                Image = Completed;
+                Caption = 'Complete Review';
+                ToolTip = 'Initiate wizard to get details for finish of review';
+                Enabled = Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+
+                var
+
+
+                begin
+                    Rec.CompleteReview();
+                    Rec.Modify();
+
+                end;
+            }
+
+
+        }
+        addlast(Category_Process)
+        {
+            actionref(ActionRefName; TFBSetToInReview)
+            {
+
+            }
+            actionref(Complete; TFBCompleteReview)
+            {
+
+            }
+        }
     }
     views
     {
@@ -101,6 +171,34 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
     }
 
+    local procedure FinishAction(_ReviewComment: Text[80]; _NextReview: Date)
+    var
+        RelComment: Record "Rlshp. Mgt. Comment Line";
+        LineNo: Integer;
+
+    begin
+        RelComment.SetRange("Table Name", RelComment."Table Name"::Contact);
+        RelComment.SetRange("No.", Rec."No.");
+        RelComment.SetRange("Sub No.", 0);
+        If RelComment.FindLast() then
+            LineNo := RelComment."Line No." + 10000
+        else
+            LineNo := 10000;
+
+        RelComment.Init();
+        RelComment.Date := WorkDate();
+        RelComment."Table Name" := RelComment."Table Name"::Contact;
+        RelComment."No." := Rec."No.";
+        RelComment.Comment := _ReviewComment;
+        RelComment."Line No." := LineNo;
+
+        RelComment.Insert(true);
+
+        Rec."TFB In Review" := false;
+        Rec."TFB Review Date - Planned" := _NextReview;
+        Rec."TFB Review Date Last Compl." := WorkDate();
+    end;
+
     local procedure GetTaskSymbol(): Text
 
     var
@@ -122,4 +220,8 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
             else
                 Exit('');
     end;
+
+    var
+
+        isCompany: Boolean;
 }

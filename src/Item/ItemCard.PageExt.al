@@ -281,22 +281,12 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 RunObject = page "TFB Item Costing List";
                 RunPageLink = "Item No." = field("No.");
                 RunPageMode = View;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedOnly = true;
+
                 ToolTip = 'Open item costings list for item';
 
 
             }
 
-
-        }
-        modify("Ledger E&ntries")
-        {
-            Promoted = true;
-            PromotedCategory = Category5;
-            PromotedIsBig = true;
-            PromotedOnly = true;
 
         }
 
@@ -320,8 +310,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 Image = ExportFile;
                 Caption = 'Download Specification';
                 ToolTip = 'Find and download specification file';
-                Promoted = true;
-                PromotedCategory = Category4;
+
 
                 Enabled = true;
 
@@ -344,8 +333,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 Image = ExportFile;
                 Caption = 'Download MSDS';
                 ToolTip = 'Find and download Material Safety Data Sheet';
-                Promoted = true;
-                PromotedCategory = Category4;
+
 
                 Enabled = true;
 
@@ -363,6 +351,10 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
             }
         }
+
+      
+
+
     }
 
     local procedure GetPricePerKg(): Decimal

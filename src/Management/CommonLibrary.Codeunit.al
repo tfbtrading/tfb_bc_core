@@ -37,7 +37,7 @@ codeunit 50142 "TFB Common Library"
     /// <returns>Return value of type Text.</returns>
     procedure GetHTMLTemplateActive(TitleText: Text; SubTitleText: Text): Text
     var
-        EmailSetup: Record "TFB Notification Email Setup";
+        CoreSetup: Record "TFB Core Setup";
         TempBlobCU: Codeunit "Temp Blob";
 
         HttpClient: HttpClient;
@@ -50,8 +50,8 @@ codeunit 50142 "TFB Common Library"
 
     begin
 
-        EmailSetup.Get();
-        urlTok := EmailSetup."Email Template Active";
+        CoreSetup.Get();
+        urlTok := CoreSetup."Email Template Active";
 
         If urlTok = '' then Error('No URL defined for transactional email template');
 
@@ -116,11 +116,11 @@ codeunit 50142 "TFB Common Library"
     procedure GetSpecificationURL(Item: Record Item): Text
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         urlTok: text;
     begin
-        SalesSetup.Get();
-        urlTok := SalesSetup."TFB Specification URL Pattern";
+        CoreSetup.Get();
+        urlTok := CoreSetup."Specification URL Pattern";
         If urlTok = '' then Error('No URL defined for transactional email template');
         if Item."No." = '' then Error('No valid item code defined');
         Exit(StrSubstNo(urlTok, Item."No."));
@@ -548,7 +548,7 @@ codeunit 50142 "TFB Common Library"
 
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), BodyBuilder.ToText(), true);
             EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
-            Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+            Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
             Email.Enqueue(EmailMessage, EmailScenEnum::Quality);
 
             CommEntry.Init();

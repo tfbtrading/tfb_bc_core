@@ -33,9 +33,7 @@ page 50137 "TFB Market Segment Picture"
                 ApplicationArea = All;
                 Caption = 'Take';
                 Image = Camera;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+                InFooterBar = true;
                 ToolTip = 'Activate the camera on the device.';
                 Visible = CameraAvailable AND (HideActions = FALSE);
 
@@ -111,12 +109,14 @@ page 50137 "TFB Market Segment Picture"
         HideActions: Boolean;
 
     procedure TakeNewPicture()
+    var
+        Instream: InStream;
+        PictureName: Text;
     begin
         Rec.Find();
         Rec.TestField(Description);
-
-
-        Camera.AddPicture(Rec, Rec.FieldNo(Picture));
+        Camera.GetPicture(Instream, PictureName);
+        Rec.Picture.ImportStream(Instream, Rec.Description);
     end;
 
 

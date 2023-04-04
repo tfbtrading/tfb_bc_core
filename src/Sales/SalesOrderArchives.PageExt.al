@@ -15,9 +15,7 @@ pageextension 50119 "TFB Sales Order Archives" extends "Sales Order Archives"
                 Caption = 'Send POD request';
                 ApplicationArea = All;
                 Image = SendMail;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Sends a proof of delivery request to the relevant party who managed delivery';
 
                 trigger OnAction()
@@ -42,6 +40,13 @@ pageextension 50119 "TFB Sales Order Archives" extends "Sales Order Archives"
 
                 end;
 
+
+            }
+        }
+        addlast(Promoted)
+        {
+            actionref(TFBSendPODRequest_Promoted; TFBSendPODRequest)
+            {
 
             }
         }

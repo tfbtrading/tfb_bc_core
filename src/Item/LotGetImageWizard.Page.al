@@ -75,21 +75,25 @@ page 50171 "TFB Lot Get Image Wizard"
                 {
                     Caption = 'Grid Image';
                     ApplicationArea = All;
+                    ToolTip = 'Specifies whether to download a image with only product and overlaid grid';
                 }
                 field(GridBowlActive; _GridBowlActive)
                 {
                     Caption = 'Grid over Bowl Image';
                     ApplicationArea = All;
+                    ToolTip = 'Specifies whether to download a image within bowl and with overlaid grid and information.';
                 }
                 field(CropActive; _CropActive)
                 {
                     Caption = 'Cropped Image';
                     ApplicationArea = All;
+                    ToolTip = 'Specifies whether to download just a cropped, zoomed image of product without bowl.';
                 }
                 field(IsolatedActive; _IsolatedActive)
                 {
                     Caption = 'Isolated Image';
                     ApplicationArea = All;
+                    ToolTip = 'Specifies whether to download original isolated image.';
                 }
             }
 
@@ -106,6 +110,7 @@ page 50171 "TFB Lot Get Image Wizard"
                     {
                         Caption = 'Email Images';
                         ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Email Images field.';
 
                     }
                 }
@@ -132,6 +137,7 @@ page 50171 "TFB Lot Get Image Wizard"
                 Enabled = BackActionEnabled;
                 Image = PreviousRecord;
                 InFooterBar = true;
+                ToolTip = 'Executes the Back action.';
                 trigger OnAction();
                 begin
                     NextStep(true);
@@ -144,6 +150,7 @@ page 50171 "TFB Lot Get Image Wizard"
                 Enabled = NextActionEnabled;
                 Image = NextRecord;
                 InFooterBar = true;
+                ToolTip = 'Executes the Next action.';
                 trigger OnAction();
                 begin
                     NextStep(false);
@@ -156,6 +163,7 @@ page 50171 "TFB Lot Get Image Wizard"
                 Enabled = FinishActionEnabled;
                 Image = Approve;
                 InFooterBar = true;
+                ToolTip = 'Executes the Finish action.';
                 trigger OnAction();
                 begin
                     FinishAction();
@@ -192,6 +200,16 @@ page 50171 "TFB Lot Get Image Wizard"
 
 
     var
+
+        LotImage: Record "TFB Lot Image";
+        LedgerEntry: Record "Item Ledger Entry";
+        MediaRepositoryDone: Record "Media Repository";
+        MediaRepositoryStandard: Record "Media Repository";
+        MediaResourcesDone: Record "Media Resources";
+        MediaResourcesStandard: Record "Media Resources";
+        ABSClient: CodeUnit "ABS Blob Client";
+        Authorization: Interface "Storage Service Authorization";
+        Step: Option Start,Step2,Finish;
         _BlobName: Text[100];
         _CropActive: Boolean;
         _GridActive: Boolean;
@@ -200,15 +218,6 @@ page 50171 "TFB Lot Get Image Wizard"
         _EmailImages: Boolean;
         _Count: Integer;
         _LastCreated: DateTime;
-        LotImage: Record "TFB Lot Image";
-        LedgerEntry: Record "Item Ledger Entry";
-        ABSClient: CodeUnit "ABS Blob Client";
-        Authorization: Interface "Storage Service Authorization";
-        MediaRepositoryDone: Record "Media Repository";
-        MediaRepositoryStandard: Record "Media Repository";
-        MediaResourcesDone: Record "Media Resources";
-        MediaResourcesStandard: Record "Media Resources";
-        Step: Option Start,Step2,Finish;
         BackActionEnabled: Boolean;
         FinishActionEnabled: Boolean;
         NextActionEnabled: Boolean;
@@ -258,9 +267,7 @@ page 50171 "TFB Lot Get Image Wizard"
                 end;
 
             0:
-                begin
-                    error('No lot image available');
-                end;
+                error('No lot image available');
 
         end;
 
@@ -356,10 +363,8 @@ page 50171 "TFB Lot Get Image Wizard"
 
         ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
         FileName := StrSubstNo('LII %1 - lot %2.png', LedgerEntry.Description, LedgerEntry."Lot No.");
-        IF ABSOperationResponse.IsSuccessful() then begin
-
-            DownloadFromStream(inStream, 'Downloaded File', '', '', fileName);
-        end
+        IF ABSOperationResponse.IsSuccessful() then
+            DownloadFromStream(inStream, 'Downloaded File', '', '', fileName)
         else
             Message('Error from Azure Storage: %1', ABSOperationResponse.GetError());
 

@@ -252,7 +252,8 @@ codeunit 50242 "TFB Brokerage Mgmt"
     var
         Invoice: Record "Sales Invoice Header";
         Line: Record "Sales Line";
-        SalesSetup: Record "Sales & Receivables Setup";
+
+        CoreSetup: Record "TFB Core Setup";
         WorkDesc: BigText;
         OutStream: OutStream;
         InsertSuccess: Boolean;
@@ -265,9 +266,9 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
     begin
 
-        SalesSetup.Get();
+        CoreSetup.Get();
 
-        If SalesSetup."TFB Brokerage Service Item" = '' then
+        If CoreSetup."Brokerage Service Item" = '' then
             Error(ErrorMsg);
 
         //Check if invoice or posted invoice already created
@@ -304,7 +305,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
                     Line."Document No." := Header."No.";
                     Line.Type := Line.Type::Item;
                     Line."Line No." := 10000;
-                    Line.Validate("No.", SalesSetup."TFB Brokerage Service Item");
+                    Line.Validate("No.", CoreSetup."Brokerage Service Item");
                     Line.Description := StrSubstNo('Brokerage fee against invoice %1', BrokShipment."Vendor Invoice No.");
                     Line.Validate(Quantity, 1);
                     BrokShipment.CalcFields(Amount, "Brokerage Fee");

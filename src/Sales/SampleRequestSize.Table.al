@@ -1,7 +1,7 @@
 table 50117 "TFB Sample Request Size"
 {
     DataClassification = CustomerContent;
-    ObsoleteState = Pending;
+    ObsoleteState = Removed;
     ObsoleteReason = 'Replaced by size fields on table line';
 
     fields

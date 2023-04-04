@@ -9,7 +9,6 @@ page 50156 "TFB Forex Mgmt Entries"
     Editable = true;
     InsertAllowed = true;
     DelayedInsert = true;
-    PromotedActionCategories = 'New,Process,Navigation,Related';
 
 
     layout
@@ -180,9 +179,7 @@ page 50156 "TFB Forex Mgmt Entries"
             action(OpenSource)
             {
                 ApplicationArea = All;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
-                Promoted = true;
+
                 Image = Open;
                 Caption = 'Open Applied Document';
                 ToolTip = 'Opens the applied document if spceified';
@@ -205,6 +202,14 @@ page 50156 "TFB Forex Mgmt Entries"
                 end;
             }
         }
+        area(Promoted)
+        {
+            actionref(OpenSourceRef; OpenSource)
+            {
+
+
+            }
+        }
     }
 
     trigger OnAfterGetRecord()
@@ -214,7 +219,7 @@ page 50156 "TFB Forex Mgmt Entries"
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 
-    
+
 
     var
 

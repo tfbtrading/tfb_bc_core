@@ -63,7 +63,7 @@ page 50348 "TFB Item Costing"
 
 
                 }
-           
+
                 field("Scenario Override"; Rec."Scenario Override")
                 {
                     ApplicationArea = All;
@@ -266,25 +266,7 @@ page 50348 "TFB Item Costing"
 
         area(Processing)
         {
-            action("CopyToWorksheet")
-            {
-                ApplicationArea = All;
-                Image = Copy;
-                ToolTip = 'Copies the current item costing to the sales price worksheet';
-                Caption = 'Copy to Sales Price Worksheet';
 
-                trigger OnAction()
-
-                var
-                    CostingCU: CodeUnit "TFB Costing Mgmt";
-                    SalesPriceWS: Page "Sales Price Worksheet";
-                begin
-                    If CostingCU.CopyCurrentCostingToSalesWorkSheet(Rec."Item No.") then
-                        If Confirm('Sales Price Worksheet modified - do you want to open it', true) then
-                            SalesPriceWS.Run();
-
-                end;
-            }
             action("Refresh")
             {
                 ApplicationArea = All;
@@ -299,8 +281,36 @@ page 50348 "TFB Item Costing"
                 end;
             }
         }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+
+
+                actionref(RefreshRef; Refresh)
+                {
+
+                }
+
+
+            }
+            group(Category_ItemCosting)
+            {
+                Caption = 'Item Costing';
+                actionref(ItemRef; "Item ")
+                {
+
+                }
+                actionref(CostScenarioRef; "Cost Scenario")
+                {
+
+                }
+            }
+        }
     }
-    
+
 
 
 }

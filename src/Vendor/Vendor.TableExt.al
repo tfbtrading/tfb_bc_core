@@ -11,9 +11,12 @@ tableextension 50118 "TFB Vendor" extends Vendor
         field(50120; "TFB Landed Cost Default"; Code[20])
         {
             DataClassification = CustomerContent;
-            ValidateTableRelation = True;
-            TableRelation = "TFB Landed Cost Template";
+
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Depending on old table';
+
         }
+
         field(50121; "TFB Ship Via Default"; Code[20])
         {
             DataClassification = CustomerContent;

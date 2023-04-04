@@ -10,7 +10,7 @@ page 50149 "TFB Company Certification List"
     DeleteAllowed = true;
     ModifyAllowed = true;
     DelayedInsert = true;
-    PromotedActionCategories = 'New,Certificate';
+
 
     layout
     {
@@ -170,16 +170,16 @@ page 50149 "TFB Company Certification List"
         area(Processing)
         {
 
-            action("Upload Attachment")
+            action(UploadAttach)
             {
 
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
+                Caption = 'Upload Attachment';
+
                 Image = Import;
-                Enabled = (AttachmentExists = false);
-                PromotedOnly = true;
+                Enabled = true;
+
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
                 trigger OnAction()
@@ -189,15 +189,14 @@ page 50149 "TFB Company Certification List"
                 end;
 
             }
-            action("Download Attachment(s)")
+            action(DownloadAttach)
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
+                Caption = 'Download Attachment';
                 Image = SendAsPDF;
                 Enabled = AttachmentExists;
-                PromotedOnly = true;
+
 
                 tooltip = 'Download one or more attachments (in pdf form) from certification record';
                 trigger OnAction()
@@ -207,13 +206,11 @@ page 50149 "TFB Company Certification List"
                 end;
             }
 
-            action("Send to Contact(s)")
+            action(SendToContact)
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = true;
-                promotedCategory = Process;
-                PromotedOnly = true;
+                Caption = 'Send to Contacts';
                 Image = SendEmailPDF;
                 ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
 
@@ -223,46 +220,13 @@ page 50149 "TFB Company Certification List"
                     SendSelectedDocs();
                 end;
             }
-            action("Replace File")
-            {
-                ApplicationArea = All;
-                Visible = True;
-                Image = DocumentEdit;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment and replace with new file';
 
-                trigger OnAction()
 
-                begin
-                    ReplaceFile();
-                end;
-
-            }
-            action("Remove File")
-            {
-                ApplicationArea = All;
-                Visible = True;
-                Image = Delete;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment';
-
-                trigger OnAction()
-
-                begin
-                    RemoveFile();
-                end;
-
-            }
-
-            action("Toggle Archived")
+            action("ToggleArchived")
             {
                 ApplicationArea = All;
                 Visible = True;
                 Image = Archive;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                PromotedOnly = true;
 
 
                 ToolTip = 'Set current vendor certificate to be archived';
@@ -276,6 +240,21 @@ page 50149 "TFB Company Certification List"
             }
 
 
+        }
+        area(Promoted)
+        {
+            actionref(UploadAttach_Promoted; UploadAttach)
+            {
+
+            }
+            actionref(SendToContact_Promoted; SendToContact)
+            {
+
+            }
+            actionref(ToggleArchived_Promoted; ToggleArchived)
+            {
+
+            }
         }
     }
 
@@ -460,7 +439,8 @@ page 50149 "TFB Company Certification List"
 
     begin
 
-
+        If AttachmentExists then
+            if not Confirm('Attachment already exist - replace?', true) then exit;
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
 

@@ -188,8 +188,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Suite;
                     Caption = 'Blanket Sales Orders';
                     Image = Reminder;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                   
                     RunObject = Page "Blanket Sales Orders";
                     ToolTip = 'Use blanket sales orders as a framework for a long-term agreement between you and your customers to sell large quantities that are to be delivered in several smaller shipments over a certain period of time. Blanket orders often cover only one item with predetermined delivery dates. The main reason for using a blanket order rather than a sales order is that quantities entered on a blanket order do not affect item availability and thus can be used as a worksheet for monitoring, forecasting, and planning purposes..';
                 }
@@ -206,8 +205,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Suite;
                     Caption = 'Blanket Purchase Orders';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                   
                     RunObject = Page "Blanket Purchase Orders";
                     ToolTip = 'Use blanket purchase orders as a framework for a long-term agreement between you and your vendors to buy large quantities that are to be delivered in several smaller shipments over a certain period of time. Blanket orders often cover only one item with predetermined delivery dates. The main reason for using a blanket order rather than a purchase order is that quantities entered on a blanket order do not affect item availability and thus can be used as a worksheet for monitoring, forecasting, and planning purposes.';
                 }
@@ -243,8 +241,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = SalesReturnOrder;
                     Caption = 'Sales Return Orders';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page "Sales Return Order List";
                     ToolTip = 'Compensate your customers for incorrect or damaged items that you sent to them and received payment for. Sales return orders support warehouse documents for the item handling, the ability to return items from multiple sales documents with one return, and automatic creation of related sales credit memos or other return-related documents, such as a replacement sales order.';
                 }
@@ -252,8 +249,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Sales Credit Memos';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Sales Credit Memos";
                     ToolTip = 'Revert the financial transactions involved when your customers want to cancel a purchase or return incorrect or damaged items that you sent to them and received payment for. To include the correct information, you can create the sales credit memo from the related posted sales invoice or you can create a new sales credit memo with copied invoice information. If you need more control of the sales return process, such as warehouse documents for the physical handling, use sales return orders, in which sales credit memos are integrated. Note: If an erroneous sale has not been paid yet, you can simply cancel the posted sales invoice to automatically revert the financial transaction.';
                 }
@@ -273,8 +269,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Purchase Credit Memos';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                 
                     RunObject = Page "Purchase Credit Memos";
                     ToolTip = 'Create purchase credit memos to mirror sales credit memos that vendors send to you for incorrect or damaged items that you have paid for and then returned to the vendor. If you need more control of the purchase return process, such as warehouse documents for the physical handling, use purchase return orders, in which purchase credit memos are integrated. Purchase credit memos can be created automatically from PDF or image files from your vendors by using the Incoming Documents feature. Note: If you have not yet paid for an erroneous purchase, you can simply cancel the posted purchase invoice to automatically revert the financial transaction.';
                 }
@@ -504,8 +499,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Incoming Documents';
                     Gesture = None;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page "Incoming Documents";
                     ToolTip = 'Handle incoming documents, such as vendor invoices in PDF or as image files, that you can manually or automatically convert to document records, such as purchase invoices. The external files that represent incoming documents can be attached at any process stage, including to posted documents and to the resulting vendor, customer, and general ledger entries.';
                 }
@@ -514,8 +508,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'General Journals';
                     Image = Journal;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                 
                     RunObject = Page "General Journal Batches";
                     RunPageView = WHERE("Template Type" = CONST(General),
                                         Recurring = CONST(false));
@@ -525,8 +518,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Chart of Accounts';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Chart of Accounts";
                     ToolTip = 'View or organize the general ledger accounts that store your financial data. All values from business transactions or internal adjustments end up in designated G/L accounts. Business Central includes a standard chart of accounts that is ready to support businesses in your country, but you can change the default accounts and add new ones.';
                 }
@@ -535,8 +527,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Suite;
                     Caption = 'G/L Budgets';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                 
                     RunObject = Page "G/L Budget Names";
                     ToolTip = 'View summary information about the amount budgeted for each general ledger account in different time periods.';
                 }
@@ -545,8 +536,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Account Schedules';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Account Schedule Names";
                     ToolTip = 'Get insight into the financial data stored in your chart of accounts. Account schedules analyze figures in G/L accounts, and compare general ledger entries with general ledger budget entries. For example, you can view the general ledger entries as percentages of the budget entries. Account schedules provide the data for core financial statements and views, such as the Cash Flow chart.';
                 }
@@ -555,8 +545,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = SalesBudget;
                     Caption = 'Sales Budgets';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                
                     RunObject = Page "Budget Names Sales";
                     ToolTip = 'Enter item sales values of type amount, quantity, or cost for expected item sales in different time periods. You can create sales budgets by items, customers, customer groups, or other dimensions in your business. The resulting sales budgets can be reviewed here or they can be used in comparisons with actual sales data in sales analysis reports.';
                 }
@@ -564,8 +553,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = PurchaseBudget;
                     Caption = 'Purchase Budgets';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Budget Names Purchase";
                     ToolTip = 'Enter item purchases values of type amount, quantity, or cost for expected item purchases in different time periods. You can create purchase budgets by items, vendors, vendor groups, or other dimensions in your business. The resulting purchase budgets can be reviewed here or they can be used in comparisons with actual purchases data in purchase analysis reports.';
                 }
@@ -602,8 +590,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Suite;
                     Caption = 'Currencies';
                     Image = Currency;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page Currencies;
                     ToolTip = 'View the different currencies that you trade in or update the exchange rates by getting the latest rates from an external service provider.';
                 }
@@ -611,8 +598,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = BasicHR;
                     Caption = 'Employees';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                 
                     RunObject = Page "Employee List";
                     ToolTip = 'View or modify employees'' details and related information, such as qualifications and pictures, or register and analyze employee absence. Keeping up-to-date records about your employees simplifies personnel tasks. For example, if an employee''s address changes, you register this on the employee card.';
                 }
@@ -620,8 +606,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = VAT;
                     Caption = 'VAT Statements';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                   
                     RunObject = Page "VAT Statement Names";
                     ToolTip = 'View a statement of posted VAT amounts, calculate your VAT settlement amount for a certain period, such as a quarter, and prepare to send the settlement to the tax authorities.';
                 }
@@ -629,8 +614,7 @@ page 50100 "TFB Ops Mgr Role Center"
                 {
                     ApplicationArea = Suite;
                     Caption = 'Dimensions';
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page Dimensions;
                     ToolTip = 'View or edit dimensions, such as area, project, or department, that you can assign to sales and purchase documents to distribute costs and analyze transaction history.';
                 }
@@ -672,8 +656,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Cash Receipt Journals';
                     Image = Journals;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page "General Journal Batches";
                     RunPageView = WHERE("Template Type" = CONST("Cash Receipts"),
                                         Recurring = CONST(false));
@@ -684,8 +667,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Payment Journals';
                     Image = Journals;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                   
                     RunObject = Page "General Journal Batches";
                     RunPageView = WHERE("Template Type" = CONST(Payments),
                                         Recurring = CONST(false));
@@ -696,8 +678,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Bank Accounts';
                     Image = BankAccount;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Bank Account List";
                     ToolTip = 'View or set up detailed information about your bank account, such as which currency to use, the format of bank files that you import and export as electronic payments, and the numbering of checks.';
                 }
@@ -706,8 +687,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Bank Acc. Statements';
                     Image = BankAccountStatement;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                  
                     RunObject = Page "Bank Account Statement List";
                     ToolTip = 'View statements for selected bank accounts. For each bank transaction, the report shows a description, an applied amount, a statement amount, and other information.';
                 }
@@ -716,8 +696,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Payment Recon. Journals';
                     Image = ApplyEntries;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page "Pmt. Reconciliation Journals";
                     ToolTip = 'Reconcile unpaid documents automatically with their related bank transactions by importing a bank statement feed or file. In the payment reconciliation journal, incoming or outgoing payments on your bank are automatically, or semi-automatically, applied to their related open customer or vendor ledger entries. Any open bank account ledger entries related to the applied customer or vendor ledger entries will be closed when you choose the Post Payments and Reconcile Bank Account action. This means that the bank account is automatically reconciled for payments that you post with the journal.';
                 }
@@ -728,8 +707,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Bank Account Reconciliations';
                     Image = BankAccountRec;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                   
                     RunObject = Page "Bank Acc. Reconciliation List";
                     ToolTip = 'Reconcile bank accounts in your system with bank statements received from your bank.';
                 }
@@ -738,8 +716,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     ApplicationArea = Suite;
                     Caption = 'Reminders';
                     Image = Reminder;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    
                     RunObject = Page "Reminder List";
                     ToolTip = 'Remind customers about overdue amounts based on reminder terms and the related reminder levels. Each reminder level includes rules about when the reminder will be issued in relation to the invoice due date or the date of the previous reminder and whether interests are added. Reminders are integrated with finance charge memos, which are documents informing customers of interests or other money penalties for payment delays.';
                 }

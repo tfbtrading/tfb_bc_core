@@ -37,11 +37,11 @@ table 50152 "TFB Container Route"
 
     fieldgroups
     {
-        fieldgroup(DropDown; Code, "Route Description", "Ship Via", "Days to Warehouse")
+        fieldgroup(DropDown; Code, "Route Description", "Ship Via")
         {
 
         }
-        fieldgroup(Brick; Code, "Route Description", "Days to Warehouse")
+        fieldgroup(Brick; Code, "Route Description")
         {
 
         }

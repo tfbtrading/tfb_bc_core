@@ -86,14 +86,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
 
     actions
     {
-        modify(GetReceiptLines)
-        {
-            Promoted = true;
-            PromotedIsBig = true;
-            PromotedOnly = true;
-            PromotedCategory = Process;
 
-        }
     }
 
 

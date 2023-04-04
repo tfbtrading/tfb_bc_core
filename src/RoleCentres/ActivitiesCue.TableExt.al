@@ -72,6 +72,13 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             Caption = 'Salesperson Code Filter';
         }
 
+        field(50526; "TFB Purchase Pending Confirm."; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Purchase Header" where("Document Type" = const(Order), "Completely Received" = const(false), "TFB Manual Confirmation" = const(false)));
+            Caption = 'Purchases Pending Confirmation';
+        }
+
 
 
 

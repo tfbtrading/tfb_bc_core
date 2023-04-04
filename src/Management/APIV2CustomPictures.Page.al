@@ -8,7 +8,7 @@ page 50166 "TFB APIV2 - Custom Pictures"
     DelayedInsert = true;
     InsertAllowed = false;
     PageType = API;
-    SourceTable = "TFB Custom Picture";
+    SourceTable = "TFB Picture Entity";
     Extensible = false;
     ODataKeyFields = Id;
     APIPublisher = 'tfb';

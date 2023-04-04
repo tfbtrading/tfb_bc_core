@@ -20,19 +20,6 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
                 BlankZero = true;
                 ToolTip = 'Specifies the local sales price per kg';
 
-                trigger OnDrillDown()
-
-                var
-                    SPLD: Page "Sales Price and Line Discounts";
-
-                begin
-
-                    SPLD.LoadItem(Rec);
-                    SPLD.InitPage(True);
-                    SPLD.RunModal();
-
-                end;
-
             }
             field(TFBLastPriceChangedDate; LastChangedDateVar)
             {
@@ -73,8 +60,8 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
     trigger OnOpenPage()
 
     begin
-        SalesSetup.Get();
 
+        CoreSetup.Get();
     end;
 
     trigger OnAfterGetRecord()
@@ -82,20 +69,24 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
 
     begin
 
-        Clear(SalesPriceRec);
+
         Clear(SalesPriceVar);
         Clear(LastChangedDateVar);
 
-        If SalesSetup."TFB Def. Customer Price Group" <> '' then begin
 
-            SalesPriceRec.SetRange("Item No.", Rec."No.");
-            SalesPriceRec.SetRange("Sales Code", SalesSetup."TFB Def. Customer Price Group");
-            SalesPriceRec.SetRange("Sales Type", SalesPriceRec."Sales Type"::"Customer Price Group");
-            SalesPriceRec.SetRange("Ending Date", 0D);
+        If CoreSetup."Def. Customer Price Group" <> '' then begin
 
-            If SalesPriceRec.FindLast() then begin
-                SalesPriceVar := PricingCU.CalcPerKgFromUnit(SalesPriceRec."Unit Price", Rec."Net Weight");
-                LastChangedDateVar := SalesPriceRec."Starting Date";
+            PriceListLine.SetRange("Asset No.", Rec."No.");
+            PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
+            PriceListLine.setrange("Source Type", PriceListLine."Source Type"::"Customer Price Group");
+            PriceListLine.SetRange("Source No.", CoreSetup."Def. Customer Price Group");
+            PriceListLine.setrange(Status, PriceListLine.Status::Active);
+            PriceListLine.SetRange("Ending Date", 0D);
+
+
+            If PriceListLine.FindLast() then begin
+                SalesPriceVar := PricingCU.CalcPerKgFromUnit(PriceListLine."Unit Price", Rec."Net Weight");
+                LastChangedDateVar := PriceListLine."Starting Date";
             end;
         end;
 
@@ -105,10 +96,14 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
 
 
     var
-        SalesSetup: record "Sales & Receivables Setup";
-        SalesPriceRec: record "Sales Price";
+
+        CoreSetup: record "TFB Core Setup";
+
+        PriceListLine: Record "Price List Line";
 
         PricingCU: codeunit "TFB Pricing Calculations";
+
+
         SalesPriceVar: Decimal;
 
         LastChangedDateVar: Date;

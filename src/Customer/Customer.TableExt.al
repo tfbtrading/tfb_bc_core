@@ -9,6 +9,12 @@ tableextension 50101 "TFB Customer" extends Customer
             Caption = 'Contact Status';
             TableRelation = "TFB Contact Status".Status;
 
+            trigger OnValidate()
+
+            begin
+                validateContactStatus();
+            end;
+
 
         }
         field(50102; "TFB Pallet Exchange"; Boolean)
@@ -45,7 +51,11 @@ tableextension 50101 "TFB Customer" extends Customer
             CalcFormula = count("Sales Invoice Line" where("Sell-to Customer No." = field("No."), Type = filter(Item)));
             Caption = 'Posted Sales Inv. Lines';
         }
-
+        field(50480; "TFB Archived"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Archived';
+        }
         field(50108; "TFB CoA Required"; Boolean)
         {
             DataClassification = CustomerContent;
@@ -206,4 +216,24 @@ tableextension 50101 "TFB Customer" extends Customer
     {
         addlast(Brick; Blocked) { }
     }
+
+    local procedure validateContactStatus()
+
+    var
+        Status: Record "TFB Contact Status";
+
+    begin
+
+
+
+        Status.SetRange(Status, Rec."TFB Contact Status");
+
+        If Status.FindFirst() then
+            Rec.validate("TFB Contact Stage", Status.Stage);
+
+
+
+    end;
+
+
 }

@@ -6,7 +6,7 @@ tableextension 50148 "TFB Sales Price Line Disc Buff" extends "Sales Price and L
         {
             Caption = 'Price Per Kg';
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
+            ObsoleteState = Removed;
             ObsoleteReason = 'Calculated dynamically';
         }
 

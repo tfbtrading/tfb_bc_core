@@ -21,7 +21,7 @@ pageextension 50160 "TFB Pstd Purch. Rcpt. Subform" extends "Posted Purchase Rcp
                     PurchRcptCU.OpenItemChargesForReceipt(Rec."Document No.", Rec."Line No.")
                 end;
             }
-            field("Sales Order No."; Rec."Sales Order No.")
+            field("Sales Order No."; _SalesOrderNo)
             {
                 ApplicationArea = All;
                 Visible = true;
@@ -44,6 +44,7 @@ pageextension 50160 "TFB Pstd Purch. Rcpt. Subform" extends "Posted Purchase Rcp
     var
         PurchRcptCU: CodeUnit "TFB Purch. Rcpt. Mgmt";
         TotalOfItemCharges: Decimal;
+        _SalesOrderNo: Code[20];
 
     trigger OnAfterGetRecord()
     var
@@ -58,5 +59,6 @@ pageextension 50160 "TFB Pstd Purch. Rcpt. Subform" extends "Posted Purchase Rcp
         else
             TotalOfItemCharges := 0;
 
+        _SalesOrderNo := PurchRcptCU.GetSalesOrderReferenceFromReceiptLine(Rec);
     end;
 }

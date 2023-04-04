@@ -42,17 +42,35 @@ pageextension 50100 "TFB Det. Vendor Ledg. Entries" extends "Detailed Vendor Led
     {
         addafter("&Navigate")
         {
-            action("TFB Applied Entry")
+            action(TFBAppliedEntry)
             {
                 ApplicationArea = All;
                 Caption = 'Applied entry';
                 Tooltip = 'Opens any applied entries to the ledger entry';
                 Image = Entry;
-                RunObject = page "Vendor Ledger Entries";
-                RunPageLink = "Entry No." = field("Vendor Ledger Entry No.");
-                RunPageMode = View;
-                Promoted = true;
-                PromotedIsBig = true;
+
+                trigger OnAction()
+
+                var
+                    TempAppliedVendLedgerEntries: Record "Vendor Ledger Entry" temporary;
+                    VendorLedger: CodeUnit "VendEntry-Apply Posted Entries";
+                    VendorLedgerEntries: Page "Vendor Ledger Entries";
+
+                begin
+                    VendorLedger.GetAppliedVendLedgerEntries(TempAppliedVendLedgerEntries, Rec."Vendor Ledger Entry No.");
+                    If TempAppliedVendLedgerEntries.IsEmpty() then exit;
+
+                    VendorLedgerEntries.SetRecord(TempAppliedVendLedgerEntries);
+                    VendorLedgerEntries.Run();
+                end;
+
+            }
+        }
+
+        addfirst(Promoted)
+        {
+            actionref(TFBAppliedEntry_Promoted; TFBAppliedEntry)
+            {
 
             }
         }

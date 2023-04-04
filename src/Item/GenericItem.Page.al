@@ -130,10 +130,8 @@ page 50132 "TFB Generic Item"
                 Caption = 'Switch to Parent';
                 ApplicationArea = All;
                 Image = Hierarchy;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
+
                 Enabled = (Rec.Type = Rec.Type::ItemExtension) and (Rec.Description <> '');
                 ToolTip = 'Executes the Switch to Parent action';
 
@@ -150,10 +148,7 @@ page 50132 "TFB Generic Item"
                 Caption = 'Switch to Extension';
                 ApplicationArea = All;
                 Image = MoveDown;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-                PromotedCategory = Process;
+
                 Enabled = (Rec.Type = Rec.Type::ItemParent) and (Rec.Description <> '');
                 ToolTip = 'Executes the Switch to Extension action';
 
@@ -170,9 +165,7 @@ page 50132 "TFB Generic Item"
                 Caption = 'Add Market Segment';
                 ApplicationArea = All;
                 Image = CustomerGroup;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
+
                 Enabled = true;
                 ToolTip = 'Add additional market segments to the generic item';
 
@@ -208,6 +201,27 @@ page 50132 "TFB Generic Item"
                 end;
             }
         }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(SwitchToParentRef; SwitchToParent)
+                {
+
+                }
+
+                actionref(SwitchToExtensionRef; SwitchToExtension)
+                {
+
+                }
+                actionref(AAddMarkSegmentRef; AddMarketSegment)
+                {
+
+                }
+            }
+        }
     }
 
     var
@@ -231,7 +245,7 @@ page 50132 "TFB Generic Item"
             Rec.Type := Rec.Type::ItemParent;
 
     end;
-    
+
 
     local procedure ValidateNewSegment(Title: Text[255])
 

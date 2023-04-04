@@ -65,10 +65,6 @@ pageextension 50205 "TFB Price List Line Review" extends "Price List Line Review
             Visible = false;
 
         }
-        modify(JobPriceLists)
-        {
-            Visible = false;
-        }
         modify(SalesJobPriceLists)
         {
             Visible = false;

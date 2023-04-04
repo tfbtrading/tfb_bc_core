@@ -2,7 +2,6 @@ page 50341 "TFB Landed Cost Profile"
 {
     PageType = Card;
     Caption = 'Landed Cost Profile';
-    PromotedActionCategories = 'Navigate,Process';
 
     SourceTable = "TFB Landed Cost Profile";
 
@@ -171,10 +170,7 @@ page 50341 "TFB Landed Cost Profile"
             {
                 ApplicationArea = all;
                 image = CostBudget;
-                Promoted = true;
-                PromotedCategory = New;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
                 RunObject = Page "TFB Costing Scenario";
                 RunPageLink = Code = field(Scenario);
                 RunPageMode = View;
@@ -193,9 +189,7 @@ page 50341 "TFB Landed Cost Profile"
                 ApplicationArea = All;
                 Image = Refresh;
 
-                PromotedOnly = true;
-                PromotedCategory = Process;
-                Promoted = True;
+
                 ToolTip = 'Refresh the calculated costs based on change in scenario';
 
                 trigger OnAction()
@@ -206,6 +200,28 @@ page 50341 "TFB Landed Cost Profile"
                         rec.Validate("Pallet Cost");
 
                 end;
+            }
+        }
+
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                actionref(RefreshRef; Refresh)
+                {
+
+                }
+
+            }
+
+            group(Category_CostProfile)
+            {
+                Caption = 'Cost Profile';
+                actionref(CostScenarioRef; "Cost Scenario")
+                {
+
+                }
+
             }
         }
     }

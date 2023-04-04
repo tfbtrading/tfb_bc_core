@@ -10,9 +10,21 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
     begin
 
         if ContainerEntry.Get(PurchRcptLine."TFB Container Entry No.") then
-            PurchRcptLine."TFB Container No." := ContainerEntry."Container No.";
+            PurchRcptLine."TFB Container Entry No." := ContainerEntry."No.";
 
 
+    end;
+
+    procedure GetSalesOrderReferenceFromReceiptLine(ReceiptLine: record "Purch. Rcpt. Line"): code[20]
+
+    begin
+        If (ReceiptLine."Special Order Sales No." <> '') and (ReceiptLine."Special Order Sales Line No." > 0) then
+            exit(ReceiptLine."Special Order Sales No.")
+        else
+            if (ReceiptLine."Sales Order No." <> '') and (ReceiptLine."Sales Order Line No." > 0) then
+                exit(ReceiptLine."Sales Order No.")
+            else
+                exit('');
     end;
 
     procedure OpenRelatedSalesOrder(DocNo: Code[20])
@@ -43,6 +55,34 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
     end;
 
+    procedure OpenRelatedPurchaseOrder(DocNo: Code[20])
+
+    var
+        Header: Record "Purchase Header";
+        ArchiveHeader: Record "Purchase Header Archive";
+
+    begin
+
+        //Check if sales order is still open
+        Header.SetRange("No.", DocNo);
+        Header.SetRange("Document Type", Header."Document Type"::Order);
+
+        If Header.FindFirst() then
+            PAGE.Run(Page::"Purchase Order", Header)
+
+        else begin
+
+            ArchiveHeader.SetRange("No.", DocNo);
+            ArchiveHeader.SetRange("Document Type", ArchiveHeader."Document Type"::Order);
+
+            If ArchiveHeader.FindLast() then
+                PAGE.Run(Page::"Purchase Order Archive", ArchiveHeader);
+
+        end;
+
+
+    end;
+
     procedure GetItemChargesForReceipt(DocNo: Code[20]; LineNo: Integer; ItemCharge: Code[20]; var TotalChargeAmount: Decimal; var SameChargeAmount: Decimal): Boolean
 
     var
@@ -56,6 +96,9 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
         //Find corresponding item ledger entry
         ItemLedger.SetRange("Document No.", DocNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Purchase Receipt");
+
+        if LineNo > 0 then
+            ItemLedger.SetRange("Document Line No.", LineNo);
 
         If ItemLedger.FindSet(false) then
             repeat
@@ -137,16 +180,27 @@ codeunit 50240 "TFB Purch. Rcpt. Mgmt"
 
     procedure OpenRelatedContainer(EntryNo: Code[20])
     var
-        Entry: Record "TFB Container Entry";
-        Container: Page "TFB Container Entry";
+        ContainerEntry: Record "TFB Container Entry";
+        ContainerEntryPage: Page "TFB Container Entry";
     begin
 
-        Entry.SetRange("No.", EntryNo);
+        ContainerEntry.SetRange("No.", EntryNo);
 
-        If Entry.FindFirst() then begin
-            Container.SetRecord(Entry);
-            Container.Run();
+        If ContainerEntry.FindFirst() then begin
+            ContainerEntryPage.SetRecord(ContainerEntry);
+            ContainerEntryPage.Run();
         end;
 
+    end;
+
+    internal procedure GetReceiptLineType(ReceiptLine: Record "Purch. Rcpt. Line"): Text[40]
+    begin
+        If (ReceiptLine."Special Order Sales No." <> '') and (ReceiptLine."Special Order Sales Line No." > 0) then
+            exit('Special Order')
+        else
+            if (ReceiptLine."Sales Order No." <> '') and (ReceiptLine."Sales Order Line No." > 0) then
+                exit('Drop Shipment')
+            else
+                exit('Normal');
     end;
 }

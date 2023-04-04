@@ -2,7 +2,7 @@ page 50142 "TFB Sample Request"
 {
     Caption = 'Sample Request';
     PageType = Document;
-    PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,History,Print/Send,Navigate';
+
     RefreshOnActivate = true;
     SourceTable = "TFB Sample Request";
 
@@ -362,9 +362,7 @@ page 50142 "TFB Sample Request"
                 Image = Print;
                 Caption = 'Print Packing Slip';
                 ToolTip = 'Print a packing slip';
-                Promoted = true;
-                PromotedCategory = Report;
-                PromotedIsBig = true;
+
 
                 trigger OnAction()
                 var
@@ -383,7 +381,7 @@ page 50142 "TFB Sample Request"
                 end;
             }
 
-            action(EmailRequest)
+            /* action(EmailRequest)
             {
                 ApplicationArea = All;
                 Image = Print;
@@ -404,15 +402,23 @@ page 50142 "TFB Sample Request"
                     ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request.Warehouse");
                     ReportSelection.SetRange("Use for Email Attachment", true);
                     If ReportSelection.findfirst() then begin
-                            //TODO Need to add functionality here
+                        //TODO Need to add functionality here
 
 
                     end;
 
 
+  }
 
+                end; */
 
-                end;
+        }
+
+        area(Promoted)
+        {
+            actionref(Print_Promoted; Print)
+            {
+
             }
         }
     }
@@ -437,7 +443,7 @@ page 50142 "TFB Sample Request"
 
     local procedure SetDocNoVisible()
     var
-   
+
 
     begin
         DocNoVisible := false;

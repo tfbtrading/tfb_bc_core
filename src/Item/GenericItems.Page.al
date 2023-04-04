@@ -87,10 +87,7 @@ page 50133 "TFB Generic Items"
                 Caption = 'Add Market Segment';
                 ApplicationArea = All;
                 Image = CustomerGroup;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 Enabled = true;
                 ToolTip = 'Add additional market segments to the generic item';
 
@@ -124,6 +121,17 @@ page 50133 "TFB Generic Items"
                     else
                         Message('No more segments to be added');
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(AddMarketSegmentRef; AddMarketSegment)
+                {
+
+                }
             }
         }
     }

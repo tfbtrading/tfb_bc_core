@@ -44,6 +44,17 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
                 Tooltip = 'Specifies the line weight';
             }
 
+            field(TFBBlanketOrder; Rec."Blanket Order No.")
+            {
+                ApplicationArea = All;
+                Editable = false;
+                Caption = 'Blanket Order';
+                DrillDown = true;
+                DrillDownPageId = "Blanket Sales Order";
+                ToolTip = 'Specifies the blanket sales order';
+              Visible = true;
+            }
+
 
         }
         addafter("Total Amount Incl. VAT")

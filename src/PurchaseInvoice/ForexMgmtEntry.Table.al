@@ -127,7 +127,7 @@ table 50119 "TFB Forex Mgmt Entry"
             end;
 
         }
-        field(35; "Applies-to Doc No."; Code[20])
+        field(35; "Applies-to Doc No."; Code[35])
         {
 
 

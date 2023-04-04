@@ -21,10 +21,16 @@ pageextension 50197 "TFB Transfer Shipment" extends "Posted Transfer Shipment"
                 RunObject = page "Transfer Order";
                 RunPageLink = "No." = field("Transfer Order No.");
                 Enabled = TransferOrderExists;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedIsBig = true;
+
                 Image = TransferOrder;
+
+            }
+        }
+
+        addlast(Category_Category4)
+        {
+            actionref(TransferOrder_Promoted; "&TransferOrder")
+            {
 
             }
         }

@@ -44,7 +44,7 @@ pageextension 50174 "TFB Transfer Order Subform" extends "Transfer Order Subform
             action("Get container lines")
             {
                 //Get Container from Header
-                Promoted = true;
+
                 Image = Shipment;
                 ApplicationArea = All;
                 ToolTip = 'Get lines for container';

@@ -86,19 +86,59 @@ codeunit 50122 "TFB Sales Mgmt"
     /// </summary>
     /// <param name="DuplicateNotification">Notification.</param>
     /// <returns>Return value of type Text.</returns>
-    procedure OpenExistingSalesOrder(DuplicateNotification: Notification): Text
+    procedure OpenExistingSalesOrder(MyNotification: Notification)
     var
         SalesHeader: Record "Sales Header";
-        SalesOrderPage: Page "Sales Order";
-        SalesOrderSystemID: Guid;
+        PageRunner: CodeUnit "Page Management";
 
     begin
-        SalesOrderSystemID := DuplicateNotification.GetData('SystemId');
-        SalesHeader.GetBySystemId(SalesOrderSystemID);
-        SalesOrderPage.SetRecord(SalesHeader);
-        SalesOrderPage.Run();
+
+        If not MyNotification.HasData('SystemId') then exit;
+
+        If not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
+
+        PageRunner.PageRun(SalesHeader);
+
+
     end;
 
+
+    procedure OpenOpenOrArchivedOrder(DocumentType: Enum "Sales Document Type"; DocumentNo: Code[20])
+
+    var
+        SalesHeader: Record "Sales Header";
+        SalesOrder: Page "Sales Order";
+
+    begin
+
+        case SalesHeader.Get(DocumentType, DocumentNo) of
+            True:
+                begin
+                    SalesOrder.SetRecord(SalesHeader);
+                    SalesOrder.Run();
+                end;
+            False:
+                OpenArchivedOrder(DocumentType, DocumentNo);
+
+        end;
+    end;
+
+    local procedure OpenArchivedOrder(DocumentType: Enum "Sales Document Type"; DocumentNo: Code[20])
+    var
+        SalesHeaderArchive: Record "Sales Header Archive";
+        SalesOrderArchives: Page "Sales Order Archives";
+
+    begin
+        SalesHeaderArchive.FilterGroup(10);
+        SalesHeaderArchive.SetRange("Document Type", DocumentType);
+        SalesHeaderArchive.SetRange("No.", DocumentNo);
+        SalesHeaderArchive.FilterGroup(0);
+
+        If SalesHeaderArchive.IsEmpty() then exit;
+
+        SalesOrderArchives.SetTableView(SalesHeaderArchive);
+        SalesOrderArchives.Run();
+    end;
 
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforeSalesShptHeaderInsert', '', false, false)]
@@ -435,6 +475,25 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    local procedure HasLinePrepaymentBeenPaid(SalesHeader: Record "Sales Header"; SalesLine: Record "Sales Line"): Boolean
+    var
+        PrepaymentInvoice: Record "Sales Invoice Header";
+        PrepaymentInvoiceLine: Record "Sales Invoice Line";
+
+    begin
+
+        If PrepaymentInvoice.Get(SalesHeader."Last Prepayment No.") and PrepaymentInvoiceLine.Get(PrepaymentInvoice."No.", SalesLine."Line No.") then
+            If PrepaymentInvoiceLine."Prepayment Line" and (PrepaymentInvoiceLine."Prepayment %" = 100) then begin
+                PrepaymentInvoice.CalcFields("Remaining Amount");
+                If PrepaymentInvoice."Remaining Amount" = 0 then
+                    exit(true);
+            end;
+
+
+    end;
+
+
+
     /// <summary>
     /// GetIntelligentLocation.
     /// </summary>
@@ -739,10 +798,18 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
+
+
                                 SalesLine.Validate("Shipment Date", CalcDate(DateFormula, BlockDate));
                                 SalesLine.Modify();
 
-                                ReleaseSalesDoc.PerformManualRelease(SalesHeader);
+                                If not (SalesLine."Prepayment %" > 0) then
+                                    ReleaseSalesDoc.PerformManualRelease(SalesHeader)
+                                else
+                                    if (Salesline."Prepayment Amount" = SalesLine.Amount) then
+                                        If HasLinePrepaymentBeenPaid(SalesHeader, SalesLine) then
+                                            ReleaseSalesDoc.PerformManualRelease(SalesHeader);
+
                             end;
                         end;
 

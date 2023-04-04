@@ -59,11 +59,7 @@ page 50228 "TFB Brokerage Shipment Subform"
                     ToolTip = 'Specifies quantity for line item';
                     Visible = not UsingBulkers;
 
-                    trigger OnValidate()
 
-                    begin
-                        CurrPage.Update(false);
-                    end;
 
                 }
 
@@ -119,37 +115,7 @@ page 50228 "TFB Brokerage Shipment Subform"
         }
 
     }
-    actions
-    {
-        area(Processing)
-        {
-            action("Item")
-            {
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedOnly = true;
-                Image = Item;
-                ToolTip = 'Open item card for line item';
 
-
-                trigger OnAction()
-
-                var
-                    ItemRec: Record Item;
-                    ItemPage: Page "Item Card";
-
-                begin
-                    ItemRec.Get(Rec."Item No.");
-                    ItemPage.Run();
-                    ItemPage.GetRecord(ItemRec);
-
-                end;
-
-            }
-
-        }
-
-    }
 
     trigger OnAfterGetCurrRecord()
 

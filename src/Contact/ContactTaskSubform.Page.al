@@ -62,9 +62,7 @@ page 50126 "TFB Contact Task Subform"
                 ApplicationArea = All;
                 Enabled = Rec.Closed = false;
                 Caption = 'Set to In-Progress';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+         
                 Image = Start;
                 ToolTip = 'Executes the Set to In-Progress action';
 
@@ -80,10 +78,9 @@ page 50126 "TFB Contact Task Subform"
                 ApplicationArea = All;
                 Enabled = (Rec.Closed = false) or not (Rec.Status = Rec.Status::"In Progress");
                 Caption = 'Set to Completed';
-                Promoted = true;
+         
                 Image = Completed;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+     
                 ToolTip = 'Executes the Set to Completed action';
 
                 trigger OnAction()

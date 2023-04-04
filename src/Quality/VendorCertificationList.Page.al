@@ -10,7 +10,7 @@ page 50107 "TFB Vendor Certification List"
     DeleteAllowed = true;
     ModifyAllowed = true;
     DelayedInsert = true;
-    PromotedActionCategories = 'New,Certificate';
+
 
     layout
     {
@@ -71,12 +71,12 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
-                    Enabled = Rec."Certification Class" = Rec."Certificate Class"::Religous;
+                    Enabled = Rec."Certificate Class" = Rec."Certificate Class"::Religous;
 
                     trigger OnValidate()
                     begin
                         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
@@ -85,19 +85,19 @@ page 50107 "TFB Vendor Certification List"
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
                     ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
-                    Enabled = not ((Rec."Certification Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
                     StyleExpr = (_DaysToExpiry < 30) and (not Rec.Archived);
 
@@ -105,7 +105,7 @@ page 50107 "TFB Vendor Certification List"
 
                     begin
 
-                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+                        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
                         AttachmentExists := CheckIfAttachmentExists();
 
                     end;
@@ -163,16 +163,14 @@ page 50107 "TFB Vendor Certification List"
         area(Processing)
         {
 
-            action("Upload Attachment")
+            action("UploadAttach")
             {
 
                 ApplicationArea = All;
+                Caption = 'Upload Attachment';
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
                 Image = Import;
                 Enabled = (AttachmentExists = false);
-                PromotedOnly = true;
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
                 trigger OnAction()
@@ -182,15 +180,13 @@ page 50107 "TFB Vendor Certification List"
                 end;
 
             }
-            action("Download Attachment(s)")
+            action("DownloadAttach")
             {
                 ApplicationArea = All;
+                Caption = 'Download Attachment';
                 Visible = True;
-                Promoted = True;
-                PromotedCategory = Process;
                 Image = SendAsPDF;
                 Enabled = AttachmentExists;
-                PromotedOnly = true;
 
                 tooltip = 'Download one or more attachments (in pdf form) from certification record';
                 trigger OnAction()
@@ -200,13 +196,11 @@ page 50107 "TFB Vendor Certification List"
                 end;
             }
 
-            action("Send to Contact(s)")
+            action("SendToContact")
             {
                 ApplicationArea = All;
+                Caption = 'Send to Contacts';
                 Visible = True;
-                Promoted = true;
-                promotedCategory = Process;
-                PromotedOnly = true;
                 Image = SendEmailPDF;
                 ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
 
@@ -216,47 +210,13 @@ page 50107 "TFB Vendor Certification List"
                     SendSelectedDocs();
                 end;
             }
-            action("Replace File")
+
+            action("ToggleArchived")
             {
                 ApplicationArea = All;
-                Visible = True;
-                Image = DocumentEdit;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment and replace with new file';
-
-                trigger OnAction()
-
-                begin
-                    ReplaceFile();
-                end;
-
-            }
-            action("Remove File")
-            {
-                ApplicationArea = All;
-                Visible = True;
-                Image = Delete;
-                Enabled = AttachmentExists;
-                ToolTip = 'Remove current attachment';
-
-                trigger OnAction()
-
-                begin
-                    RemoveFile();
-                end;
-
-            }
-
-            action("Toggle Archived")
-            {
-                ApplicationArea = All;
+                Caption = 'Toggle Archived';
                 Visible = True;
                 Image = Archive;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                PromotedOnly = true;
-
 
                 ToolTip = 'Set current vendor certificate to be archived';
 
@@ -268,7 +228,57 @@ page 50107 "TFB Vendor Certification List"
 
             }
 
+            action("ReplaceFile")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = DocumentEdit;
+                Enabled = AttachmentExists;
+                ToolTip = 'Removes current attachment and replace with new file';
 
+                trigger OnAction()
+
+                begin
+                    HandleReplaceFile();
+                end;
+
+            }
+            action("RemoveFile")
+            {
+                ApplicationArea = All;
+                Visible = True;
+                Image = Delete;
+                Enabled = AttachmentExists;
+                ToolTip = 'Remove current attachment';
+
+                trigger OnAction()
+
+                begin
+                    HandleRemoveFile();
+                end;
+
+            }
+
+
+        }
+        area(Promoted)
+        {
+            actionref(UploadAttach_Promoted; UploadAttach)
+            {
+
+            }
+            actionRef(ReplaceFile_Promoted; ReplaceFile)
+            {
+
+            }
+            actionref(SendToContact_Promoted; SendToContact)
+            {
+
+            }
+            actionref(ToggleArchived_Promoted; ToggleArchived)
+            {
+
+            }
         }
     }
 
@@ -310,14 +320,14 @@ page 50107 "TFB Vendor Certification List"
     begin
 
         _DaysToExpiry := QualityCU.CalcDaysToExpiry(Rec."Expiry Date");
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
 
     end;
 
 
- 
+
     local procedure ToggleArchiveStatus()
 
     var
@@ -342,7 +352,7 @@ page 50107 "TFB Vendor Certification List"
         else
             Message('Only valid for expired or expired, inherent or archived certificates');
 
-        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived,Rec.Inherent,Rec."Expiry Date");
+        CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
     end;
 
@@ -404,7 +414,7 @@ page 50107 "TFB Vendor Certification List"
 
     end;
 
-    local procedure ReplaceFile()
+    local procedure HandleReplaceFile()
 
     var
         FileManagement: CodeUnit "File Management";
@@ -535,7 +545,7 @@ page 50107 "TFB Vendor Certification List"
             end;
     end;
 
-    local procedure RemoveFile()
+    local procedure HandleRemoveFile()
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";

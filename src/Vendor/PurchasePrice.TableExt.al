@@ -1,12 +1,16 @@
 tableextension 50126 "TFB Purchase Price" extends "Purchase Price"
 {
+
     fields
     {
         field(50140; "TFB Item Description"; Text[100])
         {
             Caption = 'Description';
             FieldClass = FlowField;
-            CalcFormula = lookup (Item.Description where ("No." = field ("Item No.")));
+            CalcFormula = lookup(Item.Description where("No." = field("Item No.")));
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Extends obselete table';
+            ObsoleteTag = '21.0';
 
         }
         field(50127; "TFB VendorPriceUnit"; Text[10])
@@ -21,7 +25,10 @@ tableextension 50126 "TFB Purchase Price" extends "Purchase Price"
         {
             Caption = 'Pricing Unit';
             FieldClass = FlowField;
-            CalcFormula = lookup (Vendor."TFB Vendor Price Unit" where ("No." = field ("Vendor No.")));
+            CalcFormula = lookup(Vendor."TFB Vendor Price Unit" where("No." = field("Vendor No.")));
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Extends obselete table';
+            ObsoleteTag = '21.0';
         }
 
         // Add changes to table fields here
@@ -30,6 +37,9 @@ tableextension 50126 "TFB Purchase Price" extends "Purchase Price"
             DataClassification = AccountData;
             DecimalPlaces = 4;
             Caption = 'Pricing Unit Price';
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Extends obselete table';
+            ObsoleteTag = '21.0';
 
             trigger OnValidate()
 

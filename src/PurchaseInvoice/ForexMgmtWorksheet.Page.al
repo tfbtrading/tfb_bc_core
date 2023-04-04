@@ -3,7 +3,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
     PageType = ListPlus;
     ApplicationArea = All;
     UsageCategory = Administration;
-    PromotedActionCategories = 'New,Process,Report';
     SaveValues = false;
     Caption = 'Forex Mgmt Worksheet';
 
@@ -126,23 +125,29 @@ page 50161 "TFB Forex Mgmt Worksheet"
 
     actions
     {
-        area(navigation)
-        {
 
-        }
         area(Processing)
         {
             action(UpdateOpenStatus)
             {
                 ApplicationArea = All;
+                Image = UpdateDescription;
                 Caption = 'Update entry status';
-
+                ToolTip = 'Performs a batch update of entry status records';
 
                 trigger OnAction()
 
                 begin
                     Codeunit.Run(CodeUnit::"TFB Update Forex Entry Status");
                 end;
+
+            }
+        }
+
+        area(Promoted)
+        {
+            actionref(UpdateOpenStatusRef; UpdateOpenStatus)
+            {
 
             }
         }

@@ -130,30 +130,7 @@ page 50124 "TFB Confirm Purchase Orders"
 
     actions
     {
-        area(Processing)
-        {
-            action(DocAttach)
-            {
-                ApplicationArea = All;
-                Caption = 'Attachments';
-                Image = Attach;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = New;
-                PromotedOnly = true;
-                ToolTip = 'Add a file as an attachment. You can attach images as well as documents.';
 
-                trigger OnAction()
-                var
-                    DocumentAttachmentDetails: Page "Document Attachment Details";
-                    RecRef: RecordRef;
-                begin
-                    RecRef.GetTable(Rec);
-                    DocumentAttachmentDetails.OpenForRecRef(RecRef);
-                    DocumentAttachmentDetails.RunModal();
-                end;
-            }
-        }
 
     }
 

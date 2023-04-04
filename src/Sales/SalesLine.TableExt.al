@@ -154,6 +154,13 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
                 UpdateLineDiscount();
             end;
         }
+        field(50147; "TFB Cost Using"; Enum "TFB Cost Price By")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Cost Using';
+            InitValue = ItemCost;
+
+        }
         field(50150; "TFB No. Of Comments"; Integer)
         {
             FieldClass = FlowField;
@@ -171,6 +178,8 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
 
             end;
         }
+
+
 
 
         modify(Quantity)

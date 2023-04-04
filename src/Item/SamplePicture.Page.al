@@ -24,35 +24,7 @@ page 50155 "TFB Sample Picture"
     {
         area(processing)
         {
-            action(TakePicture)
-            {
-                ApplicationArea = All;
-                Caption = 'Take';
-                Image = Camera;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Activate the camera on the device.';
-                Visible = CameraAvailable AND (HideActions = FALSE);
 
-                trigger OnAction()
-                begin
-                    TakeNewPicture();
-                end;
-            }
-            action(ImportPicture)
-            {
-                ApplicationArea = All;
-                Caption = 'Import';
-                Image = Import;
-                ToolTip = 'Import a picture file.';
-                Visible = HideActions = FALSE;
-
-                trigger OnAction()
-                begin
-                    ImportFromDevice();
-                end;
-            }
             action(ExportFile)
             {
                 ApplicationArea = All;
@@ -68,20 +40,7 @@ page 50155 "TFB Sample Picture"
                     ExportSamplePicture(Rec);
                 end;
             }
-            action(DeletePicture)
-            {
-                ApplicationArea = All;
-                Caption = 'Delete';
-                Enabled = DeleteExportEnabled;
-                Image = Delete;
-                ToolTip = 'Delete the record.';
-                Visible = HideActions = FALSE;
 
-                trigger OnAction()
-                begin
-                    DeleteItemPicture();
-                end;
-            }
         }
     }
 
@@ -90,10 +49,7 @@ page 50155 "TFB Sample Picture"
         SetEditableOnPictureActions();
     end;
 
-    trigger OnOpenPage()
-    begin
-        CameraAvailable := Camera.IsAvailable();
-    end;
+  
 
 
     var
@@ -150,17 +106,7 @@ page 50155 "TFB Sample Picture"
 
     end;
 
-    procedure TakeNewPicture()
-    begin
-        Rec.Find();
-        Rec.TestField("Lot No.");
-        Rec.TestField("Item No.");
 
-        OnAfterTakeNewPicture(
-            Rec,
-            Camera.AddPicture(Rec, Rec.FieldNo("TFB Sample Picture")));
-        If Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
-    end;
 
 
     procedure ImportFromDevice()

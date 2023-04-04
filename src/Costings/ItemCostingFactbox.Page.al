@@ -12,7 +12,23 @@ page 50102 "TFB Item Costing Factbox"
         {
             group(Details)
             {
+
                 Caption = 'Details';
+                field("No."; Rec."No.")
+                {
+                    Caption = 'Item No.';
+
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Item No. for drilldown purposes';
+
+                    trigger OnDrillDown()
+
+                    var
+
+                    begin
+                        Page.Run(Page::"Item Card", Rec);
+                    end;
+                }
                 field("Purchasing Code"; Rec."Purchasing Code")
                 {
                     ApplicationArea = All;
@@ -52,8 +68,24 @@ page 50102 "TFB Item Costing Factbox"
                     ApplicationArea = All;
                     ToolTip = 'Specifies qty of inventory on hand';
 
+                    trigger OnDrillDown()
 
+                    var
+                        ItemLedgerEntry: Record "Item Ledger Entry";
+                        ItemLedgerEntries: Page "Item Ledger Entries";
+
+                    begin
+                        ItemLedgerEntry.FilterGroup(10);
+                        ItemLedgerEntry.SetRange("Item No.", Rec."No.");
+                        ItemLedgerEntry.SetFilter("Location Code", Rec."Location Filter");
+                        ItemLedgerEntry.SetFilter("Variant Code", Rec."Variant Filter");
+                        ItemLedgerEntry.SetFilter("Lot No.", Rec."Lot No. Filter");
+                        ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+                        ItemLedgerEntry.FilterGroup(0);
+                        PAGE.Run(PAGE::"Item Ledger Entries", ItemLedgerEntry);
+                    end;
                 }
+
                 field("Reserved Qty. on Inventory"; Rec."Reserved Qty. on Inventory")
                 {
                     ApplicationArea = All;
@@ -131,14 +163,11 @@ page 50102 "TFB Item Costing Factbox"
 
     var
         ItemCosting: Record "TFB Item Costing";
-
-        PurchPrice: Record "Purchase Price";
+        TempPriceListLine: Record "Price List Line" temporary;
         CCU: CodeUnit "TFB Costing Mgmt";
         PricingLogic: CodeUnit "TFB Pricing Calculations";
-        VPC: CodeUnit "Purch. Price Calc. Mgt.";
-
-
-
+        PriceManagement: CodeUnit "Price Calculation - V16";
+        PriceCalculationSetup: Record "Price Calculation Setup";
     begin
 
         clear(_CurrentLandedCost);
@@ -168,24 +197,24 @@ page 50102 "TFB Item Costing Factbox"
             _IsDropShipCosting := ItemCosting.Dropship;
 
         end;
-
-
-        VPC.FindPurchPrice(PurchPrice, Rec."Vendor No.", Rec."No.", '', Rec."Base Unit of Measure", '', today(), false);
-
-        If not PurchPrice.IsEmpty() then
-            _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", PurchPrice."Direct Unit Cost")
-        else
-            _CurrPurchPrice := 0;
+        TempPriceListLine."Source Type" := TempPriceListLine."Source Type"::Vendor;
+        TempPriceListLine."Price Type" := TempPriceListLine."Price Type"::Purchase;
+        TempPriceListLine."Source No." := Rec."Vendor No.";
+        TempPriceListLine."Unit of Measure Code" := Rec."Base Unit of Measure";
+        TempPriceListLine."Starting Date" := today;
+        //TODO: TO be fixed with working price management. Currently errors due to interface not being initialised.
+        /*  PriceManagement.Init();
+         If PriceManagement.FindPrice(TempPriceListLine, false) then
+             _CurrPurchPrice := PricingLogic.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Base Unit of Measure", ItemCosting."Purchase Price Unit", TempPriceListLine."Direct Unit Cost")
+         else
+             _CurrPurchPrice := 0; */
     end;
 
-    trigger OnOpenPage()
 
-    begin
-        SalesSetup.Get();
-    end;
+
 
     var
-        SalesSetup: Record "Sales & Receivables Setup";
+
         _CurrentLandedCost: Decimal;
         _CurrPricePerKg: Decimal;
         _CostingPricePerKg: Decimal;

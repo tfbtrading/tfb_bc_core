@@ -66,7 +66,7 @@ codeunit 50130 "TFB Vendor Mgmt"
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
 
-        Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity");
+        Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
         If EditEmail then
             Email.OpenInEditorModally(EmailMessage, EmailScenEnum::"Purchase Order") else
             Email.Enqueue(EmailMessage, EmailScenEnum::"Purchase Order");

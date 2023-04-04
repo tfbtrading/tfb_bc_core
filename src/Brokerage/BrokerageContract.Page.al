@@ -285,9 +285,7 @@ page 50240 "TFB Brokerage Contract"
                 ApplicationArea = All;
                 Caption = 'Upload contract';
                 ToolTip = 'Upload the contract file if it exists';
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 Image = ExportAttachment;
                 Enabled = not _contractAttached;
 
@@ -301,9 +299,7 @@ page 50240 "TFB Brokerage Contract"
                 ApplicationArea = All;
                 Caption = 'Delete contract';
                 ToolTip = 'Delete the contract file if it exists';
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 Image = ExportAttachment;
                 Enabled = _contractAttached;
 
@@ -317,9 +313,7 @@ page 50240 "TFB Brokerage Contract"
                 ApplicationArea = All;
                 Caption = 'Download contract';
                 ToolTip = 'Download the contract file if it exists';
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedOnly = true;
+
                 Image = ExportAttachment;
                 Enabled = _contractAttached;
 
@@ -329,7 +323,26 @@ page 50240 "TFB Brokerage Contract"
                 end;
             }
         }
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+                actionref(UploadRef; Upload)
+                {
 
+                }
+                actionref(DownloadRef; Download)
+                {
+
+                }
+                actionref(DeleteRef; Delete)
+                {
+
+                }
+
+            }
+        }
     }
 
     var

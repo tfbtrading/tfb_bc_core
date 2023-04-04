@@ -8,22 +8,34 @@ tableextension 50129 "TFB Inventory Setup" extends "Inventory Setup"
             TableRelation = "Word Template" where("Table ID" = const(27));
             ValidateTableRelation = true;
             Caption = 'MSDS Word Template';
+            ObsoleteReason = 'Consolidated into single table';
+            ObsoleteState = Pending;
+            ObsoleteTag = '21';
 
         }
         field(55110; "TFB ABS Lot Sample Account"; Text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'ABS Account Name for Lot Samples';
+            ObsoleteReason = 'Consolidated into single table';
+            ObsoleteState = Pending;
+            ObsoleteTag = '21';
         }
         field(55120; "TFB ABS Lot Sample Access Key"; Text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'ABS Shared Access Key for Lot Samples';
+            ObsoleteReason = 'Consolidated into single table';
+            ObsoleteState = Pending;
+            ObsoleteTag = '21';
         }
         field(55130; "TFB ABS Lot Sample Container"; Text[100])
         {
             DataClassification = CustomerContent;
             Caption = 'ABS Container Name for Lot Samples';
+            ObsoleteReason = 'Consolidated into single table';
+            ObsoleteState = Pending;
+            ObsoleteTag = '21';
         }
 
     }

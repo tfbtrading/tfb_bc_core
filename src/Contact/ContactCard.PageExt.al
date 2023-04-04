@@ -60,21 +60,7 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
         }
         addafter("Salesperson Code")
         {
-            group(Status)
-            {
-                ShowCaption = false;
-                visible = rec.type = rec.type::Company;
 
-                field("TFB Contact Status"; Rec."TFB Contact Status")
-                {
-                    ApplicationArea = All;
-                    Importance = Promoted;
-                    Tooltip = 'Specifies the contact status';
-                    Style = strong;
-                    StyleExpr = true;
-
-                }
-            }
         }
         addbefore("Profile Questionnaire")
         {
@@ -98,20 +84,114 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
         }
         addlast(General)
         {
+            group(Status)
+            {
+                ShowCaption = true;
+                visible = rec.type = rec.type::Company;
+
+                field("TFB Contact Status"; Rec."TFB Contact Status")
+                {
+                    ApplicationArea = All;
+                    Importance = Promoted;
+                    Caption = 'Pipeline Status';
+                    Tooltip = 'Specifies the contact status';
+                    Style = strong;
+                    StyleExpr = true;
+                }
+                field("TFB Sales Readiness"; Rec."TFB Sales Readiness")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the sales readiness for the contact';
+                    Importance = Standard;
+                }
+
+                field("TFB In Review"; Rec."TFB In Review")
+                {
+                    ApplicationArea = All;
+                    Importance = Promoted;
+                    ToolTip = 'Specifies whether a review is currently being undertaken of contact';
+                    Style = Strong;
+                    StyleExpr = Rec."TFB In Review";
+                    Editable = false;
+                }
+            }
+            group(Review)
+            {
+                ShowCaption = true;
+                Caption = 'Review';
+                visible = rec.type = rec.type::Company;
+                group(NotInReviewDetails)
+                {
+                    Visible = not rec."TFB In Review";
+                    ShowCaption = false;
+                    field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+                    {
+                        ApplicationArea = All;
+                        Importance = Standard;
+                        Caption = 'Next Date Planned';
+                        ToolTip = 'Specifies the next date in which a contact should be reviewed';
+                        Editable = not Rec."TFB In Review";
+
+                    }
+
+                    group(ReviewHistory)
+                    {
+                        Visible = Rec."TFB Review Note" <> '';
+                        ShowCaption = false;
+
+                        field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
+                        {
+                            ApplicationArea = All;
+                            Importance = Standard;
+                            Caption = 'Last Date Completed';
+                            ToolTip = 'Specifies date the last review was completed';
+                            Editable = false;
+
+                        }
+                        field("TFB Review Note"; Rec."TFB Review Note")
+                        {
+                            ApplicationArea = All;
+                            Importance = Standard;
+                            MultiLine = true;
+                            Editable = false;
+                            Caption = 'Notes';
+                            ToolTip = 'Specifies details about the relationship captured during review';
+                        }
+                    }
+                }
+
+                group(InReviewDetails)
+                {
+                    Visible = Rec."TFB In Review";
+                    ShowCaption = false;
+                    field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
+                    {
+                        ApplicationArea = All;
+                        Importance = Standard;
+                        Caption = 'Finish By';
+                        ToolTip = 'Specifies when planned date for when review will be completed';
+                        Editable = Rec."TFB In Review";
+                    }
+                }
+
+
+
+            }
             group(AdditionalInfo)
             {
                 Caption = 'Additional Information';
                 Visible = Rec.Type = Rec.Type::Company;
 
-                field("TFB Sales Readiness"; Rec."TFB Sales Readiness")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the sales readiness for the contact';
-                }
+
                 field("TFB Lead Source"; Rec."TFB Lead Source")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies where the lead originated from';
+                }
+                field("TFB Default Review Period"; Rec."TFB Default Review Period")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the default review period for next date planned date';
                 }
 
             }
@@ -163,6 +243,62 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                 end;
             }
         }
+
+        addlast(Tasks)
+        {
+            action(TFBSetToInReview)
+            {
+                ApplicationArea = All;
+                Image = ReviewWorksheet;
+                ToolTip = 'Specifies that contact is now in review';
+                Caption = 'Initiate Review';
+                Enabled = not Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+                var
+
+
+                begin
+
+                    Rec.InitiateReview();
+                    Rec.Modify(false);
+
+                end;
+            }
+
+            action(TFBCompleteReview)
+            {
+                ApplicationArea = All;
+                Image = Completed;
+                Caption = 'Complete Review';
+                ToolTip = 'Initiate wizard to get details for finish of review';
+                Enabled = Rec."TFB In Review";
+                Visible = Rec.Type = Rec.Type::Company;
+                trigger OnAction()
+
+                var
+
+                begin
+                    Rec.CompleteReview();
+                    Rec.Modify(false);
+
+                end;
+            }
+
+
+        }
+        addlast(Category_Process)
+        {
+            actionref(PTFBSetToInReview; TFBSetToInReview)
+            {
+
+            }
+            actionref(PTFBCompleteReview; TFBCompleteReview)
+            {
+
+            }
+        }
+
     }
 
 

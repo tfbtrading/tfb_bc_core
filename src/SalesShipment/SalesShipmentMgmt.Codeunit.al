@@ -287,10 +287,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 User.Get(UserSecurityId());
                 CCRecipients.Add(User."Contact Email");
 
-
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
-                Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source");
-                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+                Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source", enum::"Email Relation Origin"::"Compose Context");
+                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
                 If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
 
                     CommEntry.Init();
@@ -345,7 +344,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         OtherContacts: Record Contact;
         PrimaryContact: Record Contact;
         Responsibility: record "Contact Job Responsibility";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
 
 
     begin
@@ -365,10 +364,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         //Iterate through other contacts with the same company contact to check for their purchasing responsibilities
         if OtherContacts.FindSet() then begin
 
-            SalesSetup.Get();
+            CoreSetup.Get();
             repeat
-                If SalesSetup."TFB PL Def. Job Resp. Rec." <> '' then begin
-                    Responsibility.SetRange("Job Responsibility Code", SalesSetup."TFB ASN Def. Job Resp. Rec.");
+                If CoreSetup."PL Def. Job Resp. Rec." <> '' then begin
+                    Responsibility.SetRange("Job Responsibility Code", CoreSetup."ASN Def. Job Resp. Rec.");
                     Responsibility.SetRange("Contact No.", OtherContacts."No.");
 
                     If not Responsibility.IsEmpty() then
@@ -462,9 +461,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         HTMLBuilder.Append(HTMLTemplate);
 
         //Check that content has been generated to send
-        If GenerateShipmentNotificationContent(RefNo, HTMLBuilder) then
-            If (Customer."TFB CoA Required") and ((Customer."TFB CoA Alt. Email") <> '') then
-                CCRecipients.AddRange(Customer."TFB CoA Alt. Email".Split(';', ','));  //Handles if usual email separators are used for multiple emails
+        If not GenerateShipmentNotificationContent(RefNo, HTMLBuilder) then exit;
+
+        If (Customer."TFB CoA Required") and ((Customer."TFB CoA Alt. Email") <> '') then
+            CCRecipients.AddRange(Customer."TFB CoA Alt. Email".Split(';', ','));  //Handles if usual email separators are used for multiple emails
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
 
@@ -591,8 +591,8 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         end;
 
 
-        Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source");
-        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+        Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source", enum::"Email Relation Origin"::"Compose Context");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
 
@@ -909,18 +909,18 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     //Lines: record "Sales Shipment Line";
 
     begin
-        /*     Header.SetLoadFields("No.");
-            If not Header.Get(RefNo) then
-                exit(false);
+        /*   Header.SetLoadFields("No.");
+          If not Header.Get(RefNo) then
+              exit(false);
 
-            Lines.SetRange("No.", Header."No.");
-            Lines.SetRange(Type, Lines.Type::Item);
-            Lines.SetFilter(Quantity, '>0');
+          Lines.SetRange("No.", Header."No.");
+          Lines.SetRange(Type, Lines.Type::Item);
+          Lines.SetFilter(Quantity, '>0');
 
 
-            If (Lines.IsEmpty()) then exit(true); */
+          If (Lines.IsEmpty()) then exit(true); */
 
-        //Meant to ignore duplicate of communications
+
         CommEntry.SetRange("Record Type", CommEntry."Record Type"::ASN);
         Commentry.SetRange("Record No.", RefNo);
         CommEntry.SetRange("Record Table No.", Database::"Sales Shipment Header");
@@ -929,7 +929,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         If CommEntry.IsEmpty() then
             Exit(false) // no communication sent should not ignore sales shipment
         else
-            Exit(true); // already sent out - so don't ignore check
+            Exit(true); // already sent out - so don't ignore check */
     end;
 
     procedure AddCoAToShipmentStatusEmail(RefNo: Code[20]; var EmailMessage: CodeUnit "Email Message"): Boolean
@@ -1171,6 +1171,45 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
+    end;
+
+    internal procedure GetItemChargesForShipment(ItemChargeNo: Code[10]; DocumentNo: Code[20]; var TotalChargeAmount: Decimal; var SameChargeAmount: Decimal): Boolean
+    var
+        ItemLedger: Record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
+
+    begin
+        TotalChargeAmount := 0;
+        SameChargeAmount := 0;
+
+        //Find corresponding item ledger entry
+        ItemLedger.SetRange("Document No.", DocumentNo);
+        ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
+
+        If ItemLedger.FindSet(false) then
+            repeat
+
+                //Calculate total charges
+                Clear(ValueEntry);
+                ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Sale);
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemLedger."Entry No.");
+                ValueEntry.SetFilter("Item Charge No.", '<>%1', '');
+                ValueEntry.CalcSums("Cost Amount (Actual)"); //Total up values in column
+                TotalChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
+
+                //Calculate same charges
+                Clear(ValueEntry);
+                ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Sale);
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemLedger."Entry No.");
+                ValueEntry.SetRange("Item Charge No.", ItemChargeNo);
+                ValueEntry.CalcSums("Cost Amount (Actual)"); //Total up values in column
+                SameChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
+
+            until ItemLedger.Next() < 1;
+        If (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
+            Exit(true)
+        else
+            Exit(false);
     end;
 
 

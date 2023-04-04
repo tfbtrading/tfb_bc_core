@@ -34,9 +34,7 @@ page 50134 "TFB Generic Item Picture"
                 ApplicationArea = All;
                 Caption = 'Take';
                 Image = Camera;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Activate the camera on the device.';
                 Visible = CameraAvailable AND (HideActions = FALSE);
 
@@ -87,6 +85,8 @@ page 50134 "TFB Generic Item Picture"
                 end;
             }
         }
+
+
     }
 
     trigger OnAfterGetCurrRecord()
@@ -111,12 +111,17 @@ page 50134 "TFB Generic Item Picture"
     //MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
 
     procedure TakeNewPicture()
+    var
+        TempBlob: CodeUnit "Temp Blob";
+        InStream: InStream;
+        PictureName: Text;
     begin
         Rec.Find();
         Rec.TestField(Description);
+        TempBlob.CreateInStream();
 
-
-        Camera.AddPicture(Rec, Rec.FieldNo(Picture));
+        Camera.GetPicture(InStream, PictureName);
+        Rec.Picture.ImportStream(InStream, PictureName);
     end;
 
 

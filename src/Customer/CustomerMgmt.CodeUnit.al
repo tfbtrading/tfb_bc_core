@@ -45,15 +45,29 @@ codeunit 50120 "TFB Customer Mgmt"
 
     end;
 
+    [IntegrationEvent(false, false)]
+    local procedure OnSendCustomerStatementeBeforeRunRequestPage(ReportID: Integer; var SkipRequest: Boolean)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnGenerateCustomerStatement(ReportID: Integer; XmlParameters: Text; var OStream: OutStream; VarEmailRecordRef: RecordRef; var isHandled: Boolean)
+    begin
+    end;
+
     procedure SendStatementToOneCustomer(CustomerNo: Code[20])
 
     var
         RepSelSales: Record "Report Selections";
+        RepSelEmail: Record "Report Selections";
         Common: CodeUnit "TFB Common Library";
         XmlParameters: Text;
         SubTitleTxt: Label 'Please find below your latest statement';
+        EditEmailMsg: Label 'Edit email before sending?';
         TitleTxt: Label 'Statement';
         HTMLTemplate: Text;
+        SkipRequest: Boolean;
+
 
     begin
 
@@ -63,10 +77,15 @@ codeunit 50120 "TFB Customer Mgmt"
 
         HTMLTemplate := Common.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
-        If RepSelSales.FindFirst() then
-            XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
 
-        SendCustomerStatement(CustomerNo, Today(), XmlParameters, HTMLTemplate);
+        If RepSelSales.FindFirst() then begin
+            OnSendCustomerStatementeBeforeRunRequestPage(RepSelSales."Report ID", SkipRequest);
+            If not SkipRequest then
+                XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
+        end;
+
+
+        SendCustomerStatement(CustomerNo, Today(), XmlParameters, HTMLTemplate, Confirm(EditEmailMsg, true));
     end;
 
     procedure SendCustomerStatementBatch()
@@ -94,34 +113,45 @@ codeunit 50120 "TFB Customer Mgmt"
         if Customer.FindSet() then
             repeat
 
-                SendCustomerStatement(Customer."No.", Today(), XmlParameters, HTMLTemplate);
+                SendCustomerStatement(Customer."No.", Today(), XmlParameters, HTMLTemplate, false);
             until Customer.Next() < 1;
     end;
 
 
 
-    procedure SendCustomerStatement(CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text): Boolean
+    procedure SendCustomerStatement(CustNo: Code[20]; AsAtDate: Date; XmlParameters: Text; HTMLTemplate: Text; EditEmail: Boolean): Boolean
 
     var
 
         RepSelSales: Record "Report Selections";
+        RepSelEmail: Record "Report Selections";
         Customer: Record Customer;
         CustomerLayouts: Record "Custom Report Selection";
+        CustomReportSelection: Record "Custom Report Selection";
+        ReportLayoutSelection: Record "Report Layout Selection";
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         TempBlobCU: Codeunit "Temp Blob";
+        TempBlobEmail: CodeUnit "Temp Blob";
+        Base64Convert: CodeUnit "Base64 Convert";
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
         EmailScenEnum: Enum "Email Scenario";
         EmailID: Text;
+        Base64: Text;
+
         IStream: InStream;
         OStream: OutStream;
+        I2Stream: InStream;
+        O2Stream: OutStream;
+        HTML: Text;
         FileNameBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         Recipients: List of [Text];
+        isHandled: Boolean;
 
     begin
 
@@ -173,19 +203,29 @@ codeunit 50120 "TFB Customer Mgmt"
 
                 VarEmailRecordRef := EmailRecordRef;
 
-
-                Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
+                OnGenerateCustomerStatement(RepSelSales."Report ID", XmlParameters, OStream, VarEmailRecordRef, isHandled);
+                If not isHandled then
+                    Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
 
 
                 Recipients := EmailID.Split(';');
                 Clear(HTMLBuilder);
                 HTMLBuilder.Append(HTMLTemplate);
+
+                RepSelEmail.SetRange(Usage, RepSelEmail.Usage::"C.Statement");
+                RepSelEmail.SetRange("Use for Email Body", true);
+
+
                 GenerateCustomerStatementContent(Customer, HTMLBuilder);
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
                 EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', IStream);
-                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
-                Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
+                Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
+
+                If EditEmail then
+                    Email.OpenInEditorModally(EmailMessage, EmailScenEnum::"Customer Statement")
+                else
+                    Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
 
 
             end;
@@ -268,7 +308,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
     end;
@@ -278,26 +318,26 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
 
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         BalanceAfterShipment: Decimal;
 
     begin
 
         Clear(overdue);
         Clear(overCreditLimit);
-        SalesSetup.Get();
+        CoreSetup.Get();
         Customer.SetRange("Date Filter", 0D, today());
         Customer.CalcFields("Balance (LCY)");
         Customer.CalcFields("Balance Due (LCY)");
 
         //Check if any invoices are overdue
         If Customer."Balance Due (LCY)" > 0 then
-            if Customer."Balance Due (LCY)" > SalesSetup."TFB Credit Tolerance" then
+            if Customer."Balance Due (LCY)" > CoreSetup."Credit Tolerance" then
                 overdue := true;
 
         //Check if new order to be shipped take customer over credit limit
         BalanceAfterShipment := Customer."Balance (LCY)" + NewShipmentValue;
-        if BalanceAfterShipment > (Customer."Credit Limit (LCY)" + SalesSetup."TFB Credit Tolerance") then
+        if BalanceAfterShipment > (Customer."Credit Limit (LCY)" + CoreSetup."Credit Tolerance") then
             overCreditLimit := true;
 
         If overdue or overCreditLimit then exit(true) else exit(false);
@@ -346,7 +386,7 @@ codeunit 50120 "TFB Customer Mgmt"
         DemandResEntry: Record "Reservation Entry";
         SupplyResEntry: Record "Reservation Entry";
         LedgerEntry: Record "Item Ledger Entry";
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         Vendor: Record Vendor;
 
         PricingCU: CodeUnit "TFB Pricing Calculations";
@@ -375,7 +415,7 @@ codeunit 50120 "TFB Customer Mgmt"
         If not Customer.Get(CustNo) then
             exit;
 
-        SalesSetup.Get();
+        CoreSetup.Get();
 
         //First get open pending sales lines
 
@@ -399,7 +439,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         If CheckIfCreditHoldApplies(Customer, GetValueOfShipment(Customer), overdue, overCreditLimit) and OverDue then
-            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", SalesSetup."TFB Credit Tolerance"))
+            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
 
@@ -637,7 +677,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
 
-        SalesSetup: Record "Sales & Receivables Setup";
+        CoreSetup: Record "TFB Core Setup";
         BodyBuilder: TextBuilder;
         overdue, overCreditLimit : Boolean;
 
@@ -646,7 +686,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         //Start with content introducing customer
 
-        SalesSetup.Get();
+        CoreSetup.Get();
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
         HTMLBuilder.Replace('%{ExplanationValue}', 'Customer Statement');
         HTMLBuilder.Replace('%{DateCaption}', 'Generated On');
@@ -655,7 +695,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         If CheckIfCreditHoldApplies(Customer, 0, overdue, overCreditLimit) and OverDue then
-            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", SalesSetup."TFB Credit Tolerance"))
+            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
 
@@ -666,6 +706,25 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         Exit(true);
     end;
+
+
+
+    [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeIsContactUpdateNeeded', '', false, false)]
+    local procedure OnBeforeIsContactUpdateNeeded(Customer: Record Customer; xCustomer: Record Customer; var UpdateNeeded: Boolean; ForceUpdateContact: Boolean);
+    begin
+
+        If Customer."TFB Contact Status" <> xCustomer."TFB Contact Status" then UpdateNeeded := true;
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::Contact, 'OnBeforeIsUpdateNeeded', '', false, false)]
+    local procedure OnBeforeIsUpdateNeeded(var Contact: Record Contact; xContact: Record Contact; var UpdateNeeded: Boolean);
+    begin
+
+        If Contact."TFB Contact Status" <> xContact."TFB Contact Status" then UpdateNeeded := true;
+        If Contact."TFB Archived" <> xContact."TFB Archived" then UpdateNeeded := true;
+    end;
+
 }
 
 

@@ -26,6 +26,16 @@ pageextension 50140 "TFB Sales Order Archive" extends "Sales Order Archive"
             }
 
         }
+
+        addlast(Shipping)
+        {
+            field("TFB Instructions"; Rec."TFB Instructions")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies instructions that were specific to this order';
+
+            }
+        }
     }
 
     actions

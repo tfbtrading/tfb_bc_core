@@ -82,9 +82,7 @@ page 50130 "TFB Company Contacts Subform"
                 Image = New;
                 ToolTip = 'Create a new contact for this company.';
                 Enabled = rec."No." <> '';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+              
                 RunPageMode = Create;
                 RunObject = Page "Contact Card";
                 RunPageLink = "Company No." = field("Company No.");
@@ -97,9 +95,7 @@ page 50130 "TFB Company Contacts Subform"
                 Caption = 'Job Responsibilities';
                 Image = Job;
                 ToolTip = 'View or edit the contacts job responsibilities.';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+            
                 Enabled = rec."No." <> '';
 
                 trigger OnAction()
@@ -118,9 +114,7 @@ page 50130 "TFB Company Contacts Subform"
                 Caption = 'Pro&files';
                 Image = Answers;
                 ToolTip = 'Open the Profile Questionnaires window.';
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+         
                 Enabled = rec."No." <> '';
 
                 trigger OnAction()
@@ -135,9 +129,7 @@ page 50130 "TFB Company Contacts Subform"
                 ApplicationArea = RelationshipMgmt;
                 Caption = 'Make &Phone Call';
                 Image = Calls;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+         
                 Enabled = rec."No." <> '';
 
                 ToolTip = 'Call the selected contact.';
@@ -155,10 +147,7 @@ page 50130 "TFB Company Contacts Subform"
                 ApplicationArea = RelationshipMgmt;
                 Caption = 'Create &Interaction';
                 Image = CreateInteraction;
-                Promoted = true;
-                PromotedIsBig = true;
                 Enabled = rec."No." <> '';
-                PromotedOnly = true;
                 ToolTip = 'Create an interaction with a specified contact.';
 
                 trigger OnAction()

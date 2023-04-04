@@ -42,15 +42,15 @@ page 50165 "TFB APIV2 - Lot Info"
                     Caption = 'LotNo';
                 }
 
-                field(LatestReceiptDate; LatestReceiptDate)
+                field(latestReceiptDate; LatestReceiptDate)
                 {
                     Caption = 'LatestReceiptDate';
                 }
-                field(LatestReceiptReference; LatestReceiptReference)
+                field(latestReceiptReference; LatestReceiptReference)
                 {
                     Caption = 'LatestReceiptReference';
                 }
-                field(LatestReceiptWarehouseLocation; LatestReceiptWarehouseLocation)
+                field(latestReceiptWarehouseLocation; LatestReceiptWarehouseLocation)
                 {
                     Caption = 'LatestReceiptWarehouseLocation';
                 }
@@ -118,9 +118,9 @@ page 50165 "TFB APIV2 - Lot Info"
     }
 
     var
-        LatestReceiptDate: Date;
         LatestReceiptReference: Code[20];
         LatestReceiptWarehouseLocation: Code[20];
+        LatestReceiptDate: Date;
 
 
     trigger OnAfterGetRecord()
@@ -168,23 +168,23 @@ page 50165 "TFB APIV2 - Lot Info"
     end;
 
     var
-        TempFieldSet: Record 2000000041 temporary;
         ItemCategory: Record "Item Category";
         TaxGroup: Record "Tax Group";
+        TempFieldSet: Record 2000000041 temporary;
         ValidateUnitOfMeasure: Record "Unit of Measure";
         GraphCollectionMgtItem: Codeunit "Graph Collection Mgt - Item";
-        InventoryValue: Decimal;
         BlankGUID: Guid;
-        BaseUnitOfMeasureIdValidated: Boolean;
         BaseUnitOfMeasureCodeValidated: Boolean;
+        BaseUnitOfMeasureIdValidated: Boolean;
         IsInsert: Boolean;
-        TaxGroupValuesDontMatchErr: Label 'The tax group values do not match to a specific Tax Group.';
-        TaxGroupIdDoesNotMatchATaxGroupErr: Label 'The "taxGroupId" does not match to a Tax Group.', Comment = 'taxGroupId is a field name and should not be translated.';
-        TaxGroupCodeDoesNotMatchATaxGroupErr: Label 'The "taxGroupCode" does not match to a Tax Group.', Comment = 'taxGroupCode is a field name and should not be translated.';
-        ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
+        InventoryValue: Decimal;
+        InventoryCannotBeChangedInAPostRequestErr: Label 'Inventory cannot be changed during on insert.';
         ItemCategoriesValuesDontMatchErr: Label 'The item categories values do not match to a specific item category.';
         ItemCategoryCodeDoesNotMatchATaxGroupErr: Label 'The "itemCategoryCode" does not match to a Item Category.', Comment = 'itemCategoryCode is a field name and should not be translated.';
-        InventoryCannotBeChangedInAPostRequestErr: Label 'Inventory cannot be changed during on insert.';
+        ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
+        TaxGroupCodeDoesNotMatchATaxGroupErr: Label 'The "taxGroupCode" does not match to a Tax Group.', Comment = 'taxGroupCode is a field name and should not be translated.';
+        TaxGroupIdDoesNotMatchATaxGroupErr: Label 'The "taxGroupId" does not match to a Tax Group.', Comment = 'taxGroupId is a field name and should not be translated.';
+        TaxGroupValuesDontMatchErr: Label 'The tax group values do not match to a specific Tax Group.';
         UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr: Label 'The "baseUnitOfMeasureId" does not match to a Unit of Measure.', Comment = 'baseUnitOfMeasureId is a field name and should not be translated.';
         UnitOfMeasureValuesDontMatchErr: Label 'The unit of measure values do not match to a specific Unit of Measure.';
 
@@ -205,13 +205,13 @@ page 50165 "TFB APIV2 - Lot Info"
     var
         LotNoInfo: Record "Lot No. Information";
         TenantMedia: Record "Tenant Media";
-        PicText: Text;
-        PicInstr: InStream;
+        Base64: Codeunit "Base64 Convert";
+        TempBlob: Codeunit "Temp Blob";
         JObject: JsonObject;
         JToken: JsonToken;
-        TempBlob: Codeunit "Temp Blob";
+        PicInstr: InStream;
         PicOStr: OutStream;
-        Base64: Codeunit "Base64 Convert";
+        PicText: Text;
     begin
         LotNoInfo.Get(LotNoInfoID);
         If LotNoInfo."TFB Sample Picture".Count = 0 then
@@ -229,13 +229,13 @@ page 50165 "TFB APIV2 - Lot Info"
         exit(JToken.AsValue().AsText());
     end;
 
-    procedure GraphModifyLotNoInfo(var LotNoInfo: Record "Lot No. Information"; var TempFieldSet: Record "Field" temporary)
+    procedure GraphModifyLotNoInfo(var LotNoInfo: Record "Lot No. Information"; var LclTempFieldSet: Record "Field" temporary)
     var
         GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
         RecRef: RecordRef;
     begin
         RecRef.GetTable(LotNoInfo);
-        GraphMgtGeneralTools.ProcessNewRecordFromAPI(RecRef, TempFieldSet, LotNoInfo.SystemModifiedAt);
+        GraphMgtGeneralTools.ProcessNewRecordFromAPI(RecRef, LclTempFieldSet, LotNoInfo.SystemModifiedAt);
         RecRef.SetTable(LotNoInfo);
 
         LotNoInfo.Modify(true);

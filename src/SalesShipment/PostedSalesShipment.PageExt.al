@@ -3,6 +3,20 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
     layout
     {
 
+        addbefore("Sell-to Customer Name")
+        {
+            field(TFBSellToCustomerNo; Rec."Sell-to Customer No.")
+            {
+                Caption = 'Sell-to Customer No.';
+                DrillDown = true;
+                Visible = true;
+                Importance = Standard;
+                ToolTip = 'Speciefies the sell-to customer no.';
+                ApplicationArea = all;
+
+            }
+        }
+
         moveafter("Sell-to Customer Name"; "Ship-to Code", "Ship-to Name")
         modify("Ship-to Name")
         {
@@ -34,6 +48,27 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
             }
         }
 
+        modify("Order No.")
+        {
+
+            trigger OnDrillDown()
+
+
+            var
+                SalesMgmt: CodeUnit "TFB Sales Mgmt";
+            begin
+
+                SalesMgmt.OpenOpenOrArchivedOrder(Enum::"Sales Document Type"::Order, Rec."Order No.");
+
+            end;
+        }
+
+        modify("Sell-to Customer Name")
+        {
+            DrillDownPageId = "Customer Card";
+            LookupPageId = "Customer Card";
+        }
+
     }
 
     actions
@@ -41,14 +76,12 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
         addafter("&Track Package")
 
         {
-            Action(Notify)
+            Action(TFBNotifyCustomer)
             {
                 Caption = 'Email shipment notification';
                 Tooltip = 'Emails a details notification about the shipment to the customer';
                 Image = Email;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 ApplicationArea = All;
 
                 trigger OnAction()
@@ -67,6 +100,16 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
 
             }
         }
+
+        addafter("&Track Package_Promoted")
+        {
+            actionref(TFBNotifyCustomer_Promoted; TFBNotifyCustomer)
+            {
+
+            }
+        }
+
+
     }
     var
         ShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";

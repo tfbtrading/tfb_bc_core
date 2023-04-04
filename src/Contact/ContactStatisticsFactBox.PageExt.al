@@ -23,6 +23,7 @@ pageextension 50181 "TFB Contact Statistics Factbox" extends "Contact Statistics
 
         addlast(General)
         {
+
             field("Date of Last Interaction"; Rec."Date of Last Interaction")
             {
                 ApplicationArea = RelationshipMgmt;
@@ -37,6 +38,11 @@ pageextension 50181 "TFB Contact Statistics Factbox" extends "Contact Statistics
             {
                 ApplicationArea = RelationshipMgmt;
                 ToolTip = 'Shows the total number of interactions with the customer';
+            }
+            field("TFB No. Rlshp. Mgt. Comments"; Rec."TFB No. Rlshp. Mgt. Comments")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Shows the total number of relationship comments';
             }
             field("TFB No. Of Tasks"; Rec."TFB No. Of Company Tasks")
             {

@@ -2,7 +2,9 @@ table 50107 "TFB Notification Email Setup"
 {
 
     DataClassification = CustomerContent;
-
+    ObsoleteReason = 'Consolidated into single table';
+    ObsoleteState = Pending;
+    ObsoleteTag = '21';
     fields
     {
         field(1; "Primary Key"; Code[10])

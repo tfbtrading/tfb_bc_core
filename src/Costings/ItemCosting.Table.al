@@ -408,6 +408,7 @@ table 50345 "TFB Item Costing"
         key(PK; "Item No.", "Costing Type", "Effective Date")
         {
             Clustered = true;
+
         }
         key(Desc; Description)
         {
@@ -432,13 +433,12 @@ table 50345 "TFB Item Costing"
     trigger OnInsert()
     begin
 
-        Id := CreateGuid();
-        "Last Modified Date Time" := CURRENTDATETIME();
+
         if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(Rec);
 
     end;
 
-    
+
 
     procedure CalcCostings(paramRec: record "TFB Item Costing")
 
@@ -498,6 +498,18 @@ table 50345 "TFB Item Costing"
         If "Exch. Rate" = 0 then TestFailed := true;
 
         If TestFailed then exit(false) else exit(true);
+
+    end;
+
+    procedure GetRelatedScenario() Scenario: Record "TFB Costing Scenario"
+
+    var
+        LandedProfile: Record "TFB Landed Cost Profile";
+
+    begin
+        If not Scenario.Get(Rec."Scenario Override") then
+            If LandedProfile.Get(Rec."Landed Cost Profile") then
+                Scenario.Get(LandedProfile.Scenario);
 
     end;
 

@@ -6,7 +6,8 @@ permissionset 50100 "TFB CORE EXTENSION"
     Permissions =
     tabledata "TFB Lot Image" = RIMD,
         tabledata "TFB Cust. Fav. Item" = RIMD,
-        tabledata "TFB Custom Picture" = RIMD,
+        tabledata "TFB Core Setup" = RIMD,
+        tabledata "TFB Picture Entity" = RIMD,
         tabledata "TFB Vendor Certification" = RIMD,
         tabledata "TFB Certification Type" = RIMD,
          tabledata "TFB Sales WinLoss" = RIMD,
@@ -51,7 +52,7 @@ permissionset 50100 "TFB CORE EXTENSION"
             table "TFB Lot Image" = X,
         table "TFB Certification Type" = X,
         table "TFB Quality Auditor" = X,
-          table "TFB Custom Picture" = X,
+          table "TFB Picture Entity" = X,
         table "TFB Container LifeCycle Link" = X,
         table "TFB Sales Admin Activities Cue" = X,
         table "TFB Ops Mgr Activities Cue" = X,
@@ -89,7 +90,6 @@ permissionset 50100 "TFB CORE EXTENSION"
         table "TFB Item Costing Lines" = X,
         table "TFB Item Costing Filters" = X,
         table "TFB Sales WinLoss" = X,
-        report "TFB Close Prev. Sale Prices" = X,
         report "TFB Sample Request" = X,
         report "TFB Send Customer Updates" = X,
         report "TFB Send Vendor Updates" = X,
@@ -146,7 +146,6 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Vend. Ledg. Appl. FactBox" = X,
         page "TFB Bank Account Part List" = X,
         page "TFB Post Dropship from Sale" = X,
-        page "TFB Notification Email Setup" = X,
         page "TFB Report Sel - Brokerage" = X,
         page "PDF Viewer" = X,
         page "PDF Viewer Part" = X,
@@ -175,7 +174,6 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Sample Request" = X,
         page "TFB Sample Request Subform" = X,
         page "TFB Sample Request List" = X,
-        page "TFB Sample Request Sizes" = X,
         page "TFB Rep. Sel - Sample Req." = X,
         page "TFB Pending Sales Lines" = X,
         page "TFB Segment Generic Items" = X,
@@ -204,7 +202,7 @@ permissionset 50100 "TFB CORE EXTENSION"
         page "TFB Item Costing List" = X,
         page "TFB Item Costing Setup" = X,
         page "TFB Item Costing Subform" = X,
-        page "TFB ItemCosting Entity" = X,
+        page "TFB APIV2 Item Costing" = X,
         page "TFB Suggest Item Costing Lines" = X,
         page "TFB Forex Contract FB" = X,
         page "TFB Communication Entries" = X,
@@ -224,11 +222,5 @@ permissionset 50100 "TFB CORE EXTENSION"
         query "TFB Purchase Lines Outstanding" = X,
         query "TFB Sales Lines Outstanding" = X,
         query "TFB Transfer Lines Outstanding" = X;
-
-
-
-
-
-
 
 }

@@ -1,6 +1,9 @@
 table 50330 "TFB Costings Setup"
 {
     Caption = 'Item Costings Setup';
+    ObsoleteState = Pending;
+    ObsoleteTag = '21';
+    ObsoleteReason = 'Consolidating multiple setup tables into single table';
 
     fields
     {

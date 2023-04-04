@@ -92,6 +92,40 @@ pageextension 50113 "TFB Sales Quote" extends "Sales Quote" //41
 
             }
         }
+        addafter(Statistics)
+        {
+            action("TFBEstimatedProfitability")
+            {
+                Caption = 'Profitability';
+                Image = AnalysisView;
+                ToolTip = 'Review line item profitability analysis';
+                ApplicationArea = All;
+
+                trigger OnAction()
+
+                var
+                    SalesLine: Record "Sales Line";
+
+                begin
+                    SalesLine.SetRange("Document Type", Rec."Document Type");
+                    SalesLine.SetRange("Document No.", Rec."No.");
+                    SalesLine.SetRange(Type, SalesLine.type::Item);
+
+                    If Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
+                        message('Did something');
+
+                end;
+
+            }
+        }
+
+        addafter(Statistics_Promoted)
+        {
+            actionref(PTFBEstiatedProfitability; TFBEstimatedProfitability)
+            {
+
+            }
+        }
     }
 
     local procedure GetTaskStatus(): Text

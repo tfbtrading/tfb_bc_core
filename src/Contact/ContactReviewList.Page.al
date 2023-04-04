@@ -1,14 +1,13 @@
-page 50167 "Review customer contacts"
+page 50167 "TFB Contact Review List"
 {
     ApplicationArea = Basic, Suite, Service;
-    Caption = 'Review customer contacts';
+    Caption = 'Review Customer Contacts';
     CardPageID = "Contact Card";
     DataCaptionFields = "Company No.";
     Editable = true;
     PageType = List;
-    PromotedActionCategories = 'New,Process,Report,Contact,Navigate';
     SourceTable = Contact;
-    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'));
+    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false));
     UsageCategory = Tasks;
 
     layout
@@ -59,6 +58,34 @@ page 50167 "Review customer contacts"
                     Editable = true;
                     Tooltip = 'Specifies contact status';
 
+                }
+                field("TFB In Review"; Rec."TFB In Review")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies whether contact is currently being reviewed';
+                }
+                field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
+                {
+                    ApplicationArea = All;
+                    Editable = not rec."TFB In Review";
+                    StyleExpr = FlagPastPlanningDate;
+                    Style = Unfavorable;
+                    ToolTip = 'Specifies date on which next review is planned for contact';
+                }
+                field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
+                {
+                    ApplicationArea = All;
+                    Editable = rec."TFB In Review";
+                    ToolTip = 'Specifies the date on which review should be completed';
+                    StyleExpr = FlagPastReviewDate;
+                    Style = Attention;
+                }
+                field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ToolTip = 'Specifies the date review was last completed';
                 }
                 field("Last Date Attempted"; Rec."Last Date Attempted")
                 {
@@ -147,16 +174,27 @@ page 50167 "Review customer contacts"
         {
             part(Control128; "Contact Statistics FactBox")
             {
+                UpdatePropagation = both;
                 ApplicationArea = RelationshipMgmt;
                 SubPageLink = "No." = FIELD("No."),
                               "Date Filter" = FIELD("Date Filter");
             }
+
+            part(CustomerDetails; "Customer Statistics FactBox")
+            {
+                UpdatePropagation = SubPart;
+                ApplicationArea = RelationshipMgmt;
+                SubPageLink = "TFB Primary Contact Company ID" = field("No.");
+                Visible = RelatedCustomerEnabled;
+            }
             systempart(Control1900383207; Links)
             {
+                UpdatePropagation = both;
                 ApplicationArea = RecordLinks;
             }
             systempart(Control1905767507; Notes)
             {
+                UpdatePropagation = both;
                 ApplicationArea = Notes;
             }
         }
@@ -255,8 +293,7 @@ page 50167 "Review customer contacts"
                     ApplicationArea = Comments;
                     Caption = 'Co&mments';
                     Image = ViewComments;
-                    Promoted = true;
-                    PromotedCategory = Category4;
+
                     RunObject = Page "Rlshp. Mgt. Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Contact),
                                   "No." = FIELD("No."),
@@ -328,14 +365,20 @@ page 50167 "Review customer contacts"
                 }
 #if not CLEAN18
 
+
+
+
+
+
+
+
 #endif
                 action(RelatedCustomer)
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Customer';
                     Image = Customer;
-                    Promoted = true;
-                    PromotedCategory = Category5;
+
                     Enabled = RelatedCustomerEnabled;
                     ToolTip = 'View the related customer that is associated with the current record.';
 
@@ -351,8 +394,7 @@ page 50167 "Review customer contacts"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor';
                     Image = Vendor;
-                    Promoted = true;
-                    PromotedCategory = Category5;
+
                     Enabled = RelatedVendorEnabled;
                     ToolTip = 'View the related vendor that is associated with the current record.';
 
@@ -363,40 +405,8 @@ page 50167 "Review customer contacts"
                         Rec.ShowBusinessRelation(LinkToTable::Vendor, false);
                     end;
                 }
-                action(RelatedBank)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Bank Account';
-                    Image = BankAccount;
-                    Promoted = true;
-                    PromotedCategory = Category5;
-                    Enabled = RelatedBankEnabled;
-                    ToolTip = 'View the related bank account that is associated with the current record.';
 
-                    trigger OnAction()
-                    var
-                        LinkToTable: Enum "Contact Business Relation Link To Table";
-                    begin
-                        Rec.ShowBusinessRelation(LinkToTable::"Bank Account", false);
-                    end;
-                }
-                action(RelatedEmployee)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Employee';
-                    Image = Employee;
-                    Promoted = true;
-                    PromotedCategory = Category5;
-                    Enabled = RelatedEmployeeEnabled;
-                    ToolTip = 'View the related employee that is associated with the current record.';
 
-                    trigger OnAction()
-                    var
-                        LinkToTable: Enum "Contact Business Relation Link To Table";
-                    begin
-                        Rec.ShowBusinessRelation(LinkToTable::Employee, false);
-                    end;
-                }
             }
 
             group(Tasks)
@@ -420,8 +430,7 @@ page 50167 "Review customer contacts"
                     ApplicationArea = RelationshipMgmt;
                     Caption = 'Open Oppo&rtunities';
                     Image = OpportunityList;
-                    Promoted = true;
-                    PromotedCategory = Process;
+
                     RunObject = Page "Opportunity List";
                     RunPageLink = "Contact Company No." = FIELD("Company No."),
                                   "Contact No." = FILTER(<> ''),
@@ -494,9 +503,7 @@ page 50167 "Review customer contacts"
                     ApplicationArea = RelationshipMgmt;
                     Caption = 'Statistics';
                     Image = Statistics;
-                    Promoted = true;
-                    PromotedCategory = Category4;
-                    PromotedIsBig = true;
+
                     RunObject = Page "Contact Statistics";
                     RunPageLink = "No." = FIELD("No.");
                     ShortCutKey = 'F7';
@@ -529,8 +536,7 @@ page 50167 "Review customer contacts"
                     ApplicationArea = RelationshipMgmt;
                     Caption = 'Make &Phone Call';
                     Image = Calls;
-                    Promoted = true;
-                    PromotedCategory = Process;
+
                     Scope = Repeater;
                     ToolTip = 'Call the selected contact.';
 
@@ -538,7 +544,44 @@ page 50167 "Review customer contacts"
                     var
                         TAPIManagement: Codeunit TAPIManagement;
                     begin
-                        TAPIManagement.DialContCustVendBank(DATABASE::Contact, "No.", GetDefaultPhoneNo, '');
+                        TAPIManagement.DialContCustVendBank(DATABASE::Contact, Rec."No.", Rec.GetDefaultPhoneNo(), '');
+                    end;
+                }
+                action(TFBSetToInReview)
+                {
+                    ApplicationArea = All;
+                    Image = ReviewWorksheet;
+                    ToolTip = 'Specifies that contact is now in review';
+                    Caption = 'Initiate Review';
+                    Enabled = not Rec."TFB In Review";
+                    Visible = Rec.Type = Rec.Type::Company;
+                    trigger OnAction()
+                    var
+
+
+                    begin
+
+                        Rec.InitiateReview();
+
+                    end;
+                }
+
+                action(TFBCompleteReview)
+                {
+                    ApplicationArea = All;
+                    Image = Completed;
+                    Caption = 'Complete Review';
+                    ToolTip = 'Initiate wizard to get details for finish of review';
+                    Enabled = Rec."TFB In Review";
+                    Visible = Rec.Type = Rec.Type::Company;
+                    trigger OnAction()
+
+                    var
+                        ContactCU: Codeunit "TFB Contact Mgmt";
+
+                    begin
+                        Rec.CompleteReview();
+
                     end;
                 }
                 action("Launch &Web Source")
@@ -552,9 +595,9 @@ page 50167 "Review customer contacts"
                     var
                         ContactWebSource: Record "Contact Web Source";
                     begin
-                        ContactWebSource.SetRange("Contact No.", "Company No.");
+                        ContactWebSource.SetRange("Contact No.", Rec."Company No.");
                         if PAGE.RunModal(PAGE::"Web Source Launch", ContactWebSource) = ACTION::LookupOK then
-                            ContactWebSource.Launch;
+                            ContactWebSource.Launch();
                     end;
                 }
                 group("Create as")
@@ -570,7 +613,7 @@ page 50167 "Review customer contacts"
 
                         trigger OnAction()
                         begin
-                            CreateCustomer();
+                            Rec.CreateCustomer();
                         end;
                     }
                     action(Vendor)
@@ -582,7 +625,7 @@ page 50167 "Review customer contacts"
 
                         trigger OnAction()
                         begin
-                            CreateVendor;
+                            Rec.CreateVendor();
                         end;
                     }
 
@@ -600,7 +643,7 @@ page 50167 "Review customer contacts"
 
                         trigger OnAction()
                         begin
-                            CreateCustomerLink;
+                            Rec.CreateCustomerLink();
                         end;
                     }
                     action(Action64)
@@ -612,7 +655,7 @@ page 50167 "Review customer contacts"
 
                         trigger OnAction()
                         begin
-                            CreateVendorLink;
+                            Rec.CreateVendorLink();
                         end;
                     }
                     action(Action65)
@@ -625,7 +668,7 @@ page 50167 "Review customer contacts"
 
                         trigger OnAction()
                         begin
-                            CreateBankAccountLink;
+                            Rec.CreateBankAccountLink();
                         end;
                     }
 
@@ -638,13 +681,12 @@ page 50167 "Review customer contacts"
                 ApplicationArea = RelationshipMgmt;
                 Caption = 'Create &Interaction';
                 Image = CreateInteraction;
-                Promoted = true;
-                PromotedCategory = Process;
+
                 ToolTip = 'Create an interaction with a specified contact.';
 
                 trigger OnAction()
                 begin
-                    CreateInteraction;
+                    Rec.CreateInteraction();
                 end;
             }
             action("Create Opportunity")
@@ -652,9 +694,7 @@ page 50167 "Review customer contacts"
                 ApplicationArea = RelationshipMgmt;
                 Caption = 'Create Opportunity';
                 Image = NewOpportunity;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
                 RunObject = Page "Opportunity Card";
                 RunPageLink = "Contact No." = FIELD("No."),
                               "Contact Company No." = FIELD("Company No.");
@@ -684,8 +724,7 @@ page 50167 "Review customer contacts"
                 Caption = 'Send Email';
                 Image = Email;
                 ToolTip = 'Send an email to this contact.';
-                Promoted = true;
-                PromotedCategory = Process;
+
                 Enabled = CanSendEmail;
 
                 trigger OnAction()
@@ -698,6 +737,24 @@ page 50167 "Review customer contacts"
                     TempEmailItem.Send(false, EmailScenario::Default);
                 end;
             }
+            action(TFBArchive)
+            {
+                ApplicationArea = All;
+                Caption = 'Archive';
+                Image = Archive;
+                ToolTip = 'Archive a contact so it is not seen in reviews.';
+                Enabled = not Rec."TFB Archived";
+
+
+                trigger OnAction()
+                var
+                    Confirm: Codeunit "Confirm Management";
+
+                begin
+                    If Confirm.GetResponse('Are you sure you want to archive?', false) then
+                        Rec.validate("TFB Archived", true);
+                end;
+            }
 
         }
         area(creation)
@@ -707,14 +764,86 @@ page 50167 "Review customer contacts"
                 ApplicationArea = Basic, Suite;
                 Caption = 'Create Sales Quote';
                 Image = NewSalesQuote;
-                Promoted = true;
-                PromotedCategory = Process;
+
                 ToolTip = 'Offer items or services to a customer.';
 
                 trigger OnAction()
                 begin
-                    Rec.CreateSalesQuoteFromContact;
+                    Rec.CreateSalesQuoteFromContact();
                 end;
+            }
+        }
+
+        area(Promoted)
+        {
+            group(Home)
+            {
+                Caption = 'Home';
+
+                actionref(ActionRef1; NewSalesQuote)
+                { }
+                actionref(ActionRef6; "Open Oppo&rtunities")
+                {
+
+                }
+                actionref(PTFBSetToInReview; TFBSetToInReview)
+                {
+
+                }
+                actionref(PTFBCompleteReview; TFBCompleteReview)
+                {
+
+                }
+                actionref(PTFBArchive; TFBArchive)
+                {
+
+                }
+                group(InitiateAction)
+                {
+                    Caption = 'Initiate Action';
+                    ShowAs = SplitButton;
+
+                    actionref(PEmail; Email)
+                    {
+
+                    }
+                    actionref(PCreatePhoneCall; "Create &Interaction")
+                    {
+
+                    }
+                    actionref(PMakePhoneCall; MakePhoneCall)
+                    {
+
+                    }
+                    actionref(PMakeOpportunity; "Create Opportunity")
+                    {
+
+                    }
+
+
+                }
+
+            }
+            group(Contact)
+            {
+                Caption = 'Contact';
+                actionref(ActionRef3; RelatedCustomer)
+                {
+
+                }
+                actionref(ActionRef4; RelatedVendor)
+                {
+
+                }
+                actionref(ActionRef2; "Co&mments")
+                {
+
+                }
+                actionref(PStatistics; Statistics)
+                {
+
+                }
+
             }
         }
 
@@ -759,23 +888,54 @@ page 50167 "Review customer contacts"
 
             }
         }
+        view(ContactsInReview)
+        {
+            Caption = 'Review - In Progress';
+            Filters = where("TFB In Review" = const(true));
+            SharedLayout = true;
+        }
+        view(ContactsInReviewOverdue)
+        {
+            Caption = 'Review - In Progress but Late';
+            Filters = where("TFB In Review" = const(true), "TFB Review Date Exp. Compl." = filter('<t'));
+            SharedLayout = true;
+        }
+        view(RequiringReview)
+        {
+            Caption = 'Review - Past Due';
+            Filters = where("TFB Review Date - Planned" = filter('<t'), "TFB In Review" = const(false));
+            SharedLayout = true;
+        }
+        view(RequiringPlannedDate)
+        {
+            Caption = 'Review - No Date Set';
+            Filters = where("TFB Review Date - Planned" = filter('='''''));
+            SharedLayout = true;
+        }
+
     }
+
 
     trigger OnAfterGetCurrRecord()
     var
         Contact: Record Contact;
     begin
-        EnableFields;
+        EnableFields();
 
         SetEnabledRelatedActions();
 
         CurrPage.SetSelectionFilter(Contact);
         CanSendEmail := Contact.Count() = 1;
+
+
     end;
 
     trigger OnAfterGetRecord()
     begin
-        StyleIsStrong := Type = Type::Company;
+        StyleIsStrong := Rec.Type = Rec.Type::Company;
+
+        flagPastPlanningDate := (not Rec."TFB In Review") and (Rec."TFB Review Date - Planned" < WorkDate());
+        FlagPastReviewDate := Rec."TFB In Review" and (Rec."TFB Review Date Exp. Compl." < WorkDate());
     end;
 
     trigger OnOpenPage()
@@ -824,9 +984,9 @@ page 50167 "Review customer contacts"
 
     local procedure EnableFields()
     begin
-        CompanyGroupEnabled := Type = Type::Company;
-        PersonGroupEnabled := Type = Type::Person;
-        ExportContactEnabled := Rec."No." <> '';
+        CompanyGroupEnabled := Rec.Type = Rec.Type::Company;
+        PersonGroupEnabled := Rec.Type = Rec.Type::Person;
+
     end;
 
     local procedure SetEnabledRelatedActions()
@@ -844,9 +1004,9 @@ page 50167 "Review customer contacts"
         exit(SelectionFilterManagement.GetSelectionFilterForContact(Contact));
     end;
 
-    procedure SetSelection(var Contact: Record Contact)
+    procedure SetSelection(var LclContact: Record Contact)
     begin
-        CurrPage.SetSelectionFilter(Contact);
+        CurrPage.SetSelectionFilter(LclContact);
     end;
 
     local procedure GetTaskSymbol(): Text
@@ -871,5 +1031,7 @@ page 50167 "Review customer contacts"
                 Exit('');
     end;
 
-
+    var
+        flagPastPlanningDate: boolean;
+        FlagPastReviewDate: Boolean;
 }

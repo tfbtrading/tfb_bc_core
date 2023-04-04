@@ -1,6 +1,6 @@
 pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information Card" //6505
 {
-    PromotedActionCategories = 'CoA,Process';
+
     layout
     {
         addafter("Item No.")
@@ -126,8 +126,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
-                PromotedIsBig = true;
+
                 Image = Import;
                 Enabled = (not IsCoAAvailable);
                 ToolTip = 'Attach a certificate of analysis to the lot information';
@@ -146,9 +145,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
                 Image = SendAsPDF;
-                PromotedIsBig = true;
                 enabled = IsCoAAvailable;
                 ToolTip = 'Download a certificate of analysis from lot information';
                 trigger OnAction()
@@ -164,9 +161,9 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             {
                 ApplicationArea = All;
                 Visible = True;
-                Promoted = True;
+
                 Image = Delete;
-                PromotedIsBig = true;
+
                 Enabled = IsCoAAvailable;
                 ToolTip = 'Remove a certificate of analysis from the lot information';
 
@@ -193,7 +190,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
                     ApplicationArea = All;
                     Visible = True;
-                    Promoted = false;
+
 
                     Image = Import;
                     Enabled = not IsOPCAvailable and IsOrganic;
@@ -213,7 +210,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 {
                     ApplicationArea = All;
                     Visible = True;
-                    Promoted = false;
+
 
                     Image = SendAsPDF;
 
@@ -232,7 +229,6 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 {
                     ApplicationArea = All;
                     Visible = True;
-                    Promoted = false;
 
                     Image = Delete;
 
@@ -250,7 +246,33 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
                 }
             }
+
+
         }
+        addfirst(Category_Process)
+        {
+
+            Group(Category_COA)
+            {
+                ShowAs = SplitButton;
+                Image = Document;
+
+                actionref(AttachCOARef; "Attach CoA")
+                {
+
+                }
+                actionref(DownloadCOARef; "Download CoA")
+                {
+
+                }
+                actionref(RemoveCOARef; "Remove CoA")
+                {
+
+                }
+            }
+        }
+
+
     }
 
 

@@ -50,6 +50,17 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
 
         }
 
+        addbefore("Amount Including VAT")
+        {
+            field("Prepayment Invoice"; Rec."Prepayment Invoice")
+            {
+                Caption = 'Pre-payment';
+                Width = 8;
+                ApplicationArea = All;
+                Visible = Rec."Prepayment Invoice";
+            }
+        }
+
         modify("Due Date")
         {
             Style = Unfavorable;
@@ -79,9 +90,7 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 ToolTip = 'Sends a proof of delivery request to the relevant party who managed the delivery';
                 ApplicationArea = All;
                 Image = SendMail;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+
 
                 trigger OnAction()
                 var
@@ -97,16 +106,26 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 Caption = 'Register Customer Payment';
                 ApplicationArea = All;
                 Image = Payment;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                PromotedOnly = true;
+
                 RunObject = Page "Payment Registration";
                 RunPageLink = "Source No." = FIELD("Sell-to Customer No.");
                 ToolTip = 'Process your customer payments by matching amounts received on your bank account with the related unpaid sales invoices, and then post the payments.';
             }
         }
+        addlast(Category_Process)
+        {
+            actionref(TFBRegisterPayments_Promoted; TFBRegisterPayments)
+            {
 
+            }
+        }
+        addlast(Category_Category7)
+        {
+            actionref(TFBSendPODRequest_Promoted; TFBSendPODRequest)
+            {
+
+            }
+        }
 
     }
 

@@ -279,13 +279,7 @@ page 50101 "TFB Ops Mgr Activities"
         }
     }
 
-    trigger OnAfterGetCurrRecord()
-    var
-        RoleCenterNotificationMgt: Codeunit "Role Center Notification Mgt.";
-    begin
 
-        RoleCenterNotificationMgt.HideEvaluationNotificationAfterStartingTrial();
-    end;
 
     trigger OnAfterGetRecord()
     begin

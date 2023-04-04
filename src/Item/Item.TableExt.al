@@ -195,6 +195,12 @@ tableextension 50260 "TFB Item" extends Item
             TableRelation = Vendor where("TFB Vendor Type" = const(TRADE));
             ValidateTableRelation = true;
         }
+        field(50400; "TFB Item Category Priority"; Integer)
+        {
+            Caption = 'Item Category Priority';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Item Category"."TFB Catalogue Priority" where(Code = field("Item Category Code")));
+        }
 
     }
     fieldgroups

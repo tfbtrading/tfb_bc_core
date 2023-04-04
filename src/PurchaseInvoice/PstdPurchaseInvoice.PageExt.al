@@ -59,9 +59,9 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
                 var
                     TempPurchInvHeader: Record "Purch. Inv. Header" temporary;
+                    VendLedgerEntry: Record "Vendor Ledger Entry";
                     Vendor: Record Vendor;
                     CodeUnit: CodeUnit "TFB Pstd. Purch Inv. Hdr. Edit";
-                    VendLedgerEntry: Record "Vendor Ledger Entry";
                     AddPaymentNote: Page "TFB Payment Note";
                 begin
 
@@ -131,8 +131,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category4;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new relationship task for the contact.';
@@ -147,12 +146,10 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         {
             action(TFBCorrectExternalDocNo)
             {
-                Caption = 'Correct Vendor Invoice No.';
+                Caption = 'Update Invoice No.';
                 ApplicationArea = All;
                 Image = UpdateDescription;
-                Promoted = true;
-                PromotedCategory = process;
-                PromotedIsBig = true;
+
                 ToolTip = 'Handle scenario when vendor invoice number was incorrectly specified without reissuing doc';
 
                 trigger OnAction()
@@ -179,15 +176,38 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
 
                 end;
             }
+
+
         }
+        modify("Update Document")
+        {
+            Caption = 'Update Other Information';
+        }
+        addlast(Category_Process)
+        {
+            group(TFBUpdate)
+            {
+                Caption = 'Update Document';
+                ShowAs = SplitButton;
+
+                actionref(TFBCorrectExternalDocNo_Ref; TFBCorrectExternalDocNo)
+                {
+
+                }
+
+
+            }
+        }
+        moveafter(TFBCorrectExternalDocNo_Ref; "Update Document_Promoted")
+
     }
 
     var
-
-        _DueDate: Date;
-        _RemainingAmt: Decimal;
         [InDataSet]
         DueDateIsDifferent: Boolean;
+        _DueDate: Date;
+        _RemainingAmt: Decimal;
+
 
     trigger OnAfterGetRecord()
 
@@ -252,8 +272,8 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     end;
 
     var
-        IsPastDue: Boolean;
         IsExpectedDatePastDue: Boolean;
+        IsPastDue: Boolean;
         ExpectedDateText: Text;
 
     local procedure GetTaskStatus(): Text

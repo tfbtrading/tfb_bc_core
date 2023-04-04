@@ -93,13 +93,12 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
     {
         addafter("Print Confirmation")
         {
-            action("Send CoA's")
+            action("TFBSendCOA")
             {
                 ApplicationArea = All;
                 Image = SendAsPDF;
-                Promoted = True;
-                PromotedIsBig = true;
-                PromotedCategory = Category7;
+                Caption = 'TFB Send CoA';
+
                 ToolTip = 'Send certificates of analysis for sales order if lots are specified';
 
 
@@ -117,14 +116,40 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                 end;
             }
         }
+
+        addafter(Statistics)
+        {
+            action("TFBEstimatedProfitability")
+            {
+                Caption = 'Profitability';
+                Image = AnalysisView;
+                ToolTip = 'Review line item profitability analysis';
+                ApplicationArea = All;
+
+                trigger OnAction()
+
+                var
+                    SalesLine: Record "Sales Line";
+
+                begin
+                    SalesLine.SetRange("Document Type", Rec."Document Type");
+                    SalesLine.SetRange("Document No.", Rec."No.");
+                    SalesLine.SetRange(Type, SalesLine.type::Item);
+
+                    If Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
+                        message('Did something');
+
+                end;
+
+            }
+        }
         addfirst("F&unctions")
         {
-            action("Create &Task")
+            action("TFBCreateTask")
             {
                 AccessByPermission = TableData Contact = R;
                 ApplicationArea = Basic, Suite;
-                Promoted = true;
-                PromotedCategory = Category8;
+
                 Caption = 'Create &Task';
                 Image = NewToDo;
                 ToolTip = 'Create a new marketing task for the contact.';
@@ -133,6 +158,30 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                 begin
                     Rec.CreateTask();
                 end;
+            }
+        }
+
+        addlast(Category_Category11)
+        {
+            actionref(TFBSendCOA_Promoted; TFBSendCOA)
+            {
+
+            }
+        }
+        addlast(Category_Process)
+        {
+            actionref(TFBCreateTask_Promoted; TFBCreateTask)
+            {
+
+            }
+
+        }
+
+        addafter(Statistics_Promoted)
+        {
+            actionref(TFBProfit_Promoted; "TFBEstimatedProfitability")
+            {
+
             }
         }
     }
@@ -147,10 +196,11 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
 
     var
         DuplicateSystemID: Guid;
+        DocumentNo: Code[20];
     begin
 
-        If Rec.CheckDuplicateExtDocNo(DuplicateSystemID) then begin
-            DuplicateNotification.Message('There is an existing ongoing sales order with the same External Doc No');
+        If Rec.CheckDuplicateExtDocNo(DuplicateSystemID,DocumentNo) then begin
+            DuplicateNotification.Message(StrSubstNo('An existing ongoing sales order %1 has the same External Doc No',DocumentNo));
             DuplicateNotification.Scope(NotificationScope::LocalScope);
             DuplicateNotification.SetData('SystemId', DuplicateSystemID);
             DuplicateNotification.AddAction('Open Existing', Codeunit::"TFB Sales Mgmt", 'OpenExistingSalesOrder');

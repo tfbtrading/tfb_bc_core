@@ -8,6 +8,50 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
     end;
 
+
+
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Req. Wksh.-Make Order", 'OnAfterInitPurchOrderLine', '', false, false)]
+    local procedure OnAfterInitPurchOrderLine(var PurchaseLine: Record "Purchase Line"; RequisitionLine: Record "Requisition Line");
+    var
+        SalesLine: Record "Sales Line";
+        SalesLineBlanket: Record "Sales Line";
+        PurchaseHeaderBlanket: record "Purchase Header";
+        PurchaseLineBlanket: record "Purchase Line";
+
+    begin
+        PurchaseHeaderBlanket.SetLoadFields("No.", "TFB Sales Blanket Order No.");
+        SalesLine.SetLoadFields("Blanket Order Line No.", "Blanket Order No.");
+        PurchaseHeaderBlanket.SetLoadFields("No.");
+        PurchaseLineBlanket.SetLoadFields("Line No.", "Document No.");
+
+        //Check if drop shipment with appropiate sales order details
+        If not RequisitionLine.IsDropShipment() and SalesLine.Get(SalesLine."Document Type"::Order, RequisitionLine."Sales Order No.", RequisitionLine."Sales Order Line No.") then exit;
+
+        //Check if a blanket order exists for the sales line
+        If not SalesLineBlanket.get(SalesLineBlanket."Document Type"::"Blanket Order", SalesLine."Blanket Order No.", SalesLine."Blanket Order Line No.") then exit;
+
+        PurchaseHeaderBlanket.SetRange("Document Type", PurchaseHeaderBlanket."Document Type"::"Blanket Order");
+        PurchaseHeaderBlanket.SetRange("TFB Sales Blanket Order No.", SalesLineBlanket."Document No.");
+
+        //Check if there is a related blanket purchase order for the sales order 
+        If not PurchaseHeaderBlanket.FindFirst() then exit;
+
+        PurchaseLineBlanket.SetRange("Document No.", PurchaseHeaderBlanket."No.");
+        PurchaseLineBlanket.SetRange("Document Type", PurchaseLineBlanket."Document Type"::"Blanket Order");
+        PurchaseLineBlanket.SetRange("No.", PurchaseLine."No.");
+
+        //Check if there is a purchase line from blanket order related to the same item
+        If not PurchaseLineBlanket.FindFirst() then exit;
+
+        PurchaseLine.Validate("Blanket Order No.", PurchaseHeaderBlanket."No.");
+        PurchaseLine.Validate("Blanket Order Line No.", PurchaseLineBlanket."Line No.");
+
+
+    end;
+
+
+
     [EventSubscriber(ObjectType::Table, Database::"Purchase Line", 'OnBeforeValidateBlanketOrderLineNo', '', false, false)]
     local procedure OnBeforeValidateBlanketOrderLineNo(var PurchaseLine: Record "Purchase Line"; var InHandled: Boolean);
 

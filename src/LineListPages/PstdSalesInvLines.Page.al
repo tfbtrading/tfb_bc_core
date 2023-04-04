@@ -6,9 +6,6 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
     SourceTableView = sorting("Sell-to Customer No.", "Posting Date") order(descending) where(Type = filter(Item), Quantity = filter(> 0));
 
     ModifyAllowed = false;
-
-    PromotedActionCategories = 'Manage,Process,Report,Navigate';
-
     layout
     {
         area(Content)
@@ -151,9 +148,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 RunObject = Page "Posted Sales Invoice";
                 RunPageLink = "No." = field("Document No.");
                 RunPageMode = View;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedOnly = true;
+
                 ApplicationArea = All;
                 Image = Sales;
                 ToolTip = 'Open invoice for invoiced line';
@@ -162,8 +157,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
             action(Shipment)
             {
 
-                Promoted = true;
-                PromotedCategory = Category4;
+
                 ApplicationArea = All;
                 Image = Shipment;
                 ToolTip = 'Open shipment for invoiced line';
@@ -202,9 +196,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 RunObject = Page "Customer Card";
                 RunPageLink = "No." = field("Sell-to Customer No.");
                 RunPageMode = View;
-                Promoted = true;
-                PromotedCategory = Category4;
-                PromotedOnly = true;
+
                 ApplicationArea = All;
                 Image = Customer;
                 ToolTip = 'Open customer related to invoiced line';
@@ -250,9 +242,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 Caption = 'Send POD request';
                 ApplicationArea = All;
                 Image = SendMail;
-                Promoted = true;
-                PromotedOnly = true;
-                PromotedIsBig = true;
+
                 ToolTip = 'Send a proof of delivery request to relevant party';
 
                 trigger OnAction()
@@ -263,6 +253,40 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 end;
 
 
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Home)
+            {
+                Caption = 'Home';
+
+                actionref(ActionRefName; TFBSendPODRequest)
+                {
+
+                }
+
+            }
+            group(Category_InvoiceLine)
+            {
+                Caption = 'Invoice Line';
+
+                actionref(CustomerRef; Customer)
+                {
+
+                }
+                actionref(InvoiceRef; Invoice)
+                {
+
+                }
+                actionref(ShipmentRef; Shipment)
+                {
+
+                }
+                actionref(LedgerEntryRef; "Ledger entries")
+                {
+
+                }
             }
         }
     }

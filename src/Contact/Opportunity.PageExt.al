@@ -69,7 +69,7 @@ pageextension 50177 "TFB Opportunity" extends "Opportunity Card"
     {
         addlast(navigation)
         {
-            action(CompanyContact)
+            action(TFBRelatedCompanyContact)
             {
                 Caption = 'Company Contact';
                 ApplicationArea = All;
@@ -79,6 +79,14 @@ pageextension 50177 "TFB Opportunity" extends "Opportunity Card"
                 RunPageMode = View;
                 ToolTip = 'Opens the company contact page';
                 Enabled = Rec."Contact Company No." <> '';
+            }
+        }
+
+        addlast(Category_Category4)
+        {
+            actionref(ActionRefName; TFBRelatedCompanyContact)
+            {
+
             }
         }
     }
