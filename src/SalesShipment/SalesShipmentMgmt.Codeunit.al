@@ -904,8 +904,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     var
         CommEntry: record "TFB Communication Entry";
-        Header: record "Sales Shipment Header";
-        Lines: record "Sales Shipment Line";
+    //Retrieval of salesshipment not working
+    //Header: record "Sales Shipment Header";
+    //Lines: record "Sales Shipment Line";
 
     begin
         /*   Header.SetLoadFields("No.");
