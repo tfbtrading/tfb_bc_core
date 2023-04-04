@@ -252,7 +252,7 @@ page 50172 "TFB Lot Add Image Wizard"
         RecordVar.Init();
         RecordVar.TransferFields(TempLotImage, true);
         RecordVar."Import Sequence No." := RecordVar.GetNextSequence();
-        RecordVar.Insert();
+        RecordVar.Insert(true);
 
     end;
 

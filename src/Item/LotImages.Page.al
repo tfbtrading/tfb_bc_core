@@ -11,7 +11,7 @@ page 50170 "TFB Lot Images"
     ModifyAllowed = false;
     DeleteAllowed = true;
     DelayedInsert = false;
-    Editable = false;
+    Editable = true;
     InstructionalText = 'Used to view lot images';
 
     layout
