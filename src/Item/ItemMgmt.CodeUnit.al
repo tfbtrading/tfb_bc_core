@@ -38,7 +38,7 @@ codeunit 50107 "TFB Item Mgmt"
         TempBlobCU := CommonCU.GetSpecificationTempBlob(Item);
         TempBlobCu.CreateInStream(InStream);
         FileName := StrSubstNo('Spec For %1 (%2).pdf', Item.Description, Item."No.");
-        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+        if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 
     end;
@@ -57,15 +57,15 @@ codeunit 50107 "TFB Item Mgmt"
 
                 //Check if there is an override shipping agent and service
 
-                If Vendor.Get(Item."Vendor No.") then
-                    If GetZoneRateForSalesLine(SalesLine, PostcodeZone) then
-                        If GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, AgentServices) then begin
+                if Vendor.Get(Item."Vendor No.") then
+                    if GetZoneRateForSalesLine(SalesLine, PostcodeZone) then
+                        if GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, AgentServices) then begin
                             SalesLine.Validate("Shipping Agent Code", AgentServices."Shipping Agent Code");
                             Salesline.validate("Shipping Agent Service Code", AgentServices.Code);
                         end
                         else
                             //if no override exists but here is a valid vendor then use default service for vendor
-                            If ShippingAgent.Get(Vendor."Shipping Agent Code") then begin
+                            if ShippingAgent.Get(Vendor."Shipping Agent Code") then begin
                                 SalesLine.Validate("Shipping Agent Code", ShippingAgent.Code);
                                 Salesline.validate("Shipping Agent Service Code", ShippingAgent."TFB Service Default");
                             end;
@@ -86,29 +86,29 @@ codeunit 50107 "TFB Item Mgmt"
     begin
         Item.SetRecFilter();
         CoreSetup.Get();
-        If CoreSetup."MSDS Word Template" = '' then begin
+        if CoreSetup."MSDS Word Template" = '' then begin
             Message(NoTemplateSetupMsg);
             exit;
         end;
 
-        If Item.Count = 0 then begin
+        if Item.Count = 0 then begin
             Message(NoRecordsSelectedMsg);
-            Exit;
+            exit;
         end;
 
         WordTemplate.Load(CoreSetup."MSDS Word Template");
-        If Item.Count > 1 then
+        if Item.Count > 1 then
             WordTemplate.Merge(Item, true, Enum::"Word Templates Save Format"::PDF)
         else
             WordTemplate.Merge(Item, false, Enum::"Word Templates Save Format"::PDF);
 
         WordTemplate.GetDocument(InStream);
 
-        If Item.Count > 1 then
+        if Item.Count > 1 then
             FileName := StrSubstNo('MSDS Collection on %1.zip', today)
         else
             FileName := StrSubstNo('MSDS for %1 (%2).pdf', Item.Description, Item."No.");
-        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+        if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
     end;
 
@@ -137,10 +137,10 @@ codeunit 50107 "TFB Item Mgmt"
 
 
 
-        If Item.Findset(false) then
+        if Item.Findset(false) then
             repeat
                 TempBlobCU := CommonCU.GetSpecificationTempBlob(Item);
-                If TempBlobCU.HasValue() then begin
+                if TempBlobCU.HasValue() then begin
                     TempBlobCu.CreateInStream(InStream);
                     Clear(FileNameBuilder);
                     FileNameBuilder.Append(StrSubstNo('Spec For %1 (%2).pdf', Item.Description, Item."No."));
@@ -178,25 +178,25 @@ codeunit 50107 "TFB Item Mgmt"
         //Determine if multiple items have been selected
 
 
-        If Item.Count() = 0 then exit;
+        if Item.Count() = 0 then exit;
         Contact.SetFilter("E-Mail", '>%1', '');
         ContactList.LookupMode(true);
         ContactList.SetTableView(Contact);
 
-        If ContactList.RunModal() = Action::LookupOK then begin
+        if ContactList.RunModal() = Action::LookupOK then begin
             ContactList.getrecord(Contact);
             Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-            If Contact.Findset(false) then
+            if Contact.Findset(false) then
                 repeat
-                    If Contact."E-Mail" <> '' then
-                        If not Recipients.Contains(Contact."E-Mail") then begin
+                    if Contact."E-Mail" <> '' then
+                        if not Recipients.Contains(Contact."E-Mail") then begin
                             Recipients.Add(Contact."E-Mail");
                             ContactIds.Add(Contact.SystemId);
                         end;
                 until Contact.Next() = 0;
 
-            If Recipients.Count > 0 then
+            if Recipients.Count > 0 then
                 ItemMgmt.EmailSpecification(Item, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), ContactIds);
 
         end;
@@ -213,12 +213,12 @@ codeunit 50107 "TFB Item Mgmt"
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Order);
         SalesHeader.SetRange("No.", SalesLine."Document No.");
 
-        If SalesHeader.FindFirst() then begin
+        if SalesHeader.FindFirst() then begin
 
             PostcodeZone.SetRange("Customer Price Group", SalesHeader."Customer Price Group");
 
-            If PostcodeZone.FindFirst() then
-                Exit(true);
+            if PostcodeZone.FindFirst() then
+                exit(true);
         end;
 
     end;
@@ -236,9 +236,9 @@ codeunit 50107 "TFB Item Mgmt"
         NotificationLbl: Label 'Open quote';
     begin
 
-        If not (SalesLine."Document Type" = SalesLine."Document Type"::Order) then exit;
+        if not (SalesLine."Document Type" = SalesLine."Document Type"::Order) then exit;
 
-        If not quoteforitemexists(Item, SalesLine, QuoteDocumentNo) then exit;
+        if not quoteforitemexists(Item, SalesLine, QuoteDocumentNo) then exit;
 
         ItemAlreadyQuotedNotification.Id := NotificationID;
         ItemAlreadyQuotedNotification.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name", SalesLine.Description);
@@ -303,7 +303,7 @@ codeunit 50107 "TFB Item Mgmt"
             BodyBuilder.AppendLine('<h2>No item specifications selected</h2>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
     procedure GetVendorShippingAgentOverride(VendorNo: Code[20]; ShippingZone: Code[20]; var ShippingAgentService: Record "Shipping Agent Services"): Boolean
@@ -317,9 +317,9 @@ codeunit 50107 "TFB Item Mgmt"
         VendorZoneRate.SetRange("Zone Code", ShippingZone);
         VendorZoneRate.SetRange("Vendor No.", VendorNo);
 
-        If VendorZoneRate.FindFirst() then
-            If VendorZoneRate."Agent Service Code" <> '' then
-                Exit(ShippingAgentService.Get(VendorZoneRate."Shipping Agent", VendorZoneRate."Agent Service Code"))
+        if VendorZoneRate.FindFirst() then
+            if VendorZoneRate."Agent Service Code" <> '' then
+                exit(ShippingAgentService.Get(VendorZoneRate."Shipping Agent", VendorZoneRate."Agent Service Code"))
     end;
 
     procedure GetItemDynamicDetails(ItemNo: Code[20]; var SalesPrice: Decimal; var LastChanged: Date)
@@ -333,7 +333,7 @@ codeunit 50107 "TFB Item Mgmt"
     begin
         CoreSetup.Get();
 
-        If (CoreSetup."Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
+        if (CoreSetup."Def. Customer Price Group" <> '') and Item.Get(ItemNo) then begin
             PriceListLine.SetRange("Asset No.", ItemNo);
             PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
             PriceListLine.SetRange("Price Type", PriceListLine."Price Type"::Sale);
@@ -343,7 +343,7 @@ codeunit 50107 "TFB Item Mgmt"
             PriceListLine.SetFilter("Ending Date", '=%1|>=%2', 0D, WorkDate());
 
 
-            If PriceListLine.FindLast() then begin
+            if PriceListLine.FindLast() then begin
                 SalesPrice := PricingCU.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight");
                 LastChanged := PriceListLine."Starting Date";
             end;
@@ -371,7 +371,7 @@ codeunit 50107 "TFB Item Mgmt"
         SalesInvoiceLine.SetCurrentKey("Posting Date");
         SalesInvoiceLine.SetAscending("Posting Date", false);
 
-        If SalesInvoiceLine.FindFirst() and Item.Get(ItemNo) then begin
+        if SalesInvoiceLine.FindFirst() and Item.Get(ItemNo) then begin
             LastPricePaid := PricingCU.CalcPerKgFromUnit(SalesInvoiceLine."Unit Price", SalesInvoiceLine."Net Weight");
             LastDatePurchased := SalesInvoiceLine."Posting Date";
         end;

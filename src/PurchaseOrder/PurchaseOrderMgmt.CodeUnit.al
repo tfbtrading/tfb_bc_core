@@ -26,23 +26,23 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         PurchaseLineBlanket.SetLoadFields("Line No.", "Document No.");
 
         //Check if drop shipment with appropiate sales order details
-        If not RequisitionLine.IsDropShipment() and SalesLine.Get(SalesLine."Document Type"::Order, RequisitionLine."Sales Order No.", RequisitionLine."Sales Order Line No.") then exit;
+        if not RequisitionLine.IsDropShipment() and SalesLine.Get(SalesLine."Document Type"::Order, RequisitionLine."Sales Order No.", RequisitionLine."Sales Order Line No.") then exit;
 
         //Check if a blanket order exists for the sales line
-        If not SalesLineBlanket.get(SalesLineBlanket."Document Type"::"Blanket Order", SalesLine."Blanket Order No.", SalesLine."Blanket Order Line No.") then exit;
+        if not SalesLineBlanket.get(SalesLineBlanket."Document Type"::"Blanket Order", SalesLine."Blanket Order No.", SalesLine."Blanket Order Line No.") then exit;
 
         PurchaseHeaderBlanket.SetRange("Document Type", PurchaseHeaderBlanket."Document Type"::"Blanket Order");
         PurchaseHeaderBlanket.SetRange("TFB Sales Blanket Order No.", SalesLineBlanket."Document No.");
 
         //Check if there is a related blanket purchase order for the sales order 
-        If not PurchaseHeaderBlanket.FindFirst() then exit;
+        if not PurchaseHeaderBlanket.FindFirst() then exit;
 
         PurchaseLineBlanket.SetRange("Document No.", PurchaseHeaderBlanket."No.");
         PurchaseLineBlanket.SetRange("Document Type", PurchaseLineBlanket."Document Type"::"Blanket Order");
         PurchaseLineBlanket.SetRange("No.", PurchaseLine."No.");
 
         //Check if there is a purchase line from blanket order related to the same item
-        If not PurchaseLineBlanket.FindFirst() then exit;
+        if not PurchaseLineBlanket.FindFirst() then exit;
 
         PurchaseLine.Validate("Blanket Order No.", PurchaseHeaderBlanket."No.");
         PurchaseLine.Validate("Blanket Order Line No.", PurchaseLineBlanket."Line No.");
@@ -102,11 +102,11 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         CustomCalChange.SetSource(CustomCalChange."Source Type"::Location, Location, '', CompanyInfo."Base Calendar Code");
         repeat
 
-            If CalendarMgt.IsNonworkingDay(TargetDate, CustomCalChange) then
+            if CalendarMgt.IsNonworkingDay(TargetDate, CustomCalChange) then
                 TargetDate := CalcDate(CalcDateFormula, TargetDate);
-        Until Not NonWorking;
+        until not NonWorking;
 
-        Exit(TargetDate);
+        exit(TargetDate);
     end;
 
 
@@ -133,8 +133,8 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         PurchaseLine.CalcFields("Reserved Qty. (Base)");
 
 
-        If (not PurchaseLine."Drop Shipment") and (PurchaseLine."Reserved Qty. (Base)" > 0) then begin
-            If not Confirm(StrSubstNo('Update shipment date on sales reservations from %1 to %2?', xPurchaseLine."Promised Receipt Date", PurchaseLine."Promised Receipt Date")) then
+        if (not PurchaseLine."Drop Shipment") and (PurchaseLine."Reserved Qty. (Base)" > 0) then begin
+            if not Confirm(StrSubstNo('Update shipment date on sales reservations from %1 to %2?', xPurchaseLine."Promised Receipt Date", PurchaseLine."Promised Receipt Date")) then
                 exit;
 
 
@@ -146,12 +146,12 @@ codeunit 50106 "TFB Purchase Order Mgmt"
             SupplyResEntry.SetRange("Item No.", PurchaseLine."No.");
             SupplyResEntry.SetRange(Positive, true);
 
-            If SupplyResEntry.FindFirst() then begin
+            if SupplyResEntry.FindFirst() then begin
 
                 DemandResEntry.SetRange(Positive, false);
                 DemandResEntry.SetRange("Entry No.", SupplyResEntry."Entry No.");
 
-                If DemandResEntry.FindFirst() then
+                if DemandResEntry.FindFirst() then
                     case DemandResEntry."Source Type" of
 
                         37:
@@ -161,8 +161,8 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                                 SalesLine.SetRange("Document No.", DemandResEntry."Source ID");
                                 SalesLine.SetRange("Line No.", DemandResEntry."Source Ref. No.");
 
-                                If SalesLine.FindFirst() then
-                                    If SalesLine."Shipment Date" <= CalcDate(Location."Inbound Whse. Handling Time", PurchaseLine."Promised Receipt Date") then begin
+                                if SalesLine.FindFirst() then
+                                    if SalesLine."Shipment Date" <= CalcDate(Location."Inbound Whse. Handling Time", PurchaseLine."Promised Receipt Date") then begin
 
                                         SalesHeader.SetRange("Document Type", SalesLine."Document Type");
                                         SalesHeader.SetRange("No.", SalesLine."Document No.");
@@ -185,9 +185,9 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         end
         else
             if (PurchaseLine."Drop Shipment") then
-                If SalesHeader.Get(SalesHeader."Document Type"::Order, PurchaseLine."Sales Order No.") then begin
+                if SalesHeader.Get(SalesHeader."Document Type"::Order, PurchaseLine."Sales Order No.") then begin
                     Clear(AlreadyReleased);
-                    If SalesHeader.Status = SalesHeader.Status::Released then begin
+                    if SalesHeader.Status = SalesHeader.Status::Released then begin
                         SalesHeader.SetStatus(SalesHeader.Status::Open.AsInteger());
                         AlreadyReleased := true;
                     end;
@@ -196,10 +196,10 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                     SalesLine.SetRange("Document No.", DemandResEntry."Source ID");
                     SalesLine.SetRange("Line No.", DemandResEntry."Source Ref. No.");
 
-                    If SalesLine.FindFirst() and Confirm(StrSubstNo('Update dropship sales order item receipt date from %1 to %2?', SalesLine."Promised Delivery Date", PurchaseLine."Promised Receipt Date")) then begin
+                    if SalesLine.FindFirst() and Confirm(StrSubstNo('Update dropship sales order item receipt date from %1 to %2?', SalesLine."Promised Delivery Date", PurchaseLine."Promised Receipt Date")) then begin
                         SalesLine.Validate("Planned Shipment Date", PurchaseLine."Promised Receipt Date");
                         SalesLine.Modify(true);
-                        If AlreadyReleased then
+                        if AlreadyReleased then
                             SalesHeader.SetStatus(SalesHeader.Status::Released.AsInteger());
                     end
                 end;
@@ -297,9 +297,9 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
     begin
         LotStatus := LotStatus::ExistsWithIssue;
-        If Line.Type = Line.Type::Item then
-            If Line."Quantity Received" = Line.Quantity then begin
-                If GetItemLedgerForPOLine(Line, ItemLedger) then
+        if Line.Type = Line.Type::Item then
+            if Line."Quantity Received" = Line.Quantity then begin
+                if GetItemLedgerForPOLine(Line, ItemLedger) then
                     GetLedgerEntryLotStatus(Line."Quantity (Base)", Line, LotStatus);
 
             end
@@ -307,7 +307,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                 GetPurchaseLineLotStatus(Line."Quantity (Base)", Line, LotStatus)
         else
             LotStatus := LotStatus::NotRequired;
-        Exit(LotStatus);
+        exit(LotStatus);
     end;
 
     local procedure GetItemLedgerForPOLine(Line: Record "Purchase Line"; var ItemLedger: Record "Item Ledger Entry"): Boolean
@@ -319,15 +319,15 @@ codeunit 50106 "TFB Purchase Order Mgmt"
         ReceiptLine.SetRange("Order No.", Line."Document No.");
         ReceiptLine.SetRange("Order Line No.", Line."Line No.");
 
-        If ReceiptLine.FindFirst() then begin
+        if ReceiptLine.FindFirst() then begin
 
             ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
             ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Purchase Receipt");
             ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
             ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-            If ItemLedger.FindFirst() then
-                Exit(true);
+            if ItemLedger.FindFirst() then
+                exit(true);
         end;
 
     end;
@@ -344,7 +344,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
 
 
-        If LotCU.CheckIfLotNoRequired(Line."No.") then begin
+        if LotCU.CheckIfLotNoRequired(Line."No.") then begin
 
             //Check if Lot Information is Required
 
@@ -362,7 +362,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
                 until ReservationEntry.Next() = 0;
 
-            If QtyTracked = 0 then
+            if QtyTracked = 0 then
                 LotStatus := LotStatus::DoesNotExist
             else
                 if QtyTracked < QtyToTrack then
@@ -371,7 +371,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                     if QtyTracked = QtyToTrack then
                         LotStatus := LotStatus::ExistsNoIssue;
 
-            If IssueFlagged then
+            if IssueFlagged then
                 LotStatus := LotStatus::ExistsWithIssue;
         end
         else
@@ -395,12 +395,12 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
         //Check if Lot Information is Required
 
-        If LotCU.CheckIfLotNoRequired(PurchaseLine."No.") then begin
+        if LotCU.CheckIfLotNoRequired(PurchaseLine."No.") then begin
 
             ReceiptLine.SetRange("Order No.", PurchaseLine."Document No.");
             ReceiptLine.SetRange("Order Line No.", PurchaseLine."Line No.");
 
-            If ReceiptLine.FindSet() then
+            if ReceiptLine.FindSet() then
                 repeat
 
                     ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
@@ -408,7 +408,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                     ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
                     ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                    If ItemLedger.FindSet() then
+                    if ItemLedger.FindSet() then
                         repeat
 
                             QtyTracked := QtyTracked + ABS(ItemLedger.Quantity);
@@ -425,7 +425,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
 
 
 
-            If QtyTracked = 0 then
+            if QtyTracked = 0 then
                 LotStatus := LotStatus::DoesNotExist
             else
                 if QtyTracked < QtyToTrack then
@@ -434,7 +434,7 @@ codeunit 50106 "TFB Purchase Order Mgmt"
                     if QtyTracked = QtyToTrack then
                         LotStatus := LotStatus::ExistsNoIssue;
 
-            If IssueFlagged then
+            if IssueFlagged then
                 LotStatus := LotStatus::ExistsWithIssue;
         end
         else

@@ -53,7 +53,7 @@ pageextension 50104 "TFB BankAccountList" extends "Bank Account List" //371
                 DrillDown = true;
                 ToolTip = 'Specifies last statement no';
 
-                Trigger OnDrillDown()
+                trigger OnDrillDown()
 
                 var
                     Stmt: Record "Bank Account Statement";
@@ -65,7 +65,7 @@ pageextension 50104 "TFB BankAccountList" extends "Bank Account List" //371
                     Stmt.SetRange("Bank Account No.", Rec."Bank Account No.");
                     Stmt.SetRange("Statement No.", Rec."Last Statement No.");
 
-                    If Stmt.FindFirst() then begin
+                    if Stmt.FindFirst() then begin
 
                         StmtPage.SetRecord(Stmt);
                         StmtPage.Run();

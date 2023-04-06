@@ -17,7 +17,7 @@ codeunit 50140 "TFB Pricing Calculations"
     begin
 
         LineTotalKg := NetWeight * QtyBase;
-        Exit(LineTotalKg);
+        exit(LineTotalKg);
     end;
 
     procedure CalcLineTotalKg(ItemNo: code[20]; UomCode: code[10]; Qty: decimal): Decimal;
@@ -39,26 +39,26 @@ codeunit 50140 "TFB Pricing Calculations"
 
         LineTotalKg := Weight * Qty * Multiplier;
 
-        Exit(LineTotalKg);
+        exit(LineTotalKg);
     end;
 
 
     procedure CalcPerKgFromUnit(UnitPrice: Decimal; Weight: Decimal): Decimal
 
     begin
-        If Weight > 0 then
-            Exit(UnitPrice / Weight)
+        if Weight > 0 then
+            exit(UnitPrice / Weight)
         else
-            Exit(0);
+            exit(0);
     end;
 
     procedure CalcUnitFromPerKg(PerKgPrice: Decimal; Weight: Decimal): Decimal
 
     begin
-        If Weight > 0 then
-            Exit(PerKgPrice * Weight)
+        if Weight > 0 then
+            exit(PerKgPrice * Weight)
         else
-            Exit(0);
+            exit(0);
     end;
 
     procedure CalculateUnitPriceByPriceUnit(ItemNo: code[20]; UomCode: code[10]; PriceUnit: enum "TFB Price Unit"; PriceByPriceUnit: decimal) Value: Decimal;
@@ -71,10 +71,10 @@ codeunit 50140 "TFB Pricing Calculations"
         Weight: Decimal;
 
     begin
-        If not Item.Get(ItemNo) then exit(0);
+        if not Item.Get(ItemNo) then exit(0);
         Weight := Item."Net Weight";
 
-        If UomCode <> '' then
+        if UomCode <> '' then
             UOM.Get(UomCode)
         else
             UOM.Get(Item."Base Unit of Measure");
@@ -93,7 +93,7 @@ codeunit 50140 "TFB Pricing Calculations"
                 PriceUnit::UNIT:
                     UnitPrice := PriceByPriceUnit;
             end;
-            EXIT(UnitPrice);
+            exit(UnitPrice);
 
         end;
     end;
@@ -110,14 +110,14 @@ codeunit 50140 "TFB Pricing Calculations"
 
 
     begin
-        If not Item.Get(ItemNo) then exit(0);
+        if not Item.Get(ItemNo) then exit(0);
         Weight := Item."Net Weight";
-        If UomCode <> '' then
+        if UomCode <> '' then
             UOM.Get(UomCode)
         else
             UOM.Get(Item."Base Unit of Measure");
 
-        If ItemUOM.Get(Item."No.", UOM.Code) then
+        if ItemUOM.Get(Item."No.", UOM.Code) then
             Multiplier := ItemUOM."Qty. per Unit of Measure"
         else
             Multiplier := 1;
@@ -134,7 +134,7 @@ codeunit 50140 "TFB Pricing Calculations"
                 PriceUnit::UNIT:
                     PriceByPriceUnit := UnitPrice;
             end;
-            EXIT(PriceByPriceUnit);
+            exit(PriceByPriceUnit);
 
         end;
     end;
@@ -149,11 +149,11 @@ codeunit 50140 "TFB Pricing Calculations"
         QtyPriceUnit: Decimal;
         Weight: Decimal;
     begin
-        If not Item.Get(ItemNo) then exit(0);
+        if not Item.Get(ItemNo) then exit(0);
 
         Weight := Item."Net Weight";
         UOM.Get(item."Base Unit of Measure");
-        If ItemUOM.Get(Item."No.", UOM.Code) then
+        if ItemUOM.Get(Item."No.", UOM.Code) then
             Multiplier := ItemUOM."Qty. per Unit of Measure"
         else
             Multiplier := 1;
@@ -171,13 +171,13 @@ codeunit 50140 "TFB Pricing Calculations"
                 Vendor."TFB Vendor Price Unit"::UNIT:
                     QtyPriceUnit := QtyByBaseUnit
             end;
-            EXIT(QtyPriceUnit);
+            exit(QtyPriceUnit);
 
         end;
     end;
 
 
-    Procedure GetVendorZoneRate(VendorNo: Code[20]; ItemNo: Code[20]; ZoneCode: Code[20]): Decimal
+    procedure GetVendorZoneRate(VendorNo: Code[20]; ItemNo: Code[20]; ZoneCode: Code[20]): Decimal
 
     var
         VendorZoneRate: Record "TFB Vendor Zone Rate";
@@ -196,7 +196,7 @@ codeunit 50140 "TFB Pricing Calculations"
         VendorZoneRate.SetRange("Sales Code", ItemNo);
 
 
-        If VendorZoneRate.FindFirst() then
+        if VendorZoneRate.FindFirst() then
             //Found item specific rate and should use this
             RatePerUnit := CalculateUnitPriceByPriceUnit(ItemNo, item."Base Unit of Measure", VendorZoneRate."Rate Type", VendorZoneRate."Surcharge Rate")
 
@@ -208,7 +208,7 @@ codeunit 50140 "TFB Pricing Calculations"
             VendorZoneRate.SetRange("Zone Code", ZoneCode);
             VendorZoneRate.SetRange("Sales Type", VendorZoneRate."Sales Type"::All);
 
-            If VendorZoneRate.FindFirst() then
+            if VendorZoneRate.FindFirst() then
                 //Found general postzone rate
                  RatePerUnit := CalculateUnitPriceByPriceUnit(ItemNo, item."Base Unit of Measure", VendorZoneRate."Rate Type", VendorZoneRate."Surcharge Rate")
 
@@ -223,7 +223,7 @@ codeunit 50140 "TFB Pricing Calculations"
 
         end;
 
-        Exit(RatePerUnit);
+        exit(RatePerUnit);
     end;
 
     internal procedure CheckPriceHealthOnPriceList(Rec: Record "Price List Header")

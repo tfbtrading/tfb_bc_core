@@ -10,7 +10,7 @@ page 50163 "TFB Forex Ledger Lines"
     InsertAllowed = true;
     LinksAllowed = true;
     DelayedInsert = true;
-    SourceTableView = Where(EntryType = const(Assignment));
+    SourceTableView = where(EntryType = const(Assignment));
 
 
     layout
@@ -67,7 +67,7 @@ page 50163 "TFB Forex Ledger Lines"
                     trigger OnValidate()
 
                     begin
-                        If Rec."Entry No." <> 0 then
+                        if Rec."Entry No." <> 0 then
                             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
                     end;
 
@@ -191,7 +191,7 @@ page 50163 "TFB Forex Ledger Lines"
     var
 
     begin
-        Exit(Rec."Currency Code");
+        exit(Rec."Currency Code");
 
     end;
 
@@ -206,7 +206,7 @@ page 50163 "TFB Forex Ledger Lines"
 
     procedure GetStyle(): Text
     begin
-        If Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id") = 0 then
+        if Rec.getRemainingAmountByAppliesToId(Rec."Applies-to id") = 0 then
             exit('Favorable');
 
         exit('');
@@ -226,7 +226,7 @@ page 50163 "TFB Forex Ledger Lines"
         if ForexMgmtEntryTemp.CalcSums("Original Amount") then
             TotalBalance := ForexMgmtEntryTemp."Original Amount";
 
-        If ForexMgmtEntryTemp.FindSet() then
+        if ForexMgmtEntryTemp.FindSet() then
             repeat
                 TotalRemaining += ForexMgmtEntryTemp.getRemainingAmount(ForexMgmtEntryTemp."Entry No.");
             until ForexMgmtEntryTemp.Next() = 0;
@@ -241,7 +241,7 @@ page 50163 "TFB Forex Ledger Lines"
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Entry No." <> 0 then
+        if Rec."Entry No." <> 0 then
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 

@@ -22,7 +22,7 @@ pageextension 50159 "TFB Value Entries" extends "Value Entries"
 
     actions
     {
-        Addafter("Ent&ry")
+        addafter("Ent&ry")
         {
             action(TFBItemLedger)
             {
@@ -56,7 +56,7 @@ pageextension 50159 "TFB Value Entries" extends "Value Entries"
         Item: record Item;
 
     begin
-        If Rec."Cost per Unit" > 0 then begin
+        if Rec."Cost per Unit" > 0 then begin
             Item.Get(Rec."Item No.");
             _PricePerKg := PriceCU.CalcPerKgFromUnit(Rec."Cost per Unit", Item."Net Weight");
         end;

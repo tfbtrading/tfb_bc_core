@@ -46,7 +46,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -156,9 +156,9 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
                     Line.SetRange("Document No.", Rec."No.");
                     Line.SetRange("Document Type", Rec."Document Type");
 
-                    If Line.Findset(true) then
+                    if Line.Findset(true) then
                         repeat
-                            If not Line.AssignedItemCharge() then
+                            if not Line.AssignedItemCharge() then
                                 PurchInvMgmt.CheckAndRetrieveAssignmentLines(Line, true);
                         until Rec.Next() < 1;
                 end;
@@ -187,7 +187,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         Vendor: Record Vendor;
 
     begin
-        If Rec."Incoming Document Entry No." > 0 then
+        if Rec."Incoming Document Entry No." > 0 then
             InboundExists := true
         else
             InboundExists := false;
@@ -195,7 +195,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         _VendorCanChargeAssignment := false;
 
         if Vendor.Get(Rec."Buy-from Vendor No.") then
-            If Vendor."TFB Vendor Type" = Enum::"TFB Vendor Type"::SUPPLYCHAIN then
+            if Vendor."TFB Vendor Type" = Enum::"TFB Vendor Type"::SUPPLYCHAIN then
                 _VendorCanChargeAssignment := true;
     end;
 
@@ -205,26 +205,26 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         DataChanged: Boolean;
 
     begin
-        If InboundExists then
-            If ICDoc.Get(Rec."Incoming Document Entry No.") then
-                If ICDOc."OCR Status" = ICDoc."OCR Status"::Success then begin
+        if InboundExists then
+            if ICDoc.Get(Rec."Incoming Document Entry No.") then
+                if ICDOc."OCR Status" = ICDoc."OCR Status"::Success then begin
 
-                    If ICDoc."Vendor Invoice No." <> '' then
+                    if ICDoc."Vendor Invoice No." <> '' then
                         Rec.Validate("Vendor Invoice No.", ICDOc."Vendor Invoice No.");
 
-                    If ICDoc."Document Date" > 0D then begin
+                    if ICDoc."Document Date" > 0D then begin
                         Rec.Validate("Posting Date", ICDoc."Document Date");
                         Rec.Validate("Document Date", ICDoc."Document Date");
                     end;
-                    If ICDoc."Due Date" > 0D then
+                    if ICDoc."Due Date" > 0D then
                         if Rec."Due Date" <> ICDoc."Due Date" then
-                            If Dialog.Confirm('Do you want to override current date %1, with incoming doc date %2.', false, Rec."Due Date", ICDoc."Due Date") then
+                            if Dialog.Confirm('Do you want to override current date %1, with incoming doc date %2.', false, Rec."Due Date", ICDoc."Due Date") then
                                 Rec."Due Date" := ICDOc."Due Date";
 
                     DataChanged := true;
                 end;
 
-        If DataChanged then
+        if DataChanged then
             DataCopiedFromIC := '⚡'
         else
             DataCopiedFromIC := '';
@@ -249,7 +249,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         Clear(Result);
 
         Reference := PurchInvCU.ExtractReference(Rec."TFB Charge Assignment", TokenClass);
-        If Reference <> '' then
+        if Reference <> '' then
             case TokenClass of
                 TokenClass::"Purchase Order":
                     _AssigmentIsValid := PurchInvCU.IsPOTokenValid(Reference);
@@ -271,10 +271,10 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 }

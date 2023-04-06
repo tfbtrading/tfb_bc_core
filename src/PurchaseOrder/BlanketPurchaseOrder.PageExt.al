@@ -45,7 +45,7 @@ pageextension 50122 "TFB Blanket Purchase Order" extends "Blanket Purchase Order
                         begin
                             BlanketSO.SetRange("Document Type", Rec."Document Type"::"Blanket Order");
 
-                            If Page.RunModal(9303, BlanketSO) = ACTION::LookupOK then
+                            if Page.RunModal(9303, BlanketSO) = ACTION::LookupOK then
                                 Rec."TFB Sales Blanket Order No." := BlanketSO."No.";
 
                         end;
@@ -79,7 +79,7 @@ pageextension 50122 "TFB Blanket Purchase Order" extends "Blanket Purchase Order
                     BlanketRec.SetRange("Document Type", BlanketRec."Document Type"::"Blanket Order");
                     BlanketRec.SetRange("No.", Rec."TFB Sales Blanket Order No.");
 
-                    If BlanketRec.FindFirst() then begin
+                    if BlanketRec.FindFirst() then begin
                         BlanketSO.SetRecord(BlanketRec);
                         BlanketSO.Run();
                     end;

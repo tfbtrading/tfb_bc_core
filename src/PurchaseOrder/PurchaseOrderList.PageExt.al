@@ -45,7 +45,7 @@ pageextension 50218 "TFB Purchase Order List" extends "Purchase Order List"
         }
         addafter(Status)
         {
-            Field("No. Printed"; Rec."No. Printed")
+            field("No. Printed"; Rec."No. Printed")
             {
                 ApplicationArea = All;
                 Caption = 'No. Printed or Emailed';

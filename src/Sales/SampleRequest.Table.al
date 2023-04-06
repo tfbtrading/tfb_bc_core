@@ -19,7 +19,7 @@ table 50115 "TFB Sample Request"
                 Customer: Record Customer;
             begin
                 Customer.SetLoadFields("No.", Name);
-                If Customer.Get(Rec."Sell-to Customer No.") then
+                if Customer.Get(Rec."Sell-to Customer No.") then
                     Rec."Sell-to Customer Name" := Customer.Name;
 
             end;
@@ -57,8 +57,8 @@ table 50115 "TFB Sample Request"
         field(5055; "Opportunity No."; Code[20])
         {
             Caption = 'Opportunity No.';
-            TableRelation = Opportunity."No." WHERE("Contact No." = FIELD("Sell-to Contact No."),
-                                                                                          Closed = CONST(false));
+            TableRelation = Opportunity."No." where("Contact No." = field("Sell-to Contact No."),
+                                                                                          Closed = const(false));
 
             trigger OnValidate()
             begin
@@ -91,8 +91,8 @@ table 50115 "TFB Sample Request"
                     if InitFromContact("Sell-to Contact No.", FieldCaption("Sell-to Contact No.")) then
                         exit;
 
-                    If Cont."Company No." <> '' then
-                        If ContBusinessRelation.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Cont."Company No.") then
+                    if Cont."Company No." <> '' then
+                        if ContBusinessRelation.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Cont."Company No.") then
                             Validate("Sell-to Customer No.", ContBusinessRelation."No.");
 
 
@@ -181,9 +181,9 @@ table 50115 "TFB Sample Request"
         field(83; "City"; Text[50])
         {
             Caption = 'Ship-to City';
-            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code".City
-            ELSE
-            IF ("Country/Region Code" = FILTER(<> '')) "Post Code".City WHERE("Country/Region Code" = FIELD("Country/Region Code"));
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code".City
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code".City where("Country/Region Code" = field("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -223,9 +223,9 @@ table 50115 "TFB Sample Request"
         field(88; "Post Code"; Code[20])
         {
             Caption = 'Ship-to Post Code';
-            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code"
-            ELSE
-            IF ("Country/Region Code" = FILTER(<> '')) "Post Code" WHERE("Country/Region Code" = FIELD("Country/Region Code"));
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code"
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code" where("Country/Region Code" = field("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -308,11 +308,11 @@ table 50115 "TFB Sample Request"
                 Lines: Record "TFB Sample Request Line";
 
             begin
-                If Status = Status::Sent then begin
+                if Status = Status::Sent then begin
                     Closed := true;
                     Lines.SetRange("Document No.", "No.");
 
-                    If Lines.FindFirst() then
+                    if Lines.FindFirst() then
                         repeat
 
                             Lines."Line Status" := Lines."Line Status"::Sent;
@@ -620,7 +620,7 @@ table 50115 "TFB Sample Request"
         "Order Date" := WorkDate();
 
 
-        IF "Sell-to Customer No." <> '' THEN
+        if "Sell-to Customer No." <> '' then
             GetCust("Sell-to Customer No.");
 
 
@@ -639,7 +639,7 @@ table 50115 "TFB Sample Request"
 
     trigger OnInsert()
     begin
-        If "No." = '' then
+        if "No." = '' then
             NoSeriesMgt.InitSeries(GetNoSeriesCode(), xRec."No. Series", 0D, "No.", "No. Series");
 
 

@@ -121,7 +121,7 @@ page 50169 "TFB APIV2 - Lot Images"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        If not Rec.InitFromItemLedgerEntryID(Rec."Item Ledger Entry ID") then
+        if not Rec.InitFromItemLedgerEntryID(Rec."Item Ledger Entry ID") then
             error('No valid item ledger entry identifier provided');
         Rec."Import Sequence No." := Rec.GetNextSequence();
     end;

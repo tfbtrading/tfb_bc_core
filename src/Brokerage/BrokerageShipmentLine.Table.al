@@ -29,12 +29,12 @@ table 50227 "TFB Brokerage Shipment Line"
                 UoM: record "Unit of Measure";
 
             begin
-                If Item.Get("Item No.") then begin
+                if Item.Get("Item No.") then begin
                     Description := Item.Description;
                     "Net Weight" := Item."Net Weight";
                     "Unit Of Measure Code" := Item."Base Unit of Measure";
 
-                    If UoM.Get(Item."Base Unit of Measure") then
+                    if UoM.Get(Item."Base Unit of Measure") then
                         "Unit Of Measure" := UoM.Description;
                 end;
             end;
@@ -72,8 +72,8 @@ table 50227 "TFB Brokerage Shipment Line"
 
             begin
 
-                If BrokerageShipment.Get(Rec."Document No.") and Item.Get(Rec."Item No.") then
-                    If BrokerageShipment.Bulkers then
+                if BrokerageShipment.Get(Rec."Document No.") and Item.Get(Rec."Item No.") then
+                    if BrokerageShipment.Bulkers then
                         Rec.Validate(Quantity, (BrokerageShipment."Bulker Weight (mt)" * 1000 * Rec.BulkerQuantity) / Item."Net Weight");
 
 
@@ -176,7 +176,7 @@ table 50227 "TFB Brokerage Shipment Line"
 
     begin
 
-        If Header.get("Document No.") then
+        if Header.get("Document No.") then
             "Contract No." := Header."Contract No.";
 
     end;

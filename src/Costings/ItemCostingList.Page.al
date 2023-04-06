@@ -237,9 +237,9 @@ page 50347 "TFB Item Costing List"
 
                 begin
 
-                    UpdateExchRate := True;
-                    UpdateMargins := False;
-                    UpdatePrices := False;
+                    UpdateExchRate := true;
+                    UpdateMargins := false;
+                    UpdatePrices := false;
                     CodeUnitCosting.UpdateCurrentCostingsDetails(UpdateExchRate, UpdateMargins, UpdatePrices);
 
                 end;

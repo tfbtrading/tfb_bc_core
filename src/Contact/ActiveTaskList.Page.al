@@ -138,9 +138,9 @@ page 50131 "TFB Active Task List"
                     Caption = 'Co&mment';
                     Image = ViewComments;
                     RunObject = Page "Rlshp. Mgt. Comment Sheet";
-                    RunPageLink = "Table Name" = CONST("To-do"),
-                                  "No." = FIELD("Organizer To-do No."),
-                                  "Sub No." = CONST(0);
+                    RunPageLink = "Table Name" = const("To-do"),
+                                  "No." = field("Organizer To-do No."),
+                                  "Sub No." = const(0);
                     ToolTip = 'View or add comments.';
                 }
                 action("Interaction Log E&ntries")
@@ -149,8 +149,8 @@ page 50131 "TFB Active Task List"
                     Caption = 'Interaction Log E&ntries';
                     Image = InteractionLog;
                     RunObject = Page "Interaction Log Entries";
-                    RunPageLink = "To-do No." = FIELD("Organizer To-do No.");
-                    RunPageView = SORTING("To-do No.");
+                    RunPageLink = "To-do No." = field("Organizer To-do No.");
+                    RunPageView = sorting("To-do No.");
                     ShortCutKey = 'Ctrl+F7';
                     ToolTip = 'View interaction log entries for the task.';
                 }
@@ -160,8 +160,8 @@ page 50131 "TFB Active Task List"
                     Caption = 'Postponed &Interactions';
                     Image = PostponedInteractions;
                     RunObject = Page "Postponed Interactions";
-                    RunPageLink = "To-do No." = FIELD("Organizer To-do No.");
-                    RunPageView = SORTING("To-do No.");
+                    RunPageLink = "To-do No." = field("Organizer To-do No.");
+                    RunPageView = sorting("To-do No.");
                     ToolTip = 'View postponed interactions for the task.';
                 }
                 action("A&ttendee Scheduling")

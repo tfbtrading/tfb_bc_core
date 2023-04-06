@@ -10,14 +10,14 @@ table 50226 "TFB Brokerage Shipment"
             DataClassification = CustomerContent;
             trigger OnValidate()
 
-            BEGIN
-                IF "No." <> xRec."No." THEN BEGIN
+            begin
+                if "No." <> xRec."No." then begin
                     CoreSetup.GET();
                     NoSeriesMgt.TestManual(CoreSetup."Brokerage Shipment Nos.");
                     "No. Series" := '';
                     NoSeriesMgt.SetSeries("No.");
 
-                END;
+                end;
             end;
         }
         field(2; "No. Series"; Code[20])
@@ -169,7 +169,7 @@ table 50226 "TFB Brokerage Shipment"
                 ContainerRoute: Record "TFB Container Route";
 
             begin
-                If ContainerRoute.Get("Container Route") then
+                if ContainerRoute.Get("Container Route") then
                     "Destination Port" := ContainerRoute."Ship To";
 
             end;
@@ -313,7 +313,7 @@ table 50226 "TFB Brokerage Shipment"
             "Customer Name" := BrokerageContract."Customer Name";
             Validate("Container Route", BrokerageContract."Container Route");
 
-            If Customer.Get("Customer No.") then begin
+            if Customer.Get("Customer No.") then begin
                 //Set default billing address
                 "Sell-to Address" := Customer.Address;
                 "Sell-to City" := Customer.City;
@@ -323,7 +323,7 @@ table 50226 "TFB Brokerage Shipment"
                 "Sell-to Phone No." := Customer."Phone No.";
             end;
 
-            If Vendor.Get("Buy From Vendor No.") then
+            if Vendor.Get("Buy From Vendor No.") then
                 "Shipping Agent Code" := Vendor."Shipping Agent Code";
         end;
 
@@ -332,14 +332,14 @@ table 50226 "TFB Brokerage Shipment"
 
     trigger OnInsert()
     begin
-        If "No." = '' then begin
+        if "No." = '' then begin
 
             CoreSetup.Get();
             CoreSetup.TestField("Brokerage Shipment Nos.");
             NoSeriesMgt.InitSeries(CoreSetup."Brokerage Shipment Nos.", Rec."No. Series", 0D, "No.", "No. Series");
         end
         else
-            If "Document Date" = 0D then
+            if "Document Date" = 0D then
                 "Document Date" := WorkDate();
 
     end;

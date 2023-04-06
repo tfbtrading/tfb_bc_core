@@ -105,7 +105,7 @@ page 50240 "TFB Brokerage Contract"
                     Importance = Promoted;
                     ToolTip = 'Specifies external ref. no';
                 }
-                Field("Crop Year"; Rec."Crop Year")
+                field("Crop Year"; Rec."Crop Year")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies crop year';
@@ -366,7 +366,7 @@ page 50240 "TFB Brokerage Contract"
         ShipmentMethod: Record "Shipment Method";
 
     begin
-        If ShipmentMethod.Get(Rec."Shipping Method Code") then
+        if ShipmentMethod.Get(Rec."Shipping Method Code") then
             FreightExtra := ShipmentMethod."TFB Freight Exclusive";
 
     end;
@@ -404,7 +404,7 @@ page 50240 "TFB Brokerage Contract"
         BlobRef := PersistBlobCU.Create();
         TempBlob.CreateInStream(IStream);
 
-        If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
+        if PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
             Rec."Contract Attach." := BlobRef;
 
         rec.Modify();
@@ -430,8 +430,8 @@ page 50240 "TFB Brokerage Contract"
     begin
 
 
-        If Rec."Contract Attach." > 0 then
-            If PersistentBlob.Exists(Rec."Contract Attach.") then begin
+        if Rec."Contract Attach." > 0 then
+            if PersistentBlob.Exists(Rec."Contract Attach.") then begin
                 FileNameBuilder.Append('Contract_');
                 FileNameBuilder.Append(Rec."No.");
                 FileNameBuilder.Append('.pdf');
@@ -440,7 +440,7 @@ page 50240 "TFB Brokerage Contract"
                 TempBlob.CreateOutStream(OutStream);
                 PersistentBlob.CopyToOutStream(Rec."Contract Attach.", OutStream);
                 CopyStream(OutStream, InStream);
-                If Not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
+                if not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
                     Error('File Not Downloaded');
             end;
     end;
@@ -453,7 +453,7 @@ page 50240 "TFB Brokerage Contract"
         PersistentBlob: Codeunit "Persistent Blob";
     begin
 
-        If Rec."Contract Attach." > 0 then
+        if Rec."Contract Attach." > 0 then
             if PersistentBlob.Exists(Rec."Contract Attach.") then begin
                 Clear(Rec."Contract Attach.");
                 PersistentBlob.Delete(Rec."Contract Attach.");
@@ -472,7 +472,7 @@ page 50240 "TFB Brokerage Contract"
 
     begin
         _contractAttached := PersistentBlob.Exists(Rec."Contract Attach.");
-        Exit(_contractAttached);
+        exit(_contractAttached);
 
     end;
 

@@ -36,14 +36,14 @@ codeunit 50225 "TFB Cust. Collections Mgmt"
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
         if CustLedgerEntry.Findset(false) then
             repeat
-                If CustLedgerEntry."Document Type" = CustLedgerEntry."Document Type"::Invoice then
-                    If CustInvoice.get(CustLedgerEntry."Document No.") then begin
+                if CustLedgerEntry."Document Type" = CustLedgerEntry."Document Type"::Invoice then
+                    if CustInvoice.get(CustLedgerEntry."Document No.") then begin
                         clear(TempBlob);
                         RecordRef.GetTable(CustInvoice);
 
                         Customer.SetLoadFields("E-Mail");
                         Customer.Get(CustLedgerEntry."Sell-to Customer No.");
-                        If not Recipients.Contains(Customer."E-Mail") then
+                        if not Recipients.Contains(Customer."E-Mail") then
                             Recipients.Add(Customer."E-Mail"); //TODO Add in logic to check for who gets invoices
 
                         // Check for custom report layours
@@ -52,23 +52,23 @@ codeunit 50225 "TFB Cust. Collections Mgmt"
                         CustomReportSelection.SetRange("Source Type", Database::Customer);
                         CustomReportSelection.SetRange("Use for Email Attachment", true);
                         TempBlob.CreateOutStream();
-                        If CustomReportSelection.FindFirst() then
-                            If Report.SaveAs(CustomReportSelection."Report ID", '', ReportFormat::Pdf, OutStream, RecordRef) then
+                        if CustomReportSelection.FindFirst() then
+                            if Report.SaveAs(CustomReportSelection."Report ID", '', ReportFormat::Pdf, OutStream, RecordRef) then
                                 AttachmentGenerated := true;
 
-                        If not AttachmentGenerated then begin
+                        if not AttachmentGenerated then begin
                             ReportSelections.SetRange(Usage, Enum::"Report Selection Usage"::"S.Invoice");
                             ReportSelections.SetRange("Use for Email Attachment", true);
 
-                            If ReportSelections.FindFirst() then
-                                If Report.SaveAs(ReportSelections."Report ID", '', ReportFormat::Pdf, OutStream, RecordRef) then
+                            if ReportSelections.FindFirst() then
+                                if Report.SaveAs(ReportSelections."Report ID", '', ReportFormat::Pdf, OutStream, RecordRef) then
                                     AttachmentGenerated := true;
 
                         end;
 
 
 
-                        If TempBlob.HasValue() then begin
+                        if TempBlob.HasValue() then begin
                             Clear(FileNameBuilder);
                             FileNameBuilder.Append('Copy of ' + CustInvoice.GetDefaultEmailDocumentName());
                             TempBlob.CreateInStream(InStream);

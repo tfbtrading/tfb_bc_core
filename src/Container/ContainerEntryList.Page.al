@@ -67,7 +67,7 @@ page 50211 "TFB Container Entry List"
                 field("Quarantine Reference"; Rec."Quarantine Reference")
                 {
                     ApplicationArea = All;
-                    Editable = True;
+                    Editable = true;
                     Tooltip = 'Specifies quarantine reference';
                 }
                 field("Shipping Line"; Rec."Shipping Line")
@@ -213,7 +213,7 @@ page 50211 "TFB Container Entry List"
         Clear(_QtyReserved);
         Rec.CalcFields("Qty. On Purch. Rcpt");
 
-        If rec.Type = rec.type::PurchaseOrder then
+        if rec.Type = rec.type::PurchaseOrder then
             if rec."Qty. On Purch. Rcpt" > 0 then
                 ContainerCU.PopulateReceiptLines(rec, TempContainerContents)
             else
@@ -230,7 +230,7 @@ page 50211 "TFB Container Entry List"
     end;
 
 
-    Local Procedure GetOrderLines(): Text
+    local procedure GetOrderLines(): Text
 
     var
 
@@ -238,7 +238,7 @@ page 50211 "TFB Container Entry List"
 
     begin
 
-        If TempContainerContents.Findset(false) then
+        if TempContainerContents.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 (%2) - %3', TempContainerContents."Item Description", TempContainerContents."Item Code", TempContainerContents.Quantity));
@@ -252,13 +252,13 @@ page 50211 "TFB Container Entry List"
 
         case Rec.Status of
             Rec.Status::PendingClearance:
-                If (Rec."Inspection Req." = true) and (Rec."Inspection Date" = 0D) then
+                if (Rec."Inspection Req." = true) and (Rec."Inspection Date" = 0D) then
                     StatusAttention := true
                 else
                     StatusAttention := false;
 
             Rec.Status::PendingTreatment:
-                If (Rec."Fumigation Req." = true) and (Rec."Fumigation Date" = 0D) then
+                if (Rec."Fumigation Req." = true) and (Rec."Fumigation Date" = 0D) then
                     StatusAttention := true
                 else
                     StatusAttention := false;

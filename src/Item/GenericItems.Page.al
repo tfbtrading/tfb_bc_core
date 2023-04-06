@@ -100,11 +100,11 @@ page 50133 "TFB Generic Items"
                 begin
                     MarketSegmentList.LookupMode(true);
                     MarketSegmentRec.SetFilter(SystemId, BuildExclusionFilter(Rec.SystemId));
-                    If MarketSegmentRec.Count > 0 then begin
+                    if MarketSegmentRec.Count > 0 then begin
                         MarketSegmentList.SetTableView(MarketSegmentRec);
-                        If MarketSegmentList.RunModal() = Action::LookupOK then begin
+                        if MarketSegmentList.RunModal() = Action::LookupOK then begin
                             MarketSegmentList.SetSelectionFilter(MarketSegmentSelRec);
-                            If MarketSegmentSelRec.Count > 1 then
+                            if MarketSegmentSelRec.Count > 1 then
                                 repeat
                                     ValidateNewSegment(MarketSegmentSelRec.Title);
 
@@ -157,11 +157,11 @@ page 50133 "TFB Generic Items"
 
     begin
 
-        If Title = '' then exit;
+        if Title = '' then exit;
 
         MarketSegmentRec.SetRange(Title, Title);
-        If MarketSegmentRec.FindFirst() then begin
-            If not MarketSegmentRel.get(Rec.SystemId, MarketSegmentRec.SystemId) then begin
+        if MarketSegmentRec.FindFirst() then begin
+            if not MarketSegmentRel.get(Rec.SystemId, MarketSegmentRec.SystemId) then begin
                 MarketSegmentRel.Init();
                 MarketSegmentRel.GenericItemID := Rec.SystemId;
                 MarketSegmentRel.ProductMarketSegmentID := MarketSegmentRec.SystemId;
@@ -183,11 +183,11 @@ page 50133 "TFB Generic Items"
     begin
 
         MarketSegmentRel.SetRange(GenericItemID, SystemId);
-        If MarketSegmentRel.Findset(false) then
+        if MarketSegmentRel.Findset(false) then
             repeat
-                If FilterExpr.Length > 0 then FilterExpr.Append('&');
+                if FilterExpr.Length > 0 then FilterExpr.Append('&');
                 FilterExpr.Append(StrSubstNo('<>%1', MarketSegmentRel.ProductMarketSegmentID));
             until MarketSegmentRel.Next() = 0;
-        Exit(FilterExpr.ToText());
+        exit(FilterExpr.ToText());
     end;
 }

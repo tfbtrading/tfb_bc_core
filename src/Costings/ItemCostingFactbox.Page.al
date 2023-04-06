@@ -179,10 +179,10 @@ page 50102 "TFB Item Costing Factbox"
         ItemCosting.SetRange("Costing Type", ItemCosting."Costing Type"::Standard);
 
 
-        If ItemCosting.FindFirst() then begin
+        if ItemCosting.FindFirst() then begin
             _CurrentLandedCost := CCU.GetCurrentItemCost(rec, ItemCosting);
             ItemCosting.CalcFields("Vendor Currency");
-            If ItemCosting."Vendor Currency" <> '' then
+            if ItemCosting."Vendor Currency" <> '' then
                 _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost * ItemCosting."Exch. Rate"
             else
                 _CurrentLandedCostInPurchaseCurr := _CurrentLandedCost;

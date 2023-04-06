@@ -74,7 +74,7 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
         Clear(LastChangedDateVar);
 
 
-        If CoreSetup."Def. Customer Price Group" <> '' then begin
+        if CoreSetup."Def. Customer Price Group" <> '' then begin
 
             PriceListLine.SetRange("Asset No.", Rec."No.");
             PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
@@ -84,7 +84,7 @@ pageextension 50166 "TFB Item Lookup" extends "Item Lookup"
             PriceListLine.SetRange("Ending Date", 0D);
 
 
-            If PriceListLine.FindLast() then begin
+            if PriceListLine.FindLast() then begin
                 SalesPriceVar := PricingCU.CalcPerKgFromUnit(PriceListLine."Unit Price", Rec."Net Weight");
                 LastChangedDateVar := PriceListLine."Starting Date";
             end;

@@ -83,7 +83,7 @@ page 50123 "TFB Purch. Inv. Line Factbox"
 
         if Rec."Receipt No." <> '' then begin
             _SourcedFrom := true;
-            If ReceiptLine.Get(Rec."Receipt No.", Rec."Receipt Line No.") then begin
+            if ReceiptLine.Get(Rec."Receipt No.", Rec."Receipt Line No.") then begin
 
                 _OrderNo := ReceiptLine."Order No.";
                 _SalesOrderNo := PurchRcptCU.GetSalesOrderReferenceFromReceiptLine(ReceiptLine);

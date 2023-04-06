@@ -26,10 +26,10 @@ codeunit 50100 "TFB Lot Info Mgmt"
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
 
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
             TempBlob.CreateInStream(InStream);
             BlobKey := PersBlobCU.Create();
-            If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
+            if PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
 
                 case IDT of
                     IDT::COA:
@@ -39,7 +39,7 @@ codeunit 50100 "TFB Lot Info Mgmt"
                 end;
 
                 LotInfo.Modify();
-                Exit(BlobKey);
+                exit(BlobKey);
             end;
         end;
     end;
@@ -74,13 +74,13 @@ codeunit 50100 "TFB Lot Info Mgmt"
 
         end;
 
-        If (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
+        if (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
 
             TempBlobCU.CreateOutStream(OutStream);
             TempBlobCU.CreateInStream(InStream);
             PersBlobCU.CopyToOutStream(Ref, OutStream);
             CopyStream(OutStream, InStream);
-            If Not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
+            if not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
                 Error('File Not Downloaded');
         end;
     end;
@@ -95,7 +95,7 @@ codeunit 50100 "TFB Lot Info Mgmt"
         FileNameBuilder.Append('_');
         FileNameBuilder.Append(rec."Lot No.");
         FileNameBuilder.Append('.pdf');
-        Exit(FileNameBuilder.ToText());
+        exit(FileNameBuilder.ToText());
     end;
 
     procedure GetOPCFileName(Rec: Record "Lot No. Information"): Text
@@ -108,7 +108,7 @@ codeunit 50100 "TFB Lot Info Mgmt"
         FileNameBuilder.Append('_');
         FileNameBuilder.Append(rec."Lot No.");
         FileNameBuilder.Append('.pdf');
-        Exit(FileNameBuilder.ToText());
+        exit(FileNameBuilder.ToText());
     end;
 
 
@@ -131,7 +131,7 @@ codeunit 50100 "TFB Lot Info Mgmt"
 
         end;
 
-        If PersBlobCU.Delete(Ref) then begin
+        if PersBlobCU.Delete(Ref) then begin
             case IDT of
                 IDT::COA:
                     LotInfo."TFB CoA Attach." := 0;
@@ -141,7 +141,7 @@ codeunit 50100 "TFB Lot Info Mgmt"
 
             end;
             LotInfo.Modify(false);
-            Exit(true);
+            exit(true);
         end;
     end;
 

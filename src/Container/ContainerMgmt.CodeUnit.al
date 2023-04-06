@@ -19,13 +19,13 @@ codeunit 50200 "TFB Container Mgmt"
         Contents.DeleteAll();
         ContainerEntry.CalcFields("Qty. On Purch. Rcpt", "Qty. On Transfer Ship.", "Qty. On Transfer Rcpt", "Qty. On Transfer Order");
 
-        If not ContainerEntry.IsEmpty() then
+        if not ContainerEntry.IsEmpty() then
             case ContainerEntry.Type of
 
 
                 ContainerEntry.Type::"PurchaseOrder":
 
-                    If ContainerEntry."Qty. On Transfer Rcpt" > 0 then
+                    if ContainerEntry."Qty. On Transfer Rcpt" > 0 then
                         PopulateTransferLines(ContainerEntry, Contents)
                     else
                         if ContainerEntry."Qty. On Transfer Ship." > 0 then
@@ -59,7 +59,7 @@ codeunit 50200 "TFB Container Mgmt"
 
     begin
 
-        If not ContainerEntry.IsEmpty() then begin
+        if not ContainerEntry.IsEmpty() then begin
 
             ContainerEntry.CalcFields("Qty. On Transfer Rcpt", "Qty. On Transfer Ship.", "Qty. On Transfer Order", "Qty. On Purch. Rcpt");
             case ContainerEntry.Type of
@@ -67,19 +67,19 @@ codeunit 50200 "TFB Container Mgmt"
 
                 ContainerEntry.Type::"PurchaseOrder":
 
-                    If ContainerEntry."Qty. On Transfer Rcpt" > 0 then
-                        Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Receipt Line"))
+                    if ContainerEntry."Qty. On Transfer Rcpt" > 0 then
+                        exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Receipt Line"))
                     else
                         if ContainerEntry."Qty. On Transfer Ship." > 0 then
-                            Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Shipment Line"))
+                            exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Shipment Line"))
                         else
                             if ContainerEntry."Qty. On Transfer Order" > 0 then
-                                Exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Line"))
+                                exit(GetLocationByDocumentType(ContainerEntry, Database::"Transfer Line"))
                             else
                                 if ContainerENtry."Qty. On Purch. Rcpt" > 0 then
-                                    Exit(GetLocationByDocumentType(ContainerEntry, Database::"Purch. Rcpt. Line"))
+                                    exit(GetLocationByDocumentType(ContainerEntry, Database::"Purch. Rcpt. Line"))
                                 else
-                                    Exit(GetLocationByDocumentType(ContainerEntry, Database::"Purchase Line"))
+                                    exit(GetLocationByDocumentType(ContainerEntry, Database::"Purchase Line"))
 
 
             end;
@@ -106,8 +106,8 @@ codeunit 50200 "TFB Container Mgmt"
                     PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                     PurchaseLine.SetRange("Document No.", ContainerEntry."Order Reference");
                     PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-                    If PurchaseLine.FindFirst() and Location.Get(PurchaseLine."Location Code") then
-                        Exit(Location);
+                    if PurchaseLine.FindFirst() and Location.Get(PurchaseLine."Location Code") then
+                        exit(Location);
                 end;
 
             Database::"Transfer Line":
@@ -117,8 +117,8 @@ codeunit 50200 "TFB Container Mgmt"
                     TransferLine.SetFilter(Quantity, '>0');
 
 
-                    If TransferLine.FindFirst() and Location.Get(TransferLine."Transfer-to Code") then
-                        Exit(Location);
+                    if TransferLine.FindFirst() and Location.Get(TransferLine."Transfer-to Code") then
+                        exit(Location);
                 end;
 
             Database::"Transfer Shipment Line":
@@ -127,8 +127,8 @@ codeunit 50200 "TFB Container Mgmt"
                     TransferShipmentLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
                     TransferShipmentLine.SetFilter(Quantity, '>0');
 
-                    If TransferShipmentLine.FindFirst() and Location.Get(TransferShipmentLine."Transfer-to Code") then
-                        Exit(Location);
+                    if TransferShipmentLine.FindFirst() and Location.Get(TransferShipmentLine."Transfer-to Code") then
+                        exit(Location);
 
                 end;
             Database::"Transfer Receipt Line":
@@ -137,8 +137,8 @@ codeunit 50200 "TFB Container Mgmt"
                     TransferReceiptLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
                     TransferReceiptLine.SetFilter(Quantity, '>0');
 
-                    If TransferReceiptLine.FindFirst() and Location.Get(TransferReceiptLine."Transfer-to Code") then
-                        Exit(Location);
+                    if TransferReceiptLine.FindFirst() and Location.Get(TransferReceiptLine."Transfer-to Code") then
+                        exit(Location);
 
                 end;
             Database::"Purch. Rcpt. Line":
@@ -149,8 +149,8 @@ codeunit 50200 "TFB Container Mgmt"
                     ReceiptLine.SetFilter(Quantity, '>0');
 
                     //Get Header Defaults and Calculate Totals
-                    If ReceiptLine.FindFirst() and Location.Get(ReceiptLine."Location Code") then
-                        Exit(Location);
+                    if ReceiptLine.FindFirst() and Location.Get(ReceiptLine."Location Code") then
+                        exit(Location);
 
                 end;
 
@@ -177,7 +177,7 @@ codeunit 50200 "TFB Container Mgmt"
 
     begin
         GetContainerContents(TempContainerContents, ContainerEntry);
-        If TempContainerContents.FindSet() then
+        if TempContainerContents.FindSet() then
             repeat
                 Clear(LineLotNo);
 
@@ -190,13 +190,13 @@ codeunit 50200 "TFB Container Mgmt"
                             ReceiptLine.SetRange("Order Line No.", TempContainerContents.LineNo);
                             ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
 
-                            If ReceiptLine.FindFirst() then begin
+                            if ReceiptLine.FindFirst() then begin
 
                                 ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
                                 ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
                                 ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                                If ItemLedger.FindFirst() then begin
+                                if ItemLedger.FindFirst() then begin
 
                                     //Get Lot No
                                     LineLotNo := ItemLedger."Lot No.";
@@ -221,7 +221,7 @@ codeunit 50200 "TFB Container Mgmt"
                             ResEntry.SetRange("Item No.", TempContainerContents."Item Code");
                             ResEntry.SetFilter("Lot No.", '<>%1', '');
 
-                            If ResEntry.FindFirst() then
+                            if ResEntry.FindFirst() then
 
                                 //Get Lot No
                                 LineLotNo := ResEntry."Lot No.";
@@ -232,19 +232,19 @@ codeunit 50200 "TFB Container Mgmt"
                 end;
 
 
-                If LineLotNo <> '' then begin
+                if LineLotNo <> '' then begin
 
                     //Get Lot Info 
                     LotInfo.SetRange("Lot No.", LineLotNo);
                     LotInfo.SetRange("Item No.", TempContainerContents."Item Code");
 
-                    If LotInfo.FindFirst() then begin
+                    if LotInfo.FindFirst() then begin
 
-                        If Inspected then
+                        if Inspected then
                             LotInfo.Validate(Blocked, false)
                         else begin
                             LotInfo.Blocked := true;
-                            If ContainerEntry."Inspection Date" = 0D then
+                            if ContainerEntry."Inspection Date" = 0D then
                                 LotInfo."TFB Date Available" := CalcDate('-1D', ContainerEntry."Est. Warehouse")
                             else
                                 LotInfo."TFB Date Available" := ContainerEntry."Inspection Date";
@@ -292,7 +292,7 @@ codeunit 50200 "TFB Container Mgmt"
 
     begin
         GetContainerContents(TempLines, ContainerEntry);
-        If TempLines.FindSet() then
+        if TempLines.FindSet() then
             repeat
                 Clear(LineLotNo);
                 OrderNo := TempLines.OrderReference;
@@ -305,13 +305,13 @@ codeunit 50200 "TFB Container Mgmt"
                             ReceiptLine.SetRange("Order Line No.", TempLines.LineNo);
                             ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
 
-                            If ReceiptLine.FindFirst() then begin
+                            if ReceiptLine.FindFirst() then begin
 
                                 ItemLedgerEntry.SetRange("Entry Type", ItemLedgerEntry."Entry Type"::Purchase);
                                 ItemLedgerEntry.SetRange("Document No.", ReceiptLine."Document No.");
                                 ItemLedgerEntry.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                                If ItemLedgerEntry.FindFirst() then
+                                if ItemLedgerEntry.FindFirst() then
 
                                     //Get Lot No
                                     LineLotNo := ItemLedgerEntry."Lot No.";
@@ -334,7 +334,7 @@ codeunit 50200 "TFB Container Mgmt"
                             ResEntry.SetRange("Item No.", TempLines."Item Code");
                             ResEntry.SetFilter("Lot No.", '<>%1', '');
 
-                            If ResEntry.FindFirst() then
+                            if ResEntry.FindFirst() then
 
                                 //Get Lot No
                                 LineLotNo := ResEntry."Lot No.";
@@ -345,13 +345,13 @@ codeunit 50200 "TFB Container Mgmt"
                 end;
 
 
-                If LineLotNo <> '' then begin
+                if LineLotNo <> '' then begin
 
                     //Get Lot Info 
                     LotNoInformation.SetRange("Lot No.", LineLotNo);
                     LotNoInformation.SetRange("Item No.", TempLines."Item Code");
 
-                    If LotNoInformation.FindFirst() then begin
+                    if LotNoInformation.FindFirst() then begin
 
                         RecRef.GetTable(LotNoInformation);
                         TempBlobCu.CreateInStream(InStream);
@@ -359,7 +359,7 @@ codeunit 50200 "TFB Container Mgmt"
                         PersBlobCU.CopyToOutStream(LotNoInformation."TFB CoA Attach.", OutStream);
                         CopyStream(OutStream, InStream);
 
-                        If TempBlobCu.HasValue() then begin
+                        if TempBlobCu.HasValue() then begin
                             TempBlobList.Add(TempBlobCu);
                             clear(FileNameBuilder);
                             FileNameBuilder.Append('COA_');
@@ -455,13 +455,13 @@ codeunit 50200 "TFB Container Mgmt"
                             ReceiptLine.SetRange("Order Line No.", Lines.LineNo);
                             ReceiptLine.SetFilter("Quantity (Base)", '>%1', 0);
 
-                            If ReceiptLine.FindFirst() then begin
+                            if ReceiptLine.FindFirst() then begin
 
                                 ItemLedger.SetRange("Entry Type", ItemLedger."Entry Type"::Purchase);
                                 ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
                                 ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                                If ItemLedger.FindFirst() then
+                                if ItemLedger.FindFirst() then
 
                                     //Get Lot No
                                     LineLotNo := ItemLedger."Lot No.";
@@ -484,7 +484,7 @@ codeunit 50200 "TFB Container Mgmt"
                             ResEntry.SetRange("Item No.", Lines."Item Code");
                             ResEntry.SetFilter("Lot No.", '<>%1', '');
 
-                            If ResEntry.FindFirst() then
+                            if ResEntry.FindFirst() then
 
                                 //Get Lot No
                                 LineLotNo := ResEntry."Lot No.";
@@ -495,13 +495,13 @@ codeunit 50200 "TFB Container Mgmt"
                 end;
 
 
-                If LineLotNo <> '' then begin
+                if LineLotNo <> '' then begin
 
                     //Get Lot Info 
                     LotInfo.SetRange("Lot No.", LineLotNo);
                     LotInfo.SetRange("Item No.", Lines."Item Code");
 
-                    If LotInfo.FindFirst() then begin
+                    if LotInfo.FindFirst() then begin
 
                         RecRef.GetTable(LotInfo);
                         TempBlobCu.CreateInStream(InStream);
@@ -509,7 +509,7 @@ codeunit 50200 "TFB Container Mgmt"
                         PersBlobCU.CopyToOutStream(LotInfo."TFB CoA Attach.", OutStream);
                         CopyStream(OutStream, InStream);
 
-                        If TempBlobCu.HasValue() then begin
+                        if TempBlobCu.HasValue() then begin
                             TempBlobList.Add(TempBlobCu);
                             clear(FileNameBuilder);
                             FileNameBuilder.Append('COA_');
@@ -537,7 +537,7 @@ codeunit 50200 "TFB Container Mgmt"
                     TempBlobList.Get(1, TempBlobCu);
                     TempBlobCu.CreateInStream(InStream);
                     FileName := FileNameList.Get(1);
-                    If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+                    if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
                         Error('File %1 not downloaded', FileName);
                 end;
 
@@ -556,7 +556,7 @@ codeunit 50200 "TFB Container Mgmt"
                 DataCompCU.SaveZipArchive(ZipTempBlob);
                 ZipTempBlob.CreateInStream(InStream);
                 FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
-                If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+                if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
                     Error('File %1 not downloaded', FileName);
             end;
         end;
@@ -578,7 +578,7 @@ codeunit 50200 "TFB Container Mgmt"
 
     begin
 
-        If ContainerEntry.get(ContainerEntryNo) then begin
+        if ContainerEntry.get(ContainerEntryNo) then begin
 
             TransferHeader."Shipment Date" := ContainerEntry."Est. Departure Date";
             TransferHeader."Receipt Date" := ContainerEntry."Est. Warehouse";
@@ -601,12 +601,12 @@ codeunit 50200 "TFB Container Mgmt"
         ReceiptLine.SetRange("Order No.", OrderNo);
         ReceiptLine.SetRange(Type, ReceiptLine.Type::Item);
 
-        If ReceiptLine.FindFirst() then begin
+        if ReceiptLine.FindFirst() then begin
             ReceiptNo := ReceiptLine."Document No.";
-            Exit(true);
+            exit(true);
         end
         else
-            Exit(false);
+            exit(false);
 
     end;
 
@@ -622,10 +622,10 @@ codeunit 50200 "TFB Container Mgmt"
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
         PurchaseLine.SetRange("Qty. Received (Base)", 0);
 
-        If PurchaseLine.IsEmpty() then
-            Exit(true)
+        if PurchaseLine.IsEmpty() then
+            exit(true)
         else
-            Exit(false);
+            exit(false);
 
     end;
 
@@ -640,22 +640,22 @@ codeunit 50200 "TFB Container Mgmt"
     begin
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntryNo);
 
-        If TransferLine.FindFirst() then begin
+        if TransferLine.FindFirst() then begin
 
             //Check Status
-            If TransferLine."Quantity Shipped" > 0 then begin
+            if TransferLine."Quantity Shipped" > 0 then begin
 
                 TransferNo := TransferLine."Document No.";
 
                 TransferShipmentLine.SetRange("Transfer Order No.", TransferNo);
                 TransferShipmentLine.SetFilter(Quantity, '>0');
-                If TransferShipmentLine.FindFirst() then
+                if TransferShipmentLine.FindFirst() then
                     PstdTransferShptNo := TransferShipmentLine."Document No.";
             end
             else
                 TransferNo := TransferLine."Document No.";
 
-            Exit(True); //Check Status to be positive
+            exit(true); //Check Status to be positive
         end
         else begin
 
@@ -666,7 +666,7 @@ codeunit 50200 "TFB Container Mgmt"
             TransferReceiptLine.SetRange("TFB Container Entry No.", ContainerEntryNo);
             TransferReceiptLine.SetFilter(Quantity, '>0');
 
-            If TransferShipmentLine.FindFirst() then begin
+            if TransferShipmentLine.FindFirst() then begin
 
                 if TransferReceiptLine.FindFirst() then begin
 
@@ -676,10 +676,10 @@ codeunit 50200 "TFB Container Mgmt"
                 end
                 else
                     PstdTransferShptNo := TransferShipmentLine."Document No.";
-                Exit(true);
+                exit(true);
             end
             else
-                Exit(False);
+                exit(false);
 
 
 
@@ -706,8 +706,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         PurchaseReceipt.SetRange("TFB Container Entry No.", Container."Container No.");
 
-        If PurchaseReceipt.FindFirst() then
-            Exit(PurchaseReceipt."Document No.");
+        if PurchaseReceipt.FindFirst() then
+            exit(PurchaseReceipt."Document No.");
 
     end;
 
@@ -723,12 +723,12 @@ codeunit 50200 "TFB Container Mgmt"
     begin
         TransferHeader.SetRange("TFB Container Entry No.", ContainerEntryNo);
 
-        If TransferHeader.FindFirst() then begin
+        if TransferHeader.FindFirst() then begin
 
             //Check Status
 
             TransferNo := TransferHeader."No.";
-            Exit(True); //Check Status to be positive
+            exit(true); //Check Status to be positive
         end
 
     end;
@@ -756,9 +756,9 @@ codeunit 50200 "TFB Container Mgmt"
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
 
         //Get Header Defaults and Calculate Totals
-        If not PurchaseLine.IsEmpty() then begin
+        if not PurchaseLine.IsEmpty() then begin
 
-            If Vendor.Get(PurchaseLine."Buy-from Vendor No.") then
+            if Vendor.Get(PurchaseLine."Buy-from Vendor No.") then
                 TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
 
@@ -768,8 +768,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         end;
 
-        If PurchaseLine.FINDSET() THEN
-            REPEAT
+        if PurchaseLine.FINDSET() then
+            repeat
                 Lines."Item Code" := PurchaseLine."No.";
                 Lines.OrderReference := ContainerEntry."Order Reference";
                 Lines.LineNo := PurchaseLine."Line No.";
@@ -804,7 +804,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 Lines.Insert();
 
-            UNTIL PurchaseLine.NEXT() = 0;
+            until PurchaseLine.NEXT() = 0;
 
     end;
 
@@ -839,9 +839,9 @@ codeunit 50200 "TFB Container Mgmt"
         ReceiptLine.SetFilter(Quantity, '>0');
 
         //Get Header Defaults and Calculate Totals
-        If not ReceiptLine.IsEmpty() then begin
+        if not ReceiptLine.IsEmpty() then begin
 
-            If Vendor.Get(ReceiptLine."Buy-from Vendor No.") then
+            if Vendor.Get(ReceiptLine."Buy-from Vendor No.") then
                 TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
 
@@ -852,8 +852,8 @@ codeunit 50200 "TFB Container Mgmt"
         end;
         clear(Lines);
         clear(LineNo);
-        If ReceiptLine.FindSet() THEN
-            REPEAT
+        if ReceiptLine.FindSet() then
+            repeat
                 LineNo += 10000;
                 Lines.Init();
                 Lines."Item Code" := ReceiptLine."No.";
@@ -903,7 +903,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 Lines.Insert();
 
-            UNTIL ReceiptLine.NEXT() = 0;
+            until ReceiptLine.NEXT() = 0;
 
     end;
 
@@ -914,13 +914,13 @@ codeunit 50200 "TFB Container Mgmt"
 
     begin
 
-        If ContainerEntry."Qty. On Transfer Rcpt" > 0 then
-            Exit(PopulateTransferReceiptLines(ContainerEntry, Lines))
+        if ContainerEntry."Qty. On Transfer Rcpt" > 0 then
+            exit(PopulateTransferReceiptLines(ContainerEntry, Lines))
         else
             if ContainerEntry."Qty. On Transfer Ship." > 0 then
-                Exit(PopulateTransferShipmentLines(ContainerEntry, Lines))
+                exit(PopulateTransferShipmentLines(ContainerEntry, Lines))
             else
-                Exit(PopulateTransferOrderLines(ContainerEntry, Lines));
+                exit(PopulateTransferOrderLines(ContainerEntry, Lines));
 
     end;
 
@@ -949,10 +949,10 @@ codeunit 50200 "TFB Container Mgmt"
         TransferLine.SetFilter(Quantity, '>0');
 
 
-        If not TransferLine.IsEmpty() then begin
+        if not TransferLine.IsEmpty() then begin
 
 
-            If Vendor.Get(ContainerEntry."Vendor No.") then
+            if Vendor.Get(ContainerEntry."Vendor No.") then
                 TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
@@ -961,8 +961,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         end;
 
-        If TransferLine.FindSet() THEN
-            REPEAT
+        if TransferLine.FindSet() then
+            repeat
                 Lines."Item Code" := TransferLine."Item No.";
                 Lines.OrderReference := ContainerEntry."Order Reference";
                 Lines.LineNo := TransferLine."Line No.";
@@ -993,7 +993,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 Lines.Insert();
 
-            UNTIL TransferLine.NEXT() = 0;
+            until TransferLine.NEXT() = 0;
 
     end;
 
@@ -1021,10 +1021,10 @@ codeunit 50200 "TFB Container Mgmt"
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
         TransferLine.SetFilter(Quantity, '>0');
 
-        If not TransferLine.IsEmpty() then begin
+        if not TransferLine.IsEmpty() then begin
 
 
-            If Vendor.Get(ContainerEntry."Vendor No.") then
+            if Vendor.Get(ContainerEntry."Vendor No.") then
                 TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
@@ -1033,8 +1033,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         end;
 
-        If TransferLine.FindSet() THEN
-            REPEAT
+        if TransferLine.FindSet() then
+            repeat
                 Lines."Item Code" := TransferLine."Item No.";
                 Lines.OrderReference := ContainerEntry."Order Reference";
                 Lines.LineNo := TransferLine."Line No.";
@@ -1065,7 +1065,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 Lines.Insert();
 
-            UNTIL TransferLine.NEXT() = 0;
+            until TransferLine.NEXT() = 0;
 
     end;
 
@@ -1093,10 +1093,10 @@ codeunit 50200 "TFB Container Mgmt"
         TransferLine.SetRange("TFB Container Entry No.", ContainerEntry."No.");
         TransferLine.SetFilter(Quantity, '>0');
 
-        If not TransferLine.IsEmpty() then begin
+        if not TransferLine.IsEmpty() then begin
 
 
-            If Vendor.Get(ContainerEntry."Vendor No.") then
+            if Vendor.Get(ContainerEntry."Vendor No.") then
                 TempPriceUnit := Vendor."TFB Vendor Price Unit";
 
             Lines.Reset();
@@ -1106,8 +1106,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         end;
 
-        If TransferLine.FindSet() THEN
-            REPEAT
+        if TransferLine.FindSet() then
+            repeat
 
                 Lines."Item Code" := TransferLine."Item No.";
                 Lines.OrderReference := ContainerEntry."Order Reference";
@@ -1142,7 +1142,7 @@ codeunit 50200 "TFB Container Mgmt"
                 Lines.Insert();
                 LineNo += 10000;
 
-            UNTIL TransferLine.NEXT() = 0;
+            until TransferLine.NEXT() = 0;
 
     end;
 
@@ -1167,8 +1167,8 @@ codeunit 50200 "TFB Container Mgmt"
         LineNo := 10000;
 
 
-        If BrokerageLine.FIND('-') THEN
-            REPEAT
+        if BrokerageLine.FIND('-') then
+            repeat
 
                 Lines."Item Code" := BrokerageLine."Item No.";
                 Item.Get(BrokerageLine."Item No.");
@@ -1200,7 +1200,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 LineNo := LineNo + 10000;
 
-            UNTIL BrokerageLine.NEXT() = 0;
+            until BrokerageLine.NEXT() = 0;
 
 
     end;
@@ -1216,8 +1216,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         Receipt.SetRange("No.", TransferReceiptNo);
 
-        If Receipt.FindFirst() then
-            Exit(Receipt."Receipt Date");
+        if Receipt.FindFirst() then
+            exit(Receipt."Receipt Date");
 
     end;
 
@@ -1230,8 +1230,8 @@ codeunit 50200 "TFB Container Mgmt"
 
         Receipt.SetRange("No.", TransferShipmentNo);
 
-        If Receipt.FindFirst() then
-            Exit(Receipt."Shipment Date");
+        if Receipt.FindFirst() then
+            exit(Receipt."Shipment Date");
 
     end;
 }

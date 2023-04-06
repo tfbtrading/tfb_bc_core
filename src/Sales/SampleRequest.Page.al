@@ -268,7 +268,7 @@ page 50142 "TFB Sample Request"
                 ApplicationArea = Basic, Suite;
                 Editable = DynamicEditable;
                 Enabled = (Rec."Sell-to Contact No." <> '') and (not (Rec.Status = Rec.Status::Sent));
-                SubPageLink = "Document No." = FIELD("No.");
+                SubPageLink = "Document No." = field("No.");
                 UpdatePropagation = Both;
 
 
@@ -320,14 +320,14 @@ page 50142 "TFB Sample Request"
             part(SalesHistory; "Sales Hist. Sell-to FactBox")
             {
                 ApplicationArea = Basic, Suite;
-                SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                SubPageLink = "No." = field("Sell-to Customer No.");
                 Visible = Rec."Sell-to Customer No." <> '';
             }
 
             part(CustomerDetails; "Customer Details FactBox")
             {
                 ApplicationArea = Basic, Suite;
-                SubPageLink = "No." = FIELD("Sell-to Customer No.");
+                SubPageLink = "No." = field("Sell-to Customer No.");
                 Visible = Rec."Sell-to Customer No." <> '';
             }
             part(ItemDetails; "Item Picture")
@@ -374,7 +374,7 @@ page 50142 "TFB Sample Request"
 
                     ReportSelection.SetRange(Usage, ReportSelection.Usage::"S.Sample.Request");
                     ReportSelection.SetRange("Use for Email Attachment", true);
-                    If ReportSelection.findfirst() then
+                    if ReportSelection.findfirst() then
                         ReportSelection.PrintWithDialogForCust(
                            ReportUsage, Rec, GuiAllowed, Rec.FieldNo("Sell-to Customer No."));
 
@@ -452,7 +452,7 @@ page 50142 "TFB Sample Request"
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Sell-to Contact No." <> '' then
+        if Rec."Sell-to Contact No." <> '' then
             SellToContact.Get(Rec."Sell-to Contact No.")
         else
             Clear(SellToContact);

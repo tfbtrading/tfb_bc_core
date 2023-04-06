@@ -82,7 +82,7 @@ page 50225 "TFB Brokerage Contract Subform"
 
                     ShowCaption = false;
 
-                    Field(TotalValue; TotalValueOfLines)
+                    field(TotalValue; TotalValueOfLines)
                     {
                         Caption = 'Total value';
                         DecimalPlaces = 2;
@@ -99,7 +99,7 @@ page 50225 "TFB Brokerage Contract Subform"
                 {
                     ShowCaption = false;
 
-                    Field(TotalBrokerage; TotalBrokerageOfLines)
+                    field(TotalBrokerage; TotalBrokerageOfLines)
                     {
 
                         DecimalPlaces = 2;
@@ -111,7 +111,7 @@ page 50225 "TFB Brokerage Contract Subform"
                     }
 
 
-                    Field(TotalQuantity; TotalQuantityOfLines)
+                    field(TotalQuantity; TotalQuantityOfLines)
                     {
                         Caption = 'Total Quantity (MT)';
                         DecimalPlaces = 1;
@@ -168,7 +168,7 @@ page 50225 "TFB Brokerage Contract Subform"
 
     begin
 
-        If (Rec."Document No." <> '') then begin
+        if (Rec."Document No." <> '') then begin
             TotalLine.SetRange("Document No.", Rec."Document No.");
 
             TotalLine.CalcSums(Amount, "Total MT", "Brokerage Fee");

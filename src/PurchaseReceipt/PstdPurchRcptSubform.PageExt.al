@@ -54,7 +54,7 @@ pageextension 50160 "TFB Pstd Purch. Rcpt. Subform" extends "Posted Purchase Rcp
     begin
         Rec.CalcFields("TFB Container No. LookUp");
 
-        If PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
+        if PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
             TotalOfItemCharges := TotalExistingItemCharges
         else
             TotalOfItemCharges := 0;

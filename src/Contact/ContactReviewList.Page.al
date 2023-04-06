@@ -7,7 +7,7 @@ page 50167 "TFB Contact Review List"
     Editable = true;
     PageType = List;
     SourceTable = Contact;
-    SourceTableView = SORTING("Company Name", "Company No.", Type, Name) WHERE(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false));
+    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false));
     UsageCategory = Tasks;
 
     layout
@@ -34,7 +34,7 @@ page 50167 "TFB Contact Review List"
                     StyleExpr = StyleIsStrong;
                     ToolTip = 'Specifies the name of the contact. If the contact is a person, you can click the field to see the Name Details window.';
                 }
-                Field(ToDoExists; GetTaskSymbol())
+                field(ToDoExists; GetTaskSymbol())
                 {
                     Caption = '';
                     Width = 1;
@@ -176,8 +176,8 @@ page 50167 "TFB Contact Review List"
             {
                 UpdatePropagation = both;
                 ApplicationArea = RelationshipMgmt;
-                SubPageLink = "No." = FIELD("No."),
-                              "Date Filter" = FIELD("Date Filter");
+                SubPageLink = "No." = field("No."),
+                              "Date Filter" = field("Date Filter");
             }
 
             part(CustomerDetails; "Customer Statistics FactBox")
@@ -221,7 +221,7 @@ page 50167 "TFB Contact Review List"
                         Caption = 'Business Relations';
                         Image = BusinessRelation;
                         RunObject = Page "Contact Business Relations";
-                        RunPageLink = "Contact No." = FIELD("Company No.");
+                        RunPageLink = "Contact No." = field("Company No.");
                         ToolTip = 'View or edit the contact''s business relations, such as customers, vendors, banks, lawyers, consultants, competitors, and so on.';
                     }
                     action("Industry Groups")
@@ -230,7 +230,7 @@ page 50167 "TFB Contact Review List"
                         Caption = 'Industry Groups';
                         Image = IndustryGroups;
                         RunObject = Page "Contact Industry Groups";
-                        RunPageLink = "Contact No." = FIELD("Company No.");
+                        RunPageLink = "Contact No." = field("Company No.");
                         ToolTip = 'View or edit the industry groups, such as Retail or Automobile, that the contact belongs to.';
                     }
                     action("Web Sources")
@@ -239,7 +239,7 @@ page 50167 "TFB Contact Review List"
                         Caption = 'Web Sources';
                         Image = Web;
                         RunObject = Page "Contact Web Sources";
-                        RunPageLink = "Contact No." = FIELD("Company No.");
+                        RunPageLink = "Contact No." = field("Company No.");
                         ToolTip = 'View a list of the web sites with information about the contacts.';
                     }
                 }
@@ -285,7 +285,7 @@ page 50167 "TFB Contact Review List"
                     Caption = '&Picture';
                     Image = Picture;
                     RunObject = Page "Contact Picture";
-                    RunPageLink = "No." = FIELD("No.");
+                    RunPageLink = "No." = field("No.");
                     ToolTip = 'View or add a picture of the contact person or, for example, the company''s logo.';
                 }
                 action("Co&mments")
@@ -295,9 +295,9 @@ page 50167 "TFB Contact Review List"
                     Image = ViewComments;
 
                     RunObject = Page "Rlshp. Mgt. Comment Sheet";
-                    RunPageLink = "Table Name" = CONST(Contact),
-                                  "No." = FIELD("No."),
-                                  "Sub No." = CONST(0);
+                    RunPageLink = "Table Name" = const(Contact),
+                                  "No." = field("No."),
+                                  "Sub No." = const(0);
                     ToolTip = 'View or add comments for the record.';
                 }
                 group("Alternati&ve Address")
@@ -310,7 +310,7 @@ page 50167 "TFB Contact Review List"
                         Caption = 'Card';
                         Image = EditLines;
                         RunObject = Page "Contact Alt. Address List";
-                        RunPageLink = "Contact No." = FIELD("No.");
+                        RunPageLink = "Contact No." = field("No.");
                         ToolTip = 'View or change detailed information about the contact.';
                     }
                     action("Date Ranges")
@@ -319,7 +319,7 @@ page 50167 "TFB Contact Review List"
                         Caption = 'Date Ranges';
                         Image = DateRange;
                         RunObject = Page "Contact Alt. Addr. Date Ranges";
-                        RunPageLink = "Contact No." = FIELD("No.");
+                        RunPageLink = "Contact No." = field("No.");
                         ToolTip = 'Specify date ranges that apply to the contact''s alternate address.';
                     }
                 }
@@ -339,7 +339,7 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Relate&d Contacts';
                     Image = Users;
                     RunObject = Page "Contact List";
-                    RunPageLink = "Company No." = FIELD("Company No.");
+                    RunPageLink = "Company No." = field("Company No.");
                     ToolTip = 'View a list of all contacts.';
                 }
                 action("Segmen&ts")
@@ -348,10 +348,10 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Segmen&ts';
                     Image = Segment;
                     RunObject = Page "Contact Segment List";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FILTER(<> ''),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No."));
-                    RunPageView = SORTING("Contact No.", "Segment No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = filter(<> ''),
+                                  "Contact No." = field(filter("Lookup Contact No."));
+                    RunPageView = sorting("Contact No.", "Segment No.");
                     ToolTip = 'View the segments that are related to the contact.';
                 }
                 action("Mailing &Groups")
@@ -360,7 +360,7 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Mailing &Groups';
                     Image = DistributionGroup;
                     RunObject = Page "Contact Mailing Groups";
-                    RunPageLink = "Contact No." = FIELD("No.");
+                    RunPageLink = "Contact No." = field("No.");
                     ToolTip = 'View or edit the mailing groups that the contact is assigned to, for example, for sending price lists or Christmas cards.';
                 }
 #if not CLEAN18
@@ -419,10 +419,10 @@ page 50167 "TFB Contact Review List"
                     Caption = 'T&asks';
                     Image = TaskList;
                     RunObject = Page "Task List";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No.")),
-                                  "System To-do Type" = FILTER("Contact Attendee");
-                    RunPageView = SORTING("Contact Company No.", "Contact No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = field(filter("Lookup Contact No.")),
+                                  "System To-do Type" = filter("Contact Attendee");
+                    RunPageView = sorting("Contact Company No.", "Contact No.");
                     ToolTip = 'View all marketing tasks that involve the contact person.';
                 }
                 action("Open Oppo&rtunities")
@@ -432,11 +432,11 @@ page 50167 "TFB Contact Review List"
                     Image = OpportunityList;
 
                     RunObject = Page "Opportunity List";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FILTER(<> ''),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No.")),
-                                  Status = FILTER("Not Started" | "In Progress");
-                    RunPageView = SORTING("Contact Company No.", "Contact No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = filter(<> ''),
+                                  "Contact No." = field(filter("Lookup Contact No.")),
+                                  Status = filter("Not Started" | "In Progress");
+                    RunPageView = sorting("Contact Company No.", "Contact No.");
                     Scope = Repeater;
                     ToolTip = 'View the open sales opportunities that are handled by salespeople for the contact. Opportunities must involve a contact and can be linked to campaigns.';
                 }
@@ -446,10 +446,10 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Postponed &Interactions';
                     Image = PostponedInteractions;
                     RunObject = Page "Postponed Interactions";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FILTER(<> ''),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No."));
-                    RunPageView = SORTING("Contact Company No.", "Contact No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = filter(<> ''),
+                                  "Contact No." = field(filter("Lookup Contact No."));
+                    RunPageView = sorting("Contact Company No.", "Contact No.");
                     ToolTip = 'View postponed interactions for the contact.';
                 }
             }
@@ -463,8 +463,8 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Sales &Quotes';
                     Image = Quote;
                     RunObject = Page "Sales Quotes";
-                    RunPageLink = "Sell-to Contact No." = FIELD("No.");
-                    RunPageView = SORTING("Document Type", "Sell-to Contact No.");
+                    RunPageLink = "Sell-to Contact No." = field("No.");
+                    RunPageView = sorting("Document Type", "Sell-to Contact No.");
                     ToolTip = 'View sales quotes that exist for the contact.';
                 }
             }
@@ -478,11 +478,11 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Closed Oppo&rtunities';
                     Image = OpportunityList;
                     RunObject = Page "Opportunity List";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FILTER(<> ''),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No.")),
-                                  Status = FILTER(Won | Lost);
-                    RunPageView = SORTING("Contact Company No.", "Contact No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = filter(<> ''),
+                                  "Contact No." = field(filter("Lookup Contact No.")),
+                                  Status = filter(Won | Lost);
+                    RunPageView = sorting("Contact Company No.", "Contact No.");
                     ToolTip = 'View the closed sales opportunities that are handled by salespeople for the contact. Opportunities must involve a contact and can be linked to campaigns.';
                 }
                 action("Interaction Log E&ntries")
@@ -491,10 +491,10 @@ page 50167 "TFB Contact Review List"
                     Caption = 'Interaction Log E&ntries';
                     Image = InteractionLog;
                     RunObject = Page "Interaction Log Entries";
-                    RunPageLink = "Contact Company No." = FIELD("Company No."),
-                                  "Contact No." = FILTER(<> ''),
-                                  "Contact No." = FIELD(FILTER("Lookup Contact No."));
-                    RunPageView = SORTING("Contact Company No.", "Contact No.");
+                    RunPageLink = "Contact Company No." = field("Company No."),
+                                  "Contact No." = filter(<> ''),
+                                  "Contact No." = field(filter("Lookup Contact No."));
+                    RunPageView = sorting("Contact Company No.", "Contact No.");
                     ShortCutKey = 'Ctrl+F7';
                     ToolTip = 'View a list of the interactions that you have logged, for example, when you create an interaction, print a cover sheet, a sales order, and so on.';
                 }
@@ -505,7 +505,7 @@ page 50167 "TFB Contact Review List"
                     Image = Statistics;
 
                     RunObject = Page "Contact Statistics";
-                    RunPageLink = "No." = FIELD("No.");
+                    RunPageLink = "No." = field("No.");
                     ShortCutKey = 'F7';
                     ToolTip = 'View statistical information, such as the value of posted entries, for the record.';
                 }
@@ -696,8 +696,8 @@ page 50167 "TFB Contact Review List"
                 Image = NewOpportunity;
 
                 RunObject = Page "Opportunity Card";
-                RunPageLink = "Contact No." = FIELD("No."),
-                              "Contact Company No." = FIELD("Company No.");
+                RunPageLink = "Contact No." = field("No."),
+                              "Contact Company No." = field("Company No.");
                 RunPageMode = Create;
                 ToolTip = 'Register a sales opportunity for the contact.';
             }
@@ -751,7 +751,7 @@ page 50167 "TFB Contact Review List"
                     Confirm: Codeunit "Confirm Management";
 
                 begin
-                    If Confirm.GetResponse('Are you sure you want to archive?', false) then
+                    if Confirm.GetResponse('Are you sure you want to archive?', false) then
                         Rec.validate("TFB Archived", true);
                 end;
             }
@@ -1019,16 +1019,16 @@ page 50167 "TFB Contact Review List"
         NewContact.SetLoadFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks", "No.");
         NewContact.SetAutoCalcFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks");
         Rec.CalcFields("TFB No. Of Company Tasks");
-        If Rec.Type = Rec.Type::Company then
-            If Rec."TFB No. Of Company Tasks" > 0 then
-                Exit('📋')
+        if Rec.Type = Rec.Type::Company then
+            if Rec."TFB No. Of Company Tasks" > 0 then
+                exit('📋')
             else
-                Exit('')
+                exit('')
         else
-            If NewContact."TFB No. Of Contact Tasks" > 0 then
-                Exit('📋')
+            if NewContact."TFB No. Of Contact Tasks" > 0 then
+                exit('📋')
             else
-                Exit('');
+                exit('');
     end;
 
     var

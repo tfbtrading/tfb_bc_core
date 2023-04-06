@@ -31,7 +31,7 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
             field(TFBCostByVendorPriceUnit; CostByVendorPriceUnit)
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Caption = 'Price By Price Unit';
                 BlankZero = true;
                 Editable = false;
@@ -85,11 +85,11 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
         LedgerEntry.SetRange("Document No.", Rec."Document No.");
         LedgerEntry.SetRange("Document Type", LedgerEntry."Document Type"::Invoice);
         LedgerEntry.SetRange(Reversed, false);
-        If not LedgerEntry.FindFirst() then
-            Exit(false);
+        if not LedgerEntry.FindFirst() then
+            exit(false);
         LedgerEntry.CalcFields("Remaining Amount");
         RemainingAmt := LedgerEntry."Remaining Amount";
-        Exit(true);
+        exit(true);
     end;
 
 
@@ -120,9 +120,9 @@ pageextension 50115 "TFB Posted Purch Inv Subform" extends "Posted Purch. Invoic
         Clear(CostByVendorPriceUnit);
         Clear(VendorPriceUnit);
 
-        If rec.Type = rec.Type::Item then
+        if rec.Type = rec.Type::Item then
             if Item.Get(rec."No.") then
-                If item.type = item.type::Inventory then begin
+                if item.type = item.type::Inventory then begin
                     Vendor.Get(rec."Buy-from Vendor No.");
                     VendorPriceUnit := Vendor."TFB Vendor Price Unit";
                     CostByVendorPriceUnit := PricingCU.CalculatePriceUnitByUnitPrice(Item."No.", rec."Unit of Measure Code", vendor."TFB Vendor Price Unit", rec."Direct Unit Cost");

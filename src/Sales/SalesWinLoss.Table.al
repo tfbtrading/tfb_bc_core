@@ -29,7 +29,7 @@ table 50121 "TFB Sales WinLoss"
         field(12; "Ship-to Code"; Code[10])
         {
             Caption = 'Ship-to Code';
-            TableRelation = "Ship-to Address".Code WHERE("Customer No." = FIELD("Sell-to Customer No."));
+            TableRelation = "Ship-to Address".Code where("Customer No." = field("Sell-to Customer No."));
 
         }
         field(13; "Ship-to Name"; Text[100])
@@ -165,12 +165,12 @@ table 50121 "TFB Sales WinLoss"
         field(5055; "Opportunity No."; Code[20])
         {
             Caption = 'Opportunity No.';
-            TableRelation = IF ("Document Type" = FILTER(<> Order)) Opportunity."No." WHERE("Contact No." = FIELD("Sell-to Contact No."),
-                                                                                          Closed = CONST(false))
-            ELSE
-            IF ("Document Type" = CONST(Order)) Opportunity."No." WHERE("Contact No." = FIELD("Sell-to Contact No."),
-                                                                                                                                                          "Sales Document No." = FIELD("No."),
-                                                                                                                                                          "Sales Document Type" = CONST(Order));
+            TableRelation = if ("Document Type" = filter(<> Order)) Opportunity."No." where("Contact No." = field("Sell-to Contact No."),
+                                                                                          Closed = const(false))
+            else
+            if ("Document Type" = const(Order)) Opportunity."No." where("Contact No." = field("Sell-to Contact No."),
+                                                                                                                                                          "Sales Document No." = field("No."),
+                                                                                                                                                          "Sales Document Type" = const(Order));
 
         }
         field(50500; "TFB Close Type"; Enum "TFB Quote Close Type")

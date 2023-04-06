@@ -97,7 +97,7 @@ page 50165 "TFB APIV2 - Lot Info"
                     Multiplicity = ZeroOrOne;
                     EntityName = 'picture';
                     EntitySetName = 'pictures';
-                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(Sample);
+                    SubPageLink = Id = field(SystemId), "Parent Type" = const(Sample);
                 }
 
                 field(lastModifiedDateTime; Rec.SystemModifiedAt)
@@ -218,7 +218,7 @@ page 50165 "TFB APIV2 - Lot Info"
         ItemLedgerEntry.SetRange("Document Type", ItemLedgerEntry."Document Type"::"Purchase Receipt", ItemLedgerEntry."Document Type"::"Transfer Receipt");
 
         ItemLedgerEntry.SetLoadFields("Document Line No.", "Document No.", "Location Code", "Posting Date");
-        If ItemLedgerEntry.FindLast() then begin
+        if ItemLedgerEntry.FindLast() then begin
             LatestReceiptDate := ItemLedgerEntry."Posting Date";
             LatestReceiptWarehouseLocation := ItemLedgerEntry."Location Code";
             ReceiptLine.SetLoadFields("Order No.");

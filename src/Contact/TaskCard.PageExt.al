@@ -24,7 +24,7 @@ pageextension 50194 "TFB Task Card" extends "Task Card"
                     RecordRef: RecordRef;
 
                 begin
-                    If not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
+                    if not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
                     RecordRef.Get(Rec."TFB Trans. Record ID");
                     case recordRef.Number() of
                         Database::"Sales Header":

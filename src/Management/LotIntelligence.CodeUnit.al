@@ -15,35 +15,35 @@ codeunit 50102 "TFB Lot Intelligence"
         SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
         SalesLine.SetRange("Document No.", DocNo);
         SalesLine.SetRange("Line No.", LineNo);
-        If SalesLine.FindFirst() then begin
+        if SalesLine.FindFirst() then begin
 
             //check if tracking is enabled for line item
 
-            If SalesLine.Type = SalesLine.Type::Item then begin
+            if SalesLine.Type = SalesLine.Type::Item then begin
 
                 if Item.Get(SalesLine."No.") then begin
 
-                    If Item."Item Tracking Code" <> '' then begin
+                    if Item."Item Tracking Code" <> '' then begin
 
                         ItemTrackingCode.Get(Item."Item Tracking Code");
 
-                        If ItemTrackingCode."Lot Sales Outbound Tracking" then begin
+                        if ItemTrackingCode."Lot Sales Outbound Tracking" then begin
                             RecRef.GetTable(SalesLine);
                             QtyTracked := CheckSalesLineTrackedQty(RecRef);
 
-                            If QtyBaseToCheck = QtyTracked then
-                                Exit(true)
+                            if QtyBaseToCheck = QtyTracked then
+                                exit(true)
                             else
-                                Exit(false);
+                                exit(false);
                         end
                         else
-                            Exit(true); //No lot tracking on sales outbound
+                            exit(true); //No lot tracking on sales outbound
                     end
                     else
-                        Exit(true); //No lot tracking policy
+                        exit(true); //No lot tracking policy
                 end
                 else
-                    Exit(false); //Error no line item found
+                    exit(false); //Error no line item found
             end
             else
                 exit(true); //Indicate true not an inventory item found
@@ -72,15 +72,15 @@ codeunit 50102 "TFB Lot Intelligence"
             repeat
 
                 //Not return indicates that line item tracking is missing and set issue found to true
-                If (not IssueFound) and (not CheckSalesLineItemTrackingOkay(Line."Source No.", Line."Source Line No.", Line."Qty. to Ship (Base)")) then
+                if (not IssueFound) and (not CheckSalesLineItemTrackingOkay(Line."Source No.", Line."Source Line No.", Line."Qty. to Ship (Base)")) then
                     IssueFound := true;
 
             until Line.Next() < 1;
 
-        If IssueFound then
+        if IssueFound then
             exit(false)
         else
-            exit(True);
+            exit(true);
     end;
 
 
@@ -120,16 +120,16 @@ codeunit 50102 "TFB Lot Intelligence"
     begin
         case LotStatus of
             LotStatus::DoesNotExist:
-                Exit('🔴');
+                exit('🔴');
 
             LotStatus::ExistsNoIssue:
-                Exit('✔️');
+                exit('✔️');
 
             LotStatus::ExistsWithIssue:
-                Exit('🔔');
+                exit('🔔');
 
             LotStatus::NotRequired:
-                Exit('⚪️');
+                exit('⚪️');
 
         end;
     end;
@@ -145,11 +145,11 @@ codeunit 50102 "TFB Lot Intelligence"
 
         Item.Get(ItemNo);
 
-        If (LotPolicy.Get(Item."Item Tracking Code")) then
-            If LotPolicy."Lot Specific Tracking" and LotPolicy."Lot Purchase Inbound Tracking" then
+        if (LotPolicy.Get(Item."Item Tracking Code")) then
+            if LotPolicy."Lot Specific Tracking" and LotPolicy."Lot Purchase Inbound Tracking" then
                 Required := true;
 
-        Exit(Required);
+        exit(Required);
 
     end;
 
@@ -169,15 +169,15 @@ codeunit 50102 "TFB Lot Intelligence"
 
         Item.Get(ResEntry."Item No.");
 
-        If (LotPolicy.Get(Item."Item Tracking Code")) then
-            If LotPolicy."Lot Info. Inbound Must Exist" then
-                If not (LotInfo.FindFirst()) then
+        if (LotPolicy.Get(Item."Item Tracking Code")) then
+            if LotPolicy."Lot Info. Inbound Must Exist" then
+                if not (LotInfo.FindFirst()) then
                     IssueExists := true
                 else
-                    If CoARequired and not (PersBlobCU.Exists(LotInfo."TFB CoA Attach.")) then
+                    if CoARequired and not (PersBlobCU.Exists(LotInfo."TFB CoA Attach.")) then
                         IssueExists := true;
 
-        Exit(IssueExists);
+        exit(IssueExists);
 
 
     end;
@@ -199,15 +199,15 @@ codeunit 50102 "TFB Lot Intelligence"
 
         Item.Get(ItemLedger."Item No.");
 
-        If (LotPolicy.Get(Item."Item Tracking Code")) then
-            If LotPolicy."Lot Info. Inbound Must Exist" then
-                If not (LotInfo.FindFirst()) then
+        if (LotPolicy.Get(Item."Item Tracking Code")) then
+            if LotPolicy."Lot Info. Inbound Must Exist" then
+                if not (LotInfo.FindFirst()) then
                     IssueExists := true
                 else
-                    If CoARequired and not (PersBlobCU.Exists(LotInfo."TFB CoA Attach.")) then
+                    if CoARequired and not (PersBlobCU.Exists(LotInfo."TFB CoA Attach.")) then
                         IssueExists := true;
 
-        Exit(IssueExists);
+        exit(IssueExists);
 
 
     end;

@@ -140,7 +140,7 @@ page 50103 "TFB Pending Purch. Order Lines"
 
                 field("Sales Order No."; Rec."Sales Order No.")
                 {
-                    DrillDown = True;
+                    DrillDown = true;
                     Tooltip = 'Specifies related sales order no. if item is drop ship or special order';
                     ApplicationArea = All;
                     trigger OnDrillDown()
@@ -154,7 +154,7 @@ page 50103 "TFB Pending Purch. Order Lines"
                         SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
                         SalesOrder.SetRange("No.", Rec."Sales Order No.");
 
-                        If SalesOrder.FindFirst() then begin
+                        if SalesOrder.FindFirst() then begin
                             SalesOrderPage.SetRecord(SalesOrder);
                             SalesOrderPage.Run();
                         end;
@@ -180,8 +180,8 @@ page 50103 "TFB Pending Purch. Order Lines"
                         SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
                         SalesOrder.SetRange("No.", Rec."Sales Order No.");
 
-                        If SalesOrder.FindFirst() then
-                            If Customer.Get(SalesOrder."Sell-to Customer No.") then begin
+                        if SalesOrder.FindFirst() then
+                            if Customer.Get(SalesOrder."Sell-to Customer No.") then begin
 
                                 CustomerPage.SetRecord(Customer);
                                 CustomerPage.Run();
@@ -244,8 +244,8 @@ page 50103 "TFB Pending Purch. Order Lines"
 
     begin
 
-        If Container.Get(Rec."TFB Container Entry No.") then
-            Exit(Container."Est. Departure Date");
+        if Container.Get(Rec."TFB Container Entry No.") then
+            exit(Container."Est. Departure Date");
 
 
     end;

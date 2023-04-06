@@ -49,7 +49,7 @@ tableextension 50110 "TFB Contact" extends Contact
         }
         field(50180; "TFB Is Customer"; Boolean)
         {
-            CalcFormula = Exist("Contact Business Relation" WHERE("Contact No." = FIELD("Company No."), "Link to Table" = const(Customer)));
+            CalcFormula = exist("Contact Business Relation" where("Contact No." = field("Company No."), "Link to Table" = const(Customer)));
             Caption = 'Is A Customer';
             Editable = false;
             FieldClass = FlowField;
@@ -99,10 +99,10 @@ tableextension 50110 "TFB Contact" extends Contact
                 case Rec."TFB Enable Online Access" of
                     true:
 
-                        If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
+                        if Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
                             //check mobile is unique
 
-                            If Not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
+                            if not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
                             CheckMandatoryFieldsForEvent();
                             EventGridMgmt.PublishContactEnabledForOnline(Rec);
                         end
@@ -113,10 +113,10 @@ tableextension 50110 "TFB Contact" extends Contact
 
                     false:
 
-                        If Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
+                        if Rec.HasBusinessRelation("Contact Business Relation"::Customer, MarketingSetup."Bus. Rel. Code for Customers") then begin
                             //check mobile is unique
 
-                            If Not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
+                            if not IsMobilePhoneNoUnique() then FieldError("TFB Enable Online Access", 'Mobile phone number must be unique for this contact. Unfortunately other users exist');
 
 
                             EventGridMgmt.PublishContactDisabledForOnline(Rec);
@@ -161,7 +161,7 @@ tableextension 50110 "TFB Contact" extends Contact
         {
             FieldClass = FlowField;
             Caption = 'No. of Comments';
-            CalcFormula = Count("Rlshp. Mgt. Comment Line" where("Table Name" = const(Contact), "No." = field("No.")));
+            CalcFormula = count("Rlshp. Mgt. Comment Line" where("Table Name" = const(Contact), "No." = field("No.")));
         }
         field(50450; "TFB Industry Group Filter"; Code[10])
         {
@@ -173,7 +173,7 @@ tableextension 50110 "TFB Contact" extends Contact
         {
             Caption = 'No. of Industry Groups - Filtered';
             FieldClass = FlowField;
-            CalcFormula = Count("Contact Industry Group" where("Industry Group Code" = field("TFB Industry Group Filter"), "Contact No." = field("No.")));
+            CalcFormula = count("Contact Industry Group" where("Industry Group Code" = field("TFB Industry Group Filter"), "Contact No." = field("No.")));
         }
 
         field(50460; "TFB Default Review Period"; enum "TFB Periodic Review")
@@ -237,14 +237,14 @@ tableextension 50110 "TFB Contact" extends Contact
         ContBusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Customer);
         ContBusRel.SetRange("Contact No.", Rec."Company No.");
 
-        If ContBusRel.IsEmpty then exit;
+        if ContBusRel.IsEmpty then exit;
 
         ContBusRel.FindFirst();
         Customer.SetLoadFields("Primary Contact No.", "No.");
         Customer.Get(ContBusRel."No.");
         Customer.CalcFields("TFB Date of First Sale", "TFB Date of Last Open Order", "TFB Date of Last Sale", "No. of Orders", Balance, "Balance Due", "Sales (LCY)");
 
-        Exit(Customer);
+        exit(Customer);
 
     end;
 
@@ -261,9 +261,9 @@ tableextension 50110 "TFB Contact" extends Contact
         Rec."TFB Review Date - Planned" := _NextReview;
         Rec."TFB Review Date Exp. Compl." := 0D;
         Rec."TFB Review Date Last Compl." := WorkDate();
-        If _NextContactStatus <> '' then
+        if _NextContactStatus <> '' then
             Rec."TFB Contact Status" := _NextContactStatus;
-        If rec."TFB Review Note" <> '' then
+        if rec."TFB Review Note" <> '' then
             Rec."TFB Last Review Note" := Rec."TFB Review Note";
 
         Rec."TFB Review Note" := _ReviewComment;
@@ -282,7 +282,7 @@ tableextension 50110 "TFB Contact" extends Contact
         Evaluate(DefaultWeek, '<7D>');
         DialogP.Caption('Select when review will finish');
         DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
-        If not (DialogP.RunModal() = ACTION::OK) then exit;
+        if not (DialogP.RunModal() = ACTION::OK) then exit;
 
         if (DialogP.GetDate() > 0D) then
             Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
@@ -301,7 +301,7 @@ tableextension 50110 "TFB Contact" extends Contact
     begin
 
         WizardReview.InitFromContact(Rec);
-        If (WizardReview.RunModal() = Action::OK) and WizardReview.IsFinished() then begin
+        if (WizardReview.RunModal() = Action::OK) and WizardReview.IsFinished() then begin
             FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate(), WizardReview.GetContactStatus());
             Rec.Modify(true);
             exit(true);
@@ -317,7 +317,7 @@ tableextension 50110 "TFB Contact" extends Contact
     var
         Contact: Record Contact;
     begin
-        If not (Rec."Mobile Phone No." <> '') then
+        if not (Rec."Mobile Phone No." <> '') then
             FieldError("Mobile Phone No.", 'To enable online access a contact must have a mobile phone number specified');
 
 
@@ -325,7 +325,7 @@ tableextension 50110 "TFB Contact" extends Contact
         Contact.SetFilter("No.", '<>%1', Rec."No.");
         Contact.SetRange("Mobile Phone No.", Rec."Mobile Phone No.");
 
-        Exit(Contact.IsEmpty());
+        exit(Contact.IsEmpty());
     end;
 
     local procedure validateContactStatus()
@@ -335,12 +335,12 @@ tableextension 50110 "TFB Contact" extends Contact
 
     begin
 
-        If Type = Type::Person then
+        if Type = Type::Person then
             Rec."TFB Contact Status" := '';
 
         Status.SetRange(Status, Rec."TFB Contact Status");
 
-        If Status.FindFirst() then
+        if Status.FindFirst() then
             Rec.validate("TFB Contact Stage", Status.Stage);
 
 
@@ -349,9 +349,9 @@ tableextension 50110 "TFB Contact" extends Contact
 
     local procedure CheckMandatoryFieldsForEvent()
     begin
-        If "First Name" = '' then FieldError("First Name", 'First Name must be entered');
-        If Surname = '' then FieldError(Surname, 'Last Name must be entered');
-        If "Mobile Phone No." = '' then FieldError("Mobile Phone No.", 'Mobile phone number must be entered');
+        if "First Name" = '' then FieldError("First Name", 'First Name must be entered');
+        if Surname = '' then FieldError(Surname, 'Last Name must be entered');
+        if "Mobile Phone No." = '' then FieldError("Mobile Phone No.", 'Mobile phone number must be entered');
     end;
 
 }

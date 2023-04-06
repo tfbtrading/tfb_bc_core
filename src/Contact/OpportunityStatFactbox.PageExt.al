@@ -48,7 +48,7 @@ pageextension 50187 "TFB Opportunity Stat. FactBox" extends "Opportunity Statist
         OppEntry.SetRange("Opportunity No.", Rec."No.");
 
         if OppEntry.FindFirst() then
-            Exit(StrSubstNo('Updated to %1 on %2', OppEntry."Sales Cycle Stage Description", OppEntry."Date of Change"));
+            exit(StrSubstNo('Updated to %1 on %2', OppEntry."Sales Cycle Stage Description", OppEntry."Date of Change"));
 
     end;
 

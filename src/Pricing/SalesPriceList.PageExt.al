@@ -14,7 +14,7 @@ pageextension 50198 "TFB Sales Price List" extends "Sales Price List"
                 Caption = 'Suggest based on item costings';
                 Image = CostBudget;
                 Ellipsis = true;
-                Promoted = True;
+                Promoted = true;
                 PromotedCategory = Process;
                 ToolTip = 'Add suggested sales prices based on item costing worksheets';
 

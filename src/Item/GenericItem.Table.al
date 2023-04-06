@@ -49,10 +49,10 @@ table 50111 "TFB Generic Item"
 
                 Item.SetRange("TFB Generic Item ID", SystemId);
 
-                If Item.Findset(true) then
+                if Item.Findset(true) then
                     repeat
-                        If Rec.Picture.Count > 0 then
-                            For Index := 1 to Rec.Picture.Count do begin
+                        if Rec.Picture.Count > 0 then
+                            for Index := 1 to Rec.Picture.Count do begin
                                 Item.Picture.Insert(Rec.Picture.Item(Index));
                                 Item.Modify(true);
                             end;
@@ -95,7 +95,7 @@ table 50111 "TFB Generic Item"
         {
             Caption = 'No. Of Items';
             FieldClass = FlowField;
-            CalcFormula = Count(Item where("TFB Generic Item ID" = field(SystemId)));
+            CalcFormula = count(Item where("TFB Generic Item ID" = field(SystemId)));
 
         }
         field(9010; "External ID"; Text[255])
@@ -180,10 +180,10 @@ table 50111 "TFB Generic Item"
         GuidVar: Guid;
     begin
 
-        If Rec.Type = Rec.Type::ItemExtension then begin
+        if Rec.Type = Rec.Type::ItemExtension then begin
 
             Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-            If Item.FindFirst() then begin
+            if Item.FindFirst() then begin
                 clear(GuidVar);
                 Item."TFB Generic Item ID" := GuidVar;
                 Item."TFB Parent Generic Item Name" := '';
@@ -195,9 +195,9 @@ table 50111 "TFB Generic Item"
         else begin
 
             Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-            If item.Count() > 0 then
-                If Confirm('Items exist. Do you still want to delete this item?', false) then
-                    If Item.FindSet() then
+            if item.Count() > 0 then
+                if Confirm('Items exist. Do you still want to delete this item?', false) then
+                    if Item.FindSet() then
                         repeat
                             Clear(Item."TFB Generic Item ID");
                             Item."TFB Parent Generic Item Name" := '';
@@ -210,7 +210,7 @@ table 50111 "TFB Generic Item"
 
 
         GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
-        If GenericItemMarketRel.Count > 0 then
+        if GenericItemMarketRel.Count > 0 then
             GenericItemMarketRel.DeleteAll(false);
 
 
@@ -244,11 +244,11 @@ table 50111 "TFB Generic Item"
                     NewType::ItemExtension:
                         begin
                             Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-                            Case Item.Count() of
+                            case Item.Count() of
                                 0:
                                     Error('No items currently are set to this generic item');
                                 1:
-                                    If Item.FindFirst() then begin
+                                    if Item.FindFirst() then begin
                                         Item."TFB Act As Generic" := true;
                                         Item.Modify(false);
                                         Rec.Type := NewType;
@@ -270,14 +270,14 @@ table 50111 "TFB Generic Item"
                     NewType::ItemParent:
                         begin
                             Item.SetRange("TFB Generic Item ID", Rec.SystemId);
-                            Case Item.Count() of
+                            case Item.Count() of
                                 0:
                                     begin
                                         Rec.Type := NewType;
                                         Rec.Modify();
                                     end;
                                 1:
-                                    If Item.FindFirst() then begin
+                                    if Item.FindFirst() then begin
                                         Item."TFB Act As Generic" := false;
                                         Item."TFB Parent Generic Item Name" := Rec.Description;
                                         Item."TFB Generic Item ID" := Rec.SystemId;

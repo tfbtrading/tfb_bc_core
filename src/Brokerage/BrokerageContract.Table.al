@@ -9,15 +9,15 @@ table 50219 "TFB Brokerage Contract"
             DataClassification = CustomerContent;
             trigger OnValidate()
 
-            BEGIN
-                IF "No." <> xRec."No." THEN BEGIN
+            begin
+                if "No." <> xRec."No." then begin
                     CoreSetup.GET();
 
                     NoSeriesMgt.TestManual(CoreSetup."Brokerage Contract Nos.");
                     "No. Series" := '';
                     NoSeriesMgt.SetSeries("No.");
 
-                END;
+                end;
             end;
         }
         field(2; "No. Series"; Code[20])
@@ -50,7 +50,7 @@ table 50219 "TFB Brokerage Contract"
             Caption = 'Vendor Name';
             DataClassification = CustomerContent;
             TableRelation = Vendor;
-            ValidateTableRelation = False;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
 
@@ -277,7 +277,7 @@ table 50219 "TFB Brokerage Contract"
         {
             DataClassification = CustomerContent;
             TableRelation = "Payment Terms";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
 
             trigger OnValidate()
 
@@ -351,13 +351,13 @@ table 50219 "TFB Brokerage Contract"
         field(30; "Total Value"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("TFB Brokerage Contract Line".Amount where("Document No." = field("No.")));
+            CalcFormula = sum("TFB Brokerage Contract Line".Amount where("Document No." = field("No.")));
 
         }
         field(40; "Total Brokerage"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("TFB Brokerage Contract Line"."Brokerage Fee" where("Document No." = field("No.")));
+            CalcFormula = sum("TFB Brokerage Contract Line"."Brokerage Fee" where("Document No." = field("No.")));
 
         }
         field(50; "Container Route"; Code[20])
@@ -495,7 +495,7 @@ table 50219 "TFB Brokerage Contract"
             repeat
                 recContractLines.CalcLineTotals();
 
-            Until recContractLines.Next() = 0;
+            until recContractLines.Next() = 0;
 
 
     end;
@@ -503,7 +503,7 @@ table 50219 "TFB Brokerage Contract"
     trigger OnInsert()
     begin
 
-        If "No." = '' then begin
+        if "No." = '' then begin
 
             CoreSetup.Get();
             CoreSetup.TestField("Brokerage Contract Nos.");

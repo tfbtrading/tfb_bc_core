@@ -65,7 +65,7 @@ table 50106 "TFB Ops Mgr Activities Cue"
 
         field(110; "Quotes"; Integer)
         {
-            CalcFormula = Count("Sales Header" WHERE("Document Type" = FILTER(Quote)));
+            CalcFormula = count("Sales Header" where("Document Type" = filter(Quote)));
             Caption = 'Ongoing Sales Quotes';
             FieldClass = FlowField;
         }
@@ -73,32 +73,32 @@ table 50106 "TFB Ops Mgr Activities Cue"
         field(120; "Sales Lines - All"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order)));
+            CalcFormula = count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order)));
             Caption = 'Sales Lines - All';
         }
         field(125; "Sales Line - Created Today"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "TFB Document Date" = field("Workday Filter")));
+            CalcFormula = count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "TFB Document Date" = field("Workday Filter")));
             Caption = 'Sales Lines - Created Today';
         }
         field(130; "Sales Lines - This Week"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Due This Week Filter")));
+            CalcFormula = count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Due This Week Filter")));
             Caption = 'Sales Lines - This Week';
         }
 
         field(140; "Sales Lines - Next Week"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Due Next Week Filter")));
+            CalcFormula = count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Due Next Week Filter")));
             Caption = 'Sales Lines - Next Week';
         }
         field(150; "Sales Lines - Overdue"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Overdue Filter")));
+            CalcFormula = count("Sales Line" where("Document Type" = filter(Order), "Completely Shipped" = filter(false), Type = filter(Item), "Document Type" = filter(Order), "Planned Shipment Date" = field("Overdue Filter")));
             Caption = 'Sales Lines';
         }
         field(155; "Incoming Documents"; Integer)
@@ -116,31 +116,31 @@ table 50106 "TFB Ops Mgr Activities Cue"
 
         field(210; "Purchase Lines - All"; Integer)
         {
-            CalcFormula = Count("Purchase Line" WHERE("Document Type" = FILTER(Order), "Completely Received" = filter(false), Type = filter(Item)));
+            CalcFormula = count("Purchase Line" where("Document Type" = filter(Order), "Completely Received" = filter(false), Type = filter(Item)));
             Caption = 'Purchase Lines - All';
             FieldClass = FlowField;
         }
         field(215; "Purchase Lines - Created Today"; Integer)
         {
-            CalcFormula = Count("Purchase Line" WHERE("Document Type" = FILTER(Order), "Completely Received" = filter(false), Type = filter(Item), "TFB Document Date" = field("Workday Filter")));
+            CalcFormula = count("Purchase Line" where("Document Type" = filter(Order), "Completely Received" = filter(false), Type = filter(Item), "TFB Document Date" = field("Workday Filter")));
             Caption = 'Purchase Lines - Created Today';
             FieldClass = FlowField;
         }
         field(220; "Purchase Lines - This Week"; Integer)
         {
-            CalcFormula = Count("Purchase Line" WHERE("Document Type" = FILTER(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Due This Week Filter")));
+            CalcFormula = count("Purchase Line" where("Document Type" = filter(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Due This Week Filter")));
             Caption = 'Purchase Lines - All';
             FieldClass = FlowField;
         }
         field(230; "Purchase Lines - Next Week"; Integer)
         {
-            CalcFormula = Count("Purchase Line" WHERE("Document Type" = FILTER(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Due Next Week Filter")));
+            CalcFormula = count("Purchase Line" where("Document Type" = filter(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Due Next Week Filter")));
             Caption = 'Purchase Lines - Next Week';
             FieldClass = FlowField;
         }
         field(240; "Purchase Lines - Past Due"; Integer)
         {
-            CalcFormula = Count("Purchase Line" WHERE("Document Type" = FILTER(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Overdue Filter")));
+            CalcFormula = count("Purchase Line" where("Document Type" = filter(Order), "Completely Received" = filter(false), Type = filter(Item), "Planned Receipt Date" = field("Overdue Filter")));
             Caption = 'Purchase Lines - Next Week';
             FieldClass = FlowField;
         }
@@ -154,13 +154,13 @@ table 50106 "TFB Ops Mgr Activities Cue"
         field(310; "Warehouse Shipments"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Warehouse Shipment Header");
+            CalcFormula = count("Warehouse Shipment Header");
             Caption = 'Whse. Shipments';
         }
         field(320; "Containers In Progress"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingTreatment)));
+            CalcFormula = count("TFB Container Entry" where(Status = filter(ShippedFromPort | PendingClearance | PendingTreatment)));
             Caption = 'Inbound Shipments';
         }
 
@@ -168,13 +168,13 @@ table 50106 "TFB Ops Mgr Activities Cue"
 
         {
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Vendor Certification" where("Expiry Date" = field("Overdue Filter")));
+            CalcFormula = count("TFB Vendor Certification" where("Expiry Date" = field("Overdue Filter")));
         }
 
         field(410; "Lot's without CoA"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Lot No. Information" where("TFB CoA Attach." = const(0)));
+            CalcFormula = count("Lot No. Information" where("TFB CoA Attach." = const(0)));
         }
 
 

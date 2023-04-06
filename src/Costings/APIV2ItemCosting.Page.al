@@ -7,7 +7,7 @@ page 50335 "TFB APIV2 Item Costing"
     APIGroup = 'costings';
     EntityName = 'itemCosting';
     EntitySetName = 'itemCostings';
-    DelayedInsert = True;
+    DelayedInsert = true;
     SourceTable = "TFB Item Costing";
     Editable = false;
     ODataKeyFields = SystemId;

@@ -173,7 +173,7 @@ tableextension 50101 "TFB Customer" extends Customer
             trigger OnValidate()
 
             begin
-                If Rec."TFB Parent Company" = Rec."No." then
+                if Rec."TFB Parent Company" = Rec."No." then
                     FieldError("TFB Parent Company", 'Cannot choose the same company as a parent');
             end;
         }
@@ -228,7 +228,7 @@ tableextension 50101 "TFB Customer" extends Customer
 
         Status.SetRange(Status, Rec."TFB Contact Status");
 
-        If Status.FindFirst() then
+        if Status.FindFirst() then
             Rec.validate("TFB Contact Stage", Status.Stage);
 
 

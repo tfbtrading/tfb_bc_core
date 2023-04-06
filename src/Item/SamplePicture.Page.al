@@ -32,7 +32,7 @@ page 50155 "TFB Sample Picture"
                 Enabled = DeleteExportEnabled;
                 Image = Export;
                 ToolTip = 'Export the sample picture to a file.';
-                Visible = HideActions = FALSE;
+                Visible = HideActions = false;
 
                 trigger OnAction()
 
@@ -73,13 +73,13 @@ page 50155 "TFB Sample Picture"
         NoImgMsg: Label 'No picture stored.';
 
     begin
-        If LotInfo."TFB Sample Picture".count = 0 then
+        if LotInfo."TFB Sample Picture".count = 0 then
             Error(NoImgMsg);
 
         for index := 1 to LotInfo."TFB Sample Picture".count do
-            If TenantMedia.Get(LotInfo."TFB Sample Picture".Item(Index)) then begin
+            if TenantMedia.Get(LotInfo."TFB Sample Picture".Item(Index)) then begin
                 TenantMedia.CalcFields(Content);
-                If TenantMedia.Content.HasValue() then begin
+                if TenantMedia.Content.HasValue() then begin
                     ImgFileName := StrSubstNo('Item %1 Lot %2 Sample.%3', LotInfo."Item No.", LotInfo."Lot No.", GetImgFileExt(TenantMedia));
                     TenantMedia.Content.CreateInStream(InStream);
                     DownloadFromStream(InStream, '', '', '', ImgFileName);
@@ -128,12 +128,12 @@ page 50155 "TFB Sample Picture"
                 Error('');
 
         ClientFileName := '';
-        If not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
+        if not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
 
 
         Clear(Rec."TFB Sample Picture");
         Rec."TFB Sample Picture".ImportStream(InStream, 'LotImage');
-        If Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
+        if Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
         Rec.Modify(true);
         OnImportFromDeviceOnAfterModify(Rec);
     end;

@@ -44,7 +44,7 @@ page 50210 "TFB Container Entry"
 
                             CoreSetup.TestField("Container Entry Nos.");
 
-                            If NoSeriesMgt.SelectSeries(CoreSetup."Container Entry Nos.", xRec."No. Series", Rec."No. Series") then
+                            if NoSeriesMgt.SelectSeries(CoreSetup."Container Entry Nos.", xRec."No. Series", Rec."No. Series") then
                                 NoSeriesMgt.SetSeries(Rec."No.");
 
                         end;
@@ -774,10 +774,10 @@ page 50210 "TFB Container Entry"
         FileName := StrSubstNo('Unpack_%1.pdf', Rec."Container No.");
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FilterTxt, ExtFilterTxt);
 
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
             TempBlob.CreateInStream(IStream);
             BlobRef := PersistBlobCU.Create();
-            If PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
+            if PersistBlobCU.CopyFromInStream(BlobRef, IStream) then
                 Rec."Unpack Worksheet Attach." := BlobRef;
 
             rec.Modify();
@@ -801,8 +801,8 @@ page 50210 "TFB Container Entry"
     begin
 
 
-        If Rec."Unpack Worksheet Attach." > 0 then
-            If PersistentBlob.Exists(Rec."Unpack Worksheet Attach.") then begin
+        if Rec."Unpack Worksheet Attach." > 0 then
+            if PersistentBlob.Exists(Rec."Unpack Worksheet Attach.") then begin
                 FileNameBuilder.Append('UnpackReport_');
                 FileNameBuilder.Append(Rec."Container No.");
                 FileNameBuilder.Append('.pdf');
@@ -811,7 +811,7 @@ page 50210 "TFB Container Entry"
                 TempBlob.CreateOutStream(OutStream);
                 PersistentBlob.CopyToOutStream(Rec."Unpack Worksheet Attach.", OutStream);
                 CopyStream(OutStream, InStream);
-                If Not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
+                if not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
                     Error('File Not Downloaded');
             end;
     end;
@@ -825,7 +825,7 @@ page 50210 "TFB Container Entry"
         PersistentBlob: Codeunit "Persistent Blob";
     begin
 
-        If Rec."Unpack Worksheet Attach." > 0 then
+        if Rec."Unpack Worksheet Attach." > 0 then
             if PersistentBlob.Exists(Rec."Unpack Worksheet Attach.") then begin
                 PersistentBlob.Delete(Rec."Unpack Worksheet Attach.");
                 Clear(Rec."Unpack Worksheet Attach.");
@@ -860,7 +860,7 @@ page 50210 "TFB Container Entry"
     local procedure UpdateReportStatus()
     begin
 
-        If Rec."Unpack Worksheet Attach." > 0 then
+        if Rec."Unpack Worksheet Attach." > 0 then
             _unpackReportAttached := true else
             _unpackReportAttached := false;
 
@@ -896,7 +896,7 @@ page 50210 "TFB Container Entry"
         Clear(_QtyOnOrder);
         Clear(_QtyReserved);
         Rec.CalcFields("Qty. On Purch. Rcpt");
-        If rec.Type = rec.type::PurchaseOrder then
+        if rec.Type = rec.type::PurchaseOrder then
             if rec."Qty. On Purch. Rcpt" > 0 then
                 ContainerCU.PopulateReceiptLines(rec, TempContainerContents)
             else
@@ -906,7 +906,7 @@ page 50210 "TFB Container Entry"
         TempContainerContents.CalcSums(Quantity, "Qty Sold (Base)");
         _QtyOnOrder := TempContainerContents.Quantity;
         _QtyReserved := TempContainerContents."Qty Sold (Base)";
-        If _QtyOnOrder > 0 then
+        if _QtyOnOrder > 0 then
             _PercReserved := (_QtyReserved / _QtyOnOrder)
         else
             _PercReserved := 0;
@@ -977,7 +977,7 @@ page 50210 "TFB Container Entry"
 
         if not Purchase.FindFirst() then begin
             TransferRec.SetRange("TFB Container Entry No.", Rec."No.");
-            If not TransferRec.FindFirst() then
+            if not TransferRec.FindFirst() then
                 exit
             else
                 Location.Get(TransferRec."Transfer-to Code");
@@ -1003,9 +1003,9 @@ page 50210 "TFB Container Entry"
         GetNotificationContent(HTMLBuilder, Doc);
         OutStreamHTML.WriteText(HTMLBuilder.ToText());
         TempBlobHTML.CreateInStream(InStreamHTML);
-        If Dialog.Confirm('Send Report instead of CoA', false) then begin
-            If RepSel.FindFirst() then
-                If REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
+        if Dialog.Confirm('Send Report instead of CoA', false) then begin
+            if RepSel.FindFirst() then
+                if REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
                     TempBlob.CreateInStream(InstreamReport);
                     DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
                 end;
@@ -1043,7 +1043,7 @@ page 50210 "TFB Container Entry"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
         ReferenceBuilder.Append(StrSubstNo('Our order %1', Doc."Order Reference"));
 
-        If Doc."Container No." <> '' then
+        if Doc."Container No." <> '' then
             ReferenceBuilder.Append(StrSubstNo('<br>Container %1', Doc."Container No."));
 
         if Doc."Quarantine Reference" <> '' then
@@ -1073,11 +1073,11 @@ page 50210 "TFB Container Entry"
 
             FieldRef := RecordRef.Field(FieldNo);
 
-            If format(FieldRef.Value()) <> '' then begin
+            if format(FieldRef.Value()) <> '' then begin
                 Clear(LineBuilder);
                 LineBuilder.AppendLine('<tr>');
                 LineBuilder.Append(StrSubstNo(tdTxt, FieldRef.Caption));
-                If FieldRef.Type = FieldRef.Type::Date then
+                if FieldRef.Type = FieldRef.Type::Date then
                     LineBuilder.Append(StrSubstNo(tdTxt, Format(FieldRef.Value, 0, 4)))
                 else
                     LineBuilder.Append(StrSubstNo(tdTxt, Format(FieldRef.Value)));
@@ -1099,7 +1099,7 @@ page 50210 "TFB Container Entry"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Unit</th></thead>');
 
         ContainerCU.GetContainerContents(TempContainerContents, Doc);
-        If TempContainerContents.FindSet() then
+        if TempContainerContents.FindSet() then
             repeat
 
                 clear(LineBuilder);
@@ -1117,7 +1117,7 @@ page 50210 "TFB Container Entry"
         BodyBuilder.AppendLine('</table>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
 
     end;
 

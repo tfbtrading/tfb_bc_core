@@ -11,8 +11,8 @@ pageextension 50118 "TFB Item Tracking Lines" extends "Item Tracking Lines"
                 MFuture: DateFormula;
             begin
                 Evaluate(MFuture, '6M');
-                If CalcDate(MFuture, Today) > Rec."Expiration Date" then
-                    If not Confirm('Check expiration date - it is only 6 months in future. Use this date?') then
+                if CalcDate(MFuture, Today) > Rec."Expiration Date" then
+                    if not Confirm('Check expiration date - it is only 6 months in future. Use this date?') then
                         Rec."Expiration Date" := 0D;
 
             end;

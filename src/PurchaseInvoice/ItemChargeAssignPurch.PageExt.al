@@ -44,7 +44,7 @@ pageextension 50106 "TFB Item Charge Assign.(Purch)" extends "Item Charge Assign
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Applies-to Doc. No." <> '' then
+        if Rec."Applies-to Doc. No." <> '' then
             LineExists := true
         else
             LineExists := false;

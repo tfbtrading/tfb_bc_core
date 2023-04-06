@@ -21,7 +21,7 @@ tableextension 50118 "TFB Vendor" extends Vendor
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Route";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Caption = 'Def. Ship Via Location';
         }
         field(50122; "TFB Brokerage Percentage"; Decimal)

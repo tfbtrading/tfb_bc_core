@@ -64,7 +64,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
             field("TFB Ongoing Whse. Shipments"; Rec."TFB Ongoing Whse. Shipments")
             {
                 ApplicationArea = All;
-                DrillDown = True;
+                DrillDown = true;
                 DrillDownPageId = "Warehouse Shipment List";
                 tooltip = 'Specifies number of ongoing warehouse shipments';
             }
@@ -84,7 +84,7 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
             field("TFBContainers In Progress"; Rec."TFB Containers In Progress")
             {
                 ApplicationArea = All;
-                DrillDown = True;
+                DrillDown = true;
                 DrillDownPageId = "TFB Container Entry List";
                 ToolTip = 'Specifies number of containers in progress';
             }
@@ -117,9 +117,9 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
         User.SetRange("User Security ID", USID);
 
-        If User.FindFirst() then begin
+        if User.FindFirst() then begin
             UserName := User."User Name";
-            If UserSetup.Get(UserName) then
+            if UserSetup.Get(UserName) then
                 Rec.SetRange("TFB Salesperson Code Filter", UserSetup."Salespers./Purch. Code");
 
 

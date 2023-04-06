@@ -84,7 +84,7 @@ page 50143 "TFB Sample Request Subform"
     {
         area(Processing)
         {
-            Group(ItemAvailabilityBy)
+            group(ItemAvailabilityBy)
             {
                 Caption = '&Item Availability by';
                 Image = ItemAvailability;
@@ -112,7 +112,7 @@ page 50143 "TFB Sample Request Subform"
                     Caption = 'Period';
                     Image = Period;
                     RunObject = Page "Item Availability by Periods";
-                    RunPageLink = "No." = FIELD("No.");
+                    RunPageLink = "No." = field("No.");
                     Enabled = Rec."No." <> '';
                   
                     ToolTip = 'Show the projected quantity of the item over time according to time periods, such as day, week, or month.';
@@ -126,7 +126,7 @@ page 50143 "TFB Sample Request Subform"
                  
                     Enabled = Rec."No." <> '';
                     RunObject = Page "Item Availability by Location";
-                    RunPageLink = "No." = FIELD("No."), "Drop Shipment Filter" = const(false);
+                    RunPageLink = "No." = field("No."), "Drop Shipment Filter" = const(false);
                     ToolTip = 'View the actual and projected quantity of the item per location.';
                 }
                 action(Lot)

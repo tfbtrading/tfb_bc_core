@@ -109,7 +109,7 @@ page 50170 "TFB Lot Images"
                     ItemLedger: Record "Item Ledger Entry";
                     GetWizard: Page "TFB Lot Get Image Wizard";
                 begin
-                    If not ItemLedger.GetBySystemId(Rec."Item Ledger Entry ID") then exit;
+                    if not ItemLedger.GetBySystemId(Rec."Item Ledger Entry ID") then exit;
                     GetWizard.InitFromItemLedger(ItemLedger);
                     GetWizard.RunModal();
 
@@ -119,7 +119,7 @@ page 50170 "TFB Lot Images"
 
         area(Promoted)
         {
-            Group(Category_Home)
+            group(Category_Home)
             {
                 Caption = 'Home';
 
@@ -142,7 +142,7 @@ page 50170 "TFB Lot Images"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        If not Rec.InitFromItemLedgerEntryID(Rec."Item Ledger Entry ID") then
+        if not Rec.InitFromItemLedgerEntryID(Rec."Item Ledger Entry ID") then
             error('No valid item ledger entry identifier provided');
         Rec."Import Sequence No." := Rec.GetNextSequence();
     end;
@@ -221,7 +221,7 @@ page 50170 "TFB Lot Images"
     var
         TypeHelper: Codeunit "Type Helper";
     begin
-        Exit(TypeHelper.FormatDateTime(rec.SystemCreatedAt, 'dd/MM/yy HH:mm', TypeHelper.GetCultureName()))
+        exit(TypeHelper.FormatDateTime(rec.SystemCreatedAt, 'dd/MM/yy HH:mm', TypeHelper.GetCultureName()))
 
     end;
 }

@@ -359,7 +359,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
     local procedure GetIfBlockedFromSale(): Boolean
 
     begin
-        Exit(Rec.Blocked or Rec."Sales Blocked");
+        exit(Rec.Blocked or Rec."Sales Blocked");
     end;
 
     local procedure GetIfUsuallyDropship(): Boolean
@@ -370,8 +370,8 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
     begin
 
-        If PurchCode.Get(Rec."Purchasing Code") then
-            Exit(PurchCode."Drop Shipment");
+        if PurchCode.Get(Rec."Purchasing Code") then
+            exit(PurchCode."Drop Shipment");
     end;
 
 }

@@ -56,7 +56,7 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
         AzureBlob.Initialize(CoreSetup."ABS POD Account", CoreSetup."ABS POD Container", Authorization);
 
         ABSResponse := AzureBlob.GetBlobAsStream(Rec."TFB POD Filename", Instream);
-        Exit(ABSResponse.IsSuccessful());
+        exit(ABSResponse.IsSuccessful());
 
 
     end;
@@ -69,9 +69,9 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
         ConfirmOverwriteMsg: Label 'Overwright existing blob assigned with filename %1', comment = '%1 = filename of blob being overwritten';
     begin
 
-        If not HideDialog then
-            If "TFB POD Received" then
-                If not Confirm(ConfirmOverwriteMsg, true, "TFB POD Filename") then exit;
+        if not HideDialog then
+            if "TFB POD Received" then
+                if not Confirm(ConfirmOverwriteMsg, true, "TFB POD Filename") then exit;
 
         CoreSetup.SetLoadFields("ABS POD Container", "ABS POD Access Key", "ABS POD Account");
         CoreSetup.Get();
@@ -79,13 +79,13 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
         AzureBlob.Initialize(CoreSetup."ABS POD Account", CoreSetup."ABS POD Container", Authorization);
 
         ABSResponse := AzureBlob.PutBlobBlockBlobStream(Rec."TFB POD Filename", Instream);
-        If ABSResponse.IsSuccessful() then begin
+        if ABSResponse.IsSuccessful() then begin
             TempSalesShipmentHeader := Rec;
             TempSalesShipmentHeader."TFB POD Filename" := FileName;
-            TempSalesShipmentHeader."TFB POD Received" := True;
+            TempSalesShipmentHeader."TFB POD Received" := true;
             PstdShipmentHdrEdit.Run(TempSalesShipmentHeader);
         end;
-        Exit(ABSResponse.IsSuccessful());
+        exit(ABSResponse.IsSuccessful());
 
     end;
 

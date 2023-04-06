@@ -76,7 +76,7 @@ pageextension 50182 "TFB Posted Sales Shipment" extends "Posted Sales Shipment" 
         addafter("&Track Package")
 
         {
-            Action(TFBNotifyCustomer)
+            action(TFBNotifyCustomer)
             {
                 Caption = 'Email shipment notification';
                 Tooltip = 'Emails a details notification about the shipment to the customer';

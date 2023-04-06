@@ -4,7 +4,7 @@
   "publisher": "TFB Trading",
   "brief": "Expansive changes specific to TFB Trading",
   "description": "",
-  "version": "22.0.0.0",
+  "version": "22.0.1.0",
   "privacyStatement": "",
   "EULA": "",
   "help":  "http://tfbtrading.com.au",
@@ -40,7 +40,7 @@
   }],
   "runtime": "11.0",
   "target": "Cloud",
-  "resourceExposurePolicy": {"includeSourceInSymbolFile": true,"allowDebugging": true,"applyToDevExtension": true},
+  "resourceExposurePolicy": {"includeSourceInSymbolFile": true,"allowDebugging": true,"applyToDevExtension": true,"allowDownloadingSource": true},
   "supportedLocales": ["en-AU"]
 
 }

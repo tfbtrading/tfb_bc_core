@@ -9,7 +9,7 @@ pageextension 50105 "TFB Vendor Hist. FactBox" extends "Vendor Hist. Buy-from Fa
                 ApplicationArea = All;
                 DrillDown = true;
                 DrillDownPageId = "TFB Pending Purch. Order Lines";
-                Visible = True;
+                Visible = true;
                 Tooltip = 'Specifies the number of ongoing order lines';
             }
         }
@@ -21,7 +21,7 @@ pageextension 50105 "TFB Vendor Hist. FactBox" extends "Vendor Hist. Buy-from Fa
                 ApplicationArea = All;
                 DrillDown = true;
                 DrillDownPageId = "TFB Pstd. Purch. Inv. Lines";
-                Visible = True;
+                Visible = true;
                 Tooltip = 'Specifies the number of posted invoice lines';
             }
         }

@@ -35,7 +35,7 @@ pageextension 50230 "TFB Purch. Receipt Lines" extends "Purch. Receipt Lines" //
 
                 begin
 
-                    If Rec."TFB Container No. LookUp" <> '' then begin
+                    if Rec."TFB Container No. LookUp" <> '' then begin
                         ContainerEntry.Get(Rec."TFB Container Entry No.");
                         Container.SetRecord(ContainerEntry);
                         Container.Run();
@@ -103,7 +103,7 @@ pageextension 50230 "TFB Purch. Receipt Lines" extends "Purch. Receipt Lines" //
     begin
         Rec.CalcFields("TFB Container No. LookUp");
 
-        If PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
+        if PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
             TotalOfItemCharges := TotalExistingItemCharges
         else
             TotalOfItemCharges := 0;

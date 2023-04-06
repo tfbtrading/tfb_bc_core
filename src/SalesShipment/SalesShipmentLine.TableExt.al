@@ -8,7 +8,7 @@ tableextension 50137 "TFB Sales Shipment Line" extends "Sales Shipment Line" //1
 
             Caption = 'Sell-to Customer Name';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Sales Shipment Header"."Sell-to Customer Name" where("Sell-to Customer No." = FIELD("Sell-to Customer No.")));
+            CalcFormula = lookup ("Sales Shipment Header"."Sell-to Customer Name" where("Sell-to Customer No." = field("Sell-to Customer No.")));
             Editable = false;
 
         }
@@ -16,7 +16,7 @@ tableextension 50137 "TFB Sales Shipment Line" extends "Sales Shipment Line" //1
         {
             DataClassification = CustomerContent;
             Caption = 'CoA Sent';
-            Editable = False;
+            Editable = false;
         }
         field(50210; "TFB 3PL Booking No"; Text[30])
         {
@@ -33,7 +33,7 @@ tableextension 50137 "TFB Sales Shipment Line" extends "Sales Shipment Line" //1
             Caption = '3PL Booking No';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Sales Shipment Header"."TFB 3PL Booking No." where("No." = field("Document No.")));
+            CalcFormula = lookup ("Sales Shipment Header"."TFB 3PL Booking No." where("No." = field("Document No.")));
 
         }
 

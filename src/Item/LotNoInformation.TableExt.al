@@ -14,7 +14,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
         field(50020; "TFB CoA Attached"; Boolean)
         {
             DataClassification = CustomerContent;
-            Editable = False;
+            Editable = false;
             Caption = 'CoA Attached';
             ObsoleteState = Removed;
             ObsoleteReason = 'Replaced by persistent blob';
@@ -37,13 +37,13 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
         }
         field(50030; "TFB Item Description"; Text[100])
         {
-            Editable = False;
+            Editable = false;
             DataClassification = CustomerContent;
             Caption = 'Description';
         }
         field(50040; "TFB Date Available"; Date)
         {
-            Editable = True;
+            Editable = true;
             Caption = 'Est. Date Available';
             DataClassification = CustomerContent;
         }
@@ -85,7 +85,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
             Caption = 'No. Of Lot Images';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Lot Image" where("Item No." = field("Item No."), "Lot No." = field("Lot No."), "Variant Code" = field("Variant Code")));
+            CalcFormula = count("TFB Lot Image" where("Item No." = field("Item No."), "Lot No." = field("Lot No."), "Variant Code" = field("Variant Code")));
 
         }
 
@@ -110,7 +110,7 @@ tableextension 50280 "TFB Lot No. Information" extends "Lot No. Information"
 
             begin
 
-                If Rec.Blocked = false then
+                if Rec.Blocked = false then
                     "TFB Date Available" := 0D;
 
             end;

@@ -55,13 +55,13 @@ codeunit 50114 "TFB Sample Request Mgmt"
         SampleRequestLines.SetRange("Document No.", SampleRequest."No.");
         SampleRequestLines.SetRange("Sourced From", SampleRequestLines."Sourced From"::Warehouse);
 
-        If SampleRequestLines.Findset(true) then
+        if SampleRequestLines.Findset(true) then
             repeat
-                If not Locations.Contains(SampleRequestLines.Location) then begin
+                if not Locations.Contains(SampleRequestLines.Location) then begin
                     Locations.Add(SampleRequestLines.Location);
                     Item.Get(SampleRequestLines."No.");
 
-                    If not Customer.Get(SampleRequest."Sell-to Customer No.") then
+                    if not Customer.Get(SampleRequest."Sell-to Customer No.") then
                         Recipients.Add(DetermineItemWarehouseLocation(Contact, Item)."E-Mail")
                     else
                         Recipients.Add(DetermineItemWarehouseLocation(Customer, Item)."E-Mail")
@@ -72,7 +72,7 @@ codeunit 50114 "TFB Sample Request Mgmt"
 
 
 
-        If Locations.Count > 0 then begin
+        if Locations.Count > 0 then begin
 
             ContactName := Location.Name;
             Reference := SampleRequest."No.";
@@ -91,7 +91,7 @@ codeunit 50114 "TFB Sample Request Mgmt"
             DocumentRef.GetTable(SampleRequest);
             TempBlob.CreateOutStream(OutStream);
             //HTMLBuilder.Replace('%1', 'Shipment Status Query');
-            If REPORT.SaveAs(ReportNo, '', ReportFormat::Pdf, OutStream, DocumentRef) and GenerateSampleRequestContent(ContactName, Reference, CustomerName, HTMLBuilder) then begin
+            if REPORT.SaveAs(ReportNo, '', ReportFormat::Pdf, OutStream, DocumentRef) and GenerateSampleRequestContent(ContactName, Reference, CustomerName, HTMLBuilder) then begin
 
                 //Check that content has been generated to send
 
@@ -129,7 +129,7 @@ codeunit 50114 "TFB Sample Request Mgmt"
         BodyBuilder.AppendLine('<br><br>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
 
     end;
 
@@ -144,23 +144,23 @@ codeunit 50114 "TFB Sample Request Mgmt"
 
     begin
 
-        If Location.Get(Customer."Location Code") then begin
+        if Location.Get(Customer."Location Code") then begin
             ItemLedger.SetFilter("Remaining Quantity", '>0');
             ItemLedger.SetRange("Item No.", Item."No.");
             ItemLedger.SetRange("Location Code", Location.Code);
 
 
-            If ItemLedger.IsEmpty() then begin
+            if ItemLedger.IsEmpty() then begin
                 ItemLedger.Reset();
                 ItemLedger.SetFilter("Remaining Quantity", '>0');
                 ItemLedger.SetRange("Item No.", Item."No.");
-                If ItemLedger.FindFirst() then
+                if ItemLedger.FindFirst() then
                     Location.Get(ItemLedger."Location Code");
             end;
 
 
         end;
-        Exit(Location);
+        exit(Location);
     end;
 
     procedure DetermineItemWarehouseLocation(Contact: Record Contact; Item: Record Item): Record Location
@@ -173,10 +173,10 @@ codeunit 50114 "TFB Sample Request Mgmt"
         ItemLedger.Reset();
         ItemLedger.SetFilter("Remaining Quantity", '>0');
         ItemLedger.SetRange("Item No.", Item."No.");
-        If ItemLedger.FindFirst() then
+        if ItemLedger.FindFirst() then
             Location.Get(ItemLedger."Location Code");
 
 
-        Exit(Location);
+        exit(Location);
     end;
 }

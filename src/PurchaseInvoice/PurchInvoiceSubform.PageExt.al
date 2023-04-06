@@ -23,7 +23,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
                 Caption = 'Price By Price Unit';
                 Tooltip = 'Specifies price in the vendors default weight unit';
                 Editable = InventoryItem;
-                Visible = Not InventoryItem;
+                Visible = not InventoryItem;
                 BlankNumbers = BlankZero;
             }
             field(VendorPriceUnit; VendorPriceUnitEnum)
@@ -56,7 +56,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
             field("TFBGen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 ToolTip = 'Specifies the general product posting group for the line';
             }
         }
@@ -102,7 +102,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
 
     begin
         UpdatePriceUnitCalcs();
-        If Rec."Qty. to Assign" = 0 then
+        if Rec."Qty. to Assign" = 0 then
             AIIndicatorVar := '';
     end;
 
@@ -120,9 +120,9 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
         InventoryItem := false;
         VendorPriceUnitEnum := VendorPriceUnitEnum::"N/A";
 
-        If rec.Type = rec.Type::Item then
+        if rec.Type = rec.Type::Item then
             if Item.Get(rec."No.") then
-                If item.type = item.type::Inventory then begin
+                if item.type = item.type::Inventory then begin
                     InventoryItem := true;
                     Vendor.Get(rec."Buy-from Vendor No.");
                     VendorPriceUnitEnum := Vendor."TFB Vendor Price Unit";
@@ -138,7 +138,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
 
     begin
 
-        If PurchInvCU.CheckAndRetrieveAssignmentLines(Rec, false) then
+        if PurchInvCU.CheckAndRetrieveAssignmentLines(Rec, false) then
             AIIndicatorVar := '⚡'
         else
             AIIndicatorVar := '';

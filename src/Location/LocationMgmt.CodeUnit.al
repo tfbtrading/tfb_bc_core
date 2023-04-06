@@ -20,7 +20,7 @@ codeunit 50115 "TFB Location Mgmt"
 
 
     begin
-        If not ((Sender."Document Type" = Sender."Document Type"::Order) or (Sender."Document Type" = Sender."Document Type"::Quote)) then exit;
+        if not ((Sender."Document Type" = Sender."Document Type"::Order) or (Sender."Document Type" = Sender."Document Type"::Quote)) then exit;
         Sender."Shipment Date" := CalcShipmentDateForLocation(Sender);
         IsHandled := true;
     end;
@@ -30,18 +30,18 @@ codeunit 50115 "TFB Location Mgmt"
     var
         SalesHeader: record "Sales Header";
         Location: Record Location;
-        CustomCalendarChange: Array[2] of Record "Customized Calendar Change";
+        CustomCalendarChange: array[2] of Record "Customized Calendar Change";
         CalendarMgmt: CodeUnit "Calendar Management";
         DateFormulae: DateFormula;
         NewDate: Date;
     begin
-        If not IsLineValidForIntelligentLocation(SalesLine) then exit; // Only intended for item lines
+        if not IsLineValidForIntelligentLocation(SalesLine) then exit; // Only intended for item lines
         Evaluate(DateFormulae, '1D');
         SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
         CustomCalendarChange[1].SetSource(Enum::"Calendar Source Type"::Location, SalesLine."Location Code", '', '');
         NewDate := SalesHeader."Shipment Date";
-        If Location.Get(SalesLine."Location Code") and (Location."TFB Outbound Order Deadline" > 0T) then
-            If Time > Location."TFB Outbound Order Deadline" then
+        if Location.Get(SalesLine."Location Code") and (Location."TFB Outbound Order Deadline" > 0T) then
+            if Time > Location."TFB Outbound Order Deadline" then
                 NewDate := CalcDate(DateFormulae, SalesHeader."Shipment Date");
 
         ShipmentDate2 := CalendarMgmt.CalcDateBOC('', NewDate, CustomCalendarChange, false);
@@ -50,7 +50,7 @@ codeunit 50115 "TFB Location Mgmt"
     local procedure IsLineValidForIntelligentLocation(SalesLine: Record "Sales Line"): Boolean
 
     begin
-        Exit((SalesLine.Type = SalesLine.Type::Item) and ((SalesLine."Document Type" = SalesLine."Document Type"::Quote) or (SalesLine."Document Type" = SalesLine."Document Type"::Order)));
+        exit((SalesLine.Type = SalesLine.Type::Item) and ((SalesLine."Document Type" = SalesLine."Document Type"::Quote) or (SalesLine."Document Type" = SalesLine."Document Type"::Order)));
     end;
 
 }

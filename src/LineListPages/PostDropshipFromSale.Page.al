@@ -27,7 +27,7 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("Purchase Order No."; Rec."Purchase Order No.")
                 {
-                    DrillDown = True;
+                    DrillDown = true;
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
                     ApplicationArea = All;
@@ -68,7 +68,7 @@ page 50115 "TFB Post Dropship from Sale"
                         SalesRec.SetRange("Document Type", Rec."Document Type"::Order);
                         SalesRec.SetRange("No.", Rec."Document No.");
 
-                        If SalesRec.FindFirst() then
+                        if SalesRec.FindFirst() then
                             PAGE.RUN(PAGE::"Sales Order", SalesRec);
 
 
@@ -99,14 +99,14 @@ page 50115 "TFB Post Dropship from Sale"
                     DrillDown = true;
                     ToolTip = 'Specifies the customers name';
 
-                    Trigger OnDrillDown()
+                    trigger OnDrillDown()
 
                     var
                         Customer: Record Customer;
                         CustomerPage: Page "Customer Card";
 
                     begin
-                        If Customer.Get(Rec."Sell-to Customer No.") then begin
+                        if Customer.Get(Rec."Sell-to Customer No.") then begin
                             CustomerPage.SetRecord(Customer);
                             CustomerPage.Run();
                         end;
@@ -247,7 +247,7 @@ page 50115 "TFB Post Dropship from Sale"
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
         Purchase.SetRange("No.", Rec."Purchase Order No.");
 
-        If Purchase.FindFirst() then begin
+        if Purchase.FindFirst() then begin
             PurchasePage.SetRecord(Purchase);
             PurchasePage.Run();
         end;

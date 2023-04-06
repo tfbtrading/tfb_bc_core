@@ -73,7 +73,7 @@ page 50156 "TFB Forex Mgmt Entries"
                     trigger OnValidate()
 
                     begin
-                        If Rec."Entry No." <> 0 then
+                        if Rec."Entry No." <> 0 then
                             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
                     end;
 
@@ -193,7 +193,7 @@ page 50156 "TFB Forex Mgmt Entries"
                     case Rec."Applies-to Doc. Type" of
                         Rec."Applies-to Doc. Type"::VendorLedgerEntry:
 
-                            If VendorLedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
+                            if VendorLedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
                                 VendorLedgerEntry.SetRecFilter();
                                 Page.Run(Page::"Vendor Ledger Entries", VendorLedgerEntry);
                             end;
@@ -215,7 +215,7 @@ page 50156 "TFB Forex Mgmt Entries"
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Entry No." <> 0 then
+        if Rec."Entry No." <> 0 then
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 

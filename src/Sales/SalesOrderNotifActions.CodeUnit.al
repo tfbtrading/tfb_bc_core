@@ -10,9 +10,9 @@ codeunit 50128 "TFB Sales Order Notif. Actions"
 
     begin
 
-        If not MyNotification.HasData('SystemId') then exit;
+        if not MyNotification.HasData('SystemId') then exit;
 
-        If not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
+        if not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
 
         PageRunner.PageRun(SalesHeader);
 

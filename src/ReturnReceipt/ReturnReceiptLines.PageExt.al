@@ -14,7 +14,7 @@ pageextension 50102 "TFB Return Receipt Lines" extends "Return Receipt Lines" //
             field("TFBReturn Order No."; Rec."Return Order No.")
             {
                 ApplicationArea = All;
-                Editable = False;
+                Editable = false;
                 Tooltip = 'Specifies return order no.';
             }
         }

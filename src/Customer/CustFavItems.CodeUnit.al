@@ -12,7 +12,7 @@ codeunit 50110 "TFB Cust. Fav. Items"
 
         Customer.SetLoadFields("No.");
         Customer.SetRange(Blocked, Customer.Blocked::" ");
-        If Customer.Findset(false) then
+        if Customer.Findset(false) then
             repeat
                 PopulateOneCustomer(Customer."No.");
 
@@ -43,9 +43,9 @@ codeunit 50110 "TFB Cust. Fav. Items"
 
     begin
 
-        If QtySold > 0 then
-            If CustFavItem.Get(CustNo, 'DEFAULT', ItemNo) then begin
-                If CustFavItem.Source <> CustFavItem.Source::PastBuy then begin
+        if QtySold > 0 then
+            if CustFavItem.Get(CustNo, 'DEFAULT', ItemNo) then begin
+                if CustFavItem.Source <> CustFavItem.Source::PastBuy then begin
                     CustFavItem.Source := CustFavItem.Source::PastBuy;
                     CustFavItem.Modify();
                 end;

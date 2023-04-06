@@ -77,7 +77,7 @@ page 50174 "TFB Contact Review Wizard"
                             trigger OnValidate()
 
                             begin
-                                If _ReviewComment = '' then
+                                if _ReviewComment = '' then
                                     error('You must provide a review outcome description');
                             end;
                         }
@@ -266,7 +266,7 @@ page 50174 "TFB Contact Review Wizard"
 
         _UpdateContactStatus := _contact."TFB Contact Status";
 
-        If _LastReviewDate > 0D then begin
+        if _LastReviewDate > 0D then begin
             _ExistingReview := true;
             _LastReviewComment := _contact."TFB Review Note";
 
@@ -279,17 +279,17 @@ page 50174 "TFB Contact Review Wizard"
 
     internal procedure GetReviewComment(): Text[256]
     begin
-        Exit(_ReviewComment);
+        exit(_ReviewComment);
     end;
 
     internal procedure GetNextPlannedDate(): Date
     begin
-        Exit(_NextReview);
+        exit(_NextReview);
     end;
 
     internal procedure GetContactStatus(): Code[20]
     begin
-        Exit(_UpdateContactStatus);
+        exit(_UpdateContactStatus);
     end;
 
 
@@ -366,7 +366,7 @@ page 50174 "TFB Contact Review Wizard"
     begin
 
         CRLF := TypeHelper.CRLFSeparator();
-        Exit(InstructionTxt + CRLF + Instruction1Txt + CRLF + Instruction2Txt + CRLF + Instruction3Txt + CRLF + Instruction4Txt);
+        exit(InstructionTxt + CRLF + Instruction1Txt + CRLF + Instruction2Txt + CRLF + Instruction3Txt + CRLF + Instruction4Txt);
     end;
 
     local procedure ResetNextReviewDate(newPeriodicReviewSelection: Enum "TFB Periodic Review")

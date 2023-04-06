@@ -18,7 +18,7 @@ pageextension 50168 "TFB Customer Ledger Entries" extends "Customer Ledger Entri
 
 
                 RunObject = Page "Payment Registration";
-                RunPageLink = "Source No." = FIELD("Customer No.");
+                RunPageLink = "Source No." = field("Customer No.");
                 ToolTip = 'Process your customer payments by matching amounts received on your bank account with the related unpaid sales invoices, and then post the payments.';
             }
 

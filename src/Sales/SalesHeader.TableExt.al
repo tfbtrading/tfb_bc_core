@@ -20,7 +20,7 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
             var
                 TFBCommonLibrary: Codeunit "TFB Common Library";
             begin
-                If "Sell-to Customer No." <> '' then
+                if "Sell-to Customer No." <> '' then
                     "TFB Instructions" := TFBCommonLibrary.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
             end;
         }
@@ -31,7 +31,7 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
             var
                 TFBCommonLibrary: Codeunit "TFB Common Library";
             begin
-                If "Sell-to Customer No." <> '' then
+                if "Sell-to Customer No." <> '' then
                     "TFB Instructions" := TFBCommonLibrary.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
             end;
         }
@@ -128,20 +128,20 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
         SalesHeader.SetRange("External Document No.", Rec."External Document No.");
         SalesHeader.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
         SalesHeader.SetRange("Document Type", "Document Type"::Order);
-        If SalesHeader.FindFirst() then begin
+        if SalesHeader.FindFirst() then begin
             DuplicateSystemID := SalesHeader.SystemId;
-            Exit(true);
+            exit(true);
         end
         else
-            Exit(False);
+            exit(false);
     end;
 
 
     local procedure CheckDateRange()
 
     begin
-        If "TFB End Date" <> 0D then
-            If "TFB Start Date" >= "TFB End Date" then
+        if "TFB End Date" <> 0D then
+            if "TFB Start Date" >= "TFB End Date" then
                 FIeldError("TFB End Date", 'End Date must be After Start Date');
 
     end;

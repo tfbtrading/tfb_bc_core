@@ -106,7 +106,7 @@ page 50341 "TFB Landed Cost Profile"
                             Tooltip = 'Specifies quarantine and government fees, including testing for container';
 
                         }
-                        Group(Freight)
+                        group(Freight)
                         {
                             Caption = 'Freight';
                             InstructionalText = 'Ocean freight can be expressed in local currency, or the currency is specified for the scenario';

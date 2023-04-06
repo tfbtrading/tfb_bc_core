@@ -18,7 +18,7 @@ pageextension 50486 "TFB SO Processor Activities" extends "SO Processor Activiti
             field("TFB Ongoing Whse. Shipments"; Rec."TFB Ongoing Whse. Shipments")
             {
                 ApplicationArea = All;
-                DrillDown = True;
+                DrillDown = true;
                 DrillDownPageId = "Warehouse Shipment List";
                 Caption = 'Open Whse. Shipments';
                 Tooltip = 'Specifies number of ongoing whse. shipments';

@@ -110,21 +110,21 @@ table 50340 "TFB Landed Cost Profile"
         }
         field(12; "Pallet Cost"; Decimal)
         {
-            Editable = False;
+            Editable = false;
 
         }
 
         field(15; "Container Cost"; Decimal)
         {
-            Editable = False;
+            Editable = false;
         }
         field(18; "Direct Container Costs"; Decimal)
         {
-            Editable = False;
+            Editable = false;
         }
         field(16; "Per Weight Cost"; Decimal)
         {
-            Editable = False;
+            Editable = false;
         }
         field(13; "Fumigated"; Boolean)
         {
@@ -223,7 +223,7 @@ table 50340 "TFB Landed Cost Profile"
         ChargesToBeExcludedIfDirect: Decimal; // Direct charges excluded are calculated per pallet
     begin
 
-        If isDirectContainer then
+        if isDirectContainer then
             CalcBaseDesc.AppendLine('Calculating Director Container Price')
         else
             CalcBaseDesc.AppendLine('Calculating For Warehouse Shipment');
@@ -232,7 +232,7 @@ table 50340 "TFB Landed Cost Profile"
 
 
 
-        If not Palletised then begin
+        if not Palletised then begin
 
             LclTempPerPallet += CostingScenario."Pallet Package Bundle";
             LclTempPerContainer += CostingScenario."Unpack Loose";
@@ -259,7 +259,7 @@ table 50340 "TFB Landed Cost Profile"
             LclTempPerContainer += CostingScenario."Port Cartage";
             if Financed then
                 LclTempPerContainer += CostingScenario."Bank Charge";
-            If "Freight Currency" <> '' then
+            if "Freight Currency" <> '' then
                 FreightLCY := "Ocean Freight" / ExchRate
             else
                 FreightLCY := "Ocean Freight";
@@ -269,18 +269,18 @@ table 50340 "TFB Landed Cost Profile"
             CalcBaseDesc.AppendLine(StrSubstNo('Added Additional Import Charges of %1 and Freight %2', CostingScenario."Customs Declaration" + "Port Documents" + "Quarantine Fees" + CostingScenario."Port Cartage", FreightLCY));
             if "Apply Contingency" then LclTempPerContainer += CostingScenario."Container Contingency";
             if Fumigated then LclTempPerContainer += CostingScenario.Fumigation;
-            If "Heat Treated" then LclTempPerContainer += CostingScenario."Heat Treatment";
+            if "Heat Treated" then LclTempPerContainer += CostingScenario."Heat Treatment";
 
         end;
 
 
         TotalForContainer := (LclTempPerContainer + (LclTempPerPallet * Pallets));
 
-        If isDirectContainer then
+        if isDirectContainer then
             TotalForContainer := TotalForContainer - ChargesToBeExcludedIfDirect;
 
         CalcBaseDesc.AppendLine(StrSubstNo('Calculated out total per unit costs of %1', TotalForContainer / ("Est. Net Weight" / ItemWeight)));
-        Exit(TotalForContainer / ("Est. Net Weight" / ItemWeight));
+        exit(TotalForContainer / ("Est. Net Weight" / ItemWeight));
 
     end;
 
@@ -304,7 +304,7 @@ table 50340 "TFB Landed Cost Profile"
 
 
 
-            If not Palletised then begin
+            if not Palletised then begin
 
                 TempPerPallet += cs."Shrink Wrapping";
                 TempPerContainer += cs."Unpack Loose";
@@ -317,7 +317,7 @@ table 50340 "TFB Landed Cost Profile"
 
             //Exclude total pallet costs having to do with accepting in pallet of goods
 
-            If pallets > 0 then
+            if pallets > 0 then
                 DirectChargesExcluded += TempPerPallet + (TempPerContainer / Pallets);
 
             if Financed then
@@ -330,7 +330,7 @@ table 50340 "TFB Landed Cost Profile"
                 TempPerContainer += cs."Port Cartage";
 
 
-                If Rec."Freight Currency" <> '' then begin
+                if Rec."Freight Currency" <> '' then begin
                     currency.get(Rec."Freight Currency");
                     currency3.GetLastestExchangeRate("Freight Currency", LatestDate, ExchRate);
                     "Freight (LCY)" := "Ocean Freight" * ExchRate;
@@ -342,7 +342,7 @@ table 50340 "TFB Landed Cost Profile"
 
                 if "Apply Contingency" then TempPerContainer += cs."Container Contingency";
                 if Fumigated then TempPerContainer += cs.Fumigation;
-                If "Heat Treated" then TempPerContainer += cs."Heat Treatment";
+                if "Heat Treated" then TempPerContainer += cs."Heat Treatment";
             end;
 
             if Pallets > 0 then begin
@@ -379,10 +379,10 @@ table 50340 "TFB Landed Cost Profile"
 
     begin
 
-        If (not rec.IsEmpty()) and ("Est. Net Weight" > 0) and (UnitWeight > 0) then
+        if (not rec.IsEmpty()) and ("Est. Net Weight" > 0) and (UnitWeight > 0) then
             AmountToAllocate := "Container Cost" / ("Est. Net Weight" / UnitWeight);
 
-        Exit(AmountToAllocate);
+        exit(AmountToAllocate);
     end;
 
 

@@ -32,7 +32,7 @@ pageextension 50113 "TFB Sales Quote" extends "Sales Quote" //41
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -111,7 +111,7 @@ pageextension 50113 "TFB Sales Quote" extends "Sales Quote" //41
                     SalesLine.SetRange("Document No.", Rec."No.");
                     SalesLine.SetRange(Type, SalesLine.type::Item);
 
-                    If Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
+                    if Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
                         message('Did something');
 
                 end;
@@ -139,10 +139,10 @@ pageextension 50113 "TFB Sales Quote" extends "Sales Quote" //41
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 }

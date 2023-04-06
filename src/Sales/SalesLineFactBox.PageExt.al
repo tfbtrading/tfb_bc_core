@@ -18,7 +18,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
                 begin
                     Rec.CalcFields("TFB No. Of Comments");
-                    If Rec."TFB No. Of Comments" > 0 then
+                    if Rec."TFB No. Of Comments" > 0 then
                         Rec.ShowLineComments();
                 end;
 
@@ -71,11 +71,11 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     QuoteLine.SetRange("Document Type", Rec."Document Type"::Quote);
                     QuoteLine.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
 
-                    If QuoteLine.IsEmpty() then exit;
+                    if QuoteLine.IsEmpty() then exit;
                     QuoteLine.SetLoadFields("Document No.");
                     QuoteLine.FindSet();
                     repeat begin
-                        If FilterToken.Length = 0 then
+                        if FilterToken.Length = 0 then
                             FilterToken.Append('=' + QuoteLine."Document No.")
                         else
                             FilterToken.Append('|' + QuoteLine."Document No.");
@@ -109,11 +109,11 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     SalesLine.SetRange("Document Type", Rec."Document Type"::"Blanket Order");
                     SalesLine.SetRange("Sell-to Customer No.", Rec."Sell-to Customer No.");
 
-                    If SalesLine.IsEmpty() then exit;
+                    if SalesLine.IsEmpty() then exit;
                     SalesLine.SetLoadFields("Document No.");
                     SalesLine.FindSet();
                     repeat begin
-                        If FilterToken.Length = 0 then
+                        if FilterToken.Length = 0 then
                             FilterToken.Append('=' + SalesLine."Document No.")
                         else
                             FilterToken.Append('|' + SalesLine."Document No.");
@@ -174,7 +174,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         Vendor: Record Vendor;
         Item: Record Item;
         Customer: Record Customer;
-        CustomCalendarChange: Array[2] of Record "Customized Calendar Change";
+        CustomCalendarChange: array[2] of Record "Customized Calendar Change";
         ShippingAgent: Record "Shipping Agent";
         Location: record Location;
         SalesCU: CodeUnit "TFB Sales Mgmt";
@@ -190,10 +190,10 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
     begin
 
-        If not Item.Get(Rec."No.") then exit;
-        If not Customer.Get(Rec."Sell-to Customer No.") then exit;
+        if not Item.Get(Rec."No.") then exit;
+        if not Customer.Get(Rec."Sell-to Customer No.") then exit;
 
-        If Rec."Drop Shipment" then begin
+        if Rec."Drop Shipment" then begin
             ShippingAgentServices := SalesCU.GetShippingAgentDetailsForDropShipItem(Item, Customer);
             UseDropShipDateCalcs := true;
         end;
@@ -203,12 +203,12 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         case UseDropShipDateCalcs of
             true:
                 begin
-                    If not Vendor.Get(Item."Vendor No.") then exit;
+                    if not Vendor.Get(Item."Vendor No.") then exit;
 
                     InfoTextBuilder.Append('Drop ship');
                     DispatchDateMin := CalendarMgmt.CalcDateBOC('', CalcDate(Vendor."TFB Dispatch Lead Time", Today), CustomCalendarChange, false);
 
-                    If format(Vendor."TFB Dispatch Lead Time Max") = '' then
+                    if format(Vendor."TFB Dispatch Lead Time Max") = '' then
                         DispatchDateMax := DispatchDateMin
                     else
                         DispatchDateMax := CalendarMgmt.CalcDateBOC('', CalcDate(Vendor."TFB Dispatch Lead Time Max", Today), CustomCalendarChange, false);
@@ -216,7 +216,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
             false:
                 begin
-                    If not Location.Get(Rec."Location Code") then exit;
+                    if not Location.Get(Rec."Location Code") then exit;
 
                     ShippingAgentServices := SalesCU.GetShippingAgentDetailsForLocation(Location.Code, Customer.County, Customer."Shipment Method Code");
                     InfoTextBuilder.Append('Warehouse');
@@ -234,19 +234,19 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
         DeliveryDateMin := CalendarMgmt.CalcDateBOC('', CalcDate(ShippingAgentServices."Shipping Time", DispatchDateMin), CustomCalendarChange, false);
 
-        If format(ShippingAgentServices."TFB Shipping Time Max") <> '' then
+        if format(ShippingAgentServices."TFB Shipping Time Max") <> '' then
             DeliveryDateMax := CalendarMgmt.CalcDateBOC('', CalcDate(ShippingAgentServices."TFB Shipping Time Max", DispatchDateMax), CustomCalendarChange, false)
         else
             DeliveryDateMax := CalendarMgmt.CalcDateBOC('', CalcDate(ShippingAgentServices."Shipping Time", DispatchDateMax), CustomCalendarChange, false);
 
-        If ShippingAgent.Get(ShippingAgentServices."Shipping Agent Code") then
+        if ShippingAgent.Get(ShippingAgentServices."Shipping Agent Code") then
             TrackingAvailable := ShippingAgent."Internet Address" <> ''; //internet address assumed to be trackingis available
 
         InfoTextBuilder.Append(StrSubstNo(' dispatched between %1 and %2 and delivered between %3 and %4', DispatchDateMin, DispatchDateMax, DeliveryDateMin, DeliveryDateMax));
-        If TrackingAvailable then
+        if TrackingAvailable then
             InfoTextBuilder.Append(StrSubstNo(' with tracking available from %1', ShippingAgentServices."Shipping Agent Code"));
 
-        Exit(InfoTextBuilder.ToText());
+        exit(InfoTextBuilder.ToText());
 
     end;
 
@@ -261,7 +261,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
         ItemCosting.SetRange("Item No.", Rec."No.");
         ItemCosting.SetRange("Costing Type", ItemCosting."Costing Type"::Standard);
-        If ItemCosting.Findlast() then
+        if ItemCosting.Findlast() then
             ItemCostingSystemID := ItemCosting.SystemId;
 
     end;
@@ -271,9 +271,9 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
     begin
 
         if not IsNullGuid(ItemCostingSystemID) then
-            Exit('Exists')
+            exit('Exists')
         else
-            Exit('Create Item Costing...');
+            exit('Create Item Costing...');
 
     end;
 
@@ -287,7 +287,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
         QuoteLine.SetRange("No.", Rec."No.");
         QuoteLine.SetRange("Document Type", Rec."Document Type"::Quote);
-        Exit(QuoteLine.Count());
+        exit(QuoteLine.Count());
 
     end;
 
@@ -302,7 +302,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
         SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Blanket Order");
         SalesLine.SetRange("No.", Rec."No.");
         SalesLine.SetFilter("Outstanding Quantity", '>0');
-        Exit(SalesLine.Count());
+        exit(SalesLine.Count());
 
     end;
 }

@@ -6,7 +6,7 @@ tableextension 50177 "TFB Transfer Header" extends "Transfer Header" //MyTargetT
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = true;
             Caption = 'Container Entry No.';
 
@@ -19,12 +19,12 @@ tableextension 50177 "TFB Transfer Header" extends "Transfer Header" //MyTargetT
 
             begin
 
-                If Rec."TFB Container Entry No." <> xRec."TFB Container Entry No." then
-                    If ContainerCU.UpdateTransferHeader(Rec, Rec."TFB Container Entry No.") then
+                if Rec."TFB Container Entry No." <> xRec."TFB Container Entry No." then
+                    if ContainerCU.UpdateTransferHeader(Rec, Rec."TFB Container Entry No.") then
                         Message('Container Details Transferred to Transfer Order');
 
 
-                If Rec."TFB Container Entry No." <> '' then
+                if Rec."TFB Container Entry No." <> '' then
                     "TFB Transfer Type" := "TFB Transfer Type"::Container
                 else
                     "TFB Transfer Type" := "TFB Transfer Type"::Standard;

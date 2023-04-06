@@ -6478,10 +6478,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control LastReview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 759201824 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the last review that was entered for the contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewComment - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3193956155 - Control 759201824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewComment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3857743901 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifes the date the last review was completed on</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewDate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3857743901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Completed On</source>

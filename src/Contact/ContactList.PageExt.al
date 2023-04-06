@@ -4,7 +4,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
     {
         addafter(Name)
         {
-            Field(ToDoExists; GetTaskSymbol())
+            field(ToDoExists; GetTaskSymbol())
             {
                 Caption = '';
                 Width = 1;
@@ -41,7 +41,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                     BusRel.SetRange("Contact No.", Rec."Company No.");
                     BusRel.SetRange("Link to Table", BusRel."Link to Table"::Customer);
 
-                    If BusRel.FindFirst() and Customer.Get(BusRel."No.") then
+                    if BusRel.FindFirst() and Customer.Get(BusRel."No.") then
                         PAGE.Run(PAGE::"Customer Card", Customer);
 
 
@@ -180,7 +180,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         RelComment.SetRange("Table Name", RelComment."Table Name"::Contact);
         RelComment.SetRange("No.", Rec."No.");
         RelComment.SetRange("Sub No.", 0);
-        If RelComment.FindLast() then
+        if RelComment.FindLast() then
             LineNo := RelComment."Line No." + 10000
         else
             LineNo := 10000;
@@ -209,16 +209,16 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         Contact.SetLoadFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks", "No.");
         Contact.SetAutoCalcFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks");
         Rec.CalcFields("TFB No. Of Company Tasks");
-        If Rec.Type = Rec.Type::Company then
-            If Rec."TFB No. Of Company Tasks" > 0 then
-                Exit('📋')
+        if Rec.Type = Rec.Type::Company then
+            if Rec."TFB No. Of Company Tasks" > 0 then
+                exit('📋')
             else
-                Exit('')
+                exit('')
         else
-            If Contact."TFB No. Of Contact Tasks" > 0 then
-                Exit('📋')
+            if Contact."TFB No. Of Contact Tasks" > 0 then
+                exit('📋')
             else
-                Exit('');
+                exit('');
     end;
 
     var

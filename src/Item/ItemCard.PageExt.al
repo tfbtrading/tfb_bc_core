@@ -138,7 +138,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
         }
         addafter(Description)
         {
-            Group(GenericParent)
+            group(GenericParent)
             {
                 ShowCaption = false;
                 Visible = not Rec."TFB Act As Generic";
@@ -151,7 +151,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
                 }
 
             }
-            Group(GenericSelf)
+            group(GenericSelf)
             {
                 ShowCaption = false;
                 Visible = Rec."TFB Act As Generic";
@@ -360,7 +360,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     local procedure GetPricePerKg(): Decimal
 
     begin
-        If Rec."Net Weight" > 0 then
+        if Rec."Net Weight" > 0 then
             exit(Rec."Unit Price" / Rec."Net Weight")
         else
             exit(0);
@@ -369,10 +369,10 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     local procedure GetUnitCostPerKg(): Decimal
 
     begin
-        If Rec."Net Weight" > 0 then
+        if Rec."Net Weight" > 0 then
             exit(Rec."Unit Cost" / Rec."Net Weight")
         else
-            Exit(0);
+            exit(0);
     end;
 
     trigger OnAfterGetRecord()
@@ -399,7 +399,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     begin
 
 
-        If PurchasingCode.Get(rec."Purchasing Code") then
+        if PurchasingCode.Get(rec."Purchasing Code") then
             DropShipDefault := PurchasingCode."Drop Shipment"
         else
             DropShipDefault := false;
@@ -412,16 +412,16 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     var
         GenericItem: Record "TFB Generic Item";
     begin
-        If Rec."TFB Act As Generic" = true then
-            If not IsNullGuid(Rec."TFB Generic Item ID") then
-                If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
-                    Exit(GenericItem.Description)
+        if Rec."TFB Act As Generic" = true then
+            if not IsNullGuid(Rec."TFB Generic Item ID") then
+                if GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
+                    exit(GenericItem.Description)
                 else
-                    Exit('Error-not found')
+                    exit('Error-not found')
             else
-                Exit('Pending save')
+                exit('Pending save')
         else
-            Exit('Not Extension');
+            exit('Not Extension');
 
     end;
 

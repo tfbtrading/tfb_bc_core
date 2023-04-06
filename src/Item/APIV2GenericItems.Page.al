@@ -118,7 +118,7 @@ page 50140 "TFB APIV2 - Generic Items"
                     Multiplicity = ZeroOrOne;
                     EntityName = 'picture';
                     EntitySetName = 'pictures';
-                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(GenericItem);
+                    SubPageLink = Id = field(SystemId), "Parent Type" = const(GenericItem);
                 }
 
             }
@@ -181,7 +181,7 @@ page 50140 "TFB APIV2 - Generic Items"
         GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
         RecRef: RecordRef;
     begin
-        If IsNullGuid(GenericItem.SystemId) then
+        if IsNullGuid(GenericItem.SystemId) then
             GenericItem.Insert(true)
         else
             GenericItem.Insert(true, true);

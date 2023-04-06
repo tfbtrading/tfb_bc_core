@@ -34,7 +34,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
                     trigger OnDrillDown()
 
                     begin
-                        If _DownloadSymbol <> '' then
+                        if _DownloadSymbol <> '' then
                             downloadIncomingDoc();
                     end;
                 }
@@ -119,10 +119,10 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
         _DownloadSymbol := '';
         Clear(_IDA);
         RecRef.GetTable(Rec);
-        If ID.FindByDocumentNoAndPostingDate(RecRef, ID) then
-            If ID.GetMainAttachment(IDA) then begin
+        if ID.FindByDocumentNoAndPostingDate(RecRef, ID) then
+            if ID.GetMainAttachment(IDA) then begin
                 RecRef.GetTable(IDA);
-                If IDA.GetFullName() <> '' then
+                if IDA.GetFullName() <> '' then
                     _DownloadSymbol := '📥'
                 else
                     _DownloadSymbol := '🚫';
@@ -135,7 +135,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
     local procedure viewAttachment()
 
     begin
-        If not _IDA.IsEmpty then
+        if not _IDA.IsEmpty then
             _IDA.ViewAttachment();
     end;
 
@@ -153,9 +153,9 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
             RecRef.GetTable(_IDA);
             TempBlob.FromRecordRef(RecRef, _IDA.FieldNo(Content));
             FileName := _IDA.GetFullName();
-            If TempBlob.HasValue() then begin
+            if TempBlob.HasValue() then begin
                 TempBlob.CreateInStream(InStream);
-                If Not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
+                if not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
                     Error('File Not Downloaded');
             end;
         end;
@@ -177,7 +177,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
         PL.SetRange(Type, PL.Type::Item);
 
         Clear(TempItemLedger);
-        If PL.Findset(false) then
+        if PL.Findset(false) then
             repeat
 
                 PL.GetItemLedgEntries(TempItemLedger, false); //Set false as we want to aggregate and not reset for each line item

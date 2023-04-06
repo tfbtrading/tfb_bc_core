@@ -47,9 +47,9 @@ pageextension 50178 "TFB Transfer Orders" extends "Transfer Orders" //5742
 
         Clear(ContainerNo);
 
-        If Rec."TFB Container Entry No." <> '' then
-            If Container.Get(Rec."TFB Container Entry No.") then
-                If Container."Container No." <> '' then
+        if Rec."TFB Container Entry No." <> '' then
+            if Container.Get(Rec."TFB Container Entry No.") then
+                if Container."Container No." <> '' then
                     ContainerNo := Container."Container No.";
 
 

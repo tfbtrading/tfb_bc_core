@@ -13,7 +13,7 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
 
 
 
-                Group("Local Deliveries")
+                group("Local Deliveries")
                 {
                     field("TFB Lcl Shipping Agent Code"; Rec."TFB Lcl Shipping Agent Code")
                     {
@@ -30,7 +30,7 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
 
                 }
 
-                Group("Interstate Deliveries")
+                group("Interstate Deliveries")
                 {
                     field("TFB Insta Shipping Agent Code"; Rec."TFB Insta Shipping Agent Code")
                     {

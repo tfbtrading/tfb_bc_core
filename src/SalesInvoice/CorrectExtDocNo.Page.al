@@ -66,7 +66,7 @@ page 50152 "TFB Correct Ext. Doc. No."
     procedure GetExternalDocNo(): Code[35]
 
     begin
-        Exit(_ExternalDocNo);
+        exit(_ExternalDocNo);
     end;
 
 

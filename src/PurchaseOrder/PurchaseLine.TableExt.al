@@ -28,7 +28,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
 
             FieldClass = FlowField;
             CalcFormula = lookup (Vendor."TFB Vendor Price Unit" where("No." = field("Buy-from Vendor No.")));
-            Editable = False;
+            Editable = false;
 
             Caption = 'Pricing Unit';
 
@@ -38,7 +38,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
 
             Caption = 'Vendor Name';
             FieldClass = FlowField;
-            CalcFormula = lookup ("Purchase Header"."Buy-from Vendor Name" where("No." = FIELD("Document No.")));
+            CalcFormula = lookup ("Purchase Header"."Buy-from Vendor Name" where("No." = field("Document No.")));
             Editable = false;
         }
         field(50003; "TFB Line Total Weight"; Decimal)
@@ -54,7 +54,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = false;
         }
         field(50008; "TFB Container No."; Text[20])
@@ -92,20 +92,20 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
         field(50020; "TFB Blanket Order Ext. No."; Text[100])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup ("Purchase Header"."Vendor Order No." where("Document Type" = const("Blanket Order"), "No." = field("Blanket Order No.")));
+            CalcFormula = lookup ("Purchase Header"."Vendor Order No." where("Document Type" = const("Blanket Order"), "No." = field("Blanket Order No.")));
         }
         field(50130; "TFB Document Date"; Date)
         {
             FieldClass = FlowField;
             Caption = 'Document Date';
-            CalcFormula = Lookup ("Purchase Header"."Document Date" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
+            CalcFormula = lookup ("Purchase Header"."Document Date" where("Document Type" = field("Document Type"), "No." = field("Document No.")));
 
         }
         field(50132; "TFB Order Status"; Enum "Purchase Document Status")
         {
             FieldClass = FlowField;
             Caption = 'Order Status';
-            CalcFormula = Lookup ("Purchase Header".Status where("No." = field("Document No."), "Document Type" = const(Order)));
+            CalcFormula = lookup ("Purchase Header".Status where("No." = field("Document No."), "Document Type" = const(Order)));
 
         }
 
@@ -124,7 +124,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
             trigger OnAfterValidate()
 
             begin
-                If Type = Type::Item then
+                if Type = Type::Item then
                     "TFB Line Total Weight" := TFBPricingLogic.CalcLineTotalKg("No.", "Unit of Measure Code", Quantity)
                 else
                     "TFB Line Total Weight" := 0;
@@ -148,7 +148,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
         Vendor: record Vendor;
 
     begin
-        If Type = Type::Item then begin
+        if Type = Type::Item then begin
             Vendor.get(rec."Buy-from Vendor No.");
             PriceUnit := Vendor."TFB Vendor Price Unit";
             Rec.Validate("Direct Unit Cost", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."No.", rec."Unit of Measure Code", PriceUnit, rec."TFB Price By Price Unit"));
@@ -161,7 +161,7 @@ tableextension 50216 "TFB Purchase Line" extends "Purchase Line"
     var
         Vendor: record Vendor;
     begin
-        If Type = Type::Item then begin
+        if Type = Type::Item then begin
             Vendor.get(rec."Buy-from Vendor No.");
             PriceUnit := Vendor."TFB Vendor Price Unit";
             "TFB Price By Price Unit" := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."No.", rec."Unit of Measure Code", PriceUnit, rec."Direct Unit Cost");

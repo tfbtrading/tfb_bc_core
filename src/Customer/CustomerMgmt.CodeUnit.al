@@ -23,15 +23,15 @@ codeunit 50120 "TFB Customer Mgmt"
                     CustomerLayouts.SetRange("Source Type", 18);
                     CustomerLayouts.SetRange("Source No.", BillToCustomerNo);
                     CustomerLayouts.SetRange(Usage, CustomerLayouts.Usage::"C.Statement");
-                    CustomerLayouts.SetRange("Use for Email Attachment", True);
+                    CustomerLayouts.SetRange("Use for Email Attachment", true);
 
                     if CustomerLayouts.FindFirst() then
                         TempToAddress := CustomerLayouts."Send To Email"
                     else
-                        If Customer.Get(BillToCustomerNo) then
+                        if Customer.Get(BillToCustomerNo) then
                             TempToAddress := Customer."E-Mail";
 
-                    If TempToAddress <> '' then begin
+                    if TempToAddress <> '' then begin
                         ToAddress := TempToAddress;
                         IsHandled := true;
                     end
@@ -78,9 +78,9 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLTemplate := Common.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
 
-        If RepSelSales.FindFirst() then begin
+        if RepSelSales.FindFirst() then begin
             OnSendCustomerStatementeBeforeRunRequestPage(RepSelSales."Report ID", SkipRequest);
-            If not SkipRequest then
+            if not SkipRequest then
                 XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
         end;
 
@@ -108,7 +108,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         HTMLTemplate := Common.GetHTMLTemplateActive(TitleTxt, SubTitleTxt);
 
-        If RepSelSales.FindFirst() then
+        if RepSelSales.FindFirst() then
             XmlParameters := Report.RunRequestPage(RepSelSales."Report ID");
         if Customer.FindSet() then
             repeat
@@ -153,7 +153,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         CompanyInfo.Get();
 
-        If not Customer.Get(CustNo) then
+        if not Customer.Get(CustNo) then
             exit(false);
 
         FileNameBuilder.Append('Statement For ');
@@ -166,7 +166,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         RepSelSales.SetRange(Usage, RepSelSales.Usage::"C.Statement");
 
-        If RepSelSales.FindFirst() then begin
+        if RepSelSales.FindFirst() then begin
 
             TempBlobCU.CreateOutStream(OStream, TextEncoding::UTF8);
             TempBlobCU.CreateInStream(IStream, TextEncoding::UTF8);
@@ -179,10 +179,10 @@ codeunit 50120 "TFB Customer Mgmt"
             CustomerLayouts.SetRange("Source Type", 18);
             CustomerLayouts.SetRange("Source No.", Customer."No.");
             CustomerLayouts.SetRange(Usage, CustomerLayouts.Usage::"C.Statement");
-            CustomerLayouts.SetRange("Use for Email Attachment", True);
+            CustomerLayouts.SetRange("Use for Email Attachment", true);
 
             if CustomerLayouts.FindFirst() then
-                If CustomerLayouts."Send To Email" <> '' then
+                if CustomerLayouts."Send To Email" <> '' then
                     EmailID := CustomerLayouts."Send To Email"
 
                 else
@@ -190,17 +190,17 @@ codeunit 50120 "TFB Customer Mgmt"
             else
                 EmailID := Customer."E-Mail";
 
-            If EmailID = '' then
+            if EmailID = '' then
                 Message(StrSubstNo('No email for company %1', Customer.Name));
 
             //Find customer layout selection
 
-            If EmailRecordRef.Count() > 0 then begin
+            if EmailRecordRef.Count() > 0 then begin
 
                 VarEmailRecordRef := EmailRecordRef;
 
                 OnGenerateCustomerStatement(RepSelSales."Report ID", XmlParameters, OStream, VarEmailRecordRef, isHandled);
-                If not isHandled then
+                if not isHandled then
                     Report.SaveAs(RepSelSales."Report ID", XmlParameters, ReportFormat::Pdf, OStream, VarEmailRecordRef);
 
 
@@ -218,7 +218,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', IStream);
                 Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
-                If EditEmail then
+                if EditEmail then
                     Email.OpenInEditorModally(EmailMessage, EmailScenEnum::"Customer Statement")
                 else
                     Email.Enqueue(EmailMessage, EmailScenEnum::"Customer Statement");
@@ -245,7 +245,7 @@ codeunit 50120 "TFB Customer Mgmt"
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', CustNo, ''));
         Result := SendCustomerStatusEmail(CustNo, cu.GetHTMLTemplateActive(TitleTxt, SubtitleTxt));
-        Exit(Result);
+        exit(Result);
     end;
 
     procedure SendCustomerStatusEmail(CustNo: Code[20]; HTMLTemplate: Text): Boolean
@@ -277,10 +277,10 @@ codeunit 50120 "TFB Customer Mgmt"
         CompanyInfo.Get();
 
 
-        If not Customer.Get(CustNo) then
+        if not Customer.Get(CustNo) then
             exit(false);
 
-        If Customer."E-Mail" = '' then
+        if Customer."E-Mail" = '' then
             exit(false);
 
         EmailID := Customer."E-Mail";
@@ -292,12 +292,12 @@ codeunit 50120 "TFB Customer Mgmt"
 
         HTMLBuilder.Append(HTMLTemplate);
 
-        If Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::OptOut then
+        if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::OptOut then
             exit(true);
 
         GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
 
-        If Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::DataOnly then
+        if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::DataOnly then
             if NoData then
                 exit(true);
 
@@ -327,7 +327,7 @@ codeunit 50120 "TFB Customer Mgmt"
         Customer.CalcFields("Balance Due (LCY)");
 
         //Check if any invoices are overdue
-        If Customer."Balance Due (LCY)" > 0 then
+        if Customer."Balance Due (LCY)" > 0 then
             if Customer."Balance Due (LCY)" > CoreSetup."Credit Tolerance" then
                 overdue := true;
 
@@ -336,7 +336,7 @@ codeunit 50120 "TFB Customer Mgmt"
         if BalanceAfterShipment > (Customer."Credit Limit (LCY)" + CoreSetup."Credit Tolerance") then
             overCreditLimit := true;
 
-        If overdue or overCreditLimit then exit(true) else exit(false);
+        if overdue or overCreditLimit then exit(true) else exit(false);
     end;
 
     procedure GetValueOfShipment(Customer: Record Customer): Decimal
@@ -360,7 +360,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 TotalValue += Line."Outstanding Quantity" * (Line."Line Amount" / Line.Quantity);
             until Line.Next() < 1;
 
-        Exit(TotalValue);
+        exit(TotalValue);
 
     end;
 
@@ -408,7 +408,7 @@ codeunit 50120 "TFB Customer Mgmt"
         PricingUnit := PricingUnit::KG;
         NoData := true;
 
-        If not Customer.Get(CustNo) then
+        if not Customer.Get(CustNo) then
             exit;
 
         CoreSetup.Get();
@@ -434,7 +434,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Customer Name');
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
-        If CheckIfCreditHoldApplies(Customer, GetValueOfShipment(Customer), overdue, overCreditLimit) and OverDue then
+        if CheckIfCreditHoldApplies(Customer, GetValueOfShipment(Customer), overdue, overCreditLimit) and OverDue then
             HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
@@ -471,7 +471,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
                 //BodyBuilder.AppendLine('<tr>');
 
-                If SalesLine."Qty. Shipped (Base)" = 0 then
+                if SalesLine."Qty. Shipped (Base)" = 0 then
 
                     //Check if drop ship
 
@@ -483,23 +483,23 @@ codeunit 50120 "TFB Customer Mgmt"
 
                             //Provide details of warehouse shipment
                             Status := 'Planned for dispatch';
-                            If SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then begin
+                            if SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then begin
 
                                 DemandResEntry.SetRange("Source ID", SalesLine."Document No.");
                                 DemandResEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
                                 DemandResEntry.SetRange("Item No.", SalesLine."No.");
                                 DemandResEntry.SetRange(Positive, false);
 
-                                If DemandResEntry.FindFirst() then begin
+                                if DemandResEntry.FindFirst() then begin
 
                                     SupplyResEntry.SetRange(Positive, true);
                                     SupplyResEntry.SetRange("Entry No.", DemandResEntry."Entry No.");
 
-                                    If SupplyResEntry.FindFirst() then
+                                    if SupplyResEntry.FindFirst() then
                                         case SupplyResEntry."Source Type" of
                                             32: //Item Ledger Entry
 
-                                                If LedgerEntry.Get(SupplyResEntry."Source Ref. No.") then begin
+                                                if LedgerEntry.Get(SupplyResEntry."Source Ref. No.") then begin
 
                                                     Status += StrSubstNo(' from stock already in inventory');
 
@@ -507,8 +507,8 @@ codeunit 50120 "TFB Customer Mgmt"
                                                     LotNoInfo.SetRange("Lot No.", LedgerEntry."Lot No.");
                                                     LotNoInfo.SetRange("Variant Code", LedgerEntry."Variant Code");
 
-                                                    If LotNoInfo.FindFirst() then
-                                                        If (LotNoInfo.Blocked = true) and (LotNoInfo."TFB Date Available" > 0D) then
+                                                    if LotNoInfo.FindFirst() then
+                                                        if (LotNoInfo.Blocked = true) and (LotNoInfo."TFB Date Available" > 0D) then
                                                             Status += StrSubstNo(' and pending release on %1', LotNoInfo."TFB Date Available")
 
                                                 end;
@@ -519,13 +519,13 @@ codeunit 50120 "TFB Customer Mgmt"
                                                     PurchaseLine.SetRange("Line No.", SupplyResEntry."Source Ref. No.");
                                                     PurchaseLine.SetRange("Document No.", SupplyResEntry."Source ID");
 
-                                                    If PurchaseLine.FindFirst() then
+                                                    if PurchaseLine.FindFirst() then
                                                         case PurchaseLine."TFB Container Entry No." of
                                                             '':
                                                                 Status += StrSubstNo(' based on arrival from local purchase order due into warehouse on %1', purchaseline."Expected Receipt Date");
 
                                                             else
-                                                                If Container.Get(PurchaseLine."TFB Container Entry No.") then
+                                                                if Container.Get(PurchaseLine."TFB Container Entry No.") then
                                                                     case Container.Status of
 
                                                                         Container.Status::Planned:
@@ -541,9 +541,9 @@ codeunit 50120 "TFB Customer Mgmt"
                                                                         Container.Status::PendingClearance:
                                                                             begin
                                                                                 Status += StrSubstNo(' based on container that arrived on %1.');
-                                                                                If Container."Fumigation Req." then
+                                                                                if Container."Fumigation Req." then
                                                                                     Status += ' Fumigation Req.';
-                                                                                If Container."Inspection Req." or Container."IFIP Req." then
+                                                                                if Container."Inspection Req." or Container."IFIP Req." then
                                                                                     Status += ' Inspection Req.';
                                                                             end;
                                                                     end;
@@ -571,8 +571,8 @@ codeunit 50120 "TFB Customer Mgmt"
                         Clear(PurchaseLine);
                         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
                         Purchase.SetRange("No.", SalesLine."Purchase Order No.");
-                        If Purchase.FindFirst() then begin
-                            If Purchase."TFB Delivery SLA" = '' then begin
+                        if Purchase.FindFirst() then begin
+                            if Purchase."TFB Delivery SLA" = '' then begin
                                 Vendor.Get(Purchase."Buy-from Vendor No.");
                                 DeliverySLA := Vendor."TFB Delivery SLA"
                             end
@@ -585,7 +585,7 @@ codeunit 50120 "TFB Customer Mgmt"
                     end
                 else
 
-                    If SalesLine."Qty. Shipped (Base)" < SalesLine."Quantity (Base)" then
+                    if SalesLine."Qty. Shipped (Base)" < SalesLine."Quantity (Base)" then
 
                         //Partially Shipped
 
@@ -593,7 +593,7 @@ codeunit 50120 "TFB Customer Mgmt"
                     else
 
                         //Fully Shipped
-                        If SalesLine."Qty. Invoiced (Base)" = SalesLine."Qty. Shipped (Base)" then begin
+                        if SalesLine."Qty. Invoiced (Base)" = SalesLine."Qty. Shipped (Base)" then begin
                             Status := 'Shipped and invoiced';
                             SuppressLine := true;
                         end
@@ -612,7 +612,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, Status));
                 LineBuilder.AppendLine('</tr>');
 
-                If not SuppressLine then
+                if not SuppressLine then
                     BodyBuilder.Append(LineBuilder.ToText());
 
             until SalesLine.Next() < 1;
@@ -664,7 +664,7 @@ codeunit 50120 "TFB Customer Mgmt"
         BodyBuilder.AppendLine('<hr>');
         BodyBuilder.AppendLine('<p><em>Please note we can set your preference to opt-out completely, receive if there data to report or always receive this update</em></p>');
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
 
@@ -690,7 +690,7 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Customer Name');
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
-        If CheckIfCreditHoldApplies(Customer, 0, overdue, overCreditLimit) and OverDue then
+        if CheckIfCreditHoldApplies(Customer, 0, overdue, overCreditLimit) and OverDue then
             HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
@@ -700,7 +700,7 @@ codeunit 50120 "TFB Customer Mgmt"
         BodyBuilder.AppendLine('<p>We appreciate your business and look forward to supporting you in the future.</p>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
 
@@ -709,7 +709,7 @@ codeunit 50120 "TFB Customer Mgmt"
     local procedure OnBeforeIsContactUpdateNeeded(Customer: Record Customer; xCustomer: Record Customer; var UpdateNeeded: Boolean; ForceUpdateContact: Boolean);
     begin
 
-        If Customer."TFB Contact Status" <> xCustomer."TFB Contact Status" then UpdateNeeded := true;
+        if Customer."TFB Contact Status" <> xCustomer."TFB Contact Status" then UpdateNeeded := true;
 
     end;
 
@@ -717,8 +717,8 @@ codeunit 50120 "TFB Customer Mgmt"
     local procedure OnBeforeIsUpdateNeeded(var Contact: Record Contact; xContact: Record Contact; var UpdateNeeded: Boolean);
     begin
 
-        If Contact."TFB Contact Status" <> xContact."TFB Contact Status" then UpdateNeeded := true;
-        If Contact."TFB Archived" <> xContact."TFB Archived" then UpdateNeeded := true;
+        if Contact."TFB Contact Status" <> xContact."TFB Contact Status" then UpdateNeeded := true;
+        if Contact."TFB Archived" <> xContact."TFB Archived" then UpdateNeeded := true;
     end;
 
 }

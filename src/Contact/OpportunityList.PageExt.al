@@ -39,7 +39,7 @@ pageextension 50189 "TFB Opportunity List" extends "Opportunity List"
 
             begin
 
-                If Contact.Get(Rec."Contact Company No.") then
+                if Contact.Get(Rec."Contact Company No.") then
                     PAGE.Run(PAGE::"Contact Card", Contact);
 
             end;

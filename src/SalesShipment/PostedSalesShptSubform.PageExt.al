@@ -23,8 +23,8 @@ pageextension 50173 "TFB Posted Sales Shpt. Subform" extends "Posted Sales Shpt.
                     POReceiptLine.SetRange("Order No.", Rec."Purchase Order No.");
                     POReceiptLine.SetRange("Order Line No.", Rec."Purch. Order Line No.");
 
-                    If POReceiptLine.FindFirst() then
-                        If POReceipt.Get(POReceiptLine."Document No.") then
+                    if POReceiptLine.FindFirst() then
+                        if POReceipt.Get(POReceiptLine."Document No.") then
                             PAGE.Run(Page::"Posted Purchase Receipt", POReceipt);
 
 
@@ -41,7 +41,7 @@ pageextension 50173 "TFB Posted Sales Shpt. Subform" extends "Posted Sales Shpt.
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Drop Shipment" and (Rec."Purchase Order No." <> '') then
+        if Rec."Drop Shipment" and (Rec."Purchase Order No." <> '') then
             isPONoVisible := true
         else
             isPONoVisible := false;

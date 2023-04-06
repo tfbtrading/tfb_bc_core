@@ -16,7 +16,7 @@ codeunit 50125 "TFB Entry Summary"
         LotInfo.SetRange("Variant Code", TempReservEntry."Variant Code");
         LotInfo.SetRange("Lot No.", TempReservEntry."Lot No.");
 
-        If LotInfo.FindFirst() then begin
+        if LotInfo.FindFirst() then begin
             TempGlobalEntrySummary."TFB Lot Blocked" := LotInfo.Blocked;
             TempGlobalEntrySummary."TFB Date Available" := LotInfo."TFB Date Available";
         end;

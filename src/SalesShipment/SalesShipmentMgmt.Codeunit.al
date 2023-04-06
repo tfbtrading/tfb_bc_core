@@ -11,9 +11,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     begin
 
         if (not CommitIsSuppressed) then
-            If SalesShptHdrNo <> '' then
+            if SalesShptHdrNo <> '' then
                 //Check if document already sent
-                If not IgnoreSalesShipmentCheck(SalesShptHdrNo) then
+                if not IgnoreSalesShipmentCheck(SalesShptHdrNo) then
                     shipmentcu.SendOneShipmentNotificationEmail(SalesShptHdrNo);
 
     end;
@@ -33,10 +33,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         if (not CommitIsSuppressed) then
             if Vendor.Get(PurchHeader."Buy-from Vendor No.") then begin
 
-                If not getZoneRateForShipment(Vendor."No.", SalesShipmentHeader."Customer Price Group", ShippingAgentCode, ShippingAgentServiceCode) then begin
+                if not getZoneRateForShipment(Vendor."No.", SalesShipmentHeader."Customer Price Group", ShippingAgentCode, ShippingAgentServiceCode) then begin
                     ShippingAgentCode := Vendor."Shipping Agent Code";
 
-                    If Agent.Get(ShippingAgentCode) then
+                    if Agent.Get(ShippingAgentCode) then
                         ShippingAgentServiceCode := Agent."TFB Service Default";
                 end;
 
@@ -61,12 +61,12 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         VendorZoneRate.SetRange("Vendor No.", VendorNo);
 
         PostalZone.SetRange("Customer Price Group", CustomerPriceGroup);
-        If PostalZone.FindFirst() then begin
+        if PostalZone.FindFirst() then begin
 
             VendorZoneRate.SetRange("Zone Code", PostalZone.Code);
             VendorZoneRate.SetRange("Sales Type", VendorZoneRate."Sales Type"::All);
 
-            If VendorZoneRate.FindFirst() then begin
+            if VendorZoneRate.FindFirst() then begin
                 ShippingAgentCode := VendorZoneRate."Shipping Agent";
                 ShippingAgentServiceCode := VendorZoneRate."Agent Service Code";
                 exit(true);
@@ -83,11 +83,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ShipmentCu: Codeunit "TFB Sales Shipment Mgmt";
 
     begin
-        If SalesShipmentHeader."No." <> '' then
+        if SalesShipmentHeader."No." <> '' then
 
 
             //do something
-            If not IgnoreSalesShipmentCheck(SalesShipmentHeader."No.") then
+            if not IgnoreSalesShipmentCheck(SalesShipmentHeader."No.") then
                 shipmentcu.SendOneShipmentNotificationEmail(SalesShipmentHeader."No.");
     end;
 
@@ -97,11 +97,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     begin
 
-        If Shipment.IsEmpty then exit;
+        if Shipment.IsEmpty then exit;
 
-        If Shipment."External Document No." <> '' then exit(StrSubstNo('your purchase order %1', Shipment."External Document No."));
+        if Shipment."External Document No." <> '' then exit(StrSubstNo('your purchase order %1', Shipment."External Document No."));
 
-        If Shipment."Order No." <> '' then exit(StrSubstNo('our order %1', Shipment."Order No."));
+        if Shipment."Order No." <> '' then exit(StrSubstNo('our order %1', Shipment."Order No."));
 
         exit(StrSubstNo('our shipment %1', Shipment."No."));
 
@@ -120,7 +120,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         InvoiceLine.SetRange("Document No.", Invoice."No.");
         InvoiceLine.SetFilter("Quantity (Base)", '>0');
 
-        If InvoiceLine.FindFirst() then begin
+        if InvoiceLine.FindFirst() then begin
 
             ValueEntry.SetRange("Document No.", InvoiceLine."Document No.");
             ValueEntry.SetRange("Document Line No.", InvoiceLine."Line No.");
@@ -133,11 +133,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 repeat
 
                     //Locate shipments
-                    If ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then
-                        If ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
-                            If Shipment.Get(ItemLedger."Document No.") then
+                    if ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then
+                        if ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
+                            if Shipment.Get(ItemLedger."Document No.") then
                                 //Call Sales Shipment CU
-                                Exit(true);
+                                exit(true);
 
 
 
@@ -161,18 +161,18 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         Line.SetRange("Document No.", Header."No.");
         Line.SetFilter("Quantity (Base)", '>0');
 
-        If Line.FindFirst() then
+        if Line.FindFirst() then
 
             //Check if drop ship
 
-            If Line."Drop Shipment" then begin
+            if Line."Drop Shipment" then begin
 
                 PurchaseHeaderArchive.SetRange("No.", Line."Purchase Order No.");
                 PurchaseHeaderArchive.SetRange("Document Type", PurchaseHeaderArchive."Document Type"::Order);
 
-                If PurchaseHeaderArchive.FindLast() then begin
+                if PurchaseHeaderArchive.FindLast() then begin
                     Content.Append(StrSubstNo('Drop shipped against %1 from %2', PurchaseHeaderArchive."No.", PurchaseHeaderArchive."Buy-from Vendor Name"));
-                    If Header."Package Tracking No." <> '' then
+                    if Header."Package Tracking No." <> '' then
                         Content.Append(StrSubstNo('. Tracking No %1 shipped via %2.', Header."Package Tracking No.", Header."Shipping Agent Code"));
                 end;
             end
@@ -185,7 +185,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             end;
 
-        Exit(Content.ToText());
+        exit(Content.ToText());
 
     end;
 
@@ -233,7 +233,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         CompanyInfo.Get();
 
-        If not Customer.Get(SalesShipmentHeader."Sell-to Customer No.") then
+        if not Customer.Get(SalesShipmentHeader."Sell-to Customer No.") then
             exit(false);
 
         CustomerName := Customer.Name;
@@ -241,16 +241,16 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         SalesShipmentLine.SetRange("Document No.", SalesShipmentHeader."No.");
         SalesShipmentLine.SetFilter("Quantity (Base)", '>0');
 
-        If SalesShipmentLine.FindFirst() then begin
+        if SalesShipmentLine.FindFirst() then begin
 
             //Check if drop ship
 
-            If SalesShipmentLine."Drop Shipment" then begin
+            if SalesShipmentLine."Drop Shipment" then begin
 
                 PurchaseHeaderArchive.SetRange("No.", SalesShipmentLine."Purchase Order No.");
                 PurchaseHeaderArchive.SetRange("Document Type", PurchaseHeaderArchive."Document Type"::Order);
 
-                If PurchaseHeaderArchive.FindLast() then begin
+                if PurchaseHeaderArchive.FindLast() then begin
                     ContactName := PurchaseHeaderArchive."Buy-from Vendor Name";
                     Vendor.Get(PurchaseHeaderArchive."Buy-from Vendor No.");
                     EmailID := Vendor."E-Mail";
@@ -280,7 +280,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             HTMLBuilder.Append(HTMLTemplate);
             //HTMLBuilder.Replace('%1', 'Shipment Status Query');
-            If GenerateShipmentStatusQueryContent(ContactName, Reference, Reference2, CustomerName, HTMLBuilder) then begin
+            if GenerateShipmentStatusQueryContent(ContactName, Reference, Reference2, CustomerName, HTMLBuilder) then begin
 
                 //Check that content has been generated to send
 
@@ -290,7 +290,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
                 Email.AddRelation(EmailMessage, Database::"Sales Shipment Header", SalesShipmentHeader.SystemId, Enum::"Email Relation Type"::"Primary Source", enum::"Email Relation Origin"::"Compose Context");
                 Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
-                If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
+                if not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
 
                     CommEntry.Init();
                     CommEntry."Source Type" := CommEntry."Source Type"::Customer;
@@ -304,7 +304,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     CommEntry.Method := CommEntry.Method::EMAIL;
                     CommEntry.Insert();
 
-                    Exit(True)
+                    exit(true)
                 end;
             end
 
@@ -332,7 +332,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', RefNo, ''));
         Result := SendShipmentNotificationEmail(RefNo, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
-        Exit(Result);
+        exit(Result);
     end;
 
     local procedure AddLocationContactRecipient(var Recipients: List of [Text]; var Shipment: Record "Sales Shipment Header")
@@ -349,9 +349,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
     begin
 
-        If Location.get(Shipment."Ship-to Code") then
-            If Location."TFB Notify Contact" then
-                If not Recipients.Contains(Location."E-Mail") then
+        if Location.get(Shipment."Ship-to Code") then
+            if Location."TFB Notify Contact" then
+                if not Recipients.Contains(Location."E-Mail") then
                     Recipients.Add(Location."E-Mail");
 
         //Find any designated people and also add them to recipient list
@@ -366,14 +366,14 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             CoreSetup.Get();
             repeat
-                If CoreSetup."PL Def. Job Resp. Rec." <> '' then begin
+                if CoreSetup."PL Def. Job Resp. Rec." <> '' then begin
                     Responsibility.SetRange("Job Responsibility Code", CoreSetup."ASN Def. Job Resp. Rec.");
                     Responsibility.SetRange("Contact No.", OtherContacts."No.");
 
-                    If not Responsibility.IsEmpty() then
+                    if not Responsibility.IsEmpty() then
 
                         //Contact has purchasing responsibility
-                        If not Recipients.Contains(OtherContacts."E-Mail") then
+                        if not Recipients.Contains(OtherContacts."E-Mail") then
 
                             //New email address is found and needs to be added
                             Recipients.Add(OtherContacts."E-Mail");
@@ -408,11 +408,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlobCU2: CodeUnit "Temp Blob";
         TempBlobCU: Codeunit "Temp Blob";
-        TempBlobAtc: Array[10] of Codeunit "Temp Blob";
+        TempBlobAtc: array[10] of Codeunit "Temp Blob";
         InStream, InStream2 : InStream;
         OutStream, OutStream2 : Outstream;
-        inStreamReportAtc: Array[10] of InStream;
-        outStreamReportAtc: Array[10] of OutStream;
+        inStreamReportAtc: array[10] of InStream;
+        outStreamReportAtc: array[10] of OutStream;
         Ref: BigInteger;
         LastLotNo: Code[50];
         LoopCount, i : Integer;
@@ -433,13 +433,13 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         CompanyInfo.Get();
 
-        If not Shipment.Get(RefNo) then
+        if not Shipment.Get(RefNo) then
             exit(false);
 
-        If not Customer.Get(Shipment."Sell-to Customer No.") then
+        if not Customer.Get(Shipment."Sell-to Customer No.") then
             exit(false);
 
-        If Customer."E-Mail" = '' then
+        if Customer."E-Mail" = '' then
             exit(false);
 
 
@@ -448,7 +448,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         SubjectNameBuilder.Append(StrSubstNo('Shipment Notification related to %1 from TFB Trading', getShipmentReferenceNo(Shipment)));
 
-        If Customer."TFB CoA Required" then
+        if Customer."TFB CoA Required" then
             SubjectNameBuilder.Append(' [COA Requested]');
 
         Recipients.Add(EmailID);
@@ -461,15 +461,15 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         HTMLBuilder.Append(HTMLTemplate);
 
         //Check that content has been generated to send
-        If not GenerateShipmentNotificationContent(RefNo, HTMLBuilder) then exit;
+        if not GenerateShipmentNotificationContent(RefNo, HTMLBuilder) then exit;
 
-        If (Customer."TFB CoA Required") and ((Customer."TFB CoA Alt. Email") <> '') then
+        if (Customer."TFB CoA Required") and ((Customer."TFB CoA Alt. Email") <> '') then
             CCRecipients.AddRange(Customer."TFB CoA Alt. Email".Split(';', ','));  //Handles if usual email separators are used for multiple emails
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true, CCRecipients, BCCRecipients);
 
 
-        If (Customer."TFB CoA Required") then begin
+        if (Customer."TFB CoA Required") then begin
             //Perform additional functionality to send CoA
 
 
@@ -488,24 +488,24 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
                     LedgerEntry.SetRange("Document Line No.", ShipmentLine."Line No.");
 
-                    If LedgerEntry.Findset(false) then
+                    if LedgerEntry.Findset(false) then
                         repeat
 
-                            If LastLotNo <> LedgerEntry."Lot No." then begin
+                            if LastLotNo <> LedgerEntry."Lot No." then begin
                                 //Get Lot Info
                                 Clear(LotInfo);
                                 LotInfo.SetRange("Item No.", LedgerEntry."Item No.");
                                 LotInfo.SetRange("Lot No.", LedgerEntry."Lot No.");
                                 LotInfo.SetRange("Variant Code", LedgerEntry."Variant Code");
 
-                                If LotInfo.FindFirst() then begin
+                                if LotInfo.FindFirst() then begin
 
                                     //Indicate that Lot COA has been found
                                     LoopCount := LoopCount + 1;
 
                                     Ref := LotInfo."TFB CoA Attach.";
 
-                                    If (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
+                                    if (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
                                         //Add attachmemnt details
 
                                         TempBlobCU.CreateOutStream(OutStream);
@@ -530,7 +530,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                                     Clear(FileNameBuilder);
 
-                                    If (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
+                                    if (Ref > 0) and (PersBlobCU.Exists(Ref)) then begin
                                         //Add attachmemnt details
 
                                         TempBlobCU2.CreateOutStream(OutStream2);
@@ -554,18 +554,18 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
                     //Check to see if drop shipment with current PO
 
-                    If (ShipmentLine."Drop Shipment") and (ShipmentLine."Purchase Order No." <> '') then
-                        If PurchaseLine.Get(PurchaseLine."Document Type"::Order, ShipmentLine."Purchase Order No.", ShipmentLine."Purch. Order Line No.") then begin
+                    if (ShipmentLine."Drop Shipment") and (ShipmentLine."Purchase Order No." <> '') then
+                        if PurchaseLine.Get(PurchaseLine."Document Type"::Order, ShipmentLine."Purchase Order No.", ShipmentLine."Purch. Order Line No.") then begin
                             PurchaseLine.CalcFields("Attached Doc Count");
-                            If PurchaseLine."Attached Doc Count" > 0 then begin
+                            if PurchaseLine."Attached Doc Count" > 0 then begin
                                 DocAttachment.SetRange("Table ID", 39);
                                 DocAttachment.SetRange("No.", PurchaseLine."Document No.");
                                 DocAttachment.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                                 DocAttachment.SetRange("Line No.", PurchaseLine."Line No.");
 
-                                If DocAttachment.Findset(false) then
+                                if DocAttachment.Findset(false) then
                                     repeat
-                                        If DocAttachment."Document Reference ID".HasValue then begin
+                                        if DocAttachment."Document Reference ID".HasValue then begin
                                             TempBlobAtc[i].CreateOutStream(outStreamReportAtc[i]);
                                             TempBlobAtc[i].CreateInStream(inStreamReportAtc[i]);
                                             Clear(FileNameBuilder);
@@ -608,7 +608,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         CommEntry.Method := CommEntry.Method::EMAIL;
         CommEntry.Insert();
 
-        Exit(True)
+        exit(true)
 
     end;
 
@@ -630,13 +630,13 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         HTMLBuilder.Replace('%{ReferenceValue}', Reference);
 
         BodyBuilder.AppendLine(StrSubstNo('<h2>We have a customer query against shipment %1 for customer %2.</h2>', Reference, CustomerName));
-        If Reference2 <> '' then
+        if Reference2 <> '' then
             BodyBuilder.AppendLine(StrSubstNo('<p>You can also cross reference against <b>%1</b> to verify the request', Reference2));
         BodyBuilder.AppendLine(StrSubstNo('<p>This email is intended for <b>%1</b>. If you have received this in error please let us know', ContactName));
         BodyBuilder.AppendLine('<br><br>');
         BodyBuilder.AppendLine(StrSubstNo('Our customer wants to know the status of the shipment and for us to provide a Proof of Delivery (POD)'));
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
 
     end;
 
@@ -653,7 +653,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     local procedure GenerateShipmentNotificationContent(RefNo: Code[20]; var HTMLBuilder: TextBuilder): Boolean
 
     var
-        CustCalendarChange: Array[2] of Record "Customized Calendar Change";
+        CustCalendarChange: array[2] of Record "Customized Calendar Change";
         Customer: Record Customer;
         Header: Record "Sales Shipment Header";
         Item: Record Item;
@@ -683,10 +683,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
         //Start with content introducing customer
 
-        If not Header.Get(RefNo) then
+        if not Header.Get(RefNo) then
             exit(false);
 
-        If not Customer.Get(Header."Sell-to Customer No.") then
+        if not Customer.Get(Header."Sell-to Customer No.") then
             exit(false);
 
         Clear(Line);
@@ -696,7 +696,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
-        If Line.FindSet(false) then begin
+        if Line.FindSet(false) then begin
 
             HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
             HTMLBuilder.Replace('%{ExplanationValue}', 'Shipment notification');
@@ -705,7 +705,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
             ReferenceBuilder.Append(StrSubstNo('Our order %1', Line."Order No."));
 
-            If Header."External Document No." <> '' then
+            if Header."External Document No." <> '' then
                 ReferenceBuilder.Append(StrSubstNo(' and <b>your PO#</b> is %1', Header."External Document No."));
 
             if (Header."TFB 3PL Booking No." <> '') and (not Line."Drop Shipment") then
@@ -713,7 +713,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             HTMLBuilder.Replace('%{ReferenceValue}', ReferenceBuilder.ToText());
 
-            If (Customer."TFB CoA Required") then
+            if (Customer."TFB CoA Required") then
                 if not Line."Drop Shipment" then
                     HTMLBuilder.Replace('%{AlertText}', 'Certificates of Analysis should be included as requested.')
                 else
@@ -733,7 +733,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 SuppressLine := false;
                 Item.Get(Line."No.");
 
-                If Item.Type = Item.Type::Inventory then begin
+                if Item.Type = Item.Type::Inventory then begin
 
 
 
@@ -749,22 +749,22 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
-                    If Line."Drop Shipment" then begin
+                    if Line."Drop Shipment" then begin
                         CommentBuilder.Append('Direct shipped with our ref. ' + Line."Purchase Order No." + '</br>');
 
                         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
                         Purchase.SetRange("No.", Line."Purchase Order No.");
 
-                        If Purchase.FindFirst() then
-                            If Vendor.Get(Purchase."Buy-from Vendor No.") then
-                                If Vendor."TFB Delivery SLA" <> '' then begin
-                                    If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+                        if Purchase.FindFirst() then
+                            if Vendor.Get(Purchase."Buy-from Vendor No.") then
+                                if Vendor."TFB Delivery SLA" <> '' then begin
+                                    if ShippingAgent.Get(Vendor."Shipping Agent Code") then
                                         ShippingAgentName := ShippingAgent.Name
                                     else
                                         ShippingAgentName := 'unknown';
 
                                     CommentBuilder.Append(StrSubstNo('Delivery SLA of %1 using %2 for freight', vendor."TFB Delivery SLA", ShippingAgent.Name));
-                                    If (ShippingAgent."Internet Address" <> '') and (Header."Package Tracking No." <> '') then
+                                    if (ShippingAgent."Internet Address" <> '') and (Header."Package Tracking No." <> '') then
                                         CommentBuilder.Append(StrSubstNo('. <p>Tracking No is <b>%1</b> </p>', Header."Package Tracking No."))
                                 end;
                     end
@@ -782,7 +782,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                         CustCalendarChange[2]."Source Code" := Header."Sell-to Customer No.";
 
                         ExpectedDate := CalMgmt.CalcDateBOC(format(Line."Shipping Time"), Header."Posting Date", CustCalendarChange, true);
-                        If ExpectedDate = Header."Posting Date" then
+                        if ExpectedDate = Header."Posting Date" then
                             CommentBuilder.AppendLine(StrSubstNo('Dispatched today for same delivery by %1.', ShippingAgent.Name))
                         else
                             CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name));
@@ -792,7 +792,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
                     LineBuilder.AppendLine('</tr>');
-                    If not SuppressLine then begin
+                    if not SuppressLine then begin
                         BodyBuilder.Append(LineBuilder.ToText());
                         PendingLines := true;
                         LineCount := LineCount + 1;
@@ -817,7 +817,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     Clear(Item);
                     Item.Get(OrderLine."No.");
 
-                    If Item.Type = Item.Type::Inventory then begin
+                    if Item.Type = Item.Type::Inventory then begin
 
 
 
@@ -834,16 +834,16 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
 
-                        If OrderLine."Drop Shipment" then begin
+                        if OrderLine."Drop Shipment" then begin
                             CommentBuilder.Append('Item will be drop shipped against supplier PO No. ' + OrderLine."Purchase Order No." + '</br>');
 
                             Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
                             Purchase.SetRange("No.", OrderLine."Purchase Order No.");
 
-                            If Purchase.FindFirst() then
-                                If Vendor.Get(Purchase."Buy-from Vendor No.") then
-                                    If Vendor."TFB Delivery SLA" <> '' then begin
-                                        If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+                            if Purchase.FindFirst() then
+                                if Vendor.Get(Purchase."Buy-from Vendor No.") then
+                                    if Vendor."TFB Delivery SLA" <> '' then begin
+                                        if ShippingAgent.Get(Vendor."Shipping Agent Code") then
                                             ShippingAgentName := ShippingAgent.Name
                                         else
                                             ShippingAgentName := 'unknown';
@@ -864,7 +864,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
                         LineBuilder.AppendLine('</tr>');
-                        If (not SuppressLine) or (not SourceLineNo.Contains(OrderLine."Line No.")) then begin
+                        if (not SuppressLine) or (not SourceLineNo.Contains(OrderLine."Line No.")) then begin
                             TempBodyBuilder.Append(LineBuilder.ToText());
                             PendingLines := true;
                             LineCount := LineCount + 1;
@@ -889,15 +889,15 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
 
         end;
-        If not PendingLines then
+        if not PendingLines then
             BodyBuilder.AppendLine('<h2>No shipment details found. Please contact TFB for more info</h2>');
 
-        If LineCount > 0 then begin
+        if LineCount > 0 then begin
             HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-            Exit(true);
+            exit(true);
         end
         else
-            Exit(false);
+            exit(false);
     end;
 
     procedure IgnoreSalesShipmentCheck(RefNo: Code[20]): Boolean
@@ -926,10 +926,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         CommEntry.SetRange("Record Table No.", Database::"Sales Shipment Header");
         CommEntry.SetRange(Direction, CommEntry.Direction::Outbound);
 
-        If CommEntry.IsEmpty() then
-            Exit(false) // no communication sent should not ignore sales shipment
+        if CommEntry.IsEmpty() then
+            exit(false) // no communication sent should not ignore sales shipment
         else
-            Exit(true); // already sent out - so don't ignore check */
+            exit(true); // already sent out - so don't ignore check */
     end;
 
     procedure AddCoAToShipmentStatusEmail(RefNo: Code[20]; var EmailMessage: CodeUnit "Email Message"): Boolean
@@ -958,13 +958,13 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             repeat
 
                 //Double check
-                If Customer.Get(ShipmentLine."Sell-to Customer No.") then begin
-                    If not Customer."TFB CoA Required" then
-                        Exit(false)
+                if Customer.Get(ShipmentLine."Sell-to Customer No.") then begin
+                    if not Customer."TFB CoA Required" then
+                        exit(false)
 
                 end
                 else
-                    Exit(false);
+                    exit(false);
 
                 //Check to See if Customer wants COA's
 
@@ -976,23 +976,23 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
                 LedgerEntry.SetRange("Document Line No.", ShipmentLine."Line No.");
 
-                If LedgerEntry.Findset(false) then
+                if LedgerEntry.Findset(false) then
                     repeat
 
-                        If LastLotNo <> LedgerEntry."Lot No." then begin
+                        if LastLotNo <> LedgerEntry."Lot No." then begin
                             //Get Lot Info
                             LotInfo.SetRange("Item No.", LedgerEntry."Item No.");
                             LotInfo.SetRange("Lot No.", LedgerEntry."Lot No.");
                             LotInfo.SetRange("Variant Code", LedgerEntry."Variant Code");
 
-                            If LotInfo.FindFirst() then begin
+                            if LotInfo.FindFirst() then begin
 
                                 //Indicate that Lot COA has been found
                                 LoopCount := LoopCount + 1;
                                 Clear(InStream);
                                 Ref := LotInfo."TFB CoA Attach.";
 
-                                If (Ref > 0) and PersBlobCU.Exists(Ref) then begin
+                                if (Ref > 0) and PersBlobCU.Exists(Ref) then begin
                                     //Add attachmemnt details
 
                                     Clear(FileNameBuilder);
@@ -1037,7 +1037,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ItemLedger.SetRange("Document Line No.", LineNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
 
                 Clear(ValueEntry);
@@ -1049,7 +1049,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             until ItemLedger.Next() < 1;
 
-        Exit(TotalCharge);
+        exit(TotalCharge);
     end;
 
     procedure GetItemChargesForSalesShipment(DocNo: Code[20]; ChargeCode: Code[20]): Decimal
@@ -1065,7 +1065,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ItemLedger.SetRange("Document No.", DocNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
 
                 Clear(ValueEntry);
@@ -1077,7 +1077,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
 
             until ItemLedger.Next() < 1;
 
-        Exit(TotalCharge);
+        exit(TotalCharge);
     end;
 
     procedure OpenItemChargesForSalesShipment(DocNo: Code[20]; LineNo: Integer; ChargeCode: Code[20]): Decimal
@@ -1096,9 +1096,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ItemLedger.SetRange("Document Line No.", LineNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
-                If LedgerEntryFilter.Length() > 0 then
+                if LedgerEntryFilter.Length() > 0 then
                     LedgerEntryFilter.Append('|');
 
                 LedgerEntryFilter.Append(Format(ItemLedger."Entry No."));
@@ -1106,7 +1106,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             until ItemLedger.Next() < 1;
 
         Clear(ValueEntry);
-        If LedgerEntryFilter.Length() > 0 then begin
+        if LedgerEntryFilter.Length() > 0 then begin
             ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Purchase);
             ValueEntry.SetFilter("Item Ledger Entry No.", LedgerEntryFilter.ToText());
             ValueEntry.SetRange("Item Charge No.", ChargeCode);
@@ -1132,9 +1132,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ItemLedger.SetRange("Document No.", DocNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
-                If LedgerEntryFilter.Length() > 0 then
+                if LedgerEntryFilter.Length() > 0 then
                     LedgerEntryFilter.Append('|');
 
                 LedgerEntryFilter.Append(Format(ItemLedger."Entry No."));
@@ -1142,7 +1142,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             until ItemLedger.Next() < 1;
 
         Clear(ValueEntry);
-        If LedgerEntryFilter.Length() > 0 then begin
+        if LedgerEntryFilter.Length() > 0 then begin
             ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Purchase);
             ValueEntry.SetFilter("Item Ledger Entry No.", LedgerEntryFilter.ToText());
             ValueEntry.SetRange("Item Charge No.", ChargeCode);
@@ -1164,9 +1164,9 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         WhseLines.SetRange("Posted Source No.", ShipmentNo);
         WhseLines.SetRange("Posted Source Document", WhseLines."Posted Source Document"::"Posted Shipment");
 
-        If WhseLines.FindFirst() then
-            If WhseHeader.Get(WhseLines."No.") then
-                Exit(WhseHeader."Whse. Shipment No.");
+        if WhseLines.FindFirst() then
+            if WhseHeader.Get(WhseLines."No.") then
+                exit(WhseHeader."Whse. Shipment No.");
 
 
 
@@ -1186,7 +1186,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ItemLedger.SetRange("Document No.", DocumentNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Sales Shipment");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
 
                 //Calculate total charges
@@ -1206,10 +1206,10 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 SameChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
 
             until ItemLedger.Next() < 1;
-        If (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
-            Exit(true)
+        if (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
+            exit(true)
         else
-            Exit(false);
+            exit(false);
     end;
 
 

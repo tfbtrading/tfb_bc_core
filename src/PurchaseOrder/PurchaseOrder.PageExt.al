@@ -24,7 +24,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -152,17 +152,17 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
             field("TFB Instructions"; Rec."TFB Instructions")
             {
                 ApplicationArea = All;
-                Enabled = True;
-                Editable = True;
-                MultiLine = True;
+                Enabled = true;
+                Editable = true;
+                MultiLine = true;
                 ToolTip = 'Specifies any special instructions for the purchase order';
             }
             field("TFB Delivery SLA"; Rec."TFB Delivery SLA")
             {
                 ApplicationArea = All;
-                Enabled = True;
-                Editable = True;
-                MultiLine = True;
+                Enabled = true;
+                Editable = true;
+                MultiLine = true;
                 ToolTip = 'Specifies if a delivery SLA exists for this purchase order';
             }
             group(QualityReq)
@@ -228,7 +228,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
                     ContainerEntry.SetRange("Vendor No.", Rec."Buy-from Vendor No.");
                     ContainerEntry.SetRange(Type, ContainerEntry.Type::PurchaseOrder);
 
-                    If ContainerEntry.FindFirst() then begin
+                    if ContainerEntry.FindFirst() then begin
                         ContainerEntryPage.SetRecord(ContainerEntry);
                         ContainerEntryPage.Run()
                     end
@@ -268,7 +268,7 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
 
     begin
         ContainerEntry.SetRange("Order Reference", Rec."No.");
-        If ContainerEntry.FindFirst() then
+        if ContainerEntry.FindFirst() then
             ContainerNo := ContainerEntry."Container No.";
         CheckIfImport();
         Rec.CalcFields("TFB Container Entry Exists");
@@ -281,17 +281,17 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
 
     begin
 
-        If Customer.get(Rec."Sell-to Customer No.") then
-            Exit(Customer."TFB CoA Required")
+        if Customer.get(Rec."Sell-to Customer No.") then
+            exit(Customer."TFB CoA Required")
         else
-            Exit(False);
+            exit(false);
 
     end;
 
     local procedure CheckIfImport()
 
     begin
-        If (Rec."Currency Code" <> '') or (Rec."Buy-from Country/Region Code" <> 'AU') then
+        if (Rec."Currency Code" <> '') or (Rec."Buy-from Country/Region Code" <> 'AU') then
             ImportOrder := true else
             ImportOrder := false;
     end;
@@ -307,10 +307,10 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 

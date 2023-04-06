@@ -19,12 +19,12 @@ table 50113 "TFB Generic Item Market Rel."
         field(2; "Generic Item Description"; Text[255])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("TFB Generic Item".Description where(SystemId = field(GenericItemID)));
+            CalcFormula = lookup("TFB Generic Item".Description where(SystemId = field(GenericItemID)));
         }
         field(22; "Market Segment Title"; Text[255])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("TFB Product Market Segment".Title where(SystemId = field(ProductMarketSegmentID)));
+            CalcFormula = lookup("TFB Product Market Segment".Title where(SystemId = field(ProductMarketSegmentID)));
         }
 
     }

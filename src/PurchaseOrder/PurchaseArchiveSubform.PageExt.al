@@ -42,7 +42,7 @@ pageextension 50123 "TFB Purchase Archive SubForm" extends "Purchase Order Archi
     var
         Vendor: record Vendor;
     begin
-        If Rec.Type = Rec.Type::Item then begin
+        if Rec.Type = Rec.Type::Item then begin
             Vendor.get(rec."Buy-from Vendor No.");
             PriceUnit := Vendor."TFB Vendor Price Unit";
             PriceByPriceUnit := PricingCU.CalculatePriceUnitByUnitPrice(rec."No.", rec."Unit of Measure Code", PriceUnit, rec."Direct Unit Cost");

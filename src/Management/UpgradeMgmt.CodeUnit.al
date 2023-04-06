@@ -42,7 +42,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        Exit((GetInstallingVersionNo() = '21.0.0.42'))
+        exit((GetInstallingVersionNo() = '21.0.0.42'))
     end;
 
    
@@ -63,14 +63,14 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
 
-        If VendorCert.Findset(true) then
+        if VendorCert.Findset(true) then
             repeat
                 Clear(PersBlob);
                 VendorCert.CalcFields(Certificate);
-                If VendorCert.Certificate.HasValue then begin
+                if VendorCert.Certificate.HasValue then begin
                     PersKey := PersBlob.Create();
                     VendorCert.Certificate.CreateInStream(InStream);
-                    If PersBlob.CopyFromInStream(PersKey, InStream) then begin
+                    if PersBlob.CopyFromInStream(PersKey, InStream) then begin
                         VendorCert."Certificate Attach." := PersKey;
                         Clear(VendorCert.Certificate);
                         VendorCert.Modify(false);
@@ -93,14 +93,14 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     begin
 
-        If LotInfo.Findset(true) then
+        if LotInfo.Findset(true) then
             repeat
                 Clear(PersBlob);
                 LotInfo.CalcFields("TFB CoA Attachment");
-                If LotInfo."TFB CoA Attachment".HasValue then begin
+                if LotInfo."TFB CoA Attachment".HasValue then begin
                     PersKey := PersBlob.Create();
                     LotInfo."TFB CoA Attachment".CreateInStream(InStream);
-                    If PersBlob.CopyFromInStream(PersKey, InStream) then begin
+                    if PersBlob.CopyFromInStream(PersKey, InStream) then begin
                         LotInfo."TFB CoA Attach." := PersKey;
                         LotInfo.Modify(false);
                     end;
@@ -121,13 +121,13 @@ codeunit 50103 "TFB Upgrade Mgmt"
         VendorLedgerEntry: Record "Vendor Ledger Entry";
 
     begin
-        If ForexMgmtEntry.Findset(true) then
+        if ForexMgmtEntry.Findset(true) then
             repeat
                 if IsNullGuid(ForexMgmtEntry."Applies-to id") and (ForexMgmtEntry."Applies-to Doc No." <> '') then
-                    If ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
+                    if ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
                         VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
                         VendorLedgerEntry.SetRange("Document No.", ForexMgmtEntry."Applies-to Doc No.");
-                        If VendorLedgerEntry.FindFirst() then begin
+                        if VendorLedgerEntry.FindFirst() then begin
                             ForexMgmtEntry."Applies-to id" := VendorLedgerEntry.SystemId;
                             ForexMgmtEntry."Applies-to Entry Doc. No." := VendorLedgerEntry."Document No.";
                             ForexMgmtEntry."Applies-to Posting Date" := VendorLedgerEntry."Posting Date";

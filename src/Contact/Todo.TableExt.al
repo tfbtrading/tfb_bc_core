@@ -100,7 +100,7 @@ tableextension 50121 "TFB To-do" extends "To-do"
 
         end;
 
-        If TransText <> '' then begin
+        if TransText <> '' then begin
             DeleteAll();
             Init();
             Validate("Contact No.", RecordContactNo);

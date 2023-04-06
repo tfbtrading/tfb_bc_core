@@ -15,7 +15,7 @@ pageextension 50210 "TFB Pstd. Purch. Rcpt. Lines" extends "Posted Purchase Rece
             field("TFB Container No. LookUp"; Rec."TFB Container No. LookUp")
             {
                 ApplicationArea = all;
-                Visible = True;
+                Visible = true;
                 ToolTip = 'Specifies the corresponding container number';
 
             }
@@ -55,7 +55,7 @@ pageextension 50210 "TFB Pstd. Purch. Rcpt. Lines" extends "Posted Purchase Rece
     begin
         Rec.CalcFields("TFB Container No. LookUp");
 
-        If PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
+        if PurchRcptCU.GetItemChargesForReceipt(Rec."Document No.", Rec."Line No.", '', TotalExistingItemCharges, SameExistingItemCharges) then
             TotalOfItemCharges := TotalExistingItemCharges
         else
             TotalOfItemCharges := 0;

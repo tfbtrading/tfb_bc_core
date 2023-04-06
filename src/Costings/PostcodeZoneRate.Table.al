@@ -56,7 +56,7 @@ table 50312 "TFB Postcode Zone Rate"
         {
             DataClassification = CustomerContent;
             TableRelation = "Customer Price Group";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
         }
 
     }

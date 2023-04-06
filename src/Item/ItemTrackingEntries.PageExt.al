@@ -64,8 +64,8 @@ pageextension 50274 "TFB Item Tracking Entries" extends "Item Tracking Entries"
         case Rec."Document Type" of
             Rec."Document Type"::"Sales Shipment":
 
-                If (Rec."Source Type" = Rec."Source Type"::Customer) and (Rec."Source No." <> '') then
-                    If ShipmentRec.Get(Rec."Document No.") then begin
+                if (Rec."Source Type" = Rec."Source Type"::Customer) and (Rec."Source No." <> '') then
+                    if ShipmentRec.Get(Rec."Document No.") then begin
                         OrderNo := ShipmentRec."Order No.";
                         SourceDesc := ShipmentRec."Sell-to Customer Name";
                     end;
@@ -73,7 +73,7 @@ pageextension 50274 "TFB Item Tracking Entries" extends "Item Tracking Entries"
             Rec."Document Type"::"Purchase Receipt":
 
                 if (Rec."Source Type" = Rec."Source Type"::Vendor) and (Rec."Source No." <> '') then
-                    If ReceiptRec.Get(Rec."Document No.") then begin
+                    if ReceiptRec.Get(Rec."Document No.") then begin
                         OrderNo := ReceiptRec."Order No.";
                         SourceDesc := ReceiptRec."Buy-from Vendor Name";
                     end;

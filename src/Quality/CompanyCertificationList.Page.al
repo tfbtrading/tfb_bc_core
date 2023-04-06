@@ -132,7 +132,7 @@ page 50149 "TFB Company Certification List"
                     ApplicationArea = All;
                     Caption = 'Attach.';
                     ShowCaption = true;
-                    Editable = False;
+                    Editable = false;
                     tooltip = 'Specifies if an attachment exists';
                     Style = Unfavorable;
                     StyleExpr = (AttachmentExists = false);
@@ -174,7 +174,7 @@ page 50149 "TFB Company Certification List"
             {
 
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Caption = 'Upload Attachment';
 
                 Image = Import;
@@ -192,7 +192,7 @@ page 50149 "TFB Company Certification List"
             action(DownloadAttach)
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Caption = 'Download Attachment';
                 Image = SendAsPDF;
                 Enabled = AttachmentExists;
@@ -209,7 +209,7 @@ page 50149 "TFB Company Certification List"
             action(SendToContact)
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Caption = 'Send to Contacts';
                 Image = SendEmailPDF;
                 ToolTip = 'Send one or more selected vendor certificates based on a prompt for a contact';
@@ -225,7 +225,7 @@ page 50149 "TFB Company Certification List"
             action("ToggleArchived")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Image = Archive;
 
 
@@ -310,10 +310,10 @@ page 50149 "TFB Company Certification List"
 
     begin
 
-        If (CalculatedStatus = CalculatedStatus::Expired) or (CalculatedStatus = CalculatedStatus::Inherent) or (Rec.Archived) then begin
+        if (CalculatedStatus = CalculatedStatus::Expired) or (CalculatedStatus = CalculatedStatus::Inherent) or (Rec.Archived) then begin
 
 
-            If rec.Archived then begin
+            if rec.Archived then begin
                 if confirm('Are you sure you want to restore to non-archived status?', true) then
                     rec.Archived := false;
             end
@@ -332,17 +332,17 @@ page 50149 "TFB Company Certification List"
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
     end;
 
-    local Procedure CheckIfAttachmentExists(): Boolean
+    local procedure CheckIfAttachmentExists(): Boolean
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";
 
     begin
 
-        If PersBlobCU.Exists(Rec."Certificate Attach.") then
-            Exit(true)
+        if PersBlobCU.Exists(Rec."Certificate Attach.") then
+            exit(true)
         else
-            Exit(false);
+            exit(false);
 
     end;
 
@@ -365,24 +365,24 @@ page 50149 "TFB Company Certification List"
 
         CurrPage.SetSelectionFilter(CompanyCerts);
 
-        If CompanyCerts.Count() = 0 then exit;
+        if CompanyCerts.Count() = 0 then exit;
         Contact.SetFilter("E-Mail", '>%1', '');
         ContactList.LookupMode(true);
         ContactList.SetTableView(Contact);
 
-        If ContactList.RunModal() = Action::LookupOK then begin
+        if ContactList.RunModal() = Action::LookupOK then begin
             ContactList.getrecord(Contact);
             Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-            If Contact.Findset(false) then
+            if Contact.Findset(false) then
                 repeat
-                    If Contact."E-Mail" <> '' then
-                        If not Recipients.Contains(Contact."E-Mail") then
+                    if Contact."E-Mail" <> '' then
+                        if not Recipients.Contains(Contact."E-Mail") then
                             Recipients.Add(Contact."E-Mail");
 
                 until Contact.Next() = 0;
 
-            If Recipients.Count > 0 then
+            if Recipients.Count > 0 then
                 QLib.SendCompanyCertificationEmail(CompanyCerts, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
 
         end;
@@ -409,11 +409,11 @@ page 50149 "TFB Company Certification List"
 
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
 
             BlobKey := PersBlobCU.Create();
             TempBlob.CreateInStream(InStream);
-            If PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
+            if PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
                 AttachmentExists := true;
@@ -439,16 +439,16 @@ page 50149 "TFB Company Certification List"
 
     begin
 
-        If AttachmentExists then
+        if AttachmentExists then
             if not Confirm('Attachment already exist - replace?', true) then exit;
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
 
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
 
             BlobKey := PersistentBlob.Create();
             TempBlob.CreateInStream(InStream);
-            If PersistentBlob.CopyFromInStream(BlobKey, InStream) then begin
+            if PersistentBlob.CopyFromInStream(BlobKey, InStream) then begin
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
                 AttachmentExists := true;
@@ -489,7 +489,7 @@ page 50149 "TFB Company Certification List"
 
                 until SelRecs.Next() < 1;
 
-                If TempBlobList.Count() >= 1 then begin
+                if TempBlobList.Count() >= 1 then begin
                     DataCompCU.CreateZipArchive();
 
                     for i := 1 to TempBlobList.Count() do begin
@@ -503,13 +503,13 @@ page 50149 "TFB Company Certification List"
                     DataCompCU.SaveZipArchive(ZipTempBlob);
                     ZipTempBlob.CreateInStream(InStream);
                     FileName := StrSubstNo('Vendor certificates x %1.zip', TempBlobList.Count());
-                    If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+                    if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
                         Error('File %1 not downloaded', FileName);
                 end;
             end;
         end
         else
-            If (Rec."Certificate Attach." > 0) and (PersBlobCU.Exists(Rec."Certificate Attach.")) then begin
+            if (Rec."Certificate Attach." > 0) and (PersBlobCU.Exists(Rec."Certificate Attach.")) then begin
 
                 FileName := QualityCU.GetCertificateFileName(Rec);
                 TempBlobCU.CreateOutStream(OutStream);
@@ -517,7 +517,7 @@ page 50149 "TFB Company Certification List"
                 TempBlobCU.CreateInStream(InStream);
 
 
-                If Not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
+                if not DownloadFromStream(InStream, 'Title', 'ToFolder', 'Filter', FileName) then
                     Error('File Not Downloaded');
             end;
     end;

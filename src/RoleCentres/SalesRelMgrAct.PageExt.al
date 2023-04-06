@@ -38,7 +38,7 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
                     ApplicationArea = RelationshipMgmt;
                     DrillDownPageID = "TFB Active Task List";
                     Style = Favorable;
-                    StyleExpr = TRUE;
+                    StyleExpr = true;
 
                     ToolTip = 'Specifies your own tasks that are pending.';
                 }
@@ -91,7 +91,7 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
                     ApplicationArea = RelationshipMgmt;
                     DrillDownPageID = "TFB Active Task List";
                     Style = Favorable;
-                    StyleExpr = TRUE;
+                    StyleExpr = true;
                     Caption = 'Open Tasks';
                     ToolTip = 'Specifies tasks that are open.';
                 }
@@ -132,9 +132,9 @@ pageextension 50186 "TFB Sales Rel. Mgr. Act." extends "Sales & Relationship Mgr
 
         User.SetRange("User Security ID", USID);
 
-        If User.FindFirst() then begin
+        if User.FindFirst() then begin
             UserName := User."User Name";
-            If UserSetup.Get(UserName) then
+            if UserSetup.Get(UserName) then
                 Rec.SetRange("TFB SalesPerson Filter", UserSetup."Salespers./Purch. Code");
 
 

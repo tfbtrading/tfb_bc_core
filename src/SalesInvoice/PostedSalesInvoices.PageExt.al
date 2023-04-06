@@ -37,7 +37,7 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                         Customer.Get(Rec."Sell-to Customer No.");
                         AddPaymentNote.SetupCustomerInfo(Customer, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
                         TempSalesInvoiceHeader := Rec;
-                        If AddPaymentNote.RunModal() = Action::OK then begin
+                        if AddPaymentNote.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
                             TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
                             CODEUNIT.Run(CODEUNIT::"TFB Pstd. Sales Inv. Hdr. Edit", TempSalesInvoiceHeader);
@@ -108,7 +108,7 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 Image = Payment;
 
                 RunObject = Page "Payment Registration";
-                RunPageLink = "Source No." = FIELD("Sell-to Customer No.");
+                RunPageLink = "Source No." = field("Sell-to Customer No.");
                 ToolTip = 'Process your customer payments by matching amounts received on your bank account with the related unpaid sales invoices, and then post the payments.';
             }
         }
@@ -139,13 +139,13 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
     begin
         Clear(ExpectedDateText);
 
-        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+        if (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
             IsPastDue := true
         else
             IsPastDue := false;
 
-        If not Rec.Closed then begin
-            If Rec."TFB Expected Payment Date" > 0D then
+        if not Rec.Closed then begin
+            if Rec."TFB Expected Payment Date" > 0D then
                 ExpectedDateText := format(Rec."TFB Expected Payment Date")
             else
                 if Rec."TFB Expected Payment Note" = '' then
@@ -156,7 +156,7 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
         else
             ExpectedDateText := '';
 
-        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+        if (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
             IsExpectedDatePastDue := true
         else
             IsExpectedDatePastDue := false;

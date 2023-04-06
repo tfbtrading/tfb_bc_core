@@ -18,7 +18,7 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
                 trigger OnDrillDown()
 
                 begin
-                    If Rec.Type = Rec.Type::Item then
+                    if Rec.Type = Rec.Type::Item then
                         Rec.OpenItemTrackingLines();
                 end;
             }
@@ -194,7 +194,7 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
         Customer: Record Customer;
 
     begin
-        If (not Rec."Drop Shipment") or (Rec."Sales Order No." = '') then
+        if (not Rec."Drop Shipment") or (Rec."Sales Order No." = '') then
             _isCoAVisible := false
         else
             if not _isTrackingVisible then begin
@@ -214,11 +214,11 @@ pageextension 50217 "TFB Purchase Order Subform" extends "Purchase Order Subform
     var
 
     begin
-        If not _isCoAVisible then
+        if not _isCoAVisible then
             _isCoAReq := _isCoAReq::NotRequired
         else begin
             Rec.CalcFields("Attached Doc Count");
-            If Rec."Attached Doc Count" > 0 then
+            if Rec."Attached Doc Count" > 0 then
                 _isCoAReq := _isCoAReq::ExistsNoIssue
             else
                 _isCoAReq := _isCoAReq::DoesNotExist;

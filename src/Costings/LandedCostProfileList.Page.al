@@ -4,7 +4,7 @@ page 50342 "TFB Landed Cost Profile List"
     UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = "TFB Landed Cost Profile";
-    Editable = False;
+    Editable = false;
     CardPageId = "TFB Landed Cost Profile";
     Caption = 'Landed Cost Profiles';
 

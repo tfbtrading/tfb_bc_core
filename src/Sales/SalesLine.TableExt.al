@@ -26,7 +26,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
 
             begin
                 UpdateUnitPrice();
-            End;
+            end;
 
         }
         field(50122; "TFB Customer Name"; Text[100])
@@ -34,7 +34,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
 
             Caption = 'Sell-to Customer Name';
             FieldClass = FlowField;
-            CalcFormula = lookup("Sales Header"."Sell-to Customer Name" where("Sell-to Customer No." = FIELD("Sell-to Customer No.")));
+            CalcFormula = lookup("Sales Header"."Sell-to Customer Name" where("Sell-to Customer No." = field("Sell-to Customer No.")));
             Editable = false;
 
 
@@ -64,7 +64,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             ObsoleteState = Pending;
             ObsoleteReason = 'Use dynamic check to see if document has been sent';
             Caption = 'CoA Sent';
-            Editable = False;
+            Editable = false;
         }
         field(50126; "TFB Pre-Order"; Boolean)
         {
@@ -77,7 +77,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             var
 
             begin
-                If "TFB Pre-Order" = true and "TFB Pre-Order" <> xRec."TFB Pre-Order" then
+                if "TFB Pre-Order" = true and "TFB Pre-Order" <> xRec."TFB Pre-Order" then
                     SetPreOrderExchRate();
             end;
 
@@ -164,7 +164,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
         field(50150; "TFB No. Of Comments"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count("Sales Comment Line" where("No." = field("Document No."), "Document Type" = field("Document Type"), "Document Line No." = field("Line No.")));
+            CalcFormula = count("Sales Comment Line" where("No." = field("Document No."), "Document Type" = field("Document Type"), "Document Line No." = field("Line No.")));
         }
 
 
@@ -211,7 +211,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
     local procedure UpdateLineTotal()
 
     begin
-        If Type = Type::Item then
+        if Type = Type::Item then
             Rec."TFB Line Total Weight" := TFBPricingLogic.CalcLineTotalKg(rec."Net Weight", rec."Quantity (Base)")
         else
             Rec."TFB Line Total Weight" := 0;
@@ -220,7 +220,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
     local procedure UpdateUnitPrice()
 
     begin
-        If Type = Type::Item then begin
+        if Type = Type::Item then begin
             PriceUnit := PriceUnit::KG;
             Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."No.", rec."Unit of Measure Code", PriceUnit, rec."TFB Price Unit Cost"));
         end;
@@ -229,7 +229,7 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
     local procedure UpdatePriceUnitPrice()
 
     begin
-        If Type = Type::Item then begin
+        if Type = Type::Item then begin
             PriceUnit := PriceUnit::KG;
             "TFB Price Unit Cost" := TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."No.", rec."Unit of Measure Code", PriceUnit, rec."Unit Price");
         end;
@@ -253,15 +253,15 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
         Header.SetRange("Document Type", "Document Type");
         Header.FindFirst();
 
-        If Item.Get("No.") then
-            If Vendor.Get(Item."Vendor No.") then
-                If Vendor."Currency Code" <> '' then begin
+        if Item.Get("No.") then
+            if Vendor.Get(Item."Vendor No.") then
+                if Vendor."Currency Code" <> '' then begin
                     ExchangeRate.GetLastestExchangeRate(Vendor."Currency Code", Date, Rate);
                     Rate := ExchangeRate.ExchangeRate(Header."Order Date", Vendor."Currency Code");
 
                 end;
 
-        If Rate > 0 then begin
+        if Rate > 0 then begin
             "TFB Pre-Order Currency" := Vendor."Currency Code";
             "TFB Pre-Order Exch. Rate" := Rate;
             "TFB Pre-Order Eff. Date" := Header."Order Date";

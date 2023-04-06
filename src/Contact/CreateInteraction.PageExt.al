@@ -7,7 +7,7 @@ pageextension 50179 "TFB Create Interaction" extends "Create Interaction"
             field("TFB Further Details";Rec."TFB Further Details")
             {
                 ApplicationArea=All;
-                MultiLine = True;
+                MultiLine = true;
                 ToolTip = 'Specifies any further details in relation to the interaction';
             }
         }

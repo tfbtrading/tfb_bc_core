@@ -171,13 +171,13 @@ page 50130 "TFB Company Contacts Subform"
         Resp.SetRange("Contact No.", Rec."No.");
         Resp.SetAutoCalcFields("Job Responsibility Description");
 
-        If Resp.FindSet() then
+        if Resp.FindSet() then
             repeat
 
                 RespText.AppendLine(Resp."Job Responsibility Description");
 
             until Resp.Next() = 0;
 
-        Exit(RespText.ToText());
+        exit(RespText.ToText());
     end;
 }

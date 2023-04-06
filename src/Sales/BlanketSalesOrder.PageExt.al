@@ -53,7 +53,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                     trigger OnValidate()
 
                     begin
-                        If Rec."TFB Blanket DropShip" then
+                        if Rec."TFB Blanket DropShip" then
                             Rec."TFB Direct to Customer" := true
                         else
                             Rec."TFB Direct to Customer" := false;
@@ -68,7 +68,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                     {
                         ApplicationArea = All;
                         Caption = 'Blanket Purchase Order No.';
-                        Editable = False;
+                        Editable = false;
                         ToolTip = 'Specifies the related blanket purchase order number';
 
                     }
@@ -117,7 +117,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
                     BlanketPORec.setrange("TFB Blanket DropShip", true);
                     BlanketPORec.setrange("TFB Sales Blanket Order No.", Rec."No.");
 
-                    If BlanketPORec.FindFirst() then begin
+                    if BlanketPORec.FindFirst() then begin
                         BlanketPO.SetRecord(BlanketPORec);
                         BlanketPO.Run();
                     end else
@@ -147,7 +147,7 @@ pageextension 50138 "TFB Blanket Sales Order" extends "Blanket Sales Order" //50
         BlanketPORec.setrange("TFB Blanket DropShip", true);
         BlanketPORec.setrange("TFB Sales Blanket Order No.", Rec."No.");
 
-        If BlanketPORec.FindFirst() then
+        if BlanketPORec.FindFirst() then
             BlanketPOLookUp := BlanketPORec."No.";
 
     end;

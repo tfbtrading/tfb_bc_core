@@ -48,7 +48,7 @@ page 50108 "TFB Brokerage Shipment Archive"
                         CustomerPage: Page "Customer Card";
 
                     begin
-                        If Customer.Get(Rec."Customer No.") then begin
+                        if Customer.Get(Rec."Customer No.") then begin
                             CustomerPage.SetRecord(Customer);
                             CustomerPage.Run();
                         end;
@@ -71,7 +71,7 @@ page 50108 "TFB Brokerage Shipment Archive"
 
 
                     begin
-                        If Vendor.Get(Rec."Buy From Vendor No.") then begin
+                        if Vendor.Get(Rec."Buy From Vendor No.") then begin
                             VendorPage.SetRecord(Vendor);
                             VendorPage.Run();
                         end;

@@ -23,7 +23,7 @@ tableextension 50114 "TFB Opportunity" extends Opportunity
         field(50210; "TFB No. Of Open Tasks"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = count("To-do" where(Closed = const(false), "Opportunity No." = field("No."), "System To-do Type" = Const(Organizer)));
+            CalcFormula = count("To-do" where(Closed = const(false), "Opportunity No." = field("No."), "System To-do Type" = const(Organizer)));
             Caption = 'No. Of Open Tasks';
         }
     }

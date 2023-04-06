@@ -27,7 +27,7 @@ table 50114 "TFB Segment Match Criteria"
         }
         field(15; "Attribute Name"; Text[250])
         {
-            CalcFormula = Lookup("Item Attribute".Name WHERE(ID = FIELD(ItemAttributeID)));
+            CalcFormula = lookup("Item Attribute".Name where(ID = field(ItemAttributeID)));
             Caption = 'Attribute Name';
             FieldClass = FlowField;
         }
@@ -38,7 +38,7 @@ table 50114 "TFB Segment Match Criteria"
         }
         field(25; "Attribute Value"; Text[250])
         {
-            CalcFormula = Lookup("Item Attribute Value".Value WHERE(ID = FIELD(ItemAttributeValueID), "Attribute ID" = field(ItemAttributeID)));
+            CalcFormula = lookup("Item Attribute Value".Value where(ID = field(ItemAttributeValueID), "Attribute ID" = field(ItemAttributeID)));
             Caption = 'Attribute Value';
             FieldClass = FlowField;
         }

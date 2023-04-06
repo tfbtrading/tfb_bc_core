@@ -17,8 +17,8 @@ table 50118 "TFB Company Certification"
                 CertificationType: Record "TFB Certification Type";
 
             begin
-                If CertificationType.Get(Rec."Certification Type") then
-                    If CertificationType.Class <> CertificationType.Class::Religous then
+                if CertificationType.Get(Rec."Certification Type") then
+                    if CertificationType.Class <> CertificationType.Class::Religous then
                         Inherent := false;
             end;
 
@@ -32,7 +32,7 @@ table 50118 "TFB Company Certification"
             trigger OnValidate()
 
             begin
-                If not ("Location Code" <> '') then
+                if not ("Location Code" <> '') then
                     FieldError("Location Code", 'The location code must be entered if company certification is location speciifc');
             end;
         }
@@ -89,9 +89,9 @@ table 50118 "TFB Company Certification"
             trigger OnValidate()
 
             begin
-                If Rec.Inherent then begin
+                if Rec.Inherent then begin
                     Rec.CalcFields("Certificate Class");
-                    If Rec."Certificate Class" = Rec."Certificate Class"::Religous then begin
+                    if Rec."Certificate Class" = Rec."Certificate Class"::Religous then begin
                         "Last Audit Date" := 0D;
                         "Expiry Date" := 0D;
                         Auditor := '';

@@ -10,7 +10,7 @@ table 50346 "TFB Item Costing Lines"
             Caption = 'Item Code';
             DataClassification = CustomerContent;
             TableRelation = Item;
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             NotBlank = true;
             trigger OnValidate()
             var

@@ -101,8 +101,8 @@ pageextension 50120 "TFB Blanket Purch. SubForm" extends "Blanket Purchase Order
         Line.SetRange("Blanket Order Line No.", Rec."Line No.");
         Line.SetRange("Document Type", Line."Document Type"::Order);
 
-        If Line.CalcSums("Outstanding Qty. (Base)") then
-            Exit(Line."Outstanding Qty. (Base)");
+        if Line.CalcSums("Outstanding Qty. (Base)") then
+            exit(Line."Outstanding Qty. (Base)");
 
 
     end;
@@ -111,7 +111,7 @@ pageextension 50120 "TFB Blanket Purch. SubForm" extends "Blanket Purchase Order
 
     var
     begin
-        Exit(Rec.Quantity - (_UnpostedQty + Rec."Quantity Received"));
+        exit(Rec.Quantity - (_UnpostedQty + Rec."Quantity Received"));
     end;
 
     var

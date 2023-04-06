@@ -17,7 +17,7 @@ table 50310 "TFB Postcode Zone"
         {
             DataClassification = CustomerContent;
             TableRelation = "Customer Price Group";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
         }
         field(4; "Filter"; Text[250])
         {

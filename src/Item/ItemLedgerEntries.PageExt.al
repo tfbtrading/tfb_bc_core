@@ -87,7 +87,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                     SalesCU: CodeUnit "TFB Sales Mgmt";
                 begin
 
-                    If (Rec."Entry Type" = Rec."Entry Type"::Purchase) and (Rec."Remaining Quantity" > 0) then
+                    if (Rec."Entry Type" = Rec."Entry Type"::Purchase) and (Rec."Remaining Quantity" > 0) then
                         SalesCU.AdjustSalesLinePlannedDateByItemRes(Rec);
                 end;
             }
@@ -233,19 +233,19 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         LotNoInformation: Record "Lot No. Information";
 
     begin
-        If CheckValidAvailableEntry() then
-            If LotNoInformation.Get(Rec."Item No.", Rec."Variant Code", Rec."Lot No.") then
-                If Not LotNoInformation.Blocked then
-                    Exit('✅')
+        if CheckValidAvailableEntry() then
+            if LotNoInformation.Get(Rec."Item No.", Rec."Variant Code", Rec."Lot No.") then
+                if not LotNoInformation.Blocked then
+                    exit('✅')
                 else
-                    If LotNoInformation."TFB Date Available" <> 0D then
-                        Exit('⛔')
+                    if LotNoInformation."TFB Date Available" <> 0D then
+                        exit('⛔')
                     else
-                        Exit('❓')
+                        exit('❓')
             else
-                Exit('🗋')
+                exit('🗋')
         else
-            Exit('⚪');
+            exit('⚪');
 
     end;
 
@@ -255,7 +255,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
     begin
 
-        If IsValidDocumentType(Rec."Document Type") and (Rec."Remaining Quantity" > 0) then exit(true);
+        if IsValidDocumentType(Rec."Document Type") and (Rec."Remaining Quantity" > 0) then exit(true);
     end;
 
 
@@ -274,7 +274,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
 
     begin
 
-        If LotInfo.Get(ItemNo, VariantCode, LotNo) then
+        if LotInfo.Get(ItemNo, VariantCode, LotNo) then
             Page.Run(Page::"Lot No. Information Card", LotInfo);
     end;
 
@@ -296,8 +296,8 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         case Rec."Document Type" of
             Rec."Document Type"::"Sales Shipment":
 
-                If (Rec."Source Type" = Rec."Source Type"::Customer) and (Rec."Source No." <> '') then
-                    If ShipmentRec.Get(Rec."Document No.") then begin
+                if (Rec."Source Type" = Rec."Source Type"::Customer) and (Rec."Source No." <> '') then
+                    if ShipmentRec.Get(Rec."Document No.") then begin
                         OrderNo := ShipmentRec."Order No.";
                         SourceDesc := ShipmentRec."Sell-to Customer Name";
                     end;
@@ -305,7 +305,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
             Rec."Document Type"::"Purchase Receipt":
 
                 if (Rec."Source Type" = Rec."Source Type"::Vendor) and (Rec."Source No." <> '') then
-                    If ReceiptRec.Get(Rec."Document No.") then begin
+                    if ReceiptRec.Get(Rec."Document No.") then begin
                         OrderNo := ReceiptRec."Order No.";
                         SourceDesc := ReceiptRec."Buy-from Vendor Name";
                     end;
@@ -313,7 +313,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
             Rec."Document Type"::"Sales Return Receipt":
 
                 if (Rec."Source Type" = Rec."Source Type"::Customer) and (Rec."Source No." <> '') then
-                    If ReturnRec.Get(Rec."Document No.") then begin
+                    if ReturnRec.Get(Rec."Document No.") then begin
                         OrderNo := ReturnRec."Return Order No.";
                         SourceDesc := ReturnRec."Sell-to Customer Name";
                     end;

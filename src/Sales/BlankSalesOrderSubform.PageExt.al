@@ -90,8 +90,8 @@ pageextension 50163 "TFB Blank. Sales Order Subform" extends "Blanket Sales Orde
         Line.SetRange("Blanket Order Line No.", Rec."Line No.");
         Line.SetRange("Document Type", Line."Document Type"::Order);
 
-        If Line.CalcSums("Outstanding Quantity") then
-            Exit(Line."Outstanding Quantity");
+        if Line.CalcSums("Outstanding Quantity") then
+            exit(Line."Outstanding Quantity");
 
 
     end;
@@ -100,7 +100,7 @@ pageextension 50163 "TFB Blank. Sales Order Subform" extends "Blanket Sales Orde
 
     var
     begin
-        Exit(Rec.Quantity - (_UnpostedQty + Rec."Quantity Shipped"));
+        exit(Rec.Quantity - (_UnpostedQty + Rec."Quantity Shipped"));
     end;
 
     var
