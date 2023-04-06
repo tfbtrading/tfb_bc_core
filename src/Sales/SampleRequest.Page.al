@@ -430,7 +430,7 @@ page 50142 "TFB Sample Request"
         DynamicEditable: Boolean;
         IsSellToCountyVisible: Boolean;
         WorkDescription: Text;
-        [InDataSet]
+
         StatusStyleTxt: Text;
 
     trigger OnOpenPage()

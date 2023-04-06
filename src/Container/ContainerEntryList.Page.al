@@ -271,7 +271,7 @@ page 50211 "TFB Container Entry List"
     var
         TempContainerContents: Record "TFB ContainerContents" temporary;
         ContainerCU: Codeunit "TFB Container Mgmt";
-        [InDataSet]
+
         _PercReserved, _QtyOnOrder, _QtyReserved : Decimal;
         LineSummary: Text;
         _location: code[20];

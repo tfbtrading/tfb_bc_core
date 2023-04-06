@@ -197,13 +197,13 @@ page 50164 "TFB Forex Candidate Lines"
 
 
         StyleTxt: Text;
-        [InDataSet]
+
         TotalBalance: Decimal;
-        [InDataSet]
+
         TotalRemaining: Decimal;
-        [InDataSet]
+
         TotalBalanceEnable: Boolean;
-        [InDataSet]
+
         TotalRemainingEnable: Boolean;
 
 

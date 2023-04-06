@@ -249,7 +249,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         CalculateTrackingEmoji: Text;
         _isTrackingReq: enum "TFB Lot Status";
 
-        [InDataSet]
+
         _isCoAVisible: Boolean;
         _availability: Text;
         _isCoARequiredEmoji: Text;

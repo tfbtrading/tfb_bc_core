@@ -577,7 +577,7 @@ page 50167 "TFB Contact Review List"
                     trigger OnAction()
 
                     var
-                  
+
 
                     begin
                         Rec.CompleteReview();
@@ -965,22 +965,22 @@ page 50167 "TFB Contact Review List"
 
     var
 
-      
-        [InDataSet]
+
+
         CanSendEmail: Boolean;
-        [InDataSet]
+
         StyleIsStrong: Boolean;
         CompanyGroupEnabled: Boolean;
         PersonGroupEnabled: Boolean;
-       
+
         CRMIntegrationEnabled: Boolean;
         CDSIntegrationEnabled: Boolean;
-      
+
         RelatedCustomerEnabled: Boolean;
         RelatedVendorEnabled: Boolean;
         RelatedBankEnabled: Boolean;
         RelatedEmployeeEnabled: Boolean;
-     
+
 
     local procedure EnableFields()
     begin

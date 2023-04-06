@@ -20178,11 +20178,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PermissionSet 1916448454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Core Permissions TFB PTE</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB CORE EXTENSION - Property Caption</note>
-        </trans-unit>
       </group>
     </body>
   </file>

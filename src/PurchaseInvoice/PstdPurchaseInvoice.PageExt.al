@@ -203,7 +203,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     }
 
     var
-        [InDataSet]
+
         DueDateIsDifferent: Boolean;
         _DueDate: Date;
         _RemainingAmt: Decimal;

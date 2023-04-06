@@ -101,7 +101,7 @@ page 50134 "TFB Generic Item Picture"
 
     var
         Camera: Codeunit Camera;
-        [InDataSet]
+
         CameraAvailable: Boolean;
         //OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
         //SelectPictureTxt: Label 'Select a picture to upload';

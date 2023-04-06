@@ -210,13 +210,13 @@ page 50162 "TFB Forex Contract Lines"
 
 
         StyleTxt: Text;
-        [InDataSet]
+
         TotalBalance: Decimal;
-        [InDataSet]
+
         TotalRemaining: Decimal;
-        [InDataSet]
+
         TotalBalanceEnable: Boolean;
-        [InDataSet]
+
         TotalRemainingEnable: Boolean;
 
 

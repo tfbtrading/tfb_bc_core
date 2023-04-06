@@ -98,7 +98,7 @@ page 50137 "TFB Market Segment Picture"
 
     var
         Camera: Codeunit Camera;
-        [InDataSet]
+
         CameraAvailable: Boolean;
 
         DeleteImageQst: Label 'Are you sure you want to delete the picture?';

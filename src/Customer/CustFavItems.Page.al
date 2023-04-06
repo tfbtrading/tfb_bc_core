@@ -313,9 +313,9 @@ page 50122 "TFB Cust. Fav. Items"
         ItemMgmt: CodeUnit "TFB Item Mgmt";
         LastChangedDateVar: Date;
         LastDatePurchased: Date;
-        [InDataSet]
+
         LastPricePaid: Decimal;
-        [InDataSet]
+
         SalesPriceVar: Decimal;
 
 }

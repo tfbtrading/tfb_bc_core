@@ -268,13 +268,13 @@ page 50163 "TFB Forex Ledger Lines"
 
 
         StyleTxt: Text;
-        [InDataSet]
+       
         TotalBalance: Decimal;
-        [InDataSet]
+   
         TotalRemaining: Decimal;
-        [InDataSet]
+   
         TotalBalanceEnable: Boolean;
-        [InDataSet]
+   
         TotalRemainingEnable: Boolean;
 
 
