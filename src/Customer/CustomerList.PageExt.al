@@ -132,7 +132,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
 
                     Customer.SetLoadFields("No.", "TFB Primary Contact Company ID");
-                    Customer.FindSet(true, false);
+                    Customer.Findset(true);
                     repeat
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);

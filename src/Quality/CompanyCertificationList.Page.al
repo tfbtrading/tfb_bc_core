@@ -374,7 +374,7 @@ page 50149 "TFB Company Certification List"
             ContactList.getrecord(Contact);
             Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-            If Contact.FindSet(false, false) then
+            If Contact.Findset(false) then
                 repeat
                     If Contact."E-Mail" <> '' then
                         If not Recipients.Contains(Contact."E-Mail") then
@@ -479,7 +479,7 @@ page 50149 "TFB Company Certification List"
         CurrPage.SetSelectionFilter(SelRecs);
 
         if SelRecs.Count() > 1 then begin
-            if SelRecs.FindSet(false, false) then begin
+            if SelRecs.Findset(false) then begin
                 repeat
                     TempBlobCU.CreateOutStream(OutStream);
                     PersBlobCU.CopyToOutStream(SelRecs."Certificate Attach.", OutStream);

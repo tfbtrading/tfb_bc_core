@@ -2,13 +2,9 @@ pageextension 50218 "TFB Purchase Order List" extends "Purchase Order List"
 {
     layout
     {
-        addafter("No.")
+        modify("Vendor Order No.")
         {
-            field("Vendor Order No."; Rec."Vendor Order No.")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the vendors order number';
-            }
+            Visible = true;
         }
         addbefore("Document Date")
         {

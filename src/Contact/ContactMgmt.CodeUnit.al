@@ -68,7 +68,7 @@ codeunit 50111 "TFB Contact Mgmt"
 
         Contact.SetRange(Type, Contact.Type::Company);
 
-        If not Contact.FindSet(true, false) then exit;
+        If not Contact.FindSet(true) then exit;
 
         repeat
 

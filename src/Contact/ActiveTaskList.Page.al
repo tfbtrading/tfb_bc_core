@@ -264,7 +264,7 @@ page 50131 "TFB Active Task List"
         Text001Msg: Label 'untitled';
         _Overdue: Boolean;
       
-    procedure Caption() CaptionStr: Text
+    procedure GetCaption() CaptionStr: Text
     var
         IsHandled: Boolean;
     begin

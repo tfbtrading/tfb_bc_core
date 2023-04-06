@@ -34,7 +34,7 @@ codeunit 50225 "TFB Cust. Collections Mgmt"
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if CustLedgerEntry.FindSet(false, false) then
+        if CustLedgerEntry.Findset(false) then
             repeat
                 If CustLedgerEntry."Document Type" = CustLedgerEntry."Document Type"::Invoice then
                     If CustInvoice.get(CustLedgerEntry."Document No.") then begin

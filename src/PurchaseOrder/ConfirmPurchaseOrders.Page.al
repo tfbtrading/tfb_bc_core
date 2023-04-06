@@ -181,7 +181,7 @@ page 50124 "TFB Confirm Purchase Orders"
     begin
         PurchaseLines.SetRange("Document Type", Rec."Document Type");
         PurchaseLines.SetRange("Document No.", Rec."No.");
-        If PurchaseLines.Findset(false, false) then
+        If PurchaseLines.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3', PurchaseLines.Description, PurchaseLines.Quantity, PurchaseLines."Unit of Measure"));

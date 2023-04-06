@@ -49,7 +49,7 @@ table 50111 "TFB Generic Item"
 
                 Item.SetRange("TFB Generic Item ID", SystemId);
 
-                If Item.FindSet(true, false) then
+                If Item.Findset(true) then
                     repeat
                         If Rec.Picture.Count > 0 then
                             For Index := 1 to Rec.Picture.Count do begin

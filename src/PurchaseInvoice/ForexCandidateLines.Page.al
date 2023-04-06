@@ -161,7 +161,7 @@ page 50164 "TFB Forex Candidate Lines"
         VendorLedgerEntry.SetRange(Open, true);
         VendorLedgerEntry.LoadFields(Amount, "Due Date", Open, "Adjusted Currency Factor", "External Document No.", "Currency Code", "Original Amount");
 
-        If VendorLedgerEntry.FindSet(false, false) then
+        If VendorLedgerEntry.Findset(false) then
             repeat
                 If Rec.getRemainingAmountByVendorLedgerEntry(VendorLedgerEntry) > 0 then begin
                     Rec.Init();

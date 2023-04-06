@@ -177,7 +177,7 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
         PL.SetRange(Type, PL.Type::Item);
 
         Clear(TempItemLedger);
-        If PL.FindSet(false, false) then
+        If PL.Findset(false) then
             repeat
 
                 PL.GetItemLedgEntries(TempItemLedger, false); //Set false as we want to aggregate and not reset for each line item

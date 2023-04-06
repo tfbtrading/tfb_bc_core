@@ -178,7 +178,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     If ValueEntry.FindFirst() then begin
 
                         ItemLedger.SetRange("Entry No.", ValueEntry."Item Ledger Entry No.");
-                        ItemLedger.FindSet(false, false);
+                        ItemLedger.Findset(false);
 
                         If ItemLedger.Count > 0 then
                             If SalesShipment.Get(ItemLedger."Document No.") then begin
@@ -224,7 +224,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     If ValueEntry.FindFirst() then begin
 
                         ItemLedger.SetRange("Entry No.", ValueEntry."Item Ledger Entry No.");
-                        ItemLedger.FindSet(false, false);
+                        ItemLedger.Findset(false);
 
                         If ItemLedger.Count > 0 then begin
                             ILEP.SetTableView(ItemLedger);

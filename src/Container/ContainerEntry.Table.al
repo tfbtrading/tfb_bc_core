@@ -691,7 +691,7 @@ table 50181 "TFB Container Entry"
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", OrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        If PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -741,7 +741,7 @@ table 50181 "TFB Container Entry"
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", NewOrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        If PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -764,7 +764,7 @@ table 50181 "TFB Container Entry"
         PurchaseLine.Reset();
         PurchaseLine.SetRange("Document No.", OldOrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        If PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -788,7 +788,7 @@ table 50181 "TFB Container Entry"
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", OrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        If PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.

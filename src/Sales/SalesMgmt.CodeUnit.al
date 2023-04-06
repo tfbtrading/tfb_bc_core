@@ -5,7 +5,7 @@ codeunit 50122 "TFB Sales Mgmt"
 {
 
 
-   
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterFinalizePostingOnBeforeCommit', '', false, false)]
     local procedure OnAfterFinalizePostingOnBeforeCommit(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean; PreviewMode: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var EverythingInvoiced: Boolean);
@@ -573,7 +573,7 @@ codeunit 50122 "TFB Sales Mgmt"
                 ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
                 ItemLedgerEntry.SetAscending("Remaining Quantity", false);
 
-                If ItemLedgerEntry.FindSet(false, false) then
+                If ItemLedgerEntry.Findset(false) then
                     repeat
                         Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
                         Location.Get(ItemLedgerEntry."Location Code");
@@ -703,7 +703,7 @@ codeunit 50122 "TFB Sales Mgmt"
         ValueEntry.SetRange("Entry Type", ValueEntry."Entry Type"::"Direct Cost");
         ValueEntry.SetRange(Adjustment, false);
 
-        if ValueEntry.FindSet(false, false) then
+        if ValueEntry.Findset(false) then
             repeat
 
                 //Locate shipments
@@ -764,7 +764,7 @@ codeunit 50122 "TFB Sales Mgmt"
         ResEntry.SetRange("Reservation Status", ResEntry."Reservation Status"::Reservation);
 
         If Dialog.Confirm('Found %1 Reservations to Adjust. Continue?', true, ResEntry.Count()) then
-            if ResEntry.FindSet(false, false) then
+            if ResEntry.Findset(false) then
                 repeat
                     Clear(ResEntryDemand);
                     Clear(SalesLine);

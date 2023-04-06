@@ -21,7 +21,7 @@ codeunit 50304 "TFB Costing Mgmt"
     begin
 
         if UpdateExchRate then
-            if LCProfile.FindSet(true, false) then
+            if LCProfile.Findset(true) then
                 repeat
 
                     LCProfile.CalculateCosts();

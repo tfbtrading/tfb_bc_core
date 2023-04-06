@@ -271,7 +271,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     }
     actions
     {
-        addlast(ItemActionGroup)
+        addlast(Navigation_Item)
         {
             action(TFBItemCostings)
             {
@@ -352,7 +352,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             }
         }
 
-      
+
 
 
     }

@@ -16,11 +16,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 Caption = 'Ext. Doc. No.';
                 Tooltip = 'Specifies external document number';
             }
-            field("Source No."; Rec."Source No.")
-            {
-                ApplicationArea = All;
-                Tooltip = 'Specifies source number';
-            }
+         
             field("TFB Source Desc."; SourceDesc)
             {
                 ApplicationArea = All;

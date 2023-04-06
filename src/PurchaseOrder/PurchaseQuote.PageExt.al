@@ -60,7 +60,7 @@ pageextension 50156 "TFB Purchase Quote" extends "Purchase Quote"
         SalesHeader.SetRange("Document Type", SalesHeader."Document Type"::Quote);
         SalesHeader.SetRange("TFB Group Purchase Quote No.", Rec."No.");
 
-        If SalesHeader.FindSet(false, false) then
+        If SalesHeader.Findset(false) then
             repeat
 
                 SalesLine.SetRange("Document Type", SalesHeader."Document Type");

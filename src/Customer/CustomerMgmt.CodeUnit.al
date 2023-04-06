@@ -635,7 +635,7 @@ codeunit 50120 "TFB Customer Mgmt"
         InvoiceLine.SetRange(Type, InvoiceLine.Type::Item);
 
 
-        if InvoiceLine.FindSet(false, false) then begin
+        if InvoiceLine.Findset(false) then begin
 
             BodyBuilder.AppendLine('<h2>Items invoiced in the last seven days</h2>');
             BodyBuilder.AppendLine('<table class="tfbdata"  role="presentation"  cellspacing="0" cellpadding="10" border="0">');

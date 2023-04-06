@@ -416,7 +416,7 @@ page 50147 "TFB Pending Sales Lines"
         TempOrderPromisingLine.SetRange("Source ID", Rec."Document No.");
         TempOrderPromisingLine.SetRange("Source Line No.", Rec."Line No.");
 
-        OrderPromisingLines.SetSourceType(TempOrderPromisingLine."Source Type"::Sales.AsInteger());
+        OrderPromisingLines.SetSource(Enum::"Order Promising Line Source Type"::Sales);
         OrderPromisingLines.SetTableView(TempOrderPromisingLine);
         OrderPromisingLines.RunModal();
     end;

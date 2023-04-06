@@ -123,7 +123,7 @@ page 50241 "TFB Brokerage Contract List"
     begin
 
         BrokerageLine.SetRange("Document No.", Rec."No.");
-        If BrokerageLine.Findset(false, false) then
+        If BrokerageLine.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3 at %4', BrokerageLine.Description, BrokerageLine.Quantity, BrokerageLine."Pricing Unit Qty", BrokerageLine."Agreed Price"));

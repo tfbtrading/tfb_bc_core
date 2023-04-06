@@ -354,7 +354,7 @@ codeunit 50142 "TFB Common Library"
         SalesLine.SetRange(Type, SalesLine.Type::Item);
         Salesline.SetFilter(Quantity, '>0');
 
-        If SalesLine.FindSet(true, false) then begin
+        If SalesLine.Findset(true) then begin
 
             //Check to See if Customer wants COA's
             Customer.Get(SalesLine."Sell-to Customer No.");
@@ -399,7 +399,7 @@ codeunit 50142 "TFB Common Library"
                     ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
 
 
-                    If ReservationEntry.FindSet(false, false) then
+                    If ReservationEntry.Findset(false) then
                         repeat
                             //Look through reservation entries
                             LotInfo.SetRange("Item No.", ReservationEntry."Item No.");
@@ -448,7 +448,7 @@ codeunit 50142 "TFB Common Library"
         ShipmentLine.SetFilter(Quantity, '>0');
 
 
-        if ShipmentLine.FindSet(true, false) then
+        if ShipmentLine.Findset(true) then
             repeat
                 If (not ShipmentLine."TFB CoA Sent") or (Resend = false) then begin
 
@@ -497,7 +497,7 @@ codeunit 50142 "TFB Common Library"
                     LedgerEntry.SetRange("Document Type", LedgerEntry."Document Type"::"Sales Shipment");
                     LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
 
-                    If LedgerEntry.FindSet(false, false) then
+                    If LedgerEntry.Findset(false) then
                         repeat
 
                             //Get Lot Info

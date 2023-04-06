@@ -55,7 +55,7 @@ codeunit 50114 "TFB Sample Request Mgmt"
         SampleRequestLines.SetRange("Document No.", SampleRequest."No.");
         SampleRequestLines.SetRange("Sourced From", SampleRequestLines."Sourced From"::Warehouse);
 
-        If SampleRequestLines.FindSet(true, false) then
+        If SampleRequestLines.Findset(true) then
             repeat
                 If not Locations.Contains(SampleRequestLines.Location) then begin
                     Locations.Add(SampleRequestLines.Location);

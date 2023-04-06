@@ -44,7 +44,7 @@ page 50160 "TFB Forex Contract FB"
         VendorLedgerEntry.SetRange("Currency Code", Rec."Currency Code");
         VendorLedgerEntry.SetFilter("Remaining Amount", '<0');
 
-        if VendorLedgerEntry.FindSet(false, false) then
+        if VendorLedgerEntry.Findset(false) then
             repeat
                 Vendor.SetLoadFields("Vendor Posting Group");
                 VendorLedgerEntry.CalcFields("TFB Forex Amount", "Remaining Amount");
@@ -69,13 +69,13 @@ page 50160 "TFB Forex Contract FB"
 
         ContainerEntry.SetRange(Closed, false);
 
-        If ContainerEntry.FindSet(false, false) then
+        If ContainerEntry.Findset(false) then
             repeat
                 If ContainerEntry.Status = ContainerEntry.Status::ShippedFromPort then
                     If PurchaseHeader.Get(PurchaseHeader."Document Type"::Order, ContainerEntry."Order Reference") then begin
                         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
                         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
-                        If PurchaseLine.FindSet(false, false) then
+                        If PurchaseLine.Findset(false) then
                             repeat
                                 If (PurchaseLine.Quantity - PurchaseLine."Quantity Invoiced") > 0 then
                                     CalcTotal += PurchaseLine."Line Amount" * ((PurchaseLine.Quantity - PurchaseLine."Quantity Invoiced") / PurchaseLine.Quantity)

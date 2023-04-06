@@ -68,7 +68,7 @@ pageextension 50127 "TFB Vendor List" extends "Vendor List" //27
 
 
                     Vendor.SetLoadFields("No.", "TFB Primary Contact Company ID");
-                    Vendor.FindSet(true, false);
+                    Vendor.Findset(true);
                     repeat
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Vendor);

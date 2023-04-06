@@ -156,7 +156,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
                     Line.SetRange("Document No.", Rec."No.");
                     Line.SetRange("Document Type", Rec."Document Type");
 
-                    If Line.FindSet(true, false) then
+                    If Line.Findset(true) then
                         repeat
                             If not Line.AssignedItemCharge() then
                                 PurchInvMgmt.CheckAndRetrieveAssignmentLines(Line, true);

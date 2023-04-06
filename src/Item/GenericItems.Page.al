@@ -183,7 +183,7 @@ page 50133 "TFB Generic Items"
     begin
 
         MarketSegmentRel.SetRange(GenericItemID, SystemId);
-        If MarketSegmentRel.FindSet(false, false) then
+        If MarketSegmentRel.Findset(false) then
             repeat
                 If FilterExpr.Length > 0 then FilterExpr.Append('&');
                 FilterExpr.Append(StrSubstNo('<>%1', MarketSegmentRel.ProductMarketSegmentID));

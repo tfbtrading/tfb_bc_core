@@ -8,7 +8,7 @@ codeunit 50123 "TFB Update Forex Entry Status"
     begin
 
         ForexMgmtEntry.SetRange(EntryType, Enum::"TFB Forex Mgmt Entry Type"::Assignment, Enum::"TFB Forex Mgmt Entry Type"::ForexContract);
-        If ForexMgmtEntry.FindSet(true, false) then begin
+        If ForexMgmtEntry.Findset(true) then begin
 
             Progress.Open(ProgressMsg, ForexMgmtEntry."External Document No.");
             repeat

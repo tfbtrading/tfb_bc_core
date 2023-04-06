@@ -166,7 +166,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         ValueEntry.SetRange("Entry Type", ValueEntry."Entry Type"::"Direct Cost");
         ValueEntry.SetRange(Adjustment, false);
 
-        if ValueEntry.FindSet(false, false) then
+        if ValueEntry.Findset(false) then
             repeat
 
                 //Locate shipments
@@ -228,7 +228,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         Clear(Line);
         GetPurchaseReceiptLinesByPOReference(Line, Reference);
 
-        If Line.FindSet(False, false) then begin
+        If Line.Findset(false) then begin
             If PurchaseReceiptCU.GetItemChargesForReceipt(Line."Document No.", Line."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
                 If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
@@ -334,7 +334,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         GetTransferReceiptLinesByCntReference(TransferReceiptLine, Reference);
         GetPurchaseReceiptLinesByCntReference(PurchRcptLines, Reference);
 
-        If TransferReceiptLine.FindSet(false, false) then begin
+        If TransferReceiptLine.Findset(false) then begin
             If TransferReceiptCU.GetItemChargesForReceipt(TransferReceiptLine."Document No.", TransferReceiptLine."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
                 If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
@@ -366,7 +366,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             end;
         end;
 
-        If PurchRcptLines.FindSet(False, false) then begin
+        If PurchRcptLines.Findset(false) then begin
 
             If PurchaseReceiptCU.GetItemChargesForReceipt(PurchRcptLines."Document No.", PurchRcptLines."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
                 If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
@@ -408,7 +408,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
         ShipHeader.SetRange("TFB 3PL Booking No.", Reference);
 
-        If ShipHeader.FindSet(false, false) then begin
+        If ShipHeader.Findset(false) then begin
 
             repeat
                 if HeaderDocNoFilter.Length() >= 1 then HeaderDocNoFilter.Append('|');
@@ -458,7 +458,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         ShipHeader.SetRange("TFB 3PL Booking No.", Reference);
 
-        If ShipHeader.FindSet(false, false) then begin
+        If ShipHeader.Findset(false) then begin
 
             repeat
                 if HeaderDocNoFilter.Length() >= 1 then HeaderDocNoFilter.Append('|');
@@ -472,7 +472,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             ShipLine.SetRange("Drop Shipment", false);
             ShipLine.SetFilter(Quantity, '>0');
 
-            If ShipLine.FindSet(False, false) then begin
+            If ShipLine.Findset(false) then begin
 
                 ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
@@ -510,7 +510,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         WhseHeader.SetRange("Whse. Shipment No.", Reference);
         Clear(HeaderDocList);
 
-        If WhseHeader.FindSet(false, false) then begin
+        If WhseHeader.Findset(false) then begin
             repeat
 
                 //Retrieve Lines
@@ -519,12 +519,12 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 WhseLine.SetRange("Posted Source Document", WhseLine."Posted Source Document"::"Posted Shipment");
                 WhseLine.SetFilter(Quantity, '>0');
 
-                If WhseLine.FindSet(False, false) then
+                If WhseLine.Findset(false) then
                     repeat
 
                         //Get SalesShipment
                         ShipmentHeader.SetRange("No.", WhseLine."Posted Source No.");
-                        If ShipmentHeader.FindSet(false, false) then
+                        If ShipmentHeader.Findset(false) then
                             repeat
 
                                 If CustomerList.ToText() <> ShipmentHeader."Sell-to Customer Name" then begin
@@ -613,7 +613,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment."Item Charge No." := PurchLine."No.";
 
         If GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
-            If ShipLine.FindSet(False, false) then begin
+            If ShipLine.Findset(false) then begin
                 If SalesShipmentCU.GetItemChargesForShipment(PurchLine."No.", ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
                     If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                         exit(false);

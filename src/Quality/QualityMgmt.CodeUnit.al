@@ -185,7 +185,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
                 Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-                If Contact.FindSet(false, false) then
+                If Contact.Findset(false) then
                     repeat
                         If Contact."E-Mail" <> '' then
                             If not Recipients.Contains(Contact."E-Mail") then
@@ -251,7 +251,7 @@ codeunit 50104 "TFB Quality Mgmt"
         GenerateQualityDocumentsContent(VendorCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if VendorCerts.FindSet(false, false) then
+        if VendorCerts.Findset(false) then
             repeat
                 If PersBlobCU.Exists(VendorCerts."Certificate Attach.") then begin
                     Clear(FileNameBuilder);
@@ -280,7 +280,7 @@ codeunit 50104 "TFB Quality Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
-        OutStream: OutStream; 
+        OutStream: OutStream;
         TitleTxt: Label 'Quality Documents Request';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
@@ -298,7 +298,7 @@ codeunit 50104 "TFB Quality Mgmt"
         GenerateQualityDocumentsContent(CompanyCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if CompanyCerts.FindSet(false, false) then 
+        if CompanyCerts.Findset(false) then
             repeat
                 If PersBlobCU.Exists(CompanyCerts."Certificate Attach.") then begin
                     Clear(FileNameBuilder);
@@ -352,7 +352,7 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
 
-        if VendorCertification.FindSet(false, false) then begin
+        if VendorCertification.Findset(false) then begin
             repeat
 
                 Clear(LineBuilder);
@@ -409,7 +409,7 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
 
-        if CompanyCertification.FindSet(false, false) then begin
+        if CompanyCertification.Findset(false) then begin
             repeat
 
                 Clear(LineBuilder);

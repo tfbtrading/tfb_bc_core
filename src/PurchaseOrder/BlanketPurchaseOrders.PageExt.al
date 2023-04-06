@@ -47,7 +47,7 @@ pageextension 50150 "TFB Blanket Purchase Orders" extends "Blanket Purchase Orde
     begin
         PurchaseLines.SetRange("Document Type", Rec."Document Type");
         PurchaseLines.SetRange("Document No.", Rec."No.");
-        If PurchaseLines.Findset(false, false) then
+        If PurchaseLines.Findset(false) then
             repeat
                 PurchaseLines.CalcFields("TFB Price Unit Lookup");
                 LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3 at %4', PurchaseLines.Description, PurchaseLines.Quantity, PurchaseLines."TFB Price Unit Lookup", PurchaseLines."TFB Price By Price Unit"));

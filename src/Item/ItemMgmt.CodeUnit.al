@@ -140,7 +140,7 @@ codeunit 50107 "TFB Item Mgmt"
 
 
 
-        If Item.FindSet(false, false) then
+        If Item.Findset(false) then
             repeat
                 TempBlobCU := CommonCU.GetSpecificationTempBlob(Item);
                 If TempBlobCU.HasValue() then begin
@@ -190,7 +190,7 @@ codeunit 50107 "TFB Item Mgmt"
             ContactList.getrecord(Contact);
             Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-            If Contact.FindSet(false, false) then
+            If Contact.Findset(false) then
                 repeat
                     If Contact."E-Mail" <> '' then
                         If not Recipients.Contains(Contact."E-Mail") then begin
@@ -287,7 +287,7 @@ codeunit 50107 "TFB Item Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="30%">Item Code</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="70%">Description</th>');
 
-        if Item.FindSet(false, false) then begin
+        if Item.Findset(false) then begin
             repeat
 
                 Clear(LineBuilder);

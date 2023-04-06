@@ -238,7 +238,7 @@ page 50211 "TFB Container Entry List"
 
     begin
 
-        If TempContainerContents.Findset(false, false) then
+        If TempContainerContents.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 (%2) - %3', TempContainerContents."Item Description", TempContainerContents."Item Code", TempContainerContents.Quantity));

@@ -129,7 +129,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             ValueEntry.SetRange(Adjustment, false);
 
 
-            if ValueEntry.FindSet(false, false) then
+            if ValueEntry.Findset(false) then
                 repeat
 
                     //Locate shipments
@@ -477,7 +477,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             ShipmentLine.SetRange("Document No.", RefNo);
 
             i := 1; //set loop for PO attachments
-            if ShipmentLine.FindSet(false, false) then
+            if ShipmentLine.Findset(false) then
                 repeat
 
                     //Retrieve SalesOrder to get External Document No
@@ -488,7 +488,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
                     LedgerEntry.SetRange("Document Line No.", ShipmentLine."Line No.");
 
-                    If LedgerEntry.FindSet(false, false) then
+                    If LedgerEntry.Findset(false) then
                         repeat
 
                             If LastLotNo <> LedgerEntry."Lot No." then begin
@@ -563,7 +563,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                                 DocAttachment.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                                 DocAttachment.SetRange("Line No.", PurchaseLine."Line No.");
 
-                                If DocAttachment.FindSet(false, false) then
+                                If DocAttachment.Findset(false) then
                                     repeat
                                         If DocAttachment."Document Reference ID".HasValue then begin
                                             TempBlobAtc[i].CreateOutStream(outStreamReportAtc[i]);
@@ -811,7 +811,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             OrderLine.SetRange("Completely Shipped", false);
             OrderLine.SetRange("Document Type", OrderLine."Document Type"::Order);
 
-            if OrderLine.FindSet(false, false) then
+            if OrderLine.Findset(false) then
                 repeat
 
                     Clear(Item);
@@ -954,7 +954,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         ShipmentLine.SetRange("Document No.", RefNo);
         LastLotNo := '';
 
-        if ShipmentLine.FindSet(false, false) then
+        if ShipmentLine.Findset(false) then
             repeat
 
                 //Double check
@@ -976,7 +976,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
                 LedgerEntry.SetRange("Document Line No.", ShipmentLine."Line No.");
 
-                If LedgerEntry.FindSet(false, false) then
+                If LedgerEntry.Findset(false) then
                     repeat
 
                         If LastLotNo <> LedgerEntry."Lot No." then begin

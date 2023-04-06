@@ -52,12 +52,7 @@ table 50116 "TFB Sample Request Line"
             end;
         }
 
-        field(20; "Sample Size SystemID"; Guid)
-        {
-            TableRelation = "TFB Sample Request Size".SystemId;
-            ObsoleteState = Pending;
-            ObsoleteReason = 'Replaced by regular kilogram quantity fields';
-        }
+      
         field(21; "Use Inventory"; Boolean)
         {
             trigger OnValidate()

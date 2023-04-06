@@ -307,7 +307,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         InvoiceLine.SetFilter("Quantity (Base)", '>0');
 
 
-        if InvoiceLine.FindSet(false, false) then begin
+        if InvoiceLine.Findset(false) then begin
 
             BodyBuilder.AppendLine('<h2>Items invoiced in the last seven days</h2>');
             BodyBuilder.AppendLine('<table class="tfbdata" cellspacing="0" cellpadding="10" border="0">');
