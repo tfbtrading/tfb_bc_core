@@ -208,7 +208,7 @@ page 50172 "TFB Lot Add Image Wizard"
         MediaResourcesStandard: Record "Media Resources";
         ABSClient: CodeUnit "ABS Blob Client";
         Authorization: Interface "Storage Service Authorization";
-        _BlobName: Text[100];
+
         OriginalBlobGUID: Guid;
         _BowlDiameter: Integer;
 
@@ -262,8 +262,7 @@ page 50172 "TFB Lot Add Image Wizard"
     var
         CommonCU: CodeUnit "TFB Common Library";
         TempBlobCU: Codeunit "Temp Blob";
-        InStream: InStream;
-        FileName: Text;
+
     begin
 
         TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name", _BowlDiameter);
@@ -328,33 +327,15 @@ page 50172 "TFB Lot Add Image Wizard"
                 TopBannerVisible := MediaResourcesDone."Media Reference".HasValue();
     end;
 
-    local procedure DownloadIsolatedImage()
 
-    var
-        TempBlob: CodeUnit "Temp Blob";
-        ABSOperationResponse: CodeUnit "ABS Operation Response";
-        inStream: InStream;
-        outStream: OutStream;
-        fileName: Text;
-    begin
-
-        ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
-        IF ABSOperationResponse.IsSuccessful() then begin
-            filename := _BlobName + '.jpeg';
-            DownloadFromStream(inStream, 'Downloaded File', '', '', fileName);
-        end
-        else
-            Message('Error from Azure Storage: %1', ABSOperationResponse.GetError());
-
-    end;
 
     local procedure UploadOriginalFile(): Boolean
     var
-        TempBlob: CodeUnit "Temp Blob";
+
         ABSOperationResponse: CodeUnit "ABS Operation Response";
-        ABSParams: CodeUnit "ABS Optional Parameters";
+
         inStream: InStream;
-        outStream: OutStream;
+
         fileName: Text[100];
         fileExtension: text;
         FromFilter: Text;
@@ -392,12 +373,11 @@ page 50172 "TFB Lot Add Image Wizard"
 
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         instream: instream;
-        outStream: OutStream;
+
         fileName: Text[100];
-        FromFilter: Text;
+
         fileExtension: text;
-        ClientFileName: Text;
-        OverrideImageQst: Label 'Image already exists - do you want to override?';
+
 
     begin
 

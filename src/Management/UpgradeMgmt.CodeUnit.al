@@ -16,8 +16,8 @@ codeunit 50103 "TFB Upgrade Mgmt"
     trigger OnUpgradePerCompany()
 
     begin
-        If CheckIfUpgradeCodeRequired() then
-            FixStatus();
+      //  If CheckIfUpgradeCodeRequired() then
+          
 
 
     end;
@@ -45,52 +45,11 @@ codeunit 50103 "TFB Upgrade Mgmt"
         Exit((GetInstallingVersionNo() = '21.0.0.42'))
     end;
 
-    local procedure FixStatus(): Boolean
-
-    var
-        Customer: Record Customer;
-        Contact: Record Contact;
-
-    begin
-
-        If Customer.Findset(true) then
-            repeat begin
-
-                Customer.validate("TFB Contact Status", Customer."TFB Contact Status");
-                Customer.modify(false);
-
-            end until Customer.Next() = 0;
-
-        Contact.SetRange(Type, Contact.Type::Company);
-
-        If Contact.Findset(true) then
-            repeat begin
-
-                Contact.Validate("TFB Contact Status", Contact."TFB Contact Status");
-                Contact.Modify(false);
-
-            end until Contact.Next() = 0;
-
-    end;
+   
 
 
 
-    local procedure FixLotSampleStatusRecord(): Boolean
-
-    var
-        LotNoInformation: Record "Lot No. Information";
-
-    begin
-
-        If LotNoInformation.Findset(true) then
-            repeat
-                If LotNoInformation."TFB Sample Picture".Count <> 0 then begin
-                    LotNoInformation."TFB Sample Picture Exists" := true;
-                    LotNoInformation.Modify(false);
-                end;
-            until LotNoInformation.Next() = 0;
-
-    end;
+    
 
 
 

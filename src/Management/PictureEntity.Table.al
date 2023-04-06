@@ -55,13 +55,10 @@ table 50123 "TFB Picture Entity"
     }
 
     var
-        IdNotProvidedErr: Label 'You must specify a resource ID to get the picture.', Locked = true;
-        RequestedRecordDoesNotExistErr: Label 'No resource with the specified ID exists.', Locked = true;
-        RequestedRecordIsNotSupportedErr: Label 'Images are not supported for requested entity - %1.', Locked = true;
         EntityNotSupportedErr: Label 'Given parent type is not supported.';
-        MultipleParentsFoundErr: Label 'Multiple parents have been found for the specified criteria.';
+  
         MediaExtensionWithNumNameTxt: Label '%1 %2.%3', Locked = true;
-        MediaExtensionWithNumFullNameTxt: Label '%1 %2 %3.%4', Locked = true;
+     
 
 
 
@@ -165,28 +162,7 @@ table 50123 "TFB Picture Entity"
     end;
 
 
-    local procedure GetRecordRefFromFilter(IDFilter: Text; var ParentRecordRef: RecordRef): Boolean
-    var
-
-        LotNoInfo: Record "Lot No. Information";
-        GenericItem: Record "TFB Generic Item";
-        RecordFound: Boolean;
-    begin
-        LotNoInfo.SetFilter(SystemId, IDFilter);
-        if LotNoInfo.FindFirst() then begin
-            ParentRecordRef.GetTable(LotNoInfo);
-            RecordFound := true;
-        end;
-
-        GenericItem.SetFilter(SystemId, IDFilter);
-        if not GenericItem.IsEmpty() then begin
-            ParentRecordRef.GetTable(LotNoInfo);
-            RecordFound := true;
-        end;
-
-        OnAfterGetRecordRefFromFilter(IDFilter, ParentRecordRef, RecordFound);
-        exit(RecordFound);
-    end;
+    
 
     local procedure SetValuesFromMediaID(MediaID: Guid)
     var
@@ -210,15 +186,7 @@ table 50123 "TFB Picture Entity"
 
    
 
-    local procedure ThrowEntityNotSupportedError(TableID: Integer)
-    var
-        AllObjWithCaption: Record AllObjWithCaption;
-    begin
-        AllObjWithCaption.SetRange("Object Type", AllObjWithCaption."Object Type"::Table);
-        AllObjWithCaption.SetRange("Object ID", TableID);
-        if AllObjWithCaption.FindFirst() then;
-        Error(RequestedRecordIsNotSupportedErr, AllObjWithCaption."Object Caption");
-    end;
+   
 
     procedure GetDefaultMediaDescription(ParentRecord: Variant): Text
     var

@@ -2448,11 +2448,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Picture Entity - NamedType EntityNotSupportedErr</note>
         </trans-unit>
-        <trans-unit id="Table 33561257 - NamedType 3272579528" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Multiple parents have been found for the specified criteria.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Picture Entity - NamedType MultipleParentsFoundErr</note>
-        </trans-unit>
         <trans-unit id="Table 33561257 - Field 2166181827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Content</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2963,26 +2958,6 @@
           <note from="Developer" annotates="general" priority="2">%1 = a Field Caption like Currency Code</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ConfirmChangeQst</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 442966263" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Contact No., %2 - Email</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ConfirmEmptyEmailQst</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3650704788" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The %1 field cannot be blank because this quote is linked to an opportunity.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - field name</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoBlankDueToOpportunityErr</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 4223605721" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You cannot change %1 because the corresponding %2 %3 has been assigned</source>
-          <note from="Developer" annotates="general" priority="2">%1 - opportunity, %2 = Contant, %3 = Other Contact</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoChangeOpportunityMsg</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3714817322" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 %2 is not related to customer %3.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - No, %2 - Name, %3 - Customer Name</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoRelationMsg</note>
-        </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 3516335711" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot reset %1 because the document still has one or more lines.</source>
           <note from="Developer" annotates="general" priority="2">%1 -  Document No</note>
@@ -2992,11 +2967,6 @@
           <source>Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.</source>
           <note from="Developer" annotates="general" priority="2">%1=field caption</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ReadingDataSkippedMsg</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3413947875" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Customer</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType SellToCustomerTxt</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 1872924336" size-unit="char" translate="yes" xml:space="preserve">
           <source>The sales %1 %2 already exists.</source>
@@ -3522,16 +3492,6 @@
           <source>No records have been selected for the merge</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method DownloadItemMSDS - NamedType NoRecordsSelectedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Specifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType SubTitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 4011279994 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -4243,51 +4203,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Property EntitySetCaption</note>
         </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureValuesDontMatchErr</note>
-        </trans-unit>
         <trans-unit id="Page 3190223990 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DisplayName</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4358,51 +4273,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Property EntitySetCaption</note>
         </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
-        </trans-unit>
         <trans-unit id="Page 2163087014 - Control 2475235959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>LatestReceiptDate</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4462,46 +4332,6 @@
           <source>Inventory cannot be changed during on insert.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType UnitOfMeasureValuesDontMatchErr</note>
         </trans-unit>
         <trans-unit id="Page 2176275388 - Control 4247538596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
@@ -9708,11 +9538,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Add Image Wizard - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2896080974 - Method 1437389516 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image already exists - do you want to override?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Add Image Wizard - Method UploadIsolatedFile - NamedType OverrideImageQst</note>
-        </trans-unit>
         <trans-unit id="Page 2896080974 - Method 218639240 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
           <source>Image already exists - do you want to override?</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9997,51 +9822,6 @@
           <source>Lot Images</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
         </trans-unit>
         <trans-unit id="Page 2506474997 - Control 2475235959 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the SystemCreatedAt field.</source>
@@ -13013,20 +12793,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType DeleteImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 1190091734 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must add a description to the item before you can import a picture.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType MustSpecifyDescriptionErr</note>
-        </trans-unit>
         <trans-unit id="Page 1190091734 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
           <source>The existing picture will be replaced. Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType OverrideImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 1190091734 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select a picture to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType SelectPictureTxt</note>
         </trans-unit>
         <trans-unit id="Page 1190091734 - Method 1644415618 - NamedType 2658645837" size-unit="char" translate="yes" xml:space="preserve">
           <source>No picture stored.</source>

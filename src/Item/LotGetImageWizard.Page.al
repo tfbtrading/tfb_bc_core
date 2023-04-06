@@ -354,10 +354,10 @@ page 50171 "TFB Lot Get Image Wizard"
     local procedure DownloadIsolatedImage()
 
     var
-        TempBlob: CodeUnit "Temp Blob";
+   
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         inStream: InStream;
-        outStream: OutStream;
+     
         fileName: Text;
     begin
 

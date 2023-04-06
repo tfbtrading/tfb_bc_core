@@ -12,11 +12,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
     var
 
-        GenJnlLine: Record "Gen. Journal Line";
-
-        GLEntry: Record "G/L Entry";
-        GLAccNo: Code[20];
-        GLAmount: Decimal;
+    
 
 
     begin
@@ -278,7 +274,7 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnValidateLineDiscountPercentOnBeforeUpdateAmounts(var SalesLine: Record "Sales Line"; CurrFieldNo: Integer);
 
     var
-        Item: Record Item;
+   
         ItemUoM: Record "Item Unit of Measure";
 
     begin
@@ -735,9 +731,9 @@ codeunit 50122 "TFB Sales Mgmt"
         ResEntryDemand: Record "Reservation Entry";
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
+        ReleaseSalesDoc: Codeunit "Release Sales Document";
         DateFormula: DateFormula;
         BlockDate: Date;
-        ReleaseSalesDoc: Codeunit "Release Sales Document";
 
 
     begin

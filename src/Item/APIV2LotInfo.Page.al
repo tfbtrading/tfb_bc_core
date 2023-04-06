@@ -168,25 +168,14 @@ page 50165 "TFB APIV2 - Lot Info"
     end;
 
     var
-        ItemCategory: Record "Item Category";
-        TaxGroup: Record "Tax Group";
+    
         TempFieldSet: Record 2000000041 temporary;
-        ValidateUnitOfMeasure: Record "Unit of Measure";
-        GraphCollectionMgtItem: Codeunit "Graph Collection Mgt - Item";
-        BlankGUID: Guid;
-        BaseUnitOfMeasureCodeValidated: Boolean;
-        BaseUnitOfMeasureIdValidated: Boolean;
+     
+       
         IsInsert: Boolean;
         InventoryValue: Decimal;
         InventoryCannotBeChangedInAPostRequestErr: Label 'Inventory cannot be changed during on insert.';
-        ItemCategoriesValuesDontMatchErr: Label 'The item categories values do not match to a specific item category.';
-        ItemCategoryCodeDoesNotMatchATaxGroupErr: Label 'The "itemCategoryCode" does not match to a Item Category.', Comment = 'itemCategoryCode is a field name and should not be translated.';
-        ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr: Label 'The "itemCategoryId" does not match to a specific Item Category group.', Comment = 'itemCategoryId is a field name and should not be translated.';
-        TaxGroupCodeDoesNotMatchATaxGroupErr: Label 'The "taxGroupCode" does not match to a Tax Group.', Comment = 'taxGroupCode is a field name and should not be translated.';
-        TaxGroupIdDoesNotMatchATaxGroupErr: Label 'The "taxGroupId" does not match to a Tax Group.', Comment = 'taxGroupId is a field name and should not be translated.';
-        TaxGroupValuesDontMatchErr: Label 'The tax group values do not match to a specific Tax Group.';
-        UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr: Label 'The "baseUnitOfMeasureId" does not match to a Unit of Measure.', Comment = 'baseUnitOfMeasureId is a field name and should not be translated.';
-        UnitOfMeasureValuesDontMatchErr: Label 'The unit of measure values do not match to a specific Unit of Measure.';
+        
 
     local procedure InsertItem(): Boolean
     begin
@@ -201,33 +190,7 @@ page 50165 "TFB APIV2 - Lot Info"
         exit(false);
     end;
 
-    local procedure "Pic as JSON"(LotNoInfoID: GUID): Text;
-    var
-        LotNoInfo: Record "Lot No. Information";
-        TenantMedia: Record "Tenant Media";
-        Base64: Codeunit "Base64 Convert";
-        TempBlob: Codeunit "Temp Blob";
-        JObject: JsonObject;
-        JToken: JsonToken;
-        PicInstr: InStream;
-        PicOStr: OutStream;
-        PicText: Text;
-    begin
-        LotNoInfo.Get(LotNoInfoID);
-        If LotNoInfo."TFB Sample Picture".Count = 0 then
-            exit('');
-        TenantMedia.Get(LotNoInfo."TFB Sample Picture".Item(1));
-        TenantMedia.CalcFields(Content);
-        if TenantMedia.Content.HasValue then begin
-            Clear(PicText);
-            Clear(PicInstr);
-            TenantMedia.Content.CreateInStream(PicInstr);
-            PicText := Base64.ToBase64(PicInstr);
-            JObject.Add('picture', PicText);
-            JObject.SelectToken('picture', JToken);
-        end;
-        exit(JToken.AsValue().AsText());
-    end;
+    
 
     procedure GraphModifyLotNoInfo(var LotNoInfo: Record "Lot No. Information"; var LclTempFieldSet: Record "Field" temporary)
     var

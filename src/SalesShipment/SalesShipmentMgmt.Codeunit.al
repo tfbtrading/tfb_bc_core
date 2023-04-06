@@ -1217,7 +1217,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     local procedure HandeShipmentHeaderUpdate(FromSalesShptHeader: Record "Sales Shipment Header"; var SalesShptHeader: Record "Sales Shipment Header")
 
     var
-        ShptLine: Record "Sales Shipment Line";
+        //ShptLine: Record "Sales Shipment Line";
 
     begin
 

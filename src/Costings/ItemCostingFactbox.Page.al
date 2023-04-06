@@ -72,7 +72,7 @@ page 50102 "TFB Item Costing Factbox"
 
                     var
                         ItemLedgerEntry: Record "Item Ledger Entry";
-                        ItemLedgerEntries: Page "Item Ledger Entries";
+
 
                     begin
                         ItemLedgerEntry.FilterGroup(10);
@@ -165,9 +165,7 @@ page 50102 "TFB Item Costing Factbox"
         ItemCosting: Record "TFB Item Costing";
         TempPriceListLine: Record "Price List Line" temporary;
         CCU: CodeUnit "TFB Costing Mgmt";
-        PricingLogic: CodeUnit "TFB Pricing Calculations";
-        PriceManagement: CodeUnit "Price Calculation - V16";
-        PriceCalculationSetup: Record "Price Calculation Setup";
+
     begin
 
         clear(_CurrentLandedCost);

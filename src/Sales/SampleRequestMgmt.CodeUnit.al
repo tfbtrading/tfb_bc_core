@@ -117,7 +117,7 @@ codeunit 50114 "TFB Sample Request Mgmt"
 
     begin
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
-        HTMLBuilder.Replace('%{ExplanationValue}', 'Sample Request');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Sample Request for ' + ContactName);
         HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
         HTMLBuilder.Replace('%{DateValue}', format(today()));
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Request No.');

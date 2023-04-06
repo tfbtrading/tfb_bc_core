@@ -59,7 +59,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
         RepSelSales: Record "Report Selections";
-        RepSelEmail: Record "Report Selections";
+     
         Common: CodeUnit "TFB Common Library";
         XmlParameters: Text;
         SubTitleTxt: Label 'Please find below your latest statement';
@@ -127,26 +127,22 @@ codeunit 50120 "TFB Customer Mgmt"
         RepSelEmail: Record "Report Selections";
         Customer: Record Customer;
         CustomerLayouts: Record "Custom Report Selection";
-        CustomReportSelection: Record "Custom Report Selection";
-        ReportLayoutSelection: Record "Report Layout Selection";
+      
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         TempBlobCU: Codeunit "Temp Blob";
-        TempBlobEmail: CodeUnit "Temp Blob";
-        Base64Convert: CodeUnit "Base64 Convert";
+     
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
         EmailScenEnum: Enum "Email Scenario";
         EmailID: Text;
-        Base64: Text;
+ 
 
         IStream: InStream;
         OStream: OutStream;
-        I2Stream: InStream;
-        O2Stream: OutStream;
-        HTML: Text;
+
         FileNameBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;

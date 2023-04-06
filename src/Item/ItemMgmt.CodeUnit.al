@@ -76,7 +76,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     var
         CoreSetup: Record "TFB Core Setup";
-        CommonCU: CodeUnit "TFB Common Library";
+
         WordTemplate: CodeUnit "Word Template";
 
         InStream: InStream;
@@ -115,16 +115,13 @@ codeunit 50107 "TFB Item Mgmt"
     internal procedure EmailSpecification(var Item: Record Item; Recipients: List of [Text]; HTMLTemplate: Text; ContactIds: List of [Guid])
 
     var
-        CompanyInfo: Record "Company Information";
+
         CommonCU: CodeUnit "TFB Common Library";
         TempBlobCU: Codeunit "Temp Blob";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         InStream: InStream;
-        OutStream: OutStream;
-        FileName: Text;
-        TitleTxt: Label 'Item Specifications';
-        SubTitleTxt: Label '';
+
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
@@ -231,9 +228,9 @@ codeunit 50107 "TFB Item Mgmt"
     var
 
         NotificationLifecycleMgt: Codeunit "Notification Lifecycle Mgt.";
+        ItemAlreadyQuotedNotification: Notification;
         QuoteDocumentNo: Code[20];
         NotificationMsg: Label 'This customer has a quote %1 that includes item %2 already.', Comment = '%1 = quote number, %2 = item name';
-        ItemAlreadyQuotedNotification: Notification;
 
         NotificationFunctionTok: Label 'NotifyItemOnQuote';
         NotificationLbl: Label 'Open quote';
@@ -244,7 +241,7 @@ codeunit 50107 "TFB Item Mgmt"
         If not quoteforitemexists(Item, SalesLine, QuoteDocumentNo) then exit;
 
         ItemAlreadyQuotedNotification.Id := NotificationID;
-        ItemAlreadyQuotedNotification.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name");
+        ItemAlreadyQuotedNotification.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name", SalesLine.Description);
         ItemAlreadyQuotedNotification.AddAction(NotificationLbl, CODEUNIT::"Document Notifications", NotificationFunctionTok);
         ItemAlreadyQuotedNotification.Scope := NOTIFICATIONSCOPE::LocalScope;
         ItemAlreadyQuotedNotification.SetData('No.', QuoteDocumentNo);
@@ -264,7 +261,7 @@ codeunit 50107 "TFB Item Mgmt"
 
     local procedure GenerateItemSpecificationDocumentsContent(var Item: Record Item; HTMLBuilder: TextBuilder): Boolean
     var
-        PersBlob: CodeUnit "Persistent Blob";
+
         BodyBuilder: TextBuilder;
         CommentBuilder: TextBuilder;
         LineBuilder: TextBuilder;

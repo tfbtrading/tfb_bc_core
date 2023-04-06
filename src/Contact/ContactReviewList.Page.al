@@ -577,7 +577,7 @@ page 50167 "TFB Contact Review List"
                     trigger OnAction()
 
                     var
-                        ContactCU: Codeunit "TFB Contact Mgmt";
+                  
 
                     begin
                         Rec.CompleteReview();
@@ -918,14 +918,14 @@ page 50167 "TFB Contact Review List"
 
     trigger OnAfterGetCurrRecord()
     var
-        Contact: Record Contact;
+        Contact2: Record Contact;
     begin
         EnableFields();
 
         SetEnabledRelatedActions();
 
-        CurrPage.SetSelectionFilter(Contact);
-        CanSendEmail := Contact.Count() = 1;
+        CurrPage.SetSelectionFilter(Contact2);
+        CanSendEmail := Contact2.Count() = 1;
 
 
     end;
@@ -965,22 +965,22 @@ page 50167 "TFB Contact Review List"
 
     var
 
-        PriceCalculationMgt: Codeunit "Price Calculation Mgt.";
+      
         [InDataSet]
         CanSendEmail: Boolean;
         [InDataSet]
         StyleIsStrong: Boolean;
         CompanyGroupEnabled: Boolean;
         PersonGroupEnabled: Boolean;
-        ExtendedPriceEnabled: Boolean;
+       
         CRMIntegrationEnabled: Boolean;
         CDSIntegrationEnabled: Boolean;
-        CRMIsCoupledToRecord: Boolean;
+      
         RelatedCustomerEnabled: Boolean;
         RelatedVendorEnabled: Boolean;
         RelatedBankEnabled: Boolean;
         RelatedEmployeeEnabled: Boolean;
-        ExportContactEnabled: Boolean;
+     
 
     local procedure EnableFields()
     begin
@@ -997,11 +997,11 @@ page 50167 "TFB Contact Review List"
 
     procedure GetSelectionFilter(): Text
     var
-        Contact: Record Contact;
+        Contact2: Record Contact;
         SelectionFilterManagement: Codeunit SelectionFilterManagement;
     begin
-        CurrPage.SetSelectionFilter(Contact);
-        exit(SelectionFilterManagement.GetSelectionFilterForContact(Contact));
+        CurrPage.SetSelectionFilter(Contact2);
+        exit(SelectionFilterManagement.GetSelectionFilterForContact(Contact2));
     end;
 
     procedure SetSelection(var LclContact: Record Contact)
@@ -1012,12 +1012,12 @@ page 50167 "TFB Contact Review List"
     local procedure GetTaskSymbol(): Text
 
     var
-        Contact: Record Contact;
+        NewContact: Record Contact;
 
     begin
 
-        Contact.SetLoadFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks", "No.");
-        Contact.SetAutoCalcFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks");
+        NewContact.SetLoadFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks", "No.");
+        NewContact.SetAutoCalcFields("TFB No. Of Company Tasks", "TFB No. Of Contact Tasks");
         Rec.CalcFields("TFB No. Of Company Tasks");
         If Rec.Type = Rec.Type::Company then
             If Rec."TFB No. Of Company Tasks" > 0 then
@@ -1025,7 +1025,7 @@ page 50167 "TFB Contact Review List"
             else
                 Exit('')
         else
-            If Contact."TFB No. Of Contact Tasks" > 0 then
+            If NewContact."TFB No. Of Contact Tasks" > 0 then
                 Exit('📋')
             else
                 Exit('');

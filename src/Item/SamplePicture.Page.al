@@ -54,14 +54,13 @@ page 50155 "TFB Sample Picture"
 
     var
         Camera: Codeunit Camera;
-        [InDataSet]
-        CameraAvailable: Boolean;
+    
         OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
         DeleteImageQst: Label 'Are you sure you want to delete the picture?';
-        SelectPictureTxt: Label 'Select a picture to upload';
+    
         DeleteExportEnabled: Boolean;
         HideActions: Boolean;
-        MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
+     
 
 
     local procedure ExportSamplePicture(LotInfo: Record "Lot No. Information")
@@ -112,11 +111,11 @@ page 50155 "TFB Sample Picture"
     procedure ImportFromDevice()
     var
 
-        FileName: Text;
+    
         ClientFileName: Text;
         FromFilter: Text;
         InStream: InStream;
-        OutStream: OutStream;
+    
     begin
         Rec.Find();
         Rec.TestField("Lot No.");
@@ -174,10 +173,6 @@ page 50155 "TFB Sample Picture"
     begin
     end;
 
-    [IntegrationEvent(false, false)]
-    local procedure OnAfterTakeNewPicture(var LotInfo: Record "Lot No. Information"; IsPictureAdded: Boolean)
-    begin
-    end;
 
     [IntegrationEvent(false, false)]
     local procedure OnImportFromDeviceOnAfterModify(var LotInfo: Record "Lot No. Information")
