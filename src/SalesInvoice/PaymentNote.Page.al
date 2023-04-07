@@ -95,19 +95,19 @@ page 50150 "TFB Payment Note"
     procedure GetExpectedPaymentNote(): Text[512]
 
     begin
-        Exit(_ExpectedPaymentNote);
+        exit(_ExpectedPaymentNote);
     end;
 
     procedure GetExpectedPaymentDate(): Date
 
     begin
-        Exit(_ExpectedPaymentDate);
+        exit(_ExpectedPaymentDate);
     end;
 
     procedure GetIsCorrection(): Boolean
 
     begin
-        Exit(_CorrectDueDate);
+        exit(_CorrectDueDate);
     end;
 
 
@@ -120,13 +120,13 @@ page 50150 "TFB Payment Note"
         _ExpectedPaymentDate := ExistingExpectedPaymentDate;
 
 
-        If (LastDateTimeTaken > 0DT) then
+        if (LastDateTimeTaken > 0DT) then
             if (ExistingExpectedPaymentNote = '') then
                 PreviousNote.AppendLine(StrSubstNo('Previous note from %1.', LastDateTimeTaken))
             else
                 PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExistingExpectedPaymentNote, LastDateTimeTaken));
 
-        If _ExpectedPaymentDate > 0D then
+        if _ExpectedPaymentDate > 0D then
             PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExistingExpectedPaymentDate));
 
         _PreviousNoteDate := PreviousNote.ToText();
@@ -134,9 +134,9 @@ page 50150 "TFB Payment Note"
         _ShowPhone := Customer."Phone No." <> '';
         _ShowMobile := Customer."Mobile Phone No." <> '';
 
-        If _ShowPhone then _PhoneText := 'Phone on ' + Customer."Phone No.";
-        If _ShowPhone and _ShowMobile then _PhoneText += ' and mobile ' + Customer."Mobile Phone No.";
-        If _ShowMobile then _PhoneText += 'Call mobile ' + Customer."Mobile Phone No.";
+        if _ShowPhone then _PhoneText := 'Phone on ' + Customer."Phone No.";
+        if _ShowPhone and _ShowMobile then _PhoneText += ' and mobile ' + Customer."Mobile Phone No.";
+        if _ShowMobile then _PhoneText += 'Call mobile ' + Customer."Mobile Phone No.";
 
 
 
@@ -152,13 +152,13 @@ page 50150 "TFB Payment Note"
         _ExpectedPaymentDate := ExistingExpectedPaymentDate;
 
 
-        If (LastDateTimeTaken > 0DT) then
+        if (LastDateTimeTaken > 0DT) then
             if (ExistingExpectedPaymentNote = '') then
                 PreviousNote.AppendLine(StrSubstNo('Previous note from %1.', LastDateTimeTaken))
             else
                 PreviousNote.AppendLine(StrSubstNo('%1 from %2', ExistingExpectedPaymentNote, LastDateTimeTaken));
 
-        If _ExpectedPaymentDate > 0D then
+        if _ExpectedPaymentDate > 0D then
             PreviousNote.AppendLine(StrSubstNo('Payment expected on %1', ExistingExpectedPaymentDate));
 
         _PreviousNoteDate := PreviousNote.ToText();
@@ -166,9 +166,9 @@ page 50150 "TFB Payment Note"
         _ShowPhone := Vendor."Phone No." <> '';
         _ShowMobile := Vendor."Mobile Phone No." <> '';
 
-        If _ShowPhone then _PhoneText := 'Phone on ' + Vendor."Phone No.";
-        If _ShowPhone and _ShowMobile then _PhoneText += ' and mobile ' + Vendor."Mobile Phone No.";
-        If _ShowMobile then _PhoneText += 'Call mobile ' + Vendor."Mobile Phone No.";
+        if _ShowPhone then _PhoneText := 'Phone on ' + Vendor."Phone No.";
+        if _ShowPhone and _ShowMobile then _PhoneText += ' and mobile ' + Vendor."Mobile Phone No.";
+        if _ShowMobile then _PhoneText += 'Call mobile ' + Vendor."Mobile Phone No.";
 
 
 

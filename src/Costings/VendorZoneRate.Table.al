@@ -26,7 +26,7 @@ table 50314 "TFB Vendor Zone Rate"
 
             begin
                 if "Sales Type" = "Sales Type"::Customer then
-                    If Customer.get("Sales Code") then
+                    if Customer.get("Sales Code") then
                         "Sales Description" := Customer.Name;
             end;
         }
@@ -66,7 +66,7 @@ table 50314 "TFB Vendor Zone Rate"
         field(3; "ID"; Guid)
         {
             DataClassification = CustomerContent;
-            Editable = False;
+            Editable = false;
 
         }
         field(9; "Last Modified Date Time"; DateTime)

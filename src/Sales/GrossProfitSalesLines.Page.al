@@ -159,7 +159,7 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                 field("Purchase Order No."; Rec."Purchase Order No.")
                 {
-                    DrillDown = True;
+                    DrillDown = true;
                     Caption = 'Drop Ship P.O.';
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
@@ -388,7 +388,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                             ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
                             ItemCostingLine.SetRange(Current, true);
                             ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
-                            If ItemCostingLine.FindFirst() then begin
+                            if ItemCostingLine.FindFirst() then begin
                                 _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)" + PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"), Item."Net Weight");
                                 _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                                 _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
@@ -430,7 +430,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
                     ItemCostingLine.SetRange(Current, true);
                     ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
-                    If ItemCostingLine.FindFirst() then begin
+                    if ItemCostingLine.FindFirst() then begin
                         _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)", Item."Net Weight");
                         _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                         _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
@@ -451,7 +451,7 @@ page 50145 "TFB Gross Profit Sales Lines"
         LineDetailDictionary.Add('ITEMCOST', _CostPricePerKg);
         LineDetailDictionary.Add('DELIVERYCOST', _estDeliveryCost);
 
-        If LineDictionary.ContainsKey(Rec."Line No.") then
+        if LineDictionary.ContainsKey(Rec."Line No.") then
             LineDictionary.Set(Rec."Line No.", LineDetailDictionary)
         else
             LineDictionary.Add(Rec."Line No.", LineDetailDictionary);
@@ -478,9 +478,9 @@ page 50145 "TFB Gross Profit Sales Lines"
         _totalprofitperc := 0;
         _totalsalesamount := 0;
 
-        If SalesLine2.FindSet(false, false) then
+        if SalesLine2.Findset(false) then
             repeat
-                If (SalesLine2.Type = Salesline2.type::Item) and LineDictionary.ContainsKey(SalesLine2."Line No.") then begin
+                if (SalesLine2.Type = Salesline2.type::Item) and LineDictionary.ContainsKey(SalesLine2."Line No.") then begin
                     Item.Get(SalesLine2."No.");
                     _totalcost := _totalcost + (LineDictionary.Get(SalesLine2."Line No.").Get('ITEMCOST') * Item."Net Weight" * SalesLine2."Quantity (Base)");
                     _totaldeliverycost := _totaldeliverycost + (LineDictionary.Get(SalesLine2."Line No.").Get('DELIVERYCOST') * Item."Net Weight" * SalesLine2."Quantity (Base)");
@@ -503,13 +503,13 @@ page 50145 "TFB Gross Profit Sales Lines"
 
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
-        If Rec."Drop Shipment" then
+        if Rec."Drop Shipment" then
             Purchase.SetRange("No.", Rec."Purchase Order No.")
         else
             if Rec."Special Order" then
                 Purchase.SetRange("No.", Rec."Special Order Purchase No.");
 
-        If Purchase.FindFirst() then begin
+        if Purchase.FindFirst() then begin
             PurchasePage.SetRecord(Purchase);
             PurchasePage.Run();
         end;

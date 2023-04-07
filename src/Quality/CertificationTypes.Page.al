@@ -57,7 +57,7 @@ page 50105 "TFB Certification Types"
             {
 
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Import;
                 Enabled = not LogoExists;
@@ -74,7 +74,7 @@ page 50105 "TFB Certification Types"
             action("Remove logo")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Delete;
                 Enabled = LogoExists;
@@ -108,14 +108,14 @@ page 50105 "TFB Certification Types"
 
 
 
-    local Procedure CheckIfLogoExists(): Boolean
+    local procedure CheckIfLogoExists(): Boolean
 
     begin
 
-        If Rec.Logo.HasValue() then
-            Exit(true)
+        if Rec.Logo.HasValue() then
+            exit(true)
         else
-            Exit(false);
+            exit(false);
 
     end;
 
@@ -134,7 +134,7 @@ page 50105 "TFB Certification Types"
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', '', '');
 
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
             Clear(Rec.Logo);
             TempBlob.CreateInStream(InStream);
             Rec.Logo.ImportStream(InStream, FileName);

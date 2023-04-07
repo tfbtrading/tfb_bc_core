@@ -48,7 +48,7 @@ page 50230 "TFB Brokerage Shipment List"
 
 
                     begin
-                        If Customer.Get(Rec."Customer No.") then begin
+                        if Customer.Get(Rec."Customer No.") then begin
                             CustomerPage.SetRecord(Customer);
                             CustomerPage.Run();
                         end;
@@ -70,7 +70,7 @@ page 50230 "TFB Brokerage Shipment List"
 
 
                     begin
-                        If Vendor.Get(Rec."Buy From Vendor No.") then begin
+                        if Vendor.Get(Rec."Buy From Vendor No.") then begin
                             VendorPage.SetRecord(Vendor);
                             VendorPage.Run();
                         end;
@@ -92,7 +92,7 @@ page 50230 "TFB Brokerage Shipment List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies est. arrival date';
                 }
-                Field("Required Arrival Date"; Rec."Required Arrival Date")
+                field("Required Arrival Date"; Rec."Required Arrival Date")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies required arrival date indicated by customer';

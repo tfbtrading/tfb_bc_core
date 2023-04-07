@@ -17,7 +17,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         Window.Update(1, STRSUBSTNO('%1 %2', VendNo, ''));
         Result := SendVendorStatusEmail(VendNo, CommonCU.GetHTMLTemplateActive(TitleTxt, SubtitleTxt), true);
         Window.Close();
-        Exit(Result);
+        exit(Result);
     end;
 
     procedure SendVendorStatusEmail(VendNo: Code[20]; HTMLTemplate: Text; EditEmail: Boolean): Boolean
@@ -44,10 +44,10 @@ codeunit 50130 "TFB Vendor Mgmt"
         CompanyInfo.Get();
 
 
-        If not Vendor.Get(VendNo) then
+        if not Vendor.Get(VendNo) then
             exit(false);
 
-        If Vendor."E-Mail" = '' then
+        if Vendor."E-Mail" = '' then
             exit(false);
 
 
@@ -67,7 +67,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
 
         Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity", enum::"Email Relation Origin"::"Compose Context");
-        If EditEmail then
+        if EditEmail then
             Email.OpenInEditorModally(EmailMessage, EmailScenEnum::"Purchase Order") else
             Email.Enqueue(EmailMessage, EmailScenEnum::"Purchase Order");
 
@@ -110,7 +110,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         //Start with content introducing customer
 
 
-        If not Vendor.Get(VendNo) then
+        if not Vendor.Get(VendNo) then
             exit;
 
 
@@ -171,7 +171,7 @@ codeunit 50130 "TFB Vendor Mgmt"
 
 
                 //Found a record which indicates date has changed in the last week
-                If ChangeLog.FindLast() then
+                if ChangeLog.FindLast() then
                     ExpectedDate := StrSubstNo('<b> Change to %1 from %2 </b>', OrderLine."Expected Receipt Date", ChangeLog.GetLocalOldValue())
                 else
                     ExpectedDate := format(OrderLine."Expected Receipt Date");
@@ -183,17 +183,17 @@ codeunit 50130 "TFB Vendor Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, format(OrderLine."Expected Receipt Date")));
                 LineBuilder.Append(StrSubstNo(tdTxt, format(Order."Order Date")));
 
-                If OrderLine."Drop Shipment" then begin
+                if OrderLine."Drop Shipment" then begin
                     //Get Customer Details
                     Clear(SalesOrder);
                     SalesOrder.SetRange("Document Type", SalesOrder."Document Type"::Order);
                     SalesOrder.SetRange("No.", OrderLine."Sales Order No.");
-                    If SalesOrder.FindFirst() then
+                    if SalesOrder.FindFirst() then
                         Dest := SalesOrder."Sell-to Customer Name"
                     else begin
                         SalesOrderArchive.SetRange("Document Type", SalesOrder."Document Type"::Order);
                         SalesOrderArchive.SetRange("No.", OrderLine."Sales Order No.");
-                        If SalesOrder.IsEmpty() then
+                        if SalesOrder.IsEmpty() then
                             Dest := 'Error cannot find drop ship order'
                         else
                             Dest := SalesOrderArchive."Sell-to Customer Name";
@@ -208,17 +208,17 @@ codeunit 50130 "TFB Vendor Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, Format(PricingCU.CalculatePriceUnitByUnitPrice(OrderLine."No.", OrderLine."Unit of Measure Code", PricingUnit, OrderLine."Unit Cost"), 0, '$<Precision,2:2><Standard Format,0>')));
 
 
-                If OrderLine."Qty. Received (Base)" > 0 then
+                if OrderLine."Qty. Received (Base)" > 0 then
 
                     //Check if drop ship
-                    If OrderLine."Outstanding Qty. (Base)" > 0 then
+                    if OrderLine."Outstanding Qty. (Base)" > 0 then
 
                         //Partially Shipped
                         Status := format(OrderLine."Qty. Received (Base)") + ' already shipped. Remainder still to be received.'
                     else
 
                         //Fully Shipped
-                        If OrderLine."Qty. Invoiced (Base)" = OrderLine."Qty. Received (Base)" then begin
+                        if OrderLine."Qty. Invoiced (Base)" = OrderLine."Qty. Received (Base)" then begin
                             Status := 'Dispatched and invoiced';
                             SuppressLine := true;
 
@@ -231,7 +231,7 @@ codeunit 50130 "TFB Vendor Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, Status));
 
                 LineBuilder.AppendLine('</tr>');
-                If not SuppressLine then
+                if not SuppressLine then
                     BodyBuilder.Append(LineBuilder.ToText());
 
             until OrderLine.Next() < 1;
@@ -285,13 +285,13 @@ codeunit 50130 "TFB Vendor Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, format(Container."Est. Arrival Date")));
                 LineBuilder.Append(StrSubstNo(tdTxt, container."Shipping Line"));
 
-                If Receipt.FindFirst() then
+                if Receipt.FindFirst() then
                     LineBuilder.Append(StrSubstNo(tdTxt, Receipt."Vendor Order No."))
                 else
                     LineBuilder.Append(StrSubstNo(tdTxt, Receipt."Vendor Order No."));
 
                 LineBuilder.AppendLine('</tr>');
-                If not SuppressLine then
+                if not SuppressLine then
                     BodyBuilder.Append(LineBuilder.ToText());
 
             until Container.Next() < 1;
@@ -307,7 +307,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         InvoiceLine.SetFilter("Quantity (Base)", '>0');
 
 
-        if InvoiceLine.FindSet(false, false) then begin
+        if InvoiceLine.Findset(false) then begin
 
             BodyBuilder.AppendLine('<h2>Items invoiced in the last seven days</h2>');
             BodyBuilder.AppendLine('<table class="tfbdata" cellspacing="0" cellpadding="10" border="0">');
@@ -340,7 +340,7 @@ codeunit 50130 "TFB Vendor Mgmt"
         BodyBuilder.AppendLine('<hr>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
 

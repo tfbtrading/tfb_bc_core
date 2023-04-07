@@ -28,7 +28,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -69,14 +69,14 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
                         Vendor.Get(Rec."Buy-from Vendor No.");
                         AddPaymentNote.SetupVendorInfo(Vendor, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
                         TempPurchInvHeader := Rec;
-                        If AddPaymentNote.RunModal() = Action::OK then begin
+                        if AddPaymentNote.RunModal() = Action::OK then begin
                             TempPurchInvHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
                             TempPurchInvHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
                             TempPurchInvHeader."Due Date" := AddPaymentNote.GetExpectedPaymentDate();
                             CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::PaymentNote);
                             CodeUnit.Run(TempPurchInvHeader);
 
-                            If AddPaymentNote.GetIsCorrection() then begin
+                            if AddPaymentNote.GetIsCorrection() then begin
                                 VendLedgerEntry.Get(TempPurchInvHeader."Vendor Ledger Entry No.");
                                 VendLedgerEntry.Validate("Due Date", AddPaymentNote.GetExpectedPaymentDate());
                                 VendLedgerEntry.Modify(false);
@@ -165,7 +165,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
                         Vendor.Get(Rec."Buy-from Vendor No.");
                         CorrectExtDocNo.SetupVendorInfo(Vendor, Rec."Vendor Invoice No.");
                         TempPurchaseInvoiceHeader := Rec;
-                        If CorrectExtDocNo.RunModal() = Action::OK then begin
+                        if CorrectExtDocNo.RunModal() = Action::OK then begin
                             TempPurchaseInvoiceHeader."TFB Orig. External Doc. No." := Rec."Vendor Invoice No.";
                             TempPurchaseInvoiceHeader."Vendor Invoice No." := CorrectExtDocNo.GetExternalDocNo();
                             CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::ExternalDocumentNo);
@@ -203,7 +203,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     }
 
     var
-        [InDataSet]
+
         DueDateIsDifferent: Boolean;
         _DueDate: Date;
         _RemainingAmt: Decimal;
@@ -216,8 +216,8 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         Clear(_DueDate);
         Clear(_RemainingAmt);
 
-        If GetLedgerEntryDetail(_DueDate, _RemainingAmt) then
-            If _DueDate <> Rec."Due Date" then
+        if GetLedgerEntryDetail(_DueDate, _RemainingAmt) then
+            if _DueDate <> Rec."Due Date" then
                 DueDateIsDifferent := true else
                 DueDateIsDifferent := false;
 
@@ -229,13 +229,13 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
     begin
         Clear(ExpectedDateText);
 
-        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+        if (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
             IsPastDue := true
         else
             IsPastDue := false;
 
-        If not Rec.Closed then begin
-            If Rec."TFB Expected Payment Date" > 0D then
+        if not Rec.Closed then begin
+            if Rec."TFB Expected Payment Date" > 0D then
                 ExpectedDateText := format(Rec."TFB Expected Payment Date")
             else
                 if Rec."TFB Expected Payment Note" = '' then
@@ -246,7 +246,7 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         else
             ExpectedDateText := '';
 
-        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+        if (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
             IsExpectedDatePastDue := true
         else
             IsExpectedDatePastDue := false;
@@ -262,13 +262,13 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         LedgerEntry.SetRange("Document No.", Rec."No.");
         LedgerEntry.SetRange("Document Type", LedgerEntry."Document Type"::Invoice);
         LedgerEntry.SetRange(Reversed, false);
-        If not LedgerEntry.FindFirst() then
-            Exit(false);
+        if not LedgerEntry.FindFirst() then
+            exit(false);
         LedgerEntry.CalcFields("Remaining Amount");
         DueDate := LedgerEntry."Due Date";
         RemainingAmt := LedgerEntry."Remaining Amount";
 
-        Exit(true);
+        exit(true);
     end;
 
     var
@@ -287,10 +287,10 @@ pageextension 50165 "TFB Pstd Purchase Invoice" extends "Posted Purchase Invoice
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 

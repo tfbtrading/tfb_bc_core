@@ -127,7 +127,7 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
         }
         area(Factboxes)
         {
-            Part(Item; "Item Invoicing FactBox")
+            part(Item; "Item Invoicing FactBox")
             {
                 ApplicationArea = All;
                 SubPageLink = "No." = field("No.");
@@ -175,13 +175,13 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     ValueEntry.SetRange("Document No.", rec."Document No.");
                     ValueEntry.SetRange("Document Line No.", rec."Line No.");
 
-                    If ValueEntry.FindFirst() then begin
+                    if ValueEntry.FindFirst() then begin
 
                         ItemLedger.SetRange("Entry No.", ValueEntry."Item Ledger Entry No.");
-                        ItemLedger.FindSet(false, false);
+                        ItemLedger.Findset(false);
 
-                        If ItemLedger.Count > 0 then
-                            If SalesShipment.Get(ItemLedger."Document No.") then begin
+                        if ItemLedger.Count > 0 then
+                            if SalesShipment.Get(ItemLedger."Document No.") then begin
                                 SalesShipmentPage.SetRecord(SalesShipment);
                                 SalesShipmentPage.Run();
                             end;
@@ -221,12 +221,12 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     ValueEntry.SetRange("Document No.", rec."Document No.");
                     ValueEntry.SetRange("Document Line No.", rec."Line No.");
 
-                    If ValueEntry.FindFirst() then begin
+                    if ValueEntry.FindFirst() then begin
 
                         ItemLedger.SetRange("Entry No.", ValueEntry."Item Ledger Entry No.");
-                        ItemLedger.FindSet(false, false);
+                        ItemLedger.Findset(false);
 
-                        If ItemLedger.Count > 0 then begin
+                        if ItemLedger.Count > 0 then begin
                             ILEP.SetTableView(ItemLedger);
                             ILEP.Run();
                         end;

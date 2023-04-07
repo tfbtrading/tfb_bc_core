@@ -7,10 +7,10 @@ codeunit 50104 "TFB Quality Mgmt"
 
     begin
 
-        If ExpiryDate <> 0D then
+        if ExpiryDate <> 0D then
             DaysToExpiry := ExpiryDate - Today();
 
-        Exit(DaysToExpiry);
+        exit(DaysToExpiry);
 
     end;
 
@@ -22,9 +22,9 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
     begin
-        If not Archived then begin
-            If not Inherent then
-                If ExpiryDate > 0D then begin
+        if not Archived then begin
+            if not Inherent then
+                if ExpiryDate > 0D then begin
 
                     DaysToExpiry := CalcDaysToExpiry(ExpiryDate);
 
@@ -60,14 +60,14 @@ codeunit 50104 "TFB Quality Mgmt"
     begin
         FileNameBuilder.Append('Certificate_');
         FileNameBuilder.Append(Certification."Vendor No.");
-        If Certification.Site <> '' then begin
+        if Certification.Site <> '' then begin
             FileNameBuilder.Append('-');
             FileNameBuilder.Append(Certification.Site);
         end;
         FileNameBuilder.Append('_');
         FileNameBuilder.Append(Certification."Certification Type");
         FileNameBuilder.Append('.pdf');
-        Exit(FileNameBuilder.ToText());
+        exit(FileNameBuilder.ToText());
 
     end;
 
@@ -78,12 +78,12 @@ codeunit 50104 "TFB Quality Mgmt"
 
     begin
         FileNameBuilder.Append('Certificate');
-        If Certification."Location Specific" then
+        if Certification."Location Specific" then
             FileNameBuilder.Append('_' + Certification."Location Code");
         FileNameBuilder.Append('_');
         FileNameBuilder.Append(Certification."Certification Type");
         FileNameBuilder.Append('.pdf');
-        Exit(FileNameBuilder.ToText());
+        exit(FileNameBuilder.ToText());
 
     end;
 
@@ -93,23 +93,23 @@ codeunit 50104 "TFB Quality Mgmt"
 
         case Status of
             status::"About to Expire":
-                Exit('⚠️');
+                exit('⚠️');
 
             status::"Expiring Soon":
-                Exit('🔖');
+                exit('🔖');
 
             status::Expired:
-                Exit('❌');
+                exit('❌');
 
             status::Active:
-                Exit('✔️');
+                exit('✔️');
 
             status::Pending:
-                Exit('🕙');
+                exit('🕙');
             status::Inherent:
-                Exit('🔘');
+                exit('🔘');
             status::Archived:
-                Exit('🗄️')
+                exit('🗄️')
         end;
     end;
 
@@ -132,7 +132,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
         while ListQuery.Read() do begin
             ListOfItems.Add(ListQuery.No_, ListQuery.Count_);
-            If not ListOfVendors.ContainsKey(ListQuery.Vendor_No_) then
+            if not ListOfVendors.ContainsKey(ListQuery.Vendor_No_) then
                 ListOfVendors.Add(ListQuery.Vendor_No_, 1)
             else
                 ListOfVendors.Set(ListQuery.Vendor_No_, ListOfVendors.Get(ListQuery.Vendor_No_) + 1);
@@ -145,7 +145,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
             if VendorCertification.FindSet() then
                 repeat
-                    If QualityOnly and (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
+                    if QualityOnly and (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
                         ListOfCertifications := VendorCertification;
                         ListOfCertifications.Insert(false);
                     end
@@ -153,9 +153,9 @@ codeunit 50104 "TFB Quality Mgmt"
 
         end;
 
-        If ListOfCertifications.Count() > 0 then
-            Exit(True) else
-            Exit(False)
+        if ListOfCertifications.Count() > 0 then
+            exit(true) else
+            exit(false)
 
     end;
 
@@ -174,26 +174,26 @@ codeunit 50104 "TFB Quality Mgmt"
 
     begin
 
-        If Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, TempListOfCertifications, QualityOnly) then begin
+        if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, TempListOfCertifications, QualityOnly) then begin
 
             Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
             Contact.SetFilter("E-Mail", '>%1', '');
             ContactList.SetTableView(Contact);
             ContactList.LookupMode(true);
 
-            If ContactList.RunModal() = Action::LookupOK then begin
+            if ContactList.RunModal() = Action::LookupOK then begin
 
                 Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-                If Contact.FindSet(false, false) then
+                if Contact.Findset(false) then
                     repeat
-                        If Contact."E-Mail" <> '' then
-                            If not Recipients.Contains(Contact."E-Mail") then
+                        if Contact."E-Mail" <> '' then
+                            if not Recipients.Contains(Contact."E-Mail") then
                                 Recipients.Add(Contact."E-Mail");
 
                     until Contact.Next() = 0;
 
-                If Recipients.Count > 0 then
+                if Recipients.Count > 0 then
                     SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
 
             end;
@@ -251,9 +251,9 @@ codeunit 50104 "TFB Quality Mgmt"
         GenerateQualityDocumentsContent(VendorCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if VendorCerts.FindSet(false, false) then
+        if VendorCerts.Findset(false) then
             repeat
-                If PersBlobCU.Exists(VendorCerts."Certificate Attach.") then begin
+                if PersBlobCU.Exists(VendorCerts."Certificate Attach.") then begin
                     Clear(FileNameBuilder);
                     FileNameBuilder.Append(StrSubstNo('Cert %1_%2_%3.pdf', VendorCerts."Vendor Name", VendorCerts.Site, VendorCerts."Certification Type"));
                     TempBlob.CreateOutStream(Outstream);
@@ -265,7 +265,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
             until VendorCerts.Next() < 1;
 
-        If not IsNullGuid(CustomerSystemID) then
+        if not IsNullGuid(CustomerSystemID) then
             Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
@@ -280,7 +280,7 @@ codeunit 50104 "TFB Quality Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
-        OutStream: OutStream; 
+        OutStream: OutStream;
         TitleTxt: Label 'Quality Documents Request';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
@@ -298,12 +298,12 @@ codeunit 50104 "TFB Quality Mgmt"
         GenerateQualityDocumentsContent(CompanyCerts, HTMLBuilder);
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        if CompanyCerts.FindSet(false, false) then 
+        if CompanyCerts.Findset(false) then
             repeat
-                If PersBlobCU.Exists(CompanyCerts."Certificate Attach.") then begin
+                if PersBlobCU.Exists(CompanyCerts."Certificate Attach.") then begin
                     Clear(FileNameBuilder);
                     FileNameBuilder.Append(StrSubstNo('Cert %1', CompanyCerts."Certification Type"));
-                    If CompanyCerts."Location Specific" then
+                    if CompanyCerts."Location Specific" then
                         FileNameBuilder.Append(StrSubstNo('_%2', CompanyCerts."Location Code"));
                     FileNameBuilder.Append('.pdf');
                     TempBlob.CreateOutStream(Outstream);
@@ -314,7 +314,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
             until CompanyCerts.Next() < 1;
 
-        If not IsNullGuid(CustomerSystemID) then
+        if not IsNullGuid(CustomerSystemID) then
             Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
@@ -352,7 +352,7 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
 
-        if VendorCertification.FindSet(false, false) then begin
+        if VendorCertification.Findset(false) then begin
             repeat
 
                 Clear(LineBuilder);
@@ -376,7 +376,7 @@ codeunit 50104 "TFB Quality Mgmt"
             BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
 
@@ -409,14 +409,14 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th></thead>');
 
-        if CompanyCertification.FindSet(false, false) then begin
+        if CompanyCertification.Findset(false) then begin
             repeat
 
                 Clear(LineBuilder);
                 Clear(CommentBuilder);
                 LineBuilder.AppendLine('<tr>');
                 CompanyCertification.CalcFields(Location);
-                If CompanyCertification."Location Specific" then
+                if CompanyCertification."Location Specific" then
                     LineBuilder.Append(StrSubstNo(tdTxt, 'Company wide'))
                 else
                     LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertification.Location));
@@ -435,7 +435,7 @@ codeunit 50104 "TFB Quality Mgmt"
             BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 
 

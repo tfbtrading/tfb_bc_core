@@ -15,7 +15,7 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
         PO.SetRange("No.", DocNo);
         PO.SetRange("Document Type", PO."Document Type"::Order);
 
-        If PO.FindFirst() then
+        if PO.FindFirst() then
             PAGE.Run(Page::"Purchase Order", PO)
 
         else begin
@@ -23,7 +23,7 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
             POA.SetRange("No.", DocNo);
             POA.SetRange("Document Type", POA."Document Type"::Order);
 
-            If POA.FindLast() then
+            if POA.FindLast() then
                 PAGE.Run(Page::"Purchase Order Archive", POA);
 
         end;
@@ -45,7 +45,7 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
         ItemLedger.SetRange("Document No.", DocNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Transfer Receipt");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
 
                 //Calculate total charges
@@ -65,10 +65,10 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
                 SameChargeAmount += ValueEntry."Cost Amount (Actual)"; //Add up value entry assigned
 
             until ItemLedger.Next() < 1;
-        If (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
-            Exit(true)
+        if (TotalChargeAmount > 0) or (SameChargeAmount > 0) then
+            exit(true)
         else
-            Exit(false);
+            exit(false);
     end;
 
 
@@ -88,10 +88,10 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
         ItemLedger.SetRange("Document Line No.", LineNo);
         ItemLedger.SetRange("Document Type", ItemLedger."Document Type"::"Purchase Receipt");
 
-        If ItemLedger.FindSet(false) then
+        if ItemLedger.FindSet(false) then
             repeat
 
-                If FilterCriteria.Length() > 0 then
+                if FilterCriteria.Length() > 0 then
                     FilterCriteria.Append('|');
 
                 FilterCriteria.Append(Format(ItemLedger."Entry No."));
@@ -102,7 +102,7 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
         //Open Page
 
         Clear(ValueEntry);
-        If FilterCriteria.Length() > 0 then begin
+        if FilterCriteria.Length() > 0 then begin
             ValueEntry.SetRange("Item Ledger Entry Type", ValueEntry."Item Ledger Entry Type"::Purchase);
             ValueEntry.SetFilter("Item Ledger Entry No.", FilterCriteria.ToText());
             ValueEntry.SetFilter("Item Charge No.", '<>%1', '');
@@ -119,8 +119,8 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
     begin
         Line.SetRange("Document No.", DocNo);
 
-        If Line.FindFirst() then
-            Exit(Line."TFB Container Entry No.");
+        if Line.FindFirst() then
+            exit(Line."TFB Container Entry No.");
     end;
 
     procedure OpenRelatedContainer(EntryNo: Code[20])
@@ -131,7 +131,7 @@ codeunit 50124 "TFB Transfer Rcpt. Mgmt"
 
         Entry.SetRange("No.", EntryNo);
 
-        If Entry.FindFirst() then begin
+        if Entry.FindFirst() then begin
             Container.SetRecord(Entry);
             Container.Run();
         end;

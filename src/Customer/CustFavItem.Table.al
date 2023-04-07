@@ -37,8 +37,8 @@ table 50100 "TFB Cust. Fav. Item"
         }
         field(5706; "Substitutes Exist"; Boolean)
         {
-            CalcFormula = Exist("Item Substitution" WHERE(Type = CONST(Item),
-                                                           "No." = FIELD("Item No.")));
+            CalcFormula = exist("Item Substitution" where(Type = const(Item),
+                                                           "No." = field("Item No.")));
             Caption = 'Substitutes Exist';
             Editable = false;
             FieldClass = FlowField;
@@ -47,7 +47,7 @@ table 50100 "TFB Cust. Fav. Item"
 
         field(68; Inventory; Decimal)
         {
-            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Item No." = FIELD("Item No."),
+            CalcFormula = sum("Item Ledger Entry".Quantity where("Item No." = field("Item No."),
                                                                    "Drop Shipment" = const(false)
                                                                  ));
             Caption = 'Inventory';
@@ -59,10 +59,10 @@ table 50100 "TFB Cust. Fav. Item"
         field(101; "Reserved Qty. on Inventory"; Decimal)
         {
             AccessByPermission = TableData "Purch. Rcpt. Header" = R;
-            CalcFormula = Sum("Reservation Entry"."Quantity (Base)" WHERE("Item No." = FIELD("Item No."),
-                                                                           "Source Type" = CONST(32),
-                                                                           "Source Subtype" = CONST("0"),
-                                                                           "Reservation Status" = CONST(Reservation)
+            CalcFormula = sum("Reservation Entry"."Quantity (Base)" where("Item No." = field("Item No."),
+                                                                           "Source Type" = const(32),
+                                                                           "Source Subtype" = const("0"),
+                                                                           "Reservation Status" = const(Reservation)
                                                                            ));
             Caption = 'Reserved Qty. on Inventory';
             DecimalPlaces = 0 : 5;
@@ -72,15 +72,15 @@ table 50100 "TFB Cust. Fav. Item"
         field(50320; "Qty. On Sales Order"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("Item No."), "Sell-to Customer No." = field("Customer No.")));
+            CalcFormula = sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("Item No."), "Sell-to Customer No." = field("Customer No.")));
             Caption = 'Out. Qty. on Sales Order';
 
         }
 
         field(72; "Sales (Qty.)"; Decimal)
         {
-            CalcFormula = - Sum("Value Entry"."Invoiced Quantity" WHERE("Item Ledger Entry Type" = CONST(Sale),
-                                                                        "Item No." = FIELD("Item No."),
+            CalcFormula = - sum("Value Entry"."Invoiced Quantity" where("Item Ledger Entry Type" = const(Sale),
+                                                                        "Item No." = field("Item No."),
                                                                         "Source No." = field("Customer No."),
                                                                         "Source Type" = const(Customer),
                                                                         "Posting Date" = field("Date Filter")));

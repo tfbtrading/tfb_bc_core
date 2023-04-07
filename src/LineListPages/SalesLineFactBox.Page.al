@@ -89,7 +89,7 @@ page 50111 "TFB Sales Line FactBox"
         Clear(ShipDatePlanned);
         Clear(RelatedRecRef);
 
-        If SalesCU.GetItemSalesLineAvailability(rec, RetAvailInfo, ShipDatePlanned, SalesLineStatus, RelatedRecRef) then begin
+        if SalesCU.GetItemSalesLineAvailability(rec, RetAvailInfo, ShipDatePlanned, SalesLineStatus, RelatedRecRef) then begin
             _availInfo := RetAvailInfo;
 
             case SalesLineStatus of

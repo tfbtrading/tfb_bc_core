@@ -5,7 +5,7 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
         addafter("Unit Price")
         {
 
-            Field(PriceByWeight; _PricePerKg)
+            field(PriceByWeight; _PricePerKg)
             {
                 ApplicationArea = All;
                 DecimalPlaces = 2 : 4;
@@ -95,14 +95,14 @@ pageextension 50199 "TFB Price List Lines" extends "Price List Lines"
         Item: Record Item;
 
     begin
-        If (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then begin
+        if (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then begin
             Item.Get(Rec."Asset No.");
-            If Item."Net Weight" > 0 then
-                Exit(PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight"))
+            if Item."Net Weight" > 0 then
+                exit(PricingCU.CalcPerKgFromUnit(Rec."Unit Price", Item."Net Weight"))
             else
-                Exit(0);
+                exit(0);
         end
         else
-            Exit(0);
+            exit(0);
     end;
 }

@@ -47,26 +47,21 @@ table 50116 "TFB Sample Request Line"
             var
 
             begin
-                If not ("Sourced From" = "Sourced From"::Warehouse) and (Location <> '') then
+                if not ("Sourced From" = "Sourced From"::Warehouse) and (Location <> '') then
                     FieldError(Location, NotValidLocationMsg);
             end;
         }
 
-        field(20; "Sample Size SystemID"; Guid)
-        {
-            TableRelation = "TFB Sample Request Size".SystemId;
-            ObsoleteState = Pending;
-            ObsoleteReason = 'Replaced by regular kilogram quantity fields';
-        }
+      
         field(21; "Use Inventory"; Boolean)
         {
             trigger OnValidate()
 
             begin
                 if "Use Inventory" then begin
-                    If "No." <> '' then begin
+                    if "No." <> '' then begin
                         "Customer Sample Size" := GetItem()."Net Weight";
-                        If ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
+                        if ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
                             "Source Sample Size" := GetItem()."Net Weight";
                     end;
                 end
@@ -105,7 +100,7 @@ table 50116 "TFB Sample Request Line"
             trigger OnValidate()
 
             begin
-                If not ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
+                if not ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Supplier)) then
                     if Rec."Line Status" = Rec."Line Status"::Requested then
                         FieldError("Line Status", 'Can only set status requested when requesting from warehouse or supplier');
             end;
@@ -115,7 +110,7 @@ table 50116 "TFB Sample Request Line"
         field(11; Description; Text[100])
         {
             Caption = 'Description';
-            TableRelation = Item.Description WHERE(Blocked = CONST(false), "Sales Blocked" = CONST(false));
+            TableRelation = Item.Description where(Blocked = const(false), "Sales Blocked" = const(false));
             ValidateTableRelation = false;
             Editable = false;
 
@@ -175,7 +170,7 @@ table 50116 "TFB Sample Request Line"
     procedure GetSalesHeader() SampleRequest: Record "TFB Sample Request";
     begin
         SampleRequest.Get(Rec."Document No.");
-        Exit(SampleRequest);
+        exit(SampleRequest);
     end;
 
     procedure GetItem() Item: Record Item;
@@ -196,7 +191,7 @@ table 50116 "TFB Sample Request Line"
         ItemUnitOfMeasure.SetRange("Item No.", Rec."No.");
         ItemUnitOfMeasure.SetRange(Code, GetItem()."Base Unit of Measure");
         ItemUnitOfMeasure.FindFirst();
-        Exit(ItemUnitOfMeasure);
+        exit(ItemUnitOfMeasure);
 
     end;
 
@@ -204,7 +199,7 @@ table 50116 "TFB Sample Request Line"
     begin
 
         SalesSetup.Get();
-        Exit(SalesSetup);
+        exit(SalesSetup);
 
     end;
 

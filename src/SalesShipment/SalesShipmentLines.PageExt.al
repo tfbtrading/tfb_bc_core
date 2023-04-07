@@ -77,11 +77,11 @@ pageextension 50136 "TFB Sales Shipment Lines" extends "Sales Shipment Lines" //
 
                 layout
                 {
-                    Modify("Drop Shipment")
+                    modify("Drop Shipment")
                     {
                         Visible = false;
                     }
-                    Modify("Purchase Order No.")
+                    modify("Purchase Order No.")
                     {
                         Visible = false;
                     }
@@ -123,7 +123,7 @@ pageextension 50136 "TFB Sales Shipment Lines" extends "Sales Shipment Lines" //
     begin
         Rec.CalcFields("TFB Customer Name");
 
-        If ShipmentHeader.Get(rec."Document No.") then
+        if ShipmentHeader.Get(rec."Document No.") then
             "3PLBookingNoLookup" := ShipmentHeader."TFB 3PL Booking No.";
 
         CalculatedFreightCharges := ShipmentCU.GetItemChargesForSalesShipment(Rec."Document No.", Rec."Line No.", 'S-FREIGHT');

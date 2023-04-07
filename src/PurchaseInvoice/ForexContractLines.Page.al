@@ -9,7 +9,7 @@ page 50162 "TFB Forex Contract Lines"
     InsertAllowed = true;
     LinksAllowed = false;
     DelayedInsert = true;
-    SourceTableView = Where(EntryType = const(ForexContract));
+    SourceTableView = where(EntryType = const(ForexContract));
 
 
     layout
@@ -47,7 +47,7 @@ page 50162 "TFB Forex Contract Lines"
                     trigger OnValidate()
 
                     begin
-                        If Rec."Entry No." <> 0 then
+                        if Rec."Entry No." <> 0 then
                             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
                     end;
 
@@ -143,7 +143,7 @@ page 50162 "TFB Forex Contract Lines"
     var
 
     begin
-        Exit(Rec."Currency Code");
+        exit(Rec."Currency Code");
 
     end;
 
@@ -174,7 +174,7 @@ page 50162 "TFB Forex Contract Lines"
         if ForexMgmtEntryTemp.CalcSums("Original Amount") then
             TotalBalance := ForexMgmtEntryTemp."Original Amount";
 
-        If ForexMgmtEntryTemp.FindSet() then
+        if ForexMgmtEntryTemp.FindSet() then
             repeat
                 TotalRemaining += ForexMgmtEntryTemp.getRemainingAmount(ForexMgmtEntryTemp."Entry No.");
             until ForexMgmtEntryTemp.Next() = 0;
@@ -189,7 +189,7 @@ page 50162 "TFB Forex Contract Lines"
     trigger OnAfterGetRecord()
 
     begin
-        If Rec."Entry No." <> 0 then
+        if Rec."Entry No." <> 0 then
             RemainingAmount := Rec.getRemainingAmount(Rec."Entry No.");
     end;
 
@@ -210,13 +210,13 @@ page 50162 "TFB Forex Contract Lines"
 
 
         StyleTxt: Text;
-        [InDataSet]
+
         TotalBalance: Decimal;
-        [InDataSet]
+
         TotalRemaining: Decimal;
-        [InDataSet]
+
         TotalBalanceEnable: Boolean;
-        [InDataSet]
+
         TotalRemainingEnable: Boolean;
 
 

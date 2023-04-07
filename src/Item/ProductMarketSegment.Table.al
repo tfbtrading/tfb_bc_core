@@ -34,7 +34,7 @@ table 50112 "TFB Product Market Segment"
         {
             Caption = 'No. Of Generic Items';
             FieldClass = FlowField;
-            CalcFormula = Count("TFB Generic Item Market Rel." where(ProductMarketSegmentID = field(SystemId)));
+            CalcFormula = count("TFB Generic Item Market Rel." where(ProductMarketSegmentID = field(SystemId)));
 
         }
         field(9010; "External ID"; Text[255])
@@ -68,7 +68,7 @@ table 50112 "TFB Product Market Segment"
 
     begin
         GenericItemMarketRel.SetRange(ProductMarketSegmentID, Rec.SystemId);
-        If GenericItemMarketRel.Count > 0 then
+        if GenericItemMarketRel.Count > 0 then
             GenericItemMarketRel.DeleteAll(false);
 
     end;

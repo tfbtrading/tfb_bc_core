@@ -8,7 +8,7 @@ tableextension 50133 "TFB Entry Summary" extends "Entry Summary"
         }
         field(50040; "TFB Date Available"; Date)
         {
-            Editable = True;
+            Editable = true;
             Caption = 'Est. Date Available';
             DataClassification = CustomerContent;
         }

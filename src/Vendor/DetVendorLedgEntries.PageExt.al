@@ -58,7 +58,7 @@ pageextension 50100 "TFB Det. Vendor Ledg. Entries" extends "Detailed Vendor Led
 
                 begin
                     VendorLedger.GetAppliedVendLedgerEntries(TempAppliedVendLedgerEntries, Rec."Vendor Ledger Entry No.");
-                    If TempAppliedVendLedgerEntries.IsEmpty() then exit;
+                    if TempAppliedVendLedgerEntries.IsEmpty() then exit;
 
                     VendorLedgerEntries.SetRecord(TempAppliedVendLedgerEntries);
                     VendorLedgerEntries.Run();
@@ -86,14 +86,14 @@ pageextension 50100 "TFB Det. Vendor Ledg. Entries" extends "Detailed Vendor Led
         CalcImplExchRate();
 
         //Check if payment allocation and get applied vendor ledger entry reference
-        If rec."Entry Type" = rec."Entry Type"::Application then
+        if rec."Entry Type" = rec."Entry Type"::Application then
             if VendorLedgerEntry.Get(rec."Vendor Ledger Entry No.") then
                 ExtRef := VendorLedgerEntry."External Document No.";
 
         //If initial entry and not a payment get external reference number from vendor ledger
         if rec."Entry Type" = rec."Entry Type"::"Initial Entry" then
             if rec."Document Type" <> rec."Document Type"::Payment then
-                If VendorLedgerEntry.Get(rec."Vendor Ledger Entry No.") then
+                if VendorLedgerEntry.Get(rec."Vendor Ledger Entry No.") then
                     ExtRef := VendorLedgerEntry."External Document No.";
 
     end;
@@ -110,7 +110,7 @@ pageextension 50100 "TFB Det. Vendor Ledg. Entries" extends "Detailed Vendor Led
 
     begin
         _ImpExchRate := 0;
-        If (Rec.Amount <> 0) and (Rec."Currency Code" <> '') then
+        if (Rec.Amount <> 0) and (Rec."Currency Code" <> '') then
             if Rec.Amount <> Rec."Amount (LCY)" then
                 _ImpExchRate := Round(Rec.Amount / Rec."Amount (LCY)", 0.0001, '=');
 

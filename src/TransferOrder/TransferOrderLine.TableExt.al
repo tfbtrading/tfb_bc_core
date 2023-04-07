@@ -7,7 +7,7 @@ tableextension 50171 "TFB Transfer Order Line" extends "Transfer Line" //
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = true;
             Caption = 'Container Entry No.';
         }

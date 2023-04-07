@@ -3,7 +3,7 @@ report 50123 "TFB Send Customer Updates"
     UsageCategory = Administration;
     ApplicationArea = All;
     ProcessingOnly = true;
-    UseRequestPage = True;
+    UseRequestPage = true;
     Caption = 'Send Customer Status Updates';
 
     dataset
@@ -32,7 +32,7 @@ report 50123 "TFB Send Customer Updates"
 
             begin
 
-                If CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate) then
+                if CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate) then
                     Window.Update(1, STRSUBSTNO('%1 %2', "No.", Name));
 
             end;

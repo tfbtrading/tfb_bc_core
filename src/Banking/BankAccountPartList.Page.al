@@ -28,7 +28,7 @@ page 50114 "TFB Bank Account Part List"
 
                     begin
 
-                        If Bank.Get(Rec."No.") then begin
+                        if Bank.Get(Rec."No.") then begin
                             BankCard.SetRecord(Bank);
                             BankCard.Run();
 
@@ -151,10 +151,10 @@ page 50114 "TFB Bank Account Part List"
         BS.SetRange("Bank Account No.", Rec."No.");
         BS.SetCurrentKey("Statement Date");
         BS.SetAscending("Statement Date", false);
-        IF BS.FindFirst() then
-            Exit(BS."Statement Ending Balance")
+        if BS.FindFirst() then
+            exit(BS."Statement Ending Balance")
         else
-            Exit(0);
+            exit(0);
 
     end;
 

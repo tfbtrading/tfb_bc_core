@@ -208,7 +208,7 @@ page 50172 "TFB Lot Add Image Wizard"
         MediaResourcesStandard: Record "Media Resources";
         ABSClient: CodeUnit "ABS Blob Client";
         Authorization: Interface "Storage Service Authorization";
-        _BlobName: Text[100];
+
         OriginalBlobGUID: Guid;
         _BowlDiameter: Integer;
 
@@ -262,13 +262,12 @@ page 50172 "TFB Lot Add Image Wizard"
     var
         CommonCU: CodeUnit "TFB Common Library";
         TempBlobCU: Codeunit "Temp Blob";
-        InStream: InStream;
-        FileName: Text;
+
     begin
 
         TempBlobCU := CommonCU.GetIsolatedImagesTempBlob(TempLotImage."Orig. Image Blob Name", _BowlDiameter);
 
-        If UploadIsolatedFile(TempBlobCU) then
+        if UploadIsolatedFile(TempBlobCU) then
             StoreRecordVar();
 
         CurrPage.Close();
@@ -280,7 +279,7 @@ page 50172 "TFB Lot Add Image Wizard"
             Step := Step - 1
         else
             Step := Step + 1;
-        If Step = Step::Step2 then
+        if Step = Step::Step2 then
             UploadOriginalFile();
         EnableControls();
     end;
@@ -328,33 +327,15 @@ page 50172 "TFB Lot Add Image Wizard"
                 TopBannerVisible := MediaResourcesDone."Media Reference".HasValue();
     end;
 
-    local procedure DownloadIsolatedImage()
 
-    var
-        TempBlob: CodeUnit "Temp Blob";
-        ABSOperationResponse: CodeUnit "ABS Operation Response";
-        inStream: InStream;
-        outStream: OutStream;
-        fileName: Text;
-    begin
-
-        ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
-        IF ABSOperationResponse.IsSuccessful() then begin
-            filename := _BlobName + '.jpeg';
-            DownloadFromStream(inStream, 'Downloaded File', '', '', fileName);
-        end
-        else
-            Message('Error from Azure Storage: %1', ABSOperationResponse.GetError());
-
-    end;
 
     local procedure UploadOriginalFile(): Boolean
     var
-        TempBlob: CodeUnit "Temp Blob";
+
         ABSOperationResponse: CodeUnit "ABS Operation Response";
-        ABSParams: CodeUnit "ABS Optional Parameters";
+
         inStream: InStream;
-        outStream: OutStream;
+
         fileName: Text[100];
         fileExtension: text;
         FromFilter: Text;
@@ -373,12 +354,12 @@ page 50172 "TFB Lot Add Image Wizard"
                 Error('');
 
         ClientFileName := '';
-        If not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
+        if not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
         FileExtension := Text.CopyStr(ClientFileName, Text.StrPos(ClientFileName, '.'));
         OriginalBlobGUID := CreateGuid();
         fileName := Text.DelChr(format(OriginalBlobGUID), '=', '{}') + fileExtension;
         ABSOperationResponse := ABSClient.PutBlobBlockBlobStream(fileName, inStream);
-        IF ABSOperationResponse.IsSuccessful() then begin
+        if ABSOperationResponse.IsSuccessful() then begin
             TempLotImage."Orig. Image Blob Name" := fileName;
             exit(true)
         end
@@ -392,16 +373,15 @@ page 50172 "TFB Lot Add Image Wizard"
 
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         instream: instream;
-        outStream: OutStream;
+
         fileName: Text[100];
-        FromFilter: Text;
+
         fileExtension: text;
-        ClientFileName: Text;
-        OverrideImageQst: Label 'Image already exists - do you want to override?';
+
 
     begin
 
-        If TempBlob.Length() < 2000 then Error('Error: file returned via API appears to be too small');
+        if TempBlob.Length() < 2000 then Error('Error: file returned via API appears to be too small');
         fileExtension := '.png';
         fileName := Text.DelChr(format(CreateGuid()), '=', '{}') + fileExtension;
         TempLotImage."Isol. Image Blob Name" := fileName;
@@ -410,7 +390,7 @@ page 50172 "TFB Lot Add Image Wizard"
 
         TempBlob.CreateInStream(instream);
         ABSOperationResponse := ABSClient.PutBlobBlockBlobStream('isolated/' + fileName, inStream);
-        IF ABSOperationResponse.IsSuccessful() then
+        if ABSOperationResponse.IsSuccessful() then
             exit(true)
         else
             Error('Error from Azure Storage: %1', ABSOperationResponse.GetError());

@@ -44,16 +44,16 @@ page 50160 "TFB Forex Contract FB"
         VendorLedgerEntry.SetRange("Currency Code", Rec."Currency Code");
         VendorLedgerEntry.SetFilter("Remaining Amount", '<0');
 
-        if VendorLedgerEntry.FindSet(false, false) then
+        if VendorLedgerEntry.Findset(false) then
             repeat
                 Vendor.SetLoadFields("Vendor Posting Group");
                 VendorLedgerEntry.CalcFields("TFB Forex Amount", "Remaining Amount");
-                If Vendor.Get(VendorLedgerEntry."Vendor No.") then
+                if Vendor.Get(VendorLedgerEntry."Vendor No.") then
                     //Reverse sign on Remaining 
                     CalcTotal += -VendorLedgerEntry."Remaining Amount" - VendorLedgerEntry."TFB Forex Amount";
 
             until VendorLedgerEntry.next() = 0;
-        Exit(CalcTotal);
+        exit(CalcTotal);
     end;
 
     local procedure CalculatePurchasesUncovered() CalcTotal: Decimal
@@ -69,21 +69,21 @@ page 50160 "TFB Forex Contract FB"
 
         ContainerEntry.SetRange(Closed, false);
 
-        If ContainerEntry.FindSet(false, false) then
+        if ContainerEntry.Findset(false) then
             repeat
-                If ContainerEntry.Status = ContainerEntry.Status::ShippedFromPort then
-                    If PurchaseHeader.Get(PurchaseHeader."Document Type"::Order, ContainerEntry."Order Reference") then begin
+                if ContainerEntry.Status = ContainerEntry.Status::ShippedFromPort then
+                    if PurchaseHeader.Get(PurchaseHeader."Document Type"::Order, ContainerEntry."Order Reference") then begin
                         PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
                         PurchaseLine.SetRange("Document Type", PurchaseHeader."Document Type");
-                        If PurchaseLine.FindSet(false, false) then
+                        if PurchaseLine.Findset(false) then
                             repeat
-                                If (PurchaseLine.Quantity - PurchaseLine."Quantity Invoiced") > 0 then
+                                if (PurchaseLine.Quantity - PurchaseLine."Quantity Invoiced") > 0 then
                                     CalcTotal += PurchaseLine."Line Amount" * ((PurchaseLine.Quantity - PurchaseLine."Quantity Invoiced") / PurchaseLine.Quantity)
                             until PurchaseLine.Next() = 0;
                     end;
             until ContainerEntry.Next() = 0;
 
-        Exit(CalcTotal);
+        exit(CalcTotal);
     end;
 
 

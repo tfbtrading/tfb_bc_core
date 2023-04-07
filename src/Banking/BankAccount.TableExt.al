@@ -6,7 +6,7 @@ tableextension 50102 "TFB Bank Account" extends "Bank Account" //270
         {
             Caption = 'No. Open Trans.';
             FieldClass = FlowField;
-            CalcFormula = Count ("Bank Account Ledger Entry" where("Bank Account No." = Field("No."), Open = const(true), Reversed = const(false)));
+            CalcFormula = count ("Bank Account Ledger Entry" where("Bank Account No." = field("No."), Open = const(true), Reversed = const(false)));
 
         }
 

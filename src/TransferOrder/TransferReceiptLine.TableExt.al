@@ -6,7 +6,7 @@ tableextension 50173 "TFB Transfer Receipt Line" extends "Transfer Receipt Line"
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = false;
             Caption = 'Container Entry No.';
         }

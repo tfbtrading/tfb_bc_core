@@ -6,7 +6,7 @@ tableextension 50104 "TFB Transfer Shipment Header" extends "Transfer Shipment H
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = true;
             Caption = 'Container Entry No.';
         }

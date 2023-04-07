@@ -3,7 +3,7 @@ codeunit 50109 "TFB DropShip Automation"
     trigger OnRun()
     begin
 
-        If not ReqWorkName.FindFirst() then
+        if not ReqWorkName.FindFirst() then
             exit;
 
         ReqWorkLine.Init();

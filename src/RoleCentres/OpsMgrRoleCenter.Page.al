@@ -510,8 +510,8 @@ page 50100 "TFB Ops Mgr Role Center"
                     Image = Journal;
                  
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type" = CONST(General),
-                                        Recurring = CONST(false));
+                    RunPageView = where("Template Type" = const(General),
+                                        Recurring = const(false));
                     ToolTip = 'Post financial transactions directly to general ledger accounts and other accounts, such as bank, customer, vendor, and employee accounts. Posting with a general journal always creates entries on general ledger accounts. This is true even when, for example, you post a journal line to a customer account, because an entry is posted to a general ledger receivables account through a posting group.';
                 }
                 action(Action3)
@@ -658,8 +658,8 @@ page 50100 "TFB Ops Mgr Role Center"
                     Image = Journals;
                     
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type" = CONST("Cash Receipts"),
-                                        Recurring = CONST(false));
+                    RunPageView = where("Template Type" = const("Cash Receipts"),
+                                        Recurring = const(false));
                     ToolTip = 'Register received payments by manually applying them to the related customer, vendor, or bank ledger entries. Then, post the payments to G/L accounts and thereby close the related ledger entries.';
                 }
                 action(PaymentJournals)
@@ -669,8 +669,8 @@ page 50100 "TFB Ops Mgr Role Center"
                     Image = Journals;
                    
                     RunObject = Page "General Journal Batches";
-                    RunPageView = WHERE("Template Type" = CONST(Payments),
-                                        Recurring = CONST(false));
+                    RunPageView = where("Template Type" = const(Payments),
+                                        Recurring = const(false));
                     ToolTip = 'Register payments to vendors. A payment journal is a type of general journal that is used to post outgoing payment transactions to G/L, bank, customer, vendor, employee, and fixed assets accounts. The Suggest Vendor Payments functions automatically fills the journal with payments that are due. When payments are posted, you can export the payments to a bank file for upload to your bank if your system is set up for electronic banking. You can also issue computer checks from the payment journal.';
                 }
                 action(Action23)

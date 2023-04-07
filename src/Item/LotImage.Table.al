@@ -20,7 +20,7 @@ table 50124 "TFB Lot Image"
         field(2; "Variant Code"; Code[10])
         {
             Caption = 'Variant Code';
-            TableRelation = "Item Variant".Code WHERE("Item No." = FIELD("Item No."));
+            TableRelation = "Item Variant".Code where("Item No." = field("Item No."));
         }
         field(3; "Lot No."; Code[50])
         {
@@ -92,24 +92,24 @@ table 50124 "TFB Lot Image"
         LotImage2.SetRange("Lot No.", Rec."Lot No.");
         LotImage2.SetAscending("Import Sequence No.", true);
 
-        If LotImage2.FindLast() then
-            Exit(LotImage2."Import Sequence No." + 1)
+        if LotImage2.FindLast() then
+            exit(LotImage2."Import Sequence No." + 1)
         else
-            Exit(1);
+            exit(1);
 
     end;
 
     procedure InitFromItemLedgerEntry(ItemLedgerEntry: Record "Item Ledger Entry"): Boolean
 
     begin
-        If ItemLedgerEntry."Entry No." = 0 then exit;
+        if ItemLedgerEntry."Entry No." = 0 then exit;
 
         Rec."Item Ledger Entry ID" := ItemLedgerEntry.SystemId;
         Rec."Item No." := ItemLedgerEntry."Item No.";
         Rec."Variant Code" := ItemLedgerEntry."Variant Code";
         Rec."Lot No." := ItemLedgerEntry."Lot No.";
         Rec.Description := ItemLedgerEntry.Description;
-        Exit(true);
+        exit(true);
 
     end;
 
@@ -119,14 +119,14 @@ table 50124 "TFB Lot Image"
         ItemLedgerEntry: Record "Item Ledger Entry";
 
     begin
-        If not ItemLedgerEntry.GetBySystemId(ItemLedgerEntryID) then exit;
+        if not ItemLedgerEntry.GetBySystemId(ItemLedgerEntryID) then exit;
 
         Rec."Item Ledger Entry ID" := ItemLedgerEntry.SystemId;
         Rec."Item No." := ItemLedgerEntry."Item No.";
         Rec."Variant Code" := ItemLedgerEntry."Variant Code";
         Rec."Lot No." := ItemLedgerEntry."Lot No.";
         Rec.Description := ItemLedgerEntry.Description;
-        Exit(true);
+        exit(true);
 
     end;
 
@@ -139,7 +139,7 @@ table 50124 "TFB Lot Image"
 
         Rec.SetRange("Item Ledger Entry ID", ItemLedgerEntry.SystemId);
 
-        Exit(true);
+        exit(true);
 
     end;
 

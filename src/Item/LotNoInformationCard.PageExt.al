@@ -109,7 +109,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             {
                 ApplicationArea = All;
                 Caption = 'Sample Picture';
-                SubPageLink = SystemId = FIELD(SystemId);
+                SubPageLink = SystemId = field(SystemId);
             }
         }
 
@@ -125,7 +125,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             {
 
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Import;
                 Enabled = (not IsCoAAvailable);
@@ -144,7 +144,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             action("Download CoA")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Image = SendAsPDF;
                 enabled = IsCoAAvailable;
                 ToolTip = 'Download a certificate of analysis from lot information';
@@ -160,7 +160,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
             action("Remove CoA")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Delete;
 
@@ -189,7 +189,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 {
 
                     ApplicationArea = All;
-                    Visible = True;
+                    Visible = true;
 
 
                     Image = Import;
@@ -209,7 +209,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 action("Download OPC")
                 {
                     ApplicationArea = All;
-                    Visible = True;
+                    Visible = true;
 
 
                     Image = SendAsPDF;
@@ -228,7 +228,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
                 action("Remove OPC")
                 {
                     ApplicationArea = All;
-                    Visible = True;
+                    Visible = true;
 
                     Image = Delete;
 
@@ -252,7 +252,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
         addfirst(Category_Process)
         {
 
-            Group(Category_COA)
+            group(Category_COA)
             {
                 ShowAs = SplitButton;
                 Image = Document;
@@ -287,7 +287,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
 
         Ref := LotInfoMgmtCU.AttachFile(IDT, Rec);
-        If Ref > 0 then
+        if Ref > 0 then
             CheckIfAttachExists(IDT);
 
     end;
@@ -313,7 +313,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
     begin
 
-        If LotInfoMgmtCU.RemoveFile(IDT, Rec) then
+        if LotInfoMgmtCU.RemoveFile(IDT, Rec) then
             CheckIfAttachExists(IDT);
 
     end;
@@ -334,7 +334,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
         IARec.SetRange("Item Attribute Value ID", 25);
         IARec.SetRange("No.", Rec."Item No.");
 
-        If not IARec.IsEmpty() then IsOrganic := true else IsOrganic := false;
+        if not IARec.IsEmpty() then IsOrganic := true else IsOrganic := false;
 
         IDT := IDT::COA;
         CheckIfAttachExists(IDT);
@@ -345,7 +345,7 @@ pageextension 50290 "TFB Lot No. Information Card" extends "Lot No. Information 
 
     end;
 
-    local Procedure CheckIfAttachExists(IDT: Enum "TFB Item Doc Type")
+    local procedure CheckIfAttachExists(IDT: Enum "TFB Item Doc Type")
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";

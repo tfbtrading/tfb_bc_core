@@ -259,7 +259,7 @@ page 50171 "TFB Lot Get Image Wizard"
             2 .. 100:
                 begin
 
-                    If not Confirm('There are %1 lot images stored for this ledger entry. Choose latest?', true, _Count) then exit;
+                    if not Confirm('There are %1 lot images stored for this ledger entry. Choose latest?', true, _Count) then exit;
 
                     LotImage.FindLast();
                     _BlobName := LotImage."Isol. Image Blob Name";
@@ -279,17 +279,17 @@ page 50171 "TFB Lot Get Image Wizard"
     begin
 
 
-        If (_BlobName <> '') and _IsolatedActive then begin
+        if (_BlobName <> '') and _IsolatedActive then begin
             Message('Now downloading isolated image');
             DownloadIsolatedImage();
         end;
 
-        If (_BlobName <> '') and _GridActive then begin
+        if (_BlobName <> '') and _GridActive then begin
             Message('Now downloading grid image');
             DownloadGridImage();
         end;
 
-        If (_BlobName <> '') and _GridBowlActive then begin
+        if (_BlobName <> '') and _GridBowlActive then begin
             Message('Now downloading grid bowl image');
             DownloadGridBowlImage();
         end;
@@ -354,16 +354,16 @@ page 50171 "TFB Lot Get Image Wizard"
     local procedure DownloadIsolatedImage()
 
     var
-        TempBlob: CodeUnit "Temp Blob";
+   
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         inStream: InStream;
-        outStream: OutStream;
+     
         fileName: Text;
     begin
 
         ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
         FileName := StrSubstNo('LII %1 - lot %2.png', LedgerEntry.Description, LedgerEntry."Lot No.");
-        IF ABSOperationResponse.IsSuccessful() then
+        if ABSOperationResponse.IsSuccessful() then
             DownloadFromStream(inStream, 'Downloaded File', '', '', fileName)
         else
             Message('Error from Azure Storage: %1', ABSOperationResponse.GetError());
@@ -385,7 +385,7 @@ page 50171 "TFB Lot Get Image Wizard"
         TempBlobCU := CommonCU.GetLotImagesTempBlob('grid', _BlobName);
         TempBlobCu.CreateInStream(InStream);
         FileName := StrSubstNo('LGI %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
-        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+        if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 
     end;
@@ -404,7 +404,7 @@ page 50171 "TFB Lot Get Image Wizard"
         TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Lot No.", LedgerEntry."Item No.");
         TempBlobCu.CreateInStream(InStream);
         FileName := StrSubstNo('LGI %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
-        If not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+        if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 
     end;

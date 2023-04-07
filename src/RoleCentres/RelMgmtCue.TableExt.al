@@ -49,7 +49,7 @@ tableextension 50119 "TFB Rel. Mgmt. Cue" extends "Relationship Mgmt. Cue"
         }
         field(50150; "TFB My Opportunities"; Integer)
         {
-            CalcFormula = Count(Opportunity WHERE(Closed = FILTER(false), "Salesperson Code" = field("TFB SalesPerson Filter")));
+            CalcFormula = count(Opportunity where(Closed = filter(false), "Salesperson Code" = field("TFB SalesPerson Filter")));
             Caption = 'My Open Opportunities';
             FieldClass = FlowField;
         }

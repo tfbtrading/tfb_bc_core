@@ -46,7 +46,7 @@ page 50112 "TFB Sales POD FactBox"
 
 
     begin
-        If ShipmentCU.GetRelatedShipmentInvoice(rec, Shipment) then
+        if ShipmentCU.GetRelatedShipmentInvoice(rec, Shipment) then
             _PODInfo := ShipmentCU.GetShipmentStatusQueryText(Shipment)
         else
             _PODInfo := '';

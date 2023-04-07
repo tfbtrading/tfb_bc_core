@@ -15,7 +15,7 @@ tableextension 50105 "TFB Transfer Receipt Header" extends "Transfer Receipt Hea
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = true;
             Caption = 'Container Entry No.';
         }

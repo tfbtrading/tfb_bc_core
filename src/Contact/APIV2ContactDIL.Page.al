@@ -144,7 +144,7 @@ page 50154 "TFB APIV2 - Contact DIL"
                     Multiplicity = ZeroOrOne;
                     EntityName = 'picture';
                     EntitySetName = 'pictures';
-                    SubPageLink = Id = Field(SystemId), "Parent Type" = const(Contact);
+                    SubPageLink = Id = field(SystemId), "Parent Type" = const(Contact);
                 }
             }
         }

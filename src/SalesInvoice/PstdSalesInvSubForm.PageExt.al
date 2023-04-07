@@ -84,12 +84,12 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
 
         Header.SetRange("No.", Rec."Document No.");
 
-        If Header.FindFirst() then begin
+        if Header.FindFirst() then begin
             Header.CalcFields("Remaining Amount");
-            Exit(Header."Remaining Amount")
+            exit(Header."Remaining Amount")
         end
         else
-            Exit(0);
+            exit(0);
 
     end;
 
@@ -104,10 +104,10 @@ pageextension 50114 "TFB Pstd. Sales Inv. SubForm" extends "Posted Sales Invoice
 
     begin
 
-        If rec.Type = rec.Type::Item then begin
+        if rec.Type = rec.Type::Item then begin
             PricePerKg := PricingCU.CalcPerKgFromUnit(rec."Unit Price", rec."Net Weight");
             CalculatedLineWeight := rec."Net Weight" * rec.Quantity;
-            If Rec."Line Discount Amount" > 0 then
+            if Rec."Line Discount Amount" > 0 then
                 PriceUnitDiscount := Rec."Line Discount Amount" / Rec."Net Weight" / Rec.Quantity
             else
                 PriceUnitDiscount := 0;

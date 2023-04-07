@@ -3,7 +3,7 @@ report 50131 "TFB Send Vendor Updates"
     UsageCategory = Administration;
     ApplicationArea = All;
     ProcessingOnly = true;
-    UseRequestPage = True;
+    UseRequestPage = true;
     Caption = 'Send Vendor Status Updates';
 
     dataset
@@ -31,7 +31,7 @@ report 50131 "TFB Send Vendor Updates"
 
             begin
 
-                If VendorCU.SendVendorStatusEmail("No.", HTMLTemplate, false) then
+                if VendorCU.SendVendorStatusEmail("No.", HTMLTemplate, false) then
                     Window.Update(1, STRSUBSTNO('%1 %2', "No.", Name));
 
             end;

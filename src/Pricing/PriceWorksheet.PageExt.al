@@ -5,7 +5,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
 
         addafter("Asset No.")
         {
-            Field(Description; Rec.Description)
+            field(Description; Rec.Description)
             {
                 ApplicationArea = All;
                 Visible = true;
@@ -14,7 +14,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
         }
         addafter("Existing Unit Price")
         {
-            Field(ExistingPriceByWeight; _ExistingPricePerKg)
+            field(ExistingPriceByWeight; _ExistingPricePerKg)
             {
                 ApplicationArea = All;
                 DecimalPlaces = 2 : 4;
@@ -28,7 +28,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
         addafter("Unit Price")
         {
 
-            Field(PriceByWeight; _PricePerKg)
+            field(PriceByWeight; _PricePerKg)
             {
                 ApplicationArea = All;
                 DecimalPlaces = 2 : 4;
@@ -137,7 +137,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
                     SuggestItemCostingLines.SetRecord(ItemCostingFilters);
                     if SuggestItemCostingLines.RunModal() = Action::OK then begin
                         SuggestItemCostingLines.GetRecord(ItemCostingFilters);
-                        If ItemCostingFilters."Price List Code" = '' then exit;
+                        if ItemCostingFilters."Price List Code" = '' then exit;
                         PriceListHeader.Get(ItemCostingFilters."Price List Code");
                         TempPriceListHeader := PriceListHeader;
                         CostingCU.CopyCurrentCostingToPriceList(TempPriceListHeader);
@@ -169,7 +169,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
 
     begin
         Item.SetLoadFields(Item."No.", Item."Net Weight");
-        If Rec."Asset Type" = Rec."Asset Type"::Item then
+        if Rec."Asset Type" = Rec."Asset Type"::Item then
             Item.Get(Rec."Asset No.");
 
         _PricePerKg := UpdatePricePerKg(Rec."Unit Price");
@@ -182,10 +182,10 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
 
     begin
 
-        If Item."Net Weight" > 0 then
-            Exit(PricingCU.CalcPerKgFromUnit(UnitPrice, Item."Net Weight"))
+        if Item."Net Weight" > 0 then
+            exit(PricingCU.CalcPerKgFromUnit(UnitPrice, Item."Net Weight"))
         else
-            Exit(0);
+            exit(0);
 
     end;
 

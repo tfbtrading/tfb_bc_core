@@ -41,7 +41,7 @@ page 50147 "TFB Pending Sales Lines"
                         SalesRec.SetRange("Document Type", Rec."Document Type"::Order);
                         SalesRec.SetRange("No.", Rec."Document No.");
 
-                        If SalesRec.FindFirst() then
+                        if SalesRec.FindFirst() then
                             PAGE.RUN(PAGE::"Sales Order", SalesRec);
 
 
@@ -83,11 +83,11 @@ page 50147 "TFB Pending Sales Lines"
                     var
 
                     begin
-                        If Rec.type = Rec.type::Item then
-                            If not (Rec."Drop Shipment" or Rec."Special Order") then
+                        if Rec.type = Rec.type::Item then
+                            if not (Rec."Drop Shipment" or Rec."Special Order") then
                                 Rec.ShowReservation()
                             else
-                                If Rec."Purchase Order No." <> '' then
+                                if Rec."Purchase Order No." <> '' then
                                     OpenRelatedPurchaseOrder();
                     end;
                 }
@@ -108,14 +108,14 @@ page 50147 "TFB Pending Sales Lines"
                     DrillDown = true;
                     ToolTip = 'Specifies the customers name';
 
-                    Trigger OnDrillDown()
+                    trigger OnDrillDown()
 
                     var
                         Customer: Record Customer;
                         CustomerPage: Page "Customer Card";
 
                     begin
-                        If Customer.Get(Rec."Sell-to Customer No.") then begin
+                        if Customer.Get(Rec."Sell-to Customer No.") then begin
                             CustomerPage.SetRecord(Customer);
                             CustomerPage.Run();
                         end;
@@ -195,7 +195,7 @@ page 50147 "TFB Pending Sales Lines"
                 }
                 field("Purchase Order No."; Rec."Purchase Order No.")
                 {
-                    DrillDown = True;
+                    DrillDown = true;
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
 
                     ApplicationArea = All;
@@ -302,7 +302,7 @@ page 50147 "TFB Pending Sales Lines"
         }
         area(Promoted)
         {
-            Group(Category_Home)
+            group(Category_Home)
             {
                 Caption = 'Home';
                 actionref(OrderPromisingRef; OrderPromising)
@@ -404,8 +404,8 @@ page 50147 "TFB Pending Sales Lines"
 
     begin
         Rec.calcFields("TFB Document Status");
-        If Rec."TFB Document Status" <> Rec."TFB Document Status"::Open then
-            If Dialog.Confirm('Do you want to first open document before order promising?', true) then begin
+        if Rec."TFB Document Status" <> Rec."TFB Document Status"::Open then
+            if Dialog.Confirm('Do you want to first open document before order promising?', true) then begin
                 SalesHeader.Get(Rec."Document Type", Rec."Document No.");
                 ReleaseSalesDoc.PerformManualReopen(SalesHeader);
             end
@@ -416,7 +416,7 @@ page 50147 "TFB Pending Sales Lines"
         TempOrderPromisingLine.SetRange("Source ID", Rec."Document No.");
         TempOrderPromisingLine.SetRange("Source Line No.", Rec."Line No.");
 
-        OrderPromisingLines.SetSourceType(TempOrderPromisingLine."Source Type"::Sales.AsInteger());
+        OrderPromisingLines.SetSource(Enum::"Order Promising Line Source Type"::Sales);
         OrderPromisingLines.SetTableView(TempOrderPromisingLine);
         OrderPromisingLines.RunModal();
     end;
@@ -441,13 +441,13 @@ page 50147 "TFB Pending Sales Lines"
 
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
-        If Rec."Drop Shipment" then
+        if Rec."Drop Shipment" then
             Purchase.SetRange("No.", Rec."Purchase Order No.")
         else
             if Rec."Special Order" then
                 Purchase.SetRange("No.", Rec."Special Order Purchase No.");
 
-        If Purchase.FindFirst() then begin
+        if Purchase.FindFirst() then begin
             PurchasePage.SetRecord(Purchase);
             PurchasePage.Run();
         end;
@@ -479,10 +479,10 @@ page 50147 "TFB Pending Sales Lines"
                 Clear(ItemRec);
 
                 //Check Details
-                If ItemRec.Get(SalesLine."No.") then begin
+                if ItemRec.Get(SalesLine."No.") then begin
                     SalesHeader.SetRange("Document Type", SalesLine."Document Type");
                     SalesHeader.SetRange("No.", SalesLine."Document No.");
-                    If SalesHeader.FindFirst() then begin
+                    if SalesHeader.FindFirst() then begin
                         case SalesHeader.Status of
                             SalesHeader.Status::Released:
                                 begin
@@ -492,7 +492,7 @@ page 50147 "TFB Pending Sales Lines"
                         end;
                         ItemCU.UpdateDropShipSalesLineAgent(ItemRec, SalesLine);
                         SalesLine.Modify(false);
-                        If Released = true then begin
+                        if Released = true then begin
                             ReleaseCU.SetSkipCheckReleaseRestrictions();
                             ReleaseCU.PerformManualRelease(SalesHeader);
                         end;

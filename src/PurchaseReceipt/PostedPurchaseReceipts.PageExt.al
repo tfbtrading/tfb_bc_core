@@ -7,7 +7,7 @@ pageextension 50220 "TFB Posted Purchase Receipts" extends "Posted Purchase Rece
             field("TFBOrder No."; Rec."Order No.")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 ToolTip = 'Specifies the order number receipt';
 
                 trigger OnDrillDown()
@@ -23,7 +23,7 @@ pageextension 50220 "TFB Posted Purchase Receipts" extends "Posted Purchase Rece
                     OpenOrder.SetRange("Document Type", OpenOrder."Document Type"::Order);
                     OpenOrder.SetRange("No.", Rec."Order No.");
 
-                    If OpenOrder.FindFirst() then begin
+                    if OpenOrder.FindFirst() then begin
 
                         OpenOrderPage.SetRecord(OpenOrder);
                         OpenOrderPage.Run();
@@ -32,7 +32,7 @@ pageextension 50220 "TFB Posted Purchase Receipts" extends "Posted Purchase Rece
                         ArchiveOrder.SetRange("Document Type", ArchiveOrder."Document Type"::Order);
                         ArchiveOrder.SetRange("No.", Rec."Order No.");
 
-                        If ArchiveOrder.FindLast() then begin
+                        if ArchiveOrder.FindLast() then begin
                             ArchiveOrderPage.SetRecord(ArchiveOrder);
                             ArchiveOrderPage.Run();
                         end;

@@ -27,7 +27,7 @@ codeunit 50121 "TFB Pstd. Purch Inv. Hdr. Edit"
                     VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
                     VendorLedgerEntry.SetRange("Document No.", PurchInvoiceHeader."No.");
 
-                    If VendorLedgerEntry.FindFirst() then begin
+                    if VendorLedgerEntry.FindFirst() then begin
                         VendorLedgerEntry.Validate("External Document No.", Rec."Vendor Invoice No.");
                         VendorLedgerEntry.Modify();
                     end;

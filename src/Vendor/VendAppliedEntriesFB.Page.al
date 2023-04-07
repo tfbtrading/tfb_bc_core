@@ -66,7 +66,7 @@ page 50153 "TFB Vend. Applied Entries FB"
         DetailedVendorLedgerEntry2.SetFilter("Initial Document Type", '%1|%2', DetailedVendorLedgerEntry2."Initial Document Type"::Payment, DetailedVendorLedgerEntry2."Initial Document Type"::"Credit Memo");
         DetailedVendorLedgerEntry2.SetLoadFields("Vendor Ledger Entry No.", "Source Code");
 
-        If DetailedVendorLedgerEntry2.FindFirst() then
+        if DetailedVendorLedgerEntry2.FindFirst() then
             VendorLedgerEntry2.Get(DetailedVendorLedgerEntry2."Vendor Ledger Entry No.")
         else
             Clear(VendorLedgerEntry2);
@@ -76,7 +76,7 @@ page 50153 "TFB Vend. Applied Entries FB"
 
 
     begin
-        Exit(-(DetailedVendorLedgerEntry2.Amount));
+        exit(-(DetailedVendorLedgerEntry2.Amount));
     end;
 
     local procedure GetPaymentDetails(): Text[100]
@@ -85,10 +85,10 @@ page 50153 "TFB Vend. Applied Entries FB"
 
     begin
 
-        If not (VendorLedgerEntry2.IsEmpty()) then
-            If VendorLedgerEntry2."Bal. Account Type" = VendorLedgerEntry2."Bal. Account Type"::"Bank Account" then
-                If Bank.Get(VendorLedgerEntry2."Bal. Account No.") then
-                    Exit(StrSubstNo('Paid from %1 using %2', Bank.Name, VendorLedgerEntry2."Source Code"));
+        if not (VendorLedgerEntry2.IsEmpty()) then
+            if VendorLedgerEntry2."Bal. Account Type" = VendorLedgerEntry2."Bal. Account Type"::"Bank Account" then
+                if Bank.Get(VendorLedgerEntry2."Bal. Account No.") then
+                    exit(StrSubstNo('Paid from %1 using %2', Bank.Name, VendorLedgerEntry2."Source Code"));
 
 
     end;

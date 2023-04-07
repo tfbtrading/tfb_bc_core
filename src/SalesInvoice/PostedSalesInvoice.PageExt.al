@@ -33,7 +33,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -106,8 +106,8 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         BrokeragePage: Page "TFB Brokerage Shipment";
 
                     begin
-                        If Rec."TFB Brokerage Shipment" <> '' then
-                            If BrokerageRec.Get(Rec."TFB Brokerage Shipment") then begin
+                        if Rec."TFB Brokerage Shipment" <> '' then
+                            if BrokerageRec.Get(Rec."TFB Brokerage Shipment") then begin
 
                                 BrokeragePage.SetRecord(BrokerageRec);
                                 BrokeragePage.Run();
@@ -150,14 +150,14 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         Customer.Get(Rec."Sell-to Customer No.");
                         AddPaymentNote.SetupCustomerInfo(Customer, Rec."TFB Expected Payment Note", Rec."TFB Expected Payment Date", Rec."TFB Expected Note TimeStamp");
                         TempSalesInvoiceHeader := Rec;
-                        If AddPaymentNote.RunModal() = Action::OK then begin
+                        if AddPaymentNote.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Expected Payment Note" := AddPaymentNote.GetExpectedPaymentNote();
                             TempSalesInvoiceHeader."TFB Expected Payment Date" := AddPaymentNote.GetExpectedPaymentDate();
                             TempSalesInvoiceHeader."Due Date" := AddPaymentNote.GetExpectedPaymentDate();
                             CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::PaymentNote);
                             CodeUnit.Run(TempSalesInvoiceHeader);
 
-                            If AddPaymentNote.GetIsCorrection() then begin
+                            if AddPaymentNote.GetIsCorrection() then begin
                                 CustLedgerEntry.Get(TempSalesInvoiceHeader."Cust. Ledger Entry No.");
                                 CustLedgerEntry.Validate("Due Date", AddPaymentNote.GetExpectedPaymentDate());
                                 CustLedgerEntry.Modify(false);
@@ -242,7 +242,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                         Customer.Get(Rec."Sell-to Customer No.");
                         CorrectExtDocNo.SetupCustomerInfo(Customer, Rec."External Document No.");
                         TempSalesInvoiceHeader := Rec;
-                        If CorrectExtDocNo.RunModal() = Action::OK then begin
+                        if CorrectExtDocNo.RunModal() = Action::OK then begin
                             TempSalesInvoiceHeader."TFB Orig. External Doc. No." := Rec."External Document No.";
                             TempSalesInvoiceHeader."External Document No." := CorrectExtDocNo.GetExternalDocNo();
                             CodeUnit.SetScenario(Enum::"TFB Pstd. SInv.-Edit Scen."::ExternalDocumentNo);
@@ -267,7 +267,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
 
         addafter(Category_Category5)
         {
-            Group(Category_TFBUpdate)
+            group(Category_TFBUpdate)
             {
                 Caption = 'Update';
                 ShowAs = SplitButton;
@@ -296,13 +296,13 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
     begin
         Clear(ExpectedDateText);
 
-        If (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
+        if (Rec."Due Date" < WorkDate()) and (not Rec.Closed) then
             IsPastDue := true
         else
             IsPastDue := false;
 
-        If not Rec.Closed then begin
-            If Rec."TFB Expected Payment Date" > 0D then
+        if not Rec.Closed then begin
+            if Rec."TFB Expected Payment Date" > 0D then
                 ExpectedDateText := format(Rec."TFB Expected Payment Date")
             else
                 if Rec."TFB Expected Payment Note" = '' then
@@ -313,7 +313,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
         else
             ExpectedDateText := '';
 
-        If (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
+        if (Rec."TFB Expected Payment Date" < WorkDate()) and (not Rec.Closed) and (Rec."TFB Expected Payment Date" > 0D) then
             IsExpectedDatePastDue := true
         else
             IsExpectedDatePastDue := false;
@@ -335,10 +335,10 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 }

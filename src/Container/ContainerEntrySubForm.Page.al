@@ -52,7 +52,7 @@ page 50216 "TFB Container Entry SubForm"
         area(Processing)
         {
 
-            Action(DownloadCOA)
+            action(DownloadCOA)
 
             {
                 ApplicationArea = All;
@@ -87,13 +87,13 @@ page 50216 "TFB Container Entry SubForm"
         Rec.DeleteAll();
         ContainerEntry.CalcFields("Qty. On Purch. Rcpt", "Qty. On Transfer Ship.", "Qty. On Transfer Rcpt", "Qty. On Transfer Order");
 
-        If not ContainerEntry.IsEmpty() then
+        if not ContainerEntry.IsEmpty() then
             case ContainerEntry.Type of
 
 
                 ContainerEntry.Type::"PurchaseOrder":
 
-                    If ContainerEntry."Qty. On Transfer Rcpt" > 0 then
+                    if ContainerEntry."Qty. On Transfer Rcpt" > 0 then
                         ContainerMgmt.PopulateTransferLines(ContainerEntry, Rec)
                     else
                         if ContainerEntry."Qty. On Transfer Ship." > 0 then
@@ -115,7 +115,7 @@ page 50216 "TFB Container Entry SubForm"
 
     begin
 
-        Exit(ContainerStatus);
+        exit(ContainerStatus);
 
     end;
 

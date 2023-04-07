@@ -31,8 +31,8 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
 
 
                 begin
-                    If Rec."Document Type" <> Rec."Document Type"::"Blanket Order" then
-                        Exit;
+                    if Rec."Document Type" <> Rec."Document Type"::"Blanket Order" then
+                        exit;
 
                     Line.SetRange("Blanket Order No.", Rec."Document No.");
                     Line.SetRange("Blanket Order Line No.", Rec."Line No.");
@@ -91,8 +91,8 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
         Header.SetRange("No.", Rec."Document No.");
         Header.SetRange("Document Type", Rec."Document Type");
 
-        If Header.FindFirst() then
-            Exit(Header."Vendor Order No.");
+        if Header.FindFirst() then
+            exit(Header."Vendor Order No.");
 
     end;
 
@@ -107,12 +107,12 @@ pageextension 50128 "TFB Purchase Lines" extends "Purchase Lines"
         Clear(_UnpostedQty);
         Clear(_RemainingQty);
 
-        If Rec."Document Type" = Rec."Document Type"::"Blanket Order" then begin
+        if Rec."Document Type" = Rec."Document Type"::"Blanket Order" then begin
             Line.SetRange("Blanket Order No.", Rec."Document No.");
             Line.SetRange("Blanket Order Line No.", Rec."Line No.");
             Line.SetRange("Document Type", Line."Document Type"::Order);
 
-            If Line.CalcSums("Outstanding Qty. (Base)") then
+            if Line.CalcSums("Outstanding Qty. (Base)") then
                 _UnpostedQty := Line."Outstanding Qty. (Base)";
 
 

@@ -6,7 +6,7 @@ tableextension 50200 "TFB Purch. Rcpt. Line." extends "Purch. Rcpt. Line" //121
         {
             DataClassification = CustomerContent;
             TableRelation = "TFB Container Entry";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Editable = false;
             Caption = 'Container Entry No.';
         
@@ -21,7 +21,7 @@ tableextension 50200 "TFB Purch. Rcpt. Line." extends "Purch. Rcpt. Line" //121
         field(50010; "TFB Vendor Order No. Lookup"; Text[100])
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup("Purch. Rcpt. Header"."Vendor Order No." where("No." = field("Document No.")));
+            CalcFormula = lookup("Purch. Rcpt. Header"."Vendor Order No." where("No." = field("Document No.")));
             Editable = false;
             Caption = 'Vendor Order No.';
         }

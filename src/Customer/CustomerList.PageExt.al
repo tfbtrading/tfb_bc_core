@@ -4,7 +4,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
     {
         addbefore(Name)
         {
-            Field(ToDoExists; GetTaskSymbol())
+            field(ToDoExists; GetTaskSymbol())
             {
                 Caption = '';
                 Width = 1;
@@ -30,8 +30,8 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
             part(ContactStatistics; "Contact Statistics FactBox")
             {
                 ApplicationArea = RelationshipMgmt;
-                SubPageLink = "No." = FIELD("TFB Primary Contact Company ID"),
-                              "Date Filter" = FIELD("Date Filter");
+                SubPageLink = "No." = field("TFB Primary Contact Company ID"),
+                              "Date Filter" = field("Date Filter");
             }
         }
 
@@ -41,7 +41,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
     {
         addafter("Co&mments")
         {
-            Action(FavouriteItems)
+            action(FavouriteItems)
             {
                 Caption = 'Favourite Items';
 
@@ -71,7 +71,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
                     CustomerCU: CodeUnit "TFB Customer Mgmt";
                     TextMsg: Label 'Are you sure you want to send to all customers?';
                 begin
-                    If Dialog.Confirm(TextMsg) then
+                    if Dialog.Confirm(TextMsg) then
                         CustomerCU.SendCustomerStatementBatch();
 
                 end;
@@ -132,7 +132,7 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
 
 
                     Customer.SetLoadFields("No.", "TFB Primary Contact Company ID");
-                    Customer.FindSet(true, false);
+                    Customer.Findset(true);
                     repeat
                         ContBusRel.SetCurrentKey("Link to Table", "No.");
                         ContBusRel.SetRange("Link to Table", ContBusRel."Link to Table"::Customer);
@@ -170,11 +170,11 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
         Contact.SetLoadFields("TFB No. Of Company Tasks", "No.");
         Contact.SetAutoCalcFields("TFB No. Of Company Tasks");
 
-        If Contact.Get(Rec."TFB Primary Contact Company ID") then
-            If Contact."TFB No. Of Company Tasks" > 0 then
-                Exit('📋')
+        if Contact.Get(Rec."TFB Primary Contact Company ID") then
+            if Contact."TFB No. Of Company Tasks" > 0 then
+                exit('📋')
             else
-                Exit('');
+                exit('');
 
 
     end;

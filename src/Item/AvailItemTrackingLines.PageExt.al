@@ -32,7 +32,7 @@ pageextension 50167 "TFB Avail. Item Tracking Lines" extends "Avail. - Item Trac
         Clear(_SalesLineSystemId);
         Clear(_SalesHeaderSystemId);
 
-        If ReservationCU.GetSaleLineForItemResEntry(Rec, SalesLine, SalesHeader) then begin
+        if ReservationCU.GetSaleLineForItemResEntry(Rec, SalesLine, SalesHeader) then begin
             _CreateForExtended := SalesHeader."Sell-to Customer Name";
             _SalesLineSystemId := SalesLine.SystemId;
             _SalesHeaderSystemId := SalesHeader.SystemId;

@@ -16,7 +16,7 @@ table 50345 "TFB Item Costing"
             Caption = 'Item Code';
             DataClassification = CustomerContent;
             TableRelation = Item;
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             NotBlank = true;
             trigger OnValidate()
             var
@@ -29,11 +29,11 @@ table 50345 "TFB Item Costing"
                 if ItemRec."TFB Est. Storage Duration" > 0 then
                     "Est. Storage Duration" := ItemRec."TFB Est. Storage Duration"
                 else
-                    If LCProfile.get("Landed Cost Profile") then
+                    if LCProfile.get("Landed Cost Profile") then
                         if LCScenario.get(LCProfile.Scenario) then
                             "Est. Storage Duration" := LCScenario."Def. Storage Duration";
 
-                If ItemRec."Vendor No." <> '' then
+                if ItemRec."Vendor No." <> '' then
                     Validate("Vendor No.", ItemRec."Vendor No.");
 
                 if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
@@ -73,7 +73,7 @@ table 50345 "TFB Item Costing"
         field(44; "Publishing Blocked"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = Lookup(Item."TFB Publishing Block" where("No." = field("Item No.")));
+            CalcFormula = lookup(Item."TFB Publishing Block" where("No." = field("Item No.")));
             Editable = false;
         }
         field(50; "Automatically Updated"; Boolean)
@@ -160,7 +160,7 @@ table 50345 "TFB Item Costing"
                 LCScenario: Record "TFB Costing Scenario";
 
             begin
-                If LCProfile.get("Landed Cost Profile") then begin
+                if LCProfile.get("Landed Cost Profile") then begin
 
                     "Days Financed" := LCProfile."Def. Days Financed";
 
@@ -238,7 +238,7 @@ table 50345 "TFB Item Costing"
                 "Vendor Name" := Vendor.Name;
                 "Purchase Price Unit" := Vendor."TFB Vendor Price Unit";
 
-                If Vendor."TFB Landed Cost Profile" <> '' then begin
+                if Vendor."TFB Landed Cost Profile" <> '' then begin
                     Validate("Landed Cost Profile", Vendor."TFB Landed Cost Profile");
                     if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
                 end;
@@ -477,27 +477,27 @@ table 50345 "TFB Item Costing"
     begin
         TestFailed := false;
 
-        If ("Item No." = '') then TestFailed := true;
+        if ("Item No." = '') then TestFailed := true;
 
-        If "Landed Cost Profile" = '' then TestFailed := true;
+        if "Landed Cost Profile" = '' then TestFailed := true;
 
-        If "Vendor No." = '' then TestFailed := true;
+        if "Vendor No." = '' then TestFailed := true;
 
-        If "Average Cost" = 0 then TestFailed := true;
+        if "Average Cost" = 0 then TestFailed := true;
 
-        If "Pricing Margin %" = 0 then TestFailed := true;
+        if "Pricing Margin %" = 0 then TestFailed := true;
 
-        If "Market Price Margin %" = 0 then TestFailed := true;
+        if "Market Price Margin %" = 0 then TestFailed := true;
 
-        If "Market Price" = 0 then TestFailed := true;
+        if "Market Price" = 0 then TestFailed := true;
 
-        If "Full Load Margin %" = 0 then TestFailed := true;
+        if "Full Load Margin %" = 0 then TestFailed := true;
 
-        If "Pallet Qty" = 0 then TestFailed := true;
+        if "Pallet Qty" = 0 then TestFailed := true;
 
-        If "Exch. Rate" = 0 then TestFailed := true;
+        if "Exch. Rate" = 0 then TestFailed := true;
 
-        If TestFailed then exit(false) else exit(true);
+        if TestFailed then exit(false) else exit(true);
 
     end;
 
@@ -507,8 +507,8 @@ table 50345 "TFB Item Costing"
         LandedProfile: Record "TFB Landed Cost Profile";
 
     begin
-        If not Scenario.Get(Rec."Scenario Override") then
-            If LandedProfile.Get(Rec."Landed Cost Profile") then
+        if not Scenario.Get(Rec."Scenario Override") then
+            if LandedProfile.Get(Rec."Landed Cost Profile") then
                 Scenario.Get(LandedProfile.Scenario);
 
     end;

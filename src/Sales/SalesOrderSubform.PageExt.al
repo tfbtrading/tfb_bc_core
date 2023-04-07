@@ -31,13 +31,13 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
                 var
 
                 begin
-                    If Rec.type = Rec.type::Item then
-                        If not (Rec."Drop Shipment" or Rec."Special Order") then
+                    if Rec.type = Rec.type::Item then
+                        if not (Rec."Drop Shipment" or Rec."Special Order") then
                             Rec.ShowReservation()
                         else
-                            If Rec."Purchase Order No." <> '' then
+                            if Rec."Purchase Order No." <> '' then
                                 OpenPurchOrderForm() else
-                                If Rec."Special Order Purchase No." <> '' then
+                                if Rec."Special Order Purchase No." <> '' then
                                     OpenSpecialPurchOrderForm();
                 end;
             }
@@ -78,7 +78,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
 
                 begin
 
-                    If PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then begin
+                    if PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.") then begin
                         RecRef.GetTable(PurchaseLine);
                         DocumentAttachmentDetails.OpenForRecRef(RecRef);
                         DocumentAttachmentDetails.RunModal();
@@ -98,7 +98,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
                 Caption = 'Unit Weight';
                 ApplicationArea = All;
                 BlankNumbers = BlankZero;
-                Editable = False;
+                Editable = false;
                 ToolTip = 'Specifies the net weigh tof the item';
             }
 
@@ -182,11 +182,11 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         PurchaseCU: CodeUnit "TFB Purchase Order Mgmt";
 
     begin
-        If (not Rec."Drop Shipment") or (not (Rec."Purchase Order No." = '')) or (not PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.")) then
+        if (not Rec."Drop Shipment") or (not (Rec."Purchase Order No." = '')) or (not PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.")) then
             _isCoAVisible := false
         else
             if not (PurchaseCu.GetLineLotStatus(PurchaseLine) = _isTrackingReq::NotRequired) then begin
-                If (Customer.get(Rec."Sell-to Customer No.")) and Customer."TFB CoA Required" then
+                if (Customer.get(Rec."Sell-to Customer No.")) and Customer."TFB CoA Required" then
                     _isCoAVisible := true
                 else
                     _isCoAVisible := false;
@@ -202,12 +202,12 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         LotCU: Codeunit "TFB Lot Intelligence";
 
     begin
-        If not _isCoAVisible then
+        if not _isCoAVisible then
             _isCoAReq := _isCoAReq::NotRequired
         else begin
             PurchaseLine.Get(Enum::"Purchase Document Type"::Order, Rec."Purchase Order No.", Rec."Purch. Order Line No.");
             PurchaseLine.CalcFields("Attached Doc Count");
-            If PurchaseLine."Attached Doc Count" > 0 then
+            if PurchaseLine."Attached Doc Count" > 0 then
                 _isCoAReq := _isCoAReq::ExistsNoIssue
             else
                 _isCoAReq := _isCoAReq::DoesNotExist;
@@ -227,9 +227,9 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
 
     begin
 
-        If Rec.type = Rec.type::Item then begin
+        if Rec.type = Rec.type::Item then begin
             TrackingOkay := LotIntelCU.CheckSalesLineItemTrackingOkay(Rec."Document No.", Rec."Line No.", Rec."Qty. to Ship (Base)");
-            If TrackingOkay then
+            if TrackingOkay then
                 CalculateTrackingEmoji := '✅'
             else
                 CalculateTrackingEmoji := '⚠️';
@@ -249,7 +249,7 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         CalculateTrackingEmoji: Text;
         _isTrackingReq: enum "TFB Lot Status";
 
-        [InDataSet]
+
         _isCoAVisible: Boolean;
         _availability: Text;
         _isCoARequiredEmoji: Text;

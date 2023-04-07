@@ -86,19 +86,19 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
                     FoundDate := false;
                     Evaluate(DF, '+3M');
                     Evaluate(DF2, '+1D');
-                    If Item.Get(rec."No.") then begin
+                    if Item.Get(rec."No.") then begin
                         AvailableDate := AvailableToPromise.CalcEarliestAvailabilityDate(Item, rec.Quantity, rec."Planned Shipment Date", 0, 0D, AvailableQty, Enum::"Analysis Period Type"::Day, DF);
 
 
-                        If AvailableDate > 0D then
-                            If AvailableDate = Today() then
+                        if AvailableDate > 0D then
+                            if AvailableDate = Today() then
                                 Message('Quantity is available for prompt')
                             else
-                                If Confirm('There are %1 available on %2. Change to this date?', true, AvailableQty, AvailableDate) then begin
+                                if Confirm('There are %1 available on %2. Change to this date?', true, AvailableQty, AvailableDate) then begin
                                     repeat
                                         AvailableDate := CalcDate(DF2, AvailableDate);
                                         CustCal.SetSource(CustCal."Source Type"::Location, Rec."Location Code", '', '');
-                                        If not CalCU.IsNonworkingDay(AvailableDate, CustCal) then
+                                        if not CalCU.IsNonworkingDay(AvailableDate, CustCal) then
                                             FoundDate := true;
                                     until FoundDate = true;
                                     Rec.validate("Planned Shipment Date", AvailableDate);

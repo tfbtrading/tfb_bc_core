@@ -51,7 +51,7 @@ pageextension 50142 "TFB Item Availability By Event" extends "Item Availability 
         TextBuider: TextBuilder;
     begin
 
-        If Rec."Reserved Receipt" > 0 then
+        if Rec."Reserved Receipt" > 0 then
             case Rec.Type of
                 Rec.Type::" ":
                     begin
@@ -66,7 +66,7 @@ pageextension 50142 "TFB Item Availability By Event" extends "Item Availability 
                         if ResEntry.FindSet() then begin
                             repeat
 
-                                If TextBuider.Length() > 0 then
+                                if TextBuider.Length() > 0 then
                                     TextBuider.Append('|');
 
                                 TextBuider.Append(Format(ResEntry."Entry No."));
@@ -96,7 +96,7 @@ pageextension 50142 "TFB Item Availability By Event" extends "Item Availability 
                         if ResEntry.FindSet() then begin
                             repeat
 
-                                If TextBuider.Length() > 0 then
+                                if TextBuider.Length() > 0 then
                                     TextBuider.Append('|');
 
                                 TextBuider.Append(Format(ResEntry."Entry No."));

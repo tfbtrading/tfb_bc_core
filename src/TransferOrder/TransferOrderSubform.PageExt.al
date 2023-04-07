@@ -17,7 +17,7 @@ pageextension 50174 "TFB Transfer Order Subform" extends "Transfer Order Subform
                 ApplicationArea = All;
                 Tooltip = 'Specifies container number related to container entry';
                 Visible = Rec."TFB Container Entry No." <> '';
-                Trigger OnDrillDown()
+                trigger OnDrillDown()
 
                 var
                     Container: Record "TFB Container Entry";
@@ -25,7 +25,7 @@ pageextension 50174 "TFB Transfer Order Subform" extends "Transfer Order Subform
 
                 begin
 
-                    If Container.Get(Rec."TFB Container Entry No.") then begin
+                    if Container.Get(Rec."TFB Container Entry No.") then begin
 
                         ContainerPage.SetRecord(Container);
                         ContainerPage.Run();
@@ -60,8 +60,8 @@ pageextension 50174 "TFB Transfer Order Subform" extends "Transfer Order Subform
                     LineNo: Integer;
 
                 begin
-                    If Header.Get(Rec."Document No.") then
-                        If Container.Get(Header."TFB Container Entry No.") then begin
+                    if Header.Get(Rec."Document No.") then
+                        if Container.Get(Header."TFB Container Entry No.") then begin
 
                             //Look for purchase receipt details
                             PurchNo := Container."Order Reference";

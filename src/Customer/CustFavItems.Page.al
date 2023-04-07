@@ -249,7 +249,7 @@ page 50122 "TFB Cust. Fav. Items"
 
 
 
-                    If SalesOrder.Insert(true) then begin
+                    if SalesOrder.Insert(true) then begin
 
                         Commit();
 
@@ -257,7 +257,7 @@ page 50122 "TFB Cust. Fav. Items"
 
                         CurrPage.SetSelectionFilter(SourceLines);
 
-                        If SourceLines.FindSet() then
+                        if SourceLines.FindSet() then
                             repeat
                                 LineCount += 10000;
                                 SalesLine.Init();
@@ -281,7 +281,7 @@ page 50122 "TFB Cust. Fav. Items"
 
         area(Promoted)
         {
-            Group(Category_Home)
+            group(Category_Home)
             {
                 Caption = 'Home';
                 actionref(CreateSalesOrderRef; CreateSalesOrder)
@@ -313,9 +313,9 @@ page 50122 "TFB Cust. Fav. Items"
         ItemMgmt: CodeUnit "TFB Item Mgmt";
         LastChangedDateVar: Date;
         LastDatePurchased: Date;
-        [InDataSet]
+
         LastPricePaid: Decimal;
-        [InDataSet]
+
         SalesPriceVar: Decimal;
 
 }

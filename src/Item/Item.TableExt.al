@@ -57,7 +57,7 @@ tableextension 50260 "TFB Item" extends Item
             trigger OnValidate()
 
             begin
-                If rec."TFB DropShip Avail." = rec."TFB DropShip Avail."::"Out of Stock" then
+                if rec."TFB DropShip Avail." = rec."TFB DropShip Avail."::"Out of Stock" then
                     if rec."TFB DropShip ETA" = 0D then
                         FieldError("TFB DropShip ETA", 'Need to indicate next available date if out of stock at vendor');
             end;
@@ -68,7 +68,7 @@ tableextension 50260 "TFB Item" extends Item
             trigger OnValidate()
 
             begin
-                If rec."TFB DropShip Avail." = rec."TFB DropShip Avail."::"Out of Stock" then
+                if rec."TFB DropShip Avail." = rec."TFB DropShip Avail."::"Out of Stock" then
                     if rec."TFB DropShip ETA" = 0D then
                         FieldError("TFB DropShip ETA", 'Need to indicate next available date if out of stock at vendor');
             end;
@@ -88,7 +88,7 @@ tableextension 50260 "TFB Item" extends Item
         field(50320; "TFB Out. Qty. On Sales Order"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter"), "Location Code" = field("Location Filter")));
+            CalcFormula = sum("Sales Line"."Outstanding Qty. (Base)" where("Document Type" = const(Order), "Outstanding Qty. (Base)" = filter('>0'), "No." = field("No."), "Drop Shipment" = field("Drop Shipment Filter"), "Location Code" = field("Location Filter")));
             Caption = 'Out. Qty. on Sales Order';
 
         }
@@ -96,21 +96,21 @@ tableextension 50260 "TFB Item" extends Item
         field(50325; "TFB Qty. In Transit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" where("Remaining Quantity" = filter('>0'), "Document Type" = const("Transfer Shipment"), "Item No." = field("No."), "Location Code" = field("Location Filter")));
+            CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" where("Remaining Quantity" = filter('>0'), "Document Type" = const("Transfer Shipment"), "Item No." = field("No."), "Location Code" = field("Location Filter")));
             Caption = 'Qty in Transit';
         }
 
         field(50326; "TFB Inventory - Excl. Transit"; Decimal)
         {
-            CalcFormula = Sum("Item Ledger Entry"."Remaining Quantity" WHERE("Item No." = FIELD("No."),
+            CalcFormula = sum("Item Ledger Entry"."Remaining Quantity" where("Item No." = field("No."),
 
-                                                                  "Location Code" = FIELD("Location Filter"),
-                                                                  "Drop Shipment" = FIELD("Drop Shipment Filter"),
-                                                                  "Variant Code" = FIELD("Variant Filter"),
-                                                                  "Lot No." = FIELD("Lot No. Filter"),
-                                                                  "Serial No." = FIELD("Serial No. Filter"),
-                                                                  "Unit of Measure Code" = FIELD("Unit of Measure Filter"),
-                                                                  "Package No." = FIELD("Package No. Filter"),
+                                                                  "Location Code" = field("Location Filter"),
+                                                                  "Drop Shipment" = field("Drop Shipment Filter"),
+                                                                  "Variant Code" = field("Variant Filter"),
+                                                                  "Lot No." = field("Lot No. Filter"),
+                                                                  "Serial No." = field("Serial No. Filter"),
+                                                                  "Unit of Measure Code" = field("Unit of Measure Filter"),
+                                                                  "Package No." = field("Package No. Filter"),
                                                                   "Document Type" = filter('<>Transfer Shipment')));
             Caption = 'Inventory - Excl. Transfers';
             DecimalPlaces = 0 : 5;
@@ -142,7 +142,7 @@ tableextension 50260 "TFB Item" extends Item
             trigger OnValidate()
 
             begin
-                If GenericItem.Get("TFB Generic Item ID") then
+                if GenericItem.Get("TFB Generic Item ID") then
                     "TFB Parent Generic Item Name" := GenericItem.Description;
 
             end;
@@ -156,7 +156,7 @@ tableextension 50260 "TFB Item" extends Item
             trigger OnValidate()
             begin
                 GenericItem.SetRange(Description, Rec."TFB Parent Generic Item Name");
-                If GenericItem.FindFirst() then
+                if GenericItem.FindFirst() then
                     Rec."TFB Generic Item ID" := GenericItem.SystemId;
 
             end;
@@ -218,8 +218,8 @@ tableextension 50260 "TFB Item" extends Item
     trigger OnAfterDelete()
 
     begin
-        If Rec."TFB Act As Generic" then
-            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
+        if Rec."TFB Act As Generic" then
+            if GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then
                 GenericItem.Delete(false);
 
     end;
@@ -231,8 +231,8 @@ tableextension 50260 "TFB Item" extends Item
 
     begin
 
-        If Rec."TFB Act As Generic" then
-            If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+        if Rec."TFB Act As Generic" then
+            if not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
                 Guid := CreateGuid();
                 GenericItem.Init();
                 GenericItem.SystemId := Guid;
@@ -240,10 +240,10 @@ tableextension 50260 "TFB Item" extends Item
                 GenericItem."Item Category Id" := Rec."Item Category Id";
                 GenericItem."Item Category Code" := Rec."Item Category Code";
 
-                If Rec.Picture.Count > 0 then
+                if Rec.Picture.Count > 0 then
                     GenericItem.Picture.Insert(Rec.Picture.MediaId);
                 GenericItem.Type := GenericItem.Type::ItemExtension;
-                If GenericItem.Insert(true, true) then begin
+                if GenericItem.Insert(true, true) then begin
                     Rec."TFB Generic Item ID" := GUID;
                     Rec.Modify(false);
                 end;
@@ -260,20 +260,20 @@ tableextension 50260 "TFB Item" extends Item
         Index: Integer;
 
     begin
-        If Rec."TFB Act As Generic" then
-            If not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
+        if Rec."TFB Act As Generic" then
+            if not GenericItem.GetBySystemId(Rec."TFB Generic Item ID") then begin
                 Guid := CreateGuid();
                 GenericItem.Init();
                 GenericItem.SystemId := Guid;
                 GenericItem.Description := Rec.Description;
                 GenericItem."Item Category Id" := Rec."Item Category Id";
                 GenericItem."Item Category Code" := Rec."Item Category Code";
-                If Rec.Picture.Count > 0 then begin
+                if Rec.Picture.Count > 0 then begin
                     Index := 1;
                     GenericItem.Picture.Insert(Rec.Picture.Item(index));
                 end;
                 GenericItem.Type := GenericItem.Type::ItemExtension;
-                If GenericItem.Insert(true, true) then begin
+                if GenericItem.Insert(true, true) then begin
                     Rec."TFB Generic Item ID" := GUID;
                     Rec.Modify(false);
                 end;
@@ -304,11 +304,11 @@ tableextension 50260 "TFB Item" extends Item
     begin
 
         //Ensure removal of corresponding entries in the system
-        If Rec."TFB Act As Generic" then
-            If GenericItem.GetBySystemId(Rec."TFB Generic Item ID") and (GenericItem.Type = GenericItem.Type::ItemExtension) then begin
+        if Rec."TFB Act As Generic" then
+            if GenericItem.GetBySystemId(Rec."TFB Generic Item ID") and (GenericItem.Type = GenericItem.Type::ItemExtension) then begin
 
                 GenericItemMarketRel.SetRange(GenericItemID, Rec.SystemId);
-                If GenericItemMarketRel.Count > 0 then
+                if GenericItemMarketRel.Count > 0 then
                     GenericItemMarketRel.DeleteAll(false);
 
                 GenericItem.Delete(false);

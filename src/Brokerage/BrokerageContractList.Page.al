@@ -87,7 +87,7 @@ page 50241 "TFB Brokerage Contract List"
                 field("Total Brokerage"; Rec."Total Brokerage")
                 {
                     ApplicationArea = All;
-                    DrillDown = False;
+                    DrillDown = false;
                     Tooltip = 'Specifies total brokerage value of contract. Calculated automatically.';
                 }
 
@@ -114,7 +114,7 @@ page 50241 "TFB Brokerage Contract List"
         }
     }
 
-    Local Procedure GetOrderLines(): Text
+    local procedure GetOrderLines(): Text
 
     var
         BrokerageLine: Record "TFB Brokerage Contract Line";
@@ -123,7 +123,7 @@ page 50241 "TFB Brokerage Contract List"
     begin
 
         BrokerageLine.SetRange("Document No.", Rec."No.");
-        If BrokerageLine.Findset(false, false) then
+        if BrokerageLine.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3 at %4', BrokerageLine.Description, BrokerageLine.Quantity, BrokerageLine."Pricing Unit Qty", BrokerageLine."Agreed Price"));

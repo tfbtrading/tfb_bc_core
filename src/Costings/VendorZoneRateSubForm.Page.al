@@ -54,9 +54,9 @@ page 50315 "TFB Vendor Zone Rate SubForm"
                                 begin
                                     RecItem.Reset();
 
-                                    If PAGE.RunModal(Page::"Item List", RecItem) = Action::LookupOK THEN begin
+                                    if PAGE.RunModal(Page::"Item List", RecItem) = Action::LookupOK then begin
                                         Text := RecItem."No.";
-                                        Exit(true);
+                                        exit(true);
 
                                     end;
 
@@ -66,9 +66,9 @@ page 50315 "TFB Vendor Zone Rate SubForm"
                                 begin
                                     RecCustomer.Reset();
 
-                                    If PAGE.RunModal(Page::"Customer List", RecCustomer) = Action::LookupOK THEN begin
+                                    if PAGE.RunModal(Page::"Customer List", RecCustomer) = Action::LookupOK then begin
                                         Text := RecCustomer."No.";
-                                        Exit(true);
+                                        exit(true);
 
                                     end;
 

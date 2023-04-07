@@ -21,7 +21,7 @@ codeunit 50304 "TFB Costing Mgmt"
     begin
 
         if UpdateExchRate then
-            if LCProfile.FindSet(true, false) then
+            if LCProfile.Findset(true) then
                 repeat
 
                     LCProfile.CalculateCosts();
@@ -34,13 +34,13 @@ codeunit 50304 "TFB Costing Mgmt"
 
         if ItemCost.FindSet(true) then
             repeat
-                If LCProfile.get(ItemCost."Landed Cost Profile") then begin
+                if LCProfile.get(ItemCost."Landed Cost Profile") then begin
 
 
                     if LCScenario.get(LCProfile.Scenario) then
                         if UpdateExchRate and not ItemCost."Fix Exch. Rate" then
                             ItemCost."Exch. Rate" := LCScenario."Exchange Rate";
-                    If UpdateMargins then begin
+                    if UpdateMargins then begin
                         ItemCost."Market Price Margin %" := LCScenario."Market Price Margin %";
                         ItemCost."Pricing Margin %" := LCScenario."Pricing Margin %";
                         ItemCost."Full Load Margin %" := LCScenario."Full Load Margin %";
@@ -65,7 +65,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
         CoreSetup.Get();
 
-        If CoreSetup."Def. Customer Price Group" <> '' then begin
+        if CoreSetup."Def. Customer Price Group" <> '' then begin
 
             PriceListLine.SetRange("Asset ID", Item.SystemId);
             PriceListLine.SetRange("Asset Type", PriceListLine."Asset Type"::Item);
@@ -74,8 +74,8 @@ codeunit 50304 "TFB Costing Mgmt"
             PriceListLine.SetRange("Ending Date", 0D);
             PriceListLine.SetRange(Status, PriceListLine.Status::Active);
 
-            If PriceListLine.FindLast() then
-                Exit(PCE.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight"));
+            if PriceListLine.FindLast() then
+                exit(PCE.CalcPerKgFromUnit(PriceListLine."Unit Price", Item."Net Weight"));
 
         end;
     end;
@@ -94,10 +94,10 @@ codeunit 50304 "TFB Costing Mgmt"
         PR.SetCurrentKey("Posting Date");
         PR.SetAscending("Posting Date", false);
 
-        If PR.FindFirst() then
-            Exit(PCE.CalculatePriceUnitByUnitPrice(Item."No.", PR."Unit of Measure Code", Costing."Purchase Price Unit", PR."Unit Cost"))
+        if PR.FindFirst() then
+            exit(PCE.CalculatePriceUnitByUnitPrice(Item."No.", PR."Unit of Measure Code", Costing."Purchase Price Unit", PR."Unit Cost"))
         else
-            Exit(0);
+            exit(0);
 
     end;
 
@@ -115,10 +115,10 @@ codeunit 50304 "TFB Costing Mgmt"
         PurchaseLine.SetCurrentKey("Expected Receipt Date");
         PurchaseLine.SetAscending("Expected Receipt Date", true);
 
-        If PurchaseLine.FindFirst() then
-            Exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", PurchaseLine."Unit of Measure Code", Costing."Purchase Price Unit", PurchaseLine."Unit Cost"))
+        if PurchaseLine.FindFirst() then
+            exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", PurchaseLine."Unit of Measure Code", Costing."Purchase Price Unit", PurchaseLine."Unit Cost"))
         else
-            Exit(0);
+            exit(0);
 
     end;
 
@@ -127,7 +127,7 @@ codeunit 50304 "TFB Costing Mgmt"
     var
         PricingCalculations: CodeUnit "TFB Pricing Calculations";
     begin
-        Exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", Item."Base Unit of Measure", Costing."Purchase Price Unit", Item."Unit Cost"));
+        exit(PricingCalculations.CalculatePriceUnitByUnitPrice(Item."No.", Item."Base Unit of Measure", Costing."Purchase Price Unit", Item."Unit Cost"));
     end;
 
 
@@ -140,7 +140,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
     begin
 
-        Exit(item.get(Header."Item No.") and Vendor.get(Header."Vendor No.") and LCProfile.get(Header."Landed Cost Profile"));
+        exit(item.get(Header."Item No.") and Vendor.get(Header."Vendor No.") and LCProfile.get(Header."Landed Cost Profile"));
 
     end;
 
@@ -176,39 +176,39 @@ codeunit 50304 "TFB Costing Mgmt"
         j: Integer;
 
         //Array - 1 = Pallet Based, 2 = Direct Container Delivered
-        LCUnitCostLCY: Array[2] of Decimal;
-        ACUnitCostLCY: Array[2] of Decimal;
+        LCUnitCostLCY: array[2] of Decimal;
+        ACUnitCostLCY: array[2] of Decimal;
 
 
         //Array - 1 = Average cost - 2 = Market Cost
-        UnitCost: Array[2] of Decimal;
-        UnitCostLCY: Array[2] of Decimal;
-        UnitFinanceCost: Array[2] of Decimal;
+        UnitCost: array[2] of Decimal;
+        UnitCostLCY: array[2] of Decimal;
+        UnitFinanceCost: array[2] of Decimal;
 
-        PriceWithDuty: Array[2] of Decimal;
+        PriceWithDuty: array[2] of Decimal;
         DutyMultiplier: Decimal;
 
 
         //Array - 2 dimension - First Average/Market and second Pallet/Direct Container
-        TotalLCUnitCostLCY: Array[2, 2] of Decimal;
-        TotalUnitCostLCY: Array[2, 2] of Decimal;
-        TotalUnitSalesPriceLCY: Array[2, 2] of Decimal;
-        TotalUnitSalesPriceRndLCY: Array[2, 2] of Decimal;
-        TotalUnitSalesPriceDelRndLCY: Array[2, 2] of Decimal;
+        TotalLCUnitCostLCY: array[2, 2] of Decimal;
+        TotalUnitCostLCY: array[2, 2] of Decimal;
+        TotalUnitSalesPriceLCY: array[2, 2] of Decimal;
+        TotalUnitSalesPriceRndLCY: array[2, 2] of Decimal;
+        TotalUnitSalesPriceDelRndLCY: array[2, 2] of Decimal;
 
     begin
 
         //Get default details and exit with false if details missing
 
         CoreSetup.Get();
-        If not CheckValidRecords(Header, Item, Vendor, LCProfile) then exit(false);
+        if not CheckValidRecords(Header, Item, Vendor, LCProfile) then exit(false);
 
 
         ItemWeight := item."Net Weight";
         PalletWeight := ItemWeight * Header."Pallet Qty";
 
 
-        If not (Vendor."Currency Code" = '') then
+        if not (Vendor."Currency Code" = '') then
             ExchRate := Header."Exch. Rate"
         else
             ExchRate := 1;
@@ -218,12 +218,12 @@ codeunit 50304 "TFB Costing Mgmt"
 
 
         //Get correct scenario - adjusting for if it has been overriden in the item costing
-        If Header."Scenario Override" <> '' then
+        if Header."Scenario Override" <> '' then
             Scenario.Get(Header."Scenario Override")
         else
             Scenario.Get(LCProfile.Scenario);
 
-        If Scenario.IsEmpty() then Exit(false);
+        if Scenario.IsEmpty() then exit(false);
 
         if not Header.Dropship then begin
 
@@ -247,7 +247,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
         end;
 
-        If LCProfile."Import Duties Charged" then
+        if LCProfile."Import Duties Charged" then
             DutyMultiplier := 1 + CoreSetup."Import Duty Rate"
         else
             DutyMultiplier := 1;
@@ -258,7 +258,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
         //Calculate unit cost for both average and market price with duty multiplier
 
-        For i := 1 to 2 do begin
+        for i := 1 to 2 do begin
             UnitCost[i] := PricingCU.CalculateUnitPriceByPriceUnit(Item."No.", Item."Base Unit of Measure", Header."Purchase Price Unit", PriceWithDuty[i]);
             UnitCostLCY[i] := UnitCost[i] / ExchRate;
         end;
@@ -267,19 +267,19 @@ codeunit 50304 "TFB Costing Mgmt"
         //Calculate effective finance costs 
 
         EffectiveIR := CommonCU.CalcEffectiveIR(Scenario."Finance Rate", Header."Days Financed");
-        If LCProfile.Financed then
+        if LCProfile.Financed then
             for i := 1 to 2 do
                 UnitFinanceCost[i] := EffectiveIR * UnitCostLCY[i];
 
         //calculate total costs - multiple dimensions - first cost/market and then container/pallet
         //Add margins to total cost for products
 
-        For i := 1 to 2 do
+        for i := 1 to 2 do
             for j := 1 to 2 do begin
                 TotalLCUnitCostLCY[i, j] := UnitCostLCY[i] + LCUnitCostLCY[j];
                 TotalUnitCostLCY[i, j] := TotalLCUnitCostLCY[i, j] + UnitFinanceCost[i] + ACUnitCostLCY[j];
 
-                If (j = 1) then //Pallet pricing
+                if (j = 1) then //Pallet pricing
                     if (i = 1) then //Average Cost pricing
                         TotalUnitSalesPriceLCY[i, j] := AddMargin(Header."Pricing Margin %", TotalUnitCostLCY[i, j])
                     else //Market Price pricing
@@ -374,11 +374,11 @@ codeunit 50304 "TFB Costing Mgmt"
         if PostCodeZoneRate.FindSet() then
             repeat
 
-                If not Header.Dropship then begin
+                if not Header.Dropship then begin
 
                     //Calculate out delivered pricing for zone
                     DeliveryCost := RoundByPerKgForUnit((PostCodeZoneRate."Total Charge") / Header."Pallet Qty", ItemWeight);
-                    For i := 1 to 2 do
+                    for i := 1 to 2 do
                         for j := 1 to 2 do
                             TotalUnitSalesPriceDelRndLCY[i, j] := TotalUnitSalesPriceRndLCY[i, j] + DeliveryCost;
 
@@ -386,7 +386,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
                     DeliveryCost := PricingCU.GetVendorZoneRate(Header."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code");
 
-                    For i := 1 to 2 do
+                    for i := 1 to 2 do
                         for j := 1 to 2 do
                             TotalUnitSalesPriceDelRndLCY[i, j] := TotalUnitSalesPriceRndLCY[i, j] + DeliveryCost;
 
@@ -421,7 +421,7 @@ codeunit 50304 "TFB Costing Mgmt"
     begin
         //Switch any old costings to be non-current if current costing is current
 
-        If (Header.Current) and (Header."Effective Date" > 0D) then begin
+        if (Header.Current) and (Header."Effective Date" > 0D) then begin
             OldItemCostings.Init();
 
             OldItemCostings.SetRange("Item No.", Header."Item No.");
@@ -503,7 +503,7 @@ codeunit 50304 "TFB Costing Mgmt"
                 Progress.Update(1, Item.Description);
                 Progress.Update(2, Round(Counter / ApproxCount * 10000, 1));
 
-                If not (Item."TFB Publishing Block" and Item.Blocked) then begin  //Ignore price processing changes if 
+                if not (Item."TFB Publishing Block" and Item.Blocked) then begin  //Ignore price processing changes if 
                     //Check if existing sales price worksheet item exists
                     FromPriceListLine.Reset();
                     FromPriceListLine.SetRange("Price List Code", PriceListHeader.Code);
@@ -512,19 +512,19 @@ codeunit 50304 "TFB Costing Mgmt"
                     FromPriceListLine.SetRange("Asset Type", FromPriceListLine."Asset Type"::Item);
                     FromPriceListLine.SetRange("Source Type", FromPriceListLine."Source Type"::"Customer Price Group");
 
-                    If PostCodeZone.get(ItemCostingLines."Line Key") then
+                    if PostCodeZone.get(ItemCostingLines."Line Key") then
 
                         //Get the correct customer group mapping for the postcode zone
                         FromPriceListLine.SetRange("Source No.", PostCodeZone."Customer Price Group");
 
-                    If FromPriceListLine.FindFirst() then begin
-                        If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
+                    if FromPriceListLine.FindFirst() then begin
+                        if ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
                             ToPriceListLine := FromPriceListLine;
                             //Update existing price on sales price worksheet
                             ToPriceListLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
                             ToPriceListLine."Price Includes VAT" := false;
 
-                            If WorkSheet then
+                            if WorkSheet then
                                 CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
                             else
                                 ToPriceListLine.Modify();
@@ -543,10 +543,10 @@ codeunit 50304 "TFB Costing Mgmt"
                         FromPriceListLine.SetFilter("Unit of Measure Code", '');
                         FromPriceListLine.SetFilter("Ending Date", '');
 
-                        If FromPriceListLine.FindLast() then begin
+                        if FromPriceListLine.FindLast() then begin
 
                             //Check if price is different
-                            If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
+                            if ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
 
                                 PriceAsset."Price Type" := PriceListHeader."Price Type";
                                 PriceAsset.Validate("Asset Type", PriceAsset."Asset Type"::Item);
@@ -554,11 +554,11 @@ codeunit 50304 "TFB Costing Mgmt"
                                 PriceAsset.Validate("Unit of Measure Code", '');
 
 
-                                If PriceAsset."Asset No." <> '' then
-                                    If AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, PostCodeZone."Customer Price Group", false) then begin
+                                if PriceAsset."Asset No." <> '' then
+                                    if AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, PostCodeZone."Customer Price Group", false) then begin
                                         ToPriceListLine := FromPriceListLine;
                                         ToPriceListLine."Ending Date" := DayBefore;
-                                        If WorkSheet then
+                                        if WorkSheet then
                                             CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
                                         else
                                             ToPriceListLine.Modify(true);
@@ -573,7 +573,7 @@ codeunit 50304 "TFB Costing Mgmt"
                             PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
                             PriceAsset.Validate("Unit of Measure Code", '');
 
-                            If PriceAsset."Asset No." <> '' then
+                            if PriceAsset."Asset No." <> '' then
                                 AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, PostCodeZone."Customer Price Group", true);
 
                         end;
@@ -586,7 +586,7 @@ codeunit 50304 "TFB Costing Mgmt"
         //Process any ex-warehouse line items
         CoreSetup.Get();
 
-        If CoreSetup.ExWarehouseEnabled then
+        if CoreSetup.ExWarehouseEnabled then
             if CoreSetup.ExWarehousePricingGroup <> '' then begin
 
 
@@ -603,7 +603,7 @@ codeunit 50304 "TFB Costing Mgmt"
                         Counter += 1;
                         Progress.Update(1, Item.Description);
                         Progress.Update(2, Round(Counter / ApproxCount * 10000, 1));
-                        If not (Item."TFB Publishing Block" and Item.Blocked) then begin
+                        if not (Item."TFB Publishing Block" and Item.Blocked) then begin
                             FromPriceListLine.Reset();
 
                             FromPriceListLine.SetRange("Price List Code", PriceListHeader.Code);
@@ -613,14 +613,14 @@ codeunit 50304 "TFB Costing Mgmt"
                             FromPriceListLine.SetRange("Source Type", FromPriceListLine."Source Type"::"Customer Price Group");
                             FromPriceListLine.SetRange("Source No.", CoreSetup.ExWarehousePricingGroup);
 
-                            If FromPriceListLine.FindFirst() then begin
-                                If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
+                            if FromPriceListLine.FindFirst() then begin
+                                if ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
                                     ToPriceListLine := FromPriceListLine;
                                     //Update existing price on sales price worksheet as it was found
                                     ToPriceListLine.Validate("Unit Price", ItemCostingLines."Price (Base)");
                                     ToPriceListLine."Price Includes VAT" := false;
 
-                                    If WorkSheet then
+                                    if WorkSheet then
                                         CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
                                     else
                                         ToPriceListLine.Modify();
@@ -638,10 +638,10 @@ codeunit 50304 "TFB Costing Mgmt"
                                 FromPriceListLine.SetFilter("Ending Date", '');
 
 
-                                If FromPriceListLine.FindLast() then begin
+                                if FromPriceListLine.FindLast() then begin
 
                                     //Check if price is different
-                                    If ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
+                                    if ItemCostingLines."Price (Base)" <> FromPriceListLine."Unit Price" then begin
 
                                         //Add new item into sales price worksheet
                                         PriceAsset."Price Type" := PriceListHeader."Price Type";
@@ -650,12 +650,12 @@ codeunit 50304 "TFB Costing Mgmt"
                                         PriceAsset.Validate("Unit of Measure Code", '');
 
 
-                                        If PriceAsset."Asset No." <> '' then
-                                            If AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, false) then begin
+                                        if PriceAsset."Asset No." <> '' then
+                                            if AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, false) then begin
 
                                                 ToPriceListLine := FromPriceListLine;
                                                 ToPriceListLine."Ending Date" := DayBefore;
-                                                If WorkSheet then
+                                                if WorkSheet then
                                                     CopyToWorksheetLine(ToPriceListLine, FromPriceListLine, false)
                                                 else
                                                     ToPriceListLine.Modify(true);
@@ -672,7 +672,7 @@ codeunit 50304 "TFB Costing Mgmt"
                                     PriceAsset.Validate("Asset No.", ItemCostingLines."Item No.");
                                     PriceAsset.Validate("Unit of Measure Code", '');
 
-                                    If PriceAsset."Asset No." <> '' then
+                                    if PriceAsset."Asset No." <> '' then
                                         AddLine(PriceListHeader, FromPriceListLine, PriceAsset, ItemCostingLines, CoreSetup.ExWarehousePricingGroup, true);
                                 end;
                             end;
@@ -708,7 +708,7 @@ codeunit 50304 "TFB Costing Mgmt"
         ToPriceListLine.CopyFrom(PriceAsset);
         ToPriceListLine.Validate("Unit Price", ItemCostingLine."Price (Base)");
 
-        If PriceListHeader.IsTemporary then
+        if PriceListHeader.IsTemporary then
             if NewPricing then
                 CopyToWorksheetLine(ToPriceListLine)
             else
@@ -716,25 +716,25 @@ codeunit 50304 "TFB Costing Mgmt"
         else
             ToPriceListLine.Insert(true);
 
-        Exit(True)
+        exit(true)
     end;
 
     local procedure AddMargin(Margin: Decimal; BaseValue: Decimal): Decimal
 
     begin
-        Exit(BaseValue * (1 + (Margin / 100)));
+        exit(BaseValue * (1 + (Margin / 100)));
     end;
 
     local procedure RemoveDiscount(Discount: Decimal; BaseValue: Decimal): Decimal
 
     begin
-        Exit(BaseValue - (BaseValue * (Discount / 100)));
+        exit(BaseValue - (BaseValue * (Discount / 100)));
     end;
 
     local procedure RoundByPerKgForUnit(UnitPrice: Decimal; ItemWeight: Decimal): Decimal
 
     begin
-        Exit(Round(PricingCU.CalcUnitFromPerKg(Round(PricingCU.CalcPerKgFromUnit(UnitPrice, ItemWeight), 0.02, '>'), ItemWeight), 0.01, '='));
+        exit(Round(PricingCU.CalcUnitFromPerKg(Round(PricingCU.CalcPerKgFromUnit(UnitPrice, ItemWeight), 0.02, '>'), ItemWeight), 0.01, '='));
     end;
 
 

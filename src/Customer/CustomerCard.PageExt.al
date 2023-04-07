@@ -18,7 +18,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             field("TFB Delivery Instructions"; Rec."TFB Delivery Instructions")
             {
                 ApplicationArea = All;
-                MultiLine = True;
+                MultiLine = true;
                 ToolTip = 'Specifies special delivery instructions non-specific to ship-to address';
             }
             field("TFB CoA Required"; Rec."TFB CoA Required")
@@ -210,8 +210,8 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             part(ContactStatistics; "Contact Statistics FactBox")
             {
                 ApplicationArea = RelationshipMgmt;
-                SubPageLink = "No." = FIELD("TFB Primary Contact Company ID"),
-                              "Date Filter" = FIELD("Date Filter");
+                SubPageLink = "No." = field("TFB Primary Contact Company ID"),
+                              "Date Filter" = field("Date Filter");
             }
         }
     }
@@ -228,8 +228,8 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 Image = NewOpportunity;
 
                 RunObject = Page "Opportunity Card";
-                RunPageLink = "Contact No." = FIELD("TFB Primary Contact Company ID"),
-                              "Contact Company No." = FIELD("TFB Primary Contact Company ID");
+                RunPageLink = "Contact No." = field("TFB Primary Contact Company ID"),
+                              "Contact Company No." = field("TFB Primary Contact Company ID");
                 RunPageMode = Create;
                 ToolTip = 'Register a sales opportunity for the customer';
             }
@@ -282,7 +282,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
         }
         addafter("Co&mments")
         {
-            Action(TFBFavouriteItems)
+            action(TFBFavouriteItems)
             {
                 Caption = 'Favourite Items';
 

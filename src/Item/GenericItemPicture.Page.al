@@ -36,7 +36,7 @@ page 50134 "TFB Generic Item Picture"
                 Image = Camera;
 
                 ToolTip = 'Activate the camera on the device.';
-                Visible = CameraAvailable AND (HideActions = FALSE);
+                Visible = CameraAvailable and (HideActions = false);
 
                 trigger OnAction()
                 begin
@@ -49,7 +49,7 @@ page 50134 "TFB Generic Item Picture"
                 Caption = 'Import';
                 Image = Import;
                 ToolTip = 'Import a picture file.';
-                Visible = HideActions = FALSE;
+                Visible = HideActions = false;
 
                 trigger OnAction()
                 begin
@@ -62,7 +62,7 @@ page 50134 "TFB Generic Item Picture"
                 Caption = 'Export';
                 Image = Export;
                 ToolTip = 'Export a picture file.';
-                Visible = HideActions = FALSE;
+                Visible = HideActions = false;
 
                 trigger OnAction()
                 begin
@@ -77,7 +77,7 @@ page 50134 "TFB Generic Item Picture"
                 Enabled = DeleteExportEnabled;
                 Image = Delete;
                 ToolTip = 'Delete the record.';
-                Visible = HideActions = FALSE;
+                Visible = HideActions = false;
 
                 trigger OnAction()
                 begin
@@ -101,7 +101,7 @@ page 50134 "TFB Generic Item Picture"
 
     var
         Camera: Codeunit Camera;
-        [InDataSet]
+
         CameraAvailable: Boolean;
         //OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
         //SelectPictureTxt: Label 'Select a picture to upload';
@@ -143,13 +143,13 @@ page 50134 "TFB Generic Item Picture"
 
 
     begin
-        If Rec.Picture.count > 0 then
-            If not confirm(ConfMsg) then
+        if Rec.Picture.count > 0 then
+            if not confirm(ConfMsg) then
                 exit;
 
         ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, FileFilterTxt, ExtFilterTxt);
 
-        If TempBlob.HasValue() then begin
+        if TempBlob.HasValue() then begin
 
             TempBlob.CreateInStream(Instream);
             Clear(Rec.Picture);
@@ -171,13 +171,13 @@ page 50134 "TFB Generic Item Picture"
 
 
     begin
-        If Rec.Picture.Count = 0 then
+        if Rec.Picture.Count = 0 then
             Error(ConfMsg);
 
         for Index := 1 to Rec.Picture.count do
-            If TenantMedia.Get(Rec.Picture.Item(Index)) then begin
+            if TenantMedia.Get(Rec.Picture.Item(Index)) then begin
                 TenantMedia.CalcFields(content);
-                If TenantMedia.Content.HasValue then begin
+                if TenantMedia.Content.HasValue then begin
                     ImgFileName := ConvertStr(Rec.TableCaption + '_' + format(Rec.Description) + GetImgFileExt(TenantMedia), ' ', '_');
                     TenantMedia.Content.CreateInStream(Instream);
                     DownloadFromStream(Instream, '', '', '', ImgFileName);

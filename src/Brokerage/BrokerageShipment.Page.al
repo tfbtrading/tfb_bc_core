@@ -100,7 +100,7 @@ page 50229 "TFB Brokerage Shipment"
                     Importance = Promoted;
                     ToolTip = 'Specifies the customer reference';
                 }
-                Field("Document Date"; Rec."Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = All;
                     Importance = Promoted;
@@ -112,7 +112,7 @@ page 50229 "TFB Brokerage Shipment"
                     Caption = 'Required Sailing Date';
                     ToolTip = 'Specifies the estimated date the vessel departs origin';
                 }
-                Field("Required Arrival Date"; Rec."Required Arrival Date")
+                field("Required Arrival Date"; Rec."Required Arrival Date")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the approximate date the goods should arrive at destination';
@@ -258,7 +258,7 @@ page 50229 "TFB Brokerage Shipment"
                 field("Applied Invoice"; Rec."Applied Invoice")
                 {
                     ApplicationArea = All;
-                    Editable = False;
+                    Editable = false;
                     Tooltip = 'Specifies invoice applied to brokerage shipment';
 
                     trigger OnDrillDown()
@@ -271,12 +271,12 @@ page 50229 "TFB Brokerage Shipment"
                         InvPage: Page "Sales Invoice";
 
                     begin
-                        If Rec."Applied Invoice" <> '' then begin
+                        if Rec."Applied Invoice" <> '' then begin
 
                             Inv.SetRange("Document Type", Inv."Document Type"::Invoice);
                             Inv.SetRange("No.", Rec."Applied Invoice");
 
-                            If Inv.FindFirst() then begin
+                            if Inv.FindFirst() then begin
                                 InvPage.SetRecord(Inv);
                                 InvPage.Run();
                             end else begin
@@ -442,11 +442,11 @@ page 50229 "TFB Brokerage Shipment"
 
                     Clear(Inv);
 
-                    If BrokerageCU.RaiseInvoiceFromShipment(Rec, Inv) then begin
+                    if BrokerageCU.RaiseInvoiceFromShipment(Rec, Inv) then begin
                         CurrPage.Update(false);
 
 
-                        If Dialog.Confirm('Draft invoice %1 created - would you like to open it?', true, Inv."No.") then begin
+                        if Dialog.Confirm('Draft invoice %1 created - would you like to open it?', true, Inv."No.") then begin
                             InvPage.SetRecord(Inv);
                             InvPage.Run();
 
@@ -542,10 +542,10 @@ page 50229 "TFB Brokerage Shipment"
 
     begin
 
-        If Not Vendor.Get(Rec."Buy From Vendor No.") then
+        if not Vendor.Get(Rec."Buy From Vendor No.") then
             Error('No Vendor Record Found');
 
-        If contract.get(rec."Contract No.") and contact.get(contract."Buy-from Contact No.") and (contact."E-Mail" <> '') then
+        if contract.get(rec."Contract No.") and contact.get(contract."Buy-from Contact No.") and (contact."E-Mail" <> '') then
             Recipients.Add(contact."E-Mail")
         else
             if Vendor."E-Mail" = '' then
@@ -569,8 +569,8 @@ page 50229 "TFB Brokerage Shipment"
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO(Text001Msg, Rec."No."));
         HTMLBuilder.Append(CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
-        If RepSel.FindFirst() then
-            If REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStream, DocumentRef) and GenerateBrokerageContent(HTMLBuilder) then begin
+        if RepSel.FindFirst() then
+            if REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStream, DocumentRef) and GenerateBrokerageContent(HTMLBuilder) then begin
 
 
                 EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
@@ -580,7 +580,7 @@ page 50229 "TFB Brokerage Shipment"
                 Email.AddRelation(EmailMessage, Database::"TFB Brokerage Shipment", Rec.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
                 Email.AddRelation(EmailMessage, Database::Vendor, Vendor.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
-                If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
+                if not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
                     CommEntry.Init();
                     CommEntry."Source Type" := CommEntry."Source Type"::Vendor;
                     CommEntry."Source ID" := Vendor."No.";
@@ -620,11 +620,11 @@ page 50229 "TFB Brokerage Shipment"
         HTMLBuilder.Replace('%{DateValue}', Format(Rec."Est. Sailing Date", 0, 4));
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
         ReferenceBuilder.Append(StrSubstNo('Our order %1', Rec."No."));
-        If Rec."Customer Reference" <> '' then
+        if Rec."Customer Reference" <> '' then
             ReferenceBuilder.Append(StrSubstNo(' and customer ref no. is %1', Rec."Customer Reference"));
         HTMLBuilder.Replace('%{ReferenceValue}', ReferenceBuilder.ToText());
         HTMLBuilder.Replace('%{AlertText}', '');
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
     end;
 }

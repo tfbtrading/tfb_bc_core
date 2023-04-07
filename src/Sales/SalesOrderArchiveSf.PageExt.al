@@ -9,7 +9,7 @@ pageextension 50185 "TFB Sales Order Archive Sf" extends "Sales Order Archive Su
                 Caption = 'Total Weight';
                 ApplicationArea = All;
                 BlankNumbers = BlankZero;
-                Editable = False;
+                Editable = false;
                 ToolTip = 'Specifies the net weight of the line item';
             }
 
@@ -42,15 +42,15 @@ pageextension 50185 "TFB Sales Order Archive Sf" extends "Sales Order Archive Su
     local procedure GetTotalLineWeight(): Decimal
 
     begin
-        Exit(Rec."Net Weight" * Rec.Quantity);
+        exit(Rec."Net Weight" * Rec.Quantity);
     end;
 
     local procedure GetPricePerKg(): Decimal
 
     begin
-        If (Rec."Line Amount" > 0) and (GetTotalLineWeight() > 0) then
-            Exit(Rec."Line Amount" / GetTotalLineWeight())
+        if (Rec."Line Amount" > 0) and (GetTotalLineWeight() > 0) then
+            exit(Rec."Line Amount" / GetTotalLineWeight())
         else
-            Exit(0);
+            exit(0);
     end;
 }

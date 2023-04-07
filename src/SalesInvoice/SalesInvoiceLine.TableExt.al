@@ -7,7 +7,7 @@ tableextension 50139 "TFB Sales Invoice Line" extends "Sales Invoice Line" //113
 
             Caption = 'Sell-to Customer Name';
             FieldClass = FlowField;
-            CalcFormula = lookup("Sales Invoice Header"."Sell-to Customer Name" where("Sell-to Customer No." = FIELD("Sell-to Customer No.")));
+            CalcFormula = lookup("Sales Invoice Header"."Sell-to Customer Name" where("Sell-to Customer No." = field("Sell-to Customer No.")));
             Editable = false;
 
         }

@@ -23,11 +23,11 @@ pageextension 50193 "TFB Create Task" extends "Create Task"
                     PurchInvoice: Record "Purch. Inv. Header";
                     RecordRef: RecordRef;
                 begin
-                    If not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
+                    if not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
 
 
                     begin
-                        If not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
+                        if not (Rec."TFB Trans. Record ID".TableNo > 0) then exit;
                         RecordRef.Get(Rec."TFB Trans. Record ID");
                         case recordRef.Number() of
                             Database::"Sales Header":

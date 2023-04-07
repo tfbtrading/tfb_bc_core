@@ -117,9 +117,9 @@ page 50124 "TFB Confirm Purchase Orders"
             {
                 ApplicationArea = All;
                 Caption = 'Attachments';
-                SubPageLink = "Table ID" = CONST(38),
-                              "No." = FIELD("No."),
-                              "Document Type" = FIELD("Document Type");
+                SubPageLink = "Table ID" = const(38),
+                              "No." = field("No."),
+                              "Document Type" = field("Document Type");
             }
 
         }
@@ -140,14 +140,14 @@ page 50124 "TFB Confirm Purchase Orders"
         {
             Caption = 'Unconfirmed orders';
             SharedLayout = true;
-            filters = WHERE("Vendor Order No." = filter(''));
+            filters = where("Vendor Order No." = filter(''));
         }
 
     }
 
 
 
-    Local Procedure GetVendorConfirmPreference(): Boolean
+    local procedure GetVendorConfirmPreference(): Boolean
 
     var
 
@@ -155,11 +155,11 @@ page 50124 "TFB Confirm Purchase Orders"
 
     begin
 
-        If Vendor.Get(Rec."Buy-from Vendor No.") then
-            Exit(Vendor."TFB Vendor Provides Ref.");
+        if Vendor.Get(Rec."Buy-from Vendor No.") then
+            exit(Vendor."TFB Vendor Provides Ref.");
     end;
 
-    Local Procedure GetLineDate(): Date;
+    local procedure GetLineDate(): Date;
 
     var
         PurchaseLines: Record "Purchase Line";
@@ -168,11 +168,11 @@ page 50124 "TFB Confirm Purchase Orders"
     begin
         PurchaseLines.SetRange("Document Type", Rec."Document Type");
         PurchaseLines.SetRange("Document No.", Rec."No.");
-        If PurchaseLines.FindFirst() then
-            Exit(PurchaseLines."Expected Receipt Date");
+        if PurchaseLines.FindFirst() then
+            exit(PurchaseLines."Expected Receipt Date");
     end;
 
-    Local Procedure GetOrderLines(): Text
+    local procedure GetOrderLines(): Text
 
     var
         PurchaseLines: Record "Purchase Line";
@@ -181,7 +181,7 @@ page 50124 "TFB Confirm Purchase Orders"
     begin
         PurchaseLines.SetRange("Document Type", Rec."Document Type");
         PurchaseLines.SetRange("Document No.", Rec."No.");
-        If PurchaseLines.Findset(false, false) then
+        if PurchaseLines.Findset(false) then
             repeat
 
                 LineBuilder.AppendLine(StrSubstNo('%1 - %2 %3', PurchaseLines.Description, PurchaseLines.Quantity, PurchaseLines."Unit of Measure"));

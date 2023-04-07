@@ -8,7 +8,7 @@ pageextension 50129 "TFB Rlshp. Mgt. Comment Sheet" extends "Rlshp. Mgt. Comment
             {
                 ApplicationArea = All;
                 Caption = 'Created By';
-                Editable = False;
+                Editable = false;
             }
         }
     }
@@ -24,10 +24,10 @@ pageextension 50129 "TFB Rlshp. Mgt. Comment Sheet" extends "Rlshp. Mgt. Comment
     local procedure getCreatedByName(): Text[100]
 
     begin
-        If not User.GetBySystemId(Rec.SystemCreatedBy) then
+        if not User.GetBySystemId(Rec.SystemCreatedBy) then
             exit('')
         else
-            Exit(user."Full Name");
+            exit(user."Full Name");
 
     end;
 }

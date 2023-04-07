@@ -27,7 +27,7 @@ pageextension 50141 "TFB Reservation Entries" extends "Reservation Entries"
 
             begin
 
-                If IsNullGuid(_SalesHeaderSystemId) then exit;
+                if IsNullGuid(_SalesHeaderSystemId) then exit;
 
                 SalesHeader.GetBySystemId(_SalesHeaderSystemId);
 
@@ -63,7 +63,7 @@ pageextension 50141 "TFB Reservation Entries" extends "Reservation Entries"
         Clear(_SalesLineSystemId);
         Clear(_SalesHeaderSystemId);
 
-        If ReservationCU.GetSaleLineForItemResEntry(Rec, SalesLine, SalesHeader) then begin
+        if ReservationCU.GetSaleLineForItemResEntry(Rec, SalesLine, SalesHeader) then begin
             _CreateForExtended := SalesHeader."Sell-to Customer Name";
             _SalesLineSystemId := SalesLine.SystemId;
             _SalesHeaderSystemId := SalesHeader.SystemId;

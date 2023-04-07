@@ -13,7 +13,7 @@ enum 50231 "TFB Brokerage Contract Status"
     {
 
     }
-    Value(3; Closed)
+    value(3; Closed)
     {
 
     }

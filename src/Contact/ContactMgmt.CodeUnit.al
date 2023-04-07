@@ -68,22 +68,22 @@ codeunit 50111 "TFB Contact Mgmt"
 
         Contact.SetRange(Type, Contact.Type::Company);
 
-        If not Contact.FindSet(true, false) then exit;
+        if not Contact.FindSet(true) then exit;
 
         repeat
 
             BusRel.SetRange("Contact No.", contact."Company No.");
             BusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Customer);
 
-            If BusRel.FindFirst() then
-                If Customer.Get(BusRel."No.") then begin
+            if BusRel.FindFirst() then
+                if Customer.Get(BusRel."No.") then begin
 
                     Customer.CalcFields("No. of Orders", "No. of Pstd. Invoices");
 
                     StatusCurrent.SetRange(Status, Contact."TFB Contact Status");
 
-                    If not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0))) then
-                        If (StatusCurrent.Probability < 1) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0)) then
+                    if not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0))) then
+                        if (StatusCurrent.Probability < 1) and ((Customer."No. of Orders" > 0) or (Customer."No. of Pstd. Invoices" > 0)) then
                             Contact."TFB Contact Status" := Setup."Converted Status";
 
 
@@ -92,22 +92,22 @@ codeunit 50111 "TFB Contact Mgmt"
             BusRel.SetRange("Contact No.", contact."Company No.");
             BusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Vendor);
 
-            If BusRel.FindFirst() then
-                If Vendor.Get(BusRel."No.") then begin
+            if BusRel.FindFirst() then
+                if Vendor.Get(BusRel."No.") then begin
 
                     Vendor.CalcFields("No. of Orders", "No. of Pstd. Invoices");
 
                     StatusCurrent.SetRange(Status, Contact."TFB Contact Status");
 
-                    If not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0))) then
-                        If (StatusCurrent.Probability < 1) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0)) then
+                    if not (((StatusCurrent.Probability < 1) and (StatusCurrent.Stage = StatusCurrent.Stage::Converted)) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0))) then
+                        if (StatusCurrent.Probability < 1) and ((Vendor."No. of Orders" > 0) or (Vendor."No. of Pstd. Invoices" > 0)) then
                             Contact."TFB Contact Status" := Setup."Converted Status";
 
 
                 end;
 
             StatusNew.SetRange(Status, Contact."TFB Contact Status");
-            If StatusNew.FindFirst() then
+            if StatusNew.FindFirst() then
                 Contact.Validate("TFB Contact Stage", StatusNew.Stage);
             Contact.Modify();
         until Contact.Next() = 0;

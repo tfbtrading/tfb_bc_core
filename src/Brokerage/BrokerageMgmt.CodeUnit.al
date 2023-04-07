@@ -25,7 +25,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO(Text001Msg, RefNo));
         Result := SendBrokerageUpdateNotificationEmail(RefNo, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt));
-        Exit(Result);
+        exit(Result);
     end;
 
 
@@ -62,19 +62,19 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         CompanyInfo.Get();
 
-        If not Shipment.Get(RefNo) then exit(false);
+        if not Shipment.Get(RefNo) then exit(false);
 
-        If not Contract.Get(Shipment."Contract No.") then exit(false);
+        if not Contract.Get(Shipment."Contract No.") then exit(false);
 
-        If not Customer.Get(Shipment."Customer No.") then exit(false);
+        if not Customer.Get(Shipment."Customer No.") then exit(false);
 
-        If Contact.Get(Contract."Sell-to Contact No.") and (Contact."E-Mail" <> '') then
+        if Contact.Get(Contract."Sell-to Contact No.") and (Contact."E-Mail" <> '') then
             EmailID := Contact."E-Mail"
         else
             Customer."E-Mail" := '';
 
 
-        If Shipment."Customer Reference" <> '' then
+        if Shipment."Customer Reference" <> '' then
             ShipmentRef := Shipment."Customer Reference"
         else
             ShipmentRef := Shipment."No.";
@@ -84,11 +84,11 @@ codeunit 50242 "TFB Brokerage Mgmt"
         HTMLBuilder.Append(HTMLTemplate);
 
         //Check that content has been generated to send
-        If GenerateBrokerageUpdateContent(RefNo, HTMLBuilder) then begin
+        if GenerateBrokerageUpdateContent(RefNo, HTMLBuilder) then begin
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
             Email.AddRelation(EmailMessage, Database::"TFB Brokerage Shipment", Shipment.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
             Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
-            If not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
+            if not (Email.OpenInEditorModally(EmailMessage, EmailScenEnum::Logistics) = EmailAction::Discarded) then begin
                 CommEntry.Init();
                 CommEntry."Source Type" := CommEntry."Source Type"::Customer;
                 CommEntry."Source ID" := Customer."No.";
@@ -101,7 +101,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
                 CommEntry.Method := CommEntry.Method::EMAIL;
                 CommEntry.Insert();
 
-                Exit(True)
+                exit(true)
             end
         end;
     end;
@@ -134,13 +134,13 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         //Start with content introducing customer
 
-        If not Header.Get(RefNo) then
+        if not Header.Get(RefNo) then
             exit(false);
 
-        If not Customer.Get(Header."Customer No.") then
+        if not Customer.Get(Header."Customer No.") then
             exit(false);
 
-        If not Vendor.Get(Header."Buy From Vendor No.") then
+        if not Vendor.Get(Header."Buy From Vendor No.") then
             exit(false);
 
 
@@ -151,7 +151,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
         ReferenceBuilder.Append(StrSubstNo(OrderNoTxt, Header."No."));
 
-        If Header."Customer Reference" <> '' then
+        if Header."Customer Reference" <> '' then
             ReferenceBuilder.Append(StrSubstNo(CustomerRefTxt, Header."Customer Reference"));
 
         if Header."Vendor Invoice No." <> '' then
@@ -174,7 +174,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
         FieldList.Add(Header.FieldNo("Shipping Agent Code"));
         FieldList.Add(Header.FieldNo("Vessel Details"));
         FieldList.Add(Header.FieldNo("Container No."));
-        If Header."Vendor Invoice Due Date" > 0D then
+        if Header."Vendor Invoice Due Date" > 0D then
             FieldList.Add(Header.FieldNo("Vendor Invoice Due Date"));
 
 
@@ -184,11 +184,11 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
             FieldRef := RecordRef.Field(FieldNo);
 
-            If format(FieldRef.Value()) <> '' then begin
+            if format(FieldRef.Value()) <> '' then begin
                 Clear(LineBuilder);
                 LineBuilder.AppendLine('<tr>');
                 LineBuilder.Append(StrSubstNo(tdTxt, FieldRef.Caption));
-                If FieldRef.Type = FieldRef.Type::Date then
+                if FieldRef.Type = FieldRef.Type::Date then
                     LineBuilder.Append(StrSubstNo(tdTxt, Format(FieldRef.Value, 0, 4)))
                 else
                     LineBuilder.Append(StrSubstNo(tdTxt, Format(FieldRef.Value)));
@@ -203,7 +203,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
-        Exit(true);
+        exit(true);
 
     end;
     #endregion
@@ -220,9 +220,9 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
     begin
 
-        If Vendor.Get(VendorNo) then
-            If PaymentTerms.Get(Vendor."Payment Terms Code") then
-                Exit(CalcDate(PaymentTerms."Due Date Calculation", InvoiceDate));
+        if Vendor.Get(VendorNo) then
+            if PaymentTerms.Get(Vendor."Payment Terms Code") then
+                exit(CalcDate(PaymentTerms."Due Date Calculation", InvoiceDate));
 
     end;
 
@@ -233,11 +233,11 @@ codeunit 50242 "TFB Brokerage Mgmt"
         TFBBrokerageShipment: Record "TFB Brokerage Shipment";
     begin
 
-        If IsHandled then exit;
+        if IsHandled then exit;
 
         case SourceTableId of
             Database::"TFB Brokerage Shipment":
-                If TFBBrokerageShipment.GetBySystemId(SourceSystemId) then begin
+                if TFBBrokerageShipment.GetBySystemId(SourceSystemId) then begin
                     Page.Run(PAGE::"TFB Brokerage Shipment", TFBBrokerageShipment);
                     IsHandled := true;
 
@@ -268,7 +268,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
         CoreSetup.Get();
 
-        If CoreSetup."Brokerage Service Item" = '' then
+        if CoreSetup."Brokerage Service Item" = '' then
             Error(ErrorMsg);
 
         //Check if invoice or posted invoice already created
@@ -276,8 +276,8 @@ codeunit 50242 "TFB Brokerage Mgmt"
         Header.SetRange("Document Type", Header."Document Type"::Invoice);
         Header.SetRange("TFB Brokerage Shipment", BrokShipment."No.");
 
-        If (Invoice.IsEmpty()) and (Header.IsEmpty()) then
-            If GetCustomerNoForBrokerageVendor(BrokShipment."Buy From Vendor No.", CustomerNo) then begin
+        if (Invoice.IsEmpty()) and (Header.IsEmpty()) then
+            if GetCustomerNoForBrokerageVendor(BrokShipment."Buy From Vendor No.", CustomerNo) then begin
                 //Create new sales header and line
 
                 Header.Init();
@@ -297,7 +297,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
                              DataMgmtCU.FindFieldByName(RecordRef, FieldRef, 'Work Description');
                              TempBlobCU.ToRecordRef(RecordRef, FieldRef.Number()); */
 
-                If Header.Insert(true) then begin
+                if Header.Insert(true) then begin
 
                     Line.Init();
 
@@ -310,14 +310,14 @@ codeunit 50242 "TFB Brokerage Mgmt"
                     Line.Validate(Quantity, 1);
                     BrokShipment.CalcFields(Amount, "Brokerage Fee");
                     Line.Validate("Unit Price", BrokShipment."Brokerage Fee");
-                    If Line.Insert(true) then
+                    if Line.Insert(true) then
                         InsertSuccess := true;
 
                 end;
 
             end;
 
-        If InsertSuccess then begin
+        if InsertSuccess then begin
 
             BrokShipment."Applied Invoice" := Header."No.";
             BrokShipment.Status := BrokShipment.Status::"Supplier Invoiced";
@@ -326,7 +326,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
 
 
-            Exit(true);
+            exit(true);
 
         end;
 
@@ -344,9 +344,9 @@ codeunit 50242 "TFB Brokerage Mgmt"
     begin
 
         ContactNo := ContactRel.GetContactNo(ContactRel."Link to Table"::Vendor, VendNo);
-        If ContactRel.FindByContact(ContactRel."Link to Table"::Customer, ContactNo) then begin
+        if ContactRel.FindByContact(ContactRel."Link to Table"::Customer, ContactNo) then begin
             CustomerNo := (ContactRel."No.");
-            Exit(true);
+            exit(true);
         end;
     end;
 
@@ -380,14 +380,14 @@ codeunit 50242 "TFB Brokerage Mgmt"
             case BrokerageContract."Commission Type" of
                 BrokerageContract."Commission Type"::"$ per MT":
                     //Set Brokerage as Value per Metric Tonne Sold
-                    Exit(TotalMT * BrokerageContract."Fixed Rate");
+                    exit(TotalMT * BrokerageContract."Fixed Rate");
                 BrokerageContract."Commission Type"::"% of Value":
                     //Set Brokerage as % of Total Line Value - Assume that Percentage Field needs to be divided by 100
-                    Exit(Amount * BrokerageContract.Percentage / 100);
+                    exit(Amount * BrokerageContract.Percentage / 100);
             end;
         end
         else
-            Exit(0)
+            exit(0)
     end;
 
 
@@ -399,7 +399,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
     begin
 
-        If SalesInvoiceHeader."TFB Brokerage Shipment" <> '' then
+        if SalesInvoiceHeader."TFB Brokerage Shipment" <> '' then
             //Update reference  with posted document
 
             if BrokerageShipment.Get(SalesInvoiceHeader."TFB Brokerage Shipment") then

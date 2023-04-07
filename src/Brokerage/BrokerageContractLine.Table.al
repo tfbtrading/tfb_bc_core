@@ -25,7 +25,7 @@ table 50224 "TFB Brokerage Contract Line"
                 ItemRecord: record Item;
 
             begin
-                If ItemRecord.Get("Item No.") then
+                if ItemRecord.Get("Item No.") then
                     Description := ItemRecord.Description;
             end;
         }

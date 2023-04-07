@@ -58,7 +58,7 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                     DrillDown = true;
                     Tooltip = 'Specifies vendor name for purchase invoice';
 
-                    Trigger OnDrillDown()
+                    trigger OnDrillDown()
 
                     var
                         VendorRec: Record Vendor;
@@ -131,7 +131,7 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
         }
         area(Factboxes)
         {
-            Part(Item; "Item Invoicing FactBox")
+            part(Item; "Item Invoicing FactBox")
             {
                 SubPageLink = "No." = field("No.");
                 ApplicationArea = All;
@@ -192,7 +192,7 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
     begin
 
         PricingUnit := PricingUnit::KG;
-        If Rec.Type = Rec.Type::Item then
+        if Rec.Type = Rec.Type::Item then
             PricePerKg := PricingCU.CalculatePriceUnitByUnitPrice(Rec."No.", Rec."Unit of Measure Code", PricingUnit, Rec."Direct Unit Cost")
         else
             PricePerKg := 0;

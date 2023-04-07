@@ -15,14 +15,14 @@ table 50181 "TFB Container Entry"
 
             trigger OnValidate()
 
-            BEGIN
-                IF "No." <> xRec."No." THEN BEGIN
+            begin
+                if "No." <> xRec."No." then begin
 
                     CoreSetup.Get();
                     NoSeriesMgt.TestManual(CoreSetup."Container Entry Nos.");
                     "No. Series" := '';
 
-                END;
+                end;
             end;
 
 
@@ -61,7 +61,7 @@ table 50181 "TFB Container Entry"
             Caption = 'Vendor Name';
             DataClassification = CustomerContent;
             TableRelation = Vendor;
-            ValidateTableRelation = False;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
 
@@ -130,7 +130,7 @@ table 50181 "TFB Container Entry"
                 end;
 
 
-                If Rec.Status = Rec.Status::PendingClearance then
+                if Rec.Status = Rec.Status::PendingClearance then
                     ContainerMgmt.UpdateLotInfoWithInspectionStatus(Rec, false);
 
                 if Confirm(Msg) then
@@ -146,7 +146,7 @@ table 50181 "TFB Container Entry"
         }
         field(92; "Closed"; Boolean)
         {
-            InitValue = False;
+            InitValue = false;
             DataClassification = CustomerContent;
             Editable = false;
         }
@@ -154,10 +154,10 @@ table 50181 "TFB Container Entry"
         {
             DataClassification = CustomerContent;
 
-            Trigger OnValidate()
+            trigger OnValidate()
 
             begin
-                If Rec.Type <> xRec.Type then
+                if Rec.Type <> xRec.Type then
                     Validate("Order Reference", '');
 
             end;
@@ -254,8 +254,8 @@ table 50181 "TFB Container Entry"
             trigger OnValidate()
 
             begin
-                If "Est. Departure Date" < Today() then
-                    If Dialog.Confirm('Est. Departure Date of %1 is before today. Are you sure?', false, "Est. Departure Date") then
+                if "Est. Departure Date" < Today() then
+                    if Dialog.Confirm('Est. Departure Date of %1 is before today. Are you sure?', false, "Est. Departure Date") then
                         RecalculateDates()
                     else
                         "Est. Departure Date" := xrec."Est. Departure Date";
@@ -271,8 +271,8 @@ table 50181 "TFB Container Entry"
             trigger OnValidate()
 
             begin
-                If "Est. Arrival Date" < Today() then
-                    If Dialog.Confirm('Est. Arrival Date of %1 is before today. Are you sure?', false, "Est. Arrival Date") then
+                if "Est. Arrival Date" < Today() then
+                    if Dialog.Confirm('Est. Arrival Date of %1 is before today. Are you sure?', false, "Est. Arrival Date") then
                         RecalculateDates("Est. Arrival Date")
                     else
                         "Est. Arrival Date" := xrec."Est. Arrival Date";
@@ -288,8 +288,8 @@ table 50181 "TFB Container Entry"
             trigger OnValidate()
 
             begin
-                If "Est. Warehouse" < Today() then
-                    If not Dialog.Confirm('Est. Availability Date of %1 is before today. Are you sure?', false, "Est. Warehouse") then
+                if "Est. Warehouse" < Today() then
+                    if not Dialog.Confirm('Est. Availability Date of %1 is before today. Are you sure?', false, "Est. Warehouse") then
                         "Est. Warehouse" := xrec."Est. Warehouse";
 
             end;
@@ -312,7 +312,7 @@ table 50181 "TFB Container Entry"
                 ContainerMgmt: CodeUnit "TFB Container Mgmt";
 
             begin
-                If Rec.Status = Rec.Status::PendingClearance then
+                if Rec.Status = Rec.Status::PendingClearance then
                     ContainerMgmt.UpdateLotInfoWithInspectionStatus(Rec, false)
                 else
                     if Rec.Status = Rec.Status::PendingUnpack then
@@ -435,7 +435,7 @@ table 50181 "TFB Container Entry"
             trigger OnValidate()
 
             begin
-                If not Rec."Customer Direct" then
+                if not Rec."Customer Direct" then
                     "Direct Sales Order No." := '';
             end;
 
@@ -525,7 +525,7 @@ table 50181 "TFB Container Entry"
     trigger OnInsert()
     begin
 
-        If "No." = '' then begin
+        if "No." = '' then begin
             CoreSetup.Get();
 
             CoreSetup.TestField("Container Entry Nos.");
@@ -542,7 +542,7 @@ table 50181 "TFB Container Entry"
 
     begin
 
-        If not SalesHeader.Get(SalesHeader."Document Type"::Order, "Direct Sales Order No.") then exit;
+        if not SalesHeader.Get(SalesHeader."Document Type"::Order, "Direct Sales Order No.") then exit;
 
         TextBuilder.AppendLine(SalesHeader."Sell-to Customer Name");
 
@@ -597,7 +597,7 @@ table 50181 "TFB Container Entry"
                 end;
 
                 if lcProfile.get("Landed Cost Template") then
-                    If not (lcProfile."Demurrage Days" = testDF) then
+                    if not (lcProfile."Demurrage Days" = testDF) then
                         "Est. Return Cutoff" := CalcDate(lcProfile."Demurrage Days", DT2Date(estAvailToPickup));
 
 
@@ -644,7 +644,7 @@ table 50181 "TFB Container Entry"
                     end;
 
                     if lcProfile.get("Landed Cost Template") then
-                        If not (lcProfile."Demurrage Days" = testDF) then
+                        if not (lcProfile."Demurrage Days" = testDF) then
                             "Est. Return Cutoff" := CalcDate(lcProfile."Demurrage Days", DT2Date(estAvailToPickup));
 
 
@@ -682,16 +682,16 @@ table 50181 "TFB Container Entry"
         ContainerEntry.Reset();
         ContainerEntry.SetRange("Order Type", "Order Type");
         ContainerEntry.SetRange("Order Reference", OrderReference);
-        If not ContainerEntry.Isempty() then begin
+        if not ContainerEntry.Isempty() then begin
             FieldError("Order Reference", 'Purchase Order Already has a Container Specified as' + ContainerEntry."Container No.");
-            Exit(false);
+            exit(false);
         end;
 
 
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", OrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        if PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -701,9 +701,9 @@ table 50181 "TFB Container Entry"
 
                 //Check if any item on line requires special treament and flag on container
                 Item.Reset();
-                If Item.Get(PurchaseLine."No.") then begin
-                    If Item."TFB Fumigation" = true then FumigationReq := true;
-                    If Item."TFB Inspection" = true then InspectionReq := true;
+                if Item.Get(PurchaseLine."No.") then begin
+                    if Item."TFB Fumigation" = true then FumigationReq := true;
+                    if Item."TFB Inspection" = true then InspectionReq := true;
                 end;
 
             until PurchaseLine.Next() = 0;
@@ -732,16 +732,16 @@ table 50181 "TFB Container Entry"
         ContainerEntry.Reset();
         ContainerEntry.SetRange("Order Type", "Order Type");
         ContainerEntry.SetRange("Order Reference", NewOrderReference);
-        If not ContainerEntry.IsEmpty() then begin
+        if not ContainerEntry.IsEmpty() then begin
             FieldError("Order Reference", 'Purchase Order Already has a Container Specified as' + ContainerEntry."Container No.");
-            Exit(false);
+            exit(false);
         end;
 
 
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", NewOrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        if PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -750,9 +750,9 @@ table 50181 "TFB Container Entry"
 
                 //Check if any item on line requires special treament and flag on container
                 Item.Reset();
-                If Item.Get(PurchaseLine."No.") then begin
-                    If Item."TFB Fumigation" = true then FumigationReq := true;
-                    If Item."TFB Inspection" = true then InspectionReq := true;
+                if Item.Get(PurchaseLine."No.") then begin
+                    if Item."TFB Fumigation" = true then FumigationReq := true;
+                    if Item."TFB Inspection" = true then InspectionReq := true;
                 end;
 
             until PurchaseLine.Next() = 0;
@@ -764,7 +764,7 @@ table 50181 "TFB Container Entry"
         PurchaseLine.Reset();
         PurchaseLine.SetRange("Document No.", OldOrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        if PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -788,7 +788,7 @@ table 50181 "TFB Container Entry"
         //Get Purchase Lines related to order reference
         PurchaseLine.SetRange("Document No.", OrderReference);
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
-        If PurchaseLine.FindSet(true, false) then
+        if PurchaseLine.FindSet(true) then
             repeat
 
                 //Set correct reference to TFB container entry no.
@@ -822,7 +822,7 @@ table 50181 "TFB Container Entry"
 
 
                     PurchaseOrders."No." := "Order Reference";
-                    If Page.RunModal(PAGE::"Purchase Order List", PurchaseOrders, "No.") = Action::LookupOK then
+                    if Page.RunModal(PAGE::"Purchase Order List", PurchaseOrders, "No.") = Action::LookupOK then
                         exit(PurchaseOrders."No.");
 
                 end;

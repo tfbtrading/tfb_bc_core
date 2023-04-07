@@ -15,20 +15,20 @@ codeunit 50105 "TFB Reservations Mgmt"
         ResEntryDemand.SetRange("Entry No.", ResEntrySupply."Entry No.");
         ResEntryDemand.SetRange(Positive, false);
 
-        If ResEntryDemand.FindFirst() then
-            If ResEntryDemand."Source Type" = 37 then begin
+        if ResEntryDemand.FindFirst() then
+            if ResEntryDemand."Source Type" = 37 then begin
                 Clear(SalesLine);
                 SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
                 SalesLine.SetRange("Document No.", ResEntryDemand."Source ID");
                 SalesLine.SetRange("Line No.", ResEntryDemand."Source Ref. No.");
 
-                If SalesLine.FindFirst() then begin
+                if SalesLine.FindFirst() then begin
 
                     SalesHeader.SetRange("Document Type", SalesLine."Document Type");
                     SalesHeader.SetRange("No.", SalesLine."Document No.");
 
-                    If SalesHeader.FindFirst() then
-                        Exit(true);
+                    if SalesHeader.FindFirst() then
+                        exit(true);
                 end;
 
             end;

@@ -10,7 +10,7 @@ pageextension 50149 "TFB Sales Hist. Sell-to FB" extends "Sales Hist. Sell-to Fa
                 DrillDown = true;
                 DrillDownPageId = "TFB Pending Sales Lines";
                 Caption = 'Ongoing Sales Lines';
-                Visible = True;
+                Visible = true;
                 Tooltip = 'Shows the number of sales line not shipped and invoiced';
 
 

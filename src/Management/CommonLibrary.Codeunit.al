@@ -21,7 +21,7 @@ codeunit 50142 "TFB Common Library"
         Log.SetCurrentKey("Date and Time");
         Log.SetAscending("Date and Time", false);
 
-        If not Log.IsEmpty then begin
+        if not Log.IsEmpty then begin
 
             LogP.SetTableView(Log);
             LogP.Run();
@@ -53,7 +53,7 @@ codeunit 50142 "TFB Common Library"
         CoreSetup.Get();
         urlTok := CoreSetup."Email Template Active";
 
-        If urlTok = '' then Error('No URL defined for transactional email template');
+        if urlTok = '' then Error('No URL defined for transactional email template');
 
         HttpClient.Get(urlTok, HttpResponseMessage);
         HttpResponseMessage.Content().ReadAs(IStream);
@@ -63,7 +63,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateInStream(IStream);
 
 
-        While not (IStream.EOS()) do begin
+        while not (IStream.EOS()) do begin
             IStream.ReadText(BlobText);
             HTMLBuilder.AppendLine(BlobText);
         end;
@@ -71,7 +71,7 @@ codeunit 50142 "TFB Common Library"
 
         HTMLBuilder.Replace('%{EmailTitle}', TitleText);
         HTMLBuilder.Replace('%{EmailSubTitle}', SubTitleText);
-        Exit(HTMLBuilder.ToText())
+        exit(HTMLBuilder.ToText())
     end;
 
     procedure GetHTMLScaledImageTemplate(ImageURL: text; ImageDescription: text): Text
@@ -102,7 +102,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateInStream(IStream);
 
 
-        While not (IStream.EOS()) do begin
+        while not (IStream.EOS()) do begin
             IStream.ReadText(BlobText);
             HTMLBuilder.AppendLine(BlobText);
         end;
@@ -110,7 +110,7 @@ codeunit 50142 "TFB Common Library"
 
         HTMLBuilder.Replace('{ImageUrl}', ImageURL);
         HTMLBuilder.Replace('{ImageDescription}', ImageDescription);
-        Exit(HTMLBuilder.ToText())
+        exit(HTMLBuilder.ToText())
     end;
 
     procedure GetSpecificationURL(Item: Record Item): Text
@@ -121,9 +121,9 @@ codeunit 50142 "TFB Common Library"
     begin
         CoreSetup.Get();
         urlTok := CoreSetup."Specification URL Pattern";
-        If urlTok = '' then Error('No URL defined for transactional email template');
+        if urlTok = '' then Error('No URL defined for transactional email template');
         if Item."No." = '' then Error('No valid item code defined');
-        Exit(StrSubstNo(urlTok, Item."No."));
+        exit(StrSubstNo(urlTok, Item."No."));
     end;
 
     procedure GetLotImagesURL(type: Text; blobName: Text): Text
@@ -137,7 +137,7 @@ codeunit 50142 "TFB Common Library"
         urlTok := 'https://tfb-manipulator.azurewebsites.net/api/%1?image_path=https://tfbmanipulator.blob.core.windows.net/images/isolated/%2';
 
         if (urlTok = '') or (type = '') or (blobName = '') then error('Incorrect details provided for url construction');
-        Exit(StrSubstNo(urlTok, type, blobName));
+        exit(StrSubstNo(urlTok, type, blobName));
     end;
 
     procedure GetLotImagesURL(type: Text; blobName: Text; lotCode: text; itemNo: text): Text
@@ -151,7 +151,7 @@ codeunit 50142 "TFB Common Library"
         urlTok := 'https://tfb-manipulator.azurewebsites.net/api/%1?image_path=https://tfbmanipulator.blob.core.windows.net/images/isolated/%2&lot_code=%3&product_code=%4';
 
         if (urlTok = '') or (type = '') or (blobName = '') or (lotCode = '') or (itemNo = '') then error('Incorrect details provided for url construction');
-        Exit(StrSubstNo(urlTok, type, blobName, lotCode, itemNo));
+        exit(StrSubstNo(urlTok, type, blobName, lotCode, itemNo));
     end;
 
 
@@ -166,7 +166,7 @@ codeunit 50142 "TFB Common Library"
         urlTok := 'https://tfb-manipulator.azurewebsites.net/api/isolate?image_path=https://tfbmanipulator.blob.core.windows.net/images/%1&bowl_diameter=%2';
 
 
-        Exit(StrSubstNo(urlTok, originalBlobName, bowldiameter));
+        exit(StrSubstNo(urlTok, originalBlobName, bowldiameter));
     end;
 
     procedure GetSpecificationTempBlob(Item: Record Item): Codeunit "Temp Blob"
@@ -184,7 +184,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
 
-        Exit(TempBlobCU);
+        exit(TempBlobCU);
     end;
 
     procedure GetLotImagesTempBlob(type: text; blobName: text): Codeunit "Temp Blob"
@@ -202,7 +202,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
 
-        Exit(TempBlobCU);
+        exit(TempBlobCU);
     end;
 
     procedure GetLotImagesTempBlob(type: text; blobName: text; lotCode: text; itemNo: text): Codeunit "Temp Blob"
@@ -220,7 +220,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
 
-        Exit(TempBlobCU);
+        exit(TempBlobCU);
     end;
 
     procedure GetIsolatedImagesTempBlob(OriginalBlobName: text; BowlDiameter: Integer): Codeunit "Temp Blob"
@@ -238,7 +238,7 @@ codeunit 50142 "TFB Common Library"
         TempBlobCU.CreateOutStream(OStream);
         CopyStream(OStream, IStream);
 
-        Exit(TempBlobCU);
+        exit(TempBlobCU);
     end;
 
     procedure GetCustDelInstr(CustomerNo: Code[20]; ShipToCode: Code[10]): Text[2048]
@@ -252,30 +252,30 @@ codeunit 50142 "TFB Common Library"
 
         begin
             DelInstrBuilder.Clear();
-            If ShipToAddress.Get(CustomerNo, ShipToCode) then begin
+            if ShipToAddress.Get(CustomerNo, ShipToCode) then begin
                 DelInstrBuilder.Append(ShipToAddress."TFB Delivery Instructions");
-                If ShipToAddress."TFB Override Pallet Details" and (ShipToAddress."TFB Pallet Account No." <> '') then begin
+                if ShipToAddress."TFB Override Pallet Details" and (ShipToAddress."TFB Pallet Account No." <> '') then begin
                     DelInstrBuilder.AppendLine(format(ShipToAddress."TFB Pallet Acct Type"));
                     DelInstrBuilder.Append('-' + ShipToAddress."TFB Pallet Account No.");
                 end
                 else
-                    If Customer."TFB Pallet Account No" <> '' then begin
+                    if Customer."TFB Pallet Account No" <> '' then begin
                         DelInstrBuilder.AppendLine(format(Customer."TFB Pallet Acct Type"));
                         DelInstrBuilder.AppendLine('-' + Customer."TFB Pallet Account No");
                     end;
             end
             else
-                If Customer.get(CustomerNo) then begin
+                if Customer.get(CustomerNo) then begin
 
                     DelInstrBuilder.Append(Customer."TFB Delivery Instructions");
-                    If Customer."TFB Pallet Account No" <> '' then begin
+                    if Customer."TFB Pallet Account No" <> '' then begin
                         DelInstrBuilder.AppendLine(format(Customer."TFB Pallet Acct Type"));
                         DelInstrBuilder.AppendLine(Customer."TFB Pallet Account No");
                     end;
 
                 end;
 
-            Exit(CopyStr(DelInstrBuilder.ToText(), 1, 2048));
+            exit(CopyStr(DelInstrBuilder.ToText(), 1, 2048));
 
 
         end;
@@ -289,14 +289,14 @@ codeunit 50142 "TFB Common Library"
     begin
 
         EffectiveIR := (AnnualRate / 100 / 365) * Days;
-        Exit(EffectiveIR);
+        exit(EffectiveIR);
 
     end;
 
     procedure ConvertDurationToDays(Duration: Duration): Decimal
 
     begin
-        Exit(Duration / 3600000 / 24)
+        exit(Duration / 3600000 / 24)
     end;
 
     procedure CheckAndSendCoA(OrderNo: Code[20]; SuppressErr: Boolean; CheckPref: Boolean; Resend: Boolean): Boolean
@@ -354,12 +354,12 @@ codeunit 50142 "TFB Common Library"
         SalesLine.SetRange(Type, SalesLine.Type::Item);
         Salesline.SetFilter(Quantity, '>0');
 
-        If SalesLine.FindSet(true, false) then begin
+        if SalesLine.Findset(true) then begin
 
             //Check to See if Customer wants COA's
             Customer.Get(SalesLine."Sell-to Customer No.");
-            If (not Customer."TFB CoA Required") and (checkPref = true) then
-                Exit(false);
+            if (not Customer."TFB CoA Required") and (checkPref = true) then
+                exit(false);
 
             if Customer."TFB CoA Alt. Email" = '' then
                 EmailID := Customer."E-Mail"
@@ -387,7 +387,7 @@ codeunit 50142 "TFB Common Library"
             BodyBuilder.AppendLine('<br>');
             BodyBuilder.AppendLine('Please find attached Certificate of analysis details for our order ' + OrderNo);
             BodyBuilder.AppendLine('<table><tr><th>Item Name</th><th>Item Code</th><th>File Name</th>');
-            HeaderSetup := True;
+            HeaderSetup := true;
 
 
             //Document is so look for reservation entries, not ledger entries
@@ -399,17 +399,17 @@ codeunit 50142 "TFB Common Library"
                     ReservationEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
 
 
-                    If ReservationEntry.FindSet(false, false) then
+                    if ReservationEntry.Findset(false) then
                         repeat
                             //Look through reservation entries
                             LotInfo.SetRange("Item No.", ReservationEntry."Item No.");
                             LotInfo.SetRange("Lot No.", ReservationEntry."Lot No.");
                             LotInfo.SetRange("Variant Code", ReservationEntry."Variant Code");
 
-                            If LotInfo.FindFirst() then begin
+                            if LotInfo.FindFirst() then begin
                                 LoopCount := LoopCount + 1;
 
-                                If PersBlobCU.Exists(LotInfo."TFB CoA Attach.") then begin
+                                if PersBlobCU.Exists(LotInfo."TFB CoA Attach.") then begin
 
                                     //Add attachmemnt details
                                     TempBlobCU.CreateOutStream(OutStream);
@@ -448,17 +448,17 @@ codeunit 50142 "TFB Common Library"
         ShipmentLine.SetFilter(Quantity, '>0');
 
 
-        if ShipmentLine.FindSet(true, false) then
+        if ShipmentLine.Findset(true) then
             repeat
-                If (not ShipmentLine."TFB CoA Sent") or (Resend = false) then begin
+                if (not ShipmentLine."TFB CoA Sent") or (Resend = false) then begin
 
                     if FirstShipment and not HeaderSetup then begin
                         //Check to See if Customer wants COA's
                         Customer.Get(ShipmentLine."Sell-to Customer No.");
-                        If not Customer."TFB CoA Required" then
-                            Exit(false);
+                        if not Customer."TFB CoA Required" then
+                            exit(false);
 
-                        If (not Customer."TFB CoA Required") and (checkPref = true) then
+                        if (not Customer."TFB CoA Required") and (checkPref = true) then
                             EmailID := Customer."E-Mail"
                         else
                             EmailID := Customer."TFB CoA Alt. Email";
@@ -471,7 +471,7 @@ codeunit 50142 "TFB Common Library"
 
                         //Retrieve Shipment
                         Shipment.SetRange("Order No.", OrderNo);
-                        If Shipment.FindFirst() then
+                        if Shipment.FindFirst() then
                             if Shipment."External Document No." <> '' then begin
                                 SubjectNameBuilder.Append(' for your PO Ref ');
                                 SubjectNameBuilder.Append(Shipment."External Document No.");
@@ -485,7 +485,7 @@ codeunit 50142 "TFB Common Library"
                         BodyBuilder.AppendLine('<br><br>');
                         BodyBuilder.AppendLine('Please find attached Certificate of analysis details for our order ' + OrderNo);
 
-                        If SalesOrder."External Document No." <> '' then
+                        if SalesOrder."External Document No." <> '' then
                             BodyBuilder.Append(' and your order reference ' + SalesOrder."External Document No.");
 
                         BodyBuilder.AppendLine('<table><tr><th>Item Name</th><th>Item Code</th><th>File Name</th>');
@@ -497,7 +497,7 @@ codeunit 50142 "TFB Common Library"
                     LedgerEntry.SetRange("Document Type", LedgerEntry."Document Type"::"Sales Shipment");
                     LedgerEntry.SetRange("Document No.", ShipmentLine."Document No.");
 
-                    If LedgerEntry.FindSet(false, false) then
+                    if LedgerEntry.Findset(false) then
                         repeat
 
                             //Get Lot Info
@@ -505,11 +505,11 @@ codeunit 50142 "TFB Common Library"
                             LotInfo.SetRange("Lot No.", LedgerEntry."Lot No.");
                             LotInfo.SetRange("Variant Code", LedgerEntry."Variant Code");
 
-                            If LotInfo.FindFirst() then begin
+                            if LotInfo.FindFirst() then begin
 
                                 //Indicate that Lot COA has been found
                                 LoopCount := LoopCount + 1;
-                                If PersBlobCU.Exists(LotInfo."TFB CoA Attach.") then begin
+                                if PersBlobCU.Exists(LotInfo."TFB CoA Attach.") then begin
 
                                     //Add attachmemnt details
                                     TempBlobCU.CreateOutStream(OutStream);
@@ -544,7 +544,7 @@ codeunit 50142 "TFB Common Library"
         BodyBuilder.AppendLine('<HR> This is a system generated mail. Please do not reply');
 
 
-        If LoopCount > 0 then begin
+        if LoopCount > 0 then begin
 
             EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), BodyBuilder.ToText(), true);
             EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
@@ -563,10 +563,10 @@ codeunit 50142 "TFB Common Library"
             CommEntry.Method := CommEntry.Method::EMAIL;
             CommEntry.Insert();
 
-            Exit(True);
+            exit(true);
 
         end else
-            Exit(False);
+            exit(false);
 
     end;
 
@@ -577,9 +577,9 @@ codeunit 50142 "TFB Common Library"
 
     begin
 
-        If User.Get(Database.UserSecurityId()) then
-            If UserSetup.Get(User."User Name") then
-                Exit(UserSetup."TFB Show External IDs");
+        if User.Get(Database.UserSecurityId()) then
+            if UserSetup.Get(User."User Name") then
+                exit(UserSetup."TFB Show External IDs");
 
     end;
 }

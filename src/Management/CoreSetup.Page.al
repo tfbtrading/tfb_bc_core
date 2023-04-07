@@ -187,10 +187,10 @@ page 50173 "TFB Core Setup"
 
             }
 
-            Group(ItemCostings)
+            group(ItemCostings)
             {
                 Caption = 'Item Costings';
-                GROUP(General)
+                group(General)
                 {
 
                     field("Default Postal Zone"; Rec."Default Postal Zone")

@@ -33,18 +33,18 @@ page 50228 "TFB Brokerage Shipment Subform"
                         BrokerContractLines.Reset();
                         BrokerContractLines.SetRange("Document No.", BrokerageShipment."Contract No.");
 
-                        If BrokerContractLines.FindSet() then
+                        if BrokerContractLines.FindSet() then
                             repeat
-                                If FilterLiteral = '' then
+                                if FilterLiteral = '' then
                                     FilterLiteral := BrokerContractLines."Item No."
                                 else
                                     FilterLiteral += '|' + BrokerContractLines."Item No."
                                 until BrokerContractLines.Next() = 0;
 
                         Item.SetFilter(Item."No.", FilterLiteral);
-                        If PAGE.RunModal(0, Item) = Action::LookupOK THEN begin
+                        if PAGE.RunModal(0, Item) = Action::LookupOK then begin
                             Text := Item."No.";
-                            Exit(true);
+                            exit(true);
                         end;
                     end;
                 }
@@ -140,8 +140,8 @@ page 50228 "TFB Brokerage Shipment Subform"
 
     begin
 
-        If BrokerageShipment.Get(Rec."Document No.") then
-            Exit(BrokerageShipment.Bulkers);
+        if BrokerageShipment.Get(Rec."Document No.") then
+            exit(BrokerageShipment.Bulkers);
 
     end;
 

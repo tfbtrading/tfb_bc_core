@@ -10,7 +10,7 @@ page 50164 "TFB Forex Candidate Lines"
     InsertAllowed = false;
     LinksAllowed = false;
     DelayedInsert = true;
-    SourceTableView = Where(EntryType = filter('PurchaseOrder|VendorLedgerEntry'));
+    SourceTableView = where(EntryType = filter('PurchaseOrder|VendorLedgerEntry'));
 
 
     layout
@@ -133,7 +133,7 @@ page 50164 "TFB Forex Candidate Lines"
     var
 
     begin
-        Exit(Rec."Currency Code");
+        exit(Rec."Currency Code");
 
     end;
 
@@ -161,9 +161,9 @@ page 50164 "TFB Forex Candidate Lines"
         VendorLedgerEntry.SetRange(Open, true);
         VendorLedgerEntry.LoadFields(Amount, "Due Date", Open, "Adjusted Currency Factor", "External Document No.", "Currency Code", "Original Amount");
 
-        If VendorLedgerEntry.FindSet(false, false) then
+        if VendorLedgerEntry.Findset(false) then
             repeat
-                If Rec.getRemainingAmountByVendorLedgerEntry(VendorLedgerEntry) > 0 then begin
+                if Rec.getRemainingAmountByVendorLedgerEntry(VendorLedgerEntry) > 0 then begin
                     Rec.Init();
                     Rec."Entry No." := VendorLedgerEntry."Entry No.";
 
@@ -197,13 +197,13 @@ page 50164 "TFB Forex Candidate Lines"
 
 
         StyleTxt: Text;
-        [InDataSet]
+
         TotalBalance: Decimal;
-        [InDataSet]
+
         TotalRemaining: Decimal;
-        [InDataSet]
+
         TotalBalanceEnable: Boolean;
-        [InDataSet]
+
         TotalRemainingEnable: Boolean;
 
 

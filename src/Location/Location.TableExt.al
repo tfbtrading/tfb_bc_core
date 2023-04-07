@@ -92,11 +92,11 @@ tableextension 50100 "TFB Location" extends Location
 
             begin
 
-                If not xRec."TFB Location Check First" and Rec."TFB Location Check First" then begin
+                if not xRec."TFB Location Check First" and Rec."TFB Location Check First" then begin
                     Location.SetRange(County, Rec.County);
                     Location.SetRange("TFB Location Check First", true);
 
-                    If not Location.IsEmpty() then
+                    if not Location.IsEmpty() then
                         FieldError("TFB Location Check First", 'Another location already has this priority for the same state');
 
                 end
@@ -118,7 +118,7 @@ tableextension 50100 "TFB Location" extends Location
                 Text001Msg: Label 'Time must be between 10am and 8pm';
 
             begin
-                If ("TFB Outbound Order Deadline" < 100000T) or ("TFB Outbound Order Deadline" > 200000T) then
+                if ("TFB Outbound Order Deadline" < 100000T) or ("TFB Outbound Order Deadline" > 200000T) then
                     FieldError("TFB Outbound Order Deadline", Text001Msg);
 
             end;

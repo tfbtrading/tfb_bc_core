@@ -85,8 +85,8 @@ pageextension 50134 "TFB Posted Sales Shipments" extends "Posted Sales Shipments
                     ShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";
                 begin
 
-                    If Rec."No." <> '' then
-                        If ShipmentCU.SendOneShipmentNotificationEmail(Rec."No.") then
+                    if Rec."No." <> '' then
+                        if ShipmentCU.SendOneShipmentNotificationEmail(Rec."No.") then
                             Message('Sent Notification');
 
                 end;
@@ -108,8 +108,8 @@ pageextension 50134 "TFB Posted Sales Shipments" extends "Posted Sales Shipments
                     CommonCU: Codeunit "TFB Common Library";
                 begin
 
-                    If Rec."No." <> '' then
-                        If CommonCU.CheckAndSendCoA(Rec."Order No.", false, false, true) then
+                    if Rec."No." <> '' then
+                        if CommonCU.CheckAndSendCoA(Rec."Order No.", false, false, true) then
                             Message('Sent COA(s) to customer')
                         else
                             Message('No CoA(s) to send to customer');

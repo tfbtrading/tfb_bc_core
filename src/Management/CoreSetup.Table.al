@@ -33,23 +33,23 @@ table 50125 "TFB Core Setup"
         field(50; "Port Documents"; Code[20])
         {
             TableRelation = "Item Charge";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
         }
         //You might want to add fields here
         field(60; "Fumigation Fees Item Charge"; code[20])
         {
             TableRelation = "Item Charge";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
         }
         field(70; "Quarantine Fees Item Charge"; Code[20])
         {
             TableRelation = "Item Charge";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
         }
         field(80; "Default Postal Zone"; code[20])
         {
             TableRelation = "TFB Postcode Zone";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
 
         }
         field(90; ExWarehouseEnabled; Boolean)
@@ -58,7 +58,7 @@ table 50125 "TFB Core Setup"
             trigger OnValidate()
 
             begin
-                If ExWarehouseEnabled then
+                if ExWarehouseEnabled then
                     if ExWarehousePricingGroup = '' then
                         FieldError(ExWarehousePricingGroup, 'Enabled Ex Warehouse Group must be selected');
 
@@ -67,12 +67,12 @@ table 50125 "TFB Core Setup"
         field(100; ExWarehousePricingGroup; Code[20])
         {
             TableRelation = "Customer Price Group";
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
 
             trigger OnValidate()
 
             begin
-                If ExWarehouseEnabled then
+                if ExWarehouseEnabled then
                     if ExWarehousePricingGroup = '' then
                         FieldError(ExWarehousePricingGroup, 'Enabled Ex Warehouse Group must be selected');
 

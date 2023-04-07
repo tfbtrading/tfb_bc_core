@@ -13,7 +13,7 @@ codeunit 50175 "TFB Transfer Order Mgmt"
         TransShptLine."TFB Container Entry No." := TransLine."TFB Container Entry No.";
 
 
-        If Container.Get(TransLine."TFB Container Entry No.") then
+        if Container.Get(TransLine."TFB Container Entry No.") then
             TransShptLine."TFB Container No." := Container."Container No.";
 
 
@@ -32,13 +32,13 @@ codeunit 50175 "TFB Transfer Order Mgmt"
     begin
 
         TransferOrder.SetLoadFields("TFB Transfer Type", "TFB Order Reference", "TFB Container Entry No.");
-        If not TransferOrder.Get(TransLine."Document No.") then exit;
-        If not (TransferOrder."TFB Transfer Type" = Enum::"TFB Transfer Order Type"::Container) then exit;
+        if not TransferOrder.Get(TransLine."Document No.") then exit;
+        if not (TransferOrder."TFB Transfer Type" = Enum::"TFB Transfer Order Type"::Container) then exit;
 
 
 
 
-        If Container.Get(TransferOrder."TFB Container Entry No.") then begin
+        if Container.Get(TransferOrder."TFB Container Entry No.") then begin
             TransRcptLine."TFB Container No." := Container."Container No.";
             TransRcptLine."TFB Container Entry No." := TransferOrder."TFB Container Entry No.";
         end;

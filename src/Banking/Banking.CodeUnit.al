@@ -14,7 +14,7 @@ codeunit 50101 "TFB Banking"
         p: page "Posted Docs. With No Inc. Doc.";
 
     begin
-        If Bank.Get(BankAccountNo) then
+        if Bank.Get(BankAccountNo) then
             if Posting.Get(Bank."Bank Acc. Posting Group") then begin
                 r.GetDocNosWithoutIncomingDoc(r, 'p1..today', '', Posting."G/L Account No.", '');
                 r.UpdateIncomingDocuments();
@@ -42,10 +42,10 @@ codeunit 50101 "TFB Banking"
         BankAccRecLine.SetRange("Statement Type", BankAccReconciliation."Statement Type");
 
         BankAccRecLine.SetCurrentKey("Transaction Date");
-        BankAccRecLine.SetAscending("Transaction Date", False);
+        BankAccRecLine.SetAscending("Transaction Date", false);
 
         //Find the last transaction line by date and set the statement date to the date of the last transaction
-        If BankAccRecLine.FindFirst() then
+        if BankAccRecLine.FindFirst() then
             BankAccStatement."Statement Date" := BankAccRecLine."Transaction Date";
 
 

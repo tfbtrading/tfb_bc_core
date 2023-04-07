@@ -105,7 +105,7 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                 {
                     ApplicationArea = All;
                     Importance = Standard;
-                    MultiLine = True;
+                    MultiLine = true;
                     Tooltip = 'Specifies delivery SLA for local deliveries if a drop ship vendor';
                 }
             }

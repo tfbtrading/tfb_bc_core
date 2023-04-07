@@ -85,7 +85,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
             {
                 ApplicationArea = All;
                 Caption = 'Sample Picture';
-                SubPageLink = SystemId = FIELD(SystemId);
+                SubPageLink = SystemId = field(SystemId);
             }
         }
 
@@ -100,7 +100,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
             {
 
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Import;
                 Enabled = not IsCoAAvailable;
@@ -119,7 +119,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
             action("Download CoA")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
                 Enabled = IsCoAAvailable;
 
                 Image = SendAsPDF;
@@ -136,7 +136,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
             action("Remove CoA")
             {
                 ApplicationArea = All;
-                Visible = True;
+                Visible = true;
 
                 Image = Delete;
                 ToolTip = 'Remove a certificate of analysis';
@@ -157,7 +157,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
         }
         addlast(Promoted)
         {
-            Group(Category_COA)
+            group(Category_COA)
             {
                 Caption = 'CoA';
                 ShowAs = SplitButton;
@@ -191,7 +191,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
 
 
         Ref := LotInfoMgmtCU.AttachFile(IDT, Rec);
-        If Ref > 0 then
+        if Ref > 0 then
             CheckIfAttachExists(IDT);
 
     end;
@@ -217,7 +217,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
 
     begin
 
-        If LotInfoMgmtCU.RemoveFile(IDT, Rec) then
+        if LotInfoMgmtCU.RemoveFile(IDT, Rec) then
             CheckIfAttachExists(IDT);
 
     end;
@@ -239,7 +239,7 @@ pageextension 50295 "TFB Lot No. Information List" extends "Lot No. Information 
 
     end;
 
-    local Procedure CheckIfAttachExists(IDT: Enum "TFB Item Doc Type")
+    local procedure CheckIfAttachExists(IDT: Enum "TFB Item Doc Type")
 
     var
         PersBlobCU: CodeUnit "Persistent Blob";

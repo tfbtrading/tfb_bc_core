@@ -32,7 +32,7 @@ page 50155 "TFB Sample Picture"
                 Enabled = DeleteExportEnabled;
                 Image = Export;
                 ToolTip = 'Export the sample picture to a file.';
-                Visible = HideActions = FALSE;
+                Visible = HideActions = false;
 
                 trigger OnAction()
 
@@ -54,14 +54,13 @@ page 50155 "TFB Sample Picture"
 
     var
         Camera: Codeunit Camera;
-        [InDataSet]
-        CameraAvailable: Boolean;
+    
         OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
         DeleteImageQst: Label 'Are you sure you want to delete the picture?';
-        SelectPictureTxt: Label 'Select a picture to upload';
+    
         DeleteExportEnabled: Boolean;
         HideActions: Boolean;
-        MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
+     
 
 
     local procedure ExportSamplePicture(LotInfo: Record "Lot No. Information")
@@ -74,13 +73,13 @@ page 50155 "TFB Sample Picture"
         NoImgMsg: Label 'No picture stored.';
 
     begin
-        If LotInfo."TFB Sample Picture".count = 0 then
+        if LotInfo."TFB Sample Picture".count = 0 then
             Error(NoImgMsg);
 
         for index := 1 to LotInfo."TFB Sample Picture".count do
-            If TenantMedia.Get(LotInfo."TFB Sample Picture".Item(Index)) then begin
+            if TenantMedia.Get(LotInfo."TFB Sample Picture".Item(Index)) then begin
                 TenantMedia.CalcFields(Content);
-                If TenantMedia.Content.HasValue() then begin
+                if TenantMedia.Content.HasValue() then begin
                     ImgFileName := StrSubstNo('Item %1 Lot %2 Sample.%3', LotInfo."Item No.", LotInfo."Lot No.", GetImgFileExt(TenantMedia));
                     TenantMedia.Content.CreateInStream(InStream);
                     DownloadFromStream(InStream, '', '', '', ImgFileName);
@@ -112,11 +111,11 @@ page 50155 "TFB Sample Picture"
     procedure ImportFromDevice()
     var
 
-        FileName: Text;
+    
         ClientFileName: Text;
         FromFilter: Text;
         InStream: InStream;
-        OutStream: OutStream;
+    
     begin
         Rec.Find();
         Rec.TestField("Lot No.");
@@ -129,12 +128,12 @@ page 50155 "TFB Sample Picture"
                 Error('');
 
         ClientFileName := '';
-        If not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
+        if not UploadIntoStream('Select an image for lot sample', '', FromFilter, ClientFileName, InStream) then exit;
 
 
         Clear(Rec."TFB Sample Picture");
         Rec."TFB Sample Picture".ImportStream(InStream, 'LotImage');
-        If Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
+        if Rec."TFB Sample Picture".Count <> 0 then Rec."TFB Sample Picture Exists" := true;
         Rec.Modify(true);
         OnImportFromDeviceOnAfterModify(Rec);
     end;
@@ -174,10 +173,6 @@ page 50155 "TFB Sample Picture"
     begin
     end;
 
-    [IntegrationEvent(false, false)]
-    local procedure OnAfterTakeNewPicture(var LotInfo: Record "Lot No. Information"; IsPictureAdded: Boolean)
-    begin
-    end;
 
     [IntegrationEvent(false, false)]
     local procedure OnImportFromDeviceOnAfterModify(var LotInfo: Record "Lot No. Information")

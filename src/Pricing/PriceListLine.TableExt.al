@@ -9,7 +9,7 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
 
     begin
 
-        If (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then
+        if (Rec."Asset Type" = Rec."Asset Type"::Item) and (Rec."Asset No." <> '') then
             case "Price Type" of
                 "Price Type"::Sale:
                     Rec.Validate("Unit Price", TFBPricingLogic.CalculateUnitPriceByPriceUnit(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), AltPrice));
@@ -30,21 +30,21 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
 
         case "Price Type" of
             "Price Type"::Purchase:
-                If "Source Type" = "Source Type"::Vendor then begin
+                if "Source Type" = "Source Type"::Vendor then begin
                     Vendor.SetLoadFields("TFB Vendor Price Unit");
-                    If Vendor.GetBySystemId(rec."Source ID") then
+                    if Vendor.GetBySystemId(rec."Source ID") then
                         _PriceUnit := Vendor."TFB Vendor Price Unit"
                 end
                 else begin
                     PriceListHeader.SetLoadFields("TFB Price Unit");
-                    If PriceListHeader.Get(Rec."Price List Code") then
+                    if PriceListHeader.Get(Rec."Price List Code") then
                         _PriceUnit := PriceListHeader."TFB Price Unit";
                 end;
             "Price Type"::Sale:
                 _PriceUnit := _PriceUnit::KG;
         end;
 
-        Exit(_PriceUnit);
+        exit(_PriceUnit);
 
     end;
 
@@ -54,21 +54,21 @@ tableextension 50123 "TFB Price List Line" extends "Price List Line"
         Item: Record Item;
 
     begin
-        If ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
-            If Item.GetBySystemId("Asset ID") then
-                Exit(Item."Net Weight");
+        if ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
+            if Item.GetBySystemId("Asset ID") then
+                exit(Item."Net Weight");
 
     end;
 
     procedure GetPriceAltPriceFromUnitPrice(): Decimal
 
     begin
-        If ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
+        if ("Asset Type" = "Asset Type"::Item) and ("Asset No." <> '') then
             case "Price Type" of
                 "Price Type"::Sale:
-                    Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));
+                    exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Unit Price"));
                 "Price Type"::Purchase:
-                    Exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Direct Unit Cost"));
+                    exit(TFBPricingLogic.CalculatePriceUnitByUnitPrice(rec."Asset No.", rec."Unit of Measure Code", GetPriceUnit(), rec."Direct Unit Cost"));
             end;
 
 

@@ -19,7 +19,7 @@ table 50115 "TFB Sample Request"
                 Customer: Record Customer;
             begin
                 Customer.SetLoadFields("No.", Name);
-                If Customer.Get(Rec."Sell-to Customer No.") then
+                if Customer.Get(Rec."Sell-to Customer No.") then
                     Rec."Sell-to Customer Name" := Customer.Name;
 
             end;
@@ -57,8 +57,8 @@ table 50115 "TFB Sample Request"
         field(5055; "Opportunity No."; Code[20])
         {
             Caption = 'Opportunity No.';
-            TableRelation = Opportunity."No." WHERE("Contact No." = FIELD("Sell-to Contact No."),
-                                                                                          Closed = CONST(false));
+            TableRelation = Opportunity."No." where("Contact No." = field("Sell-to Contact No."),
+                                                                                          Closed = const(false));
 
             trigger OnValidate()
             begin
@@ -91,8 +91,8 @@ table 50115 "TFB Sample Request"
                     if InitFromContact("Sell-to Contact No.", FieldCaption("Sell-to Contact No.")) then
                         exit;
 
-                    If Cont."Company No." <> '' then
-                        If ContBusinessRelation.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Cont."Company No.") then
+                    if Cont."Company No." <> '' then
+                        if ContBusinessRelation.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Cont."Company No.") then
                             Validate("Sell-to Customer No.", ContBusinessRelation."No.");
 
 
@@ -181,9 +181,9 @@ table 50115 "TFB Sample Request"
         field(83; "City"; Text[50])
         {
             Caption = 'Ship-to City';
-            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code".City
-            ELSE
-            IF ("Country/Region Code" = FILTER(<> '')) "Post Code".City WHERE("Country/Region Code" = FIELD("Country/Region Code"));
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code".City
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code".City where("Country/Region Code" = field("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -211,7 +211,7 @@ table 50115 "TFB Sample Request"
             begin
 
                 Contact.FilterGroup(2);
-                LookupContact("Sell-to Contact No.", Contact);
+                LookupContact(Contact);
                 if PAGE.RunModal(0, Contact) = ACTION::LookupOK then
                     Validate("Sell-to Contact No.", Contact."No.");
                 Contact.FilterGroup(0);
@@ -223,9 +223,9 @@ table 50115 "TFB Sample Request"
         field(88; "Post Code"; Code[20])
         {
             Caption = 'Ship-to Post Code';
-            TableRelation = IF ("Country/Region Code" = CONST('')) "Post Code"
-            ELSE
-            IF ("Country/Region Code" = FILTER(<> '')) "Post Code" WHERE("Country/Region Code" = FIELD("Country/Region Code"));
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code"
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code" where("Country/Region Code" = field("Country/Region Code"));
             //This property is currently not supported
             //TestTableRelation = false;
             ValidateTableRelation = false;
@@ -308,11 +308,11 @@ table 50115 "TFB Sample Request"
                 Lines: Record "TFB Sample Request Line";
 
             begin
-                If Status = Status::Sent then begin
+                if Status = Status::Sent then begin
                     Closed := true;
                     Lines.SetRange("Document No.", "No.");
 
-                    If Lines.FindFirst() then
+                    if Lines.FindFirst() then
                         repeat
 
                             Lines."Line Status" := Lines."Line Status"::Sent;
@@ -384,15 +384,9 @@ table 50115 "TFB Sample Request"
         NoSeriesMgt: Codeunit NoSeriesManagement;
         PostCodeCheck: Codeunit "Post Code Check";
         SelectNoSeriesAllowed: Boolean;
-        HideValidationDialog: Boolean;
         ConfirmChangeQst: Label 'Do you want to change %1?', Comment = '%1 = a Field Caption like Currency Code';
-        ConfirmEmptyEmailQst: Label 'Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?', Comment = '%1 - Contact No., %2 - Email';
-        NoBlankDueToOpportunityErr: Label 'The %1 field cannot be blank because this quote is linked to an opportunity.', Comment = '%1 - field name';
-        NoChangeOpportunityMsg: Label 'You cannot change %1 because the corresponding %2 %3 has been assigned', Comment = '%1 - opportunity, %2 = Contant, %3 = Other Contact';
-        NoRelationMsg: Label 'Contact %1 %2 is not related to customer %3.', Comment = '%1 - No, %2 - Name, %3 - Customer Name';
         NoResetMsg: Label 'You cannot reset %1 because the document still has one or more lines.', Comment = '%1 -  Document No';
         ReadingDataSkippedMsg: Label 'Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.', Comment = '%1=field caption';
-        SellToCustomerTxt: Label 'Sell-to Customer';
         Text051Err: Label 'The sales %1 %2 already exists.', Comment = '%1 = No, %2 - Description';
 
 
@@ -457,8 +451,7 @@ table 50115 "TFB Sample Request"
     procedure LinkSalesDocWithOpportunity(OldOpportunityNo: Code[20])
     var
         Opportunity: Record Opportunity;
-        SalesHeader: Record "Sales Header";
-        ConfirmManagement: Codeunit "Confirm Management";
+
     begin
         if "Opportunity No." <> OldOpportunityNo then
             if Opportunity.Get("Opportunity No.") then
@@ -535,7 +528,7 @@ table 50115 "TFB Sample Request"
         exit(not Customer."Disable Search by Name");
     end;
 
-    local procedure LookupContact(ContactNo: Code[20]; var Contact: Record Contact)
+    local procedure LookupContact(var Contact: Record Contact)
     var
 
     begin
@@ -548,7 +541,7 @@ table 50115 "TFB Sample Request"
     procedure LookupSellToCustomerName(): Boolean
     var
         Customer: Record Customer;
-        StandardCodesMgt: Codeunit "Standard Codes Mgt.";
+
     begin
         if "Sell-to Customer No." <> '' then
             Customer.Get("Sell-to Customer No.");
@@ -577,7 +570,7 @@ table 50115 "TFB Sample Request"
 
     local procedure GetPostingNoSeriesCode() PostingNos: Code[20]
     var
-        IsHandled: Boolean;
+
     begin
         GetCoreSetup();
 
@@ -596,7 +589,7 @@ table 50115 "TFB Sample Request"
 
     end;
 
-   
+
 
     procedure GetCust(CustNo: Code[20])
     var
@@ -614,7 +607,7 @@ table 50115 "TFB Sample Request"
 
     procedure InitRecord()
     var
-        ArchiveManagement: Codeunit ArchiveManagement;
+
 
     begin
         GetCoreSetup();
@@ -627,7 +620,7 @@ table 50115 "TFB Sample Request"
         "Order Date" := WorkDate();
 
 
-        IF "Sell-to Customer No." <> '' THEN
+        if "Sell-to Customer No." <> '' then
             GetCust("Sell-to Customer No.");
 
 
@@ -635,7 +628,7 @@ table 50115 "TFB Sample Request"
 
     procedure GetNoSeriesCode(): Code[20]
     var
-        IsHandled: Boolean;
+
         NoSeriesCode: Code[20];
     begin
         GetCoreSetup();
@@ -646,7 +639,7 @@ table 50115 "TFB Sample Request"
 
     trigger OnInsert()
     begin
-        If "No." = '' then
+        if "No." = '' then
             NoSeriesMgt.InitSeries(GetNoSeriesCode(), xRec."No. Series", 0D, "No.", "No. Series");
 
 

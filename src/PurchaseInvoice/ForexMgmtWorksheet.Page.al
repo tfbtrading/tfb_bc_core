@@ -26,7 +26,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
                         ForexMgmtEntry: Record "TFB Forex Mgmt Entry";
 
                     begin
-                        If ForexMgmtEntry.Get(_ForexContractFilter) then
+                        if ForexMgmtEntry.Get(_ForexContractFilter) then
                             CurrPage.AppliedLedgerEntries.Page.ToggleContractFilter(ForexMgmtEntry."External Document No.");
                     end;
                 }

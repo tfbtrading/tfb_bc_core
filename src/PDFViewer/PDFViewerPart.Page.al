@@ -64,7 +64,7 @@ page 50118 "PDF Viewer Part"
 
 
     begin
-        If not (Cache = Base64Data) then begin
+        if not (Cache = Base64Data) then begin
             Clear(Data);
             Data.Add('type', 'base64');
             Data.Add('content', Base64Data);

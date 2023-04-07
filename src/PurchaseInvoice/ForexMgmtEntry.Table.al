@@ -32,7 +32,7 @@ table 50119 "TFB Forex Mgmt Entry"
                         begin
 
                             ForexMgmtEntries.SetRange("External Document No.", "Source Document No.");
-                            If ForexMgmtEntries.FindFirst() then begin
+                            if ForexMgmtEntries.FindFirst() then begin
                                 "Source Entry No." := ForexMgmtEntries."Source Entry No.";
                                 "Currency Code" := ForexMgmtEntries."Currency Code";
                                 "Covered Rate" := ForexMgmtEntries."Covered Rate";
@@ -54,7 +54,7 @@ table 50119 "TFB Forex Mgmt Entry"
                             ForexMgmtEntry.Reset();
                             ForexMgmtEntry.SetRange(EntryType, ForexMgmtEntry.EntryType::ForexContract);
 
-                            If Page.RunModal(Page::"TFB Forex Mgmt Entries", ForexMgmtEntry) = Action::LookupOK then
+                            if Page.RunModal(Page::"TFB Forex Mgmt Entries", ForexMgmtEntry) = Action::LookupOK then
                                 Rec.Validate("Source Document No.", ForexMgmtEntry."External Document No.");
 
                         end;
@@ -64,7 +64,7 @@ table 50119 "TFB Forex Mgmt Entry"
 
         field(30; "Source Entry No."; Integer)
         {
-            TableRelation = If (EntryType = const(VendorLedgerEntry)) "Vendor Ledger Entry" where(Open = const(true), "Document Type" = const(Invoice));
+            TableRelation = if (EntryType = const(VendorLedgerEntry)) "Vendor Ledger Entry" where(Open = const(true), "Document Type" = const(Invoice));
         }
         field(40; "Original Amount"; Decimal)
         {
@@ -86,7 +86,7 @@ table 50119 "TFB Forex Mgmt Entry"
             end;
 
         }
-        Field(44; "Total Incl. Interest"; Decimal)
+        field(44; "Total Incl. Interest"; Decimal)
         {
             Editable = false;
 
@@ -146,7 +146,7 @@ table 50119 "TFB Forex Mgmt Entry"
                             VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::" ", VendorLedgerEntry."Document Type"::Invoice);
                             VendorLedgerEntry.SetRange("Currency Code", Rec."Currency Code");
 
-                            If Page.RunModal(Page::"Vendor Ledger Entries", VendorLedgerEntry) = Action::LookupOK then begin
+                            if Page.RunModal(Page::"Vendor Ledger Entries", VendorLedgerEntry) = Action::LookupOK then begin
                                 VendorLedgerEntry.CalcFields("Remaining Amount", "TFB Forex Amount");
                                 Rec."Applies-to Doc No." := VendorLedgerEntry."External Document No.";
                                 Rec."Original Rate" := VendorLedgerEntry."Original Currency Factor";
@@ -164,7 +164,7 @@ table 50119 "TFB Forex Mgmt Entry"
                             PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::Order);
                             PurchaseHeader.SetRange("Currency Code", Rec."Currency Code");
 
-                            If Page.RunModal(Page::"Purchase Order List", PurchaseHeader) = Action::LookupOK then begin
+                            if Page.RunModal(Page::"Purchase Order List", PurchaseHeader) = Action::LookupOK then begin
                                 Rec."Applies-to Doc No." := PurchaseHeader."No.";
                                 Rec."Original Rate" := PurchaseHeader."Currency Factor";
                                 Rec."Due Date" := PurchaseHeader."Due Date";
@@ -270,7 +270,7 @@ table 50119 "TFB Forex Mgmt Entry"
 
     begin
 
-        If not ForexMgmtEntry.Get("Entry No.") then exit;
+        if not ForexMgmtEntry.Get("Entry No.") then exit;
 
         case ForexMgmtEntry.EntryType of
             "TFB Forex Mgmt Entry Type"::ForexContract:
@@ -279,7 +279,7 @@ table 50119 "TFB Forex Mgmt Entry"
                     ForexMgmtEntry2.SetRange("Source Document No.", ForexMgmtEntry."External Document No.");
                     ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
 
-                    Exit(ForexMgmtEntry."Original Amount" - (ForexMgmtEntry2."Original Amount" + ForexMgmtEntry2."Est. Interest"));
+                    exit(ForexMgmtEntry."Original Amount" - (ForexMgmtEntry2."Original Amount" + ForexMgmtEntry2."Est. Interest"));
 
                 end;
 
@@ -291,7 +291,7 @@ table 50119 "TFB Forex Mgmt Entry"
 
                             LedgerEntry.SetRange("External Document No.", ForexMgmtEntry."Applies-to Doc No.");
                             LedgerEntry.SetRange(Reversed, false);
-                            If LedgerEntry.FindFirst() then begin
+                            if LedgerEntry.FindFirst() then begin
 
                                 ForexMgmtEntry2.SetRange(EntryType, ForexMgmtEntry2.EntryType::Assignment);
                                 ForexMgmtEntry2.SetRange("Applies-to Doc No.", ForexMgmtEntry."Applies-to Doc No.");
@@ -299,9 +299,9 @@ table 50119 "TFB Forex Mgmt Entry"
                                 ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
                                 LedgerEntry.CalcFields("Remaining Amount");
                                 if LedgerEntry.Open then
-                                    Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount")
+                                    exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount")
                                 else
-                                    Exit(0);
+                                    exit(0);
 
                             end;
 
@@ -311,13 +311,13 @@ table 50119 "TFB Forex Mgmt Entry"
                         begin
                             PurchaseHeader.SetRange("No.", ForexMgmtEntry."Applies-to Doc No.");
                             PurchaseHeader.SetRange("Document Type", PurchaseHeader."Document Type"::Order);
-                            If PurchaseHeader.FindFirst() then begin
+                            if PurchaseHeader.FindFirst() then begin
 
                                 ForexMgmtEntry2.SetRange(EntryType, ForexMgmtEntry2.EntryType::Assignment);
                                 ForexMgmtEntry2.SetRange("Applies-to Doc No.", ForexMgmtEntry."Applies-to Doc No.");
                                 ForexMgmtEntry2.SetFilter("Entry No.", '<>%1', ForexMgmtEntry."Entry No.");
                                 ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
-                                Exit(PurchaseHeader."Amount Including VAT" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount");
+                                exit(PurchaseHeader."Amount Including VAT" - ForexMgmtEntry2."Original Amount" - ForexMgmtEntry."Original Amount");
 
                             end;
                         end;
@@ -327,9 +327,9 @@ table 50119 "TFB Forex Mgmt Entry"
 
                 begin
                     LedgerEntry.SetLoadFields(Amount);
-                    If LedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
+                    if LedgerEntry.GetBySystemId(Rec."Applies-to id") then begin
                         LedgerEntry.CalcFields("Remaining Amount");
-                        Exit(LedgerEntry."Remaining Amount");
+                        exit(LedgerEntry."Remaining Amount");
                     end;
                 end;
 
@@ -356,9 +356,9 @@ table 50119 "TFB Forex Mgmt Entry"
             ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
             LedgerEntry.CalcFields("Remaining Amount");
             if LedgerEntry.Open then
-                Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount")
+                exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount")
             else
-                Exit(0);
+                exit(0);
 
         end;
 
@@ -379,9 +379,9 @@ table 50119 "TFB Forex Mgmt Entry"
         ForexMgmtEntry2.CalcSums("Original Amount", "Est. Interest");
         LedgerEntry.CalcFields("Remaining Amount");
         if LedgerEntry.Open then
-            Exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount")
+            exit(-LedgerEntry."Remaining Amount" - ForexMgmtEntry2."Original Amount")
         else
-            Exit(0);
+            exit(0);
 
 
     end;
@@ -412,14 +412,14 @@ table 50119 "TFB Forex Mgmt Entry"
                     Rec."Applies-to Doc. Type"::VendorLedgerEntry:
                         begin
                             LedgerEntry.SetLoadFields(Open);
-                            If LedgerEntry.GetBySystemId("Applies-to id") then
-                                Exit(LedgerEntry.Open);
+                            if LedgerEntry.GetBySystemId("Applies-to id") then
+                                exit(LedgerEntry.Open);
 
                         end;
                 end;
             Rec.EntryType::ForexContract:
 
-                Exit(not (getRemainingAmount(Rec."Entry No.") = 0));
+                exit(not (getRemainingAmount(Rec."Entry No.") = 0));
 
         end;
     end;

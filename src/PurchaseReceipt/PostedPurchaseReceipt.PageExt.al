@@ -18,7 +18,7 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
                 OpenOrder.SetRange("Document Type", OpenOrder."Document Type"::Order);
                 OpenOrder.SetRange("No.", Rec."Order No.");
 
-                If OpenOrder.FindFirst() then begin
+                if OpenOrder.FindFirst() then begin
 
                     OpenOrderPage.SetRecord(OpenOrder);
                     OpenOrderPage.Run();
@@ -27,7 +27,7 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
                     ArchiveOrder.SetRange("Document Type", ArchiveOrder."Document Type"::Order);
                     ArchiveOrder.SetRange("No.", Rec."Order No.");
 
-                    If ArchiveOrder.FindLast() then begin
+                    if ArchiveOrder.FindLast() then begin
                         ArchiveOrderPage.SetRecord(ArchiveOrder);
                         ArchiveOrderPage.Run();
                     end;
@@ -43,8 +43,8 @@ pageextension 50107 "TFB Posted Purchase Receipt" extends "Posted Purchase Recei
             {
                 ApplicationArea = All;
                 Caption = 'Attachments';
-                SubPageLink = "Table ID" = CONST(120),
-                              "No." = FIELD("No.");
+                SubPageLink = "Table ID" = const(120),
+                              "No." = field("No.");
             }
         }
     }

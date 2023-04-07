@@ -96,11 +96,11 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
             CalcFormula = lookup(Customer."TFB CoA Required" where("No." = field("Sell-to Customer No.")));
         }
 
-        field(50210; "TFB Final Dest.  Loc. "; Code[20])
+        field(50210; "TFB Final Dest.  Loc."; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = Location;
-            ValidateTableRelation = True;
+            ValidateTableRelation = true;
             Caption = 'Destination warehouse';
             ObsoleteState = Removed;
             ObsoleteReason = 'Removed as no longer required as not using transfor orders';
@@ -168,7 +168,7 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
                 TFBCommonCode: CodeUnit "TFB Common Library";
 
             begin
-                If Rec."Sell-to Customer No." <> '' then
+                if Rec."Sell-to Customer No." <> '' then
                     "TFB Instructions" := TFBCommonCode.GetCustDelInstr("Sell-to Customer No.", "Ship-to Code");
             end;
         }
@@ -218,8 +218,8 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
     local procedure CheckDateRange()
 
     begin
-        If "TFB End Date" <> 0D then
-            If "TFB Start Date" >= "TFB End Date" then
+        if "TFB End Date" <> 0D then
+            if "TFB Start Date" >= "TFB End Date" then
                 FIeldError("TFB End Date", 'End Date must be After Start Date');
 
     end;

@@ -5,18 +5,14 @@ codeunit 50122 "TFB Sales Mgmt"
 {
 
 
-   
+
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterFinalizePostingOnBeforeCommit', '', false, false)]
     local procedure OnAfterFinalizePostingOnBeforeCommit(var SalesHeader: Record "Sales Header"; var SalesShipmentHeader: Record "Sales Shipment Header"; var SalesInvoiceHeader: Record "Sales Invoice Header"; var SalesCrMemoHeader: Record "Sales Cr.Memo Header"; var ReturnReceiptHeader: Record "Return Receipt Header"; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line"; CommitIsSuppressed: Boolean; PreviewMode: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var EverythingInvoiced: Boolean);
 
     var
 
-        GenJnlLine: Record "Gen. Journal Line";
 
-        GLEntry: Record "G/L Entry";
-        GLAccNo: Code[20];
-        GLAmount: Decimal;
 
 
     begin
@@ -64,7 +60,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Enum::"Report Selection Usage"::"S.Order".AsInteger():
                 begin
                     SalesOrder.SetLoadFields("Prepayment %");
-                    If SalesOrder.Get(Enum::"Sales Document Type"::Order.AsInteger(), PostedDocNo) and (SalesOrder."Prepayment %" = 100) then
+                    if SalesOrder.Get(Enum::"Sales Document Type"::Order.AsInteger(), PostedDocNo) and (SalesOrder."Prepayment %" = 100) then
                         AttachmentFileName := StrSubstNo('Sales Contract (Proforma) %1.pdf', PostedDocNo)
                     else
                         AttachmentFileName := StrSubstNo('Sales Contract %1.pdf', PostedDocNo);
@@ -72,7 +68,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Enum::"Report Selection Usage"::"S.Invoice".AsInteger():
                 begin
                     SalesInvoice.SetLoadFields("Prepayment Invoice");
-                    If SalesInvoice.Get(PostedDocNo) and (SalesInvoice."Prepayment Invoice") then
+                    if SalesInvoice.Get(PostedDocNo) and (SalesInvoice."Prepayment Invoice") then
                         AttachmentFileName := StrSubstNo('Prepayment Invoice %1.pdf', PostedDocNo)
                     else
                         AttachmentFileName := StrSubstNo('Sales Invoice %1.pdf', PostedDocNo);
@@ -93,9 +89,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If not MyNotification.HasData('SystemId') then exit;
+        if not MyNotification.HasData('SystemId') then exit;
 
-        If not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
+        if not SalesHeader.GetBySystemId(MyNotification.GetData('SystemId')) then exit;
 
         PageRunner.PageRun(SalesHeader);
 
@@ -112,12 +108,12 @@ codeunit 50122 "TFB Sales Mgmt"
     begin
 
         case SalesHeader.Get(DocumentType, DocumentNo) of
-            True:
+            true:
                 begin
                     SalesOrder.SetRecord(SalesHeader);
                     SalesOrder.Run();
                 end;
-            False:
+            false:
                 OpenArchivedOrder(DocumentType, DocumentNo);
 
         end;
@@ -134,7 +130,7 @@ codeunit 50122 "TFB Sales Mgmt"
         SalesHeaderArchive.SetRange("No.", DocumentNo);
         SalesHeaderArchive.FilterGroup(0);
 
-        If SalesHeaderArchive.IsEmpty() then exit;
+        if SalesHeaderArchive.IsEmpty() then exit;
 
         SalesOrderArchives.SetTableView(SalesHeaderArchive);
         SalesOrderArchives.Run();
@@ -208,7 +204,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If (SalesLine."TFB Pre-Order") and (SalesLine."Qty. to Invoice" > 0) then begin
+        if (SalesLine."TFB Pre-Order") and (SalesLine."Qty. to Invoice" > 0) then begin
 
             //Transfer across fields
 
@@ -256,7 +252,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
         ShippingAgentServices := GetShippingAgentDetailsForLocation(SalesLine."Location Code", SalesHeader."Ship-to County", SalesHeader."Shipment Method Code");
 
-        If ShippingAgentServices.Code = '' then exit;
+        if ShippingAgentServices.Code = '' then exit;
 
         SalesLine."Shipping Agent Code" := ShippingAgentServices."Shipping Agent Code";
         SalesLine."Shipping Agent Service Code" := ShippingAgentServices.Code;
@@ -266,8 +262,8 @@ codeunit 50122 "TFB Sales Mgmt"
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterUpdateLineDiscPct', '', false, false)]
     local procedure OnAfterUpdateLineDiscPct(var SalesLine: Record "Sales Line");
     begin
-        If (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
-            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
+        if (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
+            if (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then
                 SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
             else
                 SalesLine."TFB Price Unit Discount" := 0;
@@ -278,17 +274,17 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnValidateLineDiscountPercentOnBeforeUpdateAmounts(var SalesLine: Record "Sales Line"; CurrFieldNo: Integer);
 
     var
-        Item: Record Item;
+
         ItemUoM: Record "Item Unit of Measure";
 
     begin
 
-        If (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
-            If (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then begin
-                If SalesLine."Net Weight" > 0 then
+        if (SalesLine."Document Type" = Enum::"Sales Document Type"::Order) or (SalesLine."Document Type" = Enum::"Sales Document Type"::Quote) then
+            if (SalesLine."Unit Price" > 0) and (SalesLine."Line Discount %" > 0) then begin
+                if SalesLine."Net Weight" > 0 then
                     SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / SalesLine."Net Weight", 0.01, '=')
                 else
-                    If ItemUoM.Get(SalesLine."No.", SalesLine."Unit of Measure Code") then
+                    if ItemUoM.Get(SalesLine."No.", SalesLine."Unit of Measure Code") then
                         SalesLine."TFB Price Unit Discount" := Round(((SalesLine."Line Discount %" / 100) * SalesLine."Unit Price") / ItemUoM.Weight, 0.01, '=')
             end
             else
@@ -318,9 +314,9 @@ codeunit 50122 "TFB Sales Mgmt"
 
         //Check if there is an override shipping agent and service
 
-        If Vendor.Get(Item."Vendor No.") then
-            If PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
-                If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+        if Vendor.Get(Item."Vendor No.") then
+            if PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
+                if ShippingAgent.Get(Vendor."Shipping Agent Code") then
                     ShippingAgentServices.Get(ShippingAgent.Code, ShippingAgent."TFB Service Default");
 
     end;
@@ -347,8 +343,8 @@ codeunit 50122 "TFB Sales Mgmt"
         //Check if there is an override shipping agent and service
 
 
-        If PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
-            If ShippingAgent.Get(Vendor."Shipping Agent Code") then
+        if PostcodeZone.FindFirst() and (not ItemCU.GetVendorShippingAgentOverride(Vendor."No.", PostcodeZone.Code, ShippingAgentServices)) then
+            if ShippingAgent.Get(Vendor."Shipping Agent Code") then
                 ShippingAgentServices.Get(ShippingAgent.Code, ShippingAgent."TFB Service Default");
 
     end;
@@ -369,13 +365,13 @@ codeunit 50122 "TFB Sales Mgmt"
         ShipmentMethod: Record "Shipment Method";
 
     begin
-        If not Location.Get(LocationCode) then exit;
-        If ShipmentMethod.Get(ShipmentMethodCode) then
-            If ShipmentMethod."TFB Pickup at Location" then exit;
+        if not Location.Get(LocationCode) then exit;
+        if ShipmentMethod.Get(ShipmentMethodCode) then
+            if ShipmentMethod."TFB Pickup at Location" then exit;
         //Check if location is in same state or not
-        If not LocationShippingAgentEnabled(Location) then exit;
+        if not LocationShippingAgentEnabled(Location) then exit;
 
-        If (ShipToCounty <> Location.County) then
+        if (ShipToCounty <> Location.County) then
             //Interstate location
             ShippingAgentServices.Get(Location."TFB Insta Shipping Agent Code", Location."TFB Insta Agent Service Code")
         else
@@ -395,8 +391,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
         SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.");
 
-        If SalesHeader."TFB Direct to Customer" = true then
-            If Purchasing.FindFirst() then
+        if SalesHeader."TFB Direct to Customer" = true then
+            if Purchasing.FindFirst() then
                 SalesLine.validate("Purchasing Code", Purchasing.Code);
 
 
@@ -418,12 +414,12 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If Location."TFB Lcl Agent Service Code" = '' then failedtest := true;
-        If Location."TFB Insta Agent Service Code" = '' then failedtest := true;
-        If Location."TFB Lcl Shipping Agent Code" = '' then failedtest := true;
-        If Location."TFB Insta Shipping Agent Code" = '' then failedtest := true;
+        if Location."TFB Lcl Agent Service Code" = '' then failedtest := true;
+        if Location."TFB Insta Agent Service Code" = '' then failedtest := true;
+        if Location."TFB Lcl Shipping Agent Code" = '' then failedtest := true;
+        if Location."TFB Insta Shipping Agent Code" = '' then failedtest := true;
 
-        Exit(not failedtest)
+        exit(not failedtest)
     end;
 
     /// <summary>
@@ -438,12 +434,12 @@ codeunit 50122 "TFB Sales Mgmt"
         ItemUoM: Record "Item Unit of Measure";
 
     begin
-        If item.Get(SalesLine."No.") then
+        if item.Get(SalesLine."No.") then
             if ItemUoM.Get(Item."No.", Item."Sales Unit of Measure") then
                 exit(ItemUoM."Qty. per Unit of Measure" * 1);
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeInitHeaderLocactionCode', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", OnBeforeInitHeaderLocactionCode, '', false, false)]
     local procedure OnBeforeInitHeaderLocationCode(var IsHandled: Boolean; var SalesLine: Record "Sales Line")
 
     var
@@ -451,19 +447,23 @@ codeunit 50122 "TFB Sales Mgmt"
         IntelligentLocationCode: Code[10];
 
     begin
-        If SalesLine.Type <> SalesLine.Type::Item then exit;
+        if SalesLine.Type <> SalesLine.Type::Item then exit;
 
-        SalesHeader.SetLoadFields("Ship-to Code");
+        SalesHeader.SetLoadFields("Ship-to Code", "Location Code");
         SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
+        IntelligentLocationCode := SalesHeader."Location Code";
 
-        IntelligentLocationCode := GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesHeader."Ship-to Code", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine));
+        //If not intelligent location then exit unhandled
+        GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesHeader."Ship-to Code", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine), IntelligentLocationCode);
 
-        If not (IntelligentLocationCode = '') then begin
-            SalesLine."Location Code" := IntelligentLocationCode;
-            IsHandled := true;
-        end;
+        If IntelligentLocationCode = '' then exit;
+        // Intelligent location return so show that it has been handled
+        IsHandled := true;
+        SalesLine."Location Code" := IntelligentLocationCode;
 
     end;
+
+
 
     local procedure GetSalesUoMForItem(Item: Record Item) ItemUoM: Record "Item Unit of Measure";
 
@@ -482,10 +482,10 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If PrepaymentInvoice.Get(SalesHeader."Last Prepayment No.") and PrepaymentInvoiceLine.Get(PrepaymentInvoice."No.", SalesLine."Line No.") then
-            If PrepaymentInvoiceLine."Prepayment Line" and (PrepaymentInvoiceLine."Prepayment %" = 100) then begin
+        if PrepaymentInvoice.Get(SalesHeader."Last Prepayment No.") and PrepaymentInvoiceLine.Get(PrepaymentInvoice."No.", SalesLine."Line No.") then
+            if PrepaymentInvoiceLine."Prepayment Line" and (PrepaymentInvoiceLine."Prepayment %" = 100) then begin
                 PrepaymentInvoice.CalcFields("Remaining Amount");
-                If PrepaymentInvoice."Remaining Amount" = 0 then
+                if PrepaymentInvoice."Remaining Amount" = 0 then
                     exit(true);
             end;
 
@@ -501,25 +501,25 @@ codeunit 50122 "TFB Sales Mgmt"
     /// <param name="ItemNo">Code[20].</param>
     /// <param name="MinQty">Decimal.</param>
     /// <returns>Return value of type Code[10].</returns>
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; var LocationCode: Code[10]): Boolean
 
     var
         AddressBuffer: Record "Address Buffer";
 
     begin
 
-        Exit(GetIntelligentLocation(CustomerNo, "Ship-to Code", ItemNo, MinQty, AddressBuffer));
+        exit(GetIntelligentLocation(CustomerNo, "Ship-to Code", ItemNo, MinQty, LocationCode, AddressBuffer));
 
     end;
 
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal): Code[10]
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; ItemNo: Code[20]; MinQty: Decimal; var LocationCode: Code[10]): boolean
 
     var
         AddressBuffer: Record "Address Buffer";
 
     begin
 
-        Exit(GetIntelligentLocation(CustomerNo, '', ItemNo, MinQty, AddressBuffer));
+        exit(GetIntelligentLocation(CustomerNo, '', ItemNo, MinQty, LocationCode, AddressBuffer));
 
     end;
 
@@ -531,7 +531,7 @@ codeunit 50122 "TFB Sales Mgmt"
     /// <param name="MinQty">Decimal.</param>
     /// <param name="Address">Temporary Record "Address Buffer".</param>
     /// <returns>Return value of type Code[10].</returns>
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; Address: Record "Address Buffer" temporary): Code[10]
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; var LocationCode: Code[10]; Address: Record "Address Buffer" temporary): Boolean
 
     var
         Location: Record Location;
@@ -543,96 +543,104 @@ codeunit 50122 "TFB Sales Mgmt"
         TransferLine: Record "Transfer Line";
         QtyRemainingAtLocation: Decimal;
         LocationCode1: Code[10];
-        LocationCode2: Code[10];
-        IsHandled: Boolean;
-
+        InitLocationCode: Code[10];
+        ValidLocationFound: Boolean;
     begin
 
-        If Customer.Get(CustomerNo) and Item.Get(ItemNo) and Item.IsInventoriableType() then begin
+        //test if we are handling
+        if not (Customer.Get(CustomerNo) and Item.Get(ItemNo) and Item.IsInventoriableType()) then exit(false);
 
-            If MinQty = 0 then MinQty := GetSalesUoMForItem(Item)."Qty. per Unit of Measure";
+        //Get minimum test quantity if none provided
+        if MinQty = 0 then MinQty := GetSalesUoMForItem(Item)."Qty. per Unit of Measure";
 
-            If ("Ship-to Code" <> '') and (CustomerShipTo.Get(CustomerNo, "Ship-to Code")) then
-                LocationCode1 := CustomerShipTo."Location Code"
-            else
-                LocationCode1 := Customer."Location Code";
+        InitLocationCode := LocationCode;
 
-            ItemLedgerEntry.SetRange("Location Code", LocationCode1);
-            ItemLedgerEntry.SetRange("Item No.", Item."No.");
-            ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
-            ItemLedgerEntry.CalcSums("Remaining Quantity");
-            QtyRemainingAtLocation := ItemLedgerEntry."Remaining Quantity";
+        //Determine if ship-to location rather than default customer location is used
+        if ("Ship-to Code" <> '') and (CustomerShipTo.Get(CustomerNo, "Ship-to Code")) then
+            LocationCode1 := CustomerShipTo."Location Code"
+        else
+            LocationCode1 := Customer."Location Code";
 
-            If QtyRemainingAtLocation < MinQty then begin
+        //Check if inventory is available at the default location code
+        ItemLedgerEntry.SetRange("Location Code", LocationCode1);
+        ItemLedgerEntry.SetRange("Item No.", Item."No.");
+        ItemLedgerEntry.SetFilter("Remaining Quantity", '>0');
+        ItemLedgerEntry.CalcSums("Remaining Quantity");
+        QtyRemainingAtLocation := ItemLedgerEntry."Remaining Quantity";
 
-                //Check if inventory is in stock at other locations currently
-
-                ItemLedgerEntry.Reset();
-                ItemLedgerEntry.SetRange("Item No.", Item."No.");
-                ItemLedgerEntry.SetFilter("Remaining Quantity", '>%1', QtyRemainingAtLocation);
-                ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
-                ItemLedgerEntry.SetAscending("Remaining Quantity", false);
-
-                If ItemLedgerEntry.FindSet(false, false) then
-                    repeat
-                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
-                        Location.Get(ItemLedgerEntry."Location Code");
-                        If not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (ItemLedgerEntry."Remaining Quantity" < MinQty) and not (ItemLedgerEntry."Location Code" = Customer."Location Code") then begin
-                            LocationCode2 := ItemLedgerEntry."Location Code";
-                            IsHandled := true;
-                        end;
-                    until (ItemLedgerEntry.Next() = 0) or (isHandled = true);
-
-                If not IsHandled then begin
-
-                    //Check if for the first incoming purchase order for this item
-                    PurchaseLine.SetRange("No.", Item."No.");
-                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
-                    PurchaseLine.SetFilter("Outstanding Qty. (Base)", '>0');
-                    PurchaseLine.SetRange("Drop Shipment", false);
-                    PurchaseLine.SetCurrentKey("Planned Receipt Date");
-                    PurchaseLine.SetAscending("Planned Receipt Date", true);
-
-                    If PurchaseLine.FindFirst() and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) then begin
-
-                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
-                        Location.Get(PurchaseLine."Location Code");
-                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then begin
-
-                            LocationCode2 := PurchaseLine."Location Code";
-                            IsHandled := true;
-                        end;
-                    end;
-
-                end;
-
-                If not IsHandled then begin
-
-                    //Check if for the first incoming transfer for this item
-                    TransferLine.SetRange("Item No.", Item."No.");
-                    TransferLine.SetFilter("Outstanding Qty. (Base)", '>0');
-                    TransferLine.SetCurrentKey("Receipt Date");
-                    TransferLine.SetAscending("Receipt Date", true);
-
-                    If TransferLine.FindFirst() and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
-
-                        Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
-                        Location.Get(TransferLine."Transfer-to Code");
-                        If not (Location.IsInTransit(LocationCode2)) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (LocationCode2 = Customer."Location Code") then begin
-                            LocationCode2 := TransferLine."Transfer-to Code";
-                            IsHandled := true;
-                        end;
-                    end;
-
-                end;
-
-            end
-            else
-                LocationCode2 := LocationCode1;
-
+        //If enough stock exists at location then use it and check whether it is the same as provided initially
+        if QtyRemainingAtLocation >= MinQty then begin
+            LocationCode := LocationCode1;
+            exit(LocationCode <> InitLocationCode);
         end;
-        If IsHandled then
-            Exit(LocationCode2);
+
+        //Check if inventory is in stock at other locations currently
+
+        ItemLedgerEntry.Reset();
+        ItemLedgerEntry.SetRange("Item No.", Item."No.");
+        ItemLedgerEntry.SetFilter("Remaining Quantity", '>%1', QtyRemainingAtLocation);
+        ItemLedgerEntry.SetCurrentKey("Remaining Quantity");
+        ItemLedgerEntry.SetAscending("Remaining Quantity", false);
+
+        //Iterate thourgh ledger entried for each location 
+        if ItemLedgerEntry.Findset(false) then
+            repeat
+                Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code);
+                Location.Get(ItemLedgerEntry."Location Code");
+                if not (Location.IsInTransit(ItemLedgerEntry."Location Code")) and (Location."TFB Enabled") and (Location."TFB Use for ILA") and not (ItemLedgerEntry."Remaining Quantity" < MinQty) then begin
+                    LocationCode := ItemLedgerEntry."Location Code";
+                    ValidLocationFound := true;
+                end;
+            until (ItemLedgerEntry.Next() = 0) or (ValidLocationFound = true);
+
+        //If enough stock exists at and alternative location then use it and check whether it is the same as provided initially
+        if ValidLocationFound then exit(LocationCode <> InitLocationCode);
+
+        //Check if stock is on a purch line incoming
+
+        //Check if for the first incoming purchase order for this item
+        PurchaseLine.SetRange("No.", Item."No.");
+        PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+        PurchaseLine.SetFilter("Outstanding Qty. (Base)", '>0');
+        PurchaseLine.SetRange("Drop Shipment", false);
+        PurchaseLine.SetCurrentKey("Planned Receipt Date");
+        PurchaseLine.SetAscending("Planned Receipt Date", true);
+
+
+        if PurchaseLine.FindSet(false) then
+            repeat
+                Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code, "Use As In-Transit");
+                Location.Get(PurchaseLine."Location Code");
+                if not (Location."Use As In-Transit") and (Location."TFB Enabled") and (Location."TFB Use for ILA") and (PurchaseLine."Outstanding Qty. (Base)" >= MinQty) and not (PurchaseLine."Drop Shipment") then begin
+
+                    LocationCode := PurchaseLine."Location Code";
+                    ValidLocationFound := true;
+                end;
+            until (PurchaseLine.Next() = 0) or (ValidLocationFound = true);
+
+        //If valid purchase line found exit with the location code
+        if ValidLocationFound then exit(LocationCode <> InitLocationCode);
+
+        //Check if for the first incoming transfer for this item
+        TransferLine.SetRange("Item No.", Item."No.");
+        TransferLine.SetFilter("Outstanding Qty. (Base)", '>0');
+        TransferLine.SetCurrentKey("Receipt Date");
+        TransferLine.SetAscending("Receipt Date", true);
+
+        if TransferLine.FindSet(false) then
+            repeat
+                Location.SetLoadFields("TFB Use for ILA", "TFB Enabled", Code, "Use As In-Transit");
+                Location.Get(TransferLine."Transfer-to Code");
+                if not (Location."Use As In-Transit") and (Location."TFB Enabled") and (Location."TFB Use for ILA") and (TransferLine."Outstanding Qty. (Base)" >= MinQty) then begin
+                    LocationCode := TransferLine."Transfer-to Code";
+                    ValidLocationFound := true;
+                end;
+            until (TransferLine.Next() = 0) or (ValidLocationFound = true);
+
+        //If valid transfer line found
+        if ValidLocationFound then exit(LocationCode <> InitLocationCode);
+
+        exit(false);
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Release Sales Document", 'OnBeforeReleaseSalesDoc', '', false, false)]
@@ -646,8 +654,8 @@ codeunit 50122 "TFB Sales Mgmt"
 
         Customer.Get(SalesHeader."Sell-to Customer No.");
 
-        If (Customer."TFB External No. Req.") and (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
-            If SalesHeader."External Document No." = '' then
+        if (Customer."TFB External No. Req.") and (SalesHeader."Document Type" = SalesHeader."Document Type"::Order) then
+            if SalesHeader."External Document No." = '' then
                 Error('Cannot release. External Reference No. is required for customers orders');
 
 
@@ -675,11 +683,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
         if ValueEntry.FindFirst() then
             //Locate shipment
-            If ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then
-                If ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
-                    If SalesShipment.Get(ItemLedger."Document No.") then
+            if ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then
+                if ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
+                    if SalesShipment.Get(ItemLedger."Document No.") then
                         //Return the shipment document number
-                        Exit(SalesShipment."No.");
+                        exit(SalesShipment."No.");
     end;
 
     /// <summary>
@@ -697,22 +705,22 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
         ValueEntry.SetRange("Document No.", DocumentNo);
-        If LineNo > 0 then
+        if LineNo > 0 then
             ValueEntry.SetRange("Document Line No.", LineNo);
         ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Sales Invoice");
         ValueEntry.SetRange("Entry Type", ValueEntry."Entry Type"::"Direct Cost");
         ValueEntry.SetRange(Adjustment, false);
 
-        if ValueEntry.FindSet(false, false) then
+        if ValueEntry.Findset(false) then
             repeat
 
                 //Locate shipments
-                If ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then begin
+                if ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then begin
 
                     //Retrieve sales shipment
                     Clear(SalesShipment);
-                    If ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
-                        If SalesShipment.Get(ItemLedger."Document No.") then
+                    if ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
+                        if SalesShipment.Get(ItemLedger."Document No.") then
                             //Call Sales Shipment CU
                             ShipmentCU.SendShipmentStatusQuery(SalesShipment, DocumentNo);
                 end;
@@ -735,9 +743,9 @@ codeunit 50122 "TFB Sales Mgmt"
         ResEntryDemand: Record "Reservation Entry";
         SalesHeader: Record "Sales Header";
         SalesLine: Record "Sales Line";
+        ReleaseSalesDoc: Codeunit "Release Sales Document";
         DateFormula: DateFormula;
         BlockDate: Date;
-        ReleaseSalesDoc: Codeunit "Release Sales Document";
 
 
     begin
@@ -749,11 +757,11 @@ codeunit 50122 "TFB Sales Mgmt"
         LotInfo.SetRange("Variant Code", ItemLedgerEntry."Variant Code");
 
         if LotInfo.FindFirst() then
-            If (LotInfo.Blocked) and (LotInfo."TFB Date Available" > 0D) then
+            if (LotInfo.Blocked) and (LotInfo."TFB Date Available" > 0D) then
                 BlockDate := LotInfo."TFB Date Available" else
                 BlockDate := today();
 
-        If Dialog.Confirm('Defer shipments by 1 day from %1 for %2?', false, BlockDate, ItemLedgerEntry.Description) then
+        if Dialog.Confirm('Defer shipments by 1 day from %1 for %2?', false, BlockDate, ItemLedgerEntry.Description) then
             Evaluate(DateFormula, '+1D')
         else
             Evaluate(DateFormula, '0D');
@@ -763,8 +771,8 @@ codeunit 50122 "TFB Sales Mgmt"
         ResEntry.SetRange("Source Type", 32);
         ResEntry.SetRange("Reservation Status", ResEntry."Reservation Status"::Reservation);
 
-        If Dialog.Confirm('Found %1 Reservations to Adjust. Continue?', true, ResEntry.Count()) then
-            if ResEntry.FindSet(false, false) then
+        if Dialog.Confirm('Found %1 Reservations to Adjust. Continue?', true, ResEntry.Count()) then
+            if ResEntry.Findset(false) then
                 repeat
                     Clear(ResEntryDemand);
                     Clear(SalesLine);
@@ -774,19 +782,19 @@ codeunit 50122 "TFB Sales Mgmt"
 
 
 
-                    If ResEntryDemand.FindFirst() then begin
+                    if ResEntryDemand.FindFirst() then begin
                         SalesLine.SetRange("Document Type", SalesLine."Document Type"::Order);
                         SalesLine.SetRange("Document No.", ResEntryDemand."Source ID");
                         SalesLine.SetRange("Line No.", ResEntryDemand."Source Ref. No.");
                         SalesLine.SetRange("Whse. Outstanding Qty. (Base)", 0);
 
-                        If SalesLine.FindFirst() then begin
+                        if SalesLine.FindFirst() then begin
 
                             SalesHeader.SetRange("Document Type", SalesLine."Document Type");
                             SalesHeader.SetRange("No.", SalesLine."Document No.");
                             SalesHeader.FindFirst();
 
-                            If Dialog.Confirm('Change date from %1 to %2 for order %3 to %4 originally requested on %5', true, SalesLine."Shipment Date", CalcDate(DateFormula, BlockDate), SalesLine."Document No.", SalesHeader."Sell-to Customer Name", SalesHeader."Requested Delivery Date") then begin
+                            if Dialog.Confirm('Change date from %1 to %2 for order %3 to %4 originally requested on %5', true, SalesLine."Shipment Date", CalcDate(DateFormula, BlockDate), SalesLine."Document No.", SalesHeader."Sell-to Customer Name", SalesHeader."Requested Delivery Date") then begin
 
                                 SalesHeader.SetRange("Document Type", SalesLine."Document Type");
                                 SalesHeader.SetRange("No.", SalesLine."Document No.");
@@ -803,11 +811,11 @@ codeunit 50122 "TFB Sales Mgmt"
                                 SalesLine.Validate("Shipment Date", CalcDate(DateFormula, BlockDate));
                                 SalesLine.Modify();
 
-                                If not (SalesLine."Prepayment %" > 0) then
+                                if not (SalesLine."Prepayment %" > 0) then
                                     ReleaseSalesDoc.PerformManualRelease(SalesHeader)
                                 else
                                     if (Salesline."Prepayment Amount" = SalesLine.Amount) then
-                                        If HasLinePrepaymentBeenPaid(SalesHeader, SalesLine) then
+                                        if HasLinePrepaymentBeenPaid(SalesHeader, SalesLine) then
                                             ReleaseSalesDoc.PerformManualRelease(SalesHeader);
 
                             end;
@@ -844,15 +852,15 @@ codeunit 50122 "TFB Sales Mgmt"
         SalesLine.CalcFields(SalesLine."Reserved Qty. (Base)");
 
 
-        If SalesLine.Type = SalesLine.Type::Item then
-            If Item.Get(SalesLine."No.") then begin
+        if SalesLine.Type = SalesLine.Type::Item then
+            if Item.Get(SalesLine."No.") then begin
                 Item.SetRange("Location Filter", SalesLine."Location Code");
                 Item.CalcFields(Inventory);
-                If not ((SalesLine."Drop Shipment") or (SalesLine."Special Order")) then
-                    If SalesLine."Outstanding Qty. (Base)" = 0 then
+                if not ((SalesLine."Drop Shipment") or (SalesLine."Special Order")) then
+                    if SalesLine."Outstanding Qty. (Base)" = 0 then
                         _availability := emojiShippedTxt
                     else
-                        If SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then
+                        if SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then
                             if Item.Inventory > SalesLine."Outstanding Qty. (Base)" then
                                 _availability := emojiReservedTxt
                             else
@@ -863,17 +871,17 @@ codeunit 50122 "TFB Sales Mgmt"
                             else
                                 _availability := emojiNotAvailableTxt
                 else
-                    If SalesLine."Outstanding Qty. (Base)" = 0 then
+                    if SalesLine."Outstanding Qty. (Base)" = 0 then
                         _availability := emojiShippedTxt
                     else begin
 
                         if SalesLine."Drop Shipment" then
-                            If SalesLine."Purchase Order No." <> '' then
+                            if SalesLine."Purchase Order No." <> '' then
                                 _availability := emojiDropShipTxt else
                                 _availability := emojiDropShipPendingTxt;
 
                         if SalesLine."Special Order" then
-                            If SalesLine."Special Order Purchase No." <> '' then
+                            if SalesLine."Special Order Purchase No." <> '' then
                                 _availability := emojiSpecialTxt else
                                 _availability := emojiDropShipPendingTxt;
                     end;
@@ -882,7 +890,7 @@ codeunit 50122 "TFB Sales Mgmt"
                 _availability := emojiNotApplicableTxt
         else
             _availability := emojiNotApplicableTxt;
-        Exit(_availability);
+        exit(_availability);
     end;
 
 
@@ -917,7 +925,7 @@ codeunit 50122 "TFB Sales Mgmt"
                     RelatedRecRef.SetTable(PurchaseLine);
                     Purchase.SetRange("No.", PurchaseLine."Document No.");
                     Purchase.SetRange("Document Type", PurchaseLine."Document Type");
-                    If Purchase.FindFirst() then begin
+                    if Purchase.FindFirst() then begin
                         PurchasePage.SetRecord(Purchase);
                         PurchasePage.Run();
                     end;
@@ -926,7 +934,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Database::"TFB Container Entry":
                 begin
                     RelatedRecRef.SetTable(Container);
-                    If not Container.IsEmpty() then begin
+                    if not Container.IsEmpty() then begin
                         ContainerPage.SetRecord(Container);
                         ContainerPage.Run();
                     end;
@@ -935,7 +943,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Database::"Item Ledger Entry":
                 begin
                     RelatedRecRef.SetTable(LedgerEntry);
-                    If not LedgerEntry.IsEmpty() then begin
+                    if not LedgerEntry.IsEmpty() then begin
                         LedgerEntryPage.SetTableView(LedgerEntry);
                         LedgerEntryPage.Run();
                     end;
@@ -944,7 +952,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Database::"Purchase Header":
                 begin
                     RelatedRecRef.SetTable(Purchase);
-                    If not Purchase.IsEmpty() then begin
+                    if not Purchase.IsEmpty() then begin
                         PurchasePage.SetRecord(Purchase);
                         PurchasePage.Run();
                     end;
@@ -952,7 +960,7 @@ codeunit 50122 "TFB Sales Mgmt"
             Database::"Lot No. Information":
                 begin
                     RelatedRecRef.SetTable(LotNoInfo);
-                    If not LotNoInfo.IsEmpty() then begin
+                    if not LotNoInfo.IsEmpty() then begin
                         LotNoInfoPage.SetRecord(LotNoInfo);
                         LotNoInfoPage.Run();
                     end;
@@ -961,7 +969,7 @@ codeunit 50122 "TFB Sales Mgmt"
                 begin
                     RelatedRecRef.SetTable(WhseShipLine);
                     WhseShip.SetRange("No.", WhseShipLine."No.");
-                    If WhseShip.FindFirst() then begin
+                    if WhseShip.FindFirst() then begin
 
                         WhseShipPage.SetRecord(WhseShip);
                         WhseShipPage.Run();
@@ -1002,7 +1010,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
         SalesLine.CalcFields("Whse. Outstanding Qty.");
 
-        If SalesLine."Qty. Shipped (Base)" = 0 then
+        if SalesLine."Qty. Shipped (Base)" = 0 then
 
             //Check if drop ship
 
@@ -1015,23 +1023,23 @@ codeunit 50122 "TFB Sales Mgmt"
                     //Provide details of warehouse shipment
                     Status := 'Planned for dispatch';
                     SalesLine.CalcFields("Reserved Qty. (Base)");
-                    If SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then begin
+                    if SalesLine."Reserved Qty. (Base)" = SalesLine."Outstanding Qty. (Base)" then begin
 
                         DemandResEntry.SetRange("Source ID", SalesLine."Document No.");
                         DemandResEntry.SetRange("Source Ref. No.", SalesLine."Line No.");
                         DemandResEntry.SetRange("Item No.", SalesLine."No.");
                         DemandResEntry.SetRange(Positive, false);
 
-                        If DemandResEntry.FindFirst() then begin
+                        if DemandResEntry.FindFirst() then begin
 
                             SupplyResEntry.SetRange(Positive, true);
                             SupplyResEntry.SetRange("Entry No.", DemandResEntry."Entry No.");
 
-                            If SupplyResEntry.FindFirst() then
+                            if SupplyResEntry.FindFirst() then
                                 case SupplyResEntry."Source Type" of
                                     32: //Item Ledger Entry
 
-                                        If LedgerEntry.Get(SupplyResEntry."Source Ref. No.") then begin
+                                        if LedgerEntry.Get(SupplyResEntry."Source Ref. No.") then begin
 
                                             Status += StrSubstNo(' from stock already in inventory');
                                             LineStatus := LineStatus::ReservedFromStock;
@@ -1042,8 +1050,8 @@ codeunit 50122 "TFB Sales Mgmt"
                                             LotNoInfo.SetRange("Variant Code", LedgerEntry."Variant Code");
 
 
-                                            If LotNoInfo.FindFirst() then
-                                                If (LotNoInfo.Blocked = true) and (LotNoInfo."TFB Date Available" > 0D) then begin
+                                            if LotNoInfo.FindFirst() then
+                                                if (LotNoInfo.Blocked = true) and (LotNoInfo."TFB Date Available" > 0D) then begin
                                                     Status += StrSubstNo(' and pending release on %1', LotNoInfo."TFB Date Available");
                                                     LineStatus := LineStatus::ReservedFromStockPendingRelease;
                                                     RelatedRecRef.GetTable(LotNoInfo);
@@ -1058,7 +1066,7 @@ codeunit 50122 "TFB Sales Mgmt"
                                             PurchaseLine.SetRange("Line No.", SupplyResEntry."Source Ref. No.");
                                             PurchaseLine.SetRange("Document No.", SupplyResEntry."Source ID");
 
-                                            If PurchaseLine.FindFirst() then
+                                            if PurchaseLine.FindFirst() then
                                                 case PurchaseLine."TFB Container Entry No." of
                                                     '':
                                                         begin
@@ -1067,7 +1075,7 @@ codeunit 50122 "TFB Sales Mgmt"
                                                             RelatedRecRef.GetTable(PurchaseLine);
                                                         end;
                                                     else
-                                                        If Container.Get(PurchaseLine."TFB Container Entry No.") then begin
+                                                        if Container.Get(PurchaseLine."TFB Container Entry No.") then begin
                                                             RelatedRecRef.GetTable(Container);
                                                             case Container.Status of
 
@@ -1086,9 +1094,9 @@ codeunit 50122 "TFB Sales Mgmt"
                                                                 Container.Status::PendingTreatment:
                                                                     begin
                                                                         Status += StrSubstNo(' based on container that arrived on %1.', Container."Arrival Date");
-                                                                        If Container."Fumigation Req." then
+                                                                        if Container."Fumigation Req." then
                                                                             Status += ' Fumigation Currently In Progress.';
-                                                                        If Container."Inspection Req." or Container."IFIP Req." then
+                                                                        if Container."Inspection Req." or Container."IFIP Req." then
                                                                             Status += ' Inspection Req.';
 
                                                                         LineStatus := LineStatus::ReservedFromArrivedContainer;
@@ -1096,10 +1104,10 @@ codeunit 50122 "TFB Sales Mgmt"
                                                                 Container.Status::PendingClearance:
                                                                     begin
                                                                         Status += StrSubstNo(' based on container that arrived on %1.', Container."Arrival Date");
-                                                                        If Container."Fumigation Req." then
+                                                                        if Container."Fumigation Req." then
                                                                             Status += ' Fumigation Complete.';
-                                                                        If Container."Inspection Req." or Container."IFIP Req." then
-                                                                            If Container."Inspection Date" > 0D then
+                                                                        if Container."Inspection Req." or Container."IFIP Req." then
+                                                                            if Container."Inspection Date" > 0D then
                                                                                 Status += StrSubstNo(' Inspection Booked On %1.', Container."Inspection Date")
                                                                             else
                                                                                 Status += ' Still Waiting for Inspection Date to Be Booked';
@@ -1141,8 +1149,8 @@ codeunit 50122 "TFB Sales Mgmt"
                 PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
                 PurchaseLine.SetRange("Line No.", SalesLine."Purch. Order Line No.");
 
-                If Purchase.FindFirst() and PurchaseLine.FindFirst() then begin
-                    If Purchase."TFB Delivery SLA" = '' then begin
+                if Purchase.FindFirst() and PurchaseLine.FindFirst() then begin
+                    if Purchase."TFB Delivery SLA" = '' then begin
                         Vendor.Get(Purchase."Buy-from Vendor No.");
                         DeliverySLA := Vendor."TFB Delivery SLA"
                     end
@@ -1160,7 +1168,7 @@ codeunit 50122 "TFB Sales Mgmt"
             end
         else
 
-            If SalesLine."Qty. Shipped (Base)" < SalesLine."Quantity (Base)" then begin
+            if SalesLine."Qty. Shipped (Base)" < SalesLine."Quantity (Base)" then begin
 
                 //Partially Shipped
 
@@ -1171,7 +1179,7 @@ codeunit 50122 "TFB Sales Mgmt"
             else
 
                 //Fully Shipped
-                If SalesLine."Qty. Invoiced (Base)" = SalesLine."Qty. Shipped (Base)" then begin
+                if SalesLine."Qty. Invoiced (Base)" = SalesLine."Qty. Shipped (Base)" then begin
                     Status := 'Shipped and invoiced';
                     LineStatus := LineStatus::ShippedPendingInvoice;
 
@@ -1182,7 +1190,7 @@ codeunit 50122 "TFB Sales Mgmt"
                 end;
 
         AvailInfo := Status;
-        If LineStatus.AsInteger() > 0 then exit(true) else exit(false);
+        if LineStatus.AsInteger() > 0 then exit(true) else exit(false);
 
 
     end;

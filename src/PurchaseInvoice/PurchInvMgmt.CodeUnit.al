@@ -10,7 +10,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         InvoiceLine.SetRange("Document No.", DocumentNo);
         InvoiceLine.SetFilter("Quantity (Base)", '>0');
 
-        If InvoiceLine.FindFirst() then
+        if InvoiceLine.FindFirst() then
             SendPODRequest(DocumentNo, InvoiceLine."Line No.");
     end;
 
@@ -20,14 +20,14 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
     begin
 
-        If (Line.Type = Line.Type::"Charge (Item)") and (Line.Description <> '') then
-            If (Line.Quantity > 0) and (Line."Qty. to Assign" < Line.Quantity) then
+        if (Line.Type = Line.Type::"Charge (Item)") and (Line.Description <> '') then
+            if (Line.Quantity > 0) and (Line."Qty. to Assign" < Line.Quantity) then
                 //Conditions correct for assigning item charge
-                Exit(true)
+                exit(true)
             else
-                Exit(false)
+                exit(false)
         else
-            Exit(false);
+            exit(false);
 
 
     end;
@@ -46,7 +46,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
         Clear(Result);
-        If CheckIfAssignmentRequired(Line) then begin
+        if CheckIfAssignmentRequired(Line) then begin
 
 
 
@@ -57,8 +57,8 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
             Reference := ExtractReference(Line.Description, TokenClass);
-            If Reference = '' then
-                If Header.FindFirst() then
+            if Reference = '' then
+                if Header.FindFirst() then
                     Reference := ExtractReference(Header."TFB Charge Assignment", TokenClass);
 
             if not (Reference = '') then
@@ -74,7 +74,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                         Result := GetSalesShipmentByBookingReference(Line, Reference);
                 end;
         end;
-        Exit(result);
+        exit(result);
 
     end;
 
@@ -100,12 +100,12 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         StartNum := Description.IndexOf('3PL');
 
-        If (StartNum > 0) then begin
+        if (StartNum > 0) then begin
             TokenLen := STRLEN(Description) - (StartNum + 4);
 
             Reference := Copystr(Description.Substring(StartNum + 4, TokenLen), 1, 100);
             TokenClass := TokenClass::"3PL Booking";
-            Exit(Reference);
+            exit(Reference);
         end;
 
 
@@ -113,37 +113,37 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         StartNum := Description.IndexOf('S-SHP');
 
-        If StartNum > 0 then begin
+        if StartNum > 0 then begin
             Reference := Description.Substring(StartNum, 13);
             TokenClass := TokenClass::"Sales Shipment";
-            Exit(Reference);
+            exit(Reference);
         end;
 
 
         StartNum := Description.IndexOf('W-SHP');
 
-        If StartNum > 0 then begin
+        if StartNum > 0 then begin
             Reference := Description.Substring(StartNum, 12);
             TokenClass := TokenClass::"Warehouse Shipment";
-            Exit(Reference);
+            exit(Reference);
         end;
 
         StartNum := Description.IndexOf('CNT');
 
-        If StartNum > 0 then begin
+        if StartNum > 0 then begin
 
             Reference := Description.SubString(StartNum + 4, 11);
             TokenClass := TokenClass::"Inbound Container";
-            Exit(Reference);
+            exit(Reference);
         end;
 
         StartNum := Description.IndexOf('PO');
 
-        If StartNum > 0 Then begin
+        if StartNum > 0 then begin
 
             Reference := Description.Substring(StartNum, 7);
             TokenClass := TokenClass::"Purchase Order";
-            Exit(Reference);
+            exit(Reference);
         end;
 
     end;
@@ -159,23 +159,23 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
         Clear(ValueEntry);
         ValueEntry.SetRange("Document No.", DocumentNo);
-        If LineNo > 0 then
+        if LineNo > 0 then
             ValueEntry.SetRange("Document Line No.", LineNo);
 
         ValueEntry.SetRange("Document Type", ValueEntry."Document Type"::"Sales Invoice");
         ValueEntry.SetRange("Entry Type", ValueEntry."Entry Type"::"Direct Cost");
         ValueEntry.SetRange(Adjustment, false);
 
-        if ValueEntry.FindSet(false, false) then
+        if ValueEntry.Findset(false) then
             repeat
 
                 //Locate shipments
-                If ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then begin
+                if ItemLedger.Get(ValueEntry."Item Ledger Entry No.") then begin
 
                     //Retrieve sales shipment
                     Clear(SalesShipment);
-                    If ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
-                        If SalesShipment.Get(ItemLedger."Document No.") then
+                    if ItemLedger."Document Type" = ItemLedger."Document Type"::"Sales Shipment" then
+                        if SalesShipment.Get(ItemLedger."Document No.") then
                             //Call Sales Shipment CU
                             ShipmentCU.SendShipmentStatusQuery(SalesShipment, DocumentNo);
                 end;
@@ -202,7 +202,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         GetPurchaseReceiptLinesByPOReference(Line, Reference);
 
-        Exit(not Line.IsEmpty());
+        exit(not Line.IsEmpty());
     end;
 
 
@@ -228,9 +228,9 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         Clear(Line);
         GetPurchaseReceiptLinesByPOReference(Line, Reference);
 
-        If Line.FindSet(False, false) then begin
-            If PurchaseReceiptCU.GetItemChargesForReceipt(Line."Document No.", Line."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
-                If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
+        if Line.Findset(false) then begin
+            if PurchaseReceiptCU.GetItemChargesForReceipt(Line."Document No.", Line."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                if not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
             repeat
                 CLEAR(TempICAssignment);
@@ -257,7 +257,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
             ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
             Line.CalcFields("TFB Container No. LookUp");
-            If Line."TFB Container Entry No." <> '' then
+            if Line."TFB Container Entry No." <> '' then
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' for container %1 on %2', line."TFB Container No. LookUp", Line."Posting Date")
             else
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' receipted as semiload on %1', Line."Posting Date");
@@ -304,7 +304,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
 
         GetPurchaseReceiptLinesByCntReference(Lines, Reference);
-        Exit(Not Lines.IsEmpty());
+        exit(not Lines.IsEmpty());
 
     end;
 
@@ -334,9 +334,9 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         GetTransferReceiptLinesByCntReference(TransferReceiptLine, Reference);
         GetPurchaseReceiptLinesByCntReference(PurchRcptLines, Reference);
 
-        If TransferReceiptLine.FindSet(false, false) then begin
-            If TransferReceiptCU.GetItemChargesForReceipt(TransferReceiptLine."Document No.", TransferReceiptLine."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
-                If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
+        if TransferReceiptLine.Findset(false) then begin
+            if TransferReceiptCU.GetItemChargesForReceipt(TransferReceiptLine."Document No.", TransferReceiptLine."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                if not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
 
             repeat
@@ -357,19 +357,19 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
             until PurchRcptLines.Next() = 0;
 
-            If ChargesAssigned = true then begin
+            if ChargesAssigned = true then begin
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 TransferReceiptLine.CalcFields("TFB Container No. LookUp");
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' for order %1 shipped in %2 received on %3', TransferReceiptLine."Document No.", TransferReceiptLine."TFB Container No.", TransferReceiptLine."Receipt Date");
                 PurchLine.CalcFields("Qty. to Assign");
-                Exit(true);
+                exit(true);
             end;
         end;
 
-        If PurchRcptLines.FindSet(False, false) then begin
+        if PurchRcptLines.Findset(false) then begin
 
-            If PurchaseReceiptCU.GetItemChargesForReceipt(PurchRcptLines."Document No.", PurchRcptLines."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
-                If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
+            if PurchaseReceiptCU.GetItemChargesForReceipt(PurchRcptLines."Document No.", PurchRcptLines."Line No.", PurchLine."No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                if not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                     exit(false);
             repeat
                 CLEAR(TempICAssignment);
@@ -389,12 +389,12 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
             until PurchRcptLines.Next() = 0;
 
-            If ChargesAssigned = true then begin
+            if ChargesAssigned = true then begin
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 PurchRcptLines.CalcFields("TFB Container No. LookUp");
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' for order %1 shipped in %2 received on %3', PurchRcptLines."Order No.", PurchRcptLines."TFB Container No. LookUp", PurchRcptLines."Posting Date");
                 PurchLine.CalcFields("Qty. to Assign");
-                Exit(true);
+                exit(true);
             end;
         end;
     end;
@@ -408,7 +408,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
         ShipHeader.SetRange("TFB 3PL Booking No.", Reference);
 
-        If ShipHeader.FindSet(false, false) then begin
+        if ShipHeader.Findset(false) then begin
 
             repeat
                 if HeaderDocNoFilter.Length() >= 1 then HeaderDocNoFilter.Append('|');
@@ -422,7 +422,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             ShipLine.SetRange("Drop Shipment", false);
             ShipLine.SetFilter(Quantity, '>0');
 
-            Exit(not ShipLine.IsEmpty());
+            exit(not ShipLine.IsEmpty());
 
         end;
     end;
@@ -446,8 +446,8 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
         TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
-        If not TempICAssignment.IsEmpty() then
-            If Dialog.Confirm('Assignment lines already exist - Remove them first?') then
+        if not TempICAssignment.IsEmpty() then
+            if Dialog.Confirm('Assignment lines already exist - Remove them first?') then
                 TempICAssignment.DeleteAll(false);
 
 
@@ -458,7 +458,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         ShipHeader.SetRange("TFB 3PL Booking No.", Reference);
 
-        If ShipHeader.FindSet(false, false) then begin
+        if ShipHeader.Findset(false) then begin
 
             repeat
                 if HeaderDocNoFilter.Length() >= 1 then HeaderDocNoFilter.Append('|');
@@ -472,13 +472,13 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             ShipLine.SetRange("Drop Shipment", false);
             ShipLine.SetFilter(Quantity, '>0');
 
-            If ShipLine.FindSet(False, false) then begin
+            if ShipLine.Findset(false) then begin
 
                 ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 PurchLine.Description := 'Sales Freight for ' + Reference + StrSubstNo(' for %1 on %2', ShipHeader."Ship-to Name", ShipHeader."Posting Date");
                 PurchLine.CalcFields("Qty. to Assign");
-                Exit(true);
+                exit(true);
             end;
         end;
     end;
@@ -490,8 +490,8 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         ShipmentCU: CodeUnit "TFB Sales Shipment Mgmt";
 
     begin
-        If ShipmentCU.GetItemChargesForSalesShipment(FromSalesShptLine."Document No.", FromSalesShptLine."Line No.", ItemChargeAssgntPurch."Item Charge No.") > 0 then
-            If not Dialog.Confirm('Charges already exist for shipment lines - Continue?') then
+        if ShipmentCU.GetItemChargesForSalesShipment(FromSalesShptLine."Document No.", FromSalesShptLine."Line No.", ItemChargeAssgntPurch."Item Charge No.") > 0 then
+            if not Dialog.Confirm('Charges already exist for shipment lines - Continue?') then
                 IsHandled := true;
 
     end;
@@ -510,7 +510,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         WhseHeader.SetRange("Whse. Shipment No.", Reference);
         Clear(HeaderDocList);
 
-        If WhseHeader.FindSet(false, false) then begin
+        if WhseHeader.Findset(false) then begin
             repeat
 
                 //Retrieve Lines
@@ -519,16 +519,16 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 WhseLine.SetRange("Posted Source Document", WhseLine."Posted Source Document"::"Posted Shipment");
                 WhseLine.SetFilter(Quantity, '>0');
 
-                If WhseLine.FindSet(False, false) then
+                if WhseLine.Findset(false) then
                     repeat
 
                         //Get SalesShipment
                         ShipmentHeader.SetRange("No.", WhseLine."Posted Source No.");
-                        If ShipmentHeader.FindSet(false, false) then
+                        if ShipmentHeader.Findset(false) then
                             repeat
 
-                                If CustomerList.ToText() <> ShipmentHeader."Sell-to Customer Name" then begin
-                                    If CustomerList.Length() > 0 then CustomerList.Append(', ');
+                                if CustomerList.ToText() <> ShipmentHeader."Sell-to Customer Name" then begin
+                                    if CustomerList.Length() > 0 then CustomerList.Append(', ');
                                     CustomerList.Append(ShipmentHeader."Sell-to Customer Name");
                                 end;
 
@@ -559,7 +559,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             PostingDate := WhseHeader."Posting Date";
         end;
 
-        Exit(HeaderDocList.Count > 0)
+        exit(HeaderDocList.Count > 0)
     end;
 
     local procedure GetTransferReceiptLinesByCntReference(var Lines: Record "Transfer Receipt Line"; Reference: Text[100])
@@ -579,7 +579,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
 
         GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate);
-        Exit(not ShipLine.IsEmpty());
+        exit(not ShipLine.IsEmpty());
 
     end;
 
@@ -603,8 +603,8 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
         TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
-        If not TempICAssignment.IsEmpty() then
-            If Dialog.Confirm('Assignment lines already exist - Remove them first?') then
+        if not TempICAssignment.IsEmpty() then
+            if Dialog.Confirm('Assignment lines already exist - Remove them first?') then
                 TempICAssignment.DeleteAll(false);
 
         TempICAssignment."Document No." := PurchLine."Document No.";
@@ -612,17 +612,17 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         TempICAssignment."Document Line No." := PurchLine."Line No.";
         TempICAssignment."Item Charge No." := PurchLine."No.";
 
-        If GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
-            If ShipLine.FindSet(False, false) then begin
-                If SalesShipmentCU.GetItemChargesForShipment(PurchLine."No.", ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
-                    If not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
+        if GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
+            if ShipLine.Findset(false) then begin
+                if SalesShipmentCU.GetItemChargesForShipment(PurchLine."No.", ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                    if not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                         exit(false);
 
                 ICAssignmentCU.CreateSalesShptChargeAssgnt(ShipLine, TempICAssignment);
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 PurchLine.Description := Text.CopyStr(StrSubstNo('%1 Shipment to %2 on %3', Reference, CustomerList, PostingDate), 1, 100);
                 PurchLine.CalcFields("Qty. to Assign");
-                Exit(true);
+                exit(true);
             end;
 
     end;

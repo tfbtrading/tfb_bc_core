@@ -1478,71 +1478,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costing Scenario - Field Unpack Standard - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 3097886753 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Costings Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 2584065548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cust. Decl. Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Cust. Decl. Item Charge - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 2104708884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Default Postal Zone</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Default Postal Zone - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 156488807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ex Warehouse Customer Price Group Enabled?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field ExWarehouseEnabled - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 2984718713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ExWarehousePricingGroup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field ExWarehousePricingGroup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 3185624217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fumigation Fees Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Fumigation Fees Item Charge - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 3933459749 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import Duty Rate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Import Duty Rate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 967097934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ocean Freight Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Ocean Freight Item Charge - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 2783304971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Port Cartage Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Port Cartage Item Charge - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 3082251871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Port Documents</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Port Documents - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Primary Key</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Primary Key - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 2007445240 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quarantine Fees Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Quarantine Fees Item Charge - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3097886753 - Field 4035455967 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Unpack Item Charge</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Costings Setup - Field Unpack Item Charge - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 2700589311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Customer Favorite Item</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2298,36 +2233,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Scenario - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 191962183 - Field 3004954119 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 191962183 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 191962183 - Field 324278028 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Estimated Exch. Rate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Estimated Exch. Rate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 191962183 - Field 3419396342 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Estimated Weight</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Estimated Weight - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 191962183 - Field 3355080415 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Overseas Currency</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Overseas Currency - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 191962183 - Field 714651502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Total Costs</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Template - Field Total Costs - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 794278900 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2387,26 +2292,6 @@
           <source>Variant Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Image - Field Variant Code - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 348529970 - Field 927772924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Email Template Active URL</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Notification Email Setup - Field Email Template Active - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 348529970 - Field 3240745382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Email Template Test URL</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Notification Email Setup - Field Email Template Test - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 348529970 - Field 1663593181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Primary Key</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Notification Email Setup - Field Primary Key - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 348529970 - Field 3710665244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Test Table</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Notification Email Setup - Field Test Table - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3468443288 - Field 3768257466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inbound Shipments</source>
@@ -2562,11 +2447,6 @@
           <source>Given parent type is not supported.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Picture Entity - NamedType EntityNotSupportedErr</note>
-        </trans-unit>
-        <trans-unit id="Table 33561257 - NamedType 3272579528" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Multiple parents have been found for the specified criteria.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Picture Entity - NamedType MultipleParentsFoundErr</note>
         </trans-unit>
         <trans-unit id="Table 33561257 - Field 2166181827 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Content</source>
@@ -3078,26 +2958,6 @@
           <note from="Developer" annotates="general" priority="2">%1 = a Field Caption like Currency Code</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ConfirmChangeQst</note>
         </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 442966263" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 has no email address specified. The value in the Email field on the sample request, %2, will be deleted. Do you want to continue?</source>
-          <note from="Developer" annotates="general" priority="2">%1 - Contact No., %2 - Email</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ConfirmEmptyEmailQst</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3650704788" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The %1 field cannot be blank because this quote is linked to an opportunity.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - field name</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoBlankDueToOpportunityErr</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 4223605721" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You cannot change %1 because the corresponding %2 %3 has been assigned</source>
-          <note from="Developer" annotates="general" priority="2">%1 - opportunity, %2 = Contant, %3 = Other Contact</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoChangeOpportunityMsg</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3714817322" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Contact %1 %2 is not related to customer %3.</source>
-          <note from="Developer" annotates="general" priority="2">%1 - No, %2 - Name, %3 - Customer Name</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType NoRelationMsg</note>
-        </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 3516335711" size-unit="char" translate="yes" xml:space="preserve">
           <source>You cannot reset %1 because the document still has one or more lines.</source>
           <note from="Developer" annotates="general" priority="2">%1 -  Document No</note>
@@ -3107,11 +2967,6 @@
           <source>Loading field %1 will be skipped because there was an error when reading the data.\To fix the current data, contact your administrator.\Alternatively, you can overwrite the current data by entering data in the field.</source>
           <note from="Developer" annotates="general" priority="2">%1=field caption</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType ReadingDataSkippedMsg</note>
-        </trans-unit>
-        <trans-unit id="Table 3380206577 - NamedType 3413947875" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sell-to Customer</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request - NamedType SellToCustomerTxt</note>
         </trans-unit>
         <trans-unit id="Table 3380206577 - NamedType 1872924336" size-unit="char" translate="yes" xml:space="preserve">
           <source>The sales %1 %2 already exists.</source>
@@ -3297,11 +3152,6 @@
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 484963403 - Field 1559737013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sample Size SystemID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Sample Request Line - Field Sample Size SystemID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 484963403 - Field 4193586954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Kg Sample Size from Source</source>
@@ -3642,16 +3492,6 @@
           <source>No records have been selected for the merge</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method DownloadItemMSDS - NamedType NoRecordsSelectedMsg</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Specifications</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType TitleTxt</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3910736978 - Method 1446355219 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method EmailSpecification - NamedType SubTitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 4011279994 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
           <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
@@ -4363,51 +4203,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - Property EntitySetCaption</note>
         </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 3190223990 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Item Ledger Rcpt. - NamedType UnitOfMeasureValuesDontMatchErr</note>
-        </trans-unit>
         <trans-unit id="Page 3190223990 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DisplayName</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4478,51 +4273,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Property EntitySetCaption</note>
         </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2163087014 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
-        </trans-unit>
         <trans-unit id="Page 2163087014 - Control 2475235959 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>LatestReceiptDate</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -4582,46 +4332,6 @@
           <source>Inventory cannot be changed during on insert.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2176275388 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Info - NamedType UnitOfMeasureValuesDontMatchErr</note>
         </trans-unit>
         <trans-unit id="Page 2176275388 - Control 4247538596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
@@ -6768,10 +6478,20 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control LastReview - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 759201824 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the last review that was entered for the contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewComment - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3193956155 - Control 759201824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewComment - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 3857743901 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifes the date the last review was completed on</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control _LastReviewDate - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3857743901 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Last Completed On</source>
@@ -9608,81 +9328,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing List - View ViewName - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2868778379 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Costing Setup</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 867660531 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Charge Allocations</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Charges - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2584065548 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Cust. Decl. Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 3185624217 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Fumigation Fees Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 967097934 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Ocean Freight Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2783304971 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Port Cartage Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 3082251871 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Port Documents - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2007445240 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Quarantine Fees Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 4035455967 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the item charge code to use when generating templates.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Unpack Item Charge - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2104708884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Selects postal zone treated as default</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control Default Postal Zone - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 156488807 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Set to true to generate sale price worksheet entries for ex-warehouse pricing</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control ExWarehouseEnabled - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 156488807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ex Warehouse Enabled</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control ExWarehouseEnabled - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2984718713 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ex warehouse customer pricing group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control ExWarehousePricingGroup - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 2984718713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Ex Warehouse Pricing Group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control ExWarehousePricingGroup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2868778379 - Control 672476342 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Used to add import duties to landed cost if the switch is setup in profile</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Item Costing Setup - Control mport Duty Rate - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 980115112 - Control 2969235611 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies line key</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9902,11 +9547,6 @@
           <source>Welcome to the add Lot Image Wizard</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Add Image Wizard - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2896080974 - Method 1437389516 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image already exists - do you want to override?</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Add Image Wizard - Method UploadIsolatedFile - NamedType OverrideImageQst</note>
         </trans-unit>
         <trans-unit id="Page 2896080974 - Method 218639240 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
           <source>Image already exists - do you want to override?</source>
@@ -10192,51 +9832,6 @@
           <source>Lot Images</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 901373512" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Inventory cannot be changed during on insert.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType InventoryCannotBeChangedInAPostRequestErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 1707660496" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The item categories values do not match to a specific item category.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoriesValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 3720971351" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryCode" does not match to a Item Category.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 2419481269" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "itemCategoryId" does not match to a specific Item Category group.</source>
-          <note from="Developer" annotates="general" priority="2">itemCategoryId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType ItemCategoryIdDoesNotMatchAnItemCategoryGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 845033262" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupCode" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupCode is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupCodeDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 245779182" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "taxGroupId" does not match to a Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2">taxGroupId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupIdDoesNotMatchATaxGroupErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 876726151" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The tax group values do not match to a specific Tax Group.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType TaxGroupValuesDontMatchErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 3536423990" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The "baseUnitOfMeasureId" does not match to a Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2">baseUnitOfMeasureId is a field name and should not be translated.</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureIdDoesNotMatchAUnitOfMeasureErr</note>
-        </trans-unit>
-        <trans-unit id="Page 2506474997 - NamedType 1780786116" size-unit="char" translate="yes" xml:space="preserve">
-          <source>The unit of measure values do not match to a specific Unit of Measure.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - NamedType UnitOfMeasureValuesDontMatchErr</note>
         </trans-unit>
         <trans-unit id="Page 2506474997 - Control 2475235959 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the SystemCreatedAt field.</source>
@@ -13208,20 +12803,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType DeleteImageQst</note>
         </trans-unit>
-        <trans-unit id="Page 1190091734 - NamedType 992573177" size-unit="char" translate="yes" xml:space="preserve">
-          <source>You must add a description to the item before you can import a picture.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType MustSpecifyDescriptionErr</note>
-        </trans-unit>
         <trans-unit id="Page 1190091734 - NamedType 1398852855" size-unit="char" translate="yes" xml:space="preserve">
           <source>The existing picture will be replaced. Do you want to continue?</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType OverrideImageQst</note>
-        </trans-unit>
-        <trans-unit id="Page 1190091734 - NamedType 464428880" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Select a picture to upload</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Sample Picture - NamedType SelectPictureTxt</note>
         </trans-unit>
         <trans-unit id="Page 1190091734 - Method 1644415618 - NamedType 2658645837" size-unit="char" translate="yes" xml:space="preserve">
           <source>No picture stored.</source>
@@ -15118,6 +14703,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Incoming Document - Control PDFViewer - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2469088360 - Method 1942338352 - NamedType 890041368" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2469088360">
+          <source>The attachment is no longer available.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Incoming Document Files - Method ViewAttachment - NamedType NotAvailableAttachmentMsg</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2469088360 - Action 3875176889 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2912733748">
           <source>Preview attachment</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15382,11 +14972,6 @@
           <source>Ext. Doc. No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control External Document No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2630826894 - Control 1882905478 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
-          <source>Specifies source number</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Control Source No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2630826894 - Control 2327572947 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Specifies sales order number</source>
@@ -17028,11 +16613,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order Archives - Control Vendor Order No. - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 2665658097 - Control 3126877759 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
-          <source>Specifies the vendors order number</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Order List - Control Vendor Order No. - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 2665658097 - Control 2632124822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3195034673">
           <source>Specifies the date on which the order was placed</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18483,11 +18063,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Entry Summary - Field TFB Lot Blocked - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 330083054 - Method 1942338352 - NamedType 890041368" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 330083054">
-          <source>The attachment is no longer available.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Inc. Doc. Attach. Overview - Method ViewAttachment - NamedType NotAvailableAttachmentMsg</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1595458022 - Field 1094348532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2182196518">
           <source>Further details</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19053,26 +18628,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purchase Line - Field TFB VendorName - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 3682828098 - Field 23818717 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
-          <source>Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purchase Price - Field TFB Item Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3682828098 - Field 797596449 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
-          <source>Pricing Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purchase Price - Field TFB Vendor Price Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3682828098 - Field 3374790926 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
-          <source>Pricing Unit Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purchase Price - Field TFB VendorPriceByWeight - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3682828098 - Field 2009408905 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3105979010">
-          <source>Pricing Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Purchase Price - Field TFB VendorPriceUnit - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 1752700828 - Field 2531605049 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3921990236">
           <source>Cont. Entry No.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19537,26 +19092,6 @@
           <source>Per Kg Price</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line Archive - Field TFB Price Unit Cost - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 2703199175 - Field 1550358658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2243515271">
-          <source>Per Kg Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Price - Field TFB PriceByWeight - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 780883053 - Field 793925569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 888136877">
-          <source>Existing Per Kg Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Price Worksheet - Field TFB Current Per Kg Price - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 780883053 - Field 4059518289 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 888136877">
-          <source>Net Weight</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Price Worksheet - Field TFB Net Weight - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 780883053 - Field 1275306678 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 888136877">
-          <source>New Per Kg Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Price Worksheet - Field TFB New Per Kg Price - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2284106393 - Method 3555759228 - NamedType 2803737564" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 2284106393">
           <source>Overwright existing blob assigned with filename %1</source>
@@ -20652,11 +20187,6 @@
           <source>Sample Request to Warehouse</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PermissionSet 1916448454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Core Permissions TFB PTE</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB CORE EXTENSION - Property Caption</note>
         </trans-unit>
       </group>
     </body>

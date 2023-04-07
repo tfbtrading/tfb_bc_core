@@ -23,7 +23,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                     ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
                     ToDo.SetRange(Closed, false);
 
-                    If not ToDo.IsEmpty() then begin
+                    if not ToDo.IsEmpty() then begin
                         TaskList.SetTableView(Todo);
                         TaskList.Run();
                     end;
@@ -81,7 +81,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         {
             field("TFB Instructions"; Rec."TFB Instructions")
             {
-                MultiLine = True;
+                MultiLine = true;
                 ApplicationArea = All;
                 ToolTip = 'Specifies the specific delivery instructions for the sales order';
             }
@@ -107,8 +107,8 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                     CommonCU: Codeunit "TFB Common Library";
                 begin
 
-                    If Rec."No." <> '' then
-                        If CommonCU.CheckAndSendCoA(Rec."No.", false, false, true) then
+                    if Rec."No." <> '' then
+                        if CommonCU.CheckAndSendCoA(Rec."No.", false, false, true) then
                             Message('Sent COA(s) to customer')
                         else
                             Message('No Line Items have Lots Specified or COA files attached');
@@ -136,7 +136,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
                     SalesLine.SetRange("Document No.", Rec."No.");
                     SalesLine.SetRange(Type, SalesLine.type::Item);
 
-                    If Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
+                    if Page.RunModal(Page::"TFB Gross Profit Sales Lines", SalesLine) = Action::OK then
                         message('Did something');
 
                 end;
@@ -199,7 +199,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         DocumentNo: Code[20];
     begin
 
-        If Rec.CheckDuplicateExtDocNo(DuplicateSystemID,DocumentNo) then begin
+        if Rec.CheckDuplicateExtDocNo(DuplicateSystemID,DocumentNo) then begin
             DuplicateNotification.Message(StrSubstNo('An existing ongoing sales order %1 has the same External Doc No',DocumentNo));
             DuplicateNotification.Scope(NotificationScope::LocalScope);
             DuplicateNotification.SetData('SystemId', DuplicateSystemID);
@@ -207,7 +207,7 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
             DuplicateNotification.Send();
         end
         else
-            If not IsNullGuid(DuplicateNotification.Id) then
+            if not IsNullGuid(DuplicateNotification.Id) then
                 DuplicateNotification.Recall();
 
     end;
@@ -227,10 +227,10 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         ToDo.SetRange("System To-do Type", ToDo."System To-do Type"::Organizer);
         ToDo.SetRange(Closed, false);
 
-        If ToDo.Count() > 0 then
-            Exit(StrSubstNo('📋 (%1)', ToDo.Count()))
+        if ToDo.Count() > 0 then
+            exit(StrSubstNo('📋 (%1)', ToDo.Count()))
         else
-            Exit('');
+            exit('');
 
     end;
 

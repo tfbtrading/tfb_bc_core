@@ -40,12 +40,12 @@ tableextension 50128 "TFB Shipping Agent Services" extends "Shipping Agent Servi
     begin
 
 
-        If Format("TFB Shipping Time Max") = '' then exit;
+        if Format("TFB Shipping Time Max") = '' then exit;
 
         DateTest1 := CalcDate("Shipping Time", WorkDate());
         DateTest2 := CalcDate("TFB Shipping Time Max", WorkDate());
 
-        If DateTest2 < DateTest1 then
+        if DateTest2 < DateTest1 then
             FieldError("TFB Shipping Time Max", Text001Err);
     end;
 

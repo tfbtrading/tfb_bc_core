@@ -62,8 +62,8 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
     begin
 
-        If not ContactBusinessRel.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Contact."Company No.") then exit;
-        If not Customer.Get(ContactBusinessRel."No.") then exit;
+        if not ContactBusinessRel.FindByContact(Enum::"Contact Business Relation Link To Table"::Customer, Contact."Company No.") then exit;
+        if not Customer.Get(ContactBusinessRel."No.") then exit;
 
         data.Add('contactid', Text.DelChr(Contact.SystemId, '<>', '{}'));
         data.Add('customerid', Text.DelChr(Customer.SystemId, '<>', '{}'));
@@ -129,7 +129,7 @@ codeunit 50118 "TFB Event Grid Mgmt"
         if not Response.IsSuccessStatusCode then
             Error(WebServiceErr, Response.HttpStatusCode, response.ReasonPhrase);
 
-        Exit(SuccessMsg);
+        exit(SuccessMsg);
     end;
 
 

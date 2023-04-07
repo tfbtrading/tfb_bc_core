@@ -55,12 +55,14 @@ page 50174 "TFB Contact Review Wizard"
                                 ApplicationArea = All;
                                 Editable = false;
                                 MultiLine = true;
+                                ToolTip = 'Specifies the last review that was entered for the contact';
                             }
                             field(_LastReviewDate; _LastReviewDate)
                             {
                                 Caption = 'Last Completed On';
                                 ApplicationArea = All;
                                 Editable = false;
+                                ToolTip = 'Specifes the date the last review was completed on';
                             }
                         }
 
@@ -75,7 +77,7 @@ page 50174 "TFB Contact Review Wizard"
                             trigger OnValidate()
 
                             begin
-                                If _ReviewComment = '' then
+                                if _ReviewComment = '' then
                                     error('You must provide a review outcome description');
                             end;
                         }
@@ -211,44 +213,33 @@ page 50174 "TFB Contact Review Wizard"
 
 
     var
-
-        InstructionTxt: Label 'When you click finish we will:';
-
-        Instruction1Txt: Label '1) Update contact to say they are no longer in review';
-
-        Instruction2Txt: Label '2) Add a relationship comment up to 256 characters';
-
-        Instruction3Txt: Label '3) Set the next date of the review';
-
-        Instruction4Txt: Label '4) Update the last review date with todays date';
-
-
         MediaRepositoryDone: Record "Media Repository";
         MediaRepositoryStandard: Record "Media Repository";
         MediaResourcesDone: Record "Media Resources";
         MediaResourcesStandard: Record "Media Resources";
-
-        Step: Option Start,Finish;
-
         BackActionEnabled: Boolean;
         FinishActionEnabled: Boolean;
         NextActionEnabled: Boolean;
         Step1Visible: Boolean;
         Step2Visible: Boolean;
-
-        _ReviewComment: Text[256];
-        _LastReviewComment: Text[256];
+        TopBannerVisible: Boolean;
+        _ExistingReview: Boolean;
+        _IsFinished: Boolean;
         _UpdateContactStatus: Code[20];
         _LastReviewDate: Date;
         _NextReview: Date;
-        [InDataSet]
-        _ExistingReview: Boolean;
-
         _PeriodicReviewSelection: Enum "TFB Periodic Review";
-        _NextStepConfirmation: Text[1000];
-        TopBannerVisible: Boolean;
+        Step: Option Start,Finish;
+        _LastReviewComment: Text[256];
 
-        _IsFinished: Boolean;
+        _ReviewComment: Text[256];
+        Instruction1Txt: Label '1) Update contact to say they are no longer in review';
+        Instruction2Txt: Label '2) Add a relationship comment up to 256 characters';
+        Instruction3Txt: Label '3) Set the next date of the review';
+        Instruction4Txt: Label '4) Update the last review date with todays date';
+        InstructionTxt: Label 'When you click finish we will:';
+
+
 
 
     local procedure EnableControls();
@@ -275,7 +266,7 @@ page 50174 "TFB Contact Review Wizard"
 
         _UpdateContactStatus := _contact."TFB Contact Status";
 
-        If _LastReviewDate > 0D then begin
+        if _LastReviewDate > 0D then begin
             _ExistingReview := true;
             _LastReviewComment := _contact."TFB Review Note";
 
@@ -288,17 +279,17 @@ page 50174 "TFB Contact Review Wizard"
 
     internal procedure GetReviewComment(): Text[256]
     begin
-        Exit(_ReviewComment);
+        exit(_ReviewComment);
     end;
 
     internal procedure GetNextPlannedDate(): Date
     begin
-        Exit(_NextReview);
+        exit(_NextReview);
     end;
 
     internal procedure GetContactStatus(): Code[20]
     begin
-        Exit(_UpdateContactStatus);
+        exit(_UpdateContactStatus);
     end;
 
 
@@ -375,19 +366,19 @@ page 50174 "TFB Contact Review Wizard"
     begin
 
         CRLF := TypeHelper.CRLFSeparator();
-        Exit(InstructionTxt + CRLF + Instruction1Txt + CRLF + Instruction2Txt + CRLF + Instruction3Txt + CRLF + Instruction4Txt);
+        exit(InstructionTxt + CRLF + Instruction1Txt + CRLF + Instruction2Txt + CRLF + Instruction3Txt + CRLF + Instruction4Txt);
     end;
 
-    local procedure ResetNextReviewDate(_PeriodicReviewSelection: Enum "TFB Periodic Review")
+    local procedure ResetNextReviewDate(newPeriodicReviewSelection: Enum "TFB Periodic Review")
 
     var
         PeriodicDateFormula: DateFormula;
-
-        IValueName: Text;
         IIndex: Integer;
+        IValueName: Text;
+
     begin
-        IIndex := _PeriodicReviewSelection.Ordinals().IndexOf(_PeriodicReviewSelection.AsInteger());
-        _PeriodicReviewSelection.Names().Get(IIndex, IValueName);
+        IIndex := newPeriodicReviewSelection.Ordinals().IndexOf(newPeriodicReviewSelection.AsInteger());
+        newPeriodicReviewSelection.Names().Get(IIndex, IValueName);
         Evaluate(PeriodicDateFormula, IValueName);
         _NextReview := CalcDate(PeriodicDateFormula, WorkDate());
     end;

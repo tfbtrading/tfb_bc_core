@@ -37,7 +37,7 @@ pageextension 50147 "TFB Sales Line Archive List" extends "Sales Line Archive Li
                 SalesArchive.SetRange("Document Type", Rec."Document Type");
                 SalesArchive.SetRange("Version No.", Rec."Version No.");
 
-                If SalesArchive.FindFirst() then begin
+                if SalesArchive.FindFirst() then begin
 
                     SalesArchivePage.SetRecord(SalesArchive);
                     SalesArchivePage.Run();
