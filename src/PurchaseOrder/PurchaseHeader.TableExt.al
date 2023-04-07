@@ -96,7 +96,7 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
             CalcFormula = lookup(Customer."TFB CoA Required" where("No." = field("Sell-to Customer No.")));
         }
 
-        field(50210; "TFB Final Dest.  Loc. "; Code[20])
+        field(50210; "TFB Final Dest.  Loc."; Code[20])
         {
             DataClassification = CustomerContent;
             TableRelation = Location;

@@ -248,7 +248,7 @@ codeunit 50107 "TFB Item Mgmt"
         NotificationLifecycleMgt.SendNotification(ItemAlreadyQuotedNotification, SalesLine.RecordId);
     end;
 
-    local procedure quoteforitemexists(Item: record Item; var SalesLine: Record "Sales Line"; QuoteDocumentNo: Code[20]): Boolean
+    local procedure quoteforitemexists(Item: record Item; var SalesLine: Record "Sales Line"; var QuoteDocumentNo: Code[20]): Boolean
     var
         SalesQuoteLine: Record "Sales Line";
     begin
@@ -256,6 +256,10 @@ codeunit 50107 "TFB Item Mgmt"
         SalesQuoteLine.SetRange("Document Type", SalesQuoteLine."Document Type"::Quote);
         SalesQuoteLine.SetRange("No.", Item."No.");
 
+        If not SalesQuoteLine.FindFirst() then exit;
+
+        QuoteDocumentNo := SalesQuoteLine."No.";
+        Exit(true);
 
     end;
 

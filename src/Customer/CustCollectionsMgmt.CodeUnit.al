@@ -8,23 +8,23 @@ codeunit 50225 "TFB Cust. Collections Mgmt"
     internal procedure SendDraftEmailWithSelectedInvoices(var CustLedgerEntry: Record "Cust. Ledger Entry")
     var
         CompanyInfo: Record "Company Information";
-        Customer: Record Customer;
         CustInvoice: Record "Sales Invoice Header";
+        Customer: Record Customer;
+        CustomReportSelection: Record "Custom Report Selection";
+        ReportSelections: Record "Report Selections";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
-        PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
+        RecordRef: RecordRef;
         InStream: InStream;
         OutStream: OutStream;
+        AttachmentGenerated: Boolean;
+        Recipients: List of [Text];
         TitleTxt: Label 'Invoices for Collection';
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
-        Recipients: List of [Text];
-        ReportSelections: Record "Report Selections";
-        CustomReportSelection: Record "Custom Report Selection";
-        RecordRef: RecordRef;
-        AttachmentGenerated: Boolean;
+
 
     begin
 

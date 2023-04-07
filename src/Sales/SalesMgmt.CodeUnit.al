@@ -501,7 +501,7 @@ codeunit 50122 "TFB Sales Mgmt"
     /// <param name="ItemNo">Code[20].</param>
     /// <param name="MinQty">Decimal.</param>
     /// <returns>Return value of type Code[10].</returns>
-    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; LocationCode: Code[10]): Boolean
+    procedure GetIntelligentLocation(CustomerNo: Code[20]; "Ship-to Code": Code[10]; ItemNo: Code[20]; MinQty: Decimal; var LocationCode: Code[10]): Boolean
 
     var
         AddressBuffer: Record "Address Buffer";
