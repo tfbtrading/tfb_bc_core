@@ -20,7 +20,6 @@ page 50149 "TFB Company Certification List"
             {
                 field("Certification Type"; Rec."Certification Type")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the certification type';
                     Caption = 'Certification';
 
@@ -32,25 +31,21 @@ page 50149 "TFB Company Certification List"
                 }
                 field("Certification Class"; Rec."Certificate Class")
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
                 }
                 field("Location Specific"; Rec."Location Specific")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the certification is for a specific location';
                 }
                 field("Location Code"; Rec."Location Code")
                 {
-                    ApplicationArea = All;
                     Enabled = Rec."Location Specific";
                     ToolTip = 'Specifies the location if the certificaton is location specific';
                 }
                 field(Status; CalculatedStatus)
                 {
-                    ApplicationArea = All;
                     Caption = 'Status';
                     Editable = false;
                     Tooltip = 'Specifies the calculated status of the certification';
@@ -63,12 +58,10 @@ page 50149 "TFB Company Certification List"
                     ShowCaption = false;
                     Width = 1;
                     Editable = false;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies status of vendor certification';
                 }
                 field(Inherent; Rec.Inherent)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
                     Enabled = Rec."Certificate Class" = Rec."Certificate Class"::Religous;
 
@@ -82,19 +75,16 @@ page 50149 "TFB Company Certification List"
                 }
                 field(Auditor; Rec.Auditor)
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
@@ -111,7 +101,6 @@ page 50149 "TFB Company Certification List"
                 }
                 field("Certification No."; Rec."Certification No.")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Caption = 'Certification No.';
                     ToolTip = 'Specifies the unique certification number for organisation if provided';
@@ -119,7 +108,6 @@ page 50149 "TFB Company Certification List"
                 }
                 field("Days To Expiry"; _DaysToExpiry)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     BlankZero = true;
                     Caption = 'Days to Expiry';
@@ -129,7 +117,6 @@ page 50149 "TFB Company Certification List"
                 }
                 field(CertificateExists; AttachmentExists)
                 {
-                    ApplicationArea = All;
                     Caption = 'Attach.';
                     ShowCaption = true;
                     Editable = false;
@@ -147,11 +134,9 @@ page 50149 "TFB Company Certification List"
 
             systempart(Links; Links)
             {
-                ApplicationArea = All;
             }
             systempart(Notes; Notes)
             {
-                ApplicationArea = All;
             }
 
 
@@ -172,13 +157,11 @@ page 50149 "TFB Company Certification List"
 
             action(UploadAttach)
             {
-
-                ApplicationArea = All;
                 Visible = true;
                 Caption = 'Upload Attachment';
-
+                Enabled = not AttachmentExists;
                 Image = Import;
-                Enabled = true;
+
 
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
 
@@ -189,9 +172,41 @@ page 50149 "TFB Company Certification List"
                 end;
 
             }
+            action(ReplaceAttach)
+            {
+                Visible = true;
+                Caption = 'Replace Attachment';
+                Enabled = AttachmentExists;
+                Image = Import;
+
+
+                Tooltip = 'Replaces existing ertificate (in pdf form) to vendor certfication record';
+
+                trigger OnAction()
+
+                begin
+                    ReplaceFile();
+                end;
+
+            }
+            action(RemoveAttach)
+            {
+                Visible = true;
+                Caption = 'Remove Attachment';
+                Enabled = AttachmentExists;
+                Image = Import;
+
+                Tooltip = 'Removes existing certificate (in pdf form) to vendor certfication record';
+
+                trigger OnAction()
+
+                begin
+                    RemoveFile();
+                end;
+
+            }
             action(DownloadAttach)
             {
-                ApplicationArea = All;
                 Visible = true;
                 Caption = 'Download Attachment';
                 Image = SendAsPDF;
@@ -208,7 +223,6 @@ page 50149 "TFB Company Certification List"
 
             action(SendToContact)
             {
-                ApplicationArea = All;
                 Visible = true;
                 Caption = 'Send to Contacts';
                 Image = SendEmailPDF;
@@ -224,7 +238,6 @@ page 50149 "TFB Company Certification List"
 
             action("ToggleArchived")
             {
-                ApplicationArea = All;
                 Visible = true;
                 Image = Archive;
 
@@ -243,13 +256,21 @@ page 50149 "TFB Company Certification List"
         }
         area(Promoted)
         {
-            actionref(UploadAttach_Promoted; UploadAttach)
+            group(Certificate)
             {
+                ShowAs = SplitButton;
+                actionref(UploadAttach_Promoted; UploadAttach)
+                {
 
-            }
-            actionref(SendToContact_Promoted; SendToContact)
-            {
+                }
+                actionref(SendToContact_Promoted; SendToContact)
+                {
 
+                }
+                actionref(ReplaceAttach_Promoted; ReplaceAttach)
+                {
+
+                }
             }
             actionref(ToggleArchived_Promoted; ToggleArchived)
             {
@@ -405,7 +426,7 @@ page 50149 "TFB Company Certification List"
 
     begin
 
-        PersBlobCU.Delete(Rec."Certificate Attach.");
+
 
 
         FileManagement.BLOBImportWithFilter(TempBlob, FileDialogTxt, '', FileFilterTxt, ExtFilterTxt);
@@ -414,6 +435,7 @@ page 50149 "TFB Company Certification List"
             BlobKey := PersBlobCU.Create();
             TempBlob.CreateInStream(InStream);
             if PersBlobCU.CopyFromInStream(BlobKey, InStream) then begin
+                PersBlobCU.Delete(Rec."Certificate Attach.");
                 Rec."Certificate Attach." := BlobKey;
                 rec.Modify();
                 AttachmentExists := true;

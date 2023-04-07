@@ -4,6 +4,8 @@ page 50112 "TFB Sales POD FactBox"
     PageType = CardPart;
     SourceTable = "Sales Invoice Header";
     Caption = 'Sales Invoice POD Info';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,7 +17,6 @@ page 50112 "TFB Sales POD FactBox"
                 field(PODInfo; _PODInfo)
                 {
                     ShowCaption = false;
-                    ApplicationArea = All;
                     Caption = 'POD Info';
                     Editable = false;
                     ToolTip = 'Specifies POD information for sales invoice';

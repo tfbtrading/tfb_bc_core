@@ -7,6 +7,8 @@ page 50131 "TFB Active Task List"
     PageType = List;
     SourceTable = "To-do";
     SourceTableView = where(Closed = const(false));
+    ApplicationArea = All;
+
 
     layout
     {
@@ -107,13 +109,11 @@ page 50131 "TFB Active Task List"
             }
             part(ContactStats; "Contact Statistics FactBox")
             {
-                ApplicationArea = All;
                 Visible = true;
                 SubPageLink = "No." = field("Contact No.");
             }
             part(OpportunityStats; "Opportunity Statistics FactBox")
             {
-                ApplicationArea = All;
                 Visible = Rec."Opportunity No." <> '';
                 SubPageLink = "No." = field("Opportunity No.");
 

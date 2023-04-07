@@ -5,6 +5,8 @@ page 50315 "TFB Vendor Zone Rate SubForm"
     SourceTable = "TFB Vendor Zone Rate";
     Editable = true;
     DelayedInsert = true;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,14 +17,12 @@ page 50315 "TFB Vendor Zone Rate SubForm"
             {
                 field("Zone Code"; Rec."Zone Code")
                 {
-                    ApplicationArea = All;
                     NotBlank = true;
                     ShowMandatory = true;
                     ToolTip = 'Specifies zone code for rate';
                 }
                 field("Sales Type"; Rec."Sales Type")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies sales type for rate';
 
                     trigger OnValidate()
@@ -33,7 +33,6 @@ page 50315 "TFB Vendor Zone Rate SubForm"
                 }
                 field("Sales Code"; Rec."Sales Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies sales code dependant on sales type';
 
 
@@ -82,7 +81,6 @@ page 50315 "TFB Vendor Zone Rate SubForm"
                 }
                 field("Rate Type"; Rec."Rate Type")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies type of rate type to be applied';
 
                     trigger OnValidate()
@@ -105,17 +103,14 @@ page 50315 "TFB Vendor Zone Rate SubForm"
 
                 field("Surcharge Rate"; Rec."Surcharge Rate")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies surcharge to be applied to zone';
                 }
                 field("Shipping Agent"; Rec."Shipping Agent")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies shipping agent related to surcharge';
                 }
                 field("Agent Service Code"; Rec."Agent Service Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies shipping agent service code to default for zone rate';
                 }
 

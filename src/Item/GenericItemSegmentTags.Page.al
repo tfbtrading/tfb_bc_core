@@ -6,6 +6,8 @@ page 50139 "TFB Generic Item Segment Tags"
     SourceTable = "TFB Generic Item Market Rel.";
     InsertAllowed = false;
     ModifyAllowed = false;
+    ApplicationArea = All;
+
     layout
     {
         area(content)
@@ -15,7 +17,6 @@ page 50139 "TFB Generic Item Segment Tags"
                 field("Market Segment Title"; Rec."Market Segment Title")
                 {
                     ShowCaption = false;
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = false;
                     lookup = false;

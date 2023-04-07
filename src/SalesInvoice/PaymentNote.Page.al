@@ -3,6 +3,8 @@ page 50150 "TFB Payment Note"
     PageType = StandardDialog;
     Caption = 'Payment Note';
     Editable = true;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -18,7 +20,6 @@ page 50150 "TFB Payment Note"
                     Style = Strong;
                     StyleExpr = true;
                     ShowCaption = false;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the customer name for which expected payment date is provided';
                 }
                 group(PhoneGroup)
@@ -27,7 +28,6 @@ page 50150 "TFB Payment Note"
                     Visible = _ShowPhone or _ShowMobile;
                     field(Phone; _PhoneText)
                     {
-                        ApplicationArea = All;
                         Editable = false;
                         Style = Subordinate;
                         StyleExpr = true;
@@ -44,7 +44,6 @@ page 50150 "TFB Payment Note"
                         Editable = true;
                         MultiLine = true;
                         Caption = 'Notes';
-                        ApplicationArea = All;
                         ToolTip = 'Specifies explanation behind payment date of invoice';
                     }
                     group(ShowNotes)
@@ -53,7 +52,6 @@ page 50150 "TFB Payment Note"
                         Visible = not (_PreviousNoteDate = '');
                         field(PreviousNoteDate; _PreviousNoteDate)
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                             ToolTip = '';
@@ -69,7 +67,6 @@ page 50150 "TFB Payment Note"
                     Editable = true;
                     ShowCaption = true;
                     Caption = 'Expected Payment Date';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the date at which the customer says payment will be taken';
                 }
                 field(CorrectDueDate; _CorrectDueDate)
@@ -77,7 +74,6 @@ page 50150 "TFB Payment Note"
                     Editable = true;
                     ShowCaption = true;
                     Caption = 'Treat As Correction';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies that the actual due date was incorrect and should be altered';
 
                 }
@@ -177,7 +173,7 @@ page 50150 "TFB Payment Note"
     var
         _Customer: Record Customer;
         _Vendor: Record Vendor;
-        _CustomerName: Text;
+  
         _ExpectedPaymentNote: Text[512];
         _ExpectedPaymentDate: Date;
 

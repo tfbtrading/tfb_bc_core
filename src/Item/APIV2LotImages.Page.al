@@ -16,6 +16,8 @@ page 50169 "TFB APIV2 - Lot Images"
     InsertAllowed = true;
     ModifyAllowed = true;
     DelayedInsert = true;
+    ApplicationArea = All;
+
 
     layout
     {

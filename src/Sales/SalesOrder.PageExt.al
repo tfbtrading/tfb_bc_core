@@ -200,7 +200,8 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
     begin
 
         if Rec.CheckDuplicateExtDocNo(DuplicateSystemID,DocumentNo) then begin
-            DuplicateNotification.Message(StrSubstNo('An existing ongoing sales order %1 has the same External Doc No',DocumentNo));
+         
+            DuplicateNotification.Message(StrSubstNo('An existing ongoing sales order %1 has the same External Doc No', DocumentNo));
             DuplicateNotification.Scope(NotificationScope::LocalScope);
             DuplicateNotification.SetData('SystemId', DuplicateSystemID);
             DuplicateNotification.AddAction('Open Existing', Codeunit::"TFB Sales Mgmt", 'OpenExistingSalesOrder');

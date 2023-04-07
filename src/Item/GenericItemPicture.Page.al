@@ -7,6 +7,8 @@ page 50134 "TFB Generic Item Picture"
     DeleteAllowed = false;
     InsertAllowed = false;
     LinksAllowed = false;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -17,7 +19,6 @@ page 50134 "TFB Generic Item Picture"
                 ShowCaption = false;
                 field(Picture; Rec.Picture)
                 {
-                    ApplicationArea = All;
                     ShowCaption = false;
                     ToolTip = 'Specifies the picture that has been inserted for the item.';
                 }
@@ -31,7 +32,6 @@ page 50134 "TFB Generic Item Picture"
         {
             action(TakePicture)
             {
-                ApplicationArea = All;
                 Caption = 'Take';
                 Image = Camera;
 
@@ -45,7 +45,6 @@ page 50134 "TFB Generic Item Picture"
             }
             action(ImportPicture)
             {
-                ApplicationArea = All;
                 Caption = 'Import';
                 Image = Import;
                 ToolTip = 'Import a picture file.';
@@ -58,7 +57,6 @@ page 50134 "TFB Generic Item Picture"
             }
             action(ExportPicture)
             {
-                ApplicationArea = All;
                 Caption = 'Export';
                 Image = Export;
                 ToolTip = 'Export a picture file.';
@@ -72,7 +70,6 @@ page 50134 "TFB Generic Item Picture"
 
             action(DeletePicture)
             {
-                ApplicationArea = All;
                 Caption = 'Delete';
                 Enabled = DeleteExportEnabled;
                 Image = Delete;

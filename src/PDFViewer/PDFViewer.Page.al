@@ -1,6 +1,8 @@
 page 50119 "PDF Viewer"
 {
     PageType = List;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -8,7 +10,6 @@ page 50119 "PDF Viewer"
         {
             usercontrol(PDFViewer; PDFViewer)
             {
-                ApplicationArea = All;
                 trigger OnControlAddInReady()
                 begin
                     InitializePDFViewer();

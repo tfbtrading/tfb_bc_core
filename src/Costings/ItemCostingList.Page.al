@@ -17,59 +17,50 @@ page 50347 "TFB Item Costing List"
             {
                 field("Item No."; Rec."Item No.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies unique item code';
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies description of item';
                 }
                 field("Item Category"; Rec."Item Category")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = false;
                     Tooltip = 'Specifies product category of item';
                 }
                 field("Sale Blocked"; Rec."Sale Blocked")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = false;
                     ToolTip = 'Specifies if sales are blocked for item';
                 }
                 field("Publishing Blocked"; Rec."Publishing Blocked")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = false;
                     Tooltip = 'Specifies if item is blocked from inclusion on publishd price list';
                 }
                 field("Costing Type"; Rec."Costing Type")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies if costing is general or specific for customer';
                 }
                 field("Effective Date"; Rec."Effective Date")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies effective initial date for item costing';
                     Visible = false;
                 }
                 field("Purchase Price Unit"; Rec."Purchase Price Unit")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies purchase price unit basis for costing';
                 }
                 field("Average Cost"; Rec."Average Cost")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies current average purchase cost of item, excluded landed costs';
 
@@ -82,7 +73,6 @@ page 50347 "TFB Item Costing List"
                 }
                 field("Market Price"; Rec."Market Price")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Caption = 'Market Cost';
                     ToolTip = 'Specifies projected market cost for item';
@@ -96,7 +86,6 @@ page 50347 "TFB Item Costing List"
                 }
                 field(pricingMargin; Rec."Pricing Margin %")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Visible = true;
                     ToolTip = 'Specifies pricing margin to use for use based on current average cost';
@@ -110,7 +99,6 @@ page 50347 "TFB Item Costing List"
 
                 field("Market Price Margin %"; Rec."Market Price Margin %")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies pricing margin projected based on future market replacement cost';
 
@@ -124,13 +112,11 @@ page 50347 "TFB Item Costing List"
                 }
                 field("Last Modified Date Time"; Rec."Last Modified Date Time")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies date item costing was last modified';
                 }
                 field("HasLines"; Rec."HasLines")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies if costing lines have been calculated';
 
@@ -138,7 +124,6 @@ page 50347 "TFB Item Costing List"
 
                 field("Exw Kg"; Rec."Exw Kg")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Caption = 'Ex Warehouse Kg';
                     Editable = false;
@@ -149,7 +134,6 @@ page 50347 "TFB Item Costing List"
                 }
                 field("Mel Metro Kg"; Rec."Mel Metro Kg")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Editable = false;
                     DrillDownPageId = "TFB Item Costing Subform";
@@ -158,7 +142,6 @@ page 50347 "TFB Item Costing List"
                 }
                 field("Syd Metro Kg"; Rec."Syd Metro Kg")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Editable = false;
                     DrillDownPageId = "TFB Item Costing Subform";
@@ -167,7 +150,6 @@ page 50347 "TFB Item Costing List"
                 }
                 field("Adl Metro Kg"; Rec."Adl Metro Kg")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Editable = false;
                     DrillDownPageId = "TFB Item Costing Subform";
@@ -177,7 +159,6 @@ page 50347 "TFB Item Costing List"
 
                 field("Brs Metro Kg"; Rec."Brs Metro Kg")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Editable = false;
                     DrillDownPageId = "TFB Item Costing Subform";
@@ -195,13 +176,11 @@ page 50347 "TFB Item Costing List"
         {
             part(ItemDet; "Item Picture")
             {
-                ApplicationArea = All;
                 SubPageLink = "No." = field("Item No.");
 
             }
             part(ItemPlan; "TFB Item Costing Factbox")
             {
-                ApplicationArea = All;
                 SubPageLink = "No." = field("Item No.");
 
             }
@@ -223,7 +202,6 @@ page 50347 "TFB Item Costing List"
             {
                 Caption = 'Update Costings';
                 Image = UpdateUnitCost;
-                ApplicationArea = All;
 
                 ToolTip = 'Recalculates all item costings based on specifies scenarios and landed cost profiles';
 

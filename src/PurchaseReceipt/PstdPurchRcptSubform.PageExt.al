@@ -25,6 +25,7 @@ pageextension 50160 "TFB Pstd Purch. Rcpt. Subform" extends "Posted Purchase Rcp
             {
                 ApplicationArea = All;
                 Visible = true;
+                Caption = 'Sales Order No.';
                 ToolTip = 'Specifies if a related dropship sales order exists';
 
                 trigger OnDrillDown()

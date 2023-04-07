@@ -4,6 +4,8 @@ page 50157 "TFB Suggest Item Costing Lines"
     PageType = StandardDialog;
     SourceTable = "TFB Item Costing Filters";
     DataCaptionExpression = DataCaption;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -48,7 +50,7 @@ page 50157 "TFB Suggest Item Costing Lines"
 
     trigger OnOpenPage()
     var
-        PriceListHeader: Record "Price List Header";
+       
     begin
 
         Rec.Insert();
@@ -65,8 +67,6 @@ page 50157 "TFB Suggest Item Costing Lines"
         DataCaptionCopyLbl: Label 'Suggest based on item costing';
 
         DefaultsLbl: Label '%1 = %2; ', Locked = true;
-
-        CopyLines: Boolean;
 
     procedure GetDefaults(var PriceListHeader: Record "Price List Header")
     begin

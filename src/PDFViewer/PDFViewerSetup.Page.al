@@ -15,12 +15,10 @@ page 50120 "PDF Viewer Setup"
             {
                 field("Web Viewer URL"; Rec."Web Viewer URL")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies web viewer URL';
                 }
                 field("Test Viewer URL"; Rec."Test Viewer URL")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies web viewer URL';
                 }
             }

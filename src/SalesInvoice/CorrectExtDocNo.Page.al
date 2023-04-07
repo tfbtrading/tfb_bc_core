@@ -3,6 +3,8 @@ page 50152 "TFB Correct Ext. Doc. No."
     PageType = StandardDialog;
     Caption = 'Update Invoice External Document No.';
     Editable = true;
+    ApplicationArea = All;
+
 
 
     layout
@@ -19,7 +21,6 @@ page 50152 "TFB Correct Ext. Doc. No."
                     Style = Strong;
                     StyleExpr = true;
                     ShowCaption = false;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the customer name for which expected payment date is provided';
                 }
                 group(References)
@@ -29,7 +30,6 @@ page 50152 "TFB Correct Ext. Doc. No."
 
                     field(DocumentNo; _PreviousValues)
                     {
-                        ApplicationArea = All;
                         Editable = false;
                         Style = Subordinate;
                         StyleExpr = true;
@@ -46,7 +46,6 @@ page 50152 "TFB Correct Ext. Doc. No."
                         Editable = true;
                         MultiLine = false;
                         Caption = 'New External Document No.';
-                        ApplicationArea = All;
                         ToolTip = 'Specifies what the new external document will be';
 
                     }

@@ -3,6 +3,8 @@ page 50174 "TFB Contact Review Wizard"
     Caption = 'Welcome to the Contact Review Wizard';
     PageType = NavigatePage;
     UsageCategory = None;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,7 +17,6 @@ page 50174 "TFB Contact Review Wizard"
                 Visible = TopBannerVisible and not FinishActionEnabled;
                 field(MediaResourcesStandard; MediaResourcesStandard."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -27,7 +28,6 @@ page 50174 "TFB Contact Review Wizard"
                 Visible = TopBannerVisible and FinishActionEnabled;
                 field(MediaResourcesDone; MediaResourcesDone."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -52,7 +52,6 @@ page 50174 "TFB Contact Review Wizard"
                             field(_LastReviewComment; _LastReviewComment)
                             {
                                 Caption = 'Last Review';
-                                ApplicationArea = All;
                                 Editable = false;
                                 MultiLine = true;
                                 ToolTip = 'Specifies the last review that was entered for the contact';
@@ -60,7 +59,6 @@ page 50174 "TFB Contact Review Wizard"
                             field(_LastReviewDate; _LastReviewDate)
                             {
                                 Caption = 'Last Completed On';
-                                ApplicationArea = All;
                                 Editable = false;
                                 ToolTip = 'Specifes the date the last review was completed on';
                             }
@@ -68,7 +66,6 @@ page 50174 "TFB Contact Review Wizard"
 
                         field(ReviewComment; _ReviewComment)
                         {
-                            ApplicationArea = All;
                             MultiLine = true;
                             Editable = true;
                             Caption = 'Review outcome';
@@ -96,7 +93,6 @@ page 50174 "TFB Contact Review Wizard"
 
                 field(UpdateContactStatus; _UpdateContactStatus)
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Lookup = true;
                     LookupPageId = "TFB Contact Status List";
@@ -107,7 +103,6 @@ page 50174 "TFB Contact Review Wizard"
                 }
                 field(PeriodicReviewSelection; _PeriodicReviewSelection)
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Caption = 'Review period';
                     ToolTip = 'Helps set the next planned review date';
@@ -120,7 +115,6 @@ page 50174 "TFB Contact Review Wizard"
                 }
                 field(NextReview; _NextReview)
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Caption = 'Next review date';
                     ToolTip = 'Specifies the date the next contact review should take place';
@@ -138,7 +132,6 @@ page 50174 "TFB Contact Review Wizard"
                     ShowCaption = false;
                     MultiLine = true;
                     Editable = false;
-                    ApplicationArea = All;
                     ToolTip = 'Gives details of the next step';
                 }
             }
@@ -153,7 +146,6 @@ page 50174 "TFB Contact Review Wizard"
         {
             action(ActionBack)
             {
-                ApplicationArea = All;
                 Caption = 'Back';
                 Enabled = BackActionEnabled;
                 Image = PreviousRecord;
@@ -166,7 +158,6 @@ page 50174 "TFB Contact Review Wizard"
             }
             action(ActionNext)
             {
-                ApplicationArea = All;
                 Caption = 'Next';
                 Enabled = NextActionEnabled;
                 Image = NextRecord;
@@ -179,7 +170,6 @@ page 50174 "TFB Contact Review Wizard"
             }
             action(ActionFinish)
             {
-                ApplicationArea = All;
                 Caption = 'Finish';
                 Enabled = FinishActionEnabled;
                 Image = Approve;

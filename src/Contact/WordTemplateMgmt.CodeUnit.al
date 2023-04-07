@@ -9,6 +9,5 @@ codeunit 50129 "TFB Word Template Mgmt"
     end;
     
     
-    var
-        myInt: Integer;
+  
 }

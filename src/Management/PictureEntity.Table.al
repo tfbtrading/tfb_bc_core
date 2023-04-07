@@ -227,11 +227,6 @@ table 50123 "TFB Picture Entity"
         exit('jpg');
     end;
 
-    [IntegrationEvent(false, false)]
-    local procedure OnAfterGetRecordRefFromFilter(IDFilter: Text; var ParentRecordRef: RecordRef; var RecordFound: Boolean)
-    begin
-    end;
-
 
     [IntegrationEvent(false, false)]
     local procedure OnGetDefaultMediaDescriptionElseCase(ParentRecordRef: RecordRef; var MediaDescription: Text; var IsHandled: Boolean)

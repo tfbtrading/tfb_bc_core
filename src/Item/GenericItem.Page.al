@@ -5,6 +5,8 @@ page 50132 "TFB Generic Item"
     PageType = Card;
     SourceTable = "TFB Generic Item";
     DataCaptionFields = Type, Description;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -18,26 +20,22 @@ page 50132 "TFB Generic Item"
 
                     field(Description; Rec.Description)
                     {
-                        ApplicationArea = All;
                         ShowMandatory = true;
                         ToolTip = 'Specifies the value of the Description field';
                     }
                     field(Type; Rec.Type)
                     {
-                        ApplicationArea = All;
                         Editable = false;
                         ToolTip = 'Specifies the value of the Type field';
                     }
                     field("Alternative Names"; Rec."Alternative Names")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies the alternative names that the generic item might be known by.';
 
                     }
                     field("Item Category Code"; Rec."Item Category Code")
                     {
                         Caption = 'Default item category';
-                        ApplicationArea = All;
                         ShowMandatory = true;
                         ToolTip = 'Specifies the value of the Item Category Code field';
                     }
@@ -46,7 +44,6 @@ page 50132 "TFB Generic Item"
                         Caption = 'Full Description';
                         field("Marketing Copy"; Rec."Rich Description")
                         {
-                            ApplicationArea = All;
                             Importance = Standard;
                             MultiLine = true;
                             ShowCaption = false;
@@ -62,7 +59,6 @@ page 50132 "TFB Generic Item"
                 Caption = 'Content Management';
                 field("No. Of Items"; Rec."No. Of Items")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = true;
                     DrillDownPageId = "Item List";
@@ -74,14 +70,12 @@ page 50132 "TFB Generic Item"
                     ShowCaption = false;
                     field("External ID"; Rec."External ID")
                     {
-                        ApplicationArea = All;
                         Editable = true;
                         ToolTip = 'Specifies the value of the External ID field';
                     }
                 }
                 field("Do Not Publish"; Rec."Do Not Publish")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Indicates whether generic item should appear in catalogues or online';
 
@@ -101,7 +95,6 @@ page 50132 "TFB Generic Item"
         {
             part(Picture; "TFB Generic Item Picture")
             {
-                ApplicationArea = All;
                 SubPageLink = SystemId = field(SystemId);
             }
 
@@ -109,7 +102,6 @@ page 50132 "TFB Generic Item"
             {
 
                 ShowFilter = false;
-                ApplicationArea = All;
                 SubPageLink = GenericItemID = field(SystemId);
             }
 
@@ -128,7 +120,6 @@ page 50132 "TFB Generic Item"
             action(SwitchToParent)
             {
                 Caption = 'Switch to Parent';
-                ApplicationArea = All;
                 Image = Hierarchy;
 
 
@@ -146,7 +137,6 @@ page 50132 "TFB Generic Item"
             action(SwitchToExtension)
             {
                 Caption = 'Switch to Extension';
-                ApplicationArea = All;
                 Image = MoveDown;
 
                 Enabled = (Rec.Type = Rec.Type::ItemParent) and (Rec.Description <> '');
@@ -163,7 +153,6 @@ page 50132 "TFB Generic Item"
             action(AddMarketSegment)
             {
                 Caption = 'Add Market Segment';
-                ApplicationArea = All;
                 Image = CustomerGroup;
 
                 Enabled = true;

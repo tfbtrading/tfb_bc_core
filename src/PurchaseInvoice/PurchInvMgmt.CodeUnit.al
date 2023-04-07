@@ -614,7 +614,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
         if GetWarehouseShipmentLines(ShipLine, Reference, CustomerList, PostingDate) then
             if ShipLine.Findset(false) then begin
-                if SalesShipmentCU.GetItemChargesForShipment(PurchLine."No.", ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
+                if SalesShipmentCU.GetItemChargesForShipment(Text.CopyStr(PurchLine."No.",1,10), ShipLine."Document No.", TotalExistingItemCharges, SameExistingItemCharges) then
                     if not Dialog.Confirm(StrSubstNo('Charges already exist. Same Item Charge of %1 and total charges of %2 - Continue?', SameExistingItemCharges, TotalExistingItemCharges)) then
                         exit(false);
 

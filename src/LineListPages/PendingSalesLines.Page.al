@@ -24,7 +24,6 @@ page 50147 "TFB Pending Sales Lines"
             {
                 field("Document No."; Rec."Document No.")
                 {
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     DrillDownPageId = "Sales Order";
@@ -52,26 +51,22 @@ page 50147 "TFB Pending Sales Lines"
 
                 field(ExternalRefNo; Rec."TFB External Document No.")
                 {
-                    ApplicationArea = All;
                     Caption = 'Customers PO Ref';
                     ToolTip = 'Specifies customers external reference number i.e. po number';
                 }
 
                 field(Status; Rec."TFB Document Status")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies status of current sales line';
                 }
                 field("TFB Pre-Order"; Rec."TFB Pre-Order")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies if line item on sales order is a pre-order with floating exchange';
                 }
 
 
                 field("TFB Availability"; _availability)
                 {
-                    ApplicationArea = All;
                     Caption = 'Avail. Info';
                     Visible = true;
                     Width = 1;
@@ -95,7 +90,6 @@ page 50147 "TFB Pending Sales Lines"
 
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies the customer number';
@@ -103,7 +97,6 @@ page 50147 "TFB Pending Sales Lines"
                 }
                 field("TFB CustomerName"; Rec."TFB Customer Name")
                 {
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     ToolTip = 'Specifies the customers name';
@@ -126,29 +119,24 @@ page 50147 "TFB Pending Sales Lines"
                 }
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies the item number';
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the description of the item';
                 }
                 field("Requested Delivery Date"; Rec."Requested Delivery Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the requested delivery date for the item';
                 }
                 field("Planned Shipment Date"; Rec."Planned Shipment Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the currently planned shipment date';
                 }
                 field("Shipment Status Update"; _StatusUpdate)
                 {
-                    ApplicationArea = All;
                     Caption = 'Shipment Status';
                     ToolTip = 'Captures the suppliers status update';
                     Editable = true;
@@ -156,49 +144,40 @@ page 50147 "TFB Pending Sales Lines"
                 }
                 field("Planned Delivery Date"; Rec."Planned Delivery Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the currently planned delivery date';
 
                 }
 
                 field("Outstanding Quantity"; Rec."Outstanding Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the outstanding quantity in the sales unit of measure';
                 }
                 field("Whse. Outstanding Qty."; Rec."Whse. Outstanding Qty.")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. Whse. Shipment';
                     ToolTip = 'Specifies the quantity currently on a warehouse shipment';
                 }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the sales unit of measure';
                 }
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. per UoM';
                     ToolTip = 'Specifies base quantity per unit of measure';
                 }
                 field("Shipping Agent Code"; Rec."Shipping Agent Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the shipping agent that will deliver the item';
                 }
                 field("Drop Shipment"; Rec."Drop Shipment")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies if the item is a drop shipment';
                 }
                 field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     DrillDown = true;
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
-
-                    ApplicationArea = All;
                     trigger OnDrillDown()
 
 
@@ -211,8 +190,6 @@ page 50147 "TFB Pending Sales Lines"
                 }
                 field("TFB Buy-from Vendor No."; Rec."TFB Buy-from Vendor No.")
                 {
-
-                    ApplicationArea = All;
                     Caption = 'Buy-from Vendor No.';
                     ToolTip = 'Specifies who is supply the drop shipment item';
 
@@ -247,7 +224,6 @@ page 50147 "TFB Pending Sales Lines"
             action("Sales order")
             {
                 RunPageMode = edit;
-                ApplicationArea = all;
                 Image = Sales;
                 RunObject = Page "Sales Order";
                 RunPageLink = "Document Type" = field("Document Type"), "No." = field("Document No.");
@@ -258,7 +234,6 @@ page 50147 "TFB Pending Sales Lines"
             action("Customer card")
             {
                 RunPageMode = view;
-                ApplicationArea = all;
                 Image = Customer;
                 RunObject = Page "Customer Card";
                 RunPageLink = "No." = field("Sell-to Customer No.");
@@ -273,7 +248,6 @@ page 50147 "TFB Pending Sales Lines"
         {
             action("Update shipping agent details")
             {
-                ApplicationArea = All;
                 Image = UpdateShipment;
                 ToolTip = 'Updates shipping agent details based on latest rules and defaults for pending lines';
 

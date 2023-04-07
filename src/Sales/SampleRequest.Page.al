@@ -5,6 +5,8 @@ page 50142 "TFB Sample Request"
 
     RefreshOnActivate = true;
     SourceTable = "TFB Sample Request";
+    ApplicationArea = All;
+
 
 
     layout
@@ -16,7 +18,6 @@ page 50142 "TFB Sample Request"
                 Caption = 'General';
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
                     Visible = DocNoVisible;
 
@@ -99,7 +100,6 @@ page 50142 "TFB Sample Request"
                     {
                         Caption = 'Lead only (not customer)';
                         ToolTip = 'Indicates that this is not a customer';
-                        ApplicationArea = All;
                     }
                 }
 
@@ -313,7 +313,6 @@ page 50142 "TFB Sample Request"
 
             part(ContactDetails; "Contact Statistics FactBox")
             {
-                ApplicationArea = All;
                 SubPageLink = "No." = field("Sell-to Contact No.");
                 Visible = Rec."Sell-to Contact No." = '';
             }
@@ -358,7 +357,6 @@ page 50142 "TFB Sample Request"
         {
             action(Print)
             {
-                ApplicationArea = All;
                 Image = Print;
                 Caption = 'Print Packing Slip';
                 ToolTip = 'Print a packing slip';

@@ -2,6 +2,8 @@ page 50118 "PDF Viewer Part"
 {
     PageType = CardPart;
     Caption = 'PDF Viewer';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -9,7 +11,6 @@ page 50118 "PDF Viewer Part"
         {
             usercontrol(PDFViewer; PDFViewer)
             {
-                ApplicationArea = All;
                 trigger OnControlAddInReady()
                 begin
                     InitializePDFViewer();

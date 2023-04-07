@@ -341,7 +341,7 @@ table 50119 "TFB Forex Mgmt Entry"
     procedure getRemainingAmountByAppliesToId(appliesToId: GUID): Decimal
 
     var
-        ForexMgmtEntry: Record "TFB Forex Mgmt Entry";
+
         ForexMgmtEntry2: Record "TFB Forex Mgmt Entry";
         LedgerEntry: Record "Vendor Ledger Entry";
 

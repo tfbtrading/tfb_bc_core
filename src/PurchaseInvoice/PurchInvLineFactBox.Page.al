@@ -7,6 +7,8 @@ page 50123 "TFB Purch. Inv. Line Factbox"
 
     SourceTable = "Purchase Line";
     Caption = 'Line Source Details';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -18,18 +20,15 @@ page 50123 "TFB Purch. Inv. Line Factbox"
                 showCaption = false;
                 field(Type; Rec.Type)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the type of line item';
                 }
                 field(SourcedFrom; _SourcedFrom)
                 {
-                    ApplicationArea = All;
                     Caption = 'Sourced from Receipt';
                     ToolTip = 'Specifies the type of document the line was sourced from';
                 }
                 field(OriginalOrder; _OrderNo)
                 {
-                    ApplicationArea = All;
                     Caption = 'Purchase Order';
                     Tooltip = 'Specifies the related purchase order';
 
@@ -41,13 +40,11 @@ page 50123 "TFB Purch. Inv. Line Factbox"
                 }
                 field(ReceiptLineType; _ReceiptLineType)
                 {
-                    ApplicationArea = All;
                     Caption = 'Receipt Line Type';
                     Tooltip = 'Specifies whether the line is part of a drop shipment or special order';
                 }
                 field(_SalesOrderNo; _SalesOrderNo)
                 {
-                    ApplicationArea = All;
                     Caption = 'Related Sales Order';
                     Tooltip = 'Specifies the sales order for the related drop shipment';
                     //Visible = Rec."Drop Shipment";

@@ -62,9 +62,9 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                 var
 
                     QuoteLine: record "Sales Line";
-                    FilterToken: TextBuilder;
                     Quote: record "Sales Header";
                     QuoteList: page "Sales Quotes";
+                    FilterToken: TextBuilder;
                 begin
 
                     QuoteLine.SetRange("No.", Rec."No.");
@@ -74,12 +74,12 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     if QuoteLine.IsEmpty() then exit;
                     QuoteLine.SetLoadFields("Document No.");
                     QuoteLine.FindSet();
-                    repeat begin
+                    repeat
                         if FilterToken.Length = 0 then
                             FilterToken.Append('=' + QuoteLine."Document No.")
                         else
                             FilterToken.Append('|' + QuoteLine."Document No.");
-                    end until QuoteLine.Next = 0;
+                    until QuoteLine.Next() = 0;
 
                     Quote.SetFilter("No.", FilterToken.ToText());
                     Quote.SetRange("Document Type", Quote."Document Type"::Quote);
@@ -100,9 +100,9 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                 trigger OnDrillDown()
                 var
                     SalesLine: Record "Sales Line";
-                    FilterToken: TextBuilder;
                     BlanketOrder: record "Sales Header";
                     BlanketOrderList: page "Blanket Sales Orders";
+                    FilterToken: TextBuilder;
                 begin
 
                     SalesLine.SetRange("No.", Rec."No.");
@@ -112,12 +112,12 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                     if SalesLine.IsEmpty() then exit;
                     SalesLine.SetLoadFields("Document No.");
                     SalesLine.FindSet();
-                    repeat begin
+                    repeat
                         if FilterToken.Length = 0 then
                             FilterToken.Append('=' + SalesLine."Document No.")
                         else
                             FilterToken.Append('|' + SalesLine."Document No.");
-                    end until SalesLine.Next = 0;
+                    until SalesLine.Next() = 0;
 
                     BlanketOrder.SetFilter("No.", FilterToken.ToText());
                     BlanketOrder.SetRange("Document Type", BlanketOrder."Document Type"::"Blanket Order");
@@ -295,8 +295,8 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
 
     var
 
-        SalesMgmt: CodeUnit "TFB Sales Mgmt";
         SalesLine: Record "Sales Line";
+
     begin
 
         SalesLine.SetRange("Document Type", SalesLine."Document Type"::"Blanket Order");

@@ -9,6 +9,7 @@ pageextension 50129 "TFB Rlshp. Mgt. Comment Sheet" extends "Rlshp. Mgt. Comment
                 ApplicationArea = All;
                 Caption = 'Created By';
                 Editable = false;
+                ToolTip = 'Specifies who created the relationship comment';
             }
         }
     }

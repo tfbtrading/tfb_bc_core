@@ -10,6 +10,8 @@ page 50162 "TFB Forex Contract Lines"
     LinksAllowed = false;
     DelayedInsert = true;
     SourceTableView = where(EntryType = const(ForexContract));
+    ApplicationArea = All;
+
 
 
     layout
@@ -21,28 +23,24 @@ page 50162 "TFB Forex Contract Lines"
                 field("Entry No."; Rec."Entry No.")
                 {
                     ToolTip = 'Specifies the value of the Entry No. field.';
-                    ApplicationArea = All;
                     Visible = false;
                 }
 
                 field("External Document No."; Rec."External Document No.")
                 {
                     ToolTip = 'Specifies the value of the External Document No. field.';
-                    ApplicationArea = All;
                     Editable = not Rec."Applying Entry";
                 }
 
                 field("Currency Code"; Rec."Currency Code")
                 {
                     ToolTip = 'Specifies the value of the Currency Code field.';
-                    ApplicationArea = All;
                     Editable = Rec."Applying Entry" = false;
                 }
                 field("Original Amount"; Rec."Original Amount")
                 {
                     ToolTip = 'Specifies the value of the Original Amount field.';
                     Caption = 'Amount';
-                    ApplicationArea = All;
 
                     trigger OnValidate()
 
@@ -57,20 +55,17 @@ page 50162 "TFB Forex Contract Lines"
                 {
                     ToolTip = 'Specifies the remaining amount after ';
                     Caption = 'Remaining Amount';
-                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Original Currency Factor"; Rec."Covered Rate")
                 {
                     ToolTip = 'Specifies the value of the Original Currency Factor field.';
-                    ApplicationArea = All;
                     Enabled = Rec."Currency Code" <> '';
                     Editable = Rec."Applying Entry" = false;
                 }
                 field("Due Date"; Rec."Due Date")
                 {
                     ToolTip = 'Specifies the value of the Due Date field.';
-                    ApplicationArea = All;
                     Editable = Rec."Applying Entry" = false;
 
                 }
@@ -79,7 +74,6 @@ page 50162 "TFB Forex Contract Lines"
                 {
                     Style = Favorable;
                     StyleExpr = not Rec.Open;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the application or original forex entry are still open';
                     Caption = 'Open';
                 }
@@ -135,7 +129,7 @@ page 50162 "TFB Forex Contract Lines"
     trigger OnAfterGetCurrRecord()
     begin
         if Rec."Entry No." <> 0 then
-            CalcBalance(Rec."Entry No.");
+            CalcBalance();
         SetUserInteractions();
     end;
 
@@ -155,14 +149,9 @@ page 50162 "TFB Forex Contract Lines"
         exit('');
     end;
 
-    local procedure ApplyContractAsFilter()
-    begin
-        CurrPage.SaveRecord();
 
-        Error('Procedure ApplyContractAsFilter not implemented.');
-    end;
 
-    local procedure CalcBalance(EntryNo: Integer)
+    local procedure CalcBalance()
 
     var
         ForexMgmtEntryTemp: Record "TFB Forex Mgmt Entry";
@@ -206,18 +195,12 @@ page 50162 "TFB Forex Contract Lines"
     var
 
         RemainingAmount: Decimal;
-        PastDue: Boolean;
-
-
-        StyleTxt: Text;
 
         TotalBalance: Decimal;
 
         TotalRemaining: Decimal;
 
-        TotalBalanceEnable: Boolean;
 
-        TotalRemainingEnable: Boolean;
 
 
 

@@ -8,6 +8,8 @@ page 50210 "TFB Container Entry"
     Caption = 'Inbound Shipment';
 
     UsageCategory = None;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -27,8 +29,6 @@ page 50210 "TFB Container Entry"
 
                     field("No."; Rec."No.")
                     {
-
-                        ApplicationArea = All;
                         ShowMandatory = true;
                         Importance = Promoted;
                         ToolTip = 'Specifies no. for container entry';
@@ -52,7 +52,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("Shipper"; Rec."Vendor No.")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies vendor no.';
 
@@ -67,7 +66,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("Vendor Name"; Rec."Vendor Name")
                     {
-                        ApplicationArea = All;
                         Lookup = true;
                         LookupPageId = "Vendor List";
                         ToolTip = 'Specifies vendor name';
@@ -84,7 +82,6 @@ page 50210 "TFB Container Entry"
 
                     field("Type"; Rec."Type")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies type of container entry';
 
@@ -99,7 +96,6 @@ page 50210 "TFB Container Entry"
 
                     field("Order Reference"; Rec."Order Reference")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies order reference for container entry';
 
 
@@ -113,7 +109,6 @@ page 50210 "TFB Container Entry"
 
                     field("Customer Direct"; Rec."Customer Direct")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies whether the container is directly for a customer';
                     }
                     group(DirectContainer)
@@ -123,7 +118,6 @@ page 50210 "TFB Container Entry"
 
                         field("Direct Sales Order No."; Rec."Direct Sales Order No.")
                         {
-                            ApplicationArea = All;
                             ToolTip = 'Specifies the sales order number related to the container';
 
 
@@ -131,7 +125,6 @@ page 50210 "TFB Container Entry"
 
                         field(CustomerDetails; Rec.GetDirectSalesOrderDetails())
                         {
-                            ApplicationArea = All;
                             MultiLine = true;
                             Editable = false;
                             Caption = 'Customer Details';
@@ -145,7 +138,6 @@ page 50210 "TFB Container Entry"
                         Visible = not isVisible;
                         field("Landed Cost Template"; Rec."Landed Cost Template")
                         {
-                            ApplicationArea = All;
 
                             Tooltip = 'Specifies landed cost template for container';
 
@@ -164,7 +156,6 @@ page 50210 "TFB Container Entry"
                         Visible = (Rec."Qty. On Purch. Rcpt" > 0);
                         field("Qty. On Purch. Rcpt"; Rec."Qty. On Purch. Rcpt")
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             DrillDown = true;
                             DrillDownPageId = "Purch. Receipt Lines";
@@ -172,7 +163,6 @@ page 50210 "TFB Container Entry"
                         }
                         field("No. Of Transfer Orders"; Rec."No. Of Transfer Orders")
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             DrillDown = true;
                             DrillDownPageId = "Transfer Orders";
@@ -181,7 +171,6 @@ page 50210 "TFB Container Entry"
 
                         field("Qty. On Transfer Rcpt"; Rec."Qty. On Transfer Rcpt")
                         {
-                            ApplicationArea = All;
                             Caption = 'Qty. On Transf. Rcpt.';
                             Editable = false;
                             DrillDown = true;
@@ -203,13 +192,11 @@ page 50210 "TFB Container Entry"
 
                     field("Status"; Rec."Status")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies current status of container';
                     }
                     field("% Sold"; _PercReserved)
                     {
-                        ApplicationArea = All;
                         Caption = '% Sold';
                         Editable = false;
                         ToolTip = 'Specifies the percentage of container contents sold';
@@ -218,7 +205,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("Ship Via"; Rec."Ship Via")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         Lookup = true;
                         ToolTip = 'Specifies ship via for container';
@@ -227,13 +213,11 @@ page 50210 "TFB Container Entry"
 
                     field("Shipping Line"; Rec."Shipping Line")
                     {
-                        ApplicationArea = All;
                         Importance = Additional;
                         ToolTip = 'Specifies shipping line';
                     }
                     field("Booking Reference"; Rec."Booking Reference")
                     {
-                        ApplicationArea = All;
                         Importance = Additional;
                         Tooltip = 'Specifies booking reference';
                     }
@@ -242,13 +226,11 @@ page 50210 "TFB Container Entry"
                     field(ContainerTEU; Rec.ContainerTEU)
                     {
                         ToolTip = 'Specifies the value of the Container TEU field.';
-                        ApplicationArea = All;
                         Importance = Additional;
 
                     }
                     field("Vessel Details"; Rec."Vessel Details")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         Tooltip = 'Specifies vessel details';
                     }
@@ -256,12 +238,10 @@ page 50210 "TFB Container Entry"
                     field("Vessel IMO"; Rec."Vessel IMO")
                     {
                         ToolTip = 'Specifies the value of the Vessel IMO field.';
-                        ApplicationArea = All;
                         Importance = Additional;
                     }
                     field("Container No."; Rec."Container No.")
                     {
-                        ApplicationArea = All;
                         ShowMandatory = true;
                         Importance = Promoted;
                         Tooltip = 'Specifies container no.';
@@ -269,12 +249,10 @@ page 50210 "TFB Container Entry"
                     field("Bill of Lading"; Rec."BL No.")
                     {
                         ToolTip = 'Specifies the value of the Bill of Lading field.';
-                        ApplicationArea = All;
                         Importance = Additional;
                     }
                     field("Quarantine Reference"; Rec."Quarantine Reference")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         Tooltip = 'Specifies quarantine reference';
                     }
@@ -287,7 +265,6 @@ page 50210 "TFB Container Entry"
 
                     field("Inspection Req."; Rec."Inspection Req.")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies if inspection is required';
 
                         trigger OnValidate()
@@ -299,7 +276,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("Fumigation Req."; Rec."Fumigation Req.")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies if fumigation is required';
 
                         trigger OnValidate()
@@ -311,7 +287,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("IFIP Req."; Rec."IFIP Req.")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies if imported food program inspection required';
 
                         trigger OnValidate()
@@ -324,7 +299,6 @@ page 50210 "TFB Container Entry"
 
                     field("Heat Treat. Req."; Rec."Heat Treat. Req.")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies if heat treatment is required';
 
                         trigger OnValidate()
@@ -338,7 +312,6 @@ page 50210 "TFB Container Entry"
 
                     field("Unpack Report Attach."; _unpackReportAttached)
                     {
-                        ApplicationArea = All;
                         AssistEdit = false;
                         Caption = 'Unpack Report Attached';
                         Editable = false;
@@ -361,23 +334,20 @@ page 50210 "TFB Container Entry"
                 {
                     field("Est. Departure Date"; Rec."Est. Departure Date")
                     {
-
-                        ApplicationArea = All;
                         Importance = Promoted;
                         ToolTip = 'Specifies est. depature date';
                         Enabled = DepatureDateEnabled;
 
                     }
-                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. arrival date'; Enabled = ArrivalDateEnabled; }
-                    field("Est. Clear Date"; Rec."Est. Clear Date") { ApplicationArea = All; Tooltip = 'Specifies est. clear date'; Enabled = ClearDateEnabled; }
-                    field("Est. Warehouse"; Rec."Est. Warehouse") { ApplicationArea = All; Importance = Promoted; Tooltip = 'Specifies est. date in warehouse'; Enabled = AvailToSellDateEnabled; }
-                    field("Est. Return Cutoff"; Rec."Est. Return Cutoff") { ApplicationArea = All; Tooltip = 'Specifies return cutoff date for container'; }
+                    field("Est. Arrival Date"; Rec."Est. Arrival Date") { Importance = Promoted; Tooltip = 'Specifies est. arrival date'; Enabled = ArrivalDateEnabled; }
+                    field("Est. Clear Date"; Rec."Est. Clear Date") { Tooltip = 'Specifies est. clear date'; Enabled = ClearDateEnabled; }
+                    field("Est. Warehouse"; Rec."Est. Warehouse") { Importance = Promoted; Tooltip = 'Specifies est. date in warehouse'; Enabled = AvailToSellDateEnabled; }
+                    field("Est. Return Cutoff"; Rec."Est. Return Cutoff") { Tooltip = 'Specifies return cutoff date for container'; }
                 }
                 group("Actuals")
                 {
                     field("Departure Date"; Rec."Departure Date")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies actual date of bill of lading';
 
                         trigger OnValidate()
@@ -388,7 +358,6 @@ page 50210 "TFB Container Entry"
                     }
                     field("Arrival Date"; Rec."Arrival Date")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies actual arrival date';
 
                         trigger OnValidate()
@@ -400,7 +369,6 @@ page 50210 "TFB Container Entry"
 
                     field("Clear Date"; Rec."Clear Date")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies clearance date';
 
                         trigger OnValidate()
@@ -412,7 +380,6 @@ page 50210 "TFB Container Entry"
 
                     field("Receipt Date"; Rec."Receipt Date")
                     {
-                        ApplicationArea = All;
 
                         ToolTip = 'Specifies the date goods were actually received into warehouse. Actual PO may reflect goods receipt after inspection';
                     }
@@ -424,12 +391,10 @@ page 50210 "TFB Container Entry"
 
                         field("Fumigation Date"; Rec."Fumigation Date")
                         {
-                            ApplicationArea = All;
                             Tooltip = 'Specifies date container entered fumigation';
                         }
                         field("Fumigation Release Date"; Rec."Fumigation Release Date")
                         {
-                            ApplicationArea = All;
                             Tooltip = 'Specifies fumigation release date';
                         }
 
@@ -443,7 +408,6 @@ page 50210 "TFB Container Entry"
 
                         field("Inspection Date"; Rec."Inspection Date")
                         {
-                            ApplicationArea = All;
                             Tooltip = 'Specifies date container is booked to be inspected';
                         }
 
@@ -457,14 +421,12 @@ page 50210 "TFB Container Entry"
 
                         field("Heat Treatment Date"; Rec."Heat Treatment Date")
                         {
-                            ApplicationArea = All;
                             Tooltip = 'Specifies date container is booked in for heat treatment';
                         }
 
                     }
                     field("Warehouse Date"; Rec."Warehouse Date")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies date container is available to sell';
 
                         trigger OnValidate()
@@ -473,13 +435,12 @@ page 50210 "TFB Container Entry"
                             CheckDatesEnabled();
                         end;
                     }
-                    field("Container Returned"; Rec."Container Returned") { ApplicationArea = All; Tooltip = 'Specifies date container returned'; }
+                    field("Container Returned"; Rec."Container Returned") { Tooltip = 'Specifies date container returned'; }
                 }
             }
             part(Lines; "TFB Container Entry SubForm")
             {
                 Visible = true;
-                ApplicationArea = All;
                 Caption = 'Lines';
 
             }
@@ -491,12 +452,10 @@ page 50210 "TFB Container Entry"
 
             systempart("Notes"; Notes)
             {
-                ApplicationArea = All;
 
             }
             part(ItemPicture; "Item Picture")
             {
-                ApplicationArea = All;
                 Provider = Lines;
                 SubPageLink = "No." = field("Item Code");
             }
@@ -516,7 +475,6 @@ page 50210 "TFB Container Entry"
         {
             action("Email Warehouse Update")
             {
-                ApplicationArea = All;
 
                 Image = SendConfirmation;
                 Enabled = Rec."Quarantine Reference" <> '';
@@ -531,7 +489,6 @@ page 50210 "TFB Container Entry"
             }
             action("Upload unpack report")
             {
-                ApplicationArea = All;
                 Image = ExternalDocument;
 
 
@@ -549,7 +506,6 @@ page 50210 "TFB Container Entry"
 
             action("Download Unpack Report")
             {
-                ApplicationArea = All;
                 Image = ElectronicDoc;
 
                 Enabled = _unpackReportAttached;
@@ -566,7 +522,6 @@ page 50210 "TFB Container Entry"
 
             action("Remove Unpack Report")
             {
-                ApplicationArea = All;
                 Image = ElectronicDoc;
                 Enabled = _unpackReportAttached;
                 Tooltip = 'Removes the pdf attachment if it exists';
@@ -582,7 +537,6 @@ page 50210 "TFB Container Entry"
 
             action("Adjust Reserved Sales")
             {
-                ApplicationArea = All;
                 Image = AdjustEntries;
 
                 Enabled = Rec."Qty. On Purch. Rcpt" > 0;
@@ -602,7 +556,6 @@ page 50210 "TFB Container Entry"
 
             action("Related Order")
             {
-                ApplicationArea = All;
                 Image = Order;
 
                 Tooltip = 'Navigate to purchase order';
@@ -643,7 +596,6 @@ page 50210 "TFB Container Entry"
 
             action("Purchase Receipt")
             {
-                ApplicationArea = All;
 
                 Caption = 'Purchase receipt';
                 Tooltip = 'Navigate to purchase receipt';
@@ -660,7 +612,6 @@ page 50210 "TFB Container Entry"
             }
             action("Transfer")
             {
-                ApplicationArea = All;
                 Tooltip = 'Navigate to transfer order';
 
                 Image = Vendor;
@@ -677,7 +628,6 @@ page 50210 "TFB Container Entry"
 
             action(History)
             {
-                ApplicationArea = All;
                 Image = History;
 
                 Caption = 'History';

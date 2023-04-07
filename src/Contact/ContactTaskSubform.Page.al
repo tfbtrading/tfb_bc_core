@@ -10,6 +10,8 @@ page 50126 "TFB Contact Task Subform"
     Editable = false;
     CardPageId = "Task Card";
     ModifyAllowed = false;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -19,34 +21,28 @@ page 50126 "TFB Contact Task Subform"
             {
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Description field';
                 }
 
                 field(Type; Rec.Type)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Type field';
                 }
                 field(Date; Rec.Date)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Date field';
                 }
                 field(Priority; Rec.Priority)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Priority field';
                 }
                 field(Status; Rec.Status)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status field';
                 }
 
                 field("Opportunity Description"; Rec."Opportunity Description")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Opportunity Description field';
                 }
             }
@@ -59,7 +55,6 @@ page 50126 "TFB Contact Task Subform"
         {
             action(SetInProgress)
             {
-                ApplicationArea = All;
                 Enabled = Rec.Closed = false;
                 Caption = 'Set to In-Progress';
          
@@ -75,7 +70,6 @@ page 50126 "TFB Contact Task Subform"
             }
             action(SetComplete)
             {
-                ApplicationArea = All;
                 Enabled = (Rec.Closed = false) or not (Rec.Status = Rec.Status::"In Progress");
                 Caption = 'Set to Completed';
          

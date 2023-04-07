@@ -4,6 +4,8 @@ page 50153 "TFB Vend. Applied Entries FB"
     PageType = ListPart;
     SourceTable = "Detailed Vendor Ledg. Entry";
     SourceTableView = where("Entry Type" = const(Application), "Document Type" = const(Payment), "Initial Document Type" = const(Invoice));
+    ApplicationArea = All;
+
 
     layout
     {
@@ -13,25 +15,21 @@ page 50153 "TFB Vend. Applied Entries FB"
             {
                 field("Posting Date"; Rec."Posting Date")
                 {
-                    ApplicationArea = All;
                     Caption = 'Paid On';
                     ToolTip = 'Specifies the value of the Paid On field.';
                 }
                 field(Amount; Rec.Amount)
                 {
-                    ApplicationArea = All;
                     Caption = 'Invoice Amount Paid';
                     ToolTip = 'Specifies the value of the Invoice Amount Paid field.';
                 }
                 field(TotalPaymentAmount; _TotalPaymentAmount)
                 {
-                    ApplicationArea = All;
                     Caption = 'Total in Payment';
                     ToolTip = 'Specifies the value of the Total in Payment field.';
                 }
                 field(PaymentDetail; _PaymentDetails)
                 {
-                    ApplicationArea = All;
                     Caption = 'Paid from';
                     ToolTip = 'Specifies the value of the Paid from field.';
                 }

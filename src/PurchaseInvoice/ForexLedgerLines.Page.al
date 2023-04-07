@@ -11,6 +11,8 @@ page 50163 "TFB Forex Ledger Lines"
     LinksAllowed = true;
     DelayedInsert = true;
     SourceTableView = where(EntryType = const(Assignment));
+    ApplicationArea = All;
+
 
 
     layout
@@ -22,7 +24,6 @@ page 50163 "TFB Forex Ledger Lines"
                 field("Entry No."; Rec."Entry No.")
                 {
                     ToolTip = 'Specifies the value of the Entry No. field.';
-                    ApplicationArea = All;
                     Visible = false;
                 }
 
@@ -30,7 +31,6 @@ page 50163 "TFB Forex Ledger Lines"
                 field("Source Document No."; Rec."Source Document No.")
                 {
                     ToolTip = 'Specifies the value of the Source Document No. field.';
-                    ApplicationArea = All;
                     Editable = true;
                     Enabled = true;
                 }
@@ -38,31 +38,26 @@ page 50163 "TFB Forex Ledger Lines"
                 {
                     ToolTip = 'Specifies the value of the Source Entry No. field.';
                     Visible = false;
-                    ApplicationArea = All;
                 }
                 field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ToolTip = 'Specifies the value of the Applies-to Doc. Type field.';
-                    ApplicationArea = All;
                     Enabled = Rec."Applying Entry" = true;
                 }
                 field("Applies-to Doc No."; Rec."Applies-to Doc No.")
                 {
                     ToolTip = 'Specifies the value of the Applies-to Doc No. field.';
-                    ApplicationArea = All;
                     Enabled = Rec."Applying Entry" = true;
                 }
                 field("Currency Code"; Rec."Currency Code")
                 {
                     ToolTip = 'Specifies the value of the Currency Code field.';
-                    ApplicationArea = All;
                     Editable = Rec."Applying Entry" = false;
                 }
                 field("Original Amount"; Rec."Original Amount")
                 {
                     ToolTip = 'Specifies the value of the Original Amount field.';
                     Caption = 'Amount';
-                    ApplicationArea = All;
 
                     trigger OnValidate()
 
@@ -75,13 +70,11 @@ page 50163 "TFB Forex Ledger Lines"
                 field("Est. Interest"; Rec."Est. Interest")
                 {
                     ToolTip = 'Specifies the estimated interest amount to be charged by the trade finance';
-                    ApplicationArea = All;
                     Enabled = Rec."Applying Entry";
                     Editable = Rec."Applying Entry";
                 }
                 field(Total; Rec."Original Amount" + Rec."Est. Interest")
                 {
-                    ApplicationArea = All;
                     Caption = 'Total';
                     Editable = false;
                     Enabled = false;
@@ -90,7 +83,6 @@ page 50163 "TFB Forex Ledger Lines"
                 field("Interest Rate"; Rec."Interest Rate")
                 {
                     ToolTip = 'Specifies the anticipated interest rate to be charged for this trade finance';
-                    ApplicationArea = All;
                     Enabled = Rec."Applying Entry";
                     Editable = Rec."Applying Entry";
 
@@ -99,20 +91,17 @@ page 50163 "TFB Forex Ledger Lines"
                 {
                     ToolTip = 'Specifies the remaining amount after ';
                     Caption = 'Remaining Amount';
-                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Original Currency Factor"; Rec."Covered Rate")
                 {
                     ToolTip = 'Specifies the value of the Original Currency Factor field.';
-                    ApplicationArea = All;
                     Enabled = Rec."Currency Code" <> '';
                     Editable = Rec."Applying Entry" = false;
                 }
                 field("Due Date"; Rec."Due Date")
                 {
                     ToolTip = 'Specifies the value of the Due Date field.';
-                    ApplicationArea = All;
                     Editable = Rec."Applying Entry" = false;
 
                 }
@@ -122,7 +111,6 @@ page 50163 "TFB Forex Ledger Lines"
                 {
                     Style = Favorable;
                     StyleExpr = not Rec.Open;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the application or original forex entry are still open';
                     Caption = 'Open';
                 }
@@ -183,7 +171,7 @@ page 50163 "TFB Forex Ledger Lines"
     trigger OnAfterGetCurrRecord()
     begin
         if Rec."Entry No." <> 0 then
-            CalcBalance(Rec."Entry No.");
+            CalcBalance();
         SetUserInteractions();
     end;
 
@@ -214,7 +202,7 @@ page 50163 "TFB Forex Ledger Lines"
 
 
 
-    local procedure CalcBalance(EntryNo: Integer)
+    local procedure CalcBalance()
 
     var
         ForexMgmtEntryTemp: Record "TFB Forex Mgmt Entry";
@@ -262,20 +250,11 @@ page 50163 "TFB Forex Ledger Lines"
 
 
     var
-
         RemainingAmount: Decimal;
-        PastDue: Boolean;
-
-
-        StyleTxt: Text;
-       
         TotalBalance: Decimal;
-   
         TotalRemaining: Decimal;
-   
-        TotalBalanceEnable: Boolean;
-   
-        TotalRemainingEnable: Boolean;
+
+
 
 
 

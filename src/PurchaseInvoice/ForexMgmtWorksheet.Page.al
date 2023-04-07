@@ -15,7 +15,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
             {
                 field(ForexContract; _ForexContractFilter)
                 {
-                    ApplicationArea = All;
                     TableRelation = "TFB Forex Mgmt Entry" where(EntryType = const(ForexContract));
                     Caption = 'Forex Contract';
                     ToolTip = 'Allows filtering of which Forex Contract is shown';
@@ -32,7 +31,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
                 }
                 field(ShowOpenntries; _ShowOpenEntriesFilter)
                 {
-                    ApplicationArea = All;
                     Caption = 'Show Closed Entries';
                     ToolTip = 'Specifies whether open or closed entries are shown';
 
@@ -51,7 +49,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
                 Caption = 'Forex Contracts';
                 part(ForexContracts; "TFB Forex Contract Lines")
                 {
-                    ApplicationArea = All;
                     Caption = 'Lines';
                     UpdatePropagation = Both;
 
@@ -64,7 +61,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
                 Caption = 'Contract Assignments';
                 part(AppliedLedgerEntries; "TFB Forex Ledger Lines")
                 {
-                    ApplicationArea = All;
                     Caption = 'Lines';
                     UpdatePropagation = Both;
                 }
@@ -77,7 +73,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
 
                 part(PendingLedgerEntries; "TFB Forex Candidate Lines")
                 {
-                    ApplicationArea = All;
                     Caption = 'Lines';
                     UpdatePropagation = Both;
                 }
@@ -96,7 +91,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
             }
             part(LedgerEntry; "TFB Forex Vend.Ledg. Factbox")
             {
-                ApplicationArea = All;
                 ShowFilter = false;
                 Provider = AppliedLedgerEntries;
                 SubPageLink = SystemId = field("Applies-to id");
@@ -104,7 +98,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
             }
             part(ContractEntry; "TFB Forex Contract FB")
             {
-                ApplicationArea = All;
                 ShowFilter = false;
                 Provider = ContractEntry;
                 SubPageLink = SystemId = field(SystemId);
@@ -130,7 +123,6 @@ page 50161 "TFB Forex Mgmt Worksheet"
         {
             action(UpdateOpenStatus)
             {
-                ApplicationArea = All;
                 Image = UpdateDescription;
                 Caption = 'Update entry status';
                 ToolTip = 'Performs a batch update of entry status records';
@@ -154,7 +146,7 @@ page 50161 "TFB Forex Mgmt Worksheet"
     }
 
     var
-        myInt: Integer;
+        
         _ForexContractFilter: Integer;
 
         _ShowOpenEntriesFilter: Boolean;

@@ -58,6 +58,7 @@ pageextension 50151 "TFB Posted Sales Invoices" extends "Posted Sales Invoices" 
                 Width = 8;
                 ApplicationArea = All;
                 Visible = Rec."Prepayment Invoice";
+                ToolTip = 'Specifies the prepayment invoice related';
             }
         }
 

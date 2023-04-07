@@ -118,8 +118,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
             var
                 ItemLedgerEntry: Record "Item Ledger Entry";
-                ItemLedgerEntries: Page "Item Ledger Entries";
-
+        
             begin
                 ItemLedgerEntry.FilterGroup(10);
                 ItemLedgerEntry.SetRange("Item No.", Rec."No.");
@@ -206,9 +205,8 @@ pageextension 50117 "TFB Item List" extends "Item List"
                 trigger OnAction()
 
                 var
-                    ItemCU: CodeUnit "TFB Item Mgmt";
                     Item: Record Item;
-
+                    ItemCU: CodeUnit "TFB Item Mgmt";
                 begin
                     CurrPage.SetSelectionFilter(Item);
                     ItemCU.SendSelectedItemSpecifications(Item);

@@ -7,6 +7,8 @@ page 50148 "TFB Segment Generic Items"
     ModifyAllowed = false;
     Editable = false;
     DataCaptionExpression = Rec."Market Segment Title";
+    ApplicationArea = All;
+
 
     layout
     {
@@ -18,7 +20,6 @@ page 50148 "TFB Segment Generic Items"
                 {
                     Caption = 'Generic Item';
                     ToolTip = 'Specifics the title of the generic item';
-                    ApplicationArea = All;
                     trigger OnDrillDown()
 
                     var

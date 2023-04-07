@@ -14,6 +14,8 @@ page 50165 "TFB APIV2 - Lot Info"
     SourceTable = "Lot No. Information";
     Extensible = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+
 
     layout
     {

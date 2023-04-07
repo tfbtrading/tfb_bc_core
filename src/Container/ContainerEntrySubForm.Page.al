@@ -5,6 +5,8 @@ page 50216 "TFB Container Entry SubForm"
     SourceTable = "TFB ContainerContents";
     SourceTableTemporary = true;
     Editable = false;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -14,29 +16,24 @@ page 50216 "TFB Container Entry SubForm"
             {
                 field("Item Code"; Rec."Item Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies item code';
 
                 }
                 field("Item Description"; Rec."Item Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies item description';
                 }
                 field("UnitOfMeasure"; Rec."UnitOfMeasure")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies unit of measure';
 
                 }
                 field("Qty"; Rec."Quantity")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies quantity in container';
                 }
                 field("Qty Reserved"; Rec."Qty Sold (Base)")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies quantity reserved by customers from this line';
                 }
 
@@ -55,7 +52,6 @@ page 50216 "TFB Container Entry SubForm"
             action(DownloadCOA)
 
             {
-                ApplicationArea = All;
                 Image = Document;
            
                 Tooltip = 'Download certificates of analysis for items in container';

@@ -130,6 +130,7 @@ tableextension 50135 "TFB Sales Header" extends "Sales Header" //36
         SalesHeader.SetRange("Document Type", "Document Type"::Order);
         if SalesHeader.FindFirst() then begin
             DuplicateSystemID := SalesHeader.SystemId;
+            DocumentNo := SalesHeader."No.";
             exit(true);
         end
         else

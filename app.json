@@ -4,7 +4,7 @@
   "publisher": "TFB Trading",
   "brief": "Expansive changes specific to TFB Trading",
   "description": "",
-  "version": "22.0.1.1",
+  "version": "22.0.1.2",
   "privacyStatement": "",
   "EULA": "",
   "help":  "http://tfbtrading.com.au",
@@ -14,7 +14,7 @@
   "propagateDependencies": true,
   "platform": "22.0.0.0",
   "application": "22.0.0.0",
-  "suppressWarnings": ["AA0072","AA0217"],
+  "suppressWarnings": ["AA0072","AA0217","AA0139","AA0232","AW0006","AL0254"],
  
     "dependencies": [
       {"id": "10cb69d9-bc8a-4d27-970a-9e110e9db2a5",

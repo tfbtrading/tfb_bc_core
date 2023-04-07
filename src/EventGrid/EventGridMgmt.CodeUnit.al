@@ -75,37 +75,10 @@ codeunit 50118 "TFB Event Grid Mgmt"
 
     end;
 
-    local procedure GetPdf(RecRef: RecordRef; var Base64: Text; var FileType: Text);
-    var
-        SalesInvoiceHeader: Record "Sales Invoice Header";
-        ReportSelections: Record "Report Selections";
-        Base64Convert: Codeunit "Base64 Convert";
-        TempBlob: Codeunit "Temp Blob";
-        Instr: InStream;
-        RecVar: Variant;
-        CustomerNo: Code[20];
-    begin
-        case RecRef.Number of
-            Database::"Sales Invoice Header":
-                begin
-                    RecRef.SetTable(SalesInvoiceHeader);
-                    RecVar := SalesInvoiceHeader;
-                    CustomerNo := SalesInvoiceHeader."Bill-to Customer No.";
-                end;
-            else
-                exit;
-        end;
-
-        ReportSelections.GetPdfReportForCust(TempBlob,
-            ReportSelections.Usage::"S.Invoice", RecVar, CustomerNo);
-
-        TempBlob.CreateInStream(Instr);
-        Base64 := Base64Convert.ToBase64(Instr);
-        FileType := 'pdf';
-    end;
 
 
-    local procedure SendMessage(message: JsonArray) Result: text
+
+    local procedure SendMessage(message: JsonArray): Text
     var
         Client: HttpClient;
         Response: HttpResponseMessage;

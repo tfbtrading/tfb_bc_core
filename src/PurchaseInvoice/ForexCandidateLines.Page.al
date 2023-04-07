@@ -11,6 +11,8 @@ page 50164 "TFB Forex Candidate Lines"
     LinksAllowed = false;
     DelayedInsert = true;
     SourceTableView = where(EntryType = filter('PurchaseOrder|VendorLedgerEntry'));
+    ApplicationArea = All;
+
 
 
     layout
@@ -22,28 +24,24 @@ page 50164 "TFB Forex Candidate Lines"
                 field("Entry No."; Rec."Entry No.")
                 {
                     ToolTip = 'Specifies the value of the Entry No. field.';
-                    ApplicationArea = All;
                     Visible = false;
                 }
 
                 field("External Document No."; Rec."External Document No.")
                 {
                     ToolTip = 'Specifies the value of the External Document No. field.';
-                    ApplicationArea = All;
 
                 }
 
                 field("Currency Code"; Rec."Currency Code")
                 {
                     ToolTip = 'Specifies the value of the Currency Code field.';
-                    ApplicationArea = All;
 
                 }
                 field("Original Amount"; Rec."Original Amount")
                 {
                     ToolTip = 'Specifies the value of the Original Amount field.';
                     Caption = 'Amount';
-                    ApplicationArea = All;
 
                 }
 
@@ -51,19 +49,16 @@ page 50164 "TFB Forex Candidate Lines"
                 {
                     ToolTip = 'Specifies the remaining amount after ';
                     Caption = 'Remaining Amount';
-                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Original Currency Factor"; Rec."Covered Rate")
                 {
                     ToolTip = 'Specifies the value of the Original Currency Factor field.';
-                    ApplicationArea = All;
 
                 }
                 field("Due Date"; Rec."Due Date")
                 {
                     ToolTip = 'Specifies the value of the Due Date field.';
-                    ApplicationArea = All;
 
 
                 }
@@ -72,7 +67,6 @@ page 50164 "TFB Forex Candidate Lines"
                 {
                     Style = Favorable;
                     StyleExpr = not Rec.Open;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the application or original forex entry are still open';
                     Caption = 'Open';
                 }
@@ -150,8 +144,7 @@ page 50164 "TFB Forex Candidate Lines"
 
     var
         VendorLedgerEntry: Record "Vendor Ledger Entry";
-        PurchaseHeader: Record "Purchase Header";
-        EntryNo: Integer;
+     
 
     begin
 
@@ -193,18 +186,10 @@ page 50164 "TFB Forex Candidate Lines"
     var
 
         RemainingAmount: Decimal;
-        PastDue: Boolean;
-
-
-        StyleTxt: Text;
-
         TotalBalance: Decimal;
-
         TotalRemaining: Decimal;
 
-        TotalBalanceEnable: Boolean;
-
-        TotalRemainingEnable: Boolean;
+    
 
 
     trigger OnOpenPage()

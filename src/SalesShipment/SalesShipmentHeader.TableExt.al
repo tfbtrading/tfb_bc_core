@@ -34,19 +34,18 @@ tableextension 50183 "TFB Sales Shipment Header" extends "Sales Shipment Header"
     }
 
     var
-        InventorySetup: Record "Inventory Setup";
+
         CoreSetup: Record "TFB Core Setup";
         ABSResponse: CodeUnit "ABS Operation Response";
         AzureBlob: CodeUnit "ABS Blob Client";
         StorageServiceAuthorization: CodeUnit "Storage Service Authorization";
-        TempBlob: CodeUnit "Temp Blob";
         Authorization: Interface "Storage Service Authorization";
 
 
     procedure GetProofOfDelivery(var Instream: Instream): Boolean
 
     var
-        WarehouseShipment: Record "Posted Whse. Shipment Line";
+   
 
     begin
 

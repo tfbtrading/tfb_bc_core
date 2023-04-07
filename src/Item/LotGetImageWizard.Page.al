@@ -3,6 +3,8 @@ page 50171 "TFB Lot Get Image Wizard"
     Caption = 'Welcome to the Lot Image Wizard';
     PageType = NavigatePage;
     UsageCategory = None;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,7 +17,6 @@ page 50171 "TFB Lot Get Image Wizard"
                 Visible = TopBannerVisible and not FinishActionEnabled;
                 field(MediaResourcesStandard; MediaResourcesStandard."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -27,7 +28,6 @@ page 50171 "TFB Lot Get Image Wizard"
                 Visible = TopBannerVisible and FinishActionEnabled;
                 field(MediaResourcesDone; MediaResourcesDone."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -47,14 +47,12 @@ page 50171 "TFB Lot Get Image Wizard"
 
                         field(CountOfImages; _Count)
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             Caption = 'No. of lot images';
                             ToolTip = 'Specifies how many lot images have been uploaded for this item ledger entry';
                         }
                         field(LastCreated; _LastCreated)
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             Caption = 'Last created on';
                             ToolTip = 'Specifies the date the last image was uploaded';
@@ -74,25 +72,21 @@ page 50171 "TFB Lot Get Image Wizard"
                 field(GridActive; _GridActive)
                 {
                     Caption = 'Grid Image';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether to download a image with only product and overlaid grid';
                 }
                 field(GridBowlActive; _GridBowlActive)
                 {
                     Caption = 'Grid over Bowl Image';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether to download a image within bowl and with overlaid grid and information.';
                 }
                 field(CropActive; _CropActive)
                 {
                     Caption = 'Cropped Image';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether to download just a cropped, zoomed image of product without bowl.';
                 }
                 field(IsolatedActive; _IsolatedActive)
                 {
                     Caption = 'Isolated Image';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether to download original isolated image.';
                 }
             }
@@ -109,7 +103,6 @@ page 50171 "TFB Lot Get Image Wizard"
                     field(Email; _EmailImages)
                     {
                         Caption = 'Email Images';
-                        ApplicationArea = All;
                         ToolTip = 'Specifies the value of the Email Images field.';
 
                     }
@@ -132,7 +125,6 @@ page 50171 "TFB Lot Get Image Wizard"
         {
             action(ActionBack)
             {
-                ApplicationArea = All;
                 Caption = 'Back';
                 Enabled = BackActionEnabled;
                 Image = PreviousRecord;
@@ -145,7 +137,6 @@ page 50171 "TFB Lot Get Image Wizard"
             }
             action(ActionNext)
             {
-                ApplicationArea = All;
                 Caption = 'Next';
                 Enabled = NextActionEnabled;
                 Image = NextRecord;
@@ -158,7 +149,6 @@ page 50171 "TFB Lot Get Image Wizard"
             }
             action(ActionFinish)
             {
-                ApplicationArea = All;
                 Caption = 'Finish';
                 Enabled = FinishActionEnabled;
                 Image = Approve;

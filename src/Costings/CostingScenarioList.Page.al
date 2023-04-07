@@ -17,12 +17,10 @@ page 50302 "TFB Costing Scenario List"
             {
                 field("Code"; Rec."Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies unique code for costing scenario';
                 }
                 field("Effective Date"; Rec."Effective Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies initial effective date for costing scenario';
                 }
 

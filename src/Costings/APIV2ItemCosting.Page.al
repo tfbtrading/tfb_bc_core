@@ -11,6 +11,8 @@ page 50335 "TFB APIV2 Item Costing"
     SourceTable = "TFB Item Costing";
     Editable = false;
     ODataKeyFields = SystemId;
+    ApplicationArea = All;
+
 
 
     layout
@@ -22,55 +24,46 @@ page 50335 "TFB APIV2 Item Costing"
                 field(id; Rec.SystemId)
                 {
                     Caption = 'id';
-                    ApplicationArea = All;
                 }
                 field(itemNo; Rec."Item No.")
                 {
                     Caption = 'itemNo';
-                    ApplicationArea = All;
                 }
                 field(description; Rec."Description")
                 {
 
                     Caption = 'description';
-                    ApplicationArea = All;
                 }
                 field(costingType; Rec."Costing Type")
                 {
 
                     Caption = 'costingType';
-                    ApplicationArea = All;
                 }
                 field(effectiveDate; Rec."Effective Date")
                 {
 
                     Caption = 'effectiveDate';
-                    ApplicationArea = All;
                 }
                 field(purchasePriceUnit; Rec."Purchase Price Unit")
                 {
 
                     Caption = 'purchasePriceUnit';
-                    ApplicationArea = All;
                 }
                 field(avgCost; Rec."Average Cost")
                 {
 
                     Caption = 'iavgCost';
-                    ApplicationArea = All;
                 }
                 field(mktPrice; Rec."Market Price")
                 {
 
                     Caption = 'mktPrice';
-                    ApplicationArea = All;
 
                 }
                 field(pricingMargin; Rec."Pricing Margin %")
                 {
 
                     Caption = 'pricingMargin';
-                    ApplicationArea = All;
 
                 }
 
@@ -78,36 +71,30 @@ page 50335 "TFB APIV2 Item Costing"
                 {
 
                     Caption = 'marketPricingMargin';
-                    ApplicationArea = All;
 
                 }
                 field(lastModified; Rec."Last Modified Date Time")
                 {
                     Caption = 'lastModified';
-                    ApplicationArea = All;
                 }
                 field("hasLines"; Rec."HasLines")
                 {
                     Caption = 'hasLines';
-                    ApplicationArea = All;
 
                 }
                 field(exwUnitPrice; Rec."Exw Unit")
                 {
                     Caption = 'exwUnitPrice';
-                    ApplicationArea = All;
 
                 }
                 field(exwKgPrice; Rec."Exw Kg")
                 {
                     Caption = 'exwKgPrice';
-                    ApplicationArea = All;
 
                 }
                 field(melMetroUnitPrice; Rec."Mel Metro Unit")
                 {
                     Caption = 'elMetroUnitPrice';
-                    ApplicationArea = All;
 
 
 
@@ -115,27 +102,22 @@ page 50335 "TFB APIV2 Item Costing"
                 field(melMetroKgPrice; Rec."Mel Metro Kg")
                 {
                     Caption = 'melMetroKgPrice';
-                    ApplicationArea = All;
                 }
                 field(sydMetroUnitPrice; Rec."Syd Metro Unit")
                 {
                     Caption = 'sydMetroUnitPrice';
-                    ApplicationArea = All;
                 }
                 field(sydMetroKgPrice; Rec."Adl Metro Unit")
                 {
                     Caption = 'sydMetroKgPrice';
-                    ApplicationArea = All;
                 }
                 field(brsMetroUnitPrice; Rec."Brs Metro Unit")
                 {
                     Caption = 'brsMetroUnitPric';
-                    ApplicationArea = All;
                 }
                 field(brsMetroKgPrice; Rec."Brs Metro Kg")
                 {
                     Caption = 'brsMetroKgPrice';
-                    ApplicationArea = All;
                 }
 
             }

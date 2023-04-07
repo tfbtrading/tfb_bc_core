@@ -189,9 +189,11 @@ table 50115 "TFB Sample Request"
             ValidateTableRelation = false;
 
             trigger OnLookup()
+            var
+                ReturnValues: Boolean;
             begin
-
-                PostCode.LookupPostCode("City", "Post Code", "County", "Country/Region Code");
+                PostCodeCheck.LookUpPostCode(Rec.FieldNo(Rec.City), Database::"TFB Sample Request", Text.CopyStr(GetPosition(), 1, 1024), AddressType::"Sell-to", Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
+                  Rec."City", Rec."Post Code", Rec.County, Rec."Country/Region Code", ReturnValues);
 
             end;
 
@@ -231,10 +233,14 @@ table 50115 "TFB Sample Request"
             ValidateTableRelation = false;
 
             trigger OnLookup()
+            var
+                ReturnValues: Boolean;
             begin
 
+                PostCodeCheck.LookUpPostCode(Rec.FieldNo(Rec."Post Code"), Database::"TFB Sample Request", Text.CopyStr(GetPosition(), 1, 1024), AddressType::"Sell-to", Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
+                               Rec."City", Rec."Post Code", Rec.County, Rec."Country/Region Code", ReturnValues);
 
-                PostCode.LookupPostCode(Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
+
             end;
 
             trigger OnValidate()
@@ -243,7 +249,7 @@ table 50115 "TFB Sample Request"
                 PostCodeCheck.VerifyPostCode(
                   CurrFieldNo, DATABASE::"Sales Header", GetPosition(), 3,
                   Rec."Sell-to Customer Name", Rec."Sell-to Customer Name 2", Rec."Sell-to Contact", Rec."Address", Rec."Address 2",
-                  Rec."City", Rec."Post Code", Rec."County", Rec."Country/Region Code");
+                  Rec."City", Rec."Post Code", Rec.County, Rec."Country/Region Code");
 
 
             end;
@@ -378,7 +384,7 @@ table 50115 "TFB Sample Request"
 
     var
         Cust: Record Customer;
-        PostCode: Record "Post Code";
+      
         CoreSetup: Record "TFB Core Setup";
         TFBSampleRequest: Record "TFB Sample Request";
         NoSeriesMgt: Codeunit NoSeriesManagement;
@@ -390,7 +396,8 @@ table 50115 "TFB Sample Request"
         Text051Err: Label 'The sales %1 %2 already exists.', Comment = '%1 = No, %2 - Description';
 
 
-
+    var
+        AddressType: Option Main,"Bill-to","Ship-to","Sell-to","Pay-to","Buy-from","Transfer-from","Transfer-to";
 
 
     local procedure GetCoreSetup()

@@ -18,6 +18,8 @@ page 50175 "TFB APIV2 - Contact Review"
     InsertAllowed = false;
     SourceTable = Contact;
     Extensible = false;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -115,7 +117,7 @@ page 50175 "TFB APIV2 - Contact Review"
                         RegisterFieldSet(Rec.FieldNo("Salesperson Code"));
                     end;
                 }
-                field(hasCustomerRelationship; Rec.ContactToCustBusinessRelationExist)
+                field(hasCustomerRelationship; Rec.ContactToCustBusinessRelationExist())
                 {
                     Caption = 'Customer Relationship';
                     Editable = false;

@@ -5,6 +5,8 @@ page 50127 "TFB Reservation Strategy"
     Editable = true;
     Caption = 'Reservation Strategy';
     DataCaptionFields = Code, Name;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -12,12 +14,10 @@ page 50127 "TFB Reservation Strategy"
         {
             field(Code; Rec.Code)
             {
-                ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Code field';
             }
             field(Name; Rec.Name)
             {
-                ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Name field';
             }
             group(InventoryOptions)
@@ -27,7 +27,6 @@ page 50127 "TFB Reservation Strategy"
 
                 field("Future Inventory"; Rec."Future Inventory")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Future Inventory field';
                 }
                 group(AllocationPeriod)
@@ -42,11 +41,9 @@ page 50127 "TFB Reservation Strategy"
                         {
                             Caption = 'Limit Before';
                             ToolTip = 'Limit Inventory Allocation Period Before Requested Shipment Date';
-                            ApplicationArea = All;
                         }
                         field("Limit Before Days"; Rec."Limit Before Days")
                         {
-                            ApplicationArea = All;
                             Width = 4;
                             ToolTip = 'Specifies the value of the Limit Before Days field';
                         }
@@ -57,13 +54,11 @@ page 50127 "TFB Reservation Strategy"
                         ShowCaption = true;
                         field("Limit Res. Period After"; Rec."Limit Res. Period After")
                         {
-                            ApplicationArea = All;
                             Caption = 'Limit Inventory Allocation Period After Requested Shipment Date';
                             ToolTip = 'Specifies the value of the Limit Inventory Allocation Period After Requested Shipment Date field';
                         }
                         field("Limit After Days"; Rec."Limit After Days")
                         {
-                            ApplicationArea = All;
                             Width = 4;
                             ToolTip = 'Specifies the value of the Limit After Days field';
 
@@ -79,29 +74,24 @@ page 50127 "TFB Reservation Strategy"
 
                 field("Reservation Method"; Rec."Reservation Method")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Reservation Method field';
                 }
                 field("Reservation Quantity"; Rec."Reservation Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Reservation Quantity field';
                 }
                 field("Reservation Type"; Rec."Reservation Type")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Reservation Type field';
                 }
             }
             field("No. of Customers"; Rec."No. of Customers")
             {
-                ApplicationArea = All;
                 Caption = 'No. Of Customers Using Strategy';
                 ToolTip = 'Specifies the value of the No. Of Customers Using Strategy field';
             }
             field(SystemModifiedAt; Rec.SystemModifiedAt)
             {
-                ApplicationArea = All;
                 ToolTip = 'Specifies the value of the SystemModifiedAt field';
             }
 

@@ -21,7 +21,6 @@ page 50167 "TFB Contact Review List"
                 ShowCaption = false;
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Style = Strong;
                     Visible = false;
                     StyleExpr = StyleIsStrong;
@@ -29,7 +28,6 @@ page 50167 "TFB Contact Review List"
                 }
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
                     Style = Strong;
                     StyleExpr = StyleIsStrong;
                     ToolTip = 'Specifies the name of the contact. If the contact is a person, you can click the field to see the Name Details window.';
@@ -41,12 +39,10 @@ page 50167 "TFB Contact Review List"
                     ShowCaption = false;
                     ToolTip = 'Specifies if a task exists';
                     DrillDown = false;
-                    ApplicationArea = All;
 
                 }
                 field("Name 2"; Rec."Name 2")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies an additional part of the name.';
                     Visible = false;
@@ -54,20 +50,17 @@ page 50167 "TFB Contact Review List"
 
                 field("TFB Contact Status"; Rec."TFB Contact Status")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies contact status';
 
                 }
                 field("TFB In Review"; Rec."TFB In Review")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies whether contact is currently being reviewed';
                 }
                 field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
                 {
-                    ApplicationArea = All;
                     Editable = not rec."TFB In Review";
                     StyleExpr = FlagPastPlanningDate;
                     Style = Unfavorable;
@@ -75,7 +68,6 @@ page 50167 "TFB Contact Review List"
                 }
                 field("TFB Review Date Exp. Compl."; Rec."TFB Review Date Exp. Compl.")
                 {
-                    ApplicationArea = All;
                     Editable = rec."TFB In Review";
                     ToolTip = 'Specifies the date on which review should be completed';
                     StyleExpr = FlagPastReviewDate;
@@ -83,27 +75,23 @@ page 50167 "TFB Contact Review List"
                 }
                 field("TFB Review Date Last Compl."; Rec."TFB Review Date Last Compl.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the date review was last completed';
                 }
                 field("Last Date Attempted"; Rec."Last Date Attempted")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies last date attempted to reach contact';
                     Visible = false;
                 }
                 field("Job Title"; Rec."Job Title")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the contact''s job title.';
                     Visible = false;
                 }
                 field("Business Relation"; Rec."Contact Business Relation")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the type of the existing business relation.';
                 }
                 field("Post Code"; Rec."Post Code")
@@ -164,7 +152,6 @@ page 50167 "TFB Contact Review List"
 
                 field("Coupled to CRM"; Rec."Coupled to CRM")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies that the contact is coupled to a contact in Dataverse.';
                     Visible = CRMIntegrationEnabled or CDSIntegrationEnabled;
                 }
@@ -549,7 +536,6 @@ page 50167 "TFB Contact Review List"
                 }
                 action(TFBSetToInReview)
                 {
-                    ApplicationArea = All;
                     Image = ReviewWorksheet;
                     ToolTip = 'Specifies that contact is now in review';
                     Caption = 'Initiate Review';
@@ -568,7 +554,6 @@ page 50167 "TFB Contact Review List"
 
                 action(TFBCompleteReview)
                 {
-                    ApplicationArea = All;
                     Image = Completed;
                     Caption = 'Complete Review';
                     ToolTip = 'Initiate wizard to get details for finish of review';
@@ -703,7 +688,6 @@ page 50167 "TFB Contact Review List"
             }
             action(WordTemplate)
             {
-                ApplicationArea = All;
                 Caption = 'Apply Word Template';
                 ToolTip = 'Apply a Word template on the selected records.';
                 Image = Word;
@@ -720,7 +704,6 @@ page 50167 "TFB Contact Review List"
             }
             action(Email)
             {
-                ApplicationArea = All;
                 Caption = 'Send Email';
                 Image = Email;
                 ToolTip = 'Send an email to this contact.';
@@ -739,7 +722,6 @@ page 50167 "TFB Contact Review List"
             }
             action(TFBArchive)
             {
-                ApplicationArea = All;
                 Caption = 'Archive';
                 Image = Archive;
                 ToolTip = 'Archive a contact so it is not seen in reviews.';
