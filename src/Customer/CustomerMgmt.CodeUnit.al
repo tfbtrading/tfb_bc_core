@@ -59,7 +59,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     var
         RepSelSales: Record "Report Selections";
-     
+
         Common: CodeUnit "TFB Common Library";
         XmlParameters: Text;
         SubTitleTxt: Label 'Please find below your latest statement';
@@ -127,18 +127,18 @@ codeunit 50120 "TFB Customer Mgmt"
         RepSelEmail: Record "Report Selections";
         Customer: Record Customer;
         CustomerLayouts: Record "Custom Report Selection";
-      
+
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
         TempBlobCU: Codeunit "Temp Blob";
-     
+
         EmailRecordRef: RecordRef;
         VarEmailRecordRef: RecordRef;
         FieldRefVar: FieldRef;
         EmailScenEnum: Enum "Email Scenario";
         EmailID: Text;
- 
+
 
         IStream: InStream;
         OStream: OutStream;
@@ -608,7 +608,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, format(Salesorder."Order Date")));
                 LineBuilder.Append(StrSubstNo(tdTxt, SalesLine.Description + '<br><span class="small">' + Format(Item."Net Weight") + 'kg ' + UoM.Description + '</span>'));
                 LineBuilder.Append(StrSubstNo(tdTxt, Format(SalesLine."Quantity (Base)")));
-                LineBuilder.Append(StrSubstNo(tdTxt, Format(PricingCU.CalculatePriceUnitByUnitPrice(SalesLine."No.", SalesLine."Unit of Measure Code", PricingUnit, SalesLine."Unit Price"), 0, '$<Precision,2:2><Standard Format,0>')));
+                LineBuilder.Append(StrSubstNo(tdTxt, Format(PricingCU.CalculatePriceUnitByUnitPrice(SalesLine."No.", SalesLine."Unit of Measure Code", PricingUnit, SalesLine.Amount / SalesLine."Quantity (Base)"), 0, '$<Precision,2:2><Standard Format,0>')));
                 LineBuilder.Append(StrSubstNo(tdTxt, Status));
                 LineBuilder.AppendLine('</tr>');
 
