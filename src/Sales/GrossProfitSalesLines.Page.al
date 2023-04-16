@@ -61,7 +61,7 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                     begin
                         updateLineVariables();
-                    
+
                         CurrPage.Update();
 
                     end;
@@ -355,7 +355,9 @@ page 50145 "TFB Gross Profit Sales Lines"
             PostCodeZoneRate.SetRange("Costing Scenario Code", ItemCosting.GetRelatedScenario().Code);
 
             if PostCodeZoneRate.FindFirst() and not Rec."Drop Shipment" then
-                _estDeliveryCost := PricingCU.CalcPerKgFromUnit((PostCodeZoneRate."Total Charge" / ItemCosting."Pallet Qty"), Item."Net Weight");
+                _estDeliveryCost := PricingCU.CalcPerKgFromUnit((PostCodeZoneRate."Total Charge" / ItemCosting."Pallet Qty"), Item."Net Weight")
+            else
+                _estDeliveryCost := 0;
 
         end;
 
@@ -450,7 +452,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     var
         Item: Record Item;
         SalesLine2: Record "Sales Line";
-    
+
 
 
     begin
