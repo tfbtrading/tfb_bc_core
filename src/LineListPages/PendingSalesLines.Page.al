@@ -86,7 +86,31 @@ page 50147 "TFB Pending Sales Lines"
                                     OpenRelatedPurchaseOrder();
                     end;
                 }
+                field("TFB Payment Status"; _paymentstatus)
+                {
+                    Caption = 'Prepay. Info';
+                    Visible = true;
+                    Width = 1;
+                    Editable = false;
+                    ToolTip = 'Specifies a graphical indicator of payment status of the sales line';
 
+                    trigger OnDrillDown()
+
+                    var
+                        SalesInvoiceHeader: Record "Sales Invoice Header";
+
+
+                    begin
+                        SalesInvoiceHeader.FilterGroup(2);
+                        SalesInvoiceHeader.SetRange("Prepayment Order No.", Rec."Document No.");
+                        SalesInvoiceHeader.SetRange("Prepayment Invoice", true);
+                        SalesInvoiceHeader.FilterGroup(0);
+
+                        If SalesInvoiceHeader.Count > 0 then
+                            Page.Run(Page::"Posted Sales Invoices", SalesInvoiceHeader);
+
+                    end;
+                }
 
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
@@ -363,6 +387,7 @@ page 50147 "TFB Pending Sales Lines"
 
         SalesCU: CodeUnit "TFB Sales Mgmt";
         _availability: Text;
+        _paymentstatus: Text;
         _statusUpdate: Text;
 
     /// <summary>
@@ -403,6 +428,7 @@ page 50147 "TFB Pending Sales Lines"
     begin
 
         _availability := SalesCU.GetSalesLineStatusEmoji(Rec);
+        _paymentstatus := SalesCU.GetPaymentStatusEmoji(Rec);
     end;
 
     local procedure OpenRelatedPurchaseOrder()

@@ -3553,6 +3553,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType TitleTxt</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 2151298320" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiNotApplicableTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 3993343116" size-unit="char" translate="yes" xml:space="preserve">
+          <source>🟠</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiWaitingForPrepaymentInvoiceTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 970366484" size-unit="char" translate="yes" xml:space="preserve">
+          <source>💰</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiWaitingForPrepaymentInvoiceToBePaid</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 1546165264" size-unit="char" translate="yes" xml:space="preserve">
+          <source>😀</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiPrepaymentInvoicePaidTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2381778165 - Method 3321623412 - NamedType 1877927119" size-unit="char" translate="yes" xml:space="preserve">
           <source>🟢</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11328,6 +11348,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Control TFB CustomerName - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3940659150 - Control 3287886354 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a graphical indicator of payment status of the sales line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Control TFB Payment Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3940659150 - Control 3287886354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Payment Info</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Control TFB Payment Status - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3940659150 - Control 2609059608 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if line item on sales order is a pre-order with floating exchange</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17772,6 +17802,11 @@
           <source>No. Open Sample Requests</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB No. Open Sample Requests - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 1572616285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>Sales with Prepayment</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB No. Sales Lines Prepay. - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3099020840 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>Sales Lines</source>
