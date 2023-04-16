@@ -6,6 +6,8 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
     SourceTableView = sorting("Sell-to Customer No.", "Posting Date") order(descending) where(Type = filter(Item), Quantity = filter(> 0));
 
     ModifyAllowed = false;
+    ApplicationArea = All;
+
     layout
     {
         area(Content)
@@ -14,7 +16,6 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
             {
                 field("Document No."; Rec."Document No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies document number for sales invoice line';
@@ -24,7 +25,6 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
 
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies sell-to-customer for sales invoice line';
@@ -33,13 +33,11 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 }
                 field("TFB Customer Name"; Rec."TFB Customer Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies customers name';
 
                 }
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = false;
                     ToolTip = 'Specifies item number that was sold';
@@ -48,45 +46,37 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 }
                 field(Description; Rec."Description")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies description of item sold';
                 }
                 field("Posting Date"; Rec."Posting Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies posting date of the invoice';
                 }
                 field("Shipment Date"; Rec."Shipment Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies intended shipment date for item';
 
                 }
                 field("Shipment No."; Rec."Shipment No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the shipment number related to the invoice';
                 }
                 field(Quantity; Rec.Quantity)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the quantity that was invoiced in sales unit of measure';
                 }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies sales unit of measure';
                     TableRelation = "Unit of Measure".Code;
                 }
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. per UoM';
                     ToolTip = 'Specifies base qty per unit of measure';
                 }
                 field("Drop Shipment"; Rec."Drop Shipment")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies if item invoice relates to drop shipment';
 
                 }
@@ -95,27 +85,22 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 {
                     Lookup = true;
                     LookupPageId = "Purchase Order";
-                    ApplicationArea = All;
                     ToolTip = 'Specifies unit price for invoiced item';
                 }
 
                 field("TFB Price Per Kg"; PricePerKg)
                 {
-
-                    ApplicationArea = All;
                     Caption = 'Per Kg Price';
                     ToolTip = 'Specifies price per kilogram for invoiced item';
 
                 }
                 field("TFB Pre-Order"; Rec."TFB Pre-Order")
                 {
-                    ApplicationArea = All;
                     Caption = 'Pre-Order';
                     ToolTip = 'Specifies if line was a pre-order';
                 }
                 field("TFB Pre-Order Unit Price Adj."; Rec."TFB Pre-Order Unit Price Adj.")
                 {
-                    ApplicationArea = All;
                     Caption = 'Pre-Order Adj';
                     ToolTip = 'Specifies the pre-order adjustment on a unit price basis';
 
@@ -129,7 +114,6 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
         {
             part(Item; "Item Invoicing FactBox")
             {
-                ApplicationArea = All;
                 SubPageLink = "No." = field("No.");
             }
 
@@ -148,17 +132,12 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 RunObject = Page "Posted Sales Invoice";
                 RunPageLink = "No." = field("Document No.");
                 RunPageMode = View;
-
-                ApplicationArea = All;
                 Image = Sales;
                 ToolTip = 'Open invoice for invoiced line';
             }
 
             action(Shipment)
             {
-
-
-                ApplicationArea = All;
                 Image = Shipment;
                 ToolTip = 'Open shipment for invoiced line';
 
@@ -196,14 +175,11 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                 RunObject = Page "Customer Card";
                 RunPageLink = "No." = field("Sell-to Customer No.");
                 RunPageMode = View;
-
-                ApplicationArea = All;
                 Image = Customer;
                 ToolTip = 'Open customer related to invoiced line';
             }
             action("Ledger entries")
             {
-                ApplicationArea = All;
                 Image = LedgerEntries;
                 ToolTip = 'Open ledger entry related to invoiced line';
 
@@ -240,7 +216,6 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
             action(TFBSendPODRequest)
             {
                 Caption = 'Send POD request';
-                ApplicationArea = All;
                 Image = SendMail;
 
                 ToolTip = 'Send a proof of delivery request to relevant party';

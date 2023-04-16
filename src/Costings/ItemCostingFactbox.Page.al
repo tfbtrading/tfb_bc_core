@@ -5,6 +5,8 @@ page 50102 "TFB Item Costing Factbox"
 
     PageType = CardPart;
     SourceTable = Item;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -17,8 +19,6 @@ page 50102 "TFB Item Costing Factbox"
                 field("No."; Rec."No.")
                 {
                     Caption = 'Item No.';
-
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the Item No. for drilldown purposes';
 
                     trigger OnDrillDown()
@@ -31,12 +31,10 @@ page 50102 "TFB Item Costing Factbox"
                 }
                 field("Purchasing Code"; Rec."Purchasing Code")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies default purchasing code';
                 }
                 field(_CurrPricePerKg; _CurrPricePerKg)
                 {
-                    ApplicationArea = All;
                     Caption = 'Curr. Price Per Kg';
                     Tooltip = 'Specifies the current price per kilogram based on the default pricing group setup';
                     Style = AttentionAccent;
@@ -45,7 +43,6 @@ page 50102 "TFB Item Costing Factbox"
                 field(_currPurchPrice;
                 _CurrPurchPrice)
                 {
-                    ApplicationArea = All;
                     Caption = 'Curr. Vendor Purch Price';
                     ToolTip = 'Specifies what the current defaul vendor purchase price is';
                     Style = Attention;
@@ -54,7 +51,6 @@ page 50102 "TFB Item Costing Factbox"
                 field("Net Weight";
                 Rec."Net Weight")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies net weight of item unit being purchased';
                 }
 
@@ -65,7 +61,6 @@ page 50102 "TFB Item Costing Factbox"
                 Caption = 'Inventory';
                 field(Inventory; Rec.Inventory)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies qty of inventory on hand';
 
                     trigger OnDrillDown()
@@ -88,29 +83,24 @@ page 50102 "TFB Item Costing Factbox"
 
                 field("Reserved Qty. on Inventory"; Rec."Reserved Qty. on Inventory")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies qty of inventory reserved and on hand';
                 }
                 field("TFB Out. Qty. On Sales Order"; Rec."TFB Out. Qty. On Sales Order")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the sales qty currently sold';
                     Caption = 'Total qty on order';
                 }
 
                 field("Qty. on Purch. Order"; Rec."Qty. on Purch. Order")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies qty of item on purchase orders not yet received';
                 }
                 field("Reserved Qty. on Purch. Orders"; Rec."Reserved Qty. on Purch. Orders")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies qty reserved from future purchase orders';
                 }
                 field("Qty. on Sales Order"; Rec."Qty. on Sales Order")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies qty sold';
                 }
 
@@ -122,12 +112,10 @@ page 50102 "TFB Item Costing Factbox"
 
                 field("Unit Cost"; Rec."Unit Cost")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies current unit cost according to costing scheme';
                 }
                 field(_CurrentLandedCost; _CurrentLandedCost)
                 {
-                    ApplicationArea = All;
                     Caption = 'Current Landed Cost';
                     Tooltip = 'Specifies current cost in costing unit of measure';
 
@@ -135,7 +123,6 @@ page 50102 "TFB Item Costing Factbox"
 
                 field(_CurrentLandedCostInPurchaseCurr; _CurrentLandedCostInPurchaseCurr)
                 {
-                    ApplicationArea = All;
                     Caption = 'Current Landed Cost (in Purchase Exch)';
                     Tooltip = 'Specifies current cost in costing unit of measure in foreign currency based on current item costing rate';
 
@@ -143,14 +130,12 @@ page 50102 "TFB Item Costing Factbox"
 
                 field(_LastPreLandedCost; _LastPreLandedCost)
                 {
-                    ApplicationArea = All;
                     Caption = 'Last Purchase Cost';
                     Tooltip = 'Specifies last purchase cost (prior to any landed costs) in costing unit of measure';
 
                 }
                 field(_NextPreLandedCost; _NextPreLandedCost)
                 {
-                    ApplicationArea = All;
                     Caption = 'Next Purchase Cost';
                     Tooltip = 'Specifies next cost on order in costing unit of measure';
 

@@ -5,6 +5,8 @@ page 50110 "TFB Sales Admin Activities"
     RefreshOnActivate = true;
     SourceTable = "TFB Sales Admin Activities Cue";
     ShowFilter = false;
+    ApplicationArea = All;
+
 
     layout
     {

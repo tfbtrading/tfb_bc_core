@@ -1,4 +1,4 @@
-tableextension 50136 MyExtension extends "Phys. Invt. Order Header"
+tableextension 50136 "TFB Phys. Invt. Order Header" extends "Phys. Invt. Order Header"
 {
     fields
     {

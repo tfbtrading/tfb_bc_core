@@ -5,6 +5,8 @@ page 50229 "TFB Brokerage Shipment"
     UsageCategory = None;
     Caption = 'Brokerage Shipment';
     DataCaptionFields = "No.", "Customer Name";
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,7 +17,6 @@ page 50229 "TFB Brokerage Shipment"
 
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Visible = false;
                     ToolTip = 'Specifies the no. sequence for the document';
 
@@ -23,14 +24,12 @@ page 50229 "TFB Brokerage Shipment"
                 field("Contract No."; Rec."Contract No.")
                 {
                     TableRelation = "TFB Brokerage Contract";
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the related contract no. for brokerage shipment';
 
 
                 }
                 field("Customer No."; Rec."Customer No.")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     Editable = false;
                     Lookup = true;
@@ -39,7 +38,6 @@ page 50229 "TFB Brokerage Shipment"
                 }
                 field("Customer Name"; Rec."Customer Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     Editable = false;
                     ToolTip = 'Specifies the customer name';
@@ -47,48 +45,38 @@ page 50229 "TFB Brokerage Shipment"
                 }
                 field("Sell-to Address"; Rec."Sell-to Address")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the customer sell-to address. Automatically filled in.';
                 }
                 field("Sell-to City"; Rec."Sell-to City")
                 {
-
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the sell-to city';
                 }
                 field("Sell-to County"; Rec."Sell-to County")
                 {
-
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the county';
                 }
                 field("Sell-to Country/Region Code"; Rec."Sell-to Country/Region Code")
                 {
-
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the country/region code';
                 }
                 field("Sell-to Phone No."; Rec."Sell-to Phone No.")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     Tooltip = 'Specifies the customer phone no';
                 }
                 field("Vendor No."; Rec."Buy From Vendor No.")
                 {
                     Editable = false;
-                    ApplicationArea = All;
                     Lookup = true;
                     ToolTip = 'Specifies the vendor no';
 
                 }
                 field("Vendor Name"; Rec."Buy From Vendor Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     Editable = false;
                     Lookup = true;
@@ -96,43 +84,36 @@ page 50229 "TFB Brokerage Shipment"
                 }
                 field("Customer Reference"; Rec."Customer Reference")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies the customer reference';
                 }
                 field("Document Date"; Rec."Document Date")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies the document date';
                 }
                 field("Est. Sailing Date"; Rec."Est. Sailing Date")
                 {
-                    ApplicationArea = All;
                     Caption = 'Required Sailing Date';
                     ToolTip = 'Specifies the estimated date the vessel departs origin';
                 }
                 field("Required Arrival Date"; Rec."Required Arrival Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the approximate date the goods should arrive at destination';
                 }
                 field("Container Route"; Rec."Container Route")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the container route';
                 }
 
                 field("Vendor Reference"; Rec."Vendor Reference")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies the vendor reference for the shipment';
 
                 }
                 field(Bulkers; Rec.Bulkers)
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     Caption = 'Use Bulker Bags';
                     ToolTip = 'Specifies whether bulkers are supplied for the shipment';
@@ -152,7 +133,6 @@ page 50229 "TFB Brokerage Shipment"
 
                     field("Bulker Weight (mt)"; Rec."Bulker Weight (mt)")
                     {
-                        ApplicationArea = All;
                         Importance = Additional;
                         ToolTip = 'Specifies weight in metric tonnes for bulkers';
                     }
@@ -160,7 +140,6 @@ page 50229 "TFB Brokerage Shipment"
 
                 field("Special Instructions"; Rec."Special Instructions")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     MultiLine = true;
                     ToolTip = 'Specifies the special instructions required for the brokerage shipment from the customer';
@@ -174,7 +153,6 @@ page 50229 "TFB Brokerage Shipment"
 
                 field("Status"; Rec."Status")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Importance = Promoted;
                     ToolTip = 'Specifies the status of the brokerage shipment';
@@ -183,7 +161,6 @@ page 50229 "TFB Brokerage Shipment"
                 }
                 field(Printed; Rec.Printed)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Importance = Standard;
                     ToolTip = 'Specifies how many times document has been emailed or printed';
@@ -192,14 +169,12 @@ page 50229 "TFB Brokerage Shipment"
                 }
                 field(Closed; Rec.Closed)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies if the shipment is closed';
                 }
 
                 field("Shipping Agent Code"; Rec."Shipping Agent Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the shipping agent used by the vendor on this shipment';
                 }
 
@@ -210,28 +185,23 @@ page 50229 "TFB Brokerage Shipment"
                     ShowCaption = false;
                     field("Booking Reference"; Rec."Booking Reference")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies the booking reference';
                     }
                     field("Vessel Details"; Rec."Vessel Details")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies vessel details for shipment';
                     }
                     field("Est. Departure Date"; Rec."Est. Departure Date")
                     {
-                        ApplicationArea = All;
                         Tooltip = 'Specifies est. departure date of vessel booked';
                     }
                     field("Est. Arrival Date"; Rec."Est. Arrival Date")
                     {
-                        ApplicationArea = All;
                         ToolTip = 'Specifies est. arrival date of vessel booked';
                     }
 
                     field("Container No."; Rec."Container No.")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
                         Tooltip = 'Specifies container number for shipment';
                     }
@@ -245,19 +215,16 @@ page 50229 "TFB Brokerage Shipment"
 
                 field(Amount; Rec.Amount)
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     ToolTip = 'Specifies total amount of shipment';
                 }
                 field("Brokerage Fee"; Rec."Brokerage Fee")
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     ToolTip = 'Specifies brokerage fee for shipment';
                 }
                 field("Applied Invoice"; Rec."Applied Invoice")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies invoice applied to brokerage shipment';
 
@@ -302,13 +269,11 @@ page 50229 "TFB Brokerage Shipment"
 
                     field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                     {
-                        ApplicationArea = All;
                         Caption = 'No.';
                         ToolTip = 'Specifies the vendor invoice no.';
                     }
                     field("Vendor Invoice Date"; Rec."Vendor Invoice Date")
                     {
-                        ApplicationArea = All;
                         Importance = Standard;
                         Caption = 'Issued Date';
                         Tooltip = 'Specifies the vendor invoice date';
@@ -322,7 +287,6 @@ page 50229 "TFB Brokerage Shipment"
                     }
                     field("Vendor Invoice Due Date"; Rec."Vendor Invoice Due Date")
                     {
-                        ApplicationArea = All;
                         Importance = Additional;
                         Caption = 'Due Date';
                         ToolTip = 'Specifies the vendor invoice date';
@@ -332,7 +296,6 @@ page 50229 "TFB Brokerage Shipment"
             }
             part(Lines; "TFB Brokerage Shipment Subform")
             {
-                ApplicationArea = All;
                 Caption = 'Lines';
                 SubPageLink = "Document No." = field("No.");
                 UpdatePropagation = Both;
@@ -363,7 +326,6 @@ page 50229 "TFB Brokerage Shipment"
         {
             action("RelatedContract")
             {
-                ApplicationArea = All;
                 Caption = 'Related contract';
                 RunObject = Page "TFB Brokerage Contract";
                 RunPageLink = "No." = field("Contract No.");
@@ -377,7 +339,6 @@ page 50229 "TFB Brokerage Shipment"
         {
             action("Email Supplier")
             {
-                ApplicationArea = All;
 
 
                 Image = SendConfirmation;
@@ -393,7 +354,6 @@ page 50229 "TFB Brokerage Shipment"
 
             action("Email Customer")
             {
-                ApplicationArea = All;
 
 
                 Image = SendConfirmation;
@@ -424,7 +384,6 @@ page 50229 "TFB Brokerage Shipment"
             }
             action("NewDraftInvoice")
             {
-                ApplicationArea = All;
 
                 Image = Invoice;
                 Enabled = (Rec.Status = Rec.Status::"In Progress") and (Rec."Vendor Invoice No." <> '');

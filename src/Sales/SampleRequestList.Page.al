@@ -40,18 +40,15 @@ page 50144 "TFB Sample Request List"
                 }
                 field(Status; Rec.Status)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the status of the sample request';
                 }
                 field("Order Date"; Rec."Order Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the order date for the sample';
                 }
 
                 field("Requested Delivery Date"; Rec."Requested Delivery Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the requested delivery date for the sample';
                 }
             }

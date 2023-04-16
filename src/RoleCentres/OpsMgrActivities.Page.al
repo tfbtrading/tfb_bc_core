@@ -5,6 +5,8 @@ page 50101 "TFB Ops Mgr Activities"
     RefreshOnActivate = true;
     SourceTable = "TFB Ops Mgr Activities Cue";
     ShowFilter = false;
+    ApplicationArea = All;
+
 
     layout
     {

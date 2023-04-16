@@ -5,6 +5,8 @@ page 50114 "TFB Bank Account Part List"
     PageType = ListPart;
     SourceTable = "Bank Account";
     SourceTableView = where(Blocked = const(false));
+    ApplicationArea = All;
+
 
 
     layout
@@ -16,7 +18,6 @@ page 50114 "TFB Bank Account Part List"
 
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies name of the bank account';
                     DrillDown = true;
 
@@ -37,20 +38,17 @@ page 50114 "TFB Bank Account Part List"
                 }
                 field(Balance; Rec.Balance)
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies balance of the account currently';
                 }
 
                 field("Currency Code"; Rec."Currency Code")
                 {
-                    ApplicationArea = All;
                     Width = 5;
                     Visible = false;
                     ToolTip = 'Specifies the currency of the bank account';
                 }
                 field("TFB No. Open Trans."; Rec."TFB No. Open Trans.")
                 {
-                    ApplicationArea = All;
                     Style = Attention;
                     StyleExpr = Rec."TFB No. Open Trans." > 0;
                     ToolTip = 'Specifies number of open transactions not reconcilied in the account';
@@ -58,8 +56,6 @@ page 50114 "TFB Bank Account Part List"
 
                 field("TFB Difference"; _BalanceStatementDifference)
                 {
-
-                    ApplicationArea = All;
                     Caption = 'Unreconciled';
                     Style = Favorable;
                     StyleExpr = _BalanceStatementDifference = 0;
@@ -69,7 +65,6 @@ page 50114 "TFB Bank Account Part List"
 
                 field(TFBLastStatementDate; Rec."TFB Latest Statement Date")
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     ToolTip = 'Specifies last statement no';
                     Caption = 'Last Statement Date';
@@ -87,7 +82,6 @@ page 50114 "TFB Bank Account Part List"
         {
             action(ImportBankSatement)
             {
-                ApplicationArea = All;
                 Scope = Page;
                 Caption = 'Payment Reconciliation..';
                 AccessByPermission = TableData "Bank Export/Import Setup" = IMD;
@@ -101,7 +95,6 @@ page 50114 "TFB Bank Account Part List"
 
             action(ShowIncomingDocs)
             {
-                ApplicationArea = All;
                 Scope = Repeater;
                 Caption = 'Show Missing IC Docs';
 

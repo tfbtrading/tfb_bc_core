@@ -16,18 +16,15 @@ page 50135 "TFB Product Market Seg. List"
             {
                 field(Title; Rec.Title)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Title field';
                 }
 
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Short Description for slug field';
                 }
                 field("No. Of Generic Items"; Rec."No. Of Generic Items")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the No. Of Generic Items field';
                     DrillDown = true;
                     DrillDownPageId = "TFB Segment Generic Items";
@@ -35,7 +32,6 @@ page 50135 "TFB Product Market Seg. List"
                 }
                 field("External ID"; Rec."External ID")
                 {
-                    ApplicationArea = All;
 
                     ToolTip = 'Specifies the value of the External ID field';
                 }
@@ -49,13 +45,11 @@ page 50135 "TFB Product Market Seg. List"
         {
             part(Picture; "TFB Market Segment Picture")
             {
-                ApplicationArea = All;
                 SubPageLink = SystemId = field(SystemId);
             }
 
             systempart(Notes; Notes)
             {
-                ApplicationArea = All;
             }
         }
     }

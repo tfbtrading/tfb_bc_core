@@ -5,6 +5,8 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
     PageType = ListPart;
     SourceTable = "Vendor Ledger Entry";
     SourceTableView = sorting("External Document No.") where("Remaining Amount" = filter('<>0'));
+    ApplicationArea = All;
+
 
     layout
     {
@@ -14,18 +16,15 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
             {
                 field("External Document No."; Rec."External Document No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the external document no. supplied by the vendor';
                 }
                 field("Remaining Amount"; Rec."Remaining Amount")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the amount remaining to be paid on the invoice';
                 }
 
                 field(_IDAFilename; _DownloadSymbol)
                 {
-                    ApplicationArea = All;
                     Width = 10;
                     Caption = 'Incoming Doc. File';
                     ToolTip = 'Specifies filename';
@@ -56,7 +55,6 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
 
             action("Item Ledger Entries")
             {
-                ApplicationArea = All;
                 Image = LedgerEntries;
                 Caption = 'Item Ledger Entries';
                 ToolTip = 'View Item Ledger Entries';
@@ -71,7 +69,6 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
 
             action("Posted Invoice")
             {
-                ApplicationArea = All;
                 Image = Invoice;
                 Caption = 'Purchase Invoice';
                 ToolTip = 'View Purchase Invoice';
@@ -87,7 +84,6 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
             }
             action(ViewPDF)
             {
-                ApplicationArea = All;
                 Caption = 'View';
                 scope = Repeater;
                 Image = View;

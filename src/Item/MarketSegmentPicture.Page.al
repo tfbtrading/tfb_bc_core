@@ -6,6 +6,8 @@ page 50137 "TFB Market Segment Picture"
     SourceTable = "TFB Product Market Segment";
     InsertAllowed = false;
     LinksAllowed = false;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -16,7 +18,6 @@ page 50137 "TFB Market Segment Picture"
                 ShowCaption = false;
                 field(Picture; Rec.Picture)
                 {
-                    ApplicationArea = All;
                     ShowCaption = false;
                     ToolTip = 'Specifies the picture that has been inserted for the item.';
                 }
@@ -30,7 +31,6 @@ page 50137 "TFB Market Segment Picture"
         {
             action(TakePicture)
             {
-                ApplicationArea = All;
                 Caption = 'Take';
                 Image = Camera;
                 InFooterBar = true;
@@ -44,7 +44,6 @@ page 50137 "TFB Market Segment Picture"
             }
             action(ImportPicture)
             {
-                ApplicationArea = All;
                 Caption = 'Import';
                 Image = Import;
                 ToolTip = 'Import a picture file.';
@@ -57,7 +56,6 @@ page 50137 "TFB Market Segment Picture"
             }
             action(ExportPicture)
             {
-                ApplicationArea = All;
                 Caption = 'Export';
                 Image = Export;
                 ToolTip = 'Export a picture file.';
@@ -71,7 +69,6 @@ page 50137 "TFB Market Segment Picture"
 
             action(DeletePicture)
             {
-                ApplicationArea = All;
                 Caption = 'Delete';
                 Enabled = DeleteExportEnabled;
                 Image = Delete;

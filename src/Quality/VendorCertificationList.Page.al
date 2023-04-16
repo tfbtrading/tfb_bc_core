@@ -22,17 +22,14 @@ page 50107 "TFB Vendor Certification List"
 
                 field("Vendor Name"; Rec."Vendor Name")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies vendors name';
                 }
                 field(Site; Rec.Site)
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies vendors facility that is certified';
                 }
                 field("Certification Type"; Rec."Certification Type")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the certification type';
                     Caption = 'Certification';
 
@@ -44,14 +41,12 @@ page 50107 "TFB Vendor Certification List"
                 }
                 field("Certification Class"; Rec."Certificate Class")
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
                 }
                 field(Status; CalculatedStatus)
                 {
-                    ApplicationArea = All;
                     Caption = 'Status';
                     Editable = false;
                     Tooltip = 'Specifies the calculated status of the certification';
@@ -64,12 +59,10 @@ page 50107 "TFB Vendor Certification List"
                     ShowCaption = false;
                     Width = 1;
                     Editable = false;
-                    ApplicationArea = All;
                     ToolTip = 'Specifies status of vendor certification';
                 }
                 field(Inherent; Rec.Inherent)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies whether the claimed certification is inherent to the product rather than requiring an external authority. Only available for religious type of certification';
                     Enabled = Rec."Certificate Class" = Rec."Certificate Class"::Religous;
 
@@ -83,19 +76,16 @@ page 50107 "TFB Vendor Certification List"
                 }
                 field(Auditor; Rec.Auditor)
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies who audited the site and granted certification';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the date on which the last audit was conducted';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the date on which the certification will expire';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
                     Style = Unfavorable;
@@ -112,7 +102,6 @@ page 50107 "TFB Vendor Certification List"
                 }
                 field("Days To Expiry"; _DaysToExpiry)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     BlankZero = true;
                     Caption = 'Days to Expiry';
@@ -122,7 +111,6 @@ page 50107 "TFB Vendor Certification List"
                 }
                 field(CertificateExists; AttachmentExists)
                 {
-                    ApplicationArea = All;
                     Caption = 'Attach.';
                     ShowCaption = true;
                     Editable = false;
@@ -140,11 +128,9 @@ page 50107 "TFB Vendor Certification List"
 
             systempart(Links; Links)
             {
-                ApplicationArea = All;
             }
             systempart(Notes; Notes)
             {
-                ApplicationArea = All;
             }
 
 
@@ -165,8 +151,6 @@ page 50107 "TFB Vendor Certification List"
 
             action("UploadAttach")
             {
-
-                ApplicationArea = All;
                 Caption = 'Upload Attachment';
                 Visible = true;
                 Image = Import;
@@ -182,7 +166,6 @@ page 50107 "TFB Vendor Certification List"
             }
             action("DownloadAttach")
             {
-                ApplicationArea = All;
                 Caption = 'Download Attachment';
                 Visible = true;
                 Image = SendAsPDF;
@@ -198,7 +181,6 @@ page 50107 "TFB Vendor Certification List"
 
             action("SendToContact")
             {
-                ApplicationArea = All;
                 Caption = 'Send to Contacts';
                 Visible = true;
                 Image = SendEmailPDF;
@@ -213,7 +195,6 @@ page 50107 "TFB Vendor Certification List"
 
             action("ToggleArchived")
             {
-                ApplicationArea = All;
                 Caption = 'Toggle Archived';
                 Visible = true;
                 Image = Archive;
@@ -230,7 +211,6 @@ page 50107 "TFB Vendor Certification List"
 
             action("ReplaceFile")
             {
-                ApplicationArea = All;
                 Visible = true;
                 Image = DocumentEdit;
                 Enabled = AttachmentExists;
@@ -245,7 +225,6 @@ page 50107 "TFB Vendor Certification List"
             }
             action("RemoveFile")
             {
-                ApplicationArea = All;
                 Visible = true;
                 Image = Delete;
                 Enabled = AttachmentExists;

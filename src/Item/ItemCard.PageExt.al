@@ -255,7 +255,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
             var
                 ItemLedgerEntry: Record "Item Ledger Entry";
-                ItemLedgerEntries: Page "Item Ledger Entries";
+
 
             begin
                 ItemLedgerEntry.FilterGroup(10);

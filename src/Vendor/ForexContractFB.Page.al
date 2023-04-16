@@ -4,6 +4,8 @@ page 50160 "TFB Forex Contract FB"
     PageType = ListPart;
     SourceTable = "TFB Forex Mgmt Entry";
     SourceTableView = where(EntryType = const(ForexContract));
+    ApplicationArea = All;
+
 
     layout
     {
@@ -12,13 +14,11 @@ page 50160 "TFB Forex Contract FB"
 
             field(UncoveredLedgerEntries; _UncoveredLedgerEntries)
             {
-                ApplicationArea = All;
                 Caption = 'Uncovered Invoices';
                 ToolTip = 'Specifies the value of ledger entries uncovered.';
             }
             field(UncoveredPurchases; _UncoveredPurchases)
             {
-                ApplicationArea = All;
                 Caption = 'Uncovered Purchase Orders';
                 ToolTip = 'Specifies the value of the Invoice Amount Paid field.';
             }

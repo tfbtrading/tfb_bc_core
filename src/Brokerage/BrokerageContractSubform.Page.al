@@ -6,6 +6,8 @@ page 50225 "TFB Brokerage Contract Subform"
     Caption = 'Brokerage Contract Line';
     SourceTable = "TFB Brokerage Contract Line";
     RefreshOnActivate = true;
+    ApplicationArea = All;
+
 
 
     layout
@@ -17,22 +19,18 @@ page 50225 "TFB Brokerage Contract Subform"
 
                 field("Item No."; Rec."Item No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies item no. for line';
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies description for line';
                 }
                 field("Quantity"; Rec."Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies quantity of items for line';
                 }
                 field("Qty. On Shipments"; Rec."Qty. On Shipments")
                 {
-                    ApplicationArea = All;
                     DrillDown = false;
                     Editable = false;
                     Tooltip = 'Specifies qty from contract on shipment records';
@@ -40,30 +38,25 @@ page 50225 "TFB Brokerage Contract Subform"
 
                 field("Agreed Price"; Rec."Agreed Price")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies agreed price to be entered';
                 }
                 field("Pricing Unit Qty"; Rec."Pricing Unit Qty")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies pricing unit for agreed pricing';
                 }
                 field("Total MT"; Rec."Total MT")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies total aggregate MT of product on contract line';
                 }
                 field("Amount"; Rec."Amount")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies total value of product on contract line';
                 }
                 field("Brokerage Fee"; Rec."Brokerage Fee")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     Editable = false;
                     ToolTip = 'Specifies brokerage fee calculated for contract line';
@@ -86,7 +79,6 @@ page 50225 "TFB Brokerage Contract Subform"
                     {
                         Caption = 'Total value';
                         DecimalPlaces = 2;
-                        ApplicationArea = All;
                         AutoFormatExpression = '';
                         AutoFormatType = 1;
                         Editable = false;
@@ -103,7 +95,6 @@ page 50225 "TFB Brokerage Contract Subform"
                     {
 
                         DecimalPlaces = 2;
-                        ApplicationArea = All;
                         Editable = false;
                         ToolTip = 'Specifies total brokerage value for all lines';
                         Caption = 'Total brokerage';
@@ -115,7 +106,6 @@ page 50225 "TFB Brokerage Contract Subform"
                     {
                         Caption = 'Total Quantity (MT)';
                         DecimalPlaces = 1;
-                        ApplicationArea = All;
                         Editable = false;
                         ToolTip = 'Specifies total metric tonne for all lines';
                     }

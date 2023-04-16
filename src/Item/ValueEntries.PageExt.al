@@ -33,6 +33,7 @@ pageextension 50159 "TFB Value Entries" extends "Value Entries"
                 Image = ItemLedger;
                 Visible = true;
                 Enabled = Rec."Item Ledger Entry No." > 0;
+                ToolTip  = 'Opens up related item ledger entries';
             }
         }
 

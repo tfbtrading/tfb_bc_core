@@ -15,6 +15,8 @@ page 50168 "TFB APIV2 - Item Ledger Rcpt."
     SourceTableView = where("Entry Type" = filter(Purchase | Transfer), Quantity = filter(> 0), Nonstock = const(false), "Drop Shipment" = const(false), "Lot No." = filter('<>'''''), "Document Type" = filter('<>Purchase Invoice'), Positive = const(true), "Location Code" = filter('EFFLOG'), "Posting Date" = filter('>today-60d'));
     Extensible = false;
     InsertAllowed = false;
+    ApplicationArea = All;
+
 
     layout
     {

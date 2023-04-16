@@ -3,6 +3,8 @@ page 50129 "TFB Cust. Cont. Stats. FactBox"
     Caption = 'Customer Contact Statistics';
     PageType = CardPart;
     SourceTable = Contact;
+    ApplicationArea = All;
+
 
     layout
     {

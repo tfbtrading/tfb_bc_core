@@ -3,6 +3,8 @@ page 50100 "TFB Ops Mgr Role Center"
 {
     PageType = RoleCenter;
     Caption = 'Ops Mgr Role Center';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -57,7 +59,6 @@ page 50100 "TFB Ops Mgr Role Center"
                 ToolTip = 'Create new purchase order';
                 Image = New;
                 RunObject = page "Purchase Order";
-                ApplicationArea = All;
             }
 
         }
@@ -71,7 +72,6 @@ page 50100 "TFB Ops Mgr Role Center"
                 ToolTip = 'Open Requisition Worksheet';
                 Image = Worksheet;
                 RunObject = page "Req. Worksheet";
-                ApplicationArea = All;
             }
             group("Banking")
             {
@@ -170,7 +170,6 @@ page 50100 "TFB Ops Mgr Role Center"
                 ToolTip = 'Open list of containers inbound';
                 Image = Shipment;
                 RunObject = page "TFB Container Entry List";
-                ApplicationArea = All;
                 RunPageView = sorting("Est. Arrival Date") order(descending);
             }
 

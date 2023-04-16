@@ -61,8 +61,6 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
         field(50400; "TFB CoA Sent"; Boolean)
         {
             DataClassification = CustomerContent;
-            ObsoleteState = Pending;
-            ObsoleteReason = 'Use dynamic check to see if document has been sent';
             Caption = 'CoA Sent';
             Editable = false;
         }

@@ -8,6 +8,8 @@ page 50130 "TFB Company Contacts Subform"
     ModifyAllowed = true;
     DeleteAllowed = true;
     InsertAllowed = false;
+    ApplicationArea = All;
+
 
 
     layout
@@ -18,7 +20,6 @@ page 50130 "TFB Company Contacts Subform"
             {
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     ToolTip = 'Specifies the value of the Name field';
@@ -33,35 +34,29 @@ page 50130 "TFB Company Contacts Subform"
                 }
                 field("Job Title"; Rec."Job Title")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Job Title field';
                 }
                 field("E-Mail"; Rec."E-Mail")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the E-Mail field';
                 }
 
                 field("Phone No."; Rec."Phone No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Phone No. field';
                 }
 
                 field("Mobile Phone No."; Rec."Mobile Phone No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Mobile Phone No. field';
                 }
                 field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies if a contact has access to online channel';
                 }
 
                 field(AssignedRoles; getJobResponsibilities())
                 {
-                    ApplicationArea = All;
                     Caption = 'Job responsibilities';
                     ToolTip = 'Specifies the value of the Job responsibilities field';
                 }

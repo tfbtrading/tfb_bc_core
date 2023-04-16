@@ -4,6 +4,8 @@ page 50111 "TFB Sales Line FactBox"
     PageType = CardPart;
     SourceTable = "Sales Line";
     Caption = 'TFB Sales Line FactBox';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -16,7 +18,6 @@ page 50111 "TFB Sales Line FactBox"
                 {
                     ShowCaption = false;
                     Caption = 'Availability Info';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies availability information for sales line';
 
@@ -25,7 +26,6 @@ page 50111 "TFB Sales Line FactBox"
                 field(Link; _linkText)
                 {
                     Caption = 'Link to related record';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies link details for availability information';
                     trigger OnDrillDown()
@@ -41,7 +41,6 @@ page 50111 "TFB Sales Line FactBox"
 
                 field(TestNotes; _notes)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Caption = 'Related notes';
                     ToolTip = 'Specifies related notes for availability information';

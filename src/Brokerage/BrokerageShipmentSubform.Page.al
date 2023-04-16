@@ -5,6 +5,8 @@ page 50228 "TFB Brokerage Shipment Subform"
     PageType = ListPart;
     SourceTable = "TFB Brokerage Shipment Line";
     Caption = 'Lines';
+    ApplicationArea = All;
+
 
 
     layout
@@ -16,7 +18,6 @@ page 50228 "TFB Brokerage Shipment Subform"
 
                 field("Item No."; Rec."Item No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies item no. for line';
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -50,12 +51,10 @@ page 50228 "TFB Brokerage Shipment Subform"
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies description for line item';
                 }
                 field("Quantity"; Rec."Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies quantity for line item';
                     Visible = not UsingBulkers;
 
@@ -65,7 +64,6 @@ page 50228 "TFB Brokerage Shipment Subform"
 
                 field(Bulkers; Rec.BulkerQuantity)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies quantity for line item';
                     Caption = 'Bulker Quantity';
                     Visible = UsingBulkers;
@@ -80,7 +78,6 @@ page 50228 "TFB Brokerage Shipment Subform"
 
                 field("Agreed Price"; Rec."Agreed Price")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies agreed price for line item. Automatically calculated.';
 
                     trigger OnValidate()
@@ -92,20 +89,17 @@ page 50228 "TFB Brokerage Shipment Subform"
 
                 field("Total MT"; Rec."Total MT")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     DecimalPlaces = 1 : 2;
                     ToolTip = 'Specifies total metric tonne for each line item. Automatically calculated.';
                 }
                 field("Amount"; Rec."Amount")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies total amount for line item. Automatically calculated';
                 }
                 field("Brokerage Fee"; Rec."Brokerage Fee")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies brokerage fee for line item. Automatically calculated';
                 }

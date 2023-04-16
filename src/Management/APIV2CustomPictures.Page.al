@@ -13,6 +13,8 @@ page 50166 "TFB APIV2 - Custom Pictures"
     ODataKeyFields = Id;
     APIPublisher = 'tfb';
     APIGroup = 'supplychain';
+    ApplicationArea = All;
+
 
     layout
     {

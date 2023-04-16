@@ -236,8 +236,7 @@ table 50219 "TFB Brokerage Contract"
             trigger OnValidate()
             var
                 Cont: Record Contact;
-                Opportunity: Record Opportunity;
-                IsHandled: Boolean;
+
             begin
                 if ("Sell-to Contact No." <> xRec."Sell-to Contact No.") and (xRec."Sell-to Contact No." <> '')
                 then begin
@@ -252,7 +251,7 @@ table 50219 "TFB Brokerage Contract"
                 end;
 
                 if ("Customer No." <> '') and ("Sell-to Contact No." <> '') then
-                    CheckContactRelatedToCustomerCompany("Sell-to Contact No.", "Customer No.", CurrFieldNo);
+                    CheckContactRelatedToCustomerCompany("Sell-to Contact No.", "Customer No.");
 
                 Cont.Get("Sell-to Contact No.");
                 "Sell-to Contact" := Cont.Name;
@@ -464,7 +463,7 @@ table 50219 "TFB Brokerage Contract"
     /// 
     /// 
 
-    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]; LclCurrFieldNo: Integer);
+    local procedure CheckContactRelatedToCustomerCompany(ContactNo: Code[20]; CustomerNo: Code[20]);
     var
         Contact: Record Contact;
         ContBusRel: Record "Contact Business Relation";

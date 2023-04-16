@@ -214,24 +214,13 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
 
-    local procedure FilterBusinessRelations(var ContBusRel: Record "Contact Business Relation"; LinkToTable: Enum "Contact Business Relation Link To Table"; All: Boolean)
-    begin
-        ContBusRel.Reset();
-        if ("Company No." = '') or ("Company No." = "No.") then
-            ContBusRel.SetRange("Contact No.", "No.")
-        else
-            ContBusRel.SetFilter("Contact No.", '%1|%2', "No.", "Company No.");
-        if not All then
-            ContBusRel.SetFilter("No.", '<>''''');
-        if LinkToTable <> LinkToTable::" " then
-            ContBusRel.SetRange("Link to Table", LinkToTable);
-    end;
+
 
     procedure GetCustomerRelation(): Record Customer
     var
         ContBusRel: Record "Contact Business Relation";
         Customer: Record Customer;
-        RecSelected: Boolean;
+
 
     begin
         ContBusRel.SetRange("Link to Table", Enum::"Contact Business Relation Link To Table"::Customer);
@@ -251,8 +240,7 @@ tableextension 50110 "TFB Contact" extends Contact
 
     local procedure FinishAction(_ReviewComment: Text[256]; _NextReview: Date; _NextContactStatus: Code[20])
     var
-        RelComment: Record "Rlshp. Mgt. Comment Line";
-        LineNo: Integer;
+
 
     begin
 

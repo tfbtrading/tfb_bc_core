@@ -3,6 +3,8 @@ page 50109 "TFB Sales Admin Role Center"
 {
     PageType = RoleCenter;
     Caption = 'Sales Admin Role Center';
+    ApplicationArea = All;
+
 
     layout
     {
@@ -15,13 +17,11 @@ page 50109 "TFB Sales Admin Role Center"
             }
             part(LastRecords; "DYCE LastRecordsPart")
             {
-                ApplicationArea = All;
                 Visible = true;
 
             }
             part(FavouriteRecords; "DYCE FavoriteRecordsPart")
             {
-                ApplicationArea = All;
                 Visible = true;
             }
             part("Help And Chart Wrapper"; "Help And Chart Wrapper")
@@ -69,7 +69,6 @@ page 50109 "TFB Sales Admin Role Center"
                 ToolTip = 'Open Requisition Worksheet';
                 Image = Worksheet;
                 RunObject = page "Req. Worksheet";
-                ApplicationArea = All;
             }
         }
         area(Reporting)

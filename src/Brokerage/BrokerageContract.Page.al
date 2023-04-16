@@ -5,6 +5,8 @@ page 50240 "TFB Brokerage Contract"
     SourceTable = "TFB Brokerage Contract";
     DataCaptionFields = "No.", "Vendor No.", "Customer Name";
     Caption = 'Brokerage Contract';
+    ApplicationArea = All;
+    UsageCategory = Documents;
 
     layout
     {
@@ -28,12 +30,10 @@ page 50240 "TFB Brokerage Contract"
 
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies no. of brokerage contract';
                 }
                 field("Customer No."; Rec."Customer No.")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies customer no.';
                     Lookup = true;
@@ -42,7 +42,6 @@ page 50240 "TFB Brokerage Contract"
                 }
                 field("Customer Name"; Rec."Customer Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies customer name';
                 }
@@ -71,7 +70,6 @@ page 50240 "TFB Brokerage Contract"
                 }
                 field("Vendor No."; Rec."Vendor No.")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies vendor no.';
                     Lookup = true;
@@ -81,7 +79,6 @@ page 50240 "TFB Brokerage Contract"
                 }
                 field("Vendor Name"; Rec."Vendor Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies vendor name';
                 }
@@ -101,24 +98,20 @@ page 50240 "TFB Brokerage Contract"
                 }
                 field("External Reference No."; Rec."External Reference No.")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies external ref. no';
                 }
                 field("Crop Year"; Rec."Crop Year")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies crop year';
                 }
                 field("Container Route"; Rec."Container Route")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies container route';
 
                 }
                 field("Commission Type"; Rec."Commission Type")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies commission type';
 
@@ -130,7 +123,6 @@ page 50240 "TFB Brokerage Contract"
 
                     field("Fixed Rate"; Rec."Fixed Rate")
                     {
-                        ApplicationArea = all;
                         Importance = Additional;
                         ToolTip = 'Specifies fixed rate for contract';
 
@@ -144,7 +136,6 @@ page 50240 "TFB Brokerage Contract"
 
                     field("Percentage"; Rec."Percentage")
                     {
-                        ApplicationArea = All;
                         Importance = Additional;
                         ToolTip = 'Specifies percentage commission for contract';
 
@@ -161,32 +152,27 @@ page 50240 "TFB Brokerage Contract"
                 }
                 field("Date Signed"; Rec."Date Signed")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies date signed for contract';
                 }
                 field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies payment terms for contract. Used to calculate defaulte due date';
 
                 }
                 field("Currency"; Rec."Currency")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies currency for contract';
                 }
                 field("Vendor Price Unit"; Rec."Vendor Price Unit")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies vendor price unit';
 
                 }
 
                 field("Shipping Method Code"; Rec."Shipping Method Code")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies shipping method code';
 
@@ -204,7 +190,6 @@ page 50240 "TFB Brokerage Contract"
 
                     field("Est. Freight Per MT"; Rec."Est. Freight Per MT")
                     {
-                        ApplicationArea = all;
                         ToolTip = 'Specifies est. freight per metric tonne';
                     }
 
@@ -215,7 +200,6 @@ page 50240 "TFB Brokerage Contract"
 
                 field("Status"; Rec."Status")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies status of contract';
                     Style = Attention;
@@ -225,7 +209,6 @@ page 50240 "TFB Brokerage Contract"
 
                 field("Contract Attach."; IsContractAttached())
                 {
-                    ApplicationArea = All;
                     AssistEdit = true;
                     Caption = 'Contract Attached';
                     Editable = false;
@@ -250,7 +233,6 @@ page 50240 "TFB Brokerage Contract"
 
                 field("No. of Shipments"; Rec."No. of Shipments")
                 {
-                    ApplicationArea = All;
                     DrillDown = true;
                     DrillDownPageId = "TFB Brokerage Shipment List";
                     ToolTip = 'Specifies number of shipments for contract';
@@ -263,7 +245,6 @@ page 50240 "TFB Brokerage Contract"
 
             part(ContractLines; "TFB Brokerage Contract Subform")
             {
-                ApplicationArea = All;
                 Caption = 'Lines';
                 SubPageLink = "Document No." = field("No.");
                 UpdatePropagation = Both;
@@ -282,7 +263,6 @@ page 50240 "TFB Brokerage Contract"
         {
             action(Upload)
             {
-                ApplicationArea = All;
                 Caption = 'Upload contract';
                 ToolTip = 'Upload the contract file if it exists';
 
@@ -296,7 +276,6 @@ page 50240 "TFB Brokerage Contract"
             }
             action(Delete)
             {
-                ApplicationArea = All;
                 Caption = 'Delete contract';
                 ToolTip = 'Delete the contract file if it exists';
 
@@ -310,7 +289,6 @@ page 50240 "TFB Brokerage Contract"
             }
             action(Download)
             {
-                ApplicationArea = All;
                 Caption = 'Download contract';
                 ToolTip = 'Download the contract file if it exists';
 

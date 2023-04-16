@@ -22,7 +22,6 @@ page 50103 "TFB Pending Purch. Order Lines"
             {
                 field("Document No."; Rec."Document No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = true;
                     ToolTip = 'Specifies document no. for line';
@@ -47,7 +46,6 @@ page 50103 "TFB Pending Purch. Order Lines"
                 }
                 field("TFB Ext. No. Lookup"; Rec."TFB Ext. No. Lookup")
                 {
-                    ApplicationArea = all;
                     ToolTip = 'Specifies the vendors order number reference';
                     DrillDown = false;
                 }
@@ -55,14 +53,12 @@ page 50103 "TFB Pending Purch. Order Lines"
                 field(Status; Rec."TFB Order Status")
                 {
                     Caption = 'Status';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies status of document';
                     DrillDown = false;
                 }
 
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = true;
                     DrillDownPageId = "Vendor Card";
@@ -71,7 +67,6 @@ page 50103 "TFB Pending Purch. Order Lines"
                 }
                 field("TFB VendorName"; Rec."TFB VendorName")
                 {
-                    ApplicationArea = All;
 
                     DrillDown = false;
                     Tooltip = 'Specifies vendor name';
@@ -81,7 +76,6 @@ page 50103 "TFB Pending Purch. Order Lines"
                 }
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = true;
                     DrillDownPageId = "Item Card";
@@ -89,24 +83,20 @@ page 50103 "TFB Pending Purch. Order Lines"
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies description of item';
                 }
                 field(tfbSailingDate; getSailingDate())
                 {
-                    ApplicationArea = All;
                     Caption = 'Container sailing date';
                     ToolTip = 'Specifies date on which purchase order departs origin if it is on a container';
                     //Visible = Rec."TFB Container Entry No." <> '';
                 }
                 field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies date goods are expected to be received';
                 }
                 field("Planned Receipt Date"; Rec."Planned Receipt Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies planned receipt date';
 
                 }
@@ -116,23 +106,19 @@ page 50103 "TFB Pending Purch. Order Lines"
                     ToolTip = 'Specifies days ahead or delayed';
                     Style = Favorable;
                     StyleExpr = _PlanDayDifference <= 0;
-                    ApplicationArea = all;
                 }
 
                 field("Outstanding Quantity"; Rec."Outstanding Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies outstanding quantity in order unit of measure';
                 }
 
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies unit of measure for quantity';
                 }
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. per UoM';
                     Tooltip = 'Specifies quantiy of base unit per purchase unit of measure';
 
@@ -142,7 +128,6 @@ page 50103 "TFB Pending Purch. Order Lines"
                 {
                     DrillDown = true;
                     Tooltip = 'Specifies related sales order no. if item is drop ship or special order';
-                    ApplicationArea = All;
                     trigger OnDrillDown()
 
                     var
@@ -163,8 +148,6 @@ page 50103 "TFB Pending Purch. Order Lines"
                 }
                 field(CustomerName; Rec."TFB SO Cust. Name")
                 {
-
-                    ApplicationArea = All;
                     ToolTip = 'Specifies customers name if it is a drop shipment';
 
                     DrillDown = true;

@@ -4,6 +4,8 @@ page 50172 "TFB Lot Add Image Wizard"
     PageType = NavigatePage;
 
     UsageCategory = None;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -16,7 +18,6 @@ page 50172 "TFB Lot Add Image Wizard"
                 Visible = TopBannerVisible and not FinishActionEnabled;
                 field(MediaResourcesStandard; MediaResourcesStandard."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -28,7 +29,6 @@ page 50172 "TFB Lot Add Image Wizard"
                 Visible = TopBannerVisible and FinishActionEnabled;
                 field(MediaResourcesDone; MediaResourcesDone."Media Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
@@ -48,21 +48,18 @@ page 50172 "TFB Lot Add Image Wizard"
 
                         field("Item No."; TempLotImage."Item No.")
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             ToolTip = 'Specifies the value of the Item No. field.';
 
                         }
                         field("Lot No."; TempLotImage."Lot No.")
                         {
-                            ApplicationArea = All;
                             Editable = false;
                             ToolTip = 'Specifies the value of the Lot No field.';
 
                         }
                         field(BowlDiameter; _BowlDiameter)
                         {
-                            ApplicationArea = All;
                             Caption = 'Bow Diameter (cm)';
                             NotBlank = true;
                             Editable = true;
@@ -85,7 +82,6 @@ page 50172 "TFB Lot Add Image Wizard"
 
                 usercontrol(WebViewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
-                    ApplicationArea = All;
 
                     trigger ControlAddInReady(callbackUrl: Text)
                     var
@@ -126,7 +122,6 @@ page 50172 "TFB Lot Add Image Wizard"
         {
             action(ActionBack)
             {
-                ApplicationArea = All;
                 Caption = 'Back';
                 Enabled = BackActionEnabled;
                 Image = PreviousRecord;
@@ -139,7 +134,6 @@ page 50172 "TFB Lot Add Image Wizard"
             }
             action(ActionNext)
             {
-                ApplicationArea = All;
                 Caption = 'Next';
                 Enabled = NextActionEnabled;
                 Image = NextRecord;
@@ -152,7 +146,6 @@ page 50172 "TFB Lot Add Image Wizard"
             }
             action(ActionFinish)
             {
-                ApplicationArea = All;
                 Caption = 'Finish';
                 Enabled = FinishActionEnabled;
                 Image = Approve;

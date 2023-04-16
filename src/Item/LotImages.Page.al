@@ -24,14 +24,12 @@ page 50170 "TFB Lot Images"
                 field("Item No."; Rec."Item No.")
                 {
                     Caption = 'Item No.';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Item No. field.';
                 }
                 field("Variant Code"; Rec."Variant Code")
                 {
                     Caption = 'Variant Code';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Variant Code field.';
                 }
@@ -39,7 +37,6 @@ page 50170 "TFB Lot Images"
                 field(Description; Rec.Description)
                 {
                     Caption = 'Item Description';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Item Description field.';
 
@@ -47,7 +44,6 @@ page 50170 "TFB Lot Images"
                 field("Item Ledger Entry No."; Rec."Item Ledger Entry No.")
                 {
                     Caption = 'Ledger Entry No.';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Ledger Entry No. field.';
                     DrillDown = false;
@@ -55,7 +51,6 @@ page 50170 "TFB Lot Images"
                 field("Item Ledger Entry Type"; Rec."Item Ledger Entry Type")
                 {
                     Caption = 'Ledger Entry Type';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Ledger Entry Type field.';
                     DrillDown = false;
@@ -64,7 +59,6 @@ page 50170 "TFB Lot Images"
                 field("Lot No."; Rec."Lot No.")
                 {
                     Caption = 'Lot No';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Lot No field.';
 
@@ -72,14 +66,12 @@ page 50170 "TFB Lot Images"
                 field("Import Sequence No."; Rec."Import Sequence No.")
                 {
                     Caption = 'Import Sequence No';
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Import Sequence No field.';
                 }
 
                 field(createdAt; getCreatedDateTime())
                 {
                     Caption = 'Created on';
-                    ApplicationArea = all;
                     ToolTip = 'Specifies the value of the SystemCreatedAt field.';
 
                 }
@@ -97,7 +89,6 @@ page 50170 "TFB Lot Images"
         {
             action("TFB Get Lot Image Wizard")
             {
-                ApplicationArea = All;
                 Image = Picture;
                 Caption = 'Get Lot Image Wizard';
                 Enabled = true;

@@ -6,6 +6,8 @@ page 50155 "TFB Sample Picture"
     LinksAllowed = false;
     PageType = CardPart;
     SourceTable = "Lot No. Information";
+    ApplicationArea = All;
+
 
     layout
     {
@@ -13,7 +15,6 @@ page 50155 "TFB Sample Picture"
         {
             field(Picture; Rec."TFB Sample Picture")
             {
-                ApplicationArea = All;
                 ShowCaption = false;
                 ToolTip = 'Specifies the picture that has been inserted for the sample of the lot.';
             }
@@ -27,7 +28,6 @@ page 50155 "TFB Sample Picture"
 
             action(ExportFile)
             {
-                ApplicationArea = All;
                 Caption = 'Export';
                 Enabled = DeleteExportEnabled;
                 Image = Export;

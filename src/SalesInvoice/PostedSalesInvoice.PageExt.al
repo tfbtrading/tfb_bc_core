@@ -54,6 +54,7 @@ pageextension 50191 "TFB Posted Sales Invoice" extends "Posted Sales Invoice"
                     Caption = 'Prepayment for Order No.';
                     Style = Strong;
                     StyleExpr = true;
+                    ToolTip = 'Specifies the preoayment order no.';
                 }
             }
         }

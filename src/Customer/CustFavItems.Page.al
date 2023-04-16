@@ -10,6 +10,8 @@ page 50122 "TFB Cust. Fav. Items"
 
     InsertAllowed = true;
     DeleteAllowed = true;
+    ApplicationArea = All;
+
 
 
     layout
@@ -21,14 +23,12 @@ page 50122 "TFB Cust. Fav. Items"
 
                 field("Item No."; Rec."Item No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies Item Number';
 
 
                 }
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the Item Description';
                     Editable = false;
                     DrillDown = false;
@@ -36,14 +36,12 @@ page 50122 "TFB Cust. Fav. Items"
                 }
                 field(Source; Rec.Source)
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the source for the added favourite item';
                 }
 
                 field(TFBSalesPrice; SalesPriceVar)
                 {
                     Caption = 'Local Sales Price Per Kg';
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specifies the local sales price per kg';
                     Style = Favorable;
@@ -72,14 +70,12 @@ page 50122 "TFB Cust. Fav. Items"
                 field(TFBLastPriceChangedDate; LastChangedDateVar)
                 {
                     Caption = 'Last Changed';
-                    ApplicationArea = All;
                     BlankNumbers = BlankZero;
                     ToolTip = 'Specifies the date the local sales price was changed';
                 }
                 field(TFBLastPricePaid; LastPricePaid)
                 {
                     Caption = 'Last Price Paid';
-                    ApplicationArea = All;
                     BlankNumbers = BlankZero;
                     ToolTip = 'Specifies the last price paid by the customer';
                     DrillDown = true;
@@ -109,7 +105,6 @@ page 50122 "TFB Cust. Fav. Items"
                 field(TFBLastDatePurchased; LastDatePurchased)
                 {
                     Caption = 'Last Purchased On';
-                    ApplicationArea = All;
                     BlankNumbers = BlankZero;
                     ToolTip = 'Specifies the date item was last purchased by customer';
                     DrillDown = true;
@@ -139,7 +134,6 @@ page 50122 "TFB Cust. Fav. Items"
 
                 field(Inventory; Rec.Inventory)
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specificies current inventory availability';
 
@@ -161,20 +155,17 @@ page 50122 "TFB Cust. Fav. Items"
 
                 field("Reserved Qty. on Inventory"; Rec."Reserved Qty. on Inventory")
                 {
-                    ApplicationArea = All;
                     BlankZero = true;
                     ToolTip = 'Specificies reserved sales on inventory';
                 }
                 field("Qty. On Sales Order"; Rec."Qty. On Sales Order")
                 {
-                    ApplicationArea = All;
                     DrillDownPageId = "TFB Pending Sales Lines";
                     BlankZero = true;
                     ToolTip = 'Specificies current quantity on order by customer';
                 }
                 field("Sales (Qty.)"; Rec."Sales (Qty.)")
                 {
-                    ApplicationArea = All;
                     Caption = 'Historical Sales Qty';
                     ToolTip = 'Specificies current quantity on order by customer';
                 }
@@ -205,7 +196,6 @@ page 50122 "TFB Cust. Fav. Items"
         {
             action(AutoPopulate)
             {
-                ApplicationArea = All;
 
 
                 Image = ExecuteBatch;
@@ -224,7 +214,6 @@ page 50122 "TFB Cust. Fav. Items"
 
             action(CreateSalesOrder)
             {
-                ApplicationArea = All;
 
                 Image = NewOrder;
 

@@ -19,12 +19,10 @@ page 50106 "TFB Quality Auditors"
             {
                 field("Code"; Rec.Code)
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the code for the quality auditor';
                 }
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
                     tooltip = 'Specifies the name for the quality auditor';
                 }
 

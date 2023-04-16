@@ -16,9 +16,14 @@ codeunit 50103 "TFB Upgrade Mgmt"
     trigger OnUpgradePerCompany()
 
     begin
-      //  If CheckIfUpgradeCodeRequired() then
-          
+        If CheckIfUpgradeCodeRequired() then
+            PerformUpgrades();
 
+    end;
+
+    local procedure PerformUpgrades()
+
+    begin
 
     end;
 
@@ -45,11 +50,11 @@ codeunit 50103 "TFB Upgrade Mgmt"
         exit((GetInstallingVersionNo() = '21.0.0.42'))
     end;
 
-   
 
 
 
-    
+
+
 
 
 
@@ -115,29 +120,6 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
 
 
-    local procedure UpdateSystemIDForForexMgmg()
-    var
-        ForexMgmtEntry: Record "TFB Forex Mgmt Entry";
-        VendorLedgerEntry: Record "Vendor Ledger Entry";
-
-    begin
-        if ForexMgmtEntry.Findset(true) then
-            repeat
-                if IsNullGuid(ForexMgmtEntry."Applies-to id") and (ForexMgmtEntry."Applies-to Doc No." <> '') then
-                    if ForexMgmtEntry."Applies-to Doc. Type" = ForexMgmtEntry."Applies-to Doc. Type"::VendorLedgerEntry then begin
-                        VendorLedgerEntry.SetRange("Document Type", VendorLedgerEntry."Document Type"::Invoice);
-                        VendorLedgerEntry.SetRange("Document No.", ForexMgmtEntry."Applies-to Doc No.");
-                        if VendorLedgerEntry.FindFirst() then begin
-                            ForexMgmtEntry."Applies-to id" := VendorLedgerEntry.SystemId;
-                            ForexMgmtEntry."Applies-to Entry Doc. No." := VendorLedgerEntry."Document No.";
-                            ForexMgmtEntry."Applies-to Posting Date" := VendorLedgerEntry."Posting Date";
-                            ForexMgmtEntry.Modify();
-                        end;
-                    end
-
-            until ForexMgmtEntry.Next() = 0;
-
-    end;
 
 
 }

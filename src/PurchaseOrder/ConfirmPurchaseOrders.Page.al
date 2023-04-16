@@ -23,7 +23,6 @@ page 50124 "TFB Confirm Purchase Orders"
             {
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the purchase order number';
                     Editable = false;
                     Style = Favorable;
@@ -31,7 +30,6 @@ page 50124 "TFB Confirm Purchase Orders"
                 }
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the buy-from vendor';
                     editable = false;
                     DrillDown = true;
@@ -41,19 +39,16 @@ page 50124 "TFB Confirm Purchase Orders"
                 }
                 field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the name of the vendor';
                     Editable = false;
                 }
                 field("Ship-to Name"; Rec."Ship-to Name")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the location goods are being shipped to';
                     Editable = false;
                 }
                 field(TFBVendorPref; GetVendorConfirmPreference())
                 {
-                    ApplicationArea = all;
                     Caption = 'Vendor provides reference no.';
                     Editable = false;
                     Tooltip = 'Specifies wether the vendor is expected to provide a reference';
@@ -61,34 +56,29 @@ page 50124 "TFB Confirm Purchase Orders"
                 }
                 field("Vendor Order No."; Rec."Vendor Order No.")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the vendor order number';
                     Editable = true;
 
                 }
                 field("TFB Manual Confirmation"; Rec."TFB Manual Confirmation")
                 {
-                    ApplicationArea = All;
                     Caption = 'Order confirmed by vendor';
                     ToolTip = 'Specifies whether the order has been confirmed';
                     Editable = true;
                 }
                 field("Requested Receipt Date"; GetLineDate())
                 {
-                    ApplicationArea = All;
                     Caption = 'Requested Receipt Date on Line';
                     ToolTip = 'Specifies the requested date for receipt';
                     Editable = false;
                 }
                 field("Promised Receipt Date"; Rec."Promised Receipt Date")
                 {
-                    ApplicationArea = all;
                     ToolTip = 'Specifies the date that receipt is promised';
                     Editable = true;
                 }
                 field("LinesDesc"; GetOrderLines())
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the lines on the order';
                     MultiLine = false;
                     Editable = false;
@@ -96,7 +86,6 @@ page 50124 "TFB Confirm Purchase Orders"
                 }
                 field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the total amount of the order';
                     Editable = false;
                 }
@@ -106,16 +95,13 @@ page 50124 "TFB Confirm Purchase Orders"
         {
             systempart(notes; Notes)
             {
-                ApplicationArea = All;
             }
             systempart(attachments; Links)
             {
-                ApplicationArea = All;
             }
 
             part("Attached Documents"; "Document Attachment Factbox")
             {
-                ApplicationArea = All;
                 Caption = 'Attachments';
                 SubPageLink = "Table ID" = const(38),
                               "No." = field("No."),

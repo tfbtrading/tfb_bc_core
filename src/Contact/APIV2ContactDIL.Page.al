@@ -18,6 +18,8 @@ page 50154 "TFB APIV2 - Contact DIL"
     InsertAllowed = false;
     SourceTable = Contact;
     Extensible = false;
+    ApplicationArea = All;
+
 
     layout
     {

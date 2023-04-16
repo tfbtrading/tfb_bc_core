@@ -16,6 +16,8 @@ page 50140 "TFB APIV2 - Generic Items"
     Extensible = false;
     APIPublisher = 'tfb';
     APIGroup = 'supplychain';
+    ApplicationArea = All;
+
 
     layout
     {

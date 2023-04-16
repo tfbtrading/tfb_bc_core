@@ -6,6 +6,8 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
     SourceTableView = sorting("Buy-from Vendor No.", "Posting Date") order(descending) where(Type = filter(Item), Quantity = filter(> 0));
 
     ModifyAllowed = false;
+    ApplicationArea = All;
+
 
 
     layout
@@ -16,13 +18,11 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
             {
                 field("Posting Date"; Rec."Posting Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies date invoice was posted';
 
                 }
                 field("Document No."; Rec."Document No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = true;
                     Tooltip = 'Specifies document number of invoice';
@@ -44,7 +44,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
 
                 field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
-                    ApplicationArea = All;
                     Lookup = false;
                     DrillDown = true;
                     DrillDownPageId = "Vendor Card";
@@ -53,7 +52,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 }
                 field(VendorName; Rec."TFB Vendor Name")
                 {
-                    ApplicationArea = All;
                     Caption = 'Vendor';
                     DrillDown = true;
                     Tooltip = 'Specifies vendor name for purchase invoice';
@@ -73,7 +71,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 }
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     DrillDownPageId = "Item Card";
@@ -81,36 +78,29 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 }
                 field(Description; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies description of item';
                 }
 
 
                 field(Quantity; Rec.Quantity)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies quantity invoiced';
                 }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies unit of measure for quantity invoices';
                 }
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. per UoM';
                     Tooltip = 'Specifies quantity per unit of measure for purchase unit';
                 }
                 field("Purchasing Code"; Rec."Purchasing Code")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies purchase code';
                 }
                 field("TFB Price Per Kg"; PricePerKg)
                 {
-
-                    ApplicationArea = All;
                     Tooltip = 'Specifies price per kg';
                     Caption = 'Per Kg Price';
                 }
@@ -118,7 +108,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 {
                     Lookup = true;
                     LookupPageId = "Purchase Order";
-                    ApplicationArea = All;
                     Tooltip = 'Specifies direct unit cost of item invoiced';
 
                 }
@@ -134,7 +123,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
             part(Item; "Item Invoicing FactBox")
             {
                 SubPageLink = "No." = field("No.");
-                ApplicationArea = All;
             }
 
         }
@@ -153,8 +141,6 @@ page 50104 "TFB Pstd. Purch. Inv. Lines"
                 RunObject = Page "Posted Purchase Receipt";
                 RunPageLink = "No." = field("Receipt No.");
                 RunPageMode = View;
-
-                ApplicationArea = All;
                 Image = Receipt;
                 ToolTip = 'Opens posted purchase receipt for invoice';
             }

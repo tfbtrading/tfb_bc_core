@@ -13,31 +13,27 @@ page 50159 "TFB Container Routes"
             {
                 field("Code"; Rec."Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies code for container route';
 
                 }
                 field("Ship Via"; Rec."Ship Via")
                 {
-                    ApplicationArea = All;
                     Lookup = true;
                     Tooltip = 'Specifies shipment via';
                 }
                 field("Ship To"; Rec."Ship To")
                 {
-                    ApplicationArea = All;
                     Lookup = true;
                     Tooltip = 'Specifies location to ship-to';
                 }
                 field("Route Description"; Rec."Route Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies route description';
                 }
-                field("Days to Port"; Rec."Days to Port") { ApplicationArea = All; Tooltip = 'Specifies days to port'; }
-                field("Days to Clear"; Rec."Days to Clear") { ApplicationArea = All; Tooltip = 'Specifies days to clear'; }
+                field("Days to Port"; Rec."Days to Port") { Tooltip = 'Specifies days to port'; }
+                field("Days to Clear"; Rec."Days to Clear") { Tooltip = 'Specifies days to clear'; }
 
-                field(Transhipment; Rec.Transhipment) { ApplicationArea = All; Tooltip = 'Specifies if route includes transhipment'; }
+                field(Transhipment; Rec.Transhipment) { Tooltip = 'Specifies if route includes transhipment'; }
             }
 
         }

@@ -30,7 +30,6 @@ page 50115 "TFB Post Dropship from Sale"
                     DrillDown = true;
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
-                    ApplicationArea = All;
                     trigger OnDrillDown()
 
                     begin
@@ -41,8 +40,6 @@ page 50115 "TFB Post Dropship from Sale"
                 }
                 field("TFB Buy-from Vendor No."; Rec."TFB Buy-from Vendor No.")
                 {
-
-                    ApplicationArea = All;
                     ToolTip = 'Specifies who is supply the drop shipment item';
 
                     DrillDown = true;
@@ -51,7 +48,6 @@ page 50115 "TFB Post Dropship from Sale"
                 }
                 field("Document No."; Rec."Document No.")
                 {
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     DrillDownPageId = "Sales Order";
@@ -79,7 +75,6 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field(ExternalRefNo; Rec."TFB External Document No.")
                 {
-                    ApplicationArea = All;
                     Caption = 'Customers PO Ref';
                     ToolTip = 'Specifies customers external reference number i.e. po number';
                     Editable = false;
@@ -94,7 +89,6 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("TFB CustomerName"; Rec."TFB Customer Name")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = true;
                     ToolTip = 'Specifies the customers name';
@@ -118,19 +112,16 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies the description of the item';
                     Editable = false;
                 }
                 field("Requested Delivery Date"; Rec."Requested Delivery Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the requested delivery date for the item';
                     Editable = false;
                 }
                 field("Planned Shipment Date"; Rec."Planned Shipment Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the currently planned shipment date';
                     Editable = false;
                 }
@@ -138,7 +129,6 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("Outstanding Quantity"; Rec."Outstanding Quantity")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the outstanding quantity in the sales unit of measure';
                     Editable = false;
                 }
@@ -146,14 +136,12 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("Qty. per Unit of Measure"; Rec."Qty. per Unit of Measure")
                 {
-                    ApplicationArea = All;
                     Caption = 'Qty. per UoM';
                     ToolTip = 'Specifies base quantity per unit of measure';
                     Editable = false;
                 }
                 field("Shipping Agent Code"; Rec."Shipping Agent Code")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the shipping agent that will deliver the item';
                     Editable = false;
 
@@ -162,14 +150,12 @@ page 50115 "TFB Post Dropship from Sale"
 
                 field("TFB Package Tracking  No"; _packageTrackingNo)
                 {
-                    ApplicationArea = All;
                     Caption = 'Package Tracking No';
                     ToolTip = 'Specifies the package tracking number';
                     Editable = true;
                 }
                 field("TFB Date Shipped"; _dateShipped)
                 {
-                    ApplicationArea = All;
                     Caption = 'Date Shipped';
                     ToolTip = 'Specifies the date the goods were shipped from the supplier';
                     Editable = true;
@@ -190,7 +176,6 @@ page 50115 "TFB Post Dropship from Sale"
         {
             action(PostDropShip)
             {
-                ApplicationArea = All;
                 Caption = 'Post Dropship';
                 ToolTip = 'Post the drop ship receipt';
                 Image = Post;

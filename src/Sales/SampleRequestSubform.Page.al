@@ -7,6 +7,8 @@ page 50143 "TFB Sample Request Subform"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "TFB Sample Request Line";
+    ApplicationArea = All;
+
 
     layout
     {
@@ -34,7 +36,6 @@ page 50143 "TFB Sample Request Subform"
 
                 field(Description; Rec.Description)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Description of item being sampled';
                 }
 
@@ -42,7 +43,6 @@ page 50143 "TFB Sample Request Subform"
 
                 field("Use Inventory"; Rec."Use Inventory")
                 {
-                    ApplicationArea = All;
                     Caption = 'Full Inventory Unit';
                     Enabled = Rec."No." <> '';
                     ToolTip = 'Specifies if a full inventory unit is used)';
@@ -51,7 +51,6 @@ page 50143 "TFB Sample Request Subform"
 
                 field("Customer Sample Size"; Rec."Customer Sample Size")
                 {
-                    ApplicationArea = All;
                     Enabled = (Rec."No." <> '') and (not Rec."Use Inventory");
                     Width = 10;
                     ToolTip = 'Specifies the size of sample in kilograms requested by customer';
@@ -59,13 +58,11 @@ page 50143 "TFB Sample Request Subform"
 
                 field("Sourced From"; Rec."Sourced From")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies where the sample is retrieved from';
                 }
                 field("Source Sample Size"; Rec."Source Sample Size")
 
                 {
-                    ApplicationArea = All;
                     Width = 10;
                     Enabled = (Rec."No." <> '') and ((Rec."Sourced From" = Rec."Sourced From"::Warehouse) or (Rec."Sourced From" = Rec."Sourced From"::Warehouse));
                     ToolTip = 'Specifies the size of sample in kilograms requested from source';
@@ -73,7 +70,6 @@ page 50143 "TFB Sample Request Subform"
 
                 field("Line Status"; Rec."Line Status")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies status of retrieving this specific sample';
                 }
             }

@@ -408,12 +408,13 @@ table 50345 "TFB Item Costing"
         key(PK; "Item No.", "Costing Type", "Effective Date")
         {
             Clustered = true;
-
+         
         }
         key(Desc; Description)
         {
 
         }
+       
 
 
 

@@ -20,14 +20,12 @@ page 50230 "TFB Brokerage Shipment List"
             {
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies no. of brokerage shipment';
 
                 }
                 field("Contract No."; Rec."Contract No.")
                 {
                     TableRelation = "TFB Brokerage Contract";
-                    ApplicationArea = All;
 
                     DrillDown = true;
                     DrillDownPageId = "TFB Brokerage Contract";
@@ -36,7 +34,6 @@ page 50230 "TFB Brokerage Shipment List"
 
                 field("Customer Name"; Rec."Customer Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies customer name';
 
@@ -59,7 +56,6 @@ page 50230 "TFB Brokerage Shipment List"
 
                 field("Vendor Name"; Rec."Buy From Vendor Name")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     Tooltip = 'Specifies vendor name';
                     trigger OnDrillDown()
@@ -78,53 +74,44 @@ page 50230 "TFB Brokerage Shipment List"
                 }
                 field("Customer Reference"; Rec."Customer Reference")
                 {
-                    ApplicationArea = All;
                     Importance = Promoted;
                     Tooltip = 'Specifies customer reference';
                 }
                 field("Container No."; Rec."Container No.")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies container number';
                 }
                 field("Est. Arrival Date"; Rec."Est. Arrival Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies est. arrival date';
                 }
                 field("Required Arrival Date"; Rec."Required Arrival Date")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies required arrival date indicated by customer';
 
                 }
                 field("Vendor Reference"; Rec."Vendor Reference")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies vendor reference';
 
                 }
                 field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies vendor invoice no.';
                 }
                 field("Vendor Invoice Date"; Rec."Vendor Invoice Date")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies vendor invoice date';
                 }
                 field("Vendor Invoice Due Date"; Rec."Vendor Invoice Due Date")
                 {
-                    ApplicationArea = All;
                     Importance = Additional;
                     ToolTip = 'Specifies due date for vendor invoice';
                 }
                 field("Status"; Rec."Status")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies current status of brokerage shipment';
 
 

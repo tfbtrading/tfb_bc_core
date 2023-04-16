@@ -9,6 +9,8 @@ page 50141 "TFB Seg. Match Criteria Sf"
     InsertAllowed = true;
     DeleteAllowed = true;
     ModifyAllowed = true;
+    ApplicationArea = All;
+
 
     layout
     {
@@ -20,7 +22,6 @@ page 50141 "TFB Seg. Match Criteria Sf"
                 ShowCaption = false;
                 field(ItemAttributeID; Rec.ItemAttributeID)
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies the item attribute ID';
                     BlankZero = true;
@@ -47,7 +48,6 @@ page 50141 "TFB Seg. Match Criteria Sf"
                 }
                 field(ItemAttributeValueID; Rec.ItemAttributeValueID)
                 {
-                    ApplicationArea = All;
                     Editable = Rec.ItemAttributeID > 0;
                     ToolTip = 'Specifies the item attribute ID';
                     BlankZero = true;

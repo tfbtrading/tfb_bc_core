@@ -171,8 +171,6 @@ codeunit 50200 "TFB Container Mgmt"
         RecRef: RecordRef;
 
         LineLotNo: Text;
-        i: Integer;
-
 
 
     begin
@@ -196,12 +194,11 @@ codeunit 50200 "TFB Container Mgmt"
                                 ItemLedger.SetRange("Document No.", ReceiptLine."Document No.");
                                 ItemLedger.SetRange("Document Line No.", ReceiptLine."Line No.");
 
-                                if ItemLedger.FindFirst() then begin
+                                if ItemLedger.FindFirst() then
 
                                     //Get Lot No
                                     LineLotNo := ItemLedger."Lot No.";
 
-                                end;
                             end;
 
 
@@ -245,7 +242,7 @@ codeunit 50200 "TFB Container Mgmt"
                         else begin
                             LotInfo.Blocked := true;
                             if ContainerEntry."Inspection Date" = 0D then
-                                LotInfo."TFB Date Available" := CalcDate('-1D', ContainerEntry."Est. Warehouse")
+                                LotInfo."TFB Date Available" := CalcDate('<-1D>', ContainerEntry."Est. Warehouse")
                             else
                                 LotInfo."TFB Date Available" := ContainerEntry."Inspection Date";
                         end;

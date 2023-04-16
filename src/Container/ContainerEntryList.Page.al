@@ -22,14 +22,12 @@ page 50211 "TFB Container Entry List"
             {
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies no. of container entry';
 
                 }
                 field("Shipper"; Rec."Vendor No.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies vendor for container';
                 }
@@ -37,28 +35,24 @@ page 50211 "TFB Container Entry List"
 
                 field("Order Reference"; Rec."Order Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Lookup = true;
                     Tooltip = 'Specifies purchase order reference';
                 }
                 field("Vendor Reference"; Rec."Vendor Reference")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     DrillDown = false;
                     Tooltip = 'Specifies vendor reference';
                 }
                 field("Container No."; Rec."Container No.")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies container no';
 
                 }
                 field("LinesDesc"; LineSummary)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the lines on the order';
                     MultiLine = false;
                     Editable = false;
@@ -66,20 +60,17 @@ page 50211 "TFB Container Entry List"
                 }
                 field("Quarantine Reference"; Rec."Quarantine Reference")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies quarantine reference';
                 }
                 field("Shipping Line"; Rec."Shipping Line")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies shipping line';
                 }
 
                 field("Status"; Rec."Status")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies status of container';
                     Style = Attention;
@@ -87,45 +78,38 @@ page 50211 "TFB Container Entry List"
                 }
                 field(DestLocation; _location)
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the current target location';
                     Caption = 'Intended Location';
                 }
                 field("Customer Direct"; Rec."Customer Direct")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies whether the container is directly for a customer';
                 }
                 field("Est. Departure Date"; Rec."Est. Departure Date")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     Tooltip = 'Specifies est. date container leaves port';
                 }
                 field("Est. Arrival Date"; Rec."Est. Arrival Date")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies est. date container arrives';
                     Visible = false;
                 }
                 field("Est. Clear Date"; Rec."Est. Clear Date")
                 {
-                    ApplicationArea = All;
                     Editable = true;
                     ToolTip = 'Specifies est. date container is available';
                 }
                 field("Inspection Date"; Rec."Inspection Date")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies inspection date for which container was booked';
                 }
                 field("% Sold"; _PercReserved)
                 {
-                    ApplicationArea = All;
                     Caption = '% Sold';
                     Editable = false;
                     ToolTip = 'Specifies the percentage of container contents sold';
@@ -134,20 +118,17 @@ page 50211 "TFB Container Entry List"
                 }
                 field("Inspection Req."; Rec."Inspection Req.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies if inspection is required';
                 }
                 field("Fumigation Req."; Rec."Fumigation Req.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies if fumigation is required';
                 }
                 field("TFB Unpack Attach."; Rec."Unpack Worksheet Attach." > 0)
                 {
                     Caption = 'Unpack Worksheet Attached?';
-                    ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Show whether unpack report attached';
                 }
@@ -159,7 +140,6 @@ page 50211 "TFB Container Entry List"
 
             systempart(notes; Notes)
             {
-                ApplicationArea = All;
             }
         }
 

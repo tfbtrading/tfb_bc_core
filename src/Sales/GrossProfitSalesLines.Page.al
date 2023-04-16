@@ -13,6 +13,8 @@ page 50145 "TFB Gross Profit Sales Lines"
     Editable = true;
 
     DataCaptionFields = "Sell-to Customer No.", "Document No.";
+    ApplicationArea = All;
+
 
     layout
     {
@@ -22,7 +24,6 @@ page 50145 "TFB Gross Profit Sales Lines"
             {
                 field("No."; Rec."No.")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     width = 10;
 
@@ -31,7 +32,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field("Description"; Rec."Description")
                 {
-                    ApplicationArea = All;
                     Editable = false;
                     Tooltip = 'Specifies the description of the item';
                     Enabled = false;
@@ -40,14 +40,12 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                 field("Quantity (Base)"; Rec."Quantity (Base)")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the outstanding quantity in the sales unit of measure';
                     Editable = false;
                     Enabled = false;
                 }
                 field("Net Weight"; Rec."Net Weight")
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies the net weight per unit';
                     Editable = false;
                     Enabled = false;
@@ -55,7 +53,6 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                 field("Cost Using"; Rec."TFB Cost Using")
                 {
-                    ApplicationArea = All;
                     Caption = 'Cost Using';
                     ToolTip = 'Specifies how cost price is determined';
                     Editable = true;
@@ -64,7 +61,7 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                     begin
                         updateLineVariables();
-                        notdefaultcostby := true;
+                    
                         CurrPage.Update();
 
                     end;
@@ -72,14 +69,12 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                 field("Cost Price"; _CostPricePerKg)
                 {
-                    ApplicationArea = All;
                     Caption = 'Est. Cost Per Kg';
                     ToolTip = 'Specifies the cost price';
                     Editable = true;
                 }
                 field("Est. Delivery Cost"; _EstDeliveryCost)
                 {
-                    ApplicationArea = All;
                     Caption = 'Est. Delivery Cost Per Kg';
                     ToolTip = 'Specifies the delivery cost per kg additional to cost';
                     Editable = false;
@@ -87,7 +82,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field(TotalCost; _linecost)
                 {
-                    ApplicationArea = All;
                     Caption = 'Est. Item Costs excl. Delivery';
                     ToolTip = 'Specifies the total cost of the line excl. GST';
                     Editable = false;
@@ -95,7 +89,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field("TFB Price Unit Cost"; Rec."TFB Price Unit Cost")
                 {
-                    ApplicationArea = All;
                     Caption = 'Sales Price Per Kg';
                     ToolTip = 'Specifies the price per kg';
                     Editable = true;
@@ -110,7 +103,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field("TFB Price Unit Discount"; Rec."TFB Price Unit Discount")
                 {
-                    ApplicationArea = All;
                     BlankNumbers = BlankZero;
                     Editable = Rec."TFB Price Unit Cost" > 0;
                     Caption = 'Per Kg Discount';
@@ -126,7 +118,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field(Amount; Rec.Amount)
                 {
-                    ApplicationArea = All;
                     Caption = 'Sales Amount';
                     ToolTip = 'Specifies the total sale price';
                     Editable = false;
@@ -134,7 +125,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field(GrossProfit; _GrossProfit)
                 {
-                    ApplicationArea = All;
                     Caption = 'Est. Profit';
                     ToolTip = 'Specifies the estimated gross profit for the line';
                     Enabled = false;
@@ -145,7 +135,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                 }
                 field(GrossProfitPerc; _GrossProfitPerc)
                 {
-                    ApplicationArea = All;
                     Caption = 'Est.Profit %';
                     ToolTip = 'Specifies the estimated percentage of profit';
                     AutoFormatExpression = '<precision,2:2><standard format,0>%';
@@ -164,7 +153,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                     ToolTip = 'Specifies the drop shipment purchase order related to the sales line';
                     Editable = false;
                     visible = (Rec."Document Type" = Rec."Document Type"::Order) and Rec."Drop Shipment";
-                    ApplicationArea = All;
                     trigger OnDrillDown()
 
 
@@ -285,12 +273,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     }
 
     var
-        SalesCU: CodeUnit "TFB Sales Mgmt";
-        notdefaultcostby: Boolean;
-
         LineDictionary: dictionary of [integer, Dictionary of [code[20], decimal]];
-
-
         _CostPricePerKg: Decimal;
         _estDeliveryCost: Decimal;
         _grossprofit: Decimal;
@@ -300,13 +283,15 @@ page 50145 "TFB Gross Profit Sales Lines"
         _totalcost: Decimal;
         _totaldeliverycost: Decimal;
         _totaldiscount: Decimal;
-        _totaldiscountperc: Decimal;
         _totalgrossprofit: Decimal;
         _totalprofitperc: Decimal;
         _totalsalesamount: Decimal;
 
-        _availability: Text;
-        _statusUpdate: Text;
+
+
+
+
+
 
 
 
@@ -338,7 +323,6 @@ page 50145 "TFB Gross Profit Sales Lines"
 
     local procedure updateLineVariables()
     var
-        LineDetailDictionary: dictionary of [code[20], Decimal];
         Item: Record Item;
         ItemCosting: Record "TFB Item Costing";
         ItemCostingLine: Record "TFB Item Costing Lines";
@@ -346,6 +330,7 @@ page 50145 "TFB Gross Profit Sales Lines"
         PostCodeZoneRate: Record "TFB Postcode Zone Rate";
         PurchaseLine: Record "Purchase Line";
         PricingCU: Codeunit "TFB Pricing Calculations";
+        LineDetailDictionary: dictionary of [code[20], Decimal];
 
 
 
@@ -465,8 +450,7 @@ page 50145 "TFB Gross Profit Sales Lines"
     var
         Item: Record Item;
         SalesLine2: Record "Sales Line";
-        PricingCU: Codeunit "TFB Pricing Calculations";
-        LineDetailDictionary: dictionary of [code[20], Decimal];
+    
 
 
     begin

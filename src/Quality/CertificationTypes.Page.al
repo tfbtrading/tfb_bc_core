@@ -20,23 +20,18 @@ page 50105 "TFB Certification Types"
             {
                 field("Code"; Rec.Code)
                 {
-
-                    ApplicationArea = All;
                     ToolTip = 'Specifies code for certification type';
                 }
                 field(Name; Rec.Name)
                 {
-                    ApplicationArea = All;
                     ToolTip = 'Specifies name of certification type';
                 }
                 field("GFSI Accredited"; Rec."GFSI Accredited")
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies if certification type is GFSI accredited';
                 }
                 field(Class; Rec.Class)
                 {
-                    ApplicationArea = All;
                     Tooltip = 'Specifies class of the certification';
                 }
 
@@ -55,8 +50,6 @@ page 50105 "TFB Certification Types"
 
             action("Add logo")
             {
-
-                ApplicationArea = All;
                 Visible = true;
 
                 Image = Import;
@@ -73,7 +66,6 @@ page 50105 "TFB Certification Types"
 
             action("Remove logo")
             {
-                ApplicationArea = All;
                 Visible = true;
 
                 Image = Delete;
