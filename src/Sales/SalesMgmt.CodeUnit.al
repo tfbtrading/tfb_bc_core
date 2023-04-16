@@ -1195,4 +1195,54 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    internal procedure GetPaymentStatusEmoji(Rec: Record "Sales Line"): Text
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesInvoiceLine: record "Sales Invoice Line";
+
+
+
+        emojiNotApplicableTxt: Label '▫️';
+        emojiWaitingForPrepaymentInvoiceTxt: Label '🟠';
+        emojiWaitingForPrepaymentInvoiceToBePaidTxt: Label '💰';
+        emojiPrepaymentInvoicePaidTxt: Label '😀';
+        InvoicePaid: Boolean;
+
+    begin
+
+        If (Rec."Prepayment %" = 0) or (Rec."Prepmt. Line Amount" = 0) then
+            Exit(emojiNotApplicableTxt);
+
+        If (Rec."Prepmt. Amt. Inv." >= 0) and (Rec."Prepmt. Amt. Inv." < Rec."Prepmt. Line Amount") then
+            Exit(emojiWaitingForPrepaymentInvoiceTxt);
+
+        if (Rec."Prepmt. Amt. Inv." = Rec."Prepmt. Line Amount") then begin
+
+            //Check for related invoice
+
+            SalesInvoiceHeader.SetRange("Prepayment Invoice", true);
+            SalesInvoiceHeader.SetRange("Prepayment Order No.", Rec."Document No.");
+            SalesInvoiceHeader.SetLoadFields("No.", "Prepayment Order No.");
+
+            If SalesInvoiceHeader.FindSet(false) then
+                repeat
+                    SalesInvoiceHeader.CalcFields("Remaining Amount");
+                    If SalesInvoiceLine.Get(SalesInvoiceHeader."No.", Rec."Line No.") then
+                        If SalesInvoiceLine."Prepayment Line" then
+                            If SalesInvoiceHeader."Remaining Amount" = 0 then
+                                InvoicePaid := true
+                            else
+                                InvoicePaid := false;
+
+                until SalesInvoiceHeader.Next() = 0;
+
+            If InvoicePaid then
+                Exit(emojiPrepaymentInvoicePaidTxt)
+            else
+                Exit(emojiWaitingForPrepaymentInvoiceToBePaidTxt);
+        end;
+
+
+    end;
+
 }

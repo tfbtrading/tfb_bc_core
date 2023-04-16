@@ -79,7 +79,12 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             Caption = 'Purchases Pending Confirmation';
         }
 
-
+        field(50527; "TFB No. Sales Lines Prepay."; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Sales Line" where("Document Type" = const(Order), "Prepayment Amount" = filter('>0')));
+            Caption = 'Sales with Prepayment';
+        }
 
 
     }
