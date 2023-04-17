@@ -3554,7 +3554,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendVendorCertificationEmail - NamedType TitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 2151298320" size-unit="char" translate="yes" xml:space="preserve">
-          <source></source>
+          <source>▫️</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiNotApplicableTxt</note>
         </trans-unit>
@@ -3563,10 +3563,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiWaitingForPrepaymentInvoiceTxt</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 970366484" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 1528893204" size-unit="char" translate="yes" xml:space="preserve">
           <source>💰</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiWaitingForPrepaymentInvoiceToBePaid</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Mgmt - Method GetPaymentStatusEmoji - NamedType emojiWaitingForPrepaymentInvoiceToBePaidTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 2381778165 - Method 3569881480 - NamedType 1546165264" size-unit="char" translate="yes" xml:space="preserve">
           <source>😀</source>
@@ -11354,7 +11354,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Control TFB Payment Status - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3940659150 - Control 3287886354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Payment Info</source>
+          <source>Prepay. Info</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Pending Sales Lines - Control TFB Payment Status - Property Caption</note>
         </trans-unit>

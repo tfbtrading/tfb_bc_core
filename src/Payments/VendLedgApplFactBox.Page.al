@@ -160,29 +160,29 @@ page 50113 "TFB Vend. Ledg. Appl. FactBox"
     local procedure showItemLedgerEntries()
 
     var
-        PL: Record "Purch. Inv. Line";
+        PurchInvLine: Record "Purch. Inv. Line";
         TempItemLedger: Record "Item Ledger Entry" temporary;
         ItemLedger: Record "Item Ledger Entry";
-        ItemLedgerPage: Page "Item Ledger Entries";
-
-
+       
     begin
 
-        PL.SetRange("Document No.", Rec."Document No.");
-        PL.SetFilter(Quantity, '<>0');
-        PL.SetRange(Type, PL.Type::Item);
+        PurchInvLine.SetRange("Document No.", Rec."Document No.");
+        PurchInvLine.SetFilter(Quantity, '<>0');
+        PurchInvLine.SetRange(Type, PurchInvLine.Type::Item);
 
         Clear(TempItemLedger);
-        if PL.Findset(false) then
+        if PurchInvLine.Findset(false) then
             repeat
 
-                PL.GetItemLedgEntries(TempItemLedger, false); //Set false as we want to aggregate and not reset for each line item
+                PurchInvLine.GetItemLedgEntries(TempItemLedger, false); //Set false as we want to aggregate and not reset for each line item
 
-            until PL.Next() < 1;
+            until PurchInvLine.Next() < 1;
 
-        ItemLedger.Copy(TempItemLedger, false);
-        ItemLedgerPage.SetRecord(ItemLedger);
-        ItemLedgerPage.Run();
+     
+        ItemLedger.CopyFilters(TempItemLedger);
+        //ItemLedgerPage.SetRecord(ItemLedger);
+        Page.Run(Page::"Item Ledger Entries",TempItemLedger);
+     
 
     end;
 
