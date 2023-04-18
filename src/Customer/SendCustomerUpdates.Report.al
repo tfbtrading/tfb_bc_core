@@ -32,7 +32,7 @@ report 50123 "TFB Send Customer Updates"
 
             begin
 
-                if CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate) then
+                if CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate, true) then
                     Window.Update(1, STRSUBSTNO('%1 %2', "No.", Name));
 
             end;

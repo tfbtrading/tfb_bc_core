@@ -244,11 +244,11 @@ codeunit 50120 "TFB Customer Mgmt"
 
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', CustNo, ''));
-        Result := SendCustomerStatusEmail(CustNo, cu.GetHTMLTemplateActive(TitleTxt, SubtitleTxt));
+        Result := SendCustomerStatusEmail(CustNo, cu.GetHTMLTemplateActive(TitleTxt, SubtitleTxt), false);
         exit(Result);
     end;
 
-    procedure SendCustomerStatusEmail(CustNo: Code[20]; HTMLTemplate: Text): Boolean
+    procedure SendCustomerStatusEmail(CustNo: Code[20]; HTMLTemplate: Text; hideDialog: Boolean): Boolean
 
     var
 
@@ -312,7 +312,11 @@ codeunit 50120 "TFB Customer Mgmt"
             EmailMessage.AddAttachment('OrderStatus.pdf', 'Application/pdf', PDFInstream);
 
         Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
-        Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
+
+        If hideDialog then
+            Email.Enqueue(EmailMessage, EmailScenEnum::Logistics)
+        else
+            Email.OpenInEditor(EmailMessage, EmailScenEnum::Logistics);
 
     end;
 
