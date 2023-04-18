@@ -269,7 +269,8 @@ codeunit 50120 "TFB Customer Mgmt"
         Recipients: List of [Text];
 
         NoData: Boolean;
-
+        IsHandled: Boolean;
+        PDFInstream: InStream;
 
     begin
 
@@ -295,7 +296,9 @@ codeunit 50120 "TFB Customer Mgmt"
         if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::OptOut then
             exit(true);
 
-        GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
+        OnBeforeGenerateOrderStatusContent(Customer, HTMLBuilder, IsHandled);
+        If not IsHandled then
+            GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
 
         if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::DataOnly then
             if NoData then
@@ -304,11 +307,24 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        OnBeforeAddOrderStatusAttachment(Customer, PDFInstream, IsHandled);
+        If IsHandled then
+            EmailMessage.AddAttachment('OrderStatus.pdf', 'Application/pdf', PDFInstream);
+
         Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         Email.Enqueue(EmailMessage, EmailScenEnum::Logistics);
 
     end;
 
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeGenerateOrderStatusContent(Customer: Record Customer; var HTMLBuilder: TextBuilder; var Handled: Boolean)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeAddOrderStatusAttachment(Customer: Record Customer; var PDFInstream: Instream; var Handled: Boolean)
+    begin
+    end;
 
     procedure CheckIfCreditHoldApplies(Customer: Record Customer; NewShipmentValue: Decimal; var overdue: Boolean; var overCreditLimit: Boolean): Boolean
 
