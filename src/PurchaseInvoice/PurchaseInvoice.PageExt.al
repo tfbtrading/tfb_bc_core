@@ -239,8 +239,10 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
     local procedure CheckIfAssignmentIsValid()
 
     var
+        PurchInvLine: Record "Purchase Line";
         PurchInvCU: Codeunit "TFB Purch. Inv. Mgmt";
         TokenClass: Enum "TFB Assignment Class";
+        ConfirmMgmt: Codeunit "Confirm Management";
         Reference: Text[100];
         Result: Boolean;
 
@@ -257,8 +259,29 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
                     _AssigmentIsValid := PurchInvCU.isCntTokenValid(Reference);
 
             end;
-    end;
 
+        If _AssigmentIsValid and ConfirmMgmt.GetResponse('Apply new charge assignment', true) then begin
+
+            PurchInvLine.SetRange("Document No.", Rec."No.");
+            PurchInvLine.SetRange("Document Type", Rec."Document Type");
+
+            if PurchInvLine.FindSet(true) then
+                repeat
+                    case TokenClass of
+                        TokenClass::"Purchase Order":
+                            PurchInvCU.GetPurchaseReceiptByPOReference(PurchInvLine, Reference);
+                        TokenClass::"Inbound Container":
+                            PurchInvCU.GetPurchaseReceiptByCntReference(PurchInvLine, Reference);
+                    end;
+
+                until PurchInvLine.Next() = 0;
+
+            CurrPage.Update(true);
+
+
+        end;
+
+    end;
 
     local procedure GetTaskStatus(): Text
 
