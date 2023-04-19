@@ -304,7 +304,7 @@ codeunit 50120 "TFB Customer Mgmt"
             if NoData then
                 exit(true);
 
-
+        IsHandled := false; // Reset the ishandled parameter
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
         OnBeforeAddOrderStatusAttachment(Customer, PDFInstream, IsHandled);
