@@ -137,7 +137,7 @@ pageextension 50282 "TFB Purch. Invoice Subform" extends "Purch. Invoice Subform
         PurchInvCU: Codeunit "TFB Purch. Inv. Mgmt";
 
     begin
-
+        CurrPage.SaveRecord();
         if PurchInvCU.CheckAndRetrieveAssignmentLines(Rec, false) then
             AIIndicatorVar := '⚡'
         else
