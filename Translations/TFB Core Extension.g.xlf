@@ -1323,6 +1323,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Sample Request Nos. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 1494471608 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shelf Life Word Template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Shelf Life Word Template - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 527448834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specification URL Pattern</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3474,7 +3479,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method CheckAndWarnIfItemOnQuote - NamedType NotificationMsg</note>
         </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 1983435042 - NamedType 4238940497" size-unit="char" translate="yes" xml:space="preserve">
-          <source>NotifyItemOnQuote</source>
+          <source>OpenExistingQuote</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Item Mgmt - Method CheckAndWarnIfItemOnQuote - NamedType NotificationFunctionTok</note>
         </trans-unit>
@@ -7537,6 +7542,11 @@
           <source>Specifies the value of the Price List Job Resp. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control PL Def. Job Resp. Rec. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 503529848 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the word template to be used when emailing from an item ledger entry extension letter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control TFB Shelf Life Word Template - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 2653441561 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lead Management</source>
@@ -15008,6 +15018,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Action TFB Get Lot Image Wizard - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2630826894 - Action 1710897211 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
+          <source>Send Shelf Extension Letter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Ledger Entries - Action TFB Send Shelf Extension - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2630826894 - Action 11080741 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3595318222">
           <source>Images</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -16257,6 +16272,16 @@
           <source>Update Other Information</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd Purchase Invoice - Change Update Document - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1492510889 - Control 595386185 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2618934728">
+          <source>Specifies the related Purchase Order number for the credit if it exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Purch. Cr. Memo Sf - Control tfbOrderNo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1492510889 - Control 595386185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2618934728">
+          <source>Order No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Purch. Cr. Memo Sf - Control tfbOrderNo - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1842795387 - Control 520273518 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 461434549">
           <source>Specifies the corresponding container number</source>

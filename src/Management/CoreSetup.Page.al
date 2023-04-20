@@ -147,6 +147,10 @@ page 50173 "TFB Core Setup"
                     {
                         ToolTip = 'Specifies the value of the Email Template Test URL field.';
                     }
+                    field("TFB Shelf Life Word Template"; "Shelf Life Word Template")
+                    {
+                        ToolTip = 'Specifies the word template to be used when emailing from an item ledger entry extension letter';
+                    }
 
                 }
 

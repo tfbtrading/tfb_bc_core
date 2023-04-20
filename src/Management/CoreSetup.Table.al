@@ -312,6 +312,12 @@ table 50125 "TFB Core Setup"
             DataClassification = CustomerContent;
             Caption = 'ABS Container Name';
         }
+        field(480; "Shelf Life Word Template"; Code[30])
+        {
+            TableRelation = "Word Template" where("Table ID" = const(Database::"Item Ledger Entry"));
+            ValidateTableRelation = true;
+            Caption = 'Shelf Life Word Template';
+        }
 
     }
 

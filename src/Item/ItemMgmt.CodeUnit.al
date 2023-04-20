@@ -159,6 +159,40 @@ codeunit 50107 "TFB Item Mgmt"
 
     end;
 
+    internal procedure SendShelfExtensionEmail(Rec: Record "Item Ledger Entry")
+
+    var
+        Customer: Record Customer;
+        CoreSetup: Record "TFB Core Setup";
+        WordTemplate: CodeUnit "Word Template";
+        EmailMessage: CodeUnit "Email Message";
+        Email: CodeUnit Email;
+        Recipient: List of [Text];
+        InStream: InStream;
+
+    begin
+        CoreSetup.SetLoadFields("Shelf Life Word Template");
+        CoreSetup.Get();
+        Customer.SetLoadFields("E-Mail", "TFB CoA Alt. Email");
+        Customer.Get(Rec."Source No.");
+
+        WordTemplate.Load(CoreSetup."Shelf Life Word Template");
+        WordTemplate.Merge(Rec, false, Enum::"Word Templates Save Format"::PDF);
+        WordTemplate.GetDocument(InStream);
+
+        Recipient.Add(Customer."E-Mail");
+        Recipient.Add(Customer."TFB CoA Alt. Email");
+        EmailMessage.Create(Recipient, 'Shelf life extension letter', 'Details about the shelf life extension', true);
+        EmailMessage.AddAttachment('Shelf Life Extension Letter.pdf', 'Application/PDF', InStream);
+        Email.AddRelation(EmailMessage, Database::"Item Ledger Entry", Rec.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
+        Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
+
+        if not (Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics) = Enum::"Email Action"::Discarded) then begin
+
+
+        end;
+    end;
+
     procedure SendSelectedItemSpecifications(var Item: Record Item)
 
     var

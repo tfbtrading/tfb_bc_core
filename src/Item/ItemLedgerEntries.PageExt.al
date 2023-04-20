@@ -16,7 +16,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                 Caption = 'Ext. Doc. No.';
                 Tooltip = 'Specifies external document number';
             }
-         
+
             field("TFB Source Desc."; SourceDesc)
             {
                 ApplicationArea = All;
@@ -133,6 +133,24 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
                     AddWizard.InitFromItemLedgerID(Rec.SystemId);
                     AddWizard.RunModal();
                 end;
+
+            }
+
+            action("TFB Send Shelf Extension")
+            {
+                ApplicationArea = All;
+                Image = Email;
+                Caption = 'Send Shelf Extension Letter';
+                Enabled = isValidSalesShipment;
+
+                trigger OnAction()
+
+                var
+                    ItemMgmt: Codeunit "TFB Item Mgmt";
+
+                begin
+                    ItemMgmt.SendShelfExtensionEmail(Rec);
+                end;
             }
 
 
@@ -218,6 +236,8 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         }
     }
 
+    var
+        isValidSalesShipment: Boolean;
 
     trigger OnAfterGetRecord()
 
@@ -225,6 +245,7 @@ pageextension 50272 "TFB Item Ledger Entries" extends "Item Ledger Entries" //38
         //Populate Item Ledger Details if Sales Shipment
         UpdateSalesShipmentDetails();
 
+        isValidSalesShipment := Rec."Document Type" = Rec."Document Type"::"Sales Shipment";
     end;
 
     local procedure GetLotTrafficLight(): text[6]
