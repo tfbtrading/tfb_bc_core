@@ -228,11 +228,11 @@ codeunit 50107 "TFB Item Mgmt"
     var
 
         NotificationLifecycleMgt: Codeunit "Notification Lifecycle Mgt.";
-        ItemAlreadyQuotedNotification: Notification;
+        NotificationOnQuote: Notification;
         QuoteDocumentNo: Code[20];
         NotificationMsg: Label 'This customer has a quote %1 that includes item %2 already.', Comment = '%1 = quote number, %2 = item name';
 
-        NotificationFunctionTok: Label 'NotifyItemOnQuote';
+        NotificationFunctionTok: Label 'OpenExistingQuote';
         NotificationLbl: Label 'Open quote';
     begin
 
@@ -240,12 +240,12 @@ codeunit 50107 "TFB Item Mgmt"
 
         if not quoteforitemexists(Item, SalesLine, QuoteDocumentNo) then exit;
 
-        ItemAlreadyQuotedNotification.Id := NotificationID;
-        ItemAlreadyQuotedNotification.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name", SalesLine.Description);
-        ItemAlreadyQuotedNotification.AddAction(NotificationLbl, CODEUNIT::"Document Notifications", NotificationFunctionTok);
-        ItemAlreadyQuotedNotification.Scope := NOTIFICATIONSCOPE::LocalScope;
-        ItemAlreadyQuotedNotification.SetData('No.', QuoteDocumentNo);
-        NotificationLifecycleMgt.SendNotification(ItemAlreadyQuotedNotification, SalesLine.RecordId);
+        NotificationOnQuote.Id := NotificationID;
+        NotificationOnQuote.Message := StrSubstNo(NotificationMsg, SalesLine.GetSalesHeader()."Sell-to Customer Name", SalesLine.Description);
+        NotificationOnQuote.AddAction(NotificationLbl, CODEUNIT::"TFB Sales Order Notifications", NotificationFunctionTok);
+        NotificationOnQuote.Scope := NOTIFICATIONSCOPE::LocalScope;
+        NotificationOnQuote.SetData('DocumentNo', QuoteDocumentNo);
+        NotificationLifecycleMgt.SendNotification(NotificationOnQuote, SalesLine.RecordId);
     end;
 
     local procedure quoteforitemexists(Item: record Item; var SalesLine: Record "Sales Line"; var QuoteDocumentNo: Code[20]): Boolean
