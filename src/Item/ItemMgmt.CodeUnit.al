@@ -179,11 +179,11 @@ codeunit 50107 "TFB Item Mgmt"
         WordTemplate.Load(CoreSetup."Shelf Life Word Template");
         WordTemplate.Merge(Rec, false, Enum::"Word Templates Save Format"::PDF);
         WordTemplate.GetDocument(InStream);
-
+        Rec.SetRecFilter();
         Recipient.Add(Customer."E-Mail");
         Recipient.Add(Customer."TFB CoA Alt. Email");
-        EmailMessage.Create(Recipient, 'Shelf life extension letter', 'Details about the shelf life extension', true);
-        EmailMessage.AddAttachment('Shelf Life Extension Letter.pdf', 'Application/PDF', InStream);
+        EmailMessage.Create(Recipient, StrSubstNo('Shelf life extension letter for %1 - Lot %2', Rec.Description, Rec."Lot No."), 'Details about the shelf life extension', true);
+        EmailMessage.AddAttachment(StrSubstNo('Shelf Life Extension %1 - %2.pdf', Rec.Description, Rec."Lot No."), 'Application/PDF', InStream);
         Email.AddRelation(EmailMessage, Database::"Item Ledger Entry", Rec.SystemId, Enum::"Email Relation Type"::"Primary Source", Enum::"Email Relation Origin"::"Compose Context");
         Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
