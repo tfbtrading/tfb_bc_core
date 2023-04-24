@@ -98,7 +98,7 @@ page 50210 "TFB Container Entry"
                     {
                         ToolTip = 'Specifies order reference for container entry';
 
-
+                        Editable = Rec."Order Reference" = '';
                         trigger OnValidate()
 
                         begin
@@ -898,6 +898,7 @@ page 50210 "TFB Container Entry"
         Doc: Record "TFB Container Entry";
         Location: record Location;
         Purchase: record "Purchase Header";
+        PurchaseReceiptLine: record "Purch. Rcpt. Line";
         RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
@@ -927,8 +928,13 @@ page 50210 "TFB Container Entry"
 
         if not Purchase.FindFirst() then begin
             TransferRec.SetRange("TFB Container Entry No.", Rec."No.");
-            if not TransferRec.FindFirst() then
-                exit
+            if not TransferRec.FindFirst() then begin
+                PurchaseReceiptLine.SetRange("TFB Container Entry No.", Rec."No.");
+                If not PurchaseReceiptLine.FindFirst() then
+                    exit
+                else
+                    Location.Get(PurchaseReceiptLine."Location Code");
+            end
             else
                 Location.Get(TransferRec."Transfer-to Code");
         end
