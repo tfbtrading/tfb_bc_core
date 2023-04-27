@@ -296,9 +296,9 @@ codeunit 50120 "TFB Customer Mgmt"
         if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::OptOut then
             exit(true);
 
-        OnBeforeGenerateOrderStatusContent(Customer, HTMLBuilder, IsHandled);
-        If not IsHandled then
-            GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
+        //OnBeforeGenerateOrderStatusContent(Customer, HTMLBuilder, IsHandled);
+        // If not IsHandled then
+        GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
 
         if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::DataOnly then
             if NoData then
@@ -307,9 +307,9 @@ codeunit 50120 "TFB Customer Mgmt"
         IsHandled := false; // Reset the ishandled parameter
 
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        OnBeforeAddOrderStatusAttachment(Customer, PDFInstream, IsHandled);
-        If IsHandled then
-            EmailMessage.AddAttachment('OrderStatus.pdf', 'Application/pdf', PDFInstream);
+        //OnBeforeAddOrderStatusAttachment(Customer, PDFInstream, IsHandled);
+        //If IsHandled then
+        //    EmailMessage.AddAttachment('OrderStatus.pdf', 'Application/pdf', PDFInstream);
 
         Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
