@@ -159,6 +159,13 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             InitValue = ItemCost;
 
         }
+        field(50149; "TFB Vendor Price Unit Discount"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Per Kg Discount';
+            DecimalPlaces = 2 :;
+            Description = 'Discount used for quoting profitabilty analysis on drop ships items';
+        }
         field(50150; "TFB No. Of Comments"; Integer)
         {
             FieldClass = FlowField;

@@ -80,6 +80,21 @@ page 50145 "TFB Gross Profit Sales Lines"
                     Editable = false;
                     Enabled = false;
                 }
+                field("TFB Vendor Price Unit Discount"; Rec."TFB Vendor Price Unit Discount")
+                {
+                    BlankNumbers = BlankZero;
+                    Editable = _CostPricePerKg > 0;
+                    Caption = 'Vendor Per Kg Discount';
+                    ToolTip = 'Specifies the discount as a per kilogram price provided by the vendor for this item';
+
+                    trigger OnValidate()
+
+                    begin
+                        updateLineVariables();
+                        CurrPage.Update();
+                    end;
+
+                }
                 field(TotalCost; _linecost)
                 {
                     Caption = 'Est. Item Costs excl. Delivery';
@@ -358,7 +373,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                 if not Rec."Drop Shipment" then
                     _estDeliveryCost := PricingCU.CalcPerKgFromUnit((PostCodeZoneRate."Total Charge" / ItemCosting."Pallet Qty"), Item."Net Weight")
                 else
-                    _estDeliveryCost := PricingCU.CalcPerKgFromUnit(PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"),Item."Net Weight")
+                    _estDeliveryCost := PricingCU.CalcPerKgFromUnit(PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"), Item."Net Weight")
             else
                 _estDeliveryCost := 0;
 
@@ -380,7 +395,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                             ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
                             if ItemCostingLine.FindFirst() then begin
                                 _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)" + PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"), Item."Net Weight");
-                                _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                                _linecost := (_CostPricePerKg - Rec."TFB Vendor Price Unit Discount") * Item."Net Weight" * Rec."Quantity (Base)";
                                 _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                                 _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                                 _grossprofitperc := _grossprofit / _linecost;
@@ -390,7 +405,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     else
                         _CostPricePerKg := PricingCu.CalcPerKgFromUnit(Item."Unit Cost", Item."Net Weight");
 
-                    _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                    _linecost := (_CostPricePerKg - Rec."TFB Vendor Price Unit Discount") * Item."Net Weight" * Rec."Quantity (Base)";
                     _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                     _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                     _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
@@ -405,7 +420,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     else
                         _CostPricePerKg := PricingCu.CalcPerKgFromUnit(Item."Unit Cost", Item."Net Weight");
 
-                    _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                    _linecost := (_CostPricePerKg - Rec."TFB Vendor Price Unit Discount") * Item."Net Weight" * Rec."Quantity (Base)";
                     _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                     _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                     _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
@@ -422,7 +437,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
                     if ItemCostingLine.FindFirst() then begin
                         _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)", Item."Net Weight");
-                        _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
+                        _linecost := (_CostPricePerKg - Rec."TFB Vendor Price Unit Discount") * Item."Net Weight" * Rec."Quantity (Base)";
                         _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                         _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
                         _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
