@@ -354,8 +354,11 @@ page 50145 "TFB Gross Profit Sales Lines"
             PostCodeZoneRate.SetRange("Zone Code", PostCodeZone.Code);
             PostCodeZoneRate.SetRange("Costing Scenario Code", ItemCosting.GetRelatedScenario().Code);
 
-            if PostCodeZoneRate.FindFirst() and not Rec."Drop Shipment" then
-                _estDeliveryCost := PricingCU.CalcPerKgFromUnit((PostCodeZoneRate."Total Charge" / ItemCosting."Pallet Qty"), Item."Net Weight")
+            if PostCodeZoneRate.FindFirst() then
+                if not Rec."Drop Shipment" then
+                    _estDeliveryCost := PricingCU.CalcPerKgFromUnit((PostCodeZoneRate."Total Charge" / ItemCosting."Pallet Qty"), Item."Net Weight")
+                else
+                    _estDeliveryCost := PricingCU.CalcPerKgFromUnit(PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"),Item."Net Weight")
             else
                 _estDeliveryCost := 0;
 
@@ -380,7 +383,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                                 _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                                 _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                                 _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
-                                _grossprofitperc := _grossprofit / rec.Amount;
+                                _grossprofitperc := _grossprofit / _linecost;
                             end
                         end
 
@@ -390,7 +393,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                     _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                     _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
-                    _grossprofitperc := _grossprofit / rec.Amount;
+                    _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
 
 
                 end;
@@ -405,7 +408,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                     _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                     _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                     _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
-                    _grossprofitperc := _grossprofit / rec.Amount;
+                    _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
 
                 end;
 
@@ -422,7 +425,7 @@ page 50145 "TFB Gross Profit Sales Lines"
                         _linecost := _CostPricePerKg * Item."Net Weight" * Rec."Quantity (Base)";
                         _linedeliverycost := _estDeliveryCost * Item."Net Weight" * Rec."Quantity (Base)";
                         _grossprofit := Rec.Amount - (_linecost + _linedeliverycost);
-                        _grossprofitperc := _grossprofit / rec.Amount;
+                        _grossprofitperc := _grossprofit / (_linecost + _linedeliverycost);
                     end
                     else begin
                         _CostPricePerKg := 0;
