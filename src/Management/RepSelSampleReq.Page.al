@@ -16,7 +16,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Usage';
-                OptionCaption = 'Packing Slip,Warehouse Request,Supplier Request';
+                OptionCaption = 'Packing Slip';
                 ToolTip = 'Specifies which type of document the report is used for.';
 
                 trigger OnValidate()
@@ -108,7 +108,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
     end;
 
     var
-        ReportUsage2: Option "Packing Slip","Warehouse Request","Supplier Request";
+        ReportUsage2: Option "Packing Slip";
 
     local procedure SetUsageFilter(ModifyRec: Boolean)
     begin
@@ -118,10 +118,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
         case ReportUsage2 of
             ReportUsage2::"Packing Slip":
                 Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request");
-            ReportUsage2::"Supplier Request":
-                Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request.Supplier");
-            ReportUsage2::"Warehouse Request":
-                Rec.SetRange(Usage, Rec.Usage::"S.Sample.Request.Warehouse");
+
         end;
         Rec.FilterGroup(0);
         CurrPage.Update();
@@ -136,10 +133,7 @@ page 50146 "TFB Rep. Sel - Sample Req."
                 case DummyReportSelections.Usage of
                     Rec.Usage::"S.Sample.Request":
                         ReportUsage2 := ReportUsage2::"Packing Slip";
-                    Rec.Usage::"S.Sample.Request.Supplier":
-                        ReportUsage2 := ReportUsage2::"Supplier Request";
-                    Rec.Usage::"S.Sample.Request.Warehouse":
-                        ReportUsage2 := ReportUsage2::"Warehouse Request";
+
                 end;
             Rec.SetRange(Usage);
         end;

@@ -344,15 +344,15 @@ page 50171 "TFB Lot Get Image Wizard"
     local procedure DownloadIsolatedImage()
 
     var
-   
+
         ABSOperationResponse: CodeUnit "ABS Operation Response";
         inStream: InStream;
-     
+
         fileName: Text;
     begin
 
         ABSOperationResponse := ABSClient.GetBlobAsStream('isolated/' + _BlobName, inStream);
-        FileName := StrSubstNo('LII %1 - lot %2.png', LedgerEntry.Description, LedgerEntry."Lot No.");
+        FileName := getFileName('LII');
         if ABSOperationResponse.IsSuccessful() then
             DownloadFromStream(inStream, 'Downloaded File', '', '', fileName)
         else
@@ -365,7 +365,7 @@ page 50171 "TFB Lot Get Image Wizard"
 
 
     var
-        CommonCU: CodeUnit "TFB Common Library";
+
         TempBlobCU: Codeunit "Temp Blob";
         InStream: InStream;
         FileName: Text;
@@ -374,7 +374,7 @@ page 50171 "TFB Lot Get Image Wizard"
 
         TempBlobCU := CommonCU.GetLotImagesTempBlob('grid', _BlobName);
         TempBlobCu.CreateInStream(InStream);
-        FileName := StrSubstNo('LGI %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
+        FileName := getFileName('GI');
         if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 
@@ -384,18 +384,38 @@ page 50171 "TFB Lot Get Image Wizard"
 
 
     var
-        CommonCU: CodeUnit "TFB Common Library";
+
         TempBlobCU: Codeunit "Temp Blob";
         InStream: InStream;
         FileName: Text;
 
     begin
+        If LedgerEntry."Lot No." <> '' then
+            TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Lot No.", LedgerEntry."Item No.")
+        else
+            TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Item No.");
 
-        TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Lot No.", LedgerEntry."Item No.");
         TempBlobCu.CreateInStream(InStream);
-        FileName := StrSubstNo('LGI %1 - lot %2.jpg', LedgerEntry.Description, LedgerEntry."Lot No.");
+        FileName := getFileName('GBI');
         if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
             Error('File %1 not downloaded', FileName);
 
     end;
+
+    var
+        CommonCU: CodeUnit "TFB Common Library";
+
+    local procedure getFileName(imagetype: text): Text
+
+    begin
+
+        If LedgerEntry."Lot No." <> '' then
+            exit(StrSubstNo('%1 %2 - lot %3.jpg', imagetype, LedgerEntry.Description, LedgerEntry."Lot No."))
+        else
+            exit(StrSubstNo('%1 %2.jpg', imagetype, LedgerEntry.Description));
+
+
+    end;
+
+
 }
