@@ -8858,16 +8858,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TFB Price Unit Discount - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3038739163 - Control 3421082806 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the discount as a per kilogram price provided by the vendor for this item</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TFB Vendor Price Unit Discount - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3038739163 - Control 3421082806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Per Kg Discount</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control TFB Vendor Price Unit Discount - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3038739163 - Control 3694632347 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the total cost of the line excl. GST</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -12004,7 +11994,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3698941796 - Control 3362749197 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Packing Slip</source>
+          <source>Packing Slip,Warehouse Request,Supplier Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Rep. Sel - Sample Req. - Control ReportUsage - Property OptionCaption</note>
         </trans-unit>
@@ -17063,6 +17053,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control Tasks - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Control 955334532 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Specifies the reservation policy applying to this order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control TFBReserve - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3575399586 - Control 955334532 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
+          <source>Reservation Policy</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order - Control TFBReserve - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3575399586 - Control 2725149570 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1673401186">
           <source>Specifies customer price group for sales order</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -20297,6 +20297,16 @@
           <source>Sample Packing Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 1361856706 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Sample Request to Supplier</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Supplier - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="EnumExtension 3289346733 - EnumValue 2645827697 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
+          <source>Sample Request to Warehouse</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request.Warehouse - Property Caption</note>
         </trans-unit>
       </group>
     </body>
