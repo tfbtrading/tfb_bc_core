@@ -34,6 +34,17 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
             }
         }
 
+        addafter("Shipping Advice")
+        {
+            field(TFBReserve; Rec.Reserve)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the reservation policy applying to this order';
+                Caption = 'Reservation Policy';
+                Importance = Additional;
+            }
+        }
+
         modify("External Document No.")
         {
             trigger OnAfterValidate()
@@ -199,8 +210,8 @@ pageextension 50132 "TFB Sales Order" extends "Sales Order" //42
         DocumentNo: Code[20];
     begin
 
-        if Rec.CheckDuplicateExtDocNo(DuplicateSystemID,DocumentNo) then begin
-         
+        if Rec.CheckDuplicateExtDocNo(DuplicateSystemID, DocumentNo) then begin
+
             DuplicateNotification.Message(StrSubstNo('An existing ongoing sales order %1 has the same External Doc No', DocumentNo));
             DuplicateNotification.Scope(NotificationScope::LocalScope);
             DuplicateNotification.SetData('SystemId', DuplicateSystemID);
