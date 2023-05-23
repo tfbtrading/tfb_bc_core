@@ -64,6 +64,13 @@ tableextension 50139 "TFB Sales Invoice Line" extends "Sales Invoice Line" //113
             Caption = 'Pre-Order Adj. Date';
             Editable = false;
         }
+        field(50149; "TFB External Document No."; Code[35])
+        {
+
+            FieldClass = FlowField;
+            Caption = 'External Document No.';
+            CalcFormula = lookup("Sales Invoice Header"."External Document No." where("No." = field("Document No.")));
+        }
 
 
 

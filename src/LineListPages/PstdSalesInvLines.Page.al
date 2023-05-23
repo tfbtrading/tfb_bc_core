@@ -22,6 +22,26 @@ page 50151 "TFB Pstd. Sales Inv. Lines"
                     TableRelation = "Sales Invoice Header"."No.";
 
                 }
+                field("TFB External Document No."; Rec."TFB External Document No.")
+                {
+                    Lookup = false;
+                    DrillDown = false;
+                    ToolTip = 'Specifies customer reference if provided';
+                }
+                field("TFB Drop Ship PO No."; Rec."TFB Drop Ship PO No.")
+                {
+                    Lookup = false;
+                    DrillDown = false;
+                    ToolTip = 'Specifies drop shipment PO related to this order';
+
+                }
+                field("Blanket Order No."; Rec."Blanket Order No.")
+                {
+                    Lookup = true;
+                    LookupPageId = "Blanket Sales Order";
+                    ToolTip = 'Specifies the blanket order related to this sales line if it exists';
+
+                }
 
                 field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                 {
