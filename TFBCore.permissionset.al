@@ -2,6 +2,7 @@ permissionset 50100 "TFB Core"
 {
     Assignable = true;
     Permissions = tabledata "PDF Viewer Setup" = RIMD,
+    tabledata "TFB Lot Expiry Buffer" = RIMD,
         tabledata "TFB Brokerage Contract" = RIMD,
         tabledata "TFB Brokerage Contract Line" = RIMD,
         tabledata "TFB Brokerage Shipment" = RIMD,
@@ -61,6 +62,7 @@ permissionset 50100 "TFB Core"
         table "TFB Generic Item" = X,
         table "TFB Generic Item Market Rel." = X,
         table "TFB Item Costing" = X,
+         table "TFB Lot Expiry Buffer" = X,
         table "TFB Item Costing Filters" = X,
         table "TFB Item Costing Lines" = X,
         table "TFB Landed Cost Profile" = X,

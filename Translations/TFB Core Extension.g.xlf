@@ -2238,6 +2238,41 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Scenario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2661142756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot Expiry Buffer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 3142631117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Expiry Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Expiry Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 1482668068 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Lot No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 1584437498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. (Base)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Qty. (Base) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2661142756 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Lot Expiry Buffer - Field Variant Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 794278900 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -3667,6 +3702,11 @@
           <source>Sample Request</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sample Request Mgmt - Method SendSampleRequest - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3716337756 - NamedType 753112056" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh intervals of less than 10 minutes are not supported.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Subscribe Activities Cue - NamedType RefreshFrequencyErr</note>
         </trans-unit>
         <trans-unit id="Codeunit 401331929 - Method 1665861916 - NamedType 2779639592" size-unit="char" translate="yes" xml:space="preserve">
           <source>Updating contracts - ##1####</source>
@@ -9718,6 +9758,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Add Image Wizard - Action ActionNext - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3378428566 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot Expiry List</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3378428566 - Control 3461834954 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the description of the Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Control Description - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3378428566 - Control 3142631117 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Expiry Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Control Expiry Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3378428566 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Item No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3378428566 - Control 1482668068 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Lot No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Control Lot No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3378428566 - Control 1584437498 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Qty. (Base) field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Expiry List - Control Qty. (Base) - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 1384717055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Welcome to the Lot Image Wizard</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15643,6 +15713,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Method OnOpenPage - NamedType ExpressionTxt</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Control 2980414456 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
+          <source>Specifies the count of lots that are already expired</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB No. Lots Expired - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2173142200 - Control 1601694359 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
+          <source>Specifies the count of lots that are expiring within 6 months.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB O365 Activities - Control TFB No. Lots Expiring - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2173142200 - Control 191096023 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3377672696">
           <source>Ongoing Business Development</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17833,6 +17913,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Vendor List - Control TFB Vendor Type - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 2542039890 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>Next Six Months Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field Next Six Months Filter - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3680995205 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>Recent Filter</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17857,6 +17942,16 @@
           <source>New Contacts - last 7 days</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB New Contacts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 2980414456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>No. Lots Expired</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB No. Lots Expired - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2323671428 - Field 1601694359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
+          <source>No. Lots Expiring</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Activities Cue - Field TFB No. Lots Expiring - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2323671428 - Field 3180526113 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 132259524">
           <source>No. Open Sample Requests</source>

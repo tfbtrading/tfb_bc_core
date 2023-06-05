@@ -65,6 +65,11 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             Caption = 'Recent Filter';
             FieldClass = FlowFilter;
         }
+        field(50536; "Next Six Months Filter"; DateTime)
+        {
+            Caption = 'Next Six Months Filter';
+            FieldClass = FlowFilter;
+        }
 
         field(50525; "TFB Salesperson Code Filter"; Code[20])
         {
@@ -84,6 +89,18 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             FieldClass = FlowField;
             CalcFormula = count("Sales Line" where("Document Type" = const(Order), "Prepayment Amount" = filter('>0')));
             Caption = 'Sales with Prepayment';
+        }
+        field(50100; "TFB No. Lots Expired"; Integer)
+        {
+            AutoFormatExpression = GetAmountFormat();
+            Caption = 'No. Lots Expired';
+
+        }
+        field(50101; "TFB No. Lots Expiring"; Integer)
+        {
+            AutoFormatExpression = GetAmountFormat();
+            Caption = 'No. Lots Expiring';
+
         }
 
 

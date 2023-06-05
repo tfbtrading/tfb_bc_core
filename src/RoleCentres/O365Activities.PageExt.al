@@ -1,7 +1,31 @@
 pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPageId
 {
+
     layout
     {
+        addafter("Overdue Purch. Invoice Amount")
+        {
+            field("TFB No. Lots Expiring"; Rec."TFB No. Lots Expiring")
+            {
+                ApplicationArea = Basic, Suite;
+                ToolTip = 'Specifies the count of lots that are expiring within 6 months.';
+
+                trigger OnDrillDown()
+                begin
+                    TfbActivitiesMgt.DrillDownOnExpiringLotNos();
+                end;
+            }
+            field("TFB No. Lots Expired"; Rec."TFB No. Lots Expired")
+            {
+                ApplicationArea = Basic, Suite;
+                ToolTip = 'Specifies the count of lots that are already expired';
+
+                trigger OnDrillDown()
+                begin
+                    TfbActivitiesMgt.DrillDownOnExpiredLotNos();
+                end;
+            }
+        }
         addbefore("Ongoing Sales")
         {
             cuegroup("Business Development")
@@ -127,5 +151,8 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
 
         Rec.SetRange("Recent Filter", CreateDateTime(CalcDate(ExpressionTxt), 0T), CurrentDateTime);
     end;
+
+    var
+        TfbActivitiesMgt: codeunit "TFB Activities Mgt.";
 
 }
