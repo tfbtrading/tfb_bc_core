@@ -68,7 +68,7 @@ tableextension 50100 "TFB Location" extends Location
 
         field(50200; "TFB Insta Shipping Agent Code"; Code[10])
         {
-            Caption = 'Interstate Shipping Agent Code';
+            Caption = 'Default Interstate Shipping Agent Code';
             DataClassification = CustomerContent;
             TableRelation = "Shipping Agent";
             ValidateTableRelation = true;
@@ -77,7 +77,7 @@ tableextension 50100 "TFB Location" extends Location
         field(50210; "TFB Insta Agent Service Code"; Code[10])
         {
 
-            Caption = 'Interstate Agent Service Code';
+            Caption = 'Default Interstate Agent Service Code';
             DataClassification = CustomerContent;
             TableRelation = "Shipping Agent Services".Code where("Shipping Agent Code" = field("TFB Insta Shipping Agent Code"));
             ValidateTableRelation = true;

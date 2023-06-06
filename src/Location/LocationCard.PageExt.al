@@ -11,66 +11,90 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
             group("Shipping Agents")
             {
 
-
-
-                group("Local Deliveries")
+                grid(ShippingGrid)
                 {
-                    field("TFB Lcl Shipping Agent Code"; Rec."TFB Lcl Shipping Agent Code")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Shipping Agent';
-                        ToolTip = 'Specifies the agent to be used for local deliveries';
-                    }
-                    field("TFB Lcl Agent Service Code"; Rec."TFB Lcl Agent Service Code")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Default Service Code';
-                        ToolTip = 'Specifies the default service level for agent for local deliveries';
-                    }
+                    GridLayout = Rows;
 
-                }
-
-                group("Interstate Deliveries")
-                {
-                    field("TFB Insta Shipping Agent Code"; Rec."TFB Insta Shipping Agent Code")
+                    group(DefaultOptions)
                     {
-                        ApplicationArea = All;
-                        Caption = 'Shipping Agent';
-                        ToolTip = 'Specifies the agent to be used for interstate deliveries';
-                    }
-                    field("TFB Insta Agent Service Code"; Rec."TFB Insta Agent Service Code")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Default Service Code';
-                        ToolTip = 'Specifies the default service level for agent for interstate deliveries';
-                    }
-
-                }
-                group("Pallet Account Details")
-                {
-                    field("TFB PalletExchange"; Rec.PalletExchange)
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies if customer does a pallet exchange';
-                    }
-                    group(PalletDetails)
-                    {
-                        Visible = not Rec.PalletExchange;
                         ShowCaption = false;
-                        field("TFB PalletAccountType"; Rec."TFB Pallet Acct Type")
+
+                        group("Local Deliveries")
                         {
-                            ApplicationArea = All;
-                            ToolTip = 'Specifies if customer has a pallet account';
+                            field("TFB Lcl Shipping Agent Code"; Rec."TFB Lcl Shipping Agent Code")
+                            {
+                                ApplicationArea = All;
+                                Caption = 'Shipping Agent';
+                                ToolTip = 'Specifies the agent to be used for local deliveries';
+                            }
+                            field("TFB Lcl Agent Service Code"; Rec."TFB Lcl Agent Service Code")
+                            {
+                                ApplicationArea = All;
+                                Caption = 'Default Service Code';
+                                ToolTip = 'Specifies the default service level for agent for local deliveries';
+                            }
+
                         }
 
-                        field("TFB PalletAccountNo"; Rec.PalletAccountNo)
+                        group("Interstate Deliveries")
+                        {
+                            field("TFB Insta Shipping Agent Code"; Rec."TFB Insta Shipping Agent Code")
+                            {
+                                ApplicationArea = All;
+                                Caption = 'Shipping Agent';
+                                ToolTip = 'Specifies the agent to be used for interstate deliveries';
+                            }
+                            field("TFB Insta Agent Service Code"; Rec."TFB Insta Agent Service Code")
+                            {
+                                ApplicationArea = All;
+                                Caption = 'Default Service Code';
+                                ToolTip = 'Specifies the default service level for agent for interstate deliveries';
+                            }
+
+                        }
+                        group("Pallet Account Details")
+                        {
+                            field("TFB PalletExchange"; Rec.PalletExchange)
+                            {
+                                ApplicationArea = All;
+                                ToolTip = 'Specifies if customer does a pallet exchange';
+                            }
+                            group(PalletDetails)
+                            {
+                                Visible = not Rec.PalletExchange;
+                                ShowCaption = false;
+                                field("TFB PalletAccountType"; Rec."TFB Pallet Acct Type")
+                                {
+                                    ApplicationArea = All;
+                                    ToolTip = 'Specifies if customer has a pallet account';
+                                }
+
+                                field("TFB PalletAccountNo"; Rec.PalletAccountNo)
+                                {
+                                    ApplicationArea = All;
+                                    ToolTip = 'Specifies pallet account number for specific account type';
+
+                                }
+                            }
+                        }
+
+                    }
+                    group(AgentOverrideGroup)
+                    {
+                        ShowCaption = false;
+
+                        part(AgentOverride; "TFB Location Agents Subform")
                         {
                             ApplicationArea = All;
-                            ToolTip = 'Specifies pallet account number for specific account type';
+                            SubPageLink = Location = field(code);
+                            Caption = '';
+                            Enabled = (Rec.Code <> '') and not Rec."Use As In-Transit";
 
                         }
                     }
                 }
+
+
             }
         }
         addafter("Outbound Whse. Handling Time")

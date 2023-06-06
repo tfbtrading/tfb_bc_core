@@ -208,6 +208,11 @@ tableextension 50101 "TFB Customer" extends Customer
             CalcFormula = count(contact where(Type = const(Person), "Company No." = field("TFB Primary Contact Company ID")));
             Caption = 'No. Online Users Enabled';
         }
+        field(50270; "TFB Override Location Shipping"; Boolean)
+        {
+            Caption = 'Override Location Based Shipping';
+
+        }
 
 
 

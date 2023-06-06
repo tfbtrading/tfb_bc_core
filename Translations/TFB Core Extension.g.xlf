@@ -2238,6 +2238,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Scenario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 165560346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location Shipping Agent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 165560346 - Field 1608920723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Agent Service Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Field Agent Service Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 165560346 - Field 284764054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Country/Region Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Field Country/Region Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 165560346 - Field 499448942 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>County</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Field County - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 165560346 - Field 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Field Location - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 165560346 - Field 4045368290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipping Agent Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Location Shipping Agent - Field Shipping Agent Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2661142756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Lot Expiry Buffer</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9643,6 +9673,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Landed Cost Profile List - Control Scenario - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 1531909007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>State Based Shipping Agent Conditions</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Location Agents Subform - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1531909007 - Control 1608920723 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the shipping service code to use</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Location Agents Subform - Control Agent Service Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1531909007 - Control 284764054 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the country to be overridden</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Location Agents Subform - Control Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1531909007 - Control 499448942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the state/county for which agent should be overriden</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Location Agents Subform - Control County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1531909007 - Control 4045368290 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the shipping agent to use</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Location Agents Subform - Control Shipping Agent Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2896080974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Welcome to the add Lot Image Wizard</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14573,21 +14628,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Reservation Strategy - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 4115167540 - Control 1501079646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>All Contacts</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control IndividualContacts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4115167540 - Control 2421326477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>Specify the parent company to track consolidated sales for a group</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Parent Company - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 4115167540 - Control 2678449712 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
-          <source>Specifies if customer only wants to see per kilogram pricing</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Show Per Kg Only - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="PageExtension 4115167540 - Control 749447638 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Shows the date a customer record was  last modified</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -14667,6 +14707,36 @@
           <source>Profile Questionnaire</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control CustProfile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 1501079646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>All Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control IndividualContacts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 3123527090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Only relevant if override location shipping enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control Info - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 418672957 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Specifies that details used on customer form should supercede that of location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Override Location Shipping - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 418672957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Override Location Shipping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Override Location Shipping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 2421326477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Specify the parent company to track consolidated sales for a group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Parent Company - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 2678449712 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Specifies if customer only wants to see per kilogram pricing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Show Per Kg Only - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 341501853 - Action 1379097028 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2393537757">
           <source>Process your customer payments by matching amounts received on your bank account with the related unpaid sales invoices, and then post the payments.</source>
@@ -15402,6 +15472,11 @@
           <source>Lot Blocked</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item Tracking Summary - Control TFB Lot Blocked - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 724452319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control AgentOverride - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 1861606804 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Specifies the default service level for agent for interstate deliveries</source>
@@ -17548,10 +17623,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Shipment Lines - View Drop Ships - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 3123527090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Only relevant if override location shipping enabled</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control Info - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2896263782 - Control 3962748877 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Specifies if the contact and email specified should be emailed separately</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Notify Contact - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 418672957 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Specifies that details used on customer form should supercede that of location</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Override Location Shipping - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2896263782 - Control 418672957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
+          <source>Override Location Shipping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Ship-to Address - Control TFB Override Location Shipping - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2896263782 - Control 3342891393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Additional Information</source>
@@ -18223,6 +18313,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Outstanding Brokerage - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 418672957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Override Location Based Shipping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Override Location Shipping - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 812922956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Pallet Account No</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18509,12 +18604,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Inspection Time Delay - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 1861606804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
-          <source>Interstate Agent Service Code</source>
+          <source>Default Interstate Agent Service Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Insta Agent Service Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 1786385305 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
-          <source>Interstate Shipping Agent Code</source>
+          <source>Default Interstate Shipping Agent Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Insta Shipping Agent Code - Property Caption</note>
         </trans-unit>
@@ -19402,6 +19497,11 @@
           <source>Notify separately</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Notify Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2896263782 - Field 418672957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Override Location Based Shipping</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Ship-to Address - Field TFB Override Location Shipping - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2896263782 - Field 3316829010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
           <source>Override Pallet Details</source>
