@@ -403,6 +403,21 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", OnSetShipToCustomerAddressFieldsFromShipToAddrOnBeforeValidateShippingAgentFields, '', false, false)]
+    local procedure OnSetShipToCustomerAddressFieldsFromShipToAddrOnBeforeValidateShippingAgentFields(var SalesHeader: Record "Sales Header"; xSalesHeader: Record "Sales Header"; ShipToAddr: Record "Ship-to Address"; var IsHandled: Boolean);
+    var
+        ShippingAgentServices: Record "Shipping Agent Services";
+
+    begin
+        ShippingAgentServices := GetShippingAgentDetailsForLocation(ShipToAddr."Location Code", ShipToAddr.County, ShipToAddr."Shipment Method Code", ShipToAddr."TFB Override Location Shipping");
+
+        if ShippingAgentServices.Code = '' then exit;
+
+        SalesHeader."Shipping Agent Code" := ShippingAgentServices."Shipping Agent Code";
+        SalesHeader."Shipping Agent Service Code" := ShippingAgentServices.Code;
+        IsHandled := true;
+    end;
+
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnAfterInitHeaderDefaults', '', false, false)]
     local procedure OnAfterInitHeaderDefaults(var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; xSalesLine: Record "Sales Line");
