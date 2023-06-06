@@ -6,12 +6,48 @@ pageextension 50161 "TFB Ship-to Address" extends "Ship-to Address"
     layout
     {
 
+
+        addbefore("Shipping Agent Code")
+        {
+            label(Info)
+            {
+                ApplicationArea = All;
+                MultiLine = true;
+                Style = AttentionAccent;
+                StyleExpr = true;
+                Caption = 'Only relevant if override location shipping enabled';
+            }
+        }
+        modify("Shipment Method Code")
+        {
+            Importance = Standard;
+        }
+
+        modify("Shipping Agent Code")
+        {
+            Enabled = Rec."TFB Override Location Shipping";
+        }
+        modify("Shipping Agent Service Code")
+        {
+            Enabled = Rec."TFB Override Location Shipping";
+        }
+
         addbefore("E-Mail")
         {
             field("TFB Notify Contact"; Rec."TFB Notify Contact")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if the contact and email specified should be emailed separately';
+            }
+        }
+
+        addafter("Location Code")
+        {
+            field("TFB Override Location Shipping"; Rec."TFB Override Location Shipping")
+            {
+                Caption = 'Override Location Shipping';
+                ApplicationArea = All;
+                ToolTip = 'Specifies that details used on customer form should supercede that of location';
             }
         }
 

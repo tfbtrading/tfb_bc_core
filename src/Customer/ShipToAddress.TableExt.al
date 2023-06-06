@@ -35,6 +35,11 @@ tableextension 50109 "TFB Ship-to Address" extends "Ship-to Address"
             DataClassification = CustomerContent;
             Caption = 'Delivery Instructions';
         }
+        field(50270; "TFB Override Location Shipping"; Boolean)
+        {
+            Caption = 'Override Location Based Shipping';
+
+        }
 
 
     }

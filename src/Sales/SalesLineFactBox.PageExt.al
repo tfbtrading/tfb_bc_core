@@ -218,7 +218,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                 begin
                     if not Location.Get(Rec."Location Code") then exit;
 
-                    ShippingAgentServices := SalesCU.GetShippingAgentDetailsForLocation(Location.Code, Customer.County, Customer."Shipment Method Code");
+                    ShippingAgentServices := SalesCU.GetShippingAgentDetailsForLocation(Location.Code, Customer.County, Customer."Shipment Method Code", true);
                     InfoTextBuilder.Append('Warehouse');
 
                     //Add in outbound number of days for handling

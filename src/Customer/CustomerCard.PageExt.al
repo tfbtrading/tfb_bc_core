@@ -72,6 +72,40 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
             }
 
         }
+        addbefore("Shipping Agent Code")
+        {
+            label(Info)
+            {
+                ApplicationArea = All;
+                MultiLine = true;
+                Style = AttentionAccent;
+                StyleExpr = true;
+                Caption = 'Only relevant if override location shipping enabled';
+            }
+        }
+
+        modify("Shipping Agent Code")
+        {
+            Enabled = Rec."TFB Override Location Shipping";
+        }
+        modify("Shipping Agent Service Code")
+        {
+            Enabled = Rec."TFB Override Location Shipping";
+        }
+        modify("Shipping Time")
+        {
+            Enabled = Rec."TFB Override Location Shipping";
+        }
+
+        addafter("Location Code")
+        {
+            field("TFB Override Location Shipping"; Rec."TFB Override Location Shipping")
+            {
+                Caption = 'Override Location Shipping';
+                ApplicationArea = All;
+                ToolTip = 'Specifies that details used on customer form should supercede that of location';
+            }
+        }
         addafter("Bill-to Customer No.")
         {
             field("TFB Parent Company"; Rec."TFB Parent Company")
