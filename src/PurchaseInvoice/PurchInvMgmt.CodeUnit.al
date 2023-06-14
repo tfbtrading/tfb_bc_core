@@ -51,7 +51,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
 
-            Header.SetRange("Document Type", enum::"Purchase Document Type"::Invoice);
+            Header.SetRange("Document Type", Line."Document Type");
             Header.SetRange("No.", Line."Document No.");
 
 
@@ -235,7 +235,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
             repeat
                 CLEAR(TempICAssignment);
                 TempICAssignment."Document No." := PurchLine."Document No.";
-                TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+                TempICAssignment."Document Type" := PurchLine."Document Type";
                 TempICAssignment."Document Line No." := PurchLine."Line No.";
                 TempICAssignment."Line No." := LineNo;
                 TempICAssignment."Item Charge No." := PurchLine."No.";
@@ -343,7 +343,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 CLEAR(TempICAssignment);
                 LineNo := LineNo + 10000; //Increment line count as it appears it doesn't happen automatically
                 TempICAssignment."Document No." := PurchLine."Document No.";
-                TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+                TempICAssignment."Document Type" := PurchLine."Document Type";
                 TempICAssignment."Document Line No." := PurchLine."Line No.";
                 TempICAssignment."Line No." := LineNo;
                 TempICAssignment."Item Charge No." := PurchLine."No.";
@@ -375,7 +375,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 CLEAR(TempICAssignment);
                 LineNo := LineNo + 10000; //Increment line count as it appears it doesn't happen automatically
                 TempICAssignment."Document No." := PurchLine."Document No.";
-                TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+                TempICAssignment."Document Type" := PurchLine."Document Type";
                 TempICAssignment."Document Line No." := PurchLine."Line No.";
                 TempICAssignment."Line No." := LineNo;
                 TempICAssignment."Item Charge No." := PurchLine."No.";
@@ -444,7 +444,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
         TempICAssignment.SetRange("Document No.", PurchLine."Document No.");
-        TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
+        TempICAssignment.SetRange("Document Type", PurchLine."Document Type");
         TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
         if not TempICAssignment.IsEmpty() then
@@ -453,7 +453,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
         TempICAssignment."Document No." := PurchLine."Document No.";
-        TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+        TempICAssignment."Document Type" := PurchLine."Document Type";
         TempICAssignment."Document Line No." := PurchLine."Line No.";
         TempICAssignment."Item Charge No." := PurchLine."No.";
 
@@ -601,7 +601,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         PurchLine.UpdateAmounts();
 
         TempICAssignment.SetRange("Document No.", PurchLine."Document No.");
-        TempICAssignment.SetRange("Document Type", PurchLine."Document Type"::Invoice);
+        TempICAssignment.SetRange("Document Type", PurchLine."Document Type");
         TempICAssignment.SetRange("Document Line No.", PurchLine."Line No.");
 
         if not TempICAssignment.IsEmpty() then
@@ -609,7 +609,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 TempICAssignment.DeleteAll(false);
 
         TempICAssignment."Document No." := PurchLine."Document No.";
-        TempICAssignment."Document Type" := PurchLine."Document Type"::Invoice;
+        TempICAssignment."Document Type" := PurchLine."Document Type";
         TempICAssignment."Document Line No." := PurchLine."Line No.";
         TempICAssignment."Item Charge No." := PurchLine."No.";
 

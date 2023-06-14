@@ -16573,6 +16573,36 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Pstd. Transfer Rcpt. Lines - Control TFBLocation - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 1668582007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Specifies price in the vendors default weight unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control TFB Price By Price Unit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 1668582007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Price By Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control TFB Price By Price Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 3527018185 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Specifies the default price unit used by the vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control VendorPriceUnit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 3527018185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Vendor Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control VendorPriceUnit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 969711131 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>Specifies whether AI has been applied to the purchase invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control AIIndicator - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 331599679 - Control 969711131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1521900543">
+          <source>AI</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purch. Cr. Memo Subform - Control AIIndicator - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 4098444227 - Control 1668582007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 896930563">
           <source>Specifies price in the vendors default weight unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
