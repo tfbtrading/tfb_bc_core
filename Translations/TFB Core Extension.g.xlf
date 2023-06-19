@@ -3538,6 +3538,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Event Grid Mgmt - Method SendMessage - NamedType SuccessMsg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3493941921 - Method 2309798325 - NamedType 1111053176" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice %1 for %2.%3</source>
+          <note from="Developer" annotates="general" priority="2">%1 = Number, %2=Customer Name %3=Extension</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB File Naming Mgmt - Method GenerateInvoiceFileName - NamedType PreFileNameLbl</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3910736978 - Method 1983435042 - NamedType 1304771032" size-unit="char" translate="yes" xml:space="preserve">
           <source>This customer has a quote %1 that includes item %2 already.</source>
           <note from="Developer" annotates="general" priority="2">%1 = quote number, %2 = item name</note>
