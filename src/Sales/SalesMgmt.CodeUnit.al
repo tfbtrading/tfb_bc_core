@@ -529,6 +529,41 @@ codeunit 50122 "TFB Sales Mgmt"
 
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeUpdateUnitPrice', '', false, false)]
+    local procedure OnBeforeUpdateUnitPrice(var SalesLine: Record "Sales Line"; xSalesLine: Record "Sales Line"; CalledByFieldNo: Integer; CurrFieldNo: Integer; var Handled: Boolean);
+    var
+        ExistingLines: Record "Sales Line";
+        BlanketSalesLine: Record "Sales Line";
+
+    begin
+
+        If SalesLine."Blanket Order No." <> '' then exit;
+        if not (SalesLine.Type = SalesLine.Type::Item) then exit;
+
+        BlanketSalesLine.SetRange("Document Type", BlanketSalesLine."Document Type"::"Blanket Order");
+        BlanketSalesLine.SetRange("No.", SalesLine."No.");
+        BlanketSalesLine.SetFilter("Outstanding Qty. (Base)", '>0');
+
+        BlanketSalesLine.SetLoadFields("Outstanding Qty. (Base)", "Document No.", "Line No.");
+
+        if not (BlanketSalesLine.FindFirst()) then exit;
+
+        If not BlanketSalesLine."TFB Consume Blanket Order" then exit;
+
+        ExistingLines.SetLoadFields("Outstanding Qty. (Base)");
+        ExistingLines.SetRange("Blanket Order No.", BlanketSalesLine."Document No.");
+        ExistingLines.SetRange("Blanket Order Line No.", BlanketSalesLine."Line No.");
+        ExistingLines.SetRange("Document Type", ExistingLines."Document Type"::Order);
+
+        ExistingLines.CalcSums(ExistingLines."Outstanding Qty. (Base)");
+
+        if (BlanketSalesLine."Outstanding Qty. (Base)" - ExistingLines."Outstanding Qty. (Base)" - SalesLine."Quantity (Base)") < 0 then exit;
+
+        SalesLine."Blanket Order No." := BlanketSalesLine."Document No.";
+        SalesLine."Blanket Order Line No." := BlanketSalesLine."Line No.";
+
+
+    end;
 
 
     /// <summary>

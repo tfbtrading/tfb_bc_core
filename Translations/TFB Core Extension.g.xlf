@@ -13958,6 +13958,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blank. Sales Order Subform - Control TFB Price Unit Cost - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2496076852 - Control 2066247891 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 884441745">
+          <source>Specifies that new sales order for customer that add this item will automatically add details for this blanket order line</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blank. Sales Order Subform - Control TFB Consume Blanket Order - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2496076852 - Control 2066247891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 884441745">
+          <source>Automically Consume</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Blank. Sales Order Subform - Control TFB Consume Blanket Order - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2496076852 - Control 4007383547 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 884441745">
           <source>Specifies quantity ordered but not yet shipped</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19332,6 +19342,11 @@
           <source>CoA Sent</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB CoA Sent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3348931394 - Field 2066247891 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Çonsume Blanket Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Sales Line - Field TFB Consume Blanket Order - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3348931394 - Field 14314999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Cost Using</source>

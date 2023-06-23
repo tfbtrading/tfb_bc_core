@@ -22,6 +22,16 @@ pageextension 50163 "TFB Blank. Sales Order Subform" extends "Blanket Sales Orde
             }
 
         }
+        addafter(Quantity)
+        {
+            field("TFB Consume Blanket Order"; Rec."TFB Consume Blanket Order")
+            {
+                Caption = 'Automically Consume';
+                ToolTip = 'Specifies that new sales order for customer that add this item will automatically add details for this blanket order line';
+                Enabled = Rec."Outstanding Qty. (Base)" > 0;
+                ApplicationArea = All;
+            }
+        }
         addbefore("Quantity Shipped")
         {
             field(_UnpostedQty; _UnpostedQty)

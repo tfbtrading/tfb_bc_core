@@ -172,6 +172,12 @@ tableextension 50120 "TFB Sales Line" extends "Sales Line" //37
             CalcFormula = count("Sales Comment Line" where("No." = field("Document No."), "Document Type" = field("Document Type"), "Document Line No." = field("Line No.")));
         }
 
+        field(50155; "TFB Consume Blanket Order"; Boolean)
+        {
+            Caption = 'Çonsume Blanket Order';
+            InitValue = true;
+        }
+
 
         modify("Unit of Measure Code")
         {
