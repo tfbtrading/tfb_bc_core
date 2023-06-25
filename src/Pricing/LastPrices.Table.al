@@ -117,7 +117,7 @@ table 50800 "TFB Last Prices"
 
         }
 
-        field(34; RelatedSystemID; GUID)
+        field(34; DrillDownRecordId; RecordId)
         {
 
         }

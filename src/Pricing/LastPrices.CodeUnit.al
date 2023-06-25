@@ -8,6 +8,52 @@ codeunit 50800 "TFB Last Prices"
     var
         LastPrices: Record "TFB Last Prices";
 
+
+    procedure CheckIfLastPriceExists(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean): Boolean
+
+    var
+        SalesLine: Record "Sales Line";
+        SalesHeader: Record "Sales Header";
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        PricesExist: Boolean;
+
+
+    begin
+
+        PricesExist := false;
+        if RelationshipType <> RelationshipType::Customer then exit;
+        if FilterByRelationship then
+            SalesLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        SalesLine.SetRange("Completely Shipped", false);
+        SalesLine.SetRange("No.", ItemNo);
+        SalesHeader.SetLoadFields("Order Date", "Document Date");
+        SalesInvoiceHeader.SetLoadFields(Cancelled, "Posting Date", "Document Date");
+
+        if SalesLine.FindSet() then
+            repeat
+                SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
+                if not (SalesHeader.RecordId = CalledByRecordId) then
+                    PricesExist := true;
+
+            until (SalesLine.Next() = 0) or (PricesExist);
+
+        if FilterByRelationship then
+            SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        SalesInvoiceLine.SetRange("No.", ItemNo);
+        SalesInvoiceLine.SetFilter(Quantity, '>0');
+
+        if not PricesExist and SalesInvoiceLine.FindSet() then
+            repeat
+                SalesInvoiceHeader.Get(SalesInvoiceLine."Document No.");
+                if not SalesInvoiceHeader.Cancelled and not (SalesInvoiceHeader.RecordId = CalledByRecordId) then
+                    PricesExist := true
+
+            until (SalesInvoiceLine.Next() = 0) or (PricesExist);
+
+        Exit(PricesExist);
+    end;
+
     procedure PopulateLastPrices(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean)
     var
         SalesLine: Record "Sales Line";
@@ -32,8 +78,9 @@ codeunit 50800 "TFB Last Prices"
 
         if SalesLine.FindSet() then
             repeat
-                if not (SalesLine.RecordId = CalledByRecordId) then begin
-                    SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
+                SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.");
+                if not (SalesHeader.RecordId = CalledByRecordId) then begin
+
                     LastPrices.Init();
                     EntryNo += 1000;
                     PricesRetrieved += 1;
@@ -54,21 +101,24 @@ codeunit 50800 "TFB Last Prices"
                     LastPrices."Price Unit After Discount" := LastPrices."Price Unit Price" - LastPrices."Price Unit Discount Amount";
                     lastPrices."Document Date" := SalesHeader."Order Date";
                     LastPrices."Price Group" := SalesLine."Customer Price Group";
+                    LastPrices.DrillDownRecordId := SalesHeader.RecordId;
                     LastPrices.Insert();
                 end;
             until (SalesLine.Next() = 0) or (PricesRetrieved >= MaxPricesCount);
 
-        SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        if FilterByRelationship then
+            SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
         SalesInvoiceLine.SetRange("No.", ItemNo);
         SalesInvoiceLine.SetFilter(Quantity, '>0');
 
         if SalesInvoiceLine.FindSet() then
             repeat
                 SalesInvoiceHeader.Get(SalesInvoiceLine."Document No.");
-                if not SalesInvoiceHeader.Cancelled and not (SalesLine.RecordId = CalledByRecordId) then begin
+                if not SalesInvoiceHeader.Cancelled and not (SalesInvoiceHeader.RecordId = CalledByRecordId) then begin
 
                     EntryNo += 1000;
                     LastPrices."Entry No." := EntryNo;
+                    PricesRetrieved += 1;
                     LastPrices."Document No." := SalesInvoiceLine."Document No.";
                     LastPrices."Customer/Vendor No." := SalesInvoiceLine."Sell-to Customer No.";
                     LastPrices."Relationship Type" := RelationshipType;
@@ -85,6 +135,7 @@ codeunit 50800 "TFB Last Prices"
                     LastPrices."Price Unit After Discount" := LastPrices."Price Unit Price" - LastPrices."Price Unit Discount Amount";
                     lastPrices."Document Date" := SalesInvoiceHeader."Document Date";
                     LastPrices."Price Group" := SalesInvoiceLine."Customer Price Group";
+                    LastPrices.DrillDownRecordId := SalesInvoiceHeader.RecordId;
                     LastPrices.Insert();
 
                 end;
@@ -106,10 +157,19 @@ codeunit 50800 "TFB Last Prices"
 
     end;
 
-    procedure GetLastPrices(): Record "TFB Last Prices"
+    procedure GetLastPrices(var pLastPrices: record "TFB Last Prices"): Boolean
 
     begin
-        exit(LastPrices);
+        pLastPrices.Reset();
+        pLastPrices.DeleteAll();
+        if LastPrices.FindSet() then
+            repeat
+                pLastPrices.Init();
+                pLastPrices := LastPrices;
+                pLastPrices.Insert();
+            until LastPrices.Next() = 0;
+        if pLastPrices.Count > 0 then
+            exit(true);
     end;
 
     local procedure GetContextType(ContextLine: RecordRef): Enum "TFB Last Prices Rel. Type"

@@ -59,12 +59,25 @@ page 50800 "TFB Last Prices"
                     {
                         Caption = 'Restrict to customer/vendor';
                         ToolTip = 'Specifies whether the page shows price history for the item across all customers/vendors or just the current one';
+
+                        trigger OnValidate()
+
+                        begin
+                            RefreshData();
+                        end;
                     }
 
                     field(_MaxNoEntries; _MaxNoEntries)
                     {
                         Caption = 'Maximum lines shown';
                         ToolTip = 'Specifies how many lines are returned for review';
+                        Width = 4;
+
+                        trigger OnValidate()
+
+                        begin
+                            RefreshData();
+                        end;
                     }
 
                 }
@@ -82,8 +95,11 @@ page 50800 "TFB Last Prices"
 
                     trigger OnDrillDown()
                     var
+                        RecordManagement: Codeunit "Page Management";
 
                     begin
+
+                        RecordManagement.PageRun(Rec.DrillDownRecordId);
 
                     end;
                 }
@@ -91,6 +107,14 @@ page 50800 "TFB Last Prices"
                 {
                     Caption = 'Type';
                     ToolTip = 'Specifies the value of the Document Type field.';
+                }
+                field("Customer/Vendor No."; Rec."Customer/Vendor No.")
+                {
+                    Visible = not _FilterByRelationship;
+
+                    TableRelation = Customer;
+                    ToolTip = 'Show customer number where filter is set to generic';
+
                 }
                 field("Document Date"; Rec."Document Date")
                 {
@@ -203,13 +227,15 @@ page 50800 "TFB Last Prices"
     procedure RefreshData()
 
     var
-        LastPrices: Record "TFB Last Prices";
+        LastPricesTemp: Record "TFB Last Prices" temporary;
         LastPricesCU: CodeUnit "TFB Last Prices";
     begin
         LastPricesCU.PopulateLastPrices(_RelationshipType, _RelationshipCode, _ItemNo, _MaxNoEntries, _CalledByRecordId, _FilterByRelationship);
-        LastPrices := LastPricesCU.GetLastPrices();
-        SetPopulatedData(LastPrices);
-
+        LastPricesCU.GetLastPrices(LastPricesTemp);
+        SetPopulatedData(LastPricesTemp);
+        Rec.SetCurrentKey("Document Date");
+        Rec.Ascending(false);
+        Rec.SetAscending("Document Date", false);
 
     end;
 
@@ -238,7 +264,7 @@ page 50800 "TFB Last Prices"
                     _ItemName := SalesLine.Description;
                     _RelationshipCode := SalesLine."Sell-to Customer No.";
                     _ItemNo := SalesLine."No.";
-                    _CalledByRecordId := SalesLine.RecordId;
+                    _CalledByRecordId := SalesHeader.RecordId;
                 end;
             Database::"Purchase Line":
                 begin
@@ -251,7 +277,7 @@ page 50800 "TFB Last Prices"
                     _ItemName := PurchaseLine.Description;
                     _RelationshipCode := PurchaseLine."Buy-from Vendor No.";
                     _ItemNo := PurchaseLine."No.";
-                    _CalledByRecordId := PurchaseLine.RecordId;
+                    _CalledByRecordId := PurchaseHeader.RecordId;
                     _RelationshipType := _RelationshipType::Vendor;
                 end;
 

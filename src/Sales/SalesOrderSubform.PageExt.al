@@ -156,17 +156,20 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
                 Image = SalesPrices;
                 Caption = 'Last Prices';
                 ToolTip = 'Shows the most recent prices provided to the customer';
-                Enabled = Rec.Type = Rec.Type::Item;
+                Enabled = (Rec.Type = Rec.Type::Item) and _lastPricesExit and (Rec."No." <> '');
 
                 trigger OnAction()
 
                 var
                     LastPricesCU: CodeUnit "TFB Last Prices";
                     ContextRef: RecordRef;
+                    SalesHeader: Record "Sales Header";
 
                 begin
                     ContextRef.GetTable(Rec);
-                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, rec.RecordId, true);
+                    SalesHeader.SetLoadFields("Document Date");
+                    SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true);
                     LastPricesCU.ShowLastPrices(ContextRef);
                 end;
             }
@@ -176,12 +179,16 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
 
     trigger OnAfterGetRecord()
 
+    var
+        LastPricesCU: CodeUnit "TFB Last Prices";
+        SalesHeader: Record "Sales Header";
     begin
         IsInventoryItem := Rec.IsInventoriableItem();
         CheckItemTrackingStatus();
         CheckAvailabilityStatus();
         CheckCoAVisibility();
         CheckCoAStatus();
+        CheckLastPricesVisibility();
     end;
 
 
@@ -192,6 +199,18 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         CheckAvailabilityStatus();
         CheckCoAVisibility();
         CheckCoAStatus();
+        CheckLastPricesVisibility();
+    end;
+
+    local procedure CheckLastPricesVisibility()
+
+    var
+        LastPricesCU: CodeUnit "TFB Last Prices";
+        SalesHeader: Record "Sales Header";
+    begin
+        SalesHeader.SetLoadFields("Document Date");
+        SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+        _lastPricesExit := LastPricesCU.CheckIfLastPriceExists(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true)
     end;
 
     local procedure CheckCoAVisibility()
@@ -275,4 +294,6 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
         _availability: Text;
         _isCoARequiredEmoji: Text;
         _isCoAReq: enum "TFB Lot Status";
+
+        _lastPricesExit: Boolean;
 }

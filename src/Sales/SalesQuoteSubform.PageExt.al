@@ -122,11 +122,14 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
 
                 var
                     LastPricesCU: CodeUnit "TFB Last Prices";
+                    SalesHeader: Record "Sales Header";
                     ContextRef: RecordRef;
 
                 begin
                     ContextRef.GetTable(Rec);
-                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, rec.RecordId, true);
+                    SalesHeader.SetLoadFields("Document Date");
+                    SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true);
                     LastPricesCU.ShowLastPrices(ContextRef);
                 end;
             }

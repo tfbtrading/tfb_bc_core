@@ -2268,6 +2268,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Document Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 4009163567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DrillDownRecordId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field DrillDownRecordId - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 3677529872 - Field 285797133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Dropship</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2337,11 +2342,6 @@
           <source>Quantity</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Quantity - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 3677529872 - Field 488393865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>RelatedSystemID</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field RelatedSystemID - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3677529872 - Field 2288119192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Relationship Type</source>
@@ -9882,6 +9882,11 @@
           <source>Maximum lines shown</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _MaxNoEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1842924812 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show customer number where filter is set to generic</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Customer/Vendor No. - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3677529872 - Control 580412389 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Document Date field.</source>
