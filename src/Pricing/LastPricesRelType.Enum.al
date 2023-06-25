@@ -1,4 +1,4 @@
-enum 50800 "TFB Last Prices Rel. Type"
+enum 50139 "TFB Last Prices Rel. Type"
 {
     Extensible = true;
     Caption = 'Last Prices Relationship Type';

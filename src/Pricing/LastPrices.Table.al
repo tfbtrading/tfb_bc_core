@@ -1,4 +1,4 @@
-table 50800 "TFB Last Prices"
+table 50126 "TFB Last Prices"
 {
     DataClassification = CustomerContent;
     TableType = Temporary;

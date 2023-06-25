@@ -1,4 +1,4 @@
-page 50800 "TFB Last Prices"
+page 50178 "TFB Last Prices"
 {
     PageType = Worksheet;
     ApplicationArea = All;

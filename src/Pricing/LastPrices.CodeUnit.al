@@ -1,4 +1,4 @@
-codeunit 50800 "TFB Last Prices"
+codeunit 50135 "TFB Last Prices"
 {
     trigger OnRun()
     begin
