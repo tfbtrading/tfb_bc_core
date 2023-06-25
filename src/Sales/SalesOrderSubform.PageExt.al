@@ -150,7 +150,28 @@ pageextension 50130 "TFB Sales Order Subform" extends "Sales Order Subform" //46
 
                 end;
             }
+            action("TFB Last Prices")
+            {
+                ApplicationArea = All;
+                Image = SalesPrices;
+                Caption = 'Last Prices';
+                ToolTip = 'Shows the most recent prices provided to the customer';
+                Enabled = Rec.Type = Rec.Type::Item;
+
+                trigger OnAction()
+
+                var
+                    LastPricesCU: CodeUnit "TFB Last Prices";
+                    ContextRef: RecordRef;
+
+                begin
+                    ContextRef.GetTable(Rec);
+                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, rec.RecordId, true);
+                    LastPricesCU.ShowLastPrices(ContextRef);
+                end;
+            }
         }
+
     }
 
     trigger OnAfterGetRecord()

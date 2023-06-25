@@ -2238,6 +2238,146 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Landed Cost Profile - Field Scenario - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 767741487 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cost Calculation Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Cost Calculation Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 4198939294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Currency Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Currency Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 1842924812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Partner No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Customer/Vendor No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 285797133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dropship</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Dropship - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 883711285 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Entry No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 3154493835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item Disc. Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Item Disc. Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 3320823955 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 3428108069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Calculation Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Calculation Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2243915294 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 730569223 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2131366366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Unit After Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Unit After Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 3545985638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Unit Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Unit Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 1190513674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Price Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2171007686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Prices Including Tax</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Prices Including Tax - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 806193894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Qty. per Unit of Measure</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Qty. per Unit of Measure - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2704404533 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Quantity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 488393865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>RelatedSystemID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field RelatedSystemID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2288119192 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Relationship Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Relationship Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2832823724 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tax %</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Tax % - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 1002859873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Discount Amount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Unit Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of Measure Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Unit of Measure Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 2937233469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 1324129686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit Price After Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Unit Price After Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3677529872 - Field 3450651614 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Variant Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Last Prices - Field Variant Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 165560346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Location Shipping Agent</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9677,6 +9817,186 @@
           <source>Specifies default scenario</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Landed Cost Profile List - Control Scenario - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Prices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1194681720 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the customer for which we are reviewing price history.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _CustomerName - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1194681720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _CustomerName - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2351253568 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the current item unit price for the line we are reviewing price history for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LineDiscount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2351253568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Unit Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LineDiscount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 563417880 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the current item unit price for the line we are reviewing price history for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePrice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 563417880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Unit Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePrice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1549052909 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the current item unit price for the line we are reviewing price history for.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePriceGroup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1549052909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Price Group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePriceGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1187745884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the page shows price history for the item across all customers/vendors or just the current one</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _FilterByRelationship - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1187745884 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restrict to customer/vendor</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _FilterByRelationship - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2972943708 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many lines are returned for review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _MaxNoEntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2972943708 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Maximum lines shown</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _MaxNoEntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 580412389 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Document Date field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document Date - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 580412389 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 486908828 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Document No. field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 486908828 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2363328873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Document Type field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2363328873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Document Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2243915294 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price Group field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Group - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2131366366 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price Unit After Discount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit After Discount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2131366366 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Per Kg Price After Disc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit After Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 3545985638 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price Unit Discount Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit Discount Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 3545985638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Per Kg Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1190513674 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Price Unit Price field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1190513674 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Per Kg Price</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Price Unit Price - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2704404533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Quantity field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1002859873 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Unit Discount Amount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Discount Amount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1002859873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Discount Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2385270358 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Unit of Measure Code field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit of Measure Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2385270358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UoM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit of Measure Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 2937233469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Unit Price field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Price - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1324129686 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Unit Price After Discount field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Price After Discount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1324129686 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Price After Disc.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Price After Discount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Action 1699755778 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Executes the ChangeFilter action.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Action ChangeFilter - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Action 1699755778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Based on Filter</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Action ChangeFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1531909007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State Based Shipping Agent Conditions</source>
@@ -17373,6 +17693,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Action History - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2693121768 - Action 3677529872 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Shows the most recent prices provided to the customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Action TFB Last Prices - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2693121768 - Action 3677529872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
+          <source>Last Prices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Order Subform - Action TFB Last Prices - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2693121768 - Control 3824110987 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2026081320">
           <source>Specifies availability on sales line</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -17497,6 +17827,16 @@
           <source>Availability to Promise</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Action &amp;Check Availability Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 23283996 - Action 3677529872 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Shows the most recent prices provided to the customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Action TFB Last Prices - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 23283996 - Action 3677529872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
+          <source>Last Prices</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Quote Subform - Action TFB Last Prices - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 23283996 - Control 433370900 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 416138076">
           <source>Specifies the planned date for shipment</source>
@@ -20112,6 +20452,11 @@
           <source>Organic Product Certificate</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Item Doc Type - EnumValue OPC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 11254091 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Last Prices Relationship Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Last Prices Rel. Type - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 783415655 - EnumValue 124933732 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturing</source>
