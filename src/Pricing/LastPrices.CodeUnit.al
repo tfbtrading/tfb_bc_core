@@ -73,6 +73,9 @@ codeunit 50135 "TFB Last Prices"
             SalesLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
         SalesLine.SetRange("Completely Shipped", false);
         SalesLine.SetRange("No.", ItemNo);
+        SalesLine.SetCurrentKey(SystemCreatedAt);
+        SalesLine.SetAscending(SystemCreatedAt, false);
+        SalesLine.SetLoadFields("Document No.", "Sell-to Customer No.", "Line No.", "Document Type", "Unit Price", "Line Discount Amount", Quantity, "No.", "Quantity (Base)", "Unit of Measure Code", "Unit Price", "Net Weight", "Customer Price Group");
         SalesHeader.SetLoadFields("Order Date", "Document Date");
         SalesInvoiceHeader.SetLoadFields(Cancelled, "Posting Date", "Document Date");
 
@@ -109,10 +112,14 @@ codeunit 50135 "TFB Last Prices"
         if FilterByRelationship then
             SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
         SalesInvoiceLine.SetRange("No.", ItemNo);
+        SalesInvoiceLine.SetCurrentKey("Posting Date");
+        SalesInvoiceLine.SetAscending("Posting Date", False);
+        SalesInvoiceLine.SetLoadFields("Document No.", "Sell-to Customer No.", "Line No.", "Unit Price", "Line Discount Amount", Quantity, "No.", "Quantity (Base)", "Unit of Measure Code", "Unit Price", "Net Weight", "Customer Price Group");
         SalesInvoiceLine.SetFilter(Quantity, '>0');
 
         if SalesInvoiceLine.FindSet() then
             repeat
+
                 SalesInvoiceHeader.Get(SalesInvoiceLine."Document No.");
                 if not SalesInvoiceHeader.Cancelled and not (SalesInvoiceHeader.RecordId = CalledByRecordId) then begin
 
