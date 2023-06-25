@@ -5,7 +5,7 @@ page 50178 "TFB Last Prices"
     UsageCategory = Administration;
     SourceTable = "TFB Last Prices";
     SourceTableTemporary = true;
-
+    DataCaptionExpression = 'Last Prices for ' + _ItemName;
     SourceTableView = sorting("Document Date", "Document No.") order(descending);
     ModifyAllowed = false;
     InsertAllowed = false;
