@@ -9853,6 +9853,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePrice - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 4282282599 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the current item unit price after discount that we are reviewing price history for</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePriceAfterDiscount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 4282282599 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Current Unit Price After Discount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePriceAfterDiscount - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3677529872 - Control 1549052909 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the current item unit price for the line we are reviewing price history for.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -9862,6 +9872,16 @@
           <source>Current Price Group</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _LinePriceGroup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1158374554 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether the page shows price history for the item across all customer price groups or just the current one</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _FilterByPriceGroup - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3677529872 - Control 1158374554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Restrict to the price group</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control _FilterByPriceGroup - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3677529872 - Control 1187745884 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies whether the page shows price history for the item across all customers/vendors or just the current one</source>
@@ -9992,16 +10012,6 @@
           <source>Price After Disc.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Control Unit Price After Discount - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3677529872 - Action 1699755778 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Executes the ChangeFilter action.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Action ChangeFilter - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 3677529872 - Action 1699755778 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Update Based on Filter</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Last Prices - Action ChangeFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1531909007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State Based Shipping Agent Conditions</source>

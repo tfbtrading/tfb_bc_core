@@ -9,7 +9,7 @@ codeunit 50135 "TFB Last Prices"
         LastPrices: Record "TFB Last Prices";
 
 
-    procedure CheckIfLastPriceExists(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean): Boolean
+    procedure CheckIfLastPriceExists(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean; FilterByPriceGroup: Boolean; LinePriceGroup: Code[10]): Boolean
 
     var
         SalesLine: Record "Sales Line";
@@ -25,6 +25,8 @@ codeunit 50135 "TFB Last Prices"
         if RelationshipType <> RelationshipType::Customer then exit;
         if FilterByRelationship then
             SalesLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        if FilterByPriceGroup then
+            SalesLine.SetRange("Customer Price Group", LinePriceGroup);
         SalesLine.SetRange("Completely Shipped", false);
         SalesLine.SetRange("No.", ItemNo);
         SalesHeader.SetLoadFields("Order Date", "Document Date");
@@ -40,6 +42,8 @@ codeunit 50135 "TFB Last Prices"
 
         if FilterByRelationship then
             SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        if FilterByPriceGroup then
+            SalesInvoiceLine.SetRange("Customer Price Group", LinePriceGroup);
         SalesInvoiceLine.SetRange("No.", ItemNo);
         SalesInvoiceLine.SetFilter(Quantity, '>0');
 
@@ -54,7 +58,7 @@ codeunit 50135 "TFB Last Prices"
         Exit(PricesExist);
     end;
 
-    procedure PopulateLastPrices(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean)
+    procedure PopulateLastPrices(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean; FilterByPriceGroup: Boolean; LinePriceGroup: Code[10])
     var
         SalesLine: Record "Sales Line";
         SalesHeader: Record "Sales Header";
@@ -71,6 +75,8 @@ codeunit 50135 "TFB Last Prices"
         if RelationshipType <> RelationshipType::Customer then exit;
         if FilterByRelationship then
             SalesLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        if FilterByPriceGroup then
+            SalesLine.SetRange("Customer Price Group", LinePriceGroup);
         SalesLine.SetRange("Completely Shipped", false);
         SalesLine.SetRange("No.", ItemNo);
         SalesLine.SetCurrentKey(SystemCreatedAt);
@@ -111,6 +117,8 @@ codeunit 50135 "TFB Last Prices"
 
         if FilterByRelationship then
             SalesInvoiceLine.SetRange("Sell-to Customer No.", CustomerVendorNo);
+        if FilterByPriceGroup then
+            SalesInvoiceLine.SetRange("Customer Price Group", LinePriceGroup);
         SalesInvoiceLine.SetRange("No.", ItemNo);
         SalesInvoiceLine.SetCurrentKey("Posting Date");
         SalesInvoiceLine.SetAscending("Posting Date", False);
