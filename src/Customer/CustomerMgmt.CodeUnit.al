@@ -231,7 +231,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
 
-    procedure SendOneCustomerStatusEmail(CustNo: Code[20]): Boolean
+    procedure SendOneCustomerStatusEmail(CustNo: Code[20]; Note: text; Subject: Text): Boolean
     var
         cu: CodeUnit "TFB Common Library";
         Window: Dialog;
@@ -244,11 +244,11 @@ codeunit 50120 "TFB Customer Mgmt"
 
         Window.Open(Text001Msg);
         Window.Update(1, STRSUBSTNO('%1 %2', CustNo, ''));
-        Result := SendCustomerStatusEmail(CustNo, cu.GetHTMLTemplateActive(TitleTxt, SubtitleTxt), false);
+        Result := SendCustomerStatusEmail(CustNo, cu.GetHTMLTemplateActive(TitleTxt, SubtitleTxt), false, Note, Subject, false);
         exit(Result);
     end;
 
-    procedure SendCustomerStatusEmail(CustNo: Code[20]; HTMLTemplate: Text; hideDialog: Boolean): Boolean
+    procedure SendCustomerStatusEmail(CustNo: Code[20]; HTMLTemplate: Text; hideDialog: Boolean; Note: text; Subject: text; IgnoreIfEmpty: Boolean): Boolean
 
     var
 
@@ -270,7 +270,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         NoData: Boolean;
         IsHandled: Boolean;
-        PDFInstream: InStream;
+
 
     begin
 
@@ -285,7 +285,10 @@ codeunit 50120 "TFB Customer Mgmt"
             exit(false);
 
         EmailID := Customer."E-Mail";
-        SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, Customer.Name));
+        If Subject <> '' then
+            SubjectNameBuilder.Append(Subject)
+        else
+            SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, Customer.Name));
 
 
         Recipients.Add(EmailID);
@@ -298,11 +301,14 @@ codeunit 50120 "TFB Customer Mgmt"
 
         //OnBeforeGenerateOrderStatusContent(Customer, HTMLBuilder, IsHandled);
         // If not IsHandled then
-        GenerateCustomerOrderStatusContent(Customer."No.", HTMLBuilder, NoData);
+        GenerateCustomerOrderStatusContent(Customer."No.", Note, HTMLBuilder, NoData);
 
         if Customer."TFB Order Update Preference" = Enum::"TFB Order Update Preference"::DataOnly then
             if NoData then
                 exit(true);
+
+        If IgnoreIfEmpty and NoData then
+            exit(true);
 
         IsHandled := false; // Reset the ishandled parameter
 
@@ -384,7 +390,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     end;
 
-    local procedure GenerateCustomerOrderStatusContent(CustNo: Code[20]; var HTMLBuilder: TextBuilder; var NoData: Boolean): Boolean
+    local procedure GenerateCustomerOrderStatusContent(CustNo: Code[20]; Note: Text; var HTMLBuilder: TextBuilder; var NoData: Boolean): Boolean
 
     var
         Customer: Record Customer;
@@ -458,6 +464,9 @@ codeunit 50120 "TFB Customer Mgmt"
             HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
         else
             HTMLBuilder.Replace('%{AlertText}', '');
+
+        If Note <> '' then
+            HTMLBuilder.Replace('%{AlertText}', Note);
 
         if SalesLine.FindSet() then begin
 
@@ -628,7 +637,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 LineBuilder.Append(StrSubstNo(tdTxt, format(Salesorder."Order Date")));
                 LineBuilder.Append(StrSubstNo(tdTxt, SalesLine.Description + '<br><span class="small">' + Format(Item."Net Weight") + 'kg ' + UoM.Description + '</span>'));
                 LineBuilder.Append(StrSubstNo(tdTxt, Format(SalesLine."Quantity (Base)")));
-                LineBuilder.Append(StrSubstNo(tdTxt, Format(PricingCU.CalculatePriceUnitByUnitPrice(SalesLine."No.", SalesLine."Unit of Measure Code", PricingUnit, SalesLine.Amount / SalesLine."Quantity (Base)"), 0, '$<Precision,2:2><Standard Format,0>')));
+                LineBuilder.Append(StrSubstNo(tdTxt, Format(PricingCU.CalculatePriceUnitByUnitPrice(SalesLine."No.", SalesLine."Unit of Measure Code", PricingUnit, SalesLine.Amount / SalesLine.Quantity), 0, '$<Precision,2:2><Standard Format,0>')));
                 LineBuilder.Append(StrSubstNo(tdTxt, Status));
                 LineBuilder.AppendLine('</tr>');
 
@@ -669,7 +678,7 @@ codeunit 50120 "TFB Customer Mgmt"
                 BodyBuilder.Append(StrSubstNo(tdTxt, format(InvoiceLine."Posting Date")));
                 BodyBuilder.Append(StrSubstNo(tdTxt, InvoiceLine.Description));
                 BodyBuilder.Append(StrSubstNo(tdTxt, Format(InvoiceLine."Quantity (Base)")));
-                BodyBuilder.Append(StrSubstNo(tdTxt, Format(InvoiceLine."Unit Price" / InvoiceLine."Qty. per Unit of Measure", 0, '$<Precision,2:2><Standard Format,0>') + '<br> ( ' + Format(PricingCU.CalculatePriceUnitByUnitPrice(InvoiceLine."No.", InvoiceLine."Unit of Measure Code", PricingUnit, InvoiceLine."Unit Price"), 0, '$<Precision,2:2><Standard Format,0>') + ' per kg )'));
+                BodyBuilder.Append(StrSubstNo(tdTxt, Format(InvoiceLine."Unit Price" / InvoiceLine."Qty. per Unit of Measure", 0, '$<Precision,2:2><Standard Format,0>') + '<br> ( ' + Format(PricingCU.CalculatePriceUnitByUnitPrice(InvoiceLine."No.", InvoiceLine."Unit of Measure Code", PricingUnit, InvoiceLine."Line Amount" / InvoiceLine.Quantity), 0, '$<Precision,2:2><Standard Format,0>') + ' per kg )'));
 
 
                 BodyBuilder.AppendLine('</tr>');

@@ -363,7 +363,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     CustomerCU: Codeunit "TFB Customer Mgmt";
 
                 begin
-                    CustomerCU.SendOneCustomerStatusEmail(Rec."No.");
+                    CustomerCU.SendOneCustomerStatusEmail(Rec."No.", '', '');
                 end;
             }
             action(TFBSendQualityDocumentsByEmail)
