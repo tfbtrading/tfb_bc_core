@@ -41,6 +41,12 @@ page 50178 "TFB Last Prices"
                         Editable = false;
                         ToolTip = 'Specifies the current item unit price for the line we are reviewing price history for.';
                     }
+                    field(_LinePriceAfterDiscount; _LinePrice - _LineDiscount)
+                    {
+                        Caption = 'Current Unit Price After Discount';
+                        Editable = false;
+                        ToolTip = 'Specifies the current item unit price after discount that we are reviewing price history for';
+                    }
                     field(_LinePriceGroup; _LinePriceGroup)
                     {
                         Caption = 'Current Price Group';
@@ -66,7 +72,17 @@ page 50178 "TFB Last Prices"
                             RefreshData();
                         end;
                     }
+                    field(_FilterByPriceGroup; _FilterByPriceGroup)
+                    {
+                        Caption = 'Restrict to the price group';
+                        ToolTip = 'Specifies whether the page shows price history for the item across all customer price groups or just the current one';
 
+                        trigger OnValidate()
+
+                        begin
+                            RefreshData();
+                        end;
+                    }
                     field(_MaxNoEntries; _MaxNoEntries)
                     {
                         Caption = 'Maximum lines shown';
@@ -138,6 +154,8 @@ page 50178 "TFB Last Prices"
                 {
                     Caption = 'Discount';
                     ToolTip = 'Specifies the value of the Unit Discount Amount field.';
+                    StyleExpr = _StyleExpression;
+
                 }
                 field("Unit Price After Discount"; Rec."Unit Price After Discount")
                 {
@@ -158,6 +176,7 @@ page 50178 "TFB Last Prices"
                 {
                     Caption = 'Per Kg Price After Disc.';
                     ToolTip = 'Specifies the value of the Price Unit After Discount field.';
+                    StyleExpr = _StyleExpression;
                 }
                 field("Price Group"; Rec."Price Group")
                 {
@@ -170,28 +189,7 @@ page 50178 "TFB Last Prices"
 
     actions
     {
-        area(Processing)
-        {
-            action(ChangeFilter)
-            {
-                Caption = 'Update Based on Filter';
-                ApplicationArea = All;
-                Image = UpdateDescription;
-                ToolTip = 'Executes the ChangeFilter action.';
-                trigger OnAction()
-                begin
-                    RefreshData();
 
-                end;
-            }
-        }
-        area(Promoted)
-        {
-            actionref(ChangeFilterP; ChangeFilter)
-            {
-
-            }
-        }
     }
 
     var
@@ -205,6 +203,7 @@ page 50178 "TFB Last Prices"
         _ItemNo: Code[20];
 
         _FilterByRelationship: Boolean;
+        _FilterByPriceGroup: Boolean;
 
         _MaxNoEntries: Integer;
         _RelationshipType: Enum "TFB Last Prices Rel. Type";
@@ -227,12 +226,12 @@ page 50178 "TFB Last Prices"
     procedure RefreshData()
 
     var
-        LastPricesTemp: Record "TFB Last Prices" temporary;
+        TempLastPrices: Record "TFB Last Prices" temporary;
         LastPricesCU: CodeUnit "TFB Last Prices";
     begin
-        LastPricesCU.PopulateLastPrices(_RelationshipType, _RelationshipCode, _ItemNo, _MaxNoEntries, _CalledByRecordId, _FilterByRelationship);
-        LastPricesCU.GetLastPrices(LastPricesTemp);
-        SetPopulatedData(LastPricesTemp);
+        LastPricesCU.PopulateLastPrices(_RelationshipType, _RelationshipCode, _ItemNo, _MaxNoEntries, _CalledByRecordId, _FilterByRelationship, _FilterByPriceGroup, _LinePriceGroup);
+        LastPricesCU.GetLastPrices(TempLastPrices);
+        SetPopulatedData(TempLastPrices);
         Rec.SetCurrentKey("Document Date");
         Rec.Ascending(false);
         Rec.SetAscending("Document Date", false);
@@ -249,6 +248,7 @@ page 50178 "TFB Last Prices"
     begin
         _MaxNoEntries := 10;
         _FilterByRelationship := true;
+        _FilterByPriceGroup := true;
 
         case ContextLine.Number of
             Database::"Sales Line":
@@ -284,5 +284,27 @@ page 50178 "TFB Last Prices"
         end;
 
 
+
     end;
+
+    var
+
+
+        _StyleExpression: text;
+
+    trigger OnAfterGetCurrRecord()
+
+    begin
+
+        if rec."Unit Price After Discount" > (_LinePrice - _LineDiscount) then
+            _StyleExpression := 'Unfavourable'
+        else
+            if
+           rec."Unit Price After Discount" < (_LinePrice - _LineDiscount) then
+                _StyleExpression := 'Favourable'
+            else
+                _StyleExpression := 'None';
+
+    end;
+
 }

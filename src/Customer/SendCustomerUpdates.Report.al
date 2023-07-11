@@ -14,6 +14,9 @@ report 50123 "TFB Send Customer Updates"
         {
 
             RequestFilterFields = Blocked;
+
+
+
             trigger OnPreDataItem()
 
             var
@@ -32,7 +35,7 @@ report 50123 "TFB Send Customer Updates"
 
             begin
 
-                if CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate, true) then
+                if CustomerCU.SendCustomerStatusEmail("No.", HTMLTemplate, true, AdditionalInfo, EmailSubject, DoNotSendEmpty) then
                     Window.Update(1, STRSUBSTNO('%1 %2', "No.", Name));
 
             end;
@@ -57,19 +60,40 @@ report 50123 "TFB Send Customer Updates"
 
         layout
         {
+
             area(Content)
             {
-                group(Options)
+                group(general)
                 {
+                    field(EmailSubject; EmailSubject)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Email subject';
+                        ToolTip = 'Specifies a customer email subject if required.';
+                    }
+                    field(AdditionalInfo; AdditionalInfo)
+                    {
+                        ApplicationArea = all;
+                        MultiLine = true;
+                        Caption = 'Information to add';
+                        ToolTip = 'Specify additional information you want in the email body';
+                    }
+                    group(Options)
+                    {
+                        field(DoNotSendEmpty; DoNotSendEmpty)
+                        {
+                            ApplicationArea = All;
+                            Caption = 'Do not send email if no sales lines exist';
+                            ToolTip = 'Specifies if emails should only be sent where customers have pending sales or sales lines';
+                        }
 
-
+                    }
                 }
             }
+
+
         }
-
-
     }
-
 
     var
         CustomerCU: CodeUnit "TFB Customer Mgmt";
@@ -80,6 +104,11 @@ report 50123 "TFB Send Customer Updates"
 
         SubtitleTxt: Label 'Please find below our latest information on pending orders that have not yet been shipped or invoiced and recent invoices that have been sent';
         TitleTxt: Label 'Order Status';
+
+        AdditionalInfo: Text;
+        EmailSubject: Text;
+
+        DoNotSendEmpty: Boolean;
 
 
 }

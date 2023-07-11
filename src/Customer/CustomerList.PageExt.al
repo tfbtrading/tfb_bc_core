@@ -89,8 +89,9 @@ pageextension 50111 "TFB Customer List" extends "Customer List"
                 var
                     CustomerCU: Codeunit "TFB Customer Mgmt";
 
+
                 begin
-                    CustomerCU.SendOneCustomerStatusEmail(Rec."No.");
+                    CustomerCU.SendOneCustomerStatusEmail(Rec."No.", '', '');
                 end;
             }
             action(SendQualityDocumentsByEmail)

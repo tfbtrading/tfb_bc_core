@@ -116,23 +116,46 @@ pageextension 50131 "TFB Sales Quote Subform" extends "Sales Quote Subform" //95
                 Image = SalesPrices;
                 Caption = 'Last Prices';
                 ToolTip = 'Shows the most recent prices provided to the customer';
-                Enabled = Rec.Type = Rec.Type::Item;
+                Enabled = (Rec.Type = Rec.Type::Item) and _lastPricesExit;
 
                 trigger OnAction()
 
                 var
-                    LastPricesCU: CodeUnit "TFB Last Prices";
                     SalesHeader: Record "Sales Header";
+                    LastPricesCU: CodeUnit "TFB Last Prices";
                     ContextRef: RecordRef;
 
                 begin
                     ContextRef.GetTable(Rec);
                     SalesHeader.SetLoadFields("Document Date");
                     SalesHeader.Get(Rec."Document Type", Rec."Document No.");
-                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true);
+                    LastPricesCU.PopulateLastPrices(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true, true, rec."Customer Price Group");
                     LastPricesCU.ShowLastPrices(ContextRef);
                 end;
             }
         }
     }
+    var
+
+        _lastPricesExit: Boolean;
+
+    trigger OnAfterGetRecord()
+
+    var
+
+    begin
+
+        CheckLastPricesVisibility();
+    end;
+
+    local procedure CheckLastPricesVisibility()
+
+    var
+        SalesHeader: Record "Sales Header";
+        LastPricesCU: CodeUnit "TFB Last Prices";
+    begin
+        SalesHeader.SetLoadFields("Document Date");
+        SalesHeader.Get(Rec."Document Type", Rec."Document No.");
+        _lastPricesExit := LastPricesCU.CheckIfLastPriceExists(Enum::"TFB Last Prices Rel. Type"::Customer, Rec."Sell-to Customer No.", Rec."No.", 0, SalesHeader.RecordId, true, true, rec."Customer Price Group")
+    end;
 }
