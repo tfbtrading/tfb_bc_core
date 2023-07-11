@@ -1328,6 +1328,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Shelf Life Word Template - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 2583598804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shipment Prefix</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Shipment Prefix - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 527448834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specification URL Pattern</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1342,6 +1347,11 @@
           <source>Unpack Item Charge</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Unpack Item Charge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 3659921151 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Prefix</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Warehouse Prefix - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3688095463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Costing Scenario</source>
@@ -7727,6 +7737,26 @@
           <source>Specifies the value of the Sample Request Nos. field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Sample Request Nos. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2428880779 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purchasing &amp; Payables</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Payables - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 1749042919 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice Line Recognition</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control InvoiceRecog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2583598804 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the prefix to spot whether a sales shipment prefix has been used</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Shipment Prefix - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 3659921151 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the prefix to spot whether a warehouse reference has been used</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Warehouse Prefix - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 4112797369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sales &amp; Receivable</source>
@@ -14182,6 +14212,36 @@
           <source>Order Status</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - NamedType TitleTxt</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 2565932393 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specify additional information you want in the email body</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control AdditionalInfo - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 2565932393 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Information to add</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control AdditionalInfo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 3292692308 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies a customer email subject if required.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control EmailSubject - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 3292692308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Email subject</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control EmailSubject - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 2606142105 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if emails should only be sent where customers have pending sales or sales lines</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control DoNotSendEmpty - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Report 913375166 - Control 2606142105 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do not send email if no sales lines exist</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report TFB Send Customer Updates - Control DoNotSendEmpty - Property Caption</note>
         </trans-unit>
         <trans-unit id="Report 1594674502 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Send Vendor Status Updates</source>

@@ -318,6 +318,14 @@ table 50125 "TFB Core Setup"
             ValidateTableRelation = true;
             Caption = 'Shelf Life Word Template';
         }
+        field(500; "Warehouse Prefix"; code[20])
+        {
+
+        }
+        field(510; "Shipment Prefix"; code[20])
+        {
+
+        }
 
     }
 

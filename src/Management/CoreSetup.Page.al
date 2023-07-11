@@ -160,7 +160,25 @@ page 50173 "TFB Core Setup"
 
 
             }
+            group(Payables)
+            {
+                Caption = 'Purchasing & Payables';
 
+                group(InvoiceRecog)
+                {
+                    Caption = 'Invoice Line Recognition';
+                    field("Warehouse Prefix"; Rec."Warehouse Prefix")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the prefix to spot whether a warehouse reference has been used';
+                    }
+                    field("Shipment Prefix"; Rec."Shipment Prefix")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the prefix to spot whether a sales shipment prefix has been used';
+                    }
+                }
+            }
 
             group(Inventory)
             {

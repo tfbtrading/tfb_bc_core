@@ -95,10 +95,12 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         StartNum: Integer;
         TokenLen: Integer;
         Reference: Text[100];
+        CoreSetup: Record "TFB Core Setup";
 
     begin
 
         StartNum := Description.IndexOf('3PL');
+        CoreSetup.Get();
 
         if (StartNum > 0) then begin
             TokenLen := STRLEN(Description) - (StartNum + 4);
@@ -111,7 +113,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
 
 
 
-        StartNum := Description.IndexOf('S-SHP');
+        StartNum := Description.IndexOf(CoreSetup."Shipment Prefix");
 
         if StartNum > 0 then begin
             Reference := Description.Substring(StartNum, 13);
@@ -120,7 +122,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         end;
 
 
-        StartNum := Description.IndexOf('W-SHP');
+        StartNum := Description.IndexOf(CoreSetup."Warehouse Prefix");
 
         if StartNum > 0 then begin
             Reference := Description.Substring(StartNum, 12);
