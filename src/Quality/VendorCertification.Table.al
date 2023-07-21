@@ -64,6 +64,13 @@ table 50101 "TFB Vendor Certification"
         {
             NotBlank = true;
         }
+        field(35; "Vendor Order Address"; Code[10])
+        {
+            Caption = 'Order Address';
+
+            TableRelation = "Order Address".Code where("Vendor No." = field("Vendor No."));
+            ValidateTableRelation = true;
+        }
         field(40; "Auditor"; Code[20])
         {
             TableRelation = "TFB Quality Auditor";
@@ -166,7 +173,7 @@ table 50101 "TFB Vendor Certification"
     }
 
 
-   
-    
+
+
 
 }

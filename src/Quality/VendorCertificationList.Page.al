@@ -23,10 +23,21 @@ page 50107 "TFB Vendor Certification List"
                 field("Vendor Name"; Rec."Vendor Name")
                 {
                     Tooltip = 'Specifies vendors name';
+
+                    trigger OnValidate()
+
+                    begin
+                        OrderAddressExists := CheckIfOrderAddressExists();
+                    end;
                 }
                 field(Site; Rec.Site)
                 {
                     Tooltip = 'Specifies vendors facility that is certified';
+                }
+                field("Vendor Order Address"; Rec."Vendor Order Address")
+                {
+                    ToolTip = 'Specifies vendors specific order address if one exists';
+                    Enabled = OrderAddressExists;
                 }
                 field("Certification Type"; Rec."Certification Type")
                 {
@@ -292,6 +303,7 @@ page 50107 "TFB Vendor Certification List"
         _DaysToExpiry: Integer;
         CalculatedStatus: Enum "TFB Quality Certificate Status";
         CalculatedEmoticonStatus: Text;
+        OrderAddressExists: Boolean;
 
 
     trigger OnAfterGetRecord()
@@ -302,10 +314,21 @@ page 50107 "TFB Vendor Certification List"
         CalculatedStatus := QualityCU.GetCurrentStatus(Rec.Archived, Rec.Inherent, Rec."Expiry Date");
         AttachmentExists := CheckIfAttachmentExists();
         CalculatedEmoticonStatus := QualityCU.GetStatusEmoticon(CalculatedStatus);
+        OrderAddressExists := CheckIfOrderAddressExists();
 
     end;
 
+    local procedure CheckIfOrderAddressExists(): Boolean
 
+    var
+        OrderAddress: Record "Order Address";
+    begin
+
+        OrderAddress.SetRange("Vendor No.", Rec."Vendor No.");
+
+        exit(not OrderAddress.IsEmpty())
+
+    end;
 
     local procedure ToggleArchiveStatus()
 

@@ -226,6 +226,30 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             }
         }
 
+        modify("Vendor No.")
+        {
+            trigger OnAfterValidate()
+
+            var
+            begin
+                ShowOrderAddressOption := CheckIfOrderAddressExists();
+
+                If (Rec."Vendor No." <> xRec."Vendor No.") or (Rec."Vendor No." = '') then
+                    Rec."TFB Vendor Order Address" := '';
+            end;
+        }
+
+        addafter("Vendor No.")
+        {
+            field("TFB Vendor Order Address"; Rec."TFB Vendor Order Address")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies which site this item originates at if the supplier has alternative sites';
+                Visible = ShowOrderAddressOption;
+
+            }
+        }
+
         addafter("Vendor Item No.")
         {
             field("TFB Vendor is Agent"; Rec."TFB Vendor is Agent")
@@ -357,6 +381,9 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
     }
 
+    var
+        ShowOrderAddressOption: Boolean;
+
     local procedure GetPricePerKg(): Decimal
 
     begin
@@ -364,6 +391,18 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             exit(Rec."Unit Price" / Rec."Net Weight")
         else
             exit(0);
+    end;
+
+    local procedure CheckIfOrderAddressExists(): Boolean
+
+    var
+        OrderAddress: Record "Order Address";
+    begin
+
+        OrderAddress.SetRange("Vendor No.", Rec."Vendor No.");
+
+        exit(not OrderAddress.IsEmpty())
+
     end;
 
     local procedure GetUnitCostPerKg(): Decimal
@@ -378,6 +417,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     trigger OnAfterGetRecord()
     begin
         CheckAndUpdateDropShipDetails();
+        ShowOrderAddressOption := CheckIfOrderAddressExists();
         Rec.CalcFields(Rec."TFB Generic Link Exists");
 
     end;

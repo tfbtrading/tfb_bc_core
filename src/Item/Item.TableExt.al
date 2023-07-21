@@ -189,6 +189,13 @@ tableextension 50260 "TFB Item" extends Item
             Caption = 'Vendor is Agent';
 
         }
+        field(50375; "TFB Vendor Order Address"; Code[10])
+        {
+            Caption = 'Vendor Order Address';
+
+            TableRelation = "Order Address".Code where("Vendor No." = field("Vendor No."));
+            ValidateTableRelation = true;
+        }
         field(50380; "TFB Item Manufacturer/Brand"; Code[20])
         {
             Caption = 'Item Manufacturer/Brand';
