@@ -23,8 +23,8 @@ page 50107 "TFB Vendor Certification List"
                 field("Vendor Name"; Rec."Vendor Name")
                 {
                     Tooltip = 'Specifies vendors name';
-                    TableRelation = Vendor.Name;
-                    Style = StandardAccent;
+
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
 
 
@@ -37,7 +37,7 @@ page 50107 "TFB Vendor Certification List"
                 field(Site; Rec.Site)
                 {
                     Tooltip = 'Specifies vendors facility that is certified';
-                    Style = StandardAccent;
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
                 }
                 field("Vendor Order Address"; Rec."Vendor Order Address")
@@ -51,7 +51,7 @@ page 50107 "TFB Vendor Certification List"
                 {
                     Tooltip = 'Specifies the certification type';
                     Caption = 'Certification';
-                    Style = StandardAccent;
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
 
                     trigger OnValidate()
@@ -63,7 +63,7 @@ page 50107 "TFB Vendor Certification List"
                 field("Certification Class"; Rec."Certificate Class")
                 {
                     DrillDown = false;
-                    Style = StandardAccent;
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
@@ -101,14 +101,14 @@ page 50107 "TFB Vendor Certification List"
                 {
                     tooltip = 'Specifies who audited the site and granted certification';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
-                    Style = StandardAccent;
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     tooltip = 'Specifies the date on which the last audit was conducted';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
-                    Style = StandardAccent;
+                    Style = Subordinate;
                     StyleExpr = Rec.Archived;
                 }
                 field("Expiry Date"; Rec."Expiry Date")
@@ -145,6 +145,12 @@ page 50107 "TFB Vendor Certification List"
                     Style = Unfavorable;
                     StyleExpr = (AttachmentExists = false);
                 }
+                field("No. Of Items"; Rec."No. Of Items")
+                {
+                    Editable = false;
+                    ApplicationArea = all;
+                    ToolTip = 'Specifies how many items are covered by this quality certification';
+                }
 
 
 
@@ -179,7 +185,7 @@ page 50107 "TFB Vendor Certification List"
             action("UploadAttach")
             {
                 Caption = 'Upload Attachment';
-                Visible = true;
+                Visible = (AttachmentExists = false);
                 Image = Import;
                 Enabled = (AttachmentExists = false);
                 Tooltip = 'Attaches a certificate (in pdf form) to vendor certfication record';
@@ -194,7 +200,7 @@ page 50107 "TFB Vendor Certification List"
             action("DownloadAttach")
             {
                 Caption = 'Download Attachment';
-                Visible = true;
+                Visible = (AttachmentExists = true);
                 Image = SendAsPDF;
                 Enabled = AttachmentExists;
 
@@ -238,8 +244,9 @@ page 50107 "TFB Vendor Certification List"
 
             action("ReplaceFile")
             {
-                Visible = true;
+                Visible = (AttachmentExists = true);
                 Image = DocumentEdit;
+                Caption = 'Replace Attachment';
                 Enabled = AttachmentExists;
                 ToolTip = 'Removes current attachment and replace with new file';
 
@@ -252,8 +259,9 @@ page 50107 "TFB Vendor Certification List"
             }
             action("RemoveFile")
             {
-                Visible = true;
+                Visible = (AttachmentExists = true);
                 Image = Delete;
+                Caption = 'Remove Attachment';
                 Enabled = AttachmentExists;
                 ToolTip = 'Remove current attachment';
 
@@ -269,14 +277,23 @@ page 50107 "TFB Vendor Certification List"
         }
         area(Promoted)
         {
-            actionref(UploadAttach_Promoted; UploadAttach)
+            group(Upload)
             {
+                ShowAs = SplitButton;
+                actionref(UploadAttach_Promoted; UploadAttach)
+                {
 
-            }
-            actionref(ReplaceFile_Promoted; ReplaceFile)
-            {
+                }
+                actionref(DownloadAttach_Promoted; DownloadAttach)
+                {
 
+                }
+                actionref(ReplaceFile_Promoted; ReplaceFile)
+                {
+
+                }
             }
+
             actionref(SendToContact_Promoted; SendToContact)
             {
 
