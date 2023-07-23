@@ -241,12 +241,19 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
         addafter("Vendor No.")
         {
-            field("TFB Vendor Order Address"; Rec."TFB Vendor Order Address")
+            group(VendorOrderDetails)
             {
-                ApplicationArea = All;
-                ToolTip = 'Specifies which site this item originates at if the supplier has alternative sites';
                 Visible = ShowOrderAddressOption;
+                ShowCaption = false;
 
+                field("TFB Vendor Order Address"; Rec."TFB Vendor Order Address")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies which site this item originates at if the supplier has alternative sites';
+                    Enabled = ShowOrderAddressOption;
+                    Importance = Promoted;
+
+                }
             }
         }
 
@@ -381,8 +388,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
 
     }
 
-    var
-        ShowOrderAddressOption: Boolean;
+
 
     local procedure GetPricePerKg(): Decimal
 
@@ -425,11 +431,12 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
     trigger OnAfterGetCurrRecord()
     begin
         Rec.CalcFields(Rec."TFB Generic Link Exists");
+        ShowOrderAddressOption := CheckIfOrderAddressExists();
     end;
 
     var
         DropShipDefault: Boolean;
-
+        ShowOrderAddressOption: Boolean;
 
     local procedure CheckAndUpdateDropShipDetails()
 

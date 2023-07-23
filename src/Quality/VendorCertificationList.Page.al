@@ -23,6 +23,10 @@ page 50107 "TFB Vendor Certification List"
                 field("Vendor Name"; Rec."Vendor Name")
                 {
                     Tooltip = 'Specifies vendors name';
+                    TableRelation = Vendor.Name;
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
+
 
                     trigger OnValidate()
 
@@ -33,16 +37,22 @@ page 50107 "TFB Vendor Certification List"
                 field(Site; Rec.Site)
                 {
                     Tooltip = 'Specifies vendors facility that is certified';
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
                 }
                 field("Vendor Order Address"; Rec."Vendor Order Address")
                 {
                     ToolTip = 'Specifies vendors specific order address if one exists';
                     Enabled = OrderAddressExists;
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
                 }
                 field("Certification Type"; Rec."Certification Type")
                 {
                     Tooltip = 'Specifies the certification type';
                     Caption = 'Certification';
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
 
                     trigger OnValidate()
 
@@ -53,6 +63,8 @@ page 50107 "TFB Vendor Certification List"
                 field("Certification Class"; Rec."Certificate Class")
                 {
                     DrillDown = false;
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
                     lookup = false;
                     tooltip = 'Specifies the class of certification';
                 }
@@ -89,11 +101,15 @@ page 50107 "TFB Vendor Certification List"
                 {
                     tooltip = 'Specifies who audited the site and granted certification';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
                 }
                 field("Last Audit Date"; Rec."Last Audit Date")
                 {
                     tooltip = 'Specifies the date on which the last audit was conducted';
                     Enabled = not ((Rec."Certificate Class" = Rec."Certificate Class"::Religous) and Rec.Inherent);
+                    Style = StandardAccent;
+                    StyleExpr = Rec.Archived;
                 }
                 field("Expiry Date"; Rec."Expiry Date")
                 {
