@@ -46,6 +46,11 @@ page 50348 "TFB Item Costing"
                         Editable = true;
                         Tooltip = 'Specifies whether item costing is current and effective';
 
+                        
+                        trigger OnLookup(var Text: Text): Boolean
+                        begin
+                            exit(Rec.LookupCustomerName(Text));
+                        end;
                     }
                 }
                 field(HasLines; Rec.HasLines)

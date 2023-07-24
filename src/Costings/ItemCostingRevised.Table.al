@@ -43,9 +43,51 @@ table 50127 "TFB Item Costing Revised"
         {
             TableRelation = Customer;
             ValidateTableRelation = true;
+            trigger OnValidate()
+            var
+                Customer: Record Customer;
+            begin
+                If Customer.Get(Rec."Customer No.") then
+                    Rec."Customer Name" := Customer.Name
+                else
+                    Rec."Customer Name" := '';
+                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
+            end;
         }
         field(9; "Customer Name"; Text[100])
         {
+
+
+
+            trigger OnLookup()
+            var
+                CustomerName: Text;
+            begin
+                CustomerName := "Customer Name";
+                LookupCustomerName(CustomerName);
+                "Customer Name" := CopyStr(CustomerName, 1, MaxStrLen("Customer Name"));
+            end;
+
+            trigger OnValidate()
+            var
+                Customer: Record Customer;
+
+            begin
+
+                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
+
+
+
+                if Customer."No." <> '' then begin
+
+                    Validate("Customer No.", Customer."No.");
+
+                    if ShouldSearchForCustomerByName("Customer No.") then
+                        Validate("Customer No.", Customer.GetCustNo("Customer Name"));
+
+
+                end;
+            end;
 
         }
 
@@ -416,7 +458,48 @@ table 50127 "TFB Item Costing Revised"
 
     end;
 
+    procedure ShouldSearchForCustomerByName(CustomerNo: Code[20]) Result: Boolean
+    var
+        Customer2: Record Customer;
+        IsHandled: Boolean;
+    begin
+        IsHandled := false;
 
+        if IsHandled then
+            exit(Result);
+
+        if CustomerNo = '' then
+            exit(true);
+
+        if not Customer2.Get(CustomerNo) then
+            exit(true);
+
+
+
+        exit(not Customer2."Disable Search by Name");
+    end;
+
+    procedure LookupCustomerName(var CustomerName: Text): Boolean
+    var
+        Customer: Record Customer;
+        SearchCustomerName: Text;
+    begin
+        SearchCustomerName := CustomerName;
+
+
+        if "Customer No." <> '' then
+            Customer.Get("Customer No.");
+
+        if Customer.SelectCustomer(Customer) then begin
+            if Rec."Customer Name" = Customer.Name then
+                CustomerName := SearchCustomerName
+            else
+                CustomerName := Customer.Name;
+
+            exit(true);
+
+        end;
+    end;
 
     procedure CalcCostings(paramRec: record "TFB Item Costing Revised")
 
