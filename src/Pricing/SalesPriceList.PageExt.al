@@ -24,7 +24,7 @@ pageextension 50198 "TFB Sales Price List" extends "Sales Price List"
 
                 begin
 
-                    CostingCU.CopyCurrentCostingToPriceList(Rec);
+                    CostingCU.CopyCurrentCostingToPriceList(Rec,'');
                 end;
             }
 

@@ -140,7 +140,7 @@ pageextension 50209 "TFB Price Worksheet" extends "Price Worksheet"
                         if ItemCostingFilters."Price List Code" = '' then exit;
                         PriceListHeader.Get(ItemCostingFilters."Price List Code");
                         TempPriceListHeader := PriceListHeader;
-                        CostingCU.CopyCurrentCostingToPriceList(TempPriceListHeader);
+                        CostingCU.CopyCurrentCostingToPriceList(TempPriceListHeader, ItemCostingFilters."Product Filter");
 
                     end;
                 end;

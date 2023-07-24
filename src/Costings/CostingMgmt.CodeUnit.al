@@ -788,7 +788,7 @@ codeunit 50304 "TFB Costing Mgmt"
         PriceWorksheetLine.Insert(true);
     end;
 
-    internal procedure CopyCurrentCostingToPriceList(var PriceListHeader: Record "Price List Header")
+    internal procedure CopyCurrentCostingToPriceList(var PriceListHeader: Record "Price List Header"; ProductFilter: Text)
 
 
 
@@ -819,7 +819,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
 
         ItemCostingLines.Reset();
-
+        ItemCostingLines.SetView(ProductFilter);
         ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::DZP);
         ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
         ApproxCount := ItemCostingLines.CountApprox;
@@ -919,7 +919,7 @@ codeunit 50304 "TFB Costing Mgmt"
 
 
                 ItemCostingLines.Reset();
-           
+                ItemCostingLines.SetView(ProductFilter);
                 ItemCostingLines.SetRange("Costing Type", ItemCostingLines."Costing Type"::Standard);
                 ItemCostingLines.SetRange("Line Type", ItemCostingLines."Line Type"::EXP);
                 ItemCostingLines.SetRange("Line Key", '-');

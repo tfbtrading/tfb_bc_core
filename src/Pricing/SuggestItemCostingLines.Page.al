@@ -32,6 +32,19 @@ page 50157 "TFB Suggest Item Costing Lines"
                             CurrPage.Update(true);
                         end;
                     }
+                    field("Product Filter"; GetReadableProductFilter())
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Costing Line Filter';
+                        ToolTip = 'Specifies the filter for item costing fields';
+                        Editable = false;
+
+                        trigger OnAssistEdit()
+                        begin
+                            Rec.EditAssetFilter();
+                            CurrPage.SaveRecord();
+                        end;
+                    }
 
                     field("Close Existing Lines"; Rec."Close Existing Lines")
                     {
@@ -50,7 +63,7 @@ page 50157 "TFB Suggest Item Costing Lines"
 
     trigger OnOpenPage()
     var
-       
+
     begin
 
         Rec.Insert();
@@ -93,6 +106,18 @@ page 50157 "TFB Suggest Item Costing Lines"
     begin
         TempDefaultsPriceListHeader := PriceListHeader;
         Defaults := GetDefaults();
+    end;
+
+    local procedure GetReadableProductFilter() Result: Text
+    var
+        RecRef: RecordRef;
+    begin
+        if Rec."Product Filter" = '' then
+            exit('');
+        RecRef.Open(Database::Item);
+        RecRef.SetView(Rec."Product Filter");
+        Result := RecRef.GetView(true);
+        RecRef.Close();
     end;
 
 }

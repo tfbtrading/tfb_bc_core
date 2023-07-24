@@ -47,7 +47,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.0'))
+        exit((GetInstallingVersionNo() = '22.0.2.2'))
     end;
 
 
@@ -145,7 +145,6 @@ codeunit 50103 "TFB Upgrade Mgmt"
         dt.AddFieldValue(fromrec.fieldno("Market Price Margin %"), torec.FieldNo("Market Price Margin %"));
         dt.addfieldvalue(fromrec.fieldno("Full Load Margin %"), torec.FieldNo("Full Load Margin %"));
         dt.AddFieldValue(fromrec.FieldNo("Pallet Qty"), torec.FieldNo("Pallet Qty"));
-        dt.AddFieldValue(fromrec.FieldNo("Vendor Currency"), torec.fieldno("Vendor Currency"));
         dt.addfieldvalue(fromRec.FieldNo("Days Financed"), torec.FieldNo("Days Financed"));
         dt.AddFieldValue(fromRec.FieldNo(Dropship), torec.FieldNo(Dropship));
         dt.AddFieldValue(fromRec.FieldNo("Est. Storage Duration"), toRec.FieldNo("Est. Storage Duration"));
