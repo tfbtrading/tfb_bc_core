@@ -1,17 +1,10 @@
-table 50345 "TFB Item Costing"
+table 50127 "TFB Item Costing Revised"
 {
-    ObsoleteState = Pending;
-    ObsoleteReason = 'Replaced by TFB Item Costing Revised';
+
 
     fields
     {
-        field(99; "Estimate No."; GUID)
-        {
 
-            DataClassification = CustomerContent;
-            ObsoleteState = Removed;
-            ObsoleteReason = 'Superceded by systemid field';
-        }
         field(1; "Item No."; Code[20])
         {
             Caption = 'Item Code';
@@ -40,6 +33,22 @@ table 50345 "TFB Item Costing"
                 if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
             end;
         }
+
+        field(2; "Costing Type"; Enum "TFB Costing Type")
+        {
+
+
+        }
+        field(3; "Customer No."; Code[20])
+        {
+            TableRelation = Customer;
+            ValidateTableRelation = true;
+        }
+        field(9; "Customer Name"; Text[100])
+        {
+
+        }
+
         field(5; "Description"; Text[250])
         {
             Caption = 'Item Description';
@@ -85,21 +94,7 @@ table 50345 "TFB Item Costing"
 
         }
 
-        field(2; "Costing Type"; Option)
-        {
-            OptionMembers = "Standard","Customer","Test";
 
-        }
-        field(3; "Effective Date"; Date)
-        {
-            NotBlank = true;
-
-            trigger OnValidate()
-
-            begin
-                CostingCU.CheckAndObseleteOldRecords(rec);
-            end;
-        }
 
         field(14; "Exch. Rate"; Decimal)
         {
@@ -143,10 +138,7 @@ table 50345 "TFB Item Costing"
 
 
         }
-        field(9; "Last Modified Date Time"; DateTime)
-        {
-            DataClassification = CustomerContent;
-        }
+
         field(4; "Landed Cost Profile"; Code[20])
         {
             DataClassification = CustomerContent;
@@ -307,7 +299,7 @@ table 50345 "TFB Item Costing"
         field(19; "HasLines"; Boolean)
         {
             FieldClass = FlowField;
-            CalcFormula = exist("TFB Item Costing Lines" where("Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Effective Date" = field("Effective Date")));
+            CalcFormula = exist("TFB Item Costing Revised Lines" where("Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Customer No." = field("Customer No.")));
 
         }
         field(20; "Vendor Currency"; Code[10])
@@ -315,85 +307,69 @@ table 50345 "TFB Item Costing"
             FieldClass = FlowField;
             CalcFormula = lookup(Vendor."Currency Code" where("No." = field("Vendor No.")));
         }
-        field(23; "Current"; Boolean)
-        {
-            Editable = true;
 
-            //Check for effective date and obselete old records if true
-            trigger OnValidate()
-
-            begin
-                CostingCU.CheckAndObseleteOldRecords(rec);
-            end;
-
-        }
 
         field(30; "Mel Metro Unit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('MELMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('MELMETRO')));
 
         }
         field(31; "Mel Metro Kg"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('MELMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('MELMETRO')));
 
         }
         field(32; "Syd Metro Unit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('SYDMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('SYDMETRO')));
 
         }
         field(33; "Syd Metro Kg"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('SYDMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('SYDMETRO')));
 
         }
         field(34; "Adl Metro Unit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('ADLMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('ADLMETRO')));
 
         }
         field(35; "Adl Metro Kg"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('ADLMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('ADLMETRO')));
 
         }
         field(36; "Brs Metro Unit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('BRSMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('BRSMETRO')));
 
         }
         field(37; "Brs Metro Kg"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(DZP), "Line Key" = const('BRSMETRO')));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(DZP), "Line Key" = const('BRSMETRO')));
 
         }
         field(38; "Exw Unit"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(EXP)));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price (Base)" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(EXP)));
 
         }
         field(39; "Exw Kg"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = sum("TFB Item Costing Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Effective Date" = field("Effective Date"), "Line Type" = const(EXP)));
+            CalcFormula = sum("TFB Item Costing Revised Lines"."Price Per Weight Unit" where("Item No." = field("Item No."), "Costing Type" = const(Standard), "Customer No." = field("Customer No."), "Line Type" = const(EXP)));
 
         }
-        field(40; Id; GUID)
-        {
-            ObsoleteState = Pending;
-            ObsoleteReason = 'Superceded by systemid field';
 
-        }
         field(45; "Fix Exch. Rate"; Boolean)
         {
             Caption = 'Fix Exch. Rate';
@@ -406,7 +382,7 @@ table 50345 "TFB Item Costing"
     keys
     {
 
-        key(PK; "Item No.", "Costing Type", "Effective Date")
+        key(PK; "Item No.", "Costing Type", "Customer No.")
         {
             Clustered = true;
 
@@ -424,7 +400,7 @@ table 50345 "TFB Item Costing"
     }
     trigger OnModify()
     begin
-        "Last Modified Date Time" := CURRENTDATETIME();
+
 
         if CheckMandatoryFieldsValid() then
             CostingCU.GenerateCostingLines(rec)
@@ -442,7 +418,7 @@ table 50345 "TFB Item Costing"
 
 
 
-    procedure CalcCostings(paramRec: record "TFB Item Costing")
+    procedure CalcCostings(paramRec: record "TFB Item Costing Revised")
 
 
     begin
@@ -456,16 +432,16 @@ table 50345 "TFB Item Costing"
 
 
 
-    local procedure DeleteCostings(paramRec: record "TFB Item Costing")
+    local procedure DeleteCostings(paramRec: Record "TFB Item Costing Revised")
 
     var
-        ItemCostingLine: record "TFB Item Costing Lines";
+        ItemCostingLine: record "TFB Item Costing Revised Lines";
 
     begin
         //Remove previous item cost lines
         ItemCostingLine.SetRange("Item No.", paramRec."Item No.");
         ItemCostingLine.SetRange("Costing Type", paramRec."Costing Type");
-        ItemCostingLine.SetRange("Effective Date", paramRec."Effective Date");
+        ItemCostingLine.SetRange("Customer No.", paramRec."Customer No.");
         ItemCostingLine.DeleteAll();
 
     end;

@@ -3,7 +3,7 @@ page 50347 "TFB Item Costing List"
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;
-    SourceTable = "TFB Item Costing";
+    SourceTable = "TFB Item Costing Revised";
     CardPageId = "TFB Item Costing";
     Editable = true;
     Caption = 'Item Costing List';
@@ -48,11 +48,10 @@ page 50347 "TFB Item Costing List"
                     Editable = false;
                     Tooltip = 'Specifies if costing is general or specific for customer';
                 }
-                field("Effective Date"; Rec."Effective Date")
+                field("Customer No."; Rec."Customer No.")
                 {
                     Editable = false;
-                    Tooltip = 'Specifies effective initial date for item costing';
-                    Visible = false;
+                    ToolTip = 'Specifies the Customer No.';
                 }
                 field("Purchase Price Unit"; Rec."Purchase Price Unit")
                 {
@@ -110,7 +109,7 @@ page 50347 "TFB Item Costing List"
                     end;
 
                 }
-                field("Last Modified Date Time"; Rec."Last Modified Date Time")
+                field("Last Modified Date Time"; Rec.SystemModifiedAt)
                 {
                     Editable = false;
                     ToolTip = 'Specifies date item costing was last modified';
@@ -258,12 +257,12 @@ page 50347 "TFB Item Costing List"
         }
         view("Current / Standard")
         {
-            Filters = where("Costing Type" = const(Standard), Current = const(true));
+            Filters = where("Costing Type" = const(Standard));
             OrderBy = ascending("Item Category", Description);
         }
         view("Export")
         {
-            Filters = where("Costing Type" = const(Standard), Current = const(true), "Publishing Blocked" = const(false));
+            Filters = where("Costing Type" = const(Standard), "Publishing Blocked" = const(false));
             OrderBy = ascending("Item Category", Description);
 
 

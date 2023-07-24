@@ -167,7 +167,7 @@ pageextension 50125 "TFB Vendor Card" extends "Vendor Card"
                 Tooltip = 'Show item costings';
                 Image = CostEntries;
                 RunObject = page "TFB Item Costing List";
-                RunPageLink = "Vendor No." = field("No."), Current = const(true);
+                RunPageLink = "Vendor No." = field("No.");
                 RunPageMode = View;
 
             }

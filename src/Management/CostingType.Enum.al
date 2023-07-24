@@ -1,4 +1,4 @@
-enum 50183 "TFB CostingType"
+enum 50183 "TFB Costing Type"
 {
     Extensible = true;
 

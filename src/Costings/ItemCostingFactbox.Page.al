@@ -147,7 +147,7 @@ page 50102 "TFB Item Costing Factbox"
     trigger OnAfterGetRecord()
 
     var
-        ItemCosting: Record "TFB Item Costing";
+        ItemCosting: Record "TFB Item Costing Revised";
         TempPriceListLine: Record "Price List Line" temporary;
         CCU: CodeUnit "TFB Costing Mgmt";
 
@@ -160,7 +160,6 @@ page 50102 "TFB Item Costing Factbox"
         clear(_MarketPrice);
 
         ItemCosting.SetRange("Item No.", Rec."No.");
-        ItemCosting.SetRange(Current, true);
         ItemCosting.SetRange("Costing Type", ItemCosting."Costing Type"::Standard);
 
 

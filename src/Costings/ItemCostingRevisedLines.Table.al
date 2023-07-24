@@ -1,8 +1,7 @@
-table 50346 "TFB Item Costing Lines"
+table 50128 "TFB Item Costing Revised Lines"
 {
     DataClassification = CustomerContent;
-    ObsoleteState = Pending;
-    ObsoleteReason = 'Replaced by TFB Item Costing Revised Lines';
+
 
     fields
     {
@@ -39,12 +38,12 @@ table 50346 "TFB Item Costing Lines"
 
             end;
         }
-        field(3; "Costing Type"; Option)
+        field(3; "Costing Type"; Enum "TFB Costing Type")
         {
-            OptionMembers = "Standard","Customer","Test";
+
             NotBlank = true;
         }
-        field(4; "Effective Date"; Date)
+        field(4; "Customer No."; Code[20])
         {
             NotBlank = true;
         }
@@ -72,11 +71,7 @@ table 50346 "TFB Item Costing Lines"
         {
 
         }
-        field(11; Current; Boolean)
-        {
-            FieldClass = FlowField;
-            CalcFormula = lookup("TFB Item Costing".Current where("Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Effective Date" = field("Effective Date")));
-        }
+
 
         field(12; CalcDesc; Text[2048])
         {
@@ -88,7 +83,7 @@ table 50346 "TFB Item Costing Lines"
 
     keys
     {
-        key(PK; "Item No.", "Costing Type", "Effective Date", "Line Type", "Line Key")
+        key(PK; "Item No.", "Costing Type", "Customer No.", "Line Type", "Line Key")
         {
             Clustered = true;
         }

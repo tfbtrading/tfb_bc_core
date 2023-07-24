@@ -92,10 +92,10 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     procedure ExtractReference(Description: Text; var TokenClass: Enum "TFB Assignment Class"): Text[100]
 
     var
+        CoreSetup: Record "TFB Core Setup";
         StartNum: Integer;
         TokenLen: Integer;
         Reference: Text[100];
-        CoreSetup: Record "TFB Core Setup";
 
     begin
 

@@ -138,7 +138,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                 trigger OnDrillDown()
 
                 var
-                    ItemCosting: record "TFB Item Costing";
+                    ItemCosting: record "TFB Item Costing Revised";
                     ItemCostingPage: page "TFB Item Costing";
                 begin
 
@@ -150,7 +150,6 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
                         ItemCosting.Init();
                         ItemCosting.Validate("Item No.", Rec."No.");
                         ItemCosting.Validate("Costing Type", ItemCosting."Costing Type"::Standard);
-                        ItemCosting.Validate("Effective Date", WorkDate());
                         ItemCostingPage.SetRecord(ItemCosting);
                         ItemCostingPage.Run();
                     end;
@@ -253,7 +252,7 @@ pageextension 50175 "TFB Sales Line Factbox" extends "Sales Line FactBox"
     trigger OnAfterGetRecord()
 
     var
-        ItemCosting: Record "TFB Item Costing";
+        ItemCosting: Record "TFB Item Costing Revised";
 
     begin
         clear(ItemCostingSystemID);

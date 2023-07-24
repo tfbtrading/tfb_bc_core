@@ -183,7 +183,7 @@ page 50341 "TFB Landed Cost Profile"
 
         area(Promoted)
         {
-            group(Category_Home)
+            group(Category_Process)
             {
                 actionref(RefreshRef; Refresh)
                 {

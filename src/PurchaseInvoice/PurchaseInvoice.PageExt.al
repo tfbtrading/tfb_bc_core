@@ -241,8 +241,8 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
     var
         PurchInvLine: Record "Purchase Line";
         PurchInvCU: Codeunit "TFB Purch. Inv. Mgmt";
-        TokenClass: Enum "TFB Assignment Class";
         ConfirmMgmt: Codeunit "Confirm Management";
+        TokenClass: Enum "TFB Assignment Class";
         Reference: Text[100];
         Result: Boolean;
 

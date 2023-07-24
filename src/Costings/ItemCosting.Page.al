@@ -4,7 +4,7 @@
 page 50348 "TFB Item Costing"
 {
     PageType = Card;
-    SourceTable = "TFB Item Costing";
+    SourceTable = "TFB Item Costing Revised";
     DelayedInsert = true;
     Caption = 'Item Costing';
     ApplicationArea = All;
@@ -33,15 +33,20 @@ page 50348 "TFB Item Costing"
                 {
                     Tooltip = 'Specifies type of costing - is it for specific customer or general';
                 }
-                field("Effective Date"; Rec."Effective Date")
+                group(CustomerDetails)
                 {
-                    ToolTip = 'Specifies initial effective date on which costing is created';
-                }
-                field(Current; Rec.Current)
-                {
-                    Editable = true;
-                    Tooltip = 'Specifies whether item costing is current and effective';
+                    Visible = Rec."Costing Type" = Rec."Costing Type"::Customer;
+                    ShowCaption = false;
+                    field("Customer No."; Rec."Customer No.")
+                    {
+                        ToolTip = 'Specifies initial effective date on which costing is created';
+                    }
+                    field("Customer Name"; Rec."Customer Name")
+                    {
+                        Editable = true;
+                        Tooltip = 'Specifies whether item costing is current and effective';
 
+                    }
                 }
                 field(HasLines; Rec.HasLines)
                 {
@@ -167,7 +172,7 @@ page 50348 "TFB Item Costing"
 
             part("Lines"; "TFB Item Costing Subform")
             {
-                SubPageLink = "Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Effective Date" = field("Effective Date");
+                SubPageLink = "Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Customer No." = field("Customer No.");
                 UpdatePropagation = SubPart;
                 Visible = true;
                 Caption = 'Lines';

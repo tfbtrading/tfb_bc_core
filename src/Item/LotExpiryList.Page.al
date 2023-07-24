@@ -22,7 +22,7 @@ page 50176 "TFB Lot Expiry List"
                 {
                     ToolTip = 'Specifies the value of the Item No. field.';
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the description of the Item';
                 }

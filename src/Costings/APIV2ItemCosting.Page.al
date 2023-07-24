@@ -8,7 +8,7 @@ page 50335 "TFB APIV2 Item Costing"
     EntityName = 'itemCosting';
     EntitySetName = 'itemCostings';
     DelayedInsert = true;
-    SourceTable = "TFB Item Costing";
+    SourceTable = "TFB Item Costing Revised";
     Editable = false;
     ODataKeyFields = SystemId;
     ApplicationArea = All;
@@ -39,10 +39,15 @@ page 50335 "TFB APIV2 Item Costing"
 
                     Caption = 'costingType';
                 }
-                field(effectiveDate; Rec."Effective Date")
+                field(customerNo; Rec."Customer No.")
                 {
 
-                    Caption = 'effectiveDate';
+                    Caption = 'customerNo';
+                }
+                field(customerName; Rec."Customer Name")
+                {
+
+                    Caption = 'customerName';
                 }
                 field(purchasePriceUnit; Rec."Purchase Price Unit")
                 {
@@ -73,9 +78,9 @@ page 50335 "TFB APIV2 Item Costing"
                     Caption = 'marketPricingMargin';
 
                 }
-                field(lastModified; Rec."Last Modified Date Time")
+                field(lastModified; Rec.SystemModifiedAt)
                 {
-                    Caption = 'lastModified';
+                    Caption = 'lastModifiedDateTime';
                 }
                 field("hasLines"; Rec."HasLines")
                 {

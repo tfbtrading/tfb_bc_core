@@ -339,8 +339,8 @@ page 50145 "TFB Gross Profit Sales Lines"
     local procedure updateLineVariables()
     var
         Item: Record Item;
-        ItemCosting: Record "TFB Item Costing";
-        ItemCostingLine: Record "TFB Item Costing Lines";
+        ItemCosting: Record "TFB Item Costing Revised";
+        ItemCostingLine: Record "TFB Item Costing Revised Lines";
         PostCodeZone: Record "TFB Postcode Zone";
         PostCodeZoneRate: Record "TFB Postcode Zone Rate";
         PurchaseLine: Record "Purchase Line";
@@ -356,7 +356,6 @@ page 50145 "TFB Gross Profit Sales Lines"
         _grossprofitperc := 0;
 
         ItemCosting.SetRange("Item No.", Rec."No.");
-        ItemCosting.Setrange(Current, true);
         ItemCosting.Setrange("Costing Type", ItemCosting."Costing Type"::Standard);
 
 
@@ -391,7 +390,6 @@ page 50145 "TFB Gross Profit Sales Lines"
 
                             ItemCostingLine.SetRange("Item No.", Rec."No.");
                             ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
-                            ItemCostingLine.SetRange(Current, true);
                             ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
                             if ItemCostingLine.FindFirst() then begin
                                 _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)" + PricingCU.GetVendorZoneRate(Item."Vendor No.", Item."No.", PostCodeZoneRate."Zone Code"), Item."Net Weight");
@@ -433,7 +431,6 @@ page 50145 "TFB Gross Profit Sales Lines"
                     //Uses the item costing - which calculated out the basis for the current pricing
                     ItemCostingLine.SetRange("Item No.", Rec."No.");
                     ItemCostingLine.SetRange("Costing Type", ItemCostingLine."Costing Type"::Standard);
-                    ItemCostingLine.SetRange(Current, true);
                     ItemCostingLine.SetRange("Line Type", ItemCostingLine."Line Type"::TCG);
                     if ItemCostingLine.FindFirst() then begin
                         _CostPricePerKg := PricingCU.CalcPerKgFromUnit(ItemCostingLine."Price (Base)", Item."Net Weight");

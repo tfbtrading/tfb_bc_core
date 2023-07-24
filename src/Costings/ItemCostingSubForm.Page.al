@@ -1,7 +1,7 @@
 page 50346 "TFB Item Costing Subform"
 {
     PageType = ListPart;
-    SourceTable = "TFB Item Costing Lines";
+    SourceTable = "TFB Item Costing Revised Lines";
     SourceTableView = sorting("Price (Base)") order(ascending);
     Editable = false;
     ApplicationArea = All;
