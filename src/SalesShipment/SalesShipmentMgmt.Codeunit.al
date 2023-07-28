@@ -768,26 +768,28 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                                         CommentBuilder.Append(StrSubstNo('. <p>Tracking No is <b>%1</b> </p>', Header."Package Tracking No."))
                                 end;
                     end
-                    else begin
+                    else
                         //Add details on expected arrival
-                        ShippingAgent.Get(Header."Shipping Agent Code");
+                        if ShippingAgent.Get(Header."Shipping Agent Code") then begin
 
-                        CustCalendarChange[1].Description := 'Source';
-                        CustCalendarChange[1]."Source Type" := CustCalendarChange[1]."Source Type"::"Shipping Agent";
-                        CustCalendarChange[1]."Source Code" := ShippingAgent.Code;
-                        CustCalendarChange[1]."Additional Source Code" := Header."Shipping Agent Service Code";
+                            CustCalendarChange[1].Description := 'Source';
+                            CustCalendarChange[1]."Source Type" := CustCalendarChange[1]."Source Type"::"Shipping Agent";
+                            CustCalendarChange[1]."Source Code" := ShippingAgent.Code;
+                            CustCalendarChange[1]."Additional Source Code" := Header."Shipping Agent Service Code";
 
-                        CustCalendarChange[2].Description := 'Customer';
-                        CustCalendarChange[2]."Source Type" := CustCalendarChange[2]."Source Type"::Customer;
-                        CustCalendarChange[2]."Source Code" := Header."Sell-to Customer No.";
+                            CustCalendarChange[2].Description := 'Customer';
+                            CustCalendarChange[2]."Source Type" := CustCalendarChange[2]."Source Type"::Customer;
+                            CustCalendarChange[2]."Source Code" := Header."Sell-to Customer No.";
 
-                        ExpectedDate := CalMgmt.CalcDateBOC(format(Line."Shipping Time"), Header."Posting Date", CustCalendarChange, true);
-                        if ExpectedDate = Header."Posting Date" then
-                            CommentBuilder.AppendLine(StrSubstNo('Dispatched today for same delivery by %1.', ShippingAgent.Name))
+                            ExpectedDate := CalMgmt.CalcDateBOC(format(Line."Shipping Time"), Header."Posting Date", CustCalendarChange, true);
+                            if ExpectedDate = Header."Posting Date" then
+                                CommentBuilder.AppendLine(StrSubstNo('Dispatched today for same delivery by %1.', ShippingAgent.Name))
+                            else
+                                CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name));
+                        end
                         else
-                            CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name));
+                            CommentBuilder.AppendLine(StrSubstNo('Dispatched today for delivery.'));
 
-                    end;
                     LineBuilder.Append(StrSubstNo(tdTxt, CommentBuilder.ToText()));
 
 
@@ -855,9 +857,13 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                         end
                         else begin
                             //Add details on expected arrival
-                            ShippingAgent.Get(Header."Shipping Agent Code");
+
                             ExpectedDate := OrderLine."Planned Delivery Date";
-                            CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name));
+                            If ShippingAgent.Get(Header."Shipping Agent Code") then
+                                CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name))
+                            else
+                                CommentBuilder.Append(StrSubstNo('Expected delivery on %1', ExpectedDate));
+
 
                         end;
                         LineBuilder.Append(StrSubstNo(tdTxt, CommentBuilder.ToText()));
@@ -1217,7 +1223,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     local procedure HandeShipmentHeaderUpdate(FromSalesShptHeader: Record "Sales Shipment Header"; var SalesShptHeader: Record "Sales Shipment Header")
 
     var
-        //ShptLine: Record "Sales Shipment Line";
+    //ShptLine: Record "Sales Shipment Line";
 
     begin
 
