@@ -1,11 +1,14 @@
 query 50100 "TFB Items Shipped"
 {
     QueryType = Normal;
+    DataAccessIntent = ReadOnly;
+    
 
     elements
     {
         dataitem(Sales_Shipment_Line; "Sales Shipment Line")
         {
+            DataItemTableFilter = Type = const(Item);
             column(Sell_to_Customer_No_; "Sell-to Customer No.")
             {
 

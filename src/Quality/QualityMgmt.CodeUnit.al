@@ -113,49 +113,56 @@ codeunit 50104 "TFB Quality Mgmt"
         end;
     end;
 
-    procedure GatherCustomerQualityDocuments(CustomerNo: Code[20]; var ListOfCertifications: Record "TFB Vendor Certification" temporary; QualityOnly: Boolean): Boolean
+    procedure GatherCustomerQualityDocuments(CustomerNo: Code[20]; var DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var ListOfCertifications: Record "TFB Vendor Certification" temporary; QualityOnly: Boolean): Boolean
 
     var
         VendorCertification: Record "TFB Vendor Certification";
         ListQuery: Query "TFB Items Shipped";
-        ListOfItems: Dictionary of [Code[20], Integer];
-        ListOfVendors: Dictionary of [Code[20], Integer];
-        VendorNo: Code[20];
+        DictItems: Dictionary of [Code[20], Integer];
 
+        ListItems: List of [Code[20]];
+        VendorNo: Code[20];
 
 
 
     begin
         CLEAR(ListOfCertifications);
         ListQuery.SetRange(Sell_to_Customer_No_, CustomerNo);
+        ListQuery.SetFilter(Posting_Date, 't-1y..t');
         ListQuery.Open();
 
         while ListQuery.Read() do begin
-            ListOfItems.Add(ListQuery.No_, ListQuery.Count_);
-            if not ListOfVendors.ContainsKey(ListQuery.Vendor_No_) then
-                ListOfVendors.Add(ListQuery.Vendor_No_, 1)
-            else
-                ListOfVendors.Set(ListQuery.Vendor_No_, ListOfVendors.Get(ListQuery.Vendor_No_) + 1);
+            DictItems.Add(ListQuery.No_, ListQuery.Count_);
+            if DictVendors.ContainsKey(ListQuery.Vendor_No_) then
+                DictVendors.Get(ListQuery.Vendor_No_).Add(ListQuery.No_)
+            else begin
+                ListItems.Add(ListQuery.No_);
+                DictVendors.Add(ListQuery.Vendor_No_, ListItems);
+                Clear(ListItems);
+            end;
         end;
 
-        foreach VendorNo in ListOfVendors.Keys() do begin
+        foreach VendorNo in DictVendors.Keys() do begin
             //Retrieve quality documentation
             VendorCertification.SetRange("Vendor No.", VendorNo);
             VendorCertification.SetAutoCalcFields(VendorCertification."Certificate Class");
 
             if VendorCertification.FindSet() then
                 repeat
-                    if QualityOnly and (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
+                    if not QualityOnly and not (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
                         ListOfCertifications := VendorCertification;
                         ListOfCertifications.Insert(false);
                     end
+                    else
+                        if (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
+                            ListOfCertifications := VendorCertification;
+                            ListOfCertifications.Insert(false);
+                        end;
                 until VendorCertification.Next() < 1;
 
         end;
 
-        if ListOfCertifications.Count() > 0 then
-            exit(true) else
-            exit(false)
+        exit(ListOfCertifications.Count() > 0);
 
     end;
 
@@ -170,11 +177,11 @@ codeunit 50104 "TFB Quality Mgmt"
         Recipients: List of [Text];
         SubTitleTxt: Label '';
         TitleTxt: Label 'Vendor Certifications Email';
-
+        DictVendors: Dictionary of [Code[20], List of [Code[20]]];
 
     begin
 
-        if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, TempListOfCertifications, QualityOnly) then begin
+        if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, DictVendors, TempListOfCertifications, QualityOnly) then begin
 
             Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
             Contact.SetFilter("E-Mail", '>%1', '');
@@ -194,7 +201,7 @@ codeunit 50104 "TFB Quality Mgmt"
                     until Contact.Next() = 0;
 
                 if Recipients.Count > 0 then
-                    SendVendorCertificationEmail(TempListOfCertifications, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
+                    SendVendorCertificationEmail(TempListOfCertifications, DictVendors, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
 
             end;
         end;
@@ -234,7 +241,7 @@ codeunit 50104 "TFB Quality Mgmt"
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
         OutStream: OutStream;
-        TitleTxt: Label 'Quality Documents Request';
+
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
@@ -243,7 +250,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
         CompanyInfo.Get();
 
-        SubjectNameBuilder.Append(TitleTxt);
+        SubjectNameBuilder.Append(QualityTitleTxt);
 
 
         HTMLBuilder.Append(HTMLTemplate);
@@ -271,7 +278,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
     end;
 
-    internal procedure SendCompanyCertificationEmail(var CompanyCerts: Record "TFB Company Certification"; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
+    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
 
     var
         CompanyInfo: Record "Company Information";
@@ -280,6 +287,7 @@ codeunit 50104 "TFB Quality Mgmt"
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
+        InstreamExcel: Instream;
         OutStream: OutStream;
         TitleTxt: Label 'Quality Documents Request';
         FileNameBuilder: TextBuilder;
@@ -291,6 +299,56 @@ codeunit 50104 "TFB Quality Mgmt"
         CompanyInfo.Get();
 
         SubjectNameBuilder.Append(TitleTxt);
+
+
+        HTMLBuilder.Append(HTMLTemplate);
+
+        GenerateQualityDocumentsContent(VendorCerts, DictVendors, HTMLBuilder);
+        EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+
+        if VendorCerts.Findset(false) then
+            repeat
+                if PersBlobCU.Exists(VendorCerts."Certificate Attach.") then begin
+                    Clear(FileNameBuilder);
+                    FileNameBuilder.Append(StrSubstNo('Cert %1_%2_%3.pdf', VendorCerts."Vendor Name", VendorCerts.Site, VendorCerts."Certification Type"));
+                    TempBlob.CreateOutStream(Outstream);
+                    PersBlobCU.CopyToOutStream(VendorCerts."Certificate Attach.", OutStream);
+                    TempBlob.CreateInStream(InStream);
+                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
+                end
+
+
+            until VendorCerts.Next() < 1;
+        If GenerateExcelDocument(VendorCerts, DictVendors, TempBlob) then begin
+            TempBlob.CreateInStream(InstreamExcel);
+            EmailMessage.AddAttachment('Quality Documents Index.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InstreamExcel);
+        end;
+        if not IsNullGuid(CustomerSystemID) then
+            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
+        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
+
+    end;
+
+    internal procedure SendCompanyCertificationEmail(var CompanyCerts: Record "TFB Company Certification"; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
+
+    var
+        CompanyInfo: Record "Company Information";
+        Email: CodeUnit Email;
+        EmailMessage: CodeUnit "Email Message";
+        PersBlobCU: CodeUnit "Persistent Blob";
+        TempBlob: Codeunit "Temp Blob";
+        InStream: InStream;
+        OutStream: OutStream;
+
+        FileNameBuilder: TextBuilder;
+        HTMLBuilder: TextBuilder;
+        SubjectNameBuilder: TextBuilder;
+
+    begin
+
+        CompanyInfo.Get();
+
+        SubjectNameBuilder.Append(QualityTitleTxt);
 
 
         HTMLBuilder.Append(HTMLTemplate);
@@ -379,6 +437,76 @@ codeunit 50104 "TFB Quality Mgmt"
         exit(true);
     end;
 
+    local procedure GenerateQualityDocumentsContent(var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var HTMLBuilder: TextBuilder): Boolean
+
+    var
+        Item: Record Item;
+        PersBlob: CodeUnit "Persistent Blob";
+        BodyBuilder: TextBuilder;
+        CommentBuilder: TextBuilder;
+        LineBuilder: TextBuilder;
+        ItemBuilder: TextBuilder;
+        ItemList: List of [Code[20]];
+        ItemNo: Code[20];
+
+    begin
+
+        HTMLBuilder.Replace('%{ExplanationCaption}', 'Request Type');
+        HTMLBuilder.Replace('%{ExplanationValue}', 'Updated Vendor Certifications');
+        HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
+        HTMLBuilder.Replace('%{DateValue}', format(today()));
+        HTMLBuilder.Replace('%{ReferenceCaption}', '');
+        HTMLBuilder.Replace('%{ReferenceValue}', '');
+        HTMLBuilder.Replace('%{AlertText}', '');
+
+        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find our latest quality documents as requested</h2><br>'));
+
+        BodyBuilder.AppendLine('<table class="tfbdata" width="100%" cellspacing="10" cellpadding="10" border="0">');
+        BodyBuilder.AppendLine('<thead>');
+
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Vendor</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Location</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="25%">Type</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left vertical-align="top" width="20%">Related items</th></thead>');
+        Item.SetLoadFields(Description);
+        if VendorCertification.Findset(false) then begin
+            repeat
+
+                Clear(LineBuilder);
+                Clear(CommentBuilder);
+                LineBuilder.AppendLine('<tr>');
+
+                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Vendor Name"));
+                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification.Site));
+                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Certification Type"));
+                LineBuilder.Append(StrSubstNo(tdTxt, VendorCertification."Expiry Date"));
+                LineBuilder.Append(StrSubstNo(tdTxt, PersBlob.Exists(VendorCertification."Certificate Attach.")));
+                if DictVendors.ContainsKey(VendorCertification."Vendor No.") then begin
+                    ItemList := DictVendors.Get(VendorCertification."Vendor No.");
+                    foreach ItemNo in ItemList do begin
+                        Item.Get(ItemNo);
+                        ItemBuilder.AppendLine(Item.Description + '<br>');
+                    end;
+                end;
+                LineBuilder.Append(StrSubstNo(tdTxt, ItemBuilder.ToText()));
+                Clear(ItemBuilder);
+                Clear(ItemList);
+                LineBuilder.AppendLine('</tr>');
+                BodyBuilder.AppendLine(LineBuilder.ToText());
+
+
+
+            until VendorCertification.Next() < 1;
+            BodyBuilder.AppendLine('</table>');
+        end
+        else
+            BodyBuilder.AppendLine('<h2>No quality documents found for vendor items shipped</h2>');
+
+        HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
+        exit(true);
+    end;
 
     local procedure GenerateQualityDocumentsContent(var CompanyCertification: Record "TFB Company Certification"; var HTMLBuilder: TextBuilder): Boolean
 
@@ -438,7 +566,90 @@ codeunit 50104 "TFB Quality Mgmt"
         exit(true);
     end;
 
+    local procedure GenerateExcelDocument(var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var TempBlob: CodeUnit "Temp Blob"): Boolean
+    var
+        TempExcelBuffer: Record "Excel Buffer" temporary;
+        Item: Record Item;
+        PersBlob: CodeUnit "Persistent Blob";
+
+        QualityDocumentIndexLbl: Label 'Quality Document Index';
+        ExcelFileNameLbl: Label 'Quality Document Index';
+        LineBuilder: TextBuilder;
+        CommentBuilder: TextBuilder;
+        ItemBuilder: TextBuilder;
+        ItemList: List of [Code[20]];
+        ItemNo: Code[20];
+        FirstItem: Boolean;
+        OutStream: Outstream;
+    begin
+
+        TempExcelBuffer.Reset();
+        TempExcelBuffer.DeleteAll();
+        TempExcelBuffer.CreateNewBook(ExcelFileNameLbl);
+        TempExcelBuffer.NewRow();
+
+        TempExcelBuffer.NewRow();
+        TempExcelBuffer.AddColumn('Vendor', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn(VendorCertification.FieldCaption(Site), false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn('Certification Type', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn(VendorCertification.FieldCaption("Expiry Date"), false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn('Attachment Exists', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.AddColumn('Related Items', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
+        TempExcelBuffer.NewRow();
+        Item.SetLoadFields(Description);
+        if VendorCertification.Findset(false) then begin
+            repeat
+
+                Clear(LineBuilder);
+                Clear(CommentBuilder);
+
+                TempExcelBuffer.AddColumn(VendorCertification."Vendor Name", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                TempExcelBuffer.AddColumn(VendorCertification.Site, false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                TempExcelBuffer.AddColumn(VendorCertification."Certification Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                TempExcelBuffer.AddColumn(VendorCertification."Expiry Date", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Date);
+                TempExcelBuffer.AddColumn(PersBlob.Exists(VendorCertification."Certificate Attach."), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+
+                if DictVendors.ContainsKey(VendorCertification."Vendor No.") then begin
+                    ItemList := DictVendors.Get(VendorCertification."Vendor No.");
+                    FirstItem := true;
+                    foreach ItemNo in ItemList do begin
+                        Item.Get(ItemNo);
+                        if FirstItem then begin
+                            TempExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                            FirstItem := false;
+                        end
+                        else begin
+                            TempExcelBuffer.NewRow();
+                            TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                            TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                            TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                            TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Date);
+                            TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                            TempExcelBuffer.AddColumn(Item.Description, false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+
+                        end;
+
+
+                    end;
+                end;
+                TempExcelBuffer.NewRow();
+                Clear(ItemBuilder);
+                Clear(ItemList);
+
+            until VendorCertification.Next() < 1;
+            TempBlob.CreateOutStream(OutStream);
+            TempExcelBuffer.WriteSheet(QualityDocumentIndexLbl, CompanyName, UserId);
+            TempExcelBuffer.CloseBook();
+            TempExcelBuffer.SaveToStream(OutStream, true);
+
+            exit(true);
+        end
+        else
+            exit(false);
+    end;
+
 
     var
-        tdTxt: label '<td valign="top" class="tfbdata" style="line-height:15px;">%1</td>', Comment = '%1=Table data html content';
+        QualityTitleTxt: Label 'Quality Documents Request';
+        tdTxt: label '<td valign="top" class="tfbdata" style="line-height:15px; vertical-align:top">%1</td>', Comment = '%1=Table data html content';
 }

@@ -3998,15 +3998,25 @@
           <note from="Developer" annotates="general" priority="2">%1 = sales order number</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Purch. Inv. Mgmt - Method OnBeforeInsertInvLineFromRcptLineBeforeInsertTextLine - NamedType Text000Msg</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - NamedType 3413693071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Documents Request</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - NamedType QualityTitleTxt</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2729067258 - NamedType 818521316" size-unit="char" translate="yes" xml:space="preserve">
-          <source>&lt;td valign="top" class="tfbdata" style="line-height:15px;"&gt;%1&lt;/td&gt;</source>
+          <source>&lt;td valign="top" class="tfbdata" style="line-height:15px; vertical-align:top"&gt;%1&lt;/td&gt;</source>
           <note from="Developer" annotates="general" priority="2">%1=Table data html content</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - NamedType tdTxt</note>
         </trans-unit>
-        <trans-unit id="Codeunit 2729067258 - Method 856802529 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Quality Documents Request</source>
+        <trans-unit id="Codeunit 2729067258 - Method 2952006349 - NamedType 642575458" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Document Index</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendCompanyCertificationEmail - NamedType TitleTxt</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method GenerateExcelDocument - NamedType QualityDocumentIndexLbl</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2729067258 - Method 2952006349 - NamedType 2985640992" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Document Index</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method GenerateExcelDocument - NamedType ExcelFileNameLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 715363424" size-unit="char" translate="yes" xml:space="preserve">
           <source></source>
