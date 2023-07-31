@@ -85,6 +85,11 @@ page 50169 "TFB APIV2 - Lot Images"
                         RegisterFieldSet(Rec.FieldNo(Rec."Isol. Image Blob Name"));
                     end;
                 }
+                field(genericItemId; _GenericItemID)
+                {
+                    Caption = 'Generic Item ID';
+
+                }
 
                 field(createdAt; Rec.SystemCreatedAt)
                 {
@@ -114,10 +119,26 @@ page 50169 "TFB APIV2 - Lot Images"
 
     var
 
+        _GenericItemID: Text[250];
 
 
     trigger OnAfterGetRecord()
     begin
+        _GenericItemID := GetGenericItemID();
+    end;
+
+    local procedure GetGenericItemID(): Text[250]
+    var
+        Item: record Item;
+        GenericItem: record Item;
+        ExternalId: text[250];
+    begin
+
+        if Item.Get(Rec."Item No.") then
+            if GenericItem.GetBySystemId(Item."TFB Generic Item ID") then
+                ExternalId := GenericItem."TFB External ID";
+
+        exit(ExternalId);
 
     end;
 

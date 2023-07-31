@@ -68,6 +68,12 @@ page 50170 "TFB Lot Images"
                     Caption = 'Import Sequence No';
                     ToolTip = 'Specifies the value of the Import Sequence No field.';
                 }
+                field("Isol. Image Blob Name"; Rec."Isol. Image Blob Name")
+                {
+                    Caption = 'Isolated Blob Name';
+                    ToolTip = 'Specifies the name of the isolated blob image';
+                    Visible = false;
+                }
 
                 field(createdAt; getCreatedDateTime())
                 {

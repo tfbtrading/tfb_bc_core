@@ -4788,6 +4788,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control displayName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 468516939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Generic Item ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control genericItemId - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2163087014 - Control 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Id</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -10677,6 +10682,16 @@
           <source>Import Sequence No</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Import Sequence No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 467252664 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the isolated blob image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Isol. Image Blob Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Control 467252664 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Isolated Blob Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Isol. Image Blob Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2506474997 - Control 2684044605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Ledger Entry No. field.</source>
