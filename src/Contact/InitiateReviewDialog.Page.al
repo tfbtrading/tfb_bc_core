@@ -13,7 +13,7 @@ page 50179 "TFB Initiate Review Dialog"
             {
                 field(FinishReview; _FinishReview)
                 {
-                    Caption = 'Complete review now?';
+                    Caption = 'Complete review now';
                     ToolTip = 'Specifies if the review should be completed immediately';
 
                     trigger OnValidate()
@@ -31,7 +31,7 @@ page 50179 "TFB Initiate Review Dialog"
 
                     field(ReviewDate; _ReviewDate)
                     {
-                        Caption = 'Expected completion date of review';
+                        Caption = 'Target review completion by';
                         ToolTip = 'Specify when you want the review to finish by';
                     }
                 }

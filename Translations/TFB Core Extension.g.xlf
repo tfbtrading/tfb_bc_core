@@ -9398,6 +9398,31 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Gross Profit Sales Lines - Control Total Sales Amount - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2999501771 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Initiative Review</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Initiate Review Dialog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2999501771 - Control 2842561746 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specify when you want the review to finish by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Initiate Review Dialog - Control ReviewDate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2999501771 - Control 2842561746 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target review completion by</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Initiate Review Dialog - Control ReviewDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2999501771 - Control 3316984659 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if the review should be completed immediately</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Initiate Review Dialog - Control FinishReview - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2999501771 - Control 3316984659 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Complete review now</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Initiate Review Dialog - Control FinishReview - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1857308130 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Costing</source>
           <note from="Developer" annotates="general" priority="2"></note>

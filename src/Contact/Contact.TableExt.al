@@ -283,6 +283,7 @@ tableextension 50110 "TFB Contact" extends Contact
             Rec."TFB Review Date Exp. Compl." := Today;
             Rec."TFB In Review" := true;
             Rec.Modify(false);
+            Commit();
             Rec.CompleteReview();
         end
         else begin
