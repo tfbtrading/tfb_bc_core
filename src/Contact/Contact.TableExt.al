@@ -271,23 +271,29 @@ tableextension 50110 "TFB Contact" extends Contact
     procedure InitiateReview()
     var
 
-        DialogP: Page "Date-Time Dialog";
+        DialogP: Page "TFB Initiate Review Dialog";
         DefaultWeek: DateFormula;
     begin
-
-        DialogP.UseDateOnly();
         Evaluate(DefaultWeek, '<7D>');
-        DialogP.Caption('Select when review will finish');
-        DialogP.SetDate(CalcDate(DefaultWeek, WorkDate()));
+
+        DialogP.SetDefaults(CalcDate(DefaultWeek, WorkDate()), false);
         if not (DialogP.RunModal() = ACTION::OK) then exit;
 
-        if (DialogP.GetDate() > 0D) then
-            Rec."TFB Review Date Exp. Compl." := DialogP.GetDate()
-        else
-            Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
+        if DialogP.getShouldCompleteNow() then begin
+            Rec."TFB Review Date Exp. Compl." := Today;
+            Rec."TFB In Review" := true;
+            Rec.Modify(false);
+            Rec.CompleteReview();
+        end
+        else begin
+            If DialogP.getExpectedReviewDate() > 0D then
+                Rec."TFB Review Date Exp. Compl." := DialogP.getExpectedReviewDate()
+            else
+                Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());
 
-        Rec."TFB In Review" := true;
-        Rec.Modify(false);
+            Rec."TFB In Review" := true;
+            Rec.Modify(false);
+        end;
     end;
 
     procedure CompleteReview(): Boolean
