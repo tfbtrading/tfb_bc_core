@@ -1,14 +1,15 @@
 page 50167 "TFB Contact Review List"
 {
     ApplicationArea = Basic, Suite, Service;
-    Caption = 'Review Customer Contacts';
+    Caption = 'Contacts for Review';
     CardPageID = "Contact Card";
     DataCaptionFields = "Company No.";
-    Editable = true;
     PageType = List;
     SourceTable = Contact;
-    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false), "TFB Contact Stage" = filter('<>Inactive'));
+    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('=Customer'), "TFB Archived" = const(false), "TFB Contact Stage" = filter('<>Inactive'));
     UsageCategory = Tasks;
+    InsertAllowed = false;
+    Editable = false;
 
     layout
     {
@@ -21,14 +22,13 @@ page 50167 "TFB Contact Review List"
                 ShowCaption = false;
                 field("No."; Rec."No.")
                 {
-                    Style = Strong;
+
                     Visible = false;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
                 }
                 field(Name; Rec.Name)
                 {
-                    Style = Strong;
-                    StyleExpr = StyleIsStrong;
+
                     ToolTip = 'Specifies the name of the contact. If the contact is a person, you can click the field to see the Name Details window.';
                 }
                 field(ToDoExists; GetTaskSymbol())
@@ -159,6 +159,13 @@ page 50167 "TFB Contact Review List"
         }
         area(factboxes)
         {
+
+            part(Control41; "Contact Picture")
+            {
+                ApplicationArea = Basic, Suite;
+                SubPageLink = "No." = field("No.");
+
+            }
             part(Control128; "Contact Statistics FactBox")
             {
                 UpdatePropagation = both;
@@ -230,28 +237,7 @@ page 50167 "TFB Contact Review List"
                         ToolTip = 'View a list of the web sites with information about the contacts.';
                     }
                 }
-                group("P&erson")
-                {
-                    Caption = 'P&erson';
-                    Enabled = PersonGroupEnabled;
-                    Image = User;
-                    action("Job Responsibilities")
-                    {
-                        ApplicationArea = RelationshipMgmt;
-                        Caption = 'Job Responsibilities';
-                        Image = Job;
-                        ToolTip = 'View or edit the contact''s job responsibilities.';
 
-                        trigger OnAction()
-                        var
-                            ContJobResp: Record "Contact Job Responsibility";
-                        begin
-                            Rec.CheckContactType(Rec.Type::Person);
-                            ContJobResp.SetRange("Contact No.", Rec."No.");
-                            PAGE.RunModal(PAGE::"Contact Job Responsibilities", ContJobResp);
-                        end;
-                    }
-                }
                 action("Pro&files")
                 {
                     ApplicationArea = RelationshipMgmt;
@@ -376,22 +362,7 @@ page 50167 "TFB Contact Review List"
                         Rec.ShowBusinessRelation(LinkToTable::Customer, false);
                     end;
                 }
-                action(RelatedVendor)
-                {
-                    ApplicationArea = Basic, Suite;
-                    Caption = 'Vendor';
-                    Image = Vendor;
 
-                    Enabled = RelatedVendorEnabled;
-                    ToolTip = 'View the related vendor that is associated with the current record.';
-
-                    trigger OnAction()
-                    var
-                        LinkToTable: Enum "Contact Business Relation Link To Table";
-                    begin
-                        Rec.ShowBusinessRelation(LinkToTable::Vendor, false);
-                    end;
-                }
 
 
             }
@@ -601,18 +572,7 @@ page 50167 "TFB Contact Review List"
                             Rec.CreateCustomer();
                         end;
                     }
-                    action(Vendor)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Vendor';
-                        Image = Vendor;
-                        ToolTip = 'Create the contact as a vendor.';
 
-                        trigger OnAction()
-                        begin
-                            Rec.CreateVendor();
-                        end;
-                    }
 
                 }
                 group("Link with existing")
@@ -631,31 +591,8 @@ page 50167 "TFB Contact Review List"
                             Rec.CreateCustomerLink();
                         end;
                     }
-                    action(Action64)
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Vendor';
-                        Image = Vendor;
-                        ToolTip = 'Link the contact to an existing vendor.';
 
-                        trigger OnAction()
-                        begin
-                            Rec.CreateVendorLink();
-                        end;
-                    }
-                    action(Action65)
-                    {
-                        AccessByPermission = TableData "Bank Account" = R;
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Bank';
-                        Image = Bank;
-                        ToolTip = 'Link the contact to an existing bank.';
 
-                        trigger OnAction()
-                        begin
-                            Rec.CreateBankAccountLink();
-                        end;
-                    }
 
                 }
             }
@@ -813,10 +750,7 @@ page 50167 "TFB Contact Review List"
                 {
 
                 }
-                actionref(ActionRef4; RelatedVendor)
-                {
 
-                }
                 actionref(ActionRef2; "Co&mments")
                 {
 
@@ -847,6 +781,20 @@ page 50167 "TFB Contact Review List"
         {
             Caption = 'Pipeline: Inactive';
             Filters = where("TFB Contact Stage" = const(Inactive));
+            SharedLayout = false;
+
+            layout
+            {
+                modify("TFB Review Date - Planned")
+                {
+                    Visible = false;
+                }
+                modify("TFB Review Date Exp. Compl.")
+                {
+                    Visible = false;
+                }
+
+            }
         }
         view(ContactWithTasks)
         {

@@ -6349,7 +6349,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Confirm Purchase Orders - View Unconfirmed - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2645611924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Review Customer Contacts</source>
+          <source>Contacts for Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Property Caption</note>
         </trans-unit>
@@ -6563,21 +6563,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Web Sources - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 2860991917 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>P&amp;erson</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action P&amp;erson - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 1869180799 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View or edit the contact's job responsibilities.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Job Responsibilities - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 1869180799 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Job Responsibilities</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Job Responsibilities - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 3377874146 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open the Profile Questionnaires window.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6683,16 +6668,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action RelatedCustomer - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 2402330829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View the related vendor that is associated with the current record.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action RelatedVendor - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 2402330829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action RelatedVendor - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 4189329402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View the segments that are related to the contact.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6788,16 +6763,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Customer - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 1936001480 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Create the contact as a vendor.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Vendor - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 1936001480 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Vendor - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 3447706802 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Search for information about the contact online.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6822,26 +6787,6 @@
           <source>Customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Action63 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 596145112 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Link the contact to an existing vendor.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Action64 - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 596145112 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Action64 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 4253415791 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Link the contact to an existing bank.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Action65 - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Action 4253415791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Action65 - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2645611924 - Action 588385672 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Call the selected contact.</source>
@@ -7063,11 +7008,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextReview - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3193956155 - Control 392783278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Gives details of the next step</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextStepConfirmation - Property ToolTip</note>
-        </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3844408567 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Helps set the next planned review date</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -7077,6 +7017,11 @@
           <source>Review period</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control PeriodicReviewSelection - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3193956155 - Control 392783278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gives details of the next step</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review Wizard - Control NextStepConfirmation - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3193956155 - Control 3713364295 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the new contact status</source>
@@ -15062,6 +15007,11 @@
           <source>Specify linkedin URL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Linkedin Page - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1880709078 - Control 2278016522 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 487012807">
+          <source>Specifies direction of information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Int. Entries Sf - Control Information Flow - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3856507940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 862853572">
           <source>Contact Details</source>

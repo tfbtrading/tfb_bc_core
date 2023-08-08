@@ -105,9 +105,9 @@ page 50174 "TFB Contact Review Wizard"
                         ContactStatus: record "TFB Contact Status";
 
                     begin
-
-                        If ContactStatus.Get(_UpdateContactStatus) then
-                            If ContactStatus.Stage = ContactStatus.Stage::Inactive then
+                        ContactStatus.SetRange(Status, _UpdateContactStatus);
+                        If ContactStatus.FindFirst() then
+                            if ContactStatus.Stage = ContactStatus.Stage::Inactive then
                                 _ShowDateSelection := false
                             else
                                 _ShowDateSelection := true;
@@ -278,7 +278,7 @@ page 50174 "TFB Contact Review Wizard"
 
         _UpdateContactStatus := _contact."TFB Contact Status";
 
-        If _contact."TFB Contact Stage" = _contact."TFB Contact Stage"::Inactive then
+        if _contact."TFB Contact Stage" = _contact."TFB Contact Stage"::Inactive then
             _ShowDateSelection := false
         else
             _ShowDateSelection := true;
