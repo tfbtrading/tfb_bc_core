@@ -100,33 +100,52 @@ page 50174 "TFB Contact Review Wizard"
                     Caption = 'New Contact Status';
                     ToolTip = 'Specifies the new contact status';
 
-                }
-                field(PeriodicReviewSelection; _PeriodicReviewSelection)
-                {
-                    Editable = true;
-                    Caption = 'Review period';
-                    ToolTip = 'Helps set the next planned review date';
-
                     trigger OnValidate()
+                    var
+                        ContactStatus: record "TFB Contact Status";
 
                     begin
-                        ResetNextReviewDate(_PeriodicReviewSelection);
+
+                        If ContactStatus.Get(_UpdateContactStatus) then
+                            If ContactStatus.Stage = ContactStatus.Stage::Inactive then
+                                _ShowDateSelection := false
+                            else
+                                _ShowDateSelection := true;
+
+
                     end;
+
                 }
-                field(NextReview; _NextReview)
+                group(dateselection)
                 {
-                    Editable = true;
-                    Caption = 'Next review date';
-                    ToolTip = 'Specifies the date the next contact review should take place';
+                    ShowCaption = false;
+                    Visible = _ShowDateSelection;
+                    field(PeriodicReviewSelection; _PeriodicReviewSelection)
+                    {
+                        Editable = true;
+                        Caption = 'Review period';
+                        ToolTip = 'Helps set the next planned review date';
 
-                    trigger OnValidate()
+                        trigger OnValidate()
 
-                    begin
-                        if _NextReview < WorkDate() then
-                            error('You must provide a date which is greater than todays date');
-                    end;
+                        begin
+                            ResetNextReviewDate(_PeriodicReviewSelection);
+                        end;
+                    }
+                    field(NextReview; _NextReview)
+                    {
+                        Editable = true;
+                        Caption = 'Next review date';
+                        ToolTip = 'Specifies the date the next contact review should take place';
+
+                        trigger OnValidate()
+
+                        begin
+                            if _NextReview < WorkDate() then
+                                error('You must provide a date which is greater than todays date');
+                        end;
+                    }
                 }
-
                 field(NextStepConfirmation; getInstruction())
                 {
                     ShowCaption = false;
@@ -218,6 +237,7 @@ page 50174 "TFB Contact Review Wizard"
         _UpdateContactStatus: Code[20];
         _LastReviewDate: Date;
         _NextReview: Date;
+        _ShowDateSelection: Boolean;
         _PeriodicReviewSelection: Enum "TFB Periodic Review";
         Step: Option Start,Finish;
         _LastReviewComment: Text[256];
@@ -247,6 +267,8 @@ page 50174 "TFB Contact Review Wizard"
 
     procedure InitFromContact(_contact: Record Contact)
 
+
+
     begin
 
 
@@ -255,6 +277,11 @@ page 50174 "TFB Contact Review Wizard"
         _LastReviewDate := _contact."TFB Review Date Last Compl.";
 
         _UpdateContactStatus := _contact."TFB Contact Status";
+
+        If _contact."TFB Contact Stage" = _contact."TFB Contact Stage"::Inactive then
+            _ShowDateSelection := false
+        else
+            _ShowDateSelection := true;
 
         if _LastReviewDate > 0D then begin
             _ExistingReview := true;

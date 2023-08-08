@@ -24,6 +24,15 @@ tableextension 50110 "TFB Contact" extends Contact
         {
             Caption = 'Contact Stage';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+
+            begin
+                if Rec."TFB Contact Stage" = Rec."TFB Contact Stage"::Inactive then begin
+                    Rec."TFB Review Date - Planned" := 0D;
+                    Rec."TFB Review Date Exp. Compl." := 0D;
+                end;
+            end;
         }
 
         field(50172; "TFB Buying Reason"; Enum "TFB Buying Reason")
@@ -250,7 +259,7 @@ tableextension 50110 "TFB Contact" extends Contact
         Rec."TFB Review Date Exp. Compl." := 0D;
         Rec."TFB Review Date Last Compl." := WorkDate();
         if _NextContactStatus <> '' then
-            Rec."TFB Contact Status" := _NextContactStatus;
+            Rec.validate("TFB Contact Status", _NextContactStatus);
         if rec."TFB Review Note" <> '' then
             Rec."TFB Last Review Note" := Rec."TFB Review Note";
 

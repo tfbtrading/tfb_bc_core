@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-        UpgradeCostingTables();
+        updateContactStatus();
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,12 +47,34 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.5'))
+        exit((GetInstallingVersionNo() = '22.0.2.12'))
     end;
 
 
 
+    local procedure updateContactStatus()
 
+    var
+        Status: Record "TFB Contact Status";
+        Contact: Record Contact;
+    begin
+
+        if Contact.Findset(true) then
+            repeat
+                if Contact.Type = Contact.Type::Person then
+                    Contact."TFB Contact Status" := '';
+
+                Status.SetRange(Status, Contact."TFB Contact Status");
+
+                if Status.FindFirst() then
+                    Contact.validate("TFB Contact Stage", Status.Stage);
+
+                Contact.modify(true);
+            until Contact.Next() = 0;
+
+
+
+    end;
 
 
 

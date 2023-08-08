@@ -7,7 +7,7 @@ page 50167 "TFB Contact Review List"
     Editable = true;
     PageType = List;
     SourceTable = Contact;
-    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false));
+    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false), "TFB Contact Stage" = filter('<>Inactive'));
     UsageCategory = Tasks;
 
     layout
@@ -23,7 +23,6 @@ page 50167 "TFB Contact Review List"
                 {
                     Style = Strong;
                     Visible = false;
-                    StyleExpr = StyleIsStrong;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
                 }
                 field(Name; Rec.Name)
@@ -62,6 +61,7 @@ page 50167 "TFB Contact Review List"
                 field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
                 {
                     Editable = not rec."TFB In Review";
+                    Enabled = rec."TFB Contact Stage" <> Rec."TFB Contact Stage"::Inactive;
                     StyleExpr = FlagPastPlanningDate;
                     Style = Unfavorable;
                     ToolTip = 'Specifies date on which next review is planned for contact';
@@ -841,12 +841,12 @@ page 50167 "TFB Contact Review List"
         view(ContactsActive)
         {
             Caption = 'Pipeline: Active';
-            Filters = where("TFB Contact Stage" = filter('=Converted'));
+            Filters = where("TFB Contact Stage" = const(Converted));
         }
         view(ContactsInactive)
         {
             Caption = 'Pipeline: Inactive';
-            Filters = where("TFB Contact Stage" = filter('=Inactive'));
+            Filters = where("TFB Contact Stage" = const(Inactive));
         }
         view(ContactWithTasks)
         {

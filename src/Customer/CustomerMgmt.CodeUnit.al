@@ -734,7 +734,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
 
 
-    [EventSubscriber(ObjectType::Table, Database::Customer, 'OnBeforeIsContactUpdateNeeded', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::Customer, OnBeforeIsContactUpdateNeeded, '', false, false)]
     local procedure OnBeforeIsContactUpdateNeeded(Customer: Record Customer; xCustomer: Record Customer; var UpdateNeeded: Boolean; ForceUpdateContact: Boolean);
     begin
 
@@ -742,7 +742,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
     end;
 
-    [EventSubscriber(ObjectType::Table, Database::Contact, 'OnBeforeIsUpdateNeeded', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::Contact, OnBeforeIsUpdateNeeded, '', false, false)]
     local procedure OnBeforeIsUpdateNeeded(var Contact: Record Contact; xContact: Record Contact; var UpdateNeeded: Boolean);
     begin
 

@@ -119,10 +119,10 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
             {
                 ShowCaption = true;
                 Caption = 'Review';
-                visible = rec.type = rec.type::Company;
+                visible = (rec.type = rec.type::Company);
                 group(NotInReviewDetails)
                 {
-                    Visible = not rec."TFB In Review";
+                    Visible = not rec."TFB In Review" and (rec."TFB Contact Stage" <> Rec."TFB Contact Stage"::Inactive);
                     ShowCaption = false;
                     field("TFB Review Date - Planned"; Rec."TFB Review Date - Planned")
                     {
