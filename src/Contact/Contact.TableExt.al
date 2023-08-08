@@ -308,6 +308,7 @@ tableextension 50110 "TFB Contact" extends Contact
         if (WizardReview.RunModal() = Action::OK) and WizardReview.IsFinished() then begin
             FinishAction(WizardReview.GetReviewComment(), WizardReview.GetNextPlannedDate(), WizardReview.GetContactStatus());
             Rec.Modify(true);
+            Commit();
             exit(true);
 
         end;
