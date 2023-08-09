@@ -6348,6 +6348,311 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Confirm Purchase Orders - View Unconfirmed - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3043695467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts - Inactive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 265748244 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the type of the existing business relation.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Business Relation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 284764054 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the country/region of the address.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Country/Region Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 499448942 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the county of the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control County - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 1541011875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's email.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control E-Mail - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 657836278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies last date attempted to reach contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Last Date Attempted - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 352546477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's mobile telephone number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Mobile Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 2961552353 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the name of the contact. If the contact is a person, you can click the field to see the Name Details window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 966287263 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies an additional part of the name.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Name 2 - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the number of the involved entry or record, according to the specified number series.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 3986423421 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the contact's phone number.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Phone No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 3660300303 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the postal code.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Post Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 553464652 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the code of the salesperson who normally handles this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Salesperson Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 411528779 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies an alternate name that you can use to search for the record in question when you cannot remember the value in the Name field.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control Search Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 95695128 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies contact status</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control TFB Contact Status - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 3245344756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if a task exists</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control ToDoExists - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Control 3245344756 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source></source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Control ToDoExists - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2533560666 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>C&amp;ontact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action C&amp;ontact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1235454278 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add a picture of the contact person or, for example, the company's logo.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action &amp;Picture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1235454278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&amp;Picture</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action &amp;Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 231599441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Alternati&amp;ve Address</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Alternati&amp;ve Address - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 4125097576 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or change detailed information about the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Card - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 4125097576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Card</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Card - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2893791852 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specify date ranges that apply to the contact's alternate address.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Date Ranges - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2893791852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date Ranges</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Date Ranges - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3000180178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or add comments for the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Co&amp;mments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3000180178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Co&amp;mments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Co&amp;mments - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1318212747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Comp&amp;any</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Comp&amp;any - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 397499605 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the contact's business relations, such as customers, vendors, banks, lawyers, consultants, competitors, and so on.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Business Relations - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 397499605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Relations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Business Relations - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2453590266 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the industry groups, such as Retail or Automobile, that the contact belongs to.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Industry Groups - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2453590266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Industry Groups</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Industry Groups - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2439851178 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of the web sites with information about the contacts.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Web Sources - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2439851178 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Web Sources</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Web Sources - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3377874146 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open the Profile Questionnaires window.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Pro&amp;files - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3377874146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pro&amp;files</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Pro&amp;files - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 4201773078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>History</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action History - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3301175925 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the closed sales opportunities that are handled by salespeople for the contact. Opportunities must involve a contact and can be linked to campaigns.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Closed Oppo&amp;rtunities - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3301175925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed Oppo&amp;rtunities</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Closed Oppo&amp;rtunities - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1642473822 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of the interactions that you have logged, for example, when you create an interaction, print a cover sheet, a sales order, and so on.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Interaction Log E&amp;ntries - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1642473822 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Interaction Log E&amp;ntries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Interaction Log E&amp;ntries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 709229469 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of emails that you have sent to this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Sent Emails - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 709229469 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sent Emails</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Sent Emails - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 84074407 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View statistical information, such as the value of posted entries, for the record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Statistics - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 84074407 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Statistics</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Statistics - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2499942453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Related Information</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Related Information - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2525264317 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or edit the mailing groups that the contact is assigned to, for example, for sending price lists or Christmas cards.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Mailing &amp;Groups - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 2525264317 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mailing &amp;Groups</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Mailing &amp;Groups - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 43034798 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View a list of all contacts.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Relate&amp;d Contacts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 43034798 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Relate&amp;d Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Relate&amp;d Contacts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1065452149 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the related customer that is associated with the current record.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action RelatedCustomer - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1065452149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action RelatedCustomer - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 4189329402 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View the segments that are related to the contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Segmen&amp;ts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 4189329402 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Segmen&amp;ts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Segmen&amp;ts - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1285973296 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send an email to this contact.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Email - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 1285973296 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Send Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3246988214 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive a contact so it is not seen in reviews.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action TFBArchive - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3246988214 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Archive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action TFBArchive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 3993128796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Contact - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - Action 477925417 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Home</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - Action Home - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3043695467 - View 3396942800 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contacts With Open Tasks</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Inactive List - View ContactWithTasks - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Contacts for Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6638,6 +6943,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action Related Information - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 2262718438 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Will open list page showing all contacts that are set as inactive</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action InactiveContactLists - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Action 2262718438 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Inactive Contacts</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Action InactiveContactLists - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Action 2525264317 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View or edit the mailing groups that the contact is assigned to, for example, for sending price lists or Christmas cards.</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6858,10 +7173,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsActive - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 2645611924 - View 2411076140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pipeline: Inactive</source>
+        <trans-unit id="Page 2645611924 - View 3377260201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Pipeline: Converted to Customer</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsInactive - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - View ContactsCustomer - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2645611924 - View 1318747220 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pipeline: In pursuit</source>
