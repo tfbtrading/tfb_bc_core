@@ -326,7 +326,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         Result: Boolean;
         SubTitleTxt: Label '';
         Text001Msg: Label 'Sending Shipment Notification:\#1############################', Comment = '%1=Shipment Number';
-        TitleTxt: Label 'Order Status Update';
+        TitleTxt: Label 'Shipment Notification';
     begin
 
         Window.Open(Text001Msg);

@@ -1263,6 +1263,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field MSDS Word Template - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 933112159 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Report Caption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Notification Report Caption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1109046048 - Field 2726558914 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notification Report ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Core Setup - Field Notification Report ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1109046048 - Field 967097934 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Ocean Freight Item Charge</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1757,6 +1767,66 @@
           <source>Total Incl. Interest</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Forex Mgmt Entry - Field Total Incl. Interest - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General Notification</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 1842457365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>AlertText</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field AlertText - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 1874960182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DateCaption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field DateCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 324378553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DateValue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field DateValue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 3041385295 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EmailContent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field EmailContent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 2188368079 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ExplanationCaption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field ExplanationCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 1284710444 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ExplanationValue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field ExplanationValue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 1274461567 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ReferenceCaption</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field ReferenceCaption - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 2092079196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ReferenceValue</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field ReferenceValue - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 2909672871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SourceRecordId</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field SourceRecordId - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 801235424 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SubTitle</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field SubTitle - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2626192013 - Field 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB General Notification - Field Title - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 421897184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Generic Item</source>
@@ -4024,7 +4094,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType SubTitleTxt</note>
         </trans-unit>
         <trans-unit id="Codeunit 2729067258 - Method 2042575398 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Certifications Email</source>
+          <source>Vendor certifications</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Quality Mgmt - Method SendQualityDocumentsToCustomer - NamedType TitleTxt</note>
         </trans-unit>
@@ -4119,7 +4189,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Shipment Mgmt - Method SendOneShipmentNotificationEmail - NamedType Text001Msg</note>
         </trans-unit>
         <trans-unit id="Codeunit 1605321605 - Method 72469323 - NamedType 3683717780" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Order Status Update</source>
+          <source>Shipment Notification</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit TFB Sales Shipment Mgmt - Method SendOneShipmentNotificationEmail - NamedType TitleTxt</note>
         </trans-unit>
@@ -8307,6 +8377,16 @@
           <source>Specifies the value of the Email Template Test URL field.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Email Template Test - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 933112159 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which report should be used for general notifiaction template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Notification Report Caption - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1109046048 - Control 2726558914 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies which report should be used for general notifiaction template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Core Setup - Control Notification Report ID - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1109046048 - Control 1810330894 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the value of the Price List Job Resp. field.</source>

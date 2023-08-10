@@ -176,7 +176,7 @@ codeunit 50104 "TFB Quality Mgmt"
         ContactList: Page "Contact List";
         Recipients: List of [Text];
         SubTitleTxt: Label '';
-        TitleTxt: Label 'Vendor Certifications Email';
+        TitleTxt: Label 'Vendor certifications';
         DictVendors: Dictionary of [Code[20], List of [Code[20]]];
 
     begin
@@ -284,6 +284,7 @@ codeunit 50104 "TFB Quality Mgmt"
         CompanyInfo: Record "Company Information";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
+        Customer: Record Customer;
         PersBlobCU: CodeUnit "Persistent Blob";
         TempBlob: Codeunit "Temp Blob";
         InStream: InStream;
@@ -302,8 +303,8 @@ codeunit 50104 "TFB Quality Mgmt"
 
 
         HTMLBuilder.Append(HTMLTemplate);
-
-        GenerateQualityDocumentsContent(VendorCerts, DictVendors, HTMLBuilder);
+        Customer.GetBySystemId(CustomerSystemID);
+        GenerateQualityDocumentsContent(Customer, VendorCerts, DictVendors, HTMLBuilder);
         EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
 
         if VendorCerts.Findset(false) then
@@ -437,7 +438,7 @@ codeunit 50104 "TFB Quality Mgmt"
         exit(true);
     end;
 
-    local procedure GenerateQualityDocumentsContent(var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var HTMLBuilder: TextBuilder): Boolean
+    local procedure GenerateQualityDocumentsContent(Customer: Record Customer; var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var HTMLBuilder: TextBuilder): Boolean
 
     var
         Item: Record Item;
@@ -455,21 +456,21 @@ codeunit 50104 "TFB Quality Mgmt"
         HTMLBuilder.Replace('%{ExplanationValue}', 'Updated Vendor Certifications');
         HTMLBuilder.Replace('%{DateCaption}', 'Requested on');
         HTMLBuilder.Replace('%{DateValue}', format(today()));
-        HTMLBuilder.Replace('%{ReferenceCaption}', '');
-        HTMLBuilder.Replace('%{ReferenceValue}', '');
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'customer');
+        HTMLBuilder.Replace('%{ReferenceValue}', Customer.name);
         HTMLBuilder.Replace('%{AlertText}', '');
 
-        BodyBuilder.AppendLine(StrSubstNo('<h2>Please find our latest quality documents as requested</h2><br>'));
+        BodyBuilder.AppendLine(StrSubstNo('<p>Please find our latest quality documents as requested</p>'));
 
-        BodyBuilder.AppendLine('<table class="tfbdata" width="100%" cellspacing="10" cellpadding="10" border="0">');
-        BodyBuilder.AppendLine('<thead>');
+        BodyBuilder.AppendLine('<table class="tfbdata" width="70%" cellspacing="10" cellpadding="10" border="0">');
+        BodyBuilder.AppendLine('<thead style="border-bottom: 1pt solid #ff000d">');
 
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Vendor</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Location</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="25%">Type</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Expiry</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th>');
-        BodyBuilder.Append('<th class="tfbdata" style="text-align:left vertical-align="top" width="20%">Related items</th></thead>');
+        BodyBuilder.Append('<th class="tfbdata" style="text-align:left" vertical-align="top" width="20%">Related items</th></thead>');
         Item.SetLoadFields(Description);
         if VendorCertification.Findset(false) then begin
             repeat

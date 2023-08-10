@@ -326,6 +326,25 @@ table 50125 "TFB Core Setup"
         {
 
         }
+        field(520; "Notification Report ID"; Integer)
+        {
+            Caption = 'Notification Report ID';
+            TableRelation = AllObjWithCaption."Object ID" where("Object Type" = const(Report));
+
+            trigger OnValidate()
+            begin
+                CalcFields("Notification Report Caption");
+
+            end;
+        }
+        field(4; "Notification Report Caption"; Text[250])
+        {
+            CalcFormula = lookup(AllObjWithCaption."Object Caption" where("Object Type" = const(Report),
+                                                                           "Object ID" = field("Notification Report ID")));
+            Caption = 'Report Caption';
+            Editable = false;
+            FieldClass = FlowField;
+        }
 
     }
 

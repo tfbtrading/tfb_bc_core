@@ -40,8 +40,7 @@ codeunit 50142 "TFB Common Library"
         CoreSetup: Record "TFB Core Setup";
         TempBlobCU: Codeunit "Temp Blob";
 
-        HttpClient: HttpClient;
-        HttpResponseMessage: HttpResponseMessage;
+
         IStream: InStream;
         OStream: OutStream;
         BlobText: Text;
@@ -52,15 +51,13 @@ codeunit 50142 "TFB Common Library"
 
         CoreSetup.Get();
         urlTok := CoreSetup."Email Template Active";
-
-        if urlTok = '' then Error('No URL defined for transactional email template');
-
-        HttpClient.Get(urlTok, HttpResponseMessage);
-        HttpResponseMessage.Content().ReadAs(IStream);
         TempBlobCU.CreateOutStream(OStream);
-        CopyStream(OStream, IStream);
+        Report.SaveAs(CoreSetup."Notification Report ID", '', ReportFormat::Html, OStream);
 
         TempBlobCU.CreateInStream(IStream);
+
+
+
 
 
         while not (IStream.EOS()) do begin

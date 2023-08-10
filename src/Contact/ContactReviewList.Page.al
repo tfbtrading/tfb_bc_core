@@ -6,7 +6,7 @@ page 50167 "TFB Contact Review List"
     DataCaptionFields = "Company No.";
     PageType = List;
     SourceTable = Contact;
-    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "TFB Archived" = const(false), "TFB Contact Stage" = filter('<>Inactive'));
+    SourceTableView = sorting("Company Name", "Company No.", Type, Name) where(Type = const(Company), "Contact Business Relation" = filter('<>Vendor'), "TFB Archived" = const(false), "TFB Contact Stage" = filter('<>Inactive'));
     UsageCategory = Tasks;
     InsertAllowed = false;
     Editable = false;

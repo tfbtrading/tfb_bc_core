@@ -151,6 +151,14 @@ page 50173 "TFB Core Setup"
                     {
                         ToolTip = 'Specifies the word template to be used when emailing from an item ledger entry extension letter';
                     }
+                    field("Notification Report ID"; "Notification Report ID")
+                    {
+                        ToolTip = 'Specifies which report should be used for general notifiaction template';
+                    }
+                    field("Notification Report Caption"; "Notification Report Caption")
+                    {
+                        ToolTip = 'Specifies which report should be used for general notifiaction template';
+                    }
 
                 }
 

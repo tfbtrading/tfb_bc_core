@@ -455,9 +455,9 @@ codeunit 50120 "TFB Customer Mgmt"
         Count := 0;
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
         HTMLBuilder.Replace('%{ExplanationValue}', 'Periodic Update');
-        HTMLBuilder.Replace('%{DateCaption}', 'Generated On');
+        HTMLBuilder.Replace('%{DateCaption}', 'Generated on');
         HTMLBuilder.Replace('%{DateValue}', Format(Today(), 0, 4));
-        HTMLBuilder.Replace('%{ReferenceCaption}', 'Customer Name');
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'customer');
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
         if CheckIfCreditHoldApplies(Customer, GetValueOfShipment(Customer), overdue, overCreditLimit) and OverDue then
@@ -710,7 +710,7 @@ codeunit 50120 "TFB Customer Mgmt"
     begin
 
         //Start with content introducing customer
-
+        Customer.Calcfields("Balance Due");
         CoreSetup.Get();
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
         HTMLBuilder.Replace('%{ExplanationValue}', 'Customer Statement');
@@ -719,14 +719,10 @@ codeunit 50120 "TFB Customer Mgmt"
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Customer Name');
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
-        if CheckIfCreditHoldApplies(Customer, 0, overdue, overCreditLimit) and OverDue then
-            HTMLBuilder.Replace('%{AlertText}', StrSubstNo('There are invoices valued at %1 currently overdue. Note. We provide a tolerance of %2 AUD so small amounts do not hold anything up. Please call or email to discuss so we can get these goods to you as fast as possible.', Customer."Balance Due (LCY)", CoreSetup."Credit Tolerance"))
-        else
-            HTMLBuilder.Replace('%{AlertText}', '');
 
-        BodyBuilder.AppendLine('<p>Attached to this email is your latest statement. Please let us know as soon as convenient if you have any queries with regards to the details on the statement.</p>');
-        BodyBuilder.AppendLine('<p>We have the ability to send order updates, invoices and statements to different email address. Please let us know if you would like these details changed.');
-        BodyBuilder.AppendLine('<p>We appreciate your business and look forward to supporting you in the future.</p>');
+        HTMLBuilder.Replace('%{AlertText}', '');
+
+        BodyBuilder.AppendLine(StrSubstNo('<p>Attached to this email is your latest statement. You have %1 currently overdue</p>', Customer."Balance Due"));
 
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         exit(true);
