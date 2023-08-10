@@ -702,11 +702,11 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
             HTMLBuilder.Replace('%{ExplanationValue}', 'Shipment notification');
             HTMLBuilder.Replace('%{DateCaption}', 'Shipped On');
             HTMLBuilder.Replace('%{DateValue}', Format(Header."Posting Date", 0, 4));
-            HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
-            ReferenceBuilder.Append(StrSubstNo('Our order %1', Line."Order No."));
+            HTMLBuilder.Replace('%{ReferenceCaption}', 'order Reference');
+            ReferenceBuilder.Append(StrSubstNo('%1', Line."Order No."));
 
             if Header."External Document No." <> '' then
-                ReferenceBuilder.Append(StrSubstNo(' and <b>your PO#</b> is %1', Header."External Document No."));
+                ReferenceBuilder.Append(StrSubstNo(' and <b>your PO#</b> %1', Header."External Document No."));
 
             if (Header."TFB 3PL Booking No." <> '') and (not Line."Drop Shipment") then
                 ReferenceBuilder.Append(StrSubstNo('.Connote may also show ref no. %1 from our 3PL</h3>', Header."TFB 3PL Booking No."));
@@ -722,12 +722,12 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                 HTMLBuilder.Replace('%{AlertText}', '');
 
             BodyBuilder.AppendLine('<table class="tfbdata" role="presentation" width="100%" cellspacing="0" cellpadding="10" border="0">');
-            BodyBuilder.AppendLine('<thead>');
+            BodyBuilder.AppendLine('<tr style="border-bottom: 1px solid orange;">');
 
             BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Item Desc.</th>');
             BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="10%">Qty Ordered</th>');
             BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="10%">Weight</th>');
-            BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Comments</th></thead>');
+            BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Comments</th></tr>');
 
             repeat
                 SuppressLine := false;

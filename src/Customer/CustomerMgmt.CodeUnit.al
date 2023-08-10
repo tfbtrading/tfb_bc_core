@@ -714,9 +714,9 @@ codeunit 50120 "TFB Customer Mgmt"
         CoreSetup.Get();
         HTMLBuilder.Replace('%{ExplanationCaption}', 'Notification type');
         HTMLBuilder.Replace('%{ExplanationValue}', 'Customer Statement');
-        HTMLBuilder.Replace('%{DateCaption}', 'Generated On');
+        HTMLBuilder.Replace('%{DateCaption}', 'Generated on');
         HTMLBuilder.Replace('%{DateValue}', Format(Today(), 0, 4));
-        HTMLBuilder.Replace('%{ReferenceCaption}', 'Customer Name');
+        HTMLBuilder.Replace('%{ReferenceCaption}', 'customer');
         HTMLBuilder.Replace('%{ReferenceValue}', Customer.Name);
 
 
