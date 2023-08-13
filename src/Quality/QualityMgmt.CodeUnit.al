@@ -182,7 +182,7 @@ codeunit 50104 "TFB Quality Mgmt"
     begin
         DialogChoices.SetCustomerNo(CustomerNo);
         if not HideDialog then
-            if not (DialogChoices.RunModal() = Action::LookupOK) then exit;
+            if not (DialogChoices.RunModal() = Action::OK) then exit;
 
         if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, DictVendors, TempVendorCertifications, DialogChoices.getVendCertSel()) then
             if (DialogChoices.GetRecipients().Count > 0) or DialogChoices.getDownloadSel() then
@@ -671,6 +671,26 @@ codeunit 50104 "TFB Quality Mgmt"
         TempExcelBuffer.AddColumn('Related Items', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.NewRow();
         Item.SetLoadFields(Description);
+
+
+        if DialogChoices.getCompCertSel() then
+            if CompanyCertification.Findset(false) then
+                repeat
+                    Clear(LineBuilder);
+                    Clear(CommentBuilder);
+
+                    TempExcelBuffer.AddColumn('TFB Trading', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                    TempExcelBuffer.AddColumn('', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                    TempExcelBuffer.AddColumn(CompanyCertification."Certification Type", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                    TempExcelBuffer.AddColumn(CompanyCertification."Expiry Date", false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Date);
+                    TempExcelBuffer.AddColumn(PersBlob.Exists(CompanyCertification."Certificate Attach."), false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                    TempExcelBuffer.AddColumn('All Items', false, '', false, false, false, '', TempExcelBuffer."Cell Type"::Text);
+                    TempExcelBuffer.NewRow();
+                    Clear(ItemBuilder);
+                    Clear(ItemList);
+                until CompanyCertification.Next() = 0;
+
+
         if VendorCertification.Findset(false) then begin
             repeat
 

@@ -1,7 +1,7 @@
 page 50181 "TFB Quality Docs Dialog"
 {
     PageType = StandardDialog;
-    Caption = 'Quality Docs Dialog';
+    Caption = 'Quality Documents Assistant';
     ApplicationArea = All;
     UsageCategory = Administration;
 
@@ -12,100 +12,99 @@ page 50181 "TFB Quality Docs Dialog"
         {
             group(Choices)
             {
-                grid(GridLayout)
+
+                InstructionalText = 'Choose which certifications should be included';
+                ShowCaption = false;
+                field(_CompanyCertifications; _CompanyCertifications)
                 {
-                    GridLayout = Rows;
+                    ToolTip = 'Specifies whether download/email should include our own certifications';
+                    Caption = 'Our own certifications';
+                }
+                field(VendorCertifications; _VendorCertifications)
+                {
+                    ToolTip = 'Specifies whether download/email should include vendor certifications';
+                    Caption = 'Vendor certifications';
+                }
+                group(CompanyCertificationChoice)
+                {
+                    Visible = _VendorCertifications;
                     ShowCaption = false;
-                    field(_CompanyCertifications; _CompanyCertifications)
+                    field(_ReligiousCertifications; _ReligiousCertifications)
                     {
-                        ToolTip = 'Specifies whether download/email should include our own certifications';
-                        Caption = 'Our own certifications';
+                        ToolTip = 'Specifies whether religious certifications should be included';
+                        Caption = 'Religious certifications';
                     }
-                    field(VendorCertifications; _VendorCertifications)
+                }
+                group(Action)
+                {
+                    InstructionalText = 'Choose what should happen after certifications gathered';
+                    ShowCaption = false;
+                    field(_DownLoad; _DownLoad)
                     {
-                        ToolTip = 'Specifies whether download/email should include vendor certifications';
-                        Caption = 'Vendor certifications';
+                        ToolTip = 'Specifies if you want to download instead of emailing';
+                        Caption = 'Download only';
                     }
-                    group(CompanyCertificationChoice)
+
+                    group(GatherContact)
                     {
-                        Visible = _VendorCertifications;
                         ShowCaption = false;
-                        field(_ReligiousCertifications; _ReligiousCertifications)
+                        Visible = not _DownLoad;
+
+                        field(_CompressFilesInEmail; _CompressFilesInEmail)
                         {
-                            ToolTip = 'Specifies whether religious certifications should be included';
-                            Caption = 'Religious certifications';
+                            ToolTip = 'Specifies if all files should be placed in a ZIP file in email';
+                            Caption = 'Use single zip archive';
                         }
-                    }
-                    group(Action)
-                    {
-                        InstructionalText = 'Choose what should happen after certifications gathered';
-                        ShowCaption = false;
-                        field(_DownLoad; _DownLoad)
+                        field(_RecipientsText; _RecipientsText)
                         {
-                            ToolTip = 'Specifies if you want to download instead of emailing';
-                            Caption = 'Download only';
-                        }
+                            ToolTip = 'Specifies the list of contacts who should receive the email';
+                            Caption = 'Email Recipients';
+                            AssistEdit = true;
+                            Editable = false;
 
-                        group(GatherContact)
-                        {
-                            ShowCaption = false;
-                            Visible = not _DownLoad;
+                            trigger OnAssistEdit()
 
-                            field(_CompressFilesInEmail; _CompressFilesInEmail)
-                            {
-                                ToolTip = 'Specifies if all files should be placed in a ZIP file in email';
-                                Caption = 'Use single zip archive';
-                            }
-                            field(_RecipientsText; _RecipientsText)
-                            {
-                                ToolTip = 'Specifies the list of contacts who should receive the email';
-                                Caption = 'Recipients';
-                                AssistEdit = true;
-                                Editable = false;
-
-                                trigger OnAssistEdit()
-
-                                var
-                                    Contact: Record Contact;
-                                    Customer: Record Customer;
-                                    ContactList: Page "Contact List";
-                                    token: text;
-                                    Recipients: List of [Text];
+                            var
+                                Contact: Record Contact;
+                                Customer: Record Customer;
+                                ContactList: Page "Contact List";
+                                token: text;
 
 
-                                begin
-                                    _RecipientsText := '';
-                                    if Customer.get(_CustomerNo) then begin
-                                        Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
-                                        Contact.SetFilter("E-Mail", '>%1', '');
-                                        ContactList.SetTableView(Contact);
-                                        ContactList.LookupMode(true);
 
-                                        if ContactList.RunModal() = Action::LookupOK then begin
+                            begin
+                                _RecipientsText := '';
+                                if Customer.get(_CustomerNo) then begin
+                                    Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
+                                    Contact.SetFilter("E-Mail", '>%1', '');
+                                    ContactList.SetTableView(Contact);
+                                    ContactList.LookupMode(true);
 
-                                            Contact.SetFilter("No.", ContactList.GetSelectionFilter());
+                                    if ContactList.RunModal() = Action::LookupOK then begin
 
-                                            if Contact.Findset(false) then
-                                                repeat
-                                                    if Contact."E-Mail" <> '' then
-                                                        if not Recipients.Contains(Contact."E-Mail") then
-                                                            Recipients.Add(Contact."E-Mail");
+                                        Contact.SetFilter("No.", ContactList.GetSelectionFilter());
 
-                                                until Contact.Next() = 0;
+                                        if Contact.Findset(false) then
+                                            repeat
+                                                if Contact."E-Mail" <> '' then
+                                                    if not Recipients.Contains(Contact."E-Mail") then
+                                                        Recipients.Add(Contact."E-Mail");
 
-                                            if Recipients.Count > 0 then
-                                                foreach token in Recipients do
-                                                    _RecipientsText += token + ';'
+                                            until Contact.Next() = 0;
 
-                                        end;
+                                        if Recipients.Count > 0 then
+                                            foreach token in Recipients do
+                                                _RecipientsText += token + ';'
+
                                     end;
                                 end;
-                            }
+                            end;
                         }
                     }
                 }
-
             }
+
+
         }
     }
 
