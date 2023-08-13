@@ -13103,6 +13103,66 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Auditors - Control Name - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 3523998570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Docs Dialog</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 2279323338 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Choose what should happen after certifications gathered</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control Action - Property InstructionalText</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 2552349270 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the list of contacts who should receive the email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _RecipientsText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 2552349270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Recipients</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _RecipientsText - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 3912490925 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies if you want to download instead of emailing</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _DownLoad - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 3912490925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download instead of email to customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _DownLoad - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 1939348251 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether religious certifications should be included</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _ReligiousCertifications - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 1939348251 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Religious certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _ReligiousCertifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 4018537233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether download/email should include vendor certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control VendorCertifications - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 4018537233 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control VendorCertifications - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 603182037 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies whether download/email should include our own certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _CompanyCertifications - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3523998570 - Control 603182037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Our own certifications</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Quality Docs Dialog - Control _CompanyCertifications - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3698941796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Report Selection - Sample Requests</source>
           <note from="Developer" annotates="general" priority="2"></note>

@@ -381,7 +381,7 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                     ConfirmMgt: CodeUnit "Confirm Management";
 
                 begin
-                    QualityCU.SendQualityDocumentsToCustomer(Rec."No.", ConfirmMgt.GetResponseOrDefault('Get only quality documents or full set', true));
+                    QualityCU.SendQualityDocumentsToCustomer(Rec."No.", false);
                 end;
             }
 

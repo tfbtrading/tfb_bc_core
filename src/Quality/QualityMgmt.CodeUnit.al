@@ -113,7 +113,7 @@ codeunit 50104 "TFB Quality Mgmt"
         end;
     end;
 
-    procedure GatherCustomerQualityDocuments(CustomerNo: Code[20]; var DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var ListOfCertifications: Record "TFB Vendor Certification" temporary; QualityOnly: Boolean): Boolean
+    procedure GatherCustomerQualityDocuments(CustomerNo: Code[20]; var DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var ListOfCertifications: Record "TFB Vendor Certification" temporary; IncludeReligiousCertifications: Boolean): Boolean
 
     var
         VendorCertification: Record "TFB Vendor Certification";
@@ -149,7 +149,7 @@ codeunit 50104 "TFB Quality Mgmt"
 
             if VendorCertification.FindSet() then
                 repeat
-                    if not QualityOnly and not (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
+                    if not IncludeReligiousCertifications and not (VendorCertification."Certificate Class" = VendorCertification."Certificate Class"::Quality) then begin
                         ListOfCertifications := VendorCertification;
                         ListOfCertifications.Insert(false);
                     end
@@ -166,46 +166,30 @@ codeunit 50104 "TFB Quality Mgmt"
 
     end;
 
-    procedure SendQualityDocumentsToCustomer(CustomerNo: Code[20]; QualityOnly: Boolean): Boolean
+    procedure SendQualityDocumentsToCustomer(CustomerNo: Code[20]; HideDialog: Boolean): Boolean
 
     var
-        Contact: Record Contact;
+
         Customer: Record Customer;
-        TempListOfCertifications: Record "TFB Vendor Certification" temporary;
+        TempVendorCertifications: Record "TFB Vendor Certification" temporary;
         CLib: CodeUnit "TFB Common Library";
-        ContactList: Page "Contact List";
-        Recipients: List of [Text];
+        DialogChoices: Page "TFB Quality Docs Dialog";
+
         SubTitleTxt: Label '';
         TitleTxt: Label 'Vendor certifications';
         DictVendors: Dictionary of [Code[20], List of [Code[20]]];
 
     begin
+        DialogChoices.SetCustomerNo(CustomerNo);
+        if not HideDialog then
+            if not (DialogChoices.RunModal() = Action::LookupOK) then exit;
 
-        if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, DictVendors, TempListOfCertifications, QualityOnly) then begin
+        if Customer.get(CustomerNo) and GatherCustomerQualityDocuments(CustomerNo, DictVendors, TempVendorCertifications, DialogChoices.getVendCertSel()) then
+            if (DialogChoices.GetRecipients().Count > 0) or DialogChoices.getDownloadSel() then
+                ProcessVendorCertifications(TempVendorCertifications, DictVendors, DialogChoices, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
 
-            Contact.SetRange("Company No.", Customer."TFB Primary Contact Company ID");
-            Contact.SetFilter("E-Mail", '>%1', '');
-            ContactList.SetTableView(Contact);
-            ContactList.LookupMode(true);
-
-            if ContactList.RunModal() = Action::LookupOK then begin
-
-                Contact.SetFilter("No.", ContactList.GetSelectionFilter());
-
-                if Contact.Findset(false) then
-                    repeat
-                        if Contact."E-Mail" <> '' then
-                            if not Recipients.Contains(Contact."E-Mail") then
-                                Recipients.Add(Contact."E-Mail");
-
-                    until Contact.Next() = 0;
-
-                if Recipients.Count > 0 then
-                    SendVendorCertificationEmail(TempListOfCertifications, DictVendors, Recipients, CLib.GetHTMLTemplateActive(TitleTxt, SubTitleTxt), Customer.SystemId);
-
-            end;
-        end;
     end;
+
 
     internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; Recipients: List of [Text]; HTMLTemplate: Text)
 
@@ -278,15 +262,20 @@ codeunit 50104 "TFB Quality Mgmt"
 
     end;
 
-    internal procedure SendVendorCertificationEmail(var VendorCerts: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
+    internal procedure ProcessVendorCertifications(var VendorCerts: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; DialogChoices: Page "TFB Quality Docs Dialog"; HTMLTemplate: Text; CustomerSystemID: GUID)
 
     var
         CompanyInfo: Record "Company Information";
+        Customer: Record Customer;
+        CompanyCert: Record "TFB Company Certification";
         Email: CodeUnit Email;
         EmailMessage: CodeUnit "Email Message";
-        Customer: Record Customer;
         PersBlobCU: CodeUnit "Persistent Blob";
+        DataCompCU: CodeUnit "Data Compression";
         TempBlob: Codeunit "Temp Blob";
+        ZipTempBlob: CodeUnit "Temp Blob";
+        TempBlobList: CodeUnit "Temp Blob List";
+
         InStream: InStream;
         InstreamExcel: Instream;
         OutStream: OutStream;
@@ -294,7 +283,9 @@ codeunit 50104 "TFB Quality Mgmt"
         FileNameBuilder: TextBuilder;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
-
+        i: integer;
+        FileName: Text;
+        FileNameList: List of [Text];
     begin
 
         CompanyInfo.Get();
@@ -304,8 +295,10 @@ codeunit 50104 "TFB Quality Mgmt"
 
         HTMLBuilder.Append(HTMLTemplate);
         Customer.GetBySystemId(CustomerSystemID);
-        GenerateQualityDocumentsContent(Customer, VendorCerts, DictVendors, HTMLBuilder);
-        EmailMessage.Create(Recipients, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        GenerateQualityDocumentsContent(DialogChoices, Customer, VendorCerts, DictVendors, HTMLBuilder);
+
+        if not DialogChoices.getDownloadSel() then
+            EmailMessage.Create(DialogChoices.getRecipients(), SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
 
         if VendorCerts.Findset(false) then
             repeat
@@ -315,20 +308,78 @@ codeunit 50104 "TFB Quality Mgmt"
                     TempBlob.CreateOutStream(Outstream);
                     PersBlobCU.CopyToOutStream(VendorCerts."Certificate Attach.", OutStream);
                     TempBlob.CreateInStream(InStream);
-                    EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream);
+
+                    if (not DialogChoices.getDownloadSel()) and (not DialogChoices.getCompressSel()) then
+                        EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream)
+                    else begin
+                        TempBlobList.Add(TempBlob);
+                        FileNameList.Add(FileNameBuilder.ToText());
+                    end;
                 end
 
 
             until VendorCerts.Next() < 1;
-        If GenerateExcelDocument(VendorCerts, DictVendors, TempBlob) then begin
-            TempBlob.CreateInStream(InstreamExcel);
-            EmailMessage.AddAttachment('Quality Documents Index.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InstreamExcel);
-        end;
-        if not IsNullGuid(CustomerSystemID) then
-            Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
-        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
 
+        if DialogChoices.getCompCertSel() then
+            if CompanyCert.FindSet(false) then
+                repeat
+                    if PersBlobCU.Exists(CompanyCert."Certificate Attach.") then begin
+                        Clear(FileNameBuilder);
+                        FileNameBuilder.Append(StrSubstNo('Cert %1_%2_%3.pdf', 'TFB', '', CompanyCert."Certification Type"));
+                        TempBlob.CreateOutStream(Outstream);
+                        PersBlobCU.CopyToOutStream(CompanyCert."Certificate Attach.", OutStream);
+                        TempBlob.CreateInStream(InStream);
+
+                        if (not DialogChoices.getDownloadSel()) and (not DialogChoices.getCompressSel()) then
+                            EmailMessage.AddAttachment(CopyStr(FileNameBuilder.ToText(), 1, 250), 'Application/PDF', InStream)
+                        else begin
+                            TempBlobList.Add(TempBlob);
+                            FileNameList.Add(FileNameBuilder.ToText());
+                        end;
+                    end;
+
+                until CompanyCert.Next() = 0;
+
+
+        if GenerateExcelDocument(DialogChoices, VendorCerts, CompanyCert, DictVendors, TempBlob) then begin
+            TempBlob.CreateInStream(InstreamExcel);
+            if not DialogChoices.getDownloadSel() then
+                EmailMessage.AddAttachment('Quality Documents Index.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', InstreamExcel)
+            else begin
+                TempBlobList.Add(TempBlob);
+                FileNameList.Add('Quality Documents Index.xlsx');
+            end;
+        end;
+
+        if DialogChoices.getDownloadSel() or DialogChoices.getCompressSel() then
+            if TempBlobList.Count() >= 1 then begin
+                DataCompCU.CreateZipArchive();
+
+                for i := 1 to TempBlobList.Count() do begin
+                    TempBlobList.Get(i, TempBlob);
+                    TempBlob.CreateInStream(InStream);
+                    FileName := FileNameList.Get(i);
+                    DataCompCU.AddEntry(InStream, FileName);
+                end;
+
+                DataCompCU.SaveZipArchive(ZipTempBlob);
+                ZipTempBlob.CreateInStream(InStream);
+                FileName := StrSubstNo('All quality certificates x %1.zip', TempBlobList.Count());
+            end;
+
+        if not DialogChoices.getDownloadSel() then begin
+            if not IsNullGuid(CustomerSystemID) then
+                Email.AddRelation(EmailMessage, Database::Customer, CustomerSystemID, Enum::"Email Relation Type"::"Related Entity", eNUM::"Email Relation Origin"::"Compose Context");
+            if DialogChoices.getCompressSel() then
+                EmailMessage.AddAttachment(FileName, 'Application/ZIP', InStream);
+            Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Quality)
+        end
+        else
+            if not DownloadFromStream(InStream, 'File Download', '', '', FileName) then
+                Error('File %1 not downloaded', FileName);
     end;
+
+
 
     internal procedure SendCompanyCertificationEmail(var CompanyCerts: Record "TFB Company Certification"; Recipients: List of [Text]; HTMLTemplate: Text; CustomerSystemID: GUID)
 
@@ -438,10 +489,11 @@ codeunit 50104 "TFB Quality Mgmt"
         exit(true);
     end;
 
-    local procedure GenerateQualityDocumentsContent(Customer: Record Customer; var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var HTMLBuilder: TextBuilder): Boolean
+    local procedure GenerateQualityDocumentsContent(DialogChoices: Page "TFB Quality Docs Dialog"; Customer: Record Customer; var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var HTMLBuilder: TextBuilder): Boolean
 
     var
         Item: Record Item;
+        CompanyCertifications: Record "TFB Company Certification";
         PersBlob: CodeUnit "Persistent Blob";
         BodyBuilder: TextBuilder;
         CommentBuilder: TextBuilder;
@@ -472,6 +524,27 @@ codeunit 50104 "TFB Quality Mgmt"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="7.5%">Attachment</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" vertical-align="top" width="20%">Related items</th></thead>');
         Item.SetLoadFields(Description);
+
+        if DialogChoices.getCompCertSel() then
+            if CompanyCertifications.Findset(false) then
+                repeat
+                    Clear(LineBuilder);
+                    Clear(CommentBuilder);
+                    LineBuilder.AppendLine('<tr>');
+
+                    LineBuilder.Append(StrSubstNo(tdTxt, 'TFB Certification'));
+                    LineBuilder.Append(StrSubstNo(tdTxt, ''));
+                    LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertifications."Certification Type"));
+                    LineBuilder.Append(StrSubstNo(tdTxt, CompanyCertifications."Expiry Date"));
+                    LineBuilder.Append(StrSubstNo(tdTxt, PersBlob.Exists(CompanyCertifications."Certificate Attach.")));
+
+                    LineBuilder.Append(StrSubstNo(tdTxt, 'All items'));
+                    Clear(ItemBuilder);
+                    Clear(ItemList);
+                    LineBuilder.AppendLine('</tr>');
+                    BodyBuilder.AppendLine(LineBuilder.ToText());
+                until CompanyCertifications.Next() = 0;
+
         if VendorCertification.Findset(false) then begin
             repeat
 
@@ -567,7 +640,7 @@ codeunit 50104 "TFB Quality Mgmt"
         exit(true);
     end;
 
-    local procedure GenerateExcelDocument(var VendorCertification: Record "TFB Vendor Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var TempBlob: CodeUnit "Temp Blob"): Boolean
+    local procedure GenerateExcelDocument(DialogChoices: Page "TFB Quality Docs Dialog"; var VendorCertification: Record "TFB Vendor Certification"; CompanyCertification: Record "TFB Company Certification"; DictVendors: Dictionary of [Code[20], List of [Code[20]]]; var TempBlob: CodeUnit "Temp Blob"): Boolean
     var
         TempExcelBuffer: Record "Excel Buffer" temporary;
         Item: Record Item;
