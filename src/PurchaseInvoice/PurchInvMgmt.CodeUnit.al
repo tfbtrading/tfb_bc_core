@@ -263,6 +263,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' for container %1 on %2', line."TFB Container No. LookUp", Line."Posting Date")
             else
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' receipted as semiload on %1', Line."Posting Date");
+            PurchLine.Modify(false);
             PurchLine.CalcFields("Qty. to Assign");
             exit(true);
         end;
@@ -363,6 +364,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 TransferReceiptLine.CalcFields("TFB Container No. LookUp");
                 PurchLine.Description := PurchLine.Description + StrSubstNo(' for order %1 shipped in %2 received on %3', TransferReceiptLine."Document No.", TransferReceiptLine."TFB Container No.", TransferReceiptLine."Receipt Date");
+                PurchLine.Modify(false);
                 PurchLine.CalcFields("Qty. to Assign");
                 exit(true);
             end;
@@ -625,6 +627,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
                 ICAssignmentCU.AssignItemCharges(PurchLine, PurchLine.Quantity, PurchLine.Amount, ICAssignmentCU.AssignByWeightMenuText());
                 PurchLine.Description := Text.CopyStr(StrSubstNo('%1 Shipment to %2 on %3', Reference, CustomerList, PostingDate), 1, 100);
                 PurchLine.CalcFields("Qty. to Assign");
+                PurchLine.Modify(false);
                 exit(true);
             end;
 
