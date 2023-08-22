@@ -44,7 +44,9 @@ permissionset 50100 "TFB Core"
         tabledata "TFB Segment Match Criteria" = RIMD,
         tabledata "TFB Vendor Certification" = RIMD,
         tabledata "TFB Vendor Zone Rate" = RIMD,
+
         table "PDF Viewer Setup" = X,
+
         table "TFB Brokerage Contract" = X,
         table "TFB Brokerage Contract Line" = X,
         table "TFB Brokerage Shipment" = X,

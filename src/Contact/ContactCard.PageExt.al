@@ -193,6 +193,19 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the default review period for next date planned date';
                 }
+                field("TFB Primary Industry Code"; Rec.GetPrimaryIndustryText())
+                {
+                    ApplicationArea = All;
+                    Tooltip = 'Specifies the primary industry code';
+                    Caption = 'Primary Industry';
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+
+                    begin
+                        ShowIndustryList();
+                    end;
+                }
 
             }
         }

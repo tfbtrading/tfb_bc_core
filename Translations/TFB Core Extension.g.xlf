@@ -15433,6 +15433,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Lead Source - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 4178179405 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the primary industry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Primary Industry Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 156978454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Review</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15502,6 +15507,11 @@
           <source>Specify linkedin URL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Linkedin Page - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2873490287 - Control 287039288 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2356697978">
+          <source>Specifies if this should be the primary industry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Industry Group - Control TFB Primary - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 1880709078 - Control 2278016522 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 487012807">
           <source>Specifies direction of information</source>
@@ -19403,6 +19413,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Online Identity Id - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 4178179405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Primary Industry Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Primary Industry Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 1582544569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Revew Date - Planned</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19427,6 +19442,11 @@
           <source>Sales Readiness</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Sales Readiness - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2873490287 - Field 287039288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3410068015">
+          <source>Primary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact Industry Group - Field TFB Primary - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 2386644114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Archived</source>

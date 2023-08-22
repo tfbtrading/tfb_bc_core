@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-        updateContactStatus();
+        updateIndustryToPrimary();
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,9 +47,32 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.12'))
+        exit((GetInstallingVersionNo() = '22.0.2.24'))
     end;
 
+
+    local procedure updateIndustryToPrimary()
+
+    var
+        ContactIndustryGroup2: record "Contact Industry Group";
+        Contact: record contact;
+    begin
+
+        Contact.SetRange(Type, Contact.Type::Company);
+        if Contact.FindSet(false) then
+            repeat
+                ContactIndustryGroup2.SetRange("Contact No.", Contact."No.");
+                if not ContactIndustryGroup2.IsEmpty then
+                    if ContactIndustryGroup2.Count >= 1 then
+                        if ContactIndustryGroup2.FindFirst() then begin
+                            ContactIndustryGroup2."TFB Primary" := true;
+                            ContactIndustryGroup2.modify(false);
+                        end;
+
+            until Contact.Next() = 0;
+
+
+    end;
 
 
     local procedure updateContactStatus()

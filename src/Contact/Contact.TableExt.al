@@ -205,6 +205,17 @@ tableextension 50110 "TFB Contact" extends Contact
             DataClassification = CustomerContent;
             Caption = 'Archived';
         }
+        field(50490; "TFB Primary Industry Code"; Code[10])
+        {
+
+            FieldClass = FlowField;
+            CalcFormula = lookup("Contact Industry Group"."Industry Group Code" where("Contact No." = field("No."), "TFB Primary" = const(true)));
+            Caption = 'Primary Industry Code';
+            TableRelation = "Industry Group";
+            ValidateTableRelation = false;
+
+
+        }
 
 
 
@@ -223,7 +234,37 @@ tableextension 50110 "TFB Contact" extends Contact
         addlast(DropDown; "TFB Contact Stage", "TFB Contact Status") { }
     }
 
+    procedure GetPrimaryIndustryText(): Text[100]
 
+    var
+        ContactIndustryGroup: Record "Contact Industry Group";
+
+    begin
+
+        if rec.type <> rec.type::Company then exit;
+        Rec.CalcFields("TFB Primary Industry Code");
+
+        if not ContactIndustryGroup.get(Rec."No.", Rec."TFB Primary Industry Code") then exit('None specified');
+
+        ContactIndustryGroup.CalcFields("Industry Group Description");
+
+        exit(ContactIndustryGroup."Industry Group Description");
+
+
+    end;
+
+    procedure ShowIndustryList()
+
+    var
+        ContactIndustryList: Record "Contact Industry Group";
+
+    begin
+
+        ContactIndustryList.SetRange("Contact No.", Rec."No.");
+
+        Page.Run(page::"Contact Industry Groups", ContactIndustryList);
+
+    end;
 
     procedure GetCustomerRelation(): Record Customer
     var
