@@ -46,7 +46,25 @@ page 50167 "TFB Contact Review List"
                     ToolTip = 'Specifies an additional part of the name.';
                     Visible = false;
                 }
+                field(TFBPrimaryIndustryText; Rec.GetPrimaryIndustryText())
+                {
+                    ApplicationArea = All;
+                    Tooltip = 'Specifies the primary industry code';
+                    Caption = 'Primary Industry';
+                    DrillDown = true;
 
+                    trigger OnDrillDown()
+
+                    begin
+                        Rec.ShowIndustryList();
+                    end;
+                }
+                field("TFB Primary Industry Code"; Rec."TFB Primary Industry Code")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                    ToolTip = 'Specifies the primary industry code';
+                }
                 field("TFB Contact Status"; Rec."TFB Contact Status")
                 {
                     Editable = true;

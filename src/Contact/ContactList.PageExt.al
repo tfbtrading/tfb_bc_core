@@ -48,6 +48,25 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 end;
 
             }
+            field(TFBPrimaryIndustryText; Rec.GetPrimaryIndustryText())
+            {
+                ApplicationArea = All;
+                Tooltip = 'Specifies the primary industry code';
+                Caption = 'Primary Industry';
+                DrillDown = true;
+
+                trigger OnDrillDown()
+
+                begin
+                    Rec.ShowIndustryList();
+                end;
+            }
+            field("TFB Primary Industry Code"; Rec."TFB Primary Industry Code")
+            {
+                ApplicationArea = All;
+                Visible = false;
+                ToolTip = 'Specifies the primary industry code';
+            }
             field("TFB Contact Status"; Rec."TFB Contact Status")
             {
                 ApplicationArea = All;
@@ -171,7 +190,7 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
     }
 
-   
+
 
     local procedure GetTaskSymbol(): Text
 
@@ -197,5 +216,5 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
 
     var
 
-     
+
 }

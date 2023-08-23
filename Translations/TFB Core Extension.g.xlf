@@ -6818,6 +6818,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB In Review - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 4178179405 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the primary industry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Primary Industry Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 2645611924 - Control 1582544569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies date on which next review is planned for contact</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6832,6 +6837,16 @@
           <source>Specifies the date review was last completed</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFB Review Date Last Compl. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 2901954829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the primary industry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFBPrimaryIndustryText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2645611924 - Control 2901954829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Primary Industry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control TFBPrimaryIndustryText - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2645611924 - Control 3245344756 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies if a task exists</source>
@@ -15398,15 +15413,15 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Action TFBSetToInReview - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 1976311139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Active ✔️</source>
+        <trans-unit id="PageExtension 1516405160 - Control 1040588720 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies the primary job responsibility</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control IdentitySetup - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Primary Job Resp. Code - Property ToolTip</note>
         </trans-unit>
-        <trans-unit id="PageExtension 1516405160 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
-          <source>Specifies if a contact has direct online access to information for their related customer</source>
+        <trans-unit id="PageExtension 1516405160 - Control 1040588720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Primary Job Resp.</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Enable Online Access - Property ToolTip</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Primary Job Resp. Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 1501079646 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Contacts</source>
@@ -15437,6 +15452,11 @@
           <source>Specifies the primary industry code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Primary Industry Code - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 4178179405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Primary Industry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Primary Industry Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1516405160 - Control 156978454 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
           <source>Review</source>
@@ -15508,6 +15528,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Linkedin Page - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 1976311139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Active ✔️</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control IdentitySetup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1516405160 - Control 3552331494 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3542408424">
+          <source>Specifies if a contact has direct online access to information for their related customer</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Card - Control TFB Enable Online Access - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2873490287 - Control 287039288 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2356697978">
           <source>Specifies if this should be the primary industry</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15517,6 +15547,11 @@
           <source>Specifies direction of information</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Int. Entries Sf - Control Information Flow - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 937157977 - Control 287039288 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 377458175">
+          <source>Specifies if this should be the primary industry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Contact Job Respons. - Control TFB Primary - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 3856507940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 862853572">
           <source>Contact Details</source>
@@ -15613,10 +15648,25 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFB Is Customer - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Control 4178179405 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Specifies the primary industry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFB Primary Industry Code - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3190613190 - Control 1582544569 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Specifies date next review is planned</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFB Review Date - Planned - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Control 2901954829 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Specifies the primary industry code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFBPrimaryIndustryText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Control 2901954829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Primary Industry</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFBPrimaryIndustryText - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 3190613190 - View 3970051082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Contacts Requiring Followup</source>
@@ -19418,6 +19468,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Primary Industry Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 511190044 - Field 1040588720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
+          <source>Primary Job Respons. Code</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact - Field TFB Primary Job Resp. Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 511190044 - Field 1582544569 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3993128796">
           <source>Revew Date - Planned</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19447,6 +19502,11 @@
           <source>Primary</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact Industry Group - Field TFB Primary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1936007661 - Field 287039288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4130997421">
+          <source>Primary</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact Job Responsibility - Field TFB Primary - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 2386644114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Archived</source>

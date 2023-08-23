@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-        updateIndustryToPrimary();
+        updateJobRespToPrimary();
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,7 +47,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.24'))
+        exit((GetInstallingVersionNo() = '22.0.2.25'))
     end;
 
 
@@ -74,6 +74,28 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
+    local procedure updateJobRespToPrimary()
+
+    var
+        ContactJobResp2: record "Contact Job Responsibility";
+        Contact: record contact;
+    begin
+
+        Contact.SetRange(Type, Contact.Type::Person);
+        if Contact.FindSet(false) then
+            repeat
+                ContactJobResp2.SetRange("Contact No.", Contact."No.");
+                if not ContactJobResp2.IsEmpty then
+                    if ContactJobResp2.Count >= 1 then
+                        if ContactJobResp2.FindFirst() then begin
+                            ContactJobResp2."TFB Primary" := true;
+                            ContactJobResp2.modify(false);
+                        end;
+
+            until Contact.Next() = 0;
+
+
+    end;
 
     local procedure updateContactStatus()
 
