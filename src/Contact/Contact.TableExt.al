@@ -216,6 +216,17 @@ tableextension 50110 "TFB Contact" extends Contact
 
 
         }
+        field(50495; "TFB Primary Job Resp. Code"; Code[10])
+        {
+
+            FieldClass = FlowField;
+            CalcFormula = lookup("Contact Job Responsibility"."Job Responsibility Code" where("Contact No." = field("No."), "TFB Primary" = const(true)));
+            Caption = 'Primary Job Respons. Code';
+            TableRelation = "Job Responsibility";
+            ValidateTableRelation = false;
+
+
+        }
 
 
 
@@ -238,6 +249,7 @@ tableextension 50110 "TFB Contact" extends Contact
 
     var
         ContactIndustryGroup: Record "Contact Industry Group";
+        CountOfIndustries: Integer;
 
     begin
 
@@ -247,8 +259,35 @@ tableextension 50110 "TFB Contact" extends Contact
         if not ContactIndustryGroup.get(Rec."No.", Rec."TFB Primary Industry Code") then exit('None specified');
 
         ContactIndustryGroup.CalcFields("Industry Group Description");
+        ContactIndustryGroup.SetRange("Contact No.", Rec."No.");
+        CountOfIndustries := ContactIndustryGroup.Count();
+        if CountOfIndustries > 1 then
+            exit(ContactIndustryGroup."Industry Group Description" + StrSubstNo(' + %1 more', CountOfIndustries - 1))
+        else
+            exit(ContactIndustryGroup."Industry Group Description");
 
-        exit(ContactIndustryGroup."Industry Group Description");
+
+    end;
+
+    procedure GetPrimaryJobResponsibilityText(): Text[100]
+
+    var
+        ContactJobResponsibility: Record "Contact Job Responsibility";
+        CountOfJobResponsibilities: Integer;
+    begin
+
+        if rec.type <> rec.type::Person then exit;
+        Rec.CalcFields("TFB Primary Job Resp. Code");
+
+        if not ContactJobResponsibility.get(Rec."No.", Rec."TFB Primary Job Resp. Code") then exit('None specified');
+
+        ContactJobResponsibility.CalcFields("Job Responsibility Description");
+        ContactJobResponsibility.SetRange("Contact No.", Rec."No.");
+        CountOfJobResponsibilities := ContactJobResponsibility.Count();
+        If CountOfJobResponsibilities > 1 then
+            exit(ContactJobResponsibility."Job Responsibility Description" + StrSubstNo(' + %1 more', CountOfJobResponsibilities - 1))
+        else
+            exit(ContactJobResponsibility."Job Responsibility Description");
 
 
     end;
@@ -263,6 +302,19 @@ tableextension 50110 "TFB Contact" extends Contact
         ContactIndustryList.SetRange("Contact No.", Rec."No.");
 
         Page.Run(page::"Contact Industry Groups", ContactIndustryList);
+
+    end;
+
+    procedure ShowJobResponsibilityList()
+
+    var
+        JobResponsibilityList: Record "Contact Job Responsibility";
+
+    begin
+
+        JobResponsibilityList.SetRange("Contact No.", Rec."No.");
+
+        Page.Run(page::"Contact Job Responsibilities", JobResponsibilityList);
 
     end;
 

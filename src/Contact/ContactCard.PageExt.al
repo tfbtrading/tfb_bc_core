@@ -8,6 +8,37 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
             Editable = false;
             Importance = Additional;
         }
+        addafter(Type)
+        {
+            group(PersonalJobDetails)
+            {
+                Visible = rec.type = rec.type::Person;
+                ShowCaption = false;
+
+                field("TFB Primary Job Resp. Code"; Rec.GetPrimaryJobResponsibilityText())
+                {
+                    ApplicationArea = All;
+                    Tooltip = 'Specifies the primary job responsibility';
+                    Caption = 'Primary Job Resp.';
+                    DrillDown = true;
+
+                    trigger OnDrillDown()
+
+                    begin
+                        Rec.ShowJobResponsibilityList();
+                    end;
+                }
+
+            }
+        }
+
+        movefirst(PersonalJobDetails; "Job Title")
+
+        modify("Job Title")
+        {
+            Visible = true;
+        }
+
         addbefore("Exclude from Segment")
         {
             field("TFB Enable Online Access"; Rec."TFB Enable Online Access")
@@ -203,7 +234,7 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
                     trigger OnDrillDown()
 
                     begin
-                        ShowIndustryList();
+                        Rec.ShowIndustryList();
                     end;
                 }
 
@@ -229,6 +260,8 @@ pageextension 50148 "TFB Contact Card" extends "Contact Card"
             }
 
         }
+
+
 
 
     }
