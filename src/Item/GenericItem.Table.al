@@ -103,6 +103,12 @@ table 50111 "TFB Generic Item"
             Caption = 'External ID';
 
         }
+        field(9020; "Has Active Items"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = exist(Item where("TFB Generic Item ID" = field(SystemId), Blocked = const(false)));
+
+        }
 
 
     }
