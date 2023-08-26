@@ -296,6 +296,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
         Lines.SetRange("TFB Container No. LookUp", Reference);
         Lines.SetRange(Type, Lines.Type::Item);
         Lines.SetFilter(Quantity, '>0');
+        Lines.SetRange(Correction, false);
 
     end;
 
@@ -571,6 +572,7 @@ codeunit 50285 "TFB Purch. Inv. Mgmt"
     begin
         Lines.SetRange("TFB Container No.", Reference);
         Lines.SetFilter(Quantity, '>0');
+
     end;
 
     procedure IsWarehouseReferenceValid(Reference: Text[100]): Boolean
