@@ -98,6 +98,8 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
         }
 
 
+
+
     }
 
 
@@ -165,6 +167,16 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
     {
         addlast
         {
+            view(PeopleOnly)
+            {
+                Caption = 'People with Company';
+                SharedLayout = false;
+                Filters = where(Type = const(Person), "Company No." = filter('<>'''));
+                layout
+                {
+
+                }
+            }
             view(ContactWithTasks)
             {
                 Caption = 'Contacts With Open Tasks';

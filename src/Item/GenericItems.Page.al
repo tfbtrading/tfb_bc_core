@@ -44,6 +44,12 @@ page 50133 "TFB Generic Items"
                     Visible = true;
                     ToolTip = 'Specifies that the generic item should not be published in the catalogue';
                 }
+                field("Has Active Items"; Rec."Has Active Items")
+                {
+                    Visible = true;
+                    ToolTip = 'Specifies whether this generic item has currently active items';
+                    DrillDown = false;
+                }
                 field("No. Of Items"; Rec."No. Of Items")
                 {
                     Visible = true;
@@ -121,6 +127,25 @@ page 50133 "TFB Generic Items"
                 actionref(AddMarketSegmentRef; AddMarketSegment)
                 {
 
+                }
+            }
+        }
+
+
+    }
+    views
+    {
+        view(ActiveOnly)
+        {
+            Caption = 'With Active Items';
+            Filters = where("Has Active Items" = const(true));
+            SharedLayout = false;
+
+            layout
+            {
+                modify("Has Active Items")
+                {
+                    Visible = false;
                 }
             }
         }

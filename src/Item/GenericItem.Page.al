@@ -57,6 +57,12 @@ page 50132 "TFB Generic Item"
             group(ContentMgmt)
             {
                 Caption = 'Content Management';
+                field("Has Active Items"; Rec."Has Active Items")
+                {
+                    Editable = false;
+                    DrillDown = false;
+                    ToolTip = 'Specifies whether the generic item has currently active items';
+                }
                 field("No. Of Items"; Rec."No. Of Items")
                 {
                     Editable = false;
