@@ -45,6 +45,12 @@ tableextension 50177 "TFB Transfer Header" extends "Transfer Header" //MyTargetT
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(50100; "TFB Instructions"; Text[2048])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Instructions';
+
+        }
 
 
     }

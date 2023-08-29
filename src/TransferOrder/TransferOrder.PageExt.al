@@ -2,13 +2,30 @@ pageextension 50176 "TFB Transfer Order" extends "Transfer Order" //MyTargetPage
 {
     layout
     {
+        addlast(General)
+        {
+            field("TFB Instructions"; Rec."TFB Instructions")
+            {
+                MultiLine = true;
+                ApplicationArea = All;
+                ToolTip = 'Specifies the specific delivery instructions for the warehouse shipment';
+            }
+        }
         addafter("In-Transit Code")
         {
 
         }
         modify("Receipt Date")
         {
-            Editable = true; 
+            Editable = true;
+        }
+        modify("Shortcut Dimension 1 Code")
+        {
+            Visible = false;
+        }
+        modify("Shortcut Dimension 2 Code")
+        {
+            Visible = false;
         }
 
         addbefore(Status)
