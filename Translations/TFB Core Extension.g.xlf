@@ -18923,6 +18923,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Sales Shipment Lines - View Drop Ships - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3986812827 - Action 176562519 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3636618587">
+          <source>View the current contact</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Segment Subform - Action View - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2896263782 - Control 3123527090 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1187003046">
           <source>Only relevant if override location shipping enabled</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21867,6 +21872,11 @@
           <source>Sample Packing Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="ReportExtension 3112480377 - Change 1559977815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 535579449">
+          <source>Deliver mail merge using template</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">ReportExtension TFB Log Segment - Change Deliver - Property Caption</note>
         </trans-unit>
       </group>
     </body>
