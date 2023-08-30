@@ -48,6 +48,20 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                 end;
 
             }
+            field(TFBPrimaryJobRespText; Rec.GetPrimaryJobResponsibilityText())
+            {
+                ApplicationArea = All;
+                Tooltip = 'Specifies the primary job respponsibility';
+                Caption = 'Primary Job Resp.';
+                DrillDown = true;
+                Visible = false;
+
+                trigger OnDrillDown()
+
+                begin
+                    Rec.ShowJobResponsibilityList();
+                end;
+            }
             field(TFBPrimaryIndustryText; Rec.GetPrimaryIndustryText())
             {
                 ApplicationArea = All;
@@ -171,10 +185,13 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
             {
                 Caption = 'People with Company';
                 SharedLayout = false;
-                Filters = where(Type = const(Person), "Company No." = filter('<>'''));
+                Filters = where(Type = const(Person), "Company No." = filter('<>'''''));
                 layout
                 {
-
+                    modify(TFBPrimaryJobRespText)
+                    {
+                        Visible = true;
+                    }
                 }
             }
             view(ContactWithTasks)

@@ -15688,6 +15688,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFBPrimaryIndustryText - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Control 1196990806 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Specifies the primary job respponsibility</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFBPrimaryJobRespText - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - Control 1196990806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>Primary Job Resp.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - Control TFBPrimaryJobRespText - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3190613190 - View 3970051082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
           <source>Contacts Requiring Followup</source>
           <note from="Developer" annotates="general" priority="2"></note>
