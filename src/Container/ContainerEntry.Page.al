@@ -902,9 +902,9 @@ page 50210 "TFB Container Entry"
         RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
-        DocMailing: codeunit "Document-Mailing";
+ 
         mgmt: codeunit "TFB Common Library";
-        TempBlob: CodeUnit "Temp Blob";
+
         TempBlobCOA: CodeUnit "Temp Blob";
         TempBlobHTML: CodeUnit "Temp Blob";
         DocumentRef: RecordRef;
@@ -919,6 +919,8 @@ page 50210 "TFB Container Entry"
         FileNameCOA: Text;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
+
+        
 
     begin
         Doc.get(DocNo);
@@ -953,21 +955,15 @@ page 50210 "TFB Container Entry"
         RepSel.SetRange("Use for Email Attachment", true);
 
         FileName := StrSubstNo('Container No. %1 Advice.pdf', Doc."Container No.");
-        TempBlob.CreateOutStream(OutStreamReport);
+
         TempBlobCOA.CreateInStream(InStreamCOA);
 
         GetNotificationContent(HTMLBuilder, Doc);
         OutStreamHTML.WriteText(HTMLBuilder.ToText());
         TempBlobHTML.CreateInStream(InStreamHTML);
-        if Dialog.Confirm('Send Report instead of CoA', false) then begin
-            if RepSel.FindFirst() then
-                if REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
-                    TempBlob.CreateInStream(InstreamReport);
-                    DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-                end;
-        end
-        else
-            DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
+
+
+        DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
     end;
 
 

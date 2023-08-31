@@ -16,6 +16,5 @@ pageextension 50223 "TFB Segment" extends Segment
         }
     }
 
-    var
-        myInt: Integer;
+
 }
