@@ -16798,6 +16798,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Outbound Order Deadline - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 741509179 - Control 216686859 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
+          <source>Specifies the email to use for communication about inbound shipments</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Location Card - Control TFB Inbound Shipment Email - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 741509179 - Control 2516243223 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3870787835">
           <source>Specifies if location is current active for shipments and receipts</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19942,6 +19947,11 @@
           <source>Heat Treat. Time Delay</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Heat Treat. Time Delay - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2422250495 - Field 216686859 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
+          <source>Inbound Shipment Email</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Location - Field TFB Inbound Shipment Email - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2422250495 - Field 392393498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3891454143">
           <source>Inspection Time Delay</source>

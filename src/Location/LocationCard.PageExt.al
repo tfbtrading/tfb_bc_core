@@ -109,6 +109,7 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
         {
             group(ContainerHandling)
             {
+                ShowCaption = false;
                 Visible = Rec."TFB Location Type" = Rec."TFB Location Type"::Standard;
                 field("TFB Inbound Shipment Email";
                 Rec."TFB Inbound Shipment Email")
