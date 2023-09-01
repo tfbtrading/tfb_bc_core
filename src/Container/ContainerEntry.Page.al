@@ -954,6 +954,7 @@ page 50210 "TFB Container Entry"
 
         GetNotificationContent(HTMLBuilder, Doc);
 
+
         EmailMessage.Create(EmailID, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
         If location."TFB Inbound Shipment Email" <> '' then
             EmailMessage.AddRecipient(Enum::"Email Recipient Type"::Cc, Location."TFB Inbound Shipment Email");
@@ -961,6 +962,7 @@ page 50210 "TFB Container Entry"
 
 
         Email.AddRelation(EmailMessage, Database::"TFB Container Entry", Rec.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
+        OnBeforeSendEmailToWarehouse(SubjectNameBuilder, EmailMessage);
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics);
 
 
@@ -1068,6 +1070,8 @@ page 50210 "TFB Container Entry"
 
         BodyBuilder.AppendLine('</table>');
 
+        OnBeforeAddHTMLContentToWarehouseEmail(BodyBuilder);
+
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         exit(true);
 
@@ -1079,5 +1083,16 @@ page 50210 "TFB Container Entry"
         ArrivalDateEnabled := (Rec."Arrival Date" = 0D);
         ClearDateEnabled := (Rec."Clear Date" = 0D);
         AvailToSellDateEnabled := (Rec."Warehouse Date" = 0D);
+    end;
+
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeSendEmailToWarehouse(var SubjectBuilder: TextBuilder; var EmailMessage: CodeUnit "Email Message")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeAddHTMLContentToWarehouseEmail(BodyBuilder: TextBuilder)
+    begin
     end;
 }
