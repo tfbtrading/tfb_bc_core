@@ -261,7 +261,7 @@ codeunit 50200 "TFB Container Mgmt"
 
     end;
 
-    procedure GetContainerCoAStream(ContainerEntry: Record "TFB Container Entry"; var TempBlob: CodeUnit "Temp Blob"; var FileName: Text): Boolean
+    procedure GetContainerCoAStream(ContainerEntry: Record "TFB Container Entry"; var TempBlob: CodeUnit "Temp Blob"; var FileName: Text; var FileType: Text): Boolean
 
     var
         ReceiptLine: Record "Purch. Rcpt. Line";
@@ -365,7 +365,7 @@ codeunit 50200 "TFB Container Mgmt"
                             FileNameBuilder.Append(LineLotNo);
                             FileNameBuilder.Append('.pdf');
                             FileNameList.Add(FileNameBuilder.ToText());
-
+                            FileType := 'Application/pdf';
                         end;
                     end;
 
@@ -401,6 +401,7 @@ codeunit 50200 "TFB Container Mgmt"
 
                 DataCompCU.SaveZipArchive(ZipTempBlob);
                 TempBlob := ZipTempBlob;
+                FileType := 'Application/zip';
                 FileName := StrSubstNo('CoAs for %1.zip', OrderNo);
             end;
         end;

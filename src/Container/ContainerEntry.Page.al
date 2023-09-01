@@ -899,29 +899,26 @@ page 50210 "TFB Container Entry"
         Location: record Location;
         Purchase: record "Purchase Header";
         PurchaseReceiptLine: record "Purch. Rcpt. Line";
-        RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
- 
+        Email: CodeUnit Email;
+        EmailMessage: Codeunit "Email Message";
         mgmt: codeunit "TFB Common Library";
 
         TempBlobCOA: CodeUnit "Temp Blob";
         TempBlobHTML: CodeUnit "Temp Blob";
-        DocumentRef: RecordRef;
+
         RecordRef: RecordRef;
         InStreamCOA: Instream;
-        InStreamHTML: InStream;
-        InstreamReport: InStream;
         OutStreamHTML: OutStream;
-        OutStreamReport: OutStream;
+
         EmailID: Text[250];
         FileName: Text;
         FileNameCOA: Text;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
 
-        
-
+        FileType: Text;
     begin
         Doc.get(DocNo);
         RecordRef.GetTable(Doc);
@@ -946,24 +943,28 @@ page 50210 "TFB Container Entry"
         HTMLBuilder.Append(mgmt.GetHTMLTemplateActive('Container Details', 'Warehouse Instructions'));
         EmailID := Location."E-Mail";
         SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
-        ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
+        ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA, FileType);
         TempBlobHTML.CreateOutStream(OutStreamHTML);
 
-        Rec.SetRecFilter();
-        DocumentRef.GetTable(Rec);
-        RepSel.SetRange(Usage, RepSel.Usage::"P.Inbound.Shipment.Warehouse");
-        RepSel.SetRange("Use for Email Attachment", true);
+
 
         FileName := StrSubstNo('Container No. %1 Advice.pdf', Doc."Container No.");
 
         TempBlobCOA.CreateInStream(InStreamCOA);
 
         GetNotificationContent(HTMLBuilder, Doc);
-        OutStreamHTML.WriteText(HTMLBuilder.ToText());
-        TempBlobHTML.CreateInStream(InStreamHTML);
 
 
-        DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
+        EmailMessage.AddRecipient(Enum::"Email Recipient Type"::"To", EmailID);
+        EmailMessage.AppendToBody(HTMLBuilder.ToText());
+        EmailMessage.SetSubject(SubjectNameBuilder.ToText());
+        EmailMessage.AddAttachment(FileNameCOA, FileType, InStreamCOA);
+
+
+        Email.AddRelation(EmailMessage, Database::"TFB Container Entry", Rec.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
+        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics);
+
+
     end;
 
 
