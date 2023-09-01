@@ -954,10 +954,9 @@ page 50210 "TFB Container Entry"
 
         GetNotificationContent(HTMLBuilder, Doc);
 
-
-        EmailMessage.AddRecipient(Enum::"Email Recipient Type"::"To", EmailID);
-        EmailMessage.AppendToBody(HTMLBuilder.ToText());
-        EmailMessage.SetSubject(SubjectNameBuilder.ToText());
+        EmailMessage.Create(EmailID, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        If location."TFB Inbound Shipment Email" <> '' then
+            EmailMessage.AddRecipient(Enum::"Email Recipient Type"::Cc, Location."TFB Inbound Shipment Email");
         EmailMessage.AddAttachment(FileNameCOA, FileType, InStreamCOA);
 
 

@@ -140,6 +140,11 @@ tableextension 50100 "TFB Location" extends Location
             Caption = 'Pallet Account No';
 
         }
+        field(50125; "TFB Inbound Shipment Email"; Text[80])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Inbound Shipment Email';
+        }
     }
 
 }
