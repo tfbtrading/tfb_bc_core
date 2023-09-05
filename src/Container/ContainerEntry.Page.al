@@ -962,7 +962,7 @@ page 50210 "TFB Container Entry"
 
 
         Email.AddRelation(EmailMessage, Database::"TFB Container Entry", Rec.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
-        OnBeforeSendEmailToWarehouse(SubjectNameBuilder, EmailMessage, ContainerEntry);
+        OnBeforeSendEmailToWarehouse(SubjectNameBuilder, Email, EmailMessage, ContainerEntry);
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics);
 
 
@@ -1087,7 +1087,7 @@ page 50210 "TFB Container Entry"
 
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeSendEmailToWarehouse(var SubjectBuilder: TextBuilder; var EmailMessage: CodeUnit "Email Message"; ContainerEntry: Record "TFB Container Entry")
+    local procedure OnBeforeSendEmailToWarehouse(var SubjectBuilder: TextBuilder; var Email: CodeUnit Email; var EmailMessage: CodeUnit "Email Message"; ContainerEntry: Record "TFB Container Entry")
     begin
     end;
 
