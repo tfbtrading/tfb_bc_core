@@ -21,6 +21,9 @@ table 50300 "TFB Costing Scenario"
         {
             DataClassification = CustomerContent;
             Caption = 'Exch. Rate';
+            ObsoleteState = Pending;
+            ObsoleteReason = 'Replaced by exchange basis on currency table';
+            ObsoleteTag = 'Next Minor';
         }
         field(4; "Finance Rate"; Decimal)
         {
@@ -159,7 +162,7 @@ table 50300 "TFB Costing Scenario"
     }
     fieldgroups
     {
-        fieldgroup(DropDown; Code, "Effective Date", "Exchange Rate") { }
+        fieldgroup(DropDown; Code, "Effective Date") { }
     }
 
 

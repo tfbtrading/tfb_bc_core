@@ -17,6 +17,7 @@ codeunit 50304 "TFB Costing Mgmt"
         LCProfile: Record "TFB Landed Cost Profile";
         LCScenario: Record "TFB Costing Scenario";
         ItemCost: Record "TFB Item Costing Revised";
+        Currency: Record Currency;
 
     begin
 
@@ -38,8 +39,14 @@ codeunit 50304 "TFB Costing Mgmt"
 
 
                     if LCScenario.get(LCProfile.Scenario) then
-                        if UpdateExchRate and not ItemCost."Fix Exch. Rate" then
-                            ItemCost."Exch. Rate" := LCScenario."Exchange Rate";
+                        if UpdateExchRate and not ItemCost."Fix Exch. Rate" then begin
+                            ItemCost.CalcFields("Vendor Currency");
+                            if Currency.Get(ItemCost."Vendor Currency") then
+                                ItemCost."Exch. Rate" := Currency."TFB Costing Basis"
+                            else
+                                ItemCost."Exch. Rate" := 1;
+                        end;
+
                     if UpdateMargins then begin
                         ItemCost."Market Price Margin %" := LCScenario."Market Price Margin %";
                         ItemCost."Pricing Margin %" := LCScenario."Pricing Margin %";

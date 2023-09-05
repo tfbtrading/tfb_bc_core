@@ -929,7 +929,7 @@ page 50210 "TFB Container Entry"
             TransferRec.SetRange("TFB Container Entry No.", Rec."No.");
             if not TransferRec.FindFirst() then begin
                 PurchaseReceiptLine.SetRange("TFB Container Entry No.", Rec."No.");
-                If not PurchaseReceiptLine.FindFirst() then
+                if not PurchaseReceiptLine.FindFirst() then
                     exit
                 else
                     Location.Get(PurchaseReceiptLine."Location Code");
@@ -956,13 +956,15 @@ page 50210 "TFB Container Entry"
 
 
         EmailMessage.Create(EmailID, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
-        If location."TFB Inbound Shipment Email" <> '' then
+        if location."TFB Inbound Shipment Email" <> '' then
             EmailMessage.AddRecipient(Enum::"Email Recipient Type"::Cc, Location."TFB Inbound Shipment Email");
         EmailMessage.AddAttachment(FileNameCOA, FileType, InStreamCOA);
 
 
         Email.AddRelation(EmailMessage, Database::"TFB Container Entry", Rec.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
         OnBeforeSendEmailToWarehouse(SubjectNameBuilder, Email, EmailMessage, ContainerEntry);
+        if EmailMessage.GetSubject() <> SubjectNameBuilder.ToText() then
+            EmailMessage.SetSubject(SubjectNameBuilder.ToText());
         Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics);
 
 

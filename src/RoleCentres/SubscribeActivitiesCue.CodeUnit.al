@@ -21,7 +21,7 @@ codeunit 50131 "TFB Subscribe Activities Cue"
         ItemLedgersQuery.SetFilter(Expiration_Date, '..t');
         ItemLedgersQuery.Open();
 
-        While ItemLedgersQuery.Read() do begin
+        while ItemLedgersQuery.Read() do begin
             LotExpiryBuffer.init();
             LotExpiryBuffer."Item No." := ItemLedgersQuery.Item_No_;
             LotExpiryBuffer.Description := ItemLedgersQuery.Description;
@@ -32,7 +32,7 @@ codeunit 50131 "TFB Subscribe Activities Cue"
             LotExpiryBuffer.Insert();
         end;
 
-        Exit(LotExpiryBuffer.Count());
+        exit(LotExpiryBuffer.Count());
 
     end;
 
@@ -57,7 +57,7 @@ codeunit 50131 "TFB Subscribe Activities Cue"
         ItemLedgersQuery.SetFilter(Expiration_Date, 't..t+6m');
         ItemLedgersQuery.Open();
 
-        While ItemLedgersQuery.Read() do begin
+        while ItemLedgersQuery.Read() do begin
             LotExpiryBuffer.init();
             LotExpiryBuffer."Item No." := ItemLedgersQuery.Item_No_;
             LotExpiryBuffer.Description := ItemLedgersQuery.Description;
@@ -68,7 +68,7 @@ codeunit 50131 "TFB Subscribe Activities Cue"
             LotExpiryBuffer.Insert();
         end;
 
-        Exit(LotExpiryBuffer.Count());
+        exit(LotExpiryBuffer.Count());
 
     end;
 

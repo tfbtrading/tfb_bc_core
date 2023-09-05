@@ -156,7 +156,7 @@ table 50101 "TFB Vendor Certification"
         field(90; "No. Of Items"; Integer)
         {
             FieldClass = FlowField;
-            CalcFormula = Count(Item where("Vendor No." = field("Vendor No."), "TFB Vendor Order Address" = field("Vendor Order Address")));
+            CalcFormula = count(Item where("Vendor No." = field("Vendor No."), "TFB Vendor Order Address" = field("Vendor Order Address")));
 
         }
 

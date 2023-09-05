@@ -366,7 +366,7 @@ codeunit 50122 "TFB Sales Mgmt"
         ShipmentMethod: Record "Shipment Method";
 
     begin
-        If OverrideLocationShipping then exit;
+        if OverrideLocationShipping then exit;
         if not Location.Get(LocationCode) then exit;
         if ShipmentMethod.Get(ShipmentMethodCode) then
             if ShipmentMethod."TFB Pickup at Location" then exit;
@@ -375,7 +375,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
         if (ShipToCounty <> Location.County) then
             //Interstate location
-            If LocationShippingAgent.Get(LocationCode, Location."Country/Region Code", ShipToCounty) then
+            if LocationShippingAgent.Get(LocationCode, Location."Country/Region Code", ShipToCounty) then
                 ShippingAgentServices.Get(LocationShippingAgent."Shipping Agent Code", LocationShippingAgent."Agent Service Code")
             else
                 ShippingAgentServices.Get(Location."TFB Insta Shipping Agent Code", Location."TFB Insta Agent Service Code")
@@ -476,7 +476,7 @@ codeunit 50122 "TFB Sales Mgmt"
         //If not intelligent location then exit unhandled
         GetIntelligentLocation(SalesLine."Sell-to Customer No.", SalesHeader."Ship-to Code", SalesLine."No.", GetBaseQtyForSalesLine(SalesLine), IntelligentLocationCode);
 
-        If IntelligentLocationCode = '' then exit;
+        if IntelligentLocationCode = '' then exit;
         // Intelligent location return so show that it has been handled
         IsHandled := true;
         SalesLine."Location Code" := IntelligentLocationCode;
@@ -537,7 +537,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If SalesLine."Blanket Order No." <> '' then exit;
+        if SalesLine."Blanket Order No." <> '' then exit;
         if not (SalesLine.Type = SalesLine.Type::Item) then exit;
 
         BlanketSalesLine.SetRange("Document Type", BlanketSalesLine."Document Type"::"Blanket Order");
@@ -548,7 +548,7 @@ codeunit 50122 "TFB Sales Mgmt"
 
         if not (BlanketSalesLine.FindFirst()) then exit;
 
-        If not BlanketSalesLine."TFB Consume Blanket Order" then exit;
+        if not BlanketSalesLine."TFB Consume Blanket Order" then exit;
 
         ExistingLines.SetLoadFields("Outstanding Qty. (Base)");
         ExistingLines.SetRange("Blanket Order No.", BlanketSalesLine."Document No.");
@@ -1282,11 +1282,11 @@ codeunit 50122 "TFB Sales Mgmt"
 
     begin
 
-        If (Rec."Prepayment %" = 0) or (Rec."Prepmt. Line Amount" = 0) then
-            Exit(emojiNotApplicableTxt);
+        if (Rec."Prepayment %" = 0) or (Rec."Prepmt. Line Amount" = 0) then
+            exit(emojiNotApplicableTxt);
 
-        If (Rec."Prepmt. Amt. Inv." >= 0) and (Rec."Prepmt. Amt. Inv." < Rec."Prepmt. Line Amount") then
-            Exit(emojiWaitingForPrepaymentInvoiceTxt);
+        if (Rec."Prepmt. Amt. Inv." >= 0) and (Rec."Prepmt. Amt. Inv." < Rec."Prepmt. Line Amount") then
+            exit(emojiWaitingForPrepaymentInvoiceTxt);
 
         if (Rec."Prepmt. Amt. Inv." = Rec."Prepmt. Line Amount") then begin
 
@@ -1296,22 +1296,22 @@ codeunit 50122 "TFB Sales Mgmt"
             SalesInvoiceHeader.SetRange("Prepayment Order No.", Rec."Document No.");
             SalesInvoiceHeader.SetLoadFields("No.", "Prepayment Order No.");
 
-            If SalesInvoiceHeader.FindSet(false) then
+            if SalesInvoiceHeader.FindSet(false) then
                 repeat
                     SalesInvoiceHeader.CalcFields("Remaining Amount");
-                    If SalesInvoiceLine.Get(SalesInvoiceHeader."No.", Rec."Line No.") then
-                        If SalesInvoiceLine."Prepayment Line" then
-                            If SalesInvoiceHeader."Remaining Amount" = 0 then
+                    if SalesInvoiceLine.Get(SalesInvoiceHeader."No.", Rec."Line No.") then
+                        if SalesInvoiceLine."Prepayment Line" then
+                            if SalesInvoiceHeader."Remaining Amount" = 0 then
                                 InvoicePaid := true
                             else
                                 InvoicePaid := false;
 
                 until SalesInvoiceHeader.Next() = 0;
 
-            If InvoicePaid then
-                Exit(emojiPrepaymentInvoicePaidTxt)
+            if InvoicePaid then
+                exit(emojiPrepaymentInvoicePaidTxt)
             else
-                Exit(emojiWaitingForPrepaymentInvoiceToBePaidTxt);
+                exit(emojiWaitingForPrepaymentInvoiceToBePaidTxt);
         end;
 
 

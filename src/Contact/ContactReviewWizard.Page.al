@@ -106,7 +106,7 @@ page 50174 "TFB Contact Review Wizard"
 
                     begin
                         ContactStatus.SetRange(Status, _UpdateContactStatus);
-                        If ContactStatus.FindFirst() then
+                        if ContactStatus.FindFirst() then
                             if ContactStatus.Stage = ContactStatus.Stage::Inactive then
                                 _ShowDateSelection := false
                             else

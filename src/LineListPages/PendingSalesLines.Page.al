@@ -106,7 +106,7 @@ page 50147 "TFB Pending Sales Lines"
                         SalesInvoiceHeader.SetRange("Prepayment Invoice", true);
                         SalesInvoiceHeader.FilterGroup(0);
 
-                        If SalesInvoiceHeader.Count > 0 then
+                        if SalesInvoiceHeader.Count > 0 then
                             Page.Run(Page::"Posted Sales Invoices", SalesInvoiceHeader);
 
                     end;

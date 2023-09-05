@@ -15073,6 +15073,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Query TFB Transfer Lines Outstanding - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 226949892 - Control 2952068315 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4081634891">
+          <source>Specifies the rate at which item costings should default for current calculations</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB  - Control TFB Costing Basis - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2045065493 - Control 4085727052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2588048341">
           <source>Specifies the date that the customer ledger is due</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -19557,6 +19562,11 @@
           <source>Primary</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Contact Job Responsibility - Field TFB Primary - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1118647761 - Field 2952068315 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3561154705">
+          <source>Costing Basis</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Currency - Field TFB Costing Basis - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 2386644114 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Archived</source>

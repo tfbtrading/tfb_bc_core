@@ -31,6 +31,9 @@ page 50301 "TFB Costing Scenario"
                     field("Exchange Rate"; Rec."Exchange Rate")
                     {
                         ToolTip = 'Specifies default exchange rate';
+                        Visible = false;
+                        ObsoleteState = Pending;
+                        ObsoleteReason = 'Replaced by exchange basis on currency table';
                     }
                     field("Finance Rate"; Rec."Finance Rate")
                     {

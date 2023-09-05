@@ -284,7 +284,7 @@ tableextension 50110 "TFB Contact" extends Contact
         ContactJobResponsibility.CalcFields("Job Responsibility Description");
         ContactJobResponsibility.SetRange("Contact No.", Rec."No.");
         CountOfJobResponsibilities := ContactJobResponsibility.Count();
-        If CountOfJobResponsibilities > 1 then
+        if CountOfJobResponsibilities > 1 then
             exit(ContactJobResponsibility."Job Responsibility Description" + StrSubstNo(' + %1 more', CountOfJobResponsibilities - 1))
         else
             exit(ContactJobResponsibility."Job Responsibility Description");
@@ -380,7 +380,7 @@ tableextension 50110 "TFB Contact" extends Contact
             Rec.CompleteReview();
         end
         else begin
-            If DialogP.getExpectedReviewDate() > 0D then
+            if DialogP.getExpectedReviewDate() > 0D then
                 Rec."TFB Review Date Exp. Compl." := DialogP.getExpectedReviewDate()
             else
                 Rec."TFB Review Date Exp. Compl." := CalcDate(DefaultWeek, WorkDate());

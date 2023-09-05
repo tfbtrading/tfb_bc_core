@@ -859,7 +859,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                             //Add details on expected arrival
 
                             ExpectedDate := OrderLine."Planned Delivery Date";
-                            If ShippingAgent.Get(Header."Shipping Agent Code") then
+                            if ShippingAgent.Get(Header."Shipping Agent Code") then
                                 CommentBuilder.Append(StrSubstNo('Expected delivery on %1 using %2', ExpectedDate, ShippingAgent.Name))
                             else
                                 CommentBuilder.Append(StrSubstNo('Expected delivery on %1', ExpectedDate));

@@ -60,12 +60,12 @@ page 50179 "TFB Initiate Review Dialog"
     procedure getExpectedReviewDate(): Date
 
     begin
-        Exit(_ReviewDate);
+        exit(_ReviewDate);
     end;
 
     procedure getShouldCompleteNow(): Boolean
 
     begin
-        Exit(_FinishReview);
+        exit(_FinishReview);
     end;
 }
