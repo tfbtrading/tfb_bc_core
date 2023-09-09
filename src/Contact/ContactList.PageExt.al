@@ -194,6 +194,19 @@ pageextension 50109 "TFB ContactList" extends "Contact List" //MyTargetPageId
                     }
                 }
             }
+            view(PeopleOnlyJobResp)
+            {
+                Caption = 'People without job resp.';
+                SharedLayout = false;
+                Filters = where(Type = const(Person), "TFB Primary Job Resp. Code" = filter('<>'''''));
+                layout
+                {
+                    modify(TFBPrimaryJobRespText)
+                    {
+                        Visible = true;
+                    }
+                }
+            }
             view(ContactWithTasks)
             {
                 Caption = 'Contacts With Open Tasks';
