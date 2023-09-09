@@ -19,7 +19,7 @@ table 50345 "TFB Item Costing"
             TableRelation = Item;
             ValidateTableRelation = true;
             NotBlank = true;
-            
+
         }
         field(5; "Description"; Text[250])
         {
@@ -75,27 +75,27 @@ table 50345 "TFB Item Costing"
         {
             NotBlank = true;
 
-          
+
         }
 
         field(14; "Exch. Rate"; Decimal)
         {
             DataClassification = CustomerContent;
 
-        
+
         }
 
         field(15; "Pricing Margin %"; Decimal)
         {
             DataClassification = CustomerContent;
             Editable = true;
-         
+
 
         }
         field(16; "Market Price Margin %"; Decimal)
         {
             DataClassification = CustomerContent;
-           
+
 
         }
         field(22; "Full Load Margin %"; Decimal)
@@ -103,7 +103,7 @@ table 50345 "TFB Item Costing"
             DataClassification = CustomerContent;
 
             Caption = 'Discount on Full Load';
-           
+
 
 
         }
@@ -119,7 +119,7 @@ table 50345 "TFB Item Costing"
             NotBlank = true;
 
 
-          
+
         }
 
         field(60; "Scenario Override"; Code[20])
@@ -133,20 +133,20 @@ table 50345 "TFB Item Costing"
         field(6; "Est. Storage Duration"; Duration)
         {
             DataClassification = CustomerContent;
-         
+
 
 
         }
         field(17; "Days Financed"; Integer)
         {
             //TODO: Need to figure out a way to migrate this to an actual duration field
-       
+
         }
         field(18; "Dropship"; Boolean)
         {
             DataClassification = CustomerContent;
 
-          
+
 
 
         }
@@ -156,7 +156,7 @@ table 50345 "TFB Item Costing"
             TableRelation = Vendor;
             ValidateTableRelation = true;
 
-          
+
         }
         field(8; "Vendor Name"; text[200])
         {
@@ -164,32 +164,32 @@ table 50345 "TFB Item Costing"
             TableRelation = Vendor;
             ValidateTableRelation = false;
 
-         
+
         }
         field(13; "Purchase Price Unit"; enum "TFB Price Unit")
         {
-          
+
 
         }
 
         field(10; "Average Cost"; Decimal)
         {
             DataClassification = CustomerContent;
-         
+
 
 
         }
         field(11; "Market Price"; Decimal)
         {
             DataClassification = CustomerContent;
-          
+
 
 
         }
         field(12; "Pallet Qty"; Integer)
         {
             DataClassification = CustomerContent;
-          
+
 
 
         }
@@ -209,7 +209,7 @@ table 50345 "TFB Item Costing"
             Editable = true;
 
             //Check for effective date and obselete old records if true
-          
+
 
         }
 
@@ -306,94 +306,10 @@ table 50345 "TFB Item Costing"
 
 
 
+
+
+
+
+
     }
-    trigger OnModify()
-    begin
-     
-    end;
-
-    trigger OnInsert()
-    begin
-
-
-    end;
-
-
-
-    procedure CalcCostings(paramRec: record "TFB Item Costing")
-
-
-    begin
-
-    
-
-    end;
-
-
-
-
-
-
-    local procedure DeleteCostings(paramRec: record "TFB Item Costing")
-
-    var
-        ItemCostingLine: record "TFB Item Costing Lines";
-
-    begin
-        //Remove previous item cost lines
-        ItemCostingLine.SetRange("Item No.", paramRec."Item No.");
-        ItemCostingLine.SetRange("Costing Type", paramRec."Costing Type");
-        ItemCostingLine.SetRange("Effective Date", paramRec."Effective Date");
-        ItemCostingLine.DeleteAll();
-
-    end;
-
-
-    local procedure CheckMandatoryFieldsValid(): Boolean
-
-    var
-        TestFailed: Boolean;
-
-    begin
-        TestFailed := false;
-
-        if ("Item No." = '') then TestFailed := true;
-
-        if "Landed Cost Profile" = '' then TestFailed := true;
-
-        if "Vendor No." = '' then TestFailed := true;
-
-        if "Average Cost" = 0 then TestFailed := true;
-
-        if "Pricing Margin %" = 0 then TestFailed := true;
-
-        if "Market Price Margin %" = 0 then TestFailed := true;
-
-        if "Market Price" = 0 then TestFailed := true;
-
-        if "Full Load Margin %" = 0 then TestFailed := true;
-
-        if "Pallet Qty" = 0 then TestFailed := true;
-
-        if "Exch. Rate" = 0 then TestFailed := true;
-
-        if TestFailed then exit(false) else exit(true);
-
-    end;
-
-    procedure GetRelatedScenario() Scenario: Record "TFB Costing Scenario"
-
-    var
-        LandedProfile: Record "TFB Landed Cost Profile";
-
-    begin
-        if not Scenario.Get(Rec."Scenario Override") then
-            if LandedProfile.Get(Rec."Landed Cost Profile") then
-                Scenario.Get(LandedProfile.Scenario);
-
-    end;
-
-    var
-        CostingCU: CodeUnit "TFB Costing Mgmt";
-
 }
