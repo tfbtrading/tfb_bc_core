@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-        migrateOldCommunicationLog();
+
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,105 +47,15 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.39'))
+        exit((GetInstallingVersionNo() = '22.0.2.40'))
     end;
 
 
-    local procedure updateIndustryToPrimary()
-
-    var
-        ContactIndustryGroup2: record "Contact Industry Group";
-        Contact: record contact;
-    begin
-
-        Contact.SetRange(Type, Contact.Type::Company);
-        if Contact.FindSet(false) then
-            repeat
-                ContactIndustryGroup2.SetRange("Contact No.", Contact."No.");
-                if not ContactIndustryGroup2.IsEmpty then
-                    if ContactIndustryGroup2.Count >= 1 then
-                        if ContactIndustryGroup2.FindFirst() then begin
-                            ContactIndustryGroup2."TFB Primary" := true;
-                            ContactIndustryGroup2.modify(false);
-                        end;
-
-            until Contact.Next() = 0;
-
-
-    end;
-
-    local procedure migrateOldCommunicationLog()
-    var
-
-        CommunicationEntry: Record "TFB Communication Entry";
-        CommLogEntry: Record "TFB Comm. Log Entry";
-        dt: DataTransfer;
-    begin
-        dt.SetTables(Database::"TFB Communication Entry", Database::"TFB Comm. Log Entry");
-        dt.AddFieldValue(CommunicationEntry.FieldNo("Record Type"), CommLogEntry.FieldNo("Record Type"));
-        dt.AddFieldValue(CommunicationEntry.FieldNo("Record No."), CommLogEntry.FieldNo("Record No."));
-        dt.AddFieldValue(CommunicationEntry.FieldNo(Direction), CommLogEntry.FieldNo(Direction));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(SentCount), CommLogEntry.FieldNo(SentCount));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(EmbeddedResource), CommLogEntry.FieldNo(EmbeddedResource));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(ExternalURL), CommLogEntry.FieldNo(ExternalURL));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(MessageContent), CommLogEntry.FieldNo(MessageContent));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(Method), CommLogEntry.FieldNo(Method));
-        dt.AddFieldValue(CommunicationEntry.FieldNO("Record Table No."), CommLogEntry.FieldNo("Record Table No."));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(ResourceType), CommLogEntry.FieldNo(ResourceType));
-        dt.AddFieldValue(CommunicationEntry.FieldNO(SentTimeStamp), CommLogEntry.FieldNo(SentTimeStamp));
-        dt.AddFieldValue(CommunicationEntry.FieldNO("Source ID"), CommLogEntry.FieldNo("Source Type"));
-        dt.AddFieldValue(CommunicationEntry.FieldNO("Source Name"), CommLogEntry.FieldNo("Source Name"));
-        dt.AddFieldValue(CommunicationEntry.FieldNO("Source Type"), CommLogEntry.FieldNo("Source Type"));
-        dt.CopyRows();
-
-    end;
-
-    local procedure updateJobRespToPrimary()
-
-    var
-        ContactJobResp2: record "Contact Job Responsibility";
-        Contact: record contact;
-    begin
-
-        Contact.SetRange(Type, Contact.Type::Person);
-        if Contact.FindSet(false) then
-            repeat
-                ContactJobResp2.SetRange("Contact No.", Contact."No.");
-                if not ContactJobResp2.IsEmpty then
-                    if ContactJobResp2.Count >= 1 then
-                        if ContactJobResp2.FindFirst() then begin
-                            ContactJobResp2."TFB Primary" := true;
-                            ContactJobResp2.modify(false);
-                        end;
-
-            until Contact.Next() = 0;
-
-
-    end;
-
-    local procedure updateContactStatus()
-
-    var
-        Status: Record "TFB Contact Status";
-        Contact: Record Contact;
-    begin
-
-        if Contact.Findset(true) then
-            repeat
-                if Contact.Type = Contact.Type::Person then
-                    Contact."TFB Contact Status" := '';
-
-                Status.SetRange(Status, Contact."TFB Contact Status");
-
-                if Status.FindFirst() then
-                    Contact.validate("TFB Contact Stage", Status.Stage);
-
-                Contact.modify(true);
-            until Contact.Next() = 0;
 
 
 
-    end;
+
+
 
 
 
@@ -210,56 +120,6 @@ codeunit 50103 "TFB Upgrade Mgmt"
     end;
 
 
-    procedure UpgradeCostingTables()
-    var
-        fromRec: Record "TFB Item Costing";
-        toRec: record "TFB Item Costing Revised";
-        fromLRec: Record "TFB Item Costing Lines";
-        toLRec: Record "TFB Item Costing Revised Lines";
-        CodeUnitCosting: Codeunit "TFB Costing Mgmt";
-        dt: DataTransfer;
-        dt2: DataTransfer;
-        UpdateExchRate: Boolean;
-        UpdateMargins: Boolean;
-        UpdatePrices: Boolean;
-
-    begin
-
-        dt.SetTables(Database::"TFB Item Costing", Database::"TFB Item Costing Revised");
-        dt.AddFieldValue(fromRec.FieldNo("Item No."), toRec.FieldNo("Item No."));
-        dt.addfieldValue(fromRec.FieldNo("Vendor No."), toRec.FieldNo("Vendor No."));
-        dt.AddFieldValue(fromrec.fieldno(Description), toRec.FieldNo(Description));
-        dt.AddFieldValue(fromrec.Fieldno("Costing Type"), torec.FieldNo("Costing Type"));
-        dt.AddFieldValue(fromrec.fieldno("Landed Cost Profile"), torec.FieldNo("Landed Cost Profile"));
-        dt.AddFieldValue(fromrec.fieldno("Scenario Override"), torec.fieldno("Scenario Override"));
-        dt.AddFieldValue(fromrec.FieldNo("Vendor Name"), torec.FieldNo("Vendor Name"));
-        dt.AddFieldValue(fromrec.fieldno("Exch. Rate"), torec.fieldno("Exch. Rate"));
-        dt.addfieldvalue(fromRec.fieldno("Fix Exch. Rate"), torec.fieldno("Fix Exch. Rate"));
-        dt.AddFieldValue(fromRec.fieldno("Purchase Price Unit"), torec.fieldno("Purchase Price Unit"));
-        dt.AddFieldValue(fromrec.FieldNo("Average Cost"), torec.FieldNo("Average Cost"));
-        dt.AddFieldValue(fromrec.FieldNo("Market Price"), torec.FieldNo("Market Price"));
-        dt.AddFieldValue(fromrec.fieldNo("Pricing Margin %"), torec.FieldNo("Pricing Margin %"));
-        dt.AddFieldValue(fromrec.fieldno("Market Price Margin %"), torec.FieldNo("Market Price Margin %"));
-        dt.addfieldvalue(fromrec.fieldno("Full Load Margin %"), torec.FieldNo("Full Load Margin %"));
-        dt.AddFieldValue(fromrec.FieldNo("Pallet Qty"), torec.FieldNo("Pallet Qty"));
-        dt.addfieldvalue(fromRec.FieldNo("Days Financed"), torec.FieldNo("Days Financed"));
-        dt.AddFieldValue(fromRec.FieldNo(Dropship), torec.FieldNo(Dropship));
-        dt.AddFieldValue(fromRec.FieldNo("Est. Storage Duration"), toRec.FieldNo("Est. Storage Duration"));
-        dt.AddFieldValue(fromRec.FieldNo("Automatically Updated"), torec.FieldNo("Automatically Updated"));
-        dt.AddSourceFilter(fromRec.FieldNo(Current), '%1', true);
-        dt.CopyRows();
-
-
-
-
-
-        UpdateExchRate := false;
-        UpdateMargins := false;
-        UpdatePrices := false;
-        CodeUnitCosting.UpdateCurrentCostingsDetails(UpdateExchRate, UpdateMargins, UpdatePrices);
-
-
-    end;
 
 
 

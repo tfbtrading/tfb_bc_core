@@ -588,7 +588,6 @@ codeunit 50142 "TFB Common Library"
             CommEntry."Record Table No." := Database::"Sales Header";
             CommEntry."Record No." := SalesOrder."No.";
             CommEntry.Direction := CommEntry.Direction::Outbound;
-            CommEntry.MessageContent := CopyStr(BodyBuilder.ToText(), 1, 2048);
             CommEntry.Method := CommEntry.Method::EMAIL;
             CommEntry.Insert();
 

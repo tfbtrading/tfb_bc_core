@@ -66,19 +66,12 @@ table 50130 "TFB Comm. Log Entry"
 
             DataClassification = CustomerContent;
         }
-        field(100; EmbeddedResource; Blob)
-        {
-            DataClassification = CustomerContent;
-        }
+
         field(105; ExternalURL; Text[255])
         {
             DataClassification = CustomerContent;
         }
-        field(110; MessageContent; Text[2048])
-        {
 
-            DataClassification = CustomerContent;
-        }
 
 
     }

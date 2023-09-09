@@ -548,7 +548,6 @@ page 50229 "TFB Brokerage Shipment"
                     CommEntry."Record Table No." := Database::"TFB Brokerage Shipment";
                     CommEntry."Record No." := Rec."No.";
                     CommEntry.Direction := CommEntry.Direction::Outbound;
-                    CommEntry.MessageContent := CopyStr(HTMLBuilder.ToText(), 1, 2048);
                     CommEntry.Method := CommEntry.Method::EMAIL;
                     CommEntry.Insert();
                     Rec.Printed += 1;

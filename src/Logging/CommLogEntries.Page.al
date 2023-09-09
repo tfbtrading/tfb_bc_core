@@ -58,11 +58,7 @@ page 50182 "TFB Comm. Log Entries"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the external URL';
                 }
-                field(MessageContent; Rec.MessageContent)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the message content';
-                }
+             
                 field(Method; Rec.Method)
                 {
                     ApplicationArea = All;

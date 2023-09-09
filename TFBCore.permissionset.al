@@ -25,9 +25,9 @@ permissionset 50100 "TFB Core"
         tabledata "TFB Forex Mgmt Entry" = RIMD,
         tabledata "TFB Generic Item" = RIMD,
         tabledata "TFB Generic Item Market Rel." = RIMD,
-        tabledata "TFB Item Costing" = RIMD,
+
         tabledata "TFB Item Costing Filters" = RIMD,
-        tabledata "TFB Item Costing Lines" = RIMD,
+
         tabledata "TFB Comm. Log Entry" = RIMD,
         tabledata "TFB Landed Cost Profile" = RIMD,
         tabledata "TFB Lot Image" = RIMD,
@@ -67,10 +67,10 @@ table "TFB Comm. Log Entry" = X,
         table "TFB Forex Mgmt Entry" = X,
         table "TFB Generic Item" = X,
         table "TFB Generic Item Market Rel." = X,
-        table "TFB Item Costing" = X,
+
          table "TFB Lot Expiry Buffer" = X,
         table "TFB Item Costing Filters" = X,
-        table "TFB Item Costing Lines" = X,
+
         table "TFB Landed Cost Profile" = X,
         table "TFB Lot Image" = X,
         table "TFB Ops Mgr Activities Cue" = X,

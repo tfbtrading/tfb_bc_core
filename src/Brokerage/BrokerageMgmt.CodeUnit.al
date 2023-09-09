@@ -97,7 +97,6 @@ codeunit 50242 "TFB Brokerage Mgmt"
                 CommEntry."Record Table No." := Database::"TFB Brokerage Shipment";
                 CommEntry."Record No." := Shipment."No.";
                 CommEntry.Direction := CommEntry.Direction::Outbound;
-                CommEntry.MessageContent := CopyStr(HTMLBuilder.ToText(), 1, 2048);
                 CommEntry.Method := CommEntry.Method::EMAIL;
                 CommEntry.Insert();
 

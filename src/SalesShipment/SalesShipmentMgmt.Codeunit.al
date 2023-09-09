@@ -300,7 +300,6 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
                     CommEntry."Record Table No." := Database::"Sales Shipment Header";
                     CommEntry."Record No." := SalesShipmentHeader."No.";
                     CommEntry.Direction := CommEntry.Direction::Outbound;
-                    CommEntry.MessageContent := CopyStr(HTMLBuilder.ToText(), 1, 2048);
                     CommEntry.Method := CommEntry.Method::EMAIL;
                     CommEntry.Insert();
 
@@ -604,7 +603,6 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
         CommEntry."Record Table No." := Database::"Sales Shipment Header";
         CommEntry."Record No." := Shipment."No.";
         CommEntry.Direction := CommEntry.Direction::Outbound;
-        CommEntry.MessageContent := CopyStr(HTMLBuilder.ToText(), 1, 2048);
         CommEntry.Method := CommEntry.Method::EMAIL;
         CommEntry.Insert();
 

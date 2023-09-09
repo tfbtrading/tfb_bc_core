@@ -563,20 +563,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Direction - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 880805334 - Field 3740751080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>EmbeddedResource</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field EmbeddedResource - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 880805334 - Field 2880701650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>ExternalURL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field ExternalURL - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 880805334 - Field 3979560174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>MessageContent</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field MessageContent - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 880805334 - Field 4132733409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Method</source>
@@ -5862,11 +5852,6 @@
           <source>Specifies the external URL</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control ExternalURL - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 201828072 - Control 3979560174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies the message content</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control MessageContent - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 201828072 - Control 4132733409 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the method of sending</source>
