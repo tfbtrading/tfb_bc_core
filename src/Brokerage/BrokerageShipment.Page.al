@@ -474,7 +474,7 @@ page 50229 "TFB Brokerage Shipment"
 
     var
         RepSel: Record "Report Selections";
-        CommEntry: Record "TFB Communication Entry";
+        CommEntry: Record "TFB Comm. Log Entry";
         CompanyInfo: Record "Company Information";
         Contract: record "TFB Brokerage Contract";
         Contact: record Contact;

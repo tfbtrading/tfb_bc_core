@@ -168,11 +168,7 @@ page 50167 "TFB Contact Review List"
                     Visible = false;
                 }
 
-                field("Coupled to CRM"; Rec."Coupled to CRM")
-                {
-                    ToolTip = 'Specifies that the contact is coupled to a contact in Dataverse.';
-                    Visible = CRMIntegrationEnabled or CDSIntegrationEnabled;
-                }
+
             }
         }
         area(factboxes)

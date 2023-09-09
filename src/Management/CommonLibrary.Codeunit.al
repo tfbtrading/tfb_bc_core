@@ -339,7 +339,7 @@ codeunit 50142 "TFB Common Library"
         SalesLine: Record "Sales Line";
         ShipmentLine: Record "Sales Shipment Line";
         ReservationEntry: Record "Reservation Entry";
-        CommEntry: Record "TFB Communication Entry";
+        CommEntry: Record "TFB Comm. Log Entry";
         LedgerEntry: Record "Item Ledger Entry";
         LotInfo: Record "Lot No. Information";
         CompanyInfo: Record "Company Information";

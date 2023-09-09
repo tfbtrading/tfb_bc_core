@@ -147,15 +147,15 @@ page 50173 "TFB Core Setup"
                     {
                         ToolTip = 'Specifies the value of the Email Template Test URL field.';
                     }
-                    field("TFB Shelf Life Word Template"; "Shelf Life Word Template")
+                    field("TFB Shelf Life Word Template"; Rec."Shelf Life Word Template")
                     {
                         ToolTip = 'Specifies the word template to be used when emailing from an item ledger entry extension letter';
                     }
-                    field("Notification Report ID"; "Notification Report ID")
+                    field("Notification Report ID"; Rec."Notification Report ID")
                     {
                         ToolTip = 'Specifies which report should be used for general notifiaction template';
                     }
-                    field("Notification Report Caption"; "Notification Report Caption")
+                    field("Notification Report Caption"; Rec."Notification Report Caption")
                     {
                         ToolTip = 'Specifies which report should be used for general notifiaction template';
                     }

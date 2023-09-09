@@ -192,7 +192,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     procedure SendShipmentStatusQuery(SalesShipmentHeader: record "Sales Shipment Header"; OriginalRef: Code[20]): Boolean
 
     var
-        CommEntry: Record "TFB Communication Entry";
+        CommEntry: Record "TFB Comm. Log Entry";
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         SalesShipmentLine: Record "Sales Shipment Line";
@@ -394,7 +394,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     procedure SendShipmentNotificationEmail(RefNo: Code[20]; HTMLTemplate: Text): Boolean
 
     var
-        CommEntry: Record "TFB Communication Entry";
+        CommEntry: Record "TFB Comm. Log Entry";
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         DocAttachment: Record "Document Attachment";
@@ -909,7 +909,7 @@ codeunit 50181 "TFB Sales Shipment Mgmt"
     procedure IgnoreSalesShipmentCheck(RefNo: Code[20]): Boolean
 
     var
-        CommEntry: record "TFB Communication Entry";
+        CommEntry: record "TFB Comm. Log Entry";
     //Retrieval of salesshipment not working
     //Header: record "Sales Shipment Header";
     //Lines: record "Sales Shipment Line";

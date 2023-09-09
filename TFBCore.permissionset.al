@@ -28,6 +28,7 @@ permissionset 50100 "TFB Core"
         tabledata "TFB Item Costing" = RIMD,
         tabledata "TFB Item Costing Filters" = RIMD,
         tabledata "TFB Item Costing Lines" = RIMD,
+        tabledata "TFB Comm. Log Entry" = RIMD,
         tabledata "TFB Landed Cost Profile" = RIMD,
         tabledata "TFB Lot Image" = RIMD,
         tabledata "TFB Ops Mgr Activities Cue" = RIMD,
@@ -46,7 +47,7 @@ permissionset 50100 "TFB Core"
         tabledata "TFB Vendor Zone Rate" = RIMD,
 
         table "PDF Viewer Setup" = X,
-
+table "TFB Comm. Log Entry" = X,
         table "TFB Brokerage Contract" = X,
         table "TFB Brokerage Contract Line" = X,
         table "TFB Brokerage Shipment" = X,

@@ -1,6 +1,6 @@
 table 50345 "TFB Item Costing"
 {
-    ObsoleteState = Pending;
+    ObsoleteState = Removed;
     ObsoleteReason = 'Replaced by TFB Item Costing Revised';
 
     fields
@@ -19,26 +19,7 @@ table 50345 "TFB Item Costing"
             TableRelation = Item;
             ValidateTableRelation = true;
             NotBlank = true;
-            trigger OnValidate()
-            var
-                ItemRec: Record Item;
-                LCProfile: Record "TFB Landed Cost Profile";
-                LCScenario: Record "TFB Costing Scenario";
-            begin
-                ItemRec.Get("Item No.");
-                Description := ItemRec.Description;
-                if ItemRec."TFB Est. Storage Duration" > 0 then
-                    "Est. Storage Duration" := ItemRec."TFB Est. Storage Duration"
-                else
-                    if LCProfile.get("Landed Cost Profile") then
-                        if LCScenario.get(LCProfile.Scenario) then
-                            "Est. Storage Duration" := LCScenario."Def. Storage Duration";
-
-                if ItemRec."Vendor No." <> '' then
-                    Validate("Vendor No.", ItemRec."Vendor No.");
-
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+            
         }
         field(5; "Description"; Text[250])
         {
@@ -94,41 +75,27 @@ table 50345 "TFB Item Costing"
         {
             NotBlank = true;
 
-            trigger OnValidate()
-
-            begin
-                CostingCU.CheckAndObseleteOldRecords(rec);
-            end;
+          
         }
 
         field(14; "Exch. Rate"; Decimal)
         {
             DataClassification = CustomerContent;
 
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+        
         }
 
         field(15; "Pricing Margin %"; Decimal)
         {
             DataClassification = CustomerContent;
             Editable = true;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+         
 
         }
         field(16; "Market Price Margin %"; Decimal)
         {
             DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
-
+           
 
         }
         field(22; "Full Load Margin %"; Decimal)
@@ -136,10 +103,7 @@ table 50345 "TFB Item Costing"
             DataClassification = CustomerContent;
 
             Caption = 'Discount on Full Load';
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+           
 
 
         }
@@ -155,29 +119,7 @@ table 50345 "TFB Item Costing"
             NotBlank = true;
 
 
-            trigger OnValidate()
-            var
-                LCProfile: Record "TFB Landed Cost Profile";
-                LCScenario: Record "TFB Costing Scenario";
-
-            begin
-                if LCProfile.get("Landed Cost Profile") then begin
-
-                    "Days Financed" := LCProfile."Def. Days Financed";
-
-                    if LCScenario.get(LCProfile.Scenario) then
-                        "Exch. Rate" := LCScenario."Exchange Rate";
-
-                    "Market Price Margin %" := LCScenario."Market Price Margin %";
-                    "Pricing Margin %" := LCScenario."Pricing Margin %";
-                    "Full Load Margin %" := LCScenario."Full Load Margin %";
-
-
-                    if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-
-                end;
-
-            end;
+          
         }
 
         field(60; "Scenario Override"; Code[20])
@@ -191,37 +133,20 @@ table 50345 "TFB Item Costing"
         field(6; "Est. Storage Duration"; Duration)
         {
             DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
-
+         
 
 
         }
         field(17; "Days Financed"; Integer)
         {
             //TODO: Need to figure out a way to migrate this to an actual duration field
-            DataClassification = CustomerContent;
-            MinValue = 0;
-            MaxValue = 180;
-
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
-
-
+       
         }
         field(18; "Dropship"; Boolean)
         {
             DataClassification = CustomerContent;
 
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
-
+          
 
 
         }
@@ -231,22 +156,7 @@ table 50345 "TFB Item Costing"
             TableRelation = Vendor;
             ValidateTableRelation = true;
 
-            trigger OnValidate()
-            var
-                Vendor: Record Vendor;
-            begin
-                Vendor.Get("Vendor No.");
-                "Vendor Name" := Vendor.Name;
-                "Purchase Price Unit" := Vendor."TFB Vendor Price Unit";
-
-                if Vendor."TFB Landed Cost Profile" <> '' then begin
-                    Validate("Landed Cost Profile", Vendor."TFB Landed Cost Profile");
-                    if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-                end;
-
-                CalcFields("Vendor Currency");
-
-            end;
+          
         }
         field(8; "Vendor Name"; text[200])
         {
@@ -254,53 +164,32 @@ table 50345 "TFB Item Costing"
             TableRelation = Vendor;
             ValidateTableRelation = false;
 
-            trigger OnValidate()
-
-            var
-                Vendor: Record Vendor;
-            begin
-
-                Validate("Vendor No.", Vendor.GetVendorNo(CopyStr("Vendor Name", 1, 100)));
-
-            end;
+         
         }
         field(13; "Purchase Price Unit"; enum "TFB Price Unit")
         {
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
-
+          
 
         }
 
         field(10; "Average Cost"; Decimal)
         {
             DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+         
 
 
         }
         field(11; "Market Price"; Decimal)
         {
             DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+          
 
 
         }
         field(12; "Pallet Qty"; Integer)
         {
             DataClassification = CustomerContent;
-            trigger OnValidate()
-            begin
-                if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
-            end;
+          
 
 
         }
@@ -320,11 +209,7 @@ table 50345 "TFB Item Costing"
             Editable = true;
 
             //Check for effective date and obselete old records if true
-            trigger OnValidate()
-
-            begin
-                CostingCU.CheckAndObseleteOldRecords(rec);
-            end;
+          
 
         }
 
@@ -424,19 +309,12 @@ table 50345 "TFB Item Costing"
     }
     trigger OnModify()
     begin
-        "Last Modified Date Time" := CURRENTDATETIME();
-
-        if CheckMandatoryFieldsValid() then
-            CostingCU.GenerateCostingLines(rec)
-        else
-            DeleteCostings(Rec);
+     
     end;
 
     trigger OnInsert()
     begin
 
-
-        if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(Rec);
 
     end;
 
@@ -447,7 +325,7 @@ table 50345 "TFB Item Costing"
 
     begin
 
-        CostingCU.GenerateCostingLines(Rec);
+    
 
     end;
 

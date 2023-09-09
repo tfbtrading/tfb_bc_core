@@ -480,7 +480,7 @@ page 50100 "TFB Ops Mgr Role Center"
                     Caption = 'Communication Log';
                     Tooltip = 'Open communication log achive list';
                     Image = Email;
-                    RunObject = page "TFB Communication Entries";
+                    RunObject = page "TFB Comm. Log Entries";
                     ApplicationArea = Basic, Suite;
                 }
 

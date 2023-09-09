@@ -1,7 +1,7 @@
 table 50346 "TFB Item Costing Lines"
 {
     DataClassification = CustomerContent;
-    ObsoleteState = Pending;
+    ObsoleteState = Removed;
     ObsoleteReason = 'Replaced by TFB Item Costing Revised Lines';
 
     fields
@@ -71,11 +71,6 @@ table 50346 "TFB Item Costing Lines"
         field(10; "Market price Per Weight Unit"; Decimal)
         {
 
-        }
-        field(11; Current; Boolean)
-        {
-            FieldClass = FlowField;
-            CalcFormula = lookup("TFB Item Costing".Current where("Item No." = field("Item No."), "Costing Type" = field("Costing Type"), "Effective Date" = field("Effective Date")));
         }
 
         field(12; CalcDesc; Text[2048])

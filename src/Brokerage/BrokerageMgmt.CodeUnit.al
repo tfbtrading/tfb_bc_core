@@ -39,7 +39,7 @@ codeunit 50242 "TFB Brokerage Mgmt"
 
     var
 
-        CommEntry: Record "TFB Communication Entry";
+        CommEntry: Record "TFB Comm. Log Entry";
         CompanyInfo: Record "Company Information";
         Customer: Record Customer;
         Shipment: Record "TFB Brokerage Shipment";

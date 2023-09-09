@@ -558,6 +558,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Certification Type - Field Name - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 880805334 - Field 39585143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Direction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Direction - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 3740751080 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>EmbeddedResource</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field EmbeddedResource - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 2880701650 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ExternalURL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field ExternalURL - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 3979560174 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>MessageContent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field MessageContent - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 4132733409 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Method</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Method - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 485252710 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Record No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 2000459760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record Table No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Record Table No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 2618029887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Record Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Record Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 1483499854 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ResourceType</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field ResourceType - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 4173728505 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SentCount</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field SentCount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 2783049630 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SentTimeStamp</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field SentTimeStamp - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 345314420 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source ID</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Source ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 1343707150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Source Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 880805334 - Field 1753214751 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Comm. Log Entry - Field Source Type - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1340142185 - Field 57370450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Archived</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -1918,201 +1988,6 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Generic Item Market Rel. - Field ProductMarketSegmentID - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3985010880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Adl Metro Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Adl Metro Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 489480866 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Adl Metro Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Adl Metro Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 4239606900 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Automat. Updated</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Automatically Updated - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1144685116 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Average Cost</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Average Cost - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 2554292586 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brs Metro Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Brs Metro Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 263465720 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Brs Metro Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Brs Metro Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3604268253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Costing Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Costing Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 92569267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Current</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Current - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3836039197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Days Financed</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Days Financed - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 285797133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dropship</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Dropship - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 761498003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Effective Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Effective Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 986382589 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Est. Storage Duration</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Est. Storage Duration - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1508985150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Exch. Rate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Exch. Rate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3896291146 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Exw Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Exw Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1126400472 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Exw Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Exw Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 2473261455 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Fix Exch. Rate</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Fix Exch. Rate - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1903079026 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Discount on Full Load</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Full Load Margin % - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 2160210849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>HasLines</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field HasLines - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Id</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Id - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1487222247 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Category</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Item Category - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Item No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3560638354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Landed Cost Profile</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Landed Cost Profile - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 749447638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Last Modified Date Time</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Last Modified Date Time - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 924038635 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Market Price</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Market Price - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 2478673966 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Market Price Margin %</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Market Price Margin % - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3066199523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mel Metro Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Mel Metro Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3899426485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Mel Metro Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Mel Metro Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3551279680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pallet Qty</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Pallet Qty - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3932271669 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Pricing Margin %</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Pricing Margin % - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 302956883 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Publishing Blocked</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Publishing Blocked - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3404753948 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Purchase Price Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Purchase Price Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3470642277 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Sale Blocked</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Sale Blocked - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 2172645398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Scenario Override</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Scenario Override - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3005431405 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Syd Metro Kg</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Syd Metro Kg - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1641184683 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Syd Metro Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Syd Metro Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1382523621 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Currency</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Vendor Currency - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor Name</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Vendor Name - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1857308130 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Vendor No.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing - Field Vendor No. - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 2823997807 - Field 1858753812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy Price List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -2137,66 +2012,6 @@
           <source>Worksheet</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Filters - Field Worksheet - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 1560660872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CalcDesc</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field CalcDesc - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 3604268253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Costing Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Costing Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 92569267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Current</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Current - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Description</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 761498003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Effective Date</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Effective Date - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Item Code</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Item No. - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 2969235611 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Line Key</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Line Key - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 158172202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Line Type</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Line Type - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 2732899591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Market Price (Base)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Market Price (Base) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 579418780 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Market price Per Weight Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Market price Per Weight Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 3026392707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Price (Base)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Price (Base) - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1512186245 - Field 1864544432 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Price Per Weight Unit</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Table TFB Item Costing Lines - Field Price Per Weight Unit - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3423699088 - Field 3985010880 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Adl Metro Kg</source>
@@ -6033,6 +5848,76 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Certification Types - Action Remove logo - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="Page 201828072 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Communication Entries</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 39585143 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the direction</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Direction - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 2880701650 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the external URL</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control ExternalURL - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 3979560174 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the message content</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control MessageContent - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 4132733409 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the method of sending</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Method - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 485252710 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the record no</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Record No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 2000459760 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the table no.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Record Table No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 2618029887 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the record type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Record Type - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 1483499854 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the resource type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control ResourceType - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 4173728505 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies how many times message has been sent</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control SentCount - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 2783049630 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the timestamp</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control SentTimeStamp - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 345314420 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the source id</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Source ID - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 1343707150 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the source name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Source Name - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 201828072 - Control 1753214751 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies the source type</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Comm. Log Entries - Control Source Type - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 87242591 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Company Certification List</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -6747,11 +6632,6 @@
           <source>Specifies the county of the contact.</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control County - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2645611924 - Control 2500823165 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Specifies that the contact is coupled to a contact in Dataverse.</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Contact Review List - Control Coupled to CRM - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 2645611924 - Control 1541011875 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Specifies the contact's email.</source>
@@ -15718,6 +15598,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - View PeopleOnly - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 3190613190 - View 4094143680 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1023993454">
+          <source>People without job resp.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB ContactList - View PeopleOnlyJobResp - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2375483586 - Control 1094348532 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1635918338">
           <source>Specifies any further details in relation to the interaction</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21208,6 +21093,56 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Buying Timeframe - EnumValue ShortTerm - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 1463465960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Advanced Shipment Notice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue ASN - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 623076767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Certificate of Analysis</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue COA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 247974467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Invoice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue INV - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 4211452250 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Status Report</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue OSR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 1389988960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality Documentation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue QDI - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 1286038145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Order Confirmation</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue SOC - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 310523482 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Order Response</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue SOR - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 3092505688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Receipt Advise</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue WRA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 3162189463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Shipment Advice</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue WSA - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Enum 2901627453 - EnumValue 1886796229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Warehouse Shipment Order</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Enum TFB Comm. Log Record Type - EnumValue WSO - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Enum 1678196895 - EnumValue 1243942905 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>% of Value</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -21872,11 +21807,6 @@
           <source>3PL or Supplier Question</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB EMail Scenarios - EnumValue SupplierQuery - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="EnumExtension 2581746800 - EnumValue 623076767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 74869279">
-          <source>Certificate of Analysis</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Quality Comm Record - EnumValue COA - Property Caption</note>
         </trans-unit>
         <trans-unit id="EnumExtension 3289346733 - EnumValue 2463632730 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Enum 3528066925">
           <source>Warehouse Email Notification</source>

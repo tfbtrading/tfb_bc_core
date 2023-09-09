@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-        updateJobRespToPrimary();
+        migrateOldCommunicationLog();
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,7 +47,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.25'))
+        exit((GetInstallingVersionNo() = '22.0.2.39'))
     end;
 
 
@@ -71,6 +71,32 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
             until Contact.Next() = 0;
 
+
+    end;
+
+    local procedure migrateOldCommunicationLog()
+    var
+
+        CommunicationEntry: Record "TFB Communication Entry";
+        CommLogEntry: Record "TFB Comm. Log Entry";
+        dt: DataTransfer;
+    begin
+        dt.SetTables(Database::"TFB Communication Entry", Database::"TFB Comm. Log Entry");
+        dt.AddFieldValue(CommunicationEntry.FieldNo("Record Type"), CommLogEntry.FieldNo("Record Type"));
+        dt.AddFieldValue(CommunicationEntry.FieldNo("Record No."), CommLogEntry.FieldNo("Record No."));
+        dt.AddFieldValue(CommunicationEntry.FieldNo(Direction), CommLogEntry.FieldNo(Direction));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(SentCount), CommLogEntry.FieldNo(SentCount));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(EmbeddedResource), CommLogEntry.FieldNo(EmbeddedResource));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(ExternalURL), CommLogEntry.FieldNo(ExternalURL));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(MessageContent), CommLogEntry.FieldNo(MessageContent));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(Method), CommLogEntry.FieldNo(Method));
+        dt.AddFieldValue(CommunicationEntry.FieldNO("Record Table No."), CommLogEntry.FieldNo("Record Table No."));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(ResourceType), CommLogEntry.FieldNo(ResourceType));
+        dt.AddFieldValue(CommunicationEntry.FieldNO(SentTimeStamp), CommLogEntry.FieldNo(SentTimeStamp));
+        dt.AddFieldValue(CommunicationEntry.FieldNO("Source ID"), CommLogEntry.FieldNo("Source Type"));
+        dt.AddFieldValue(CommunicationEntry.FieldNO("Source Name"), CommLogEntry.FieldNo("Source Name"));
+        dt.AddFieldValue(CommunicationEntry.FieldNO("Source Type"), CommLogEntry.FieldNo("Source Type"));
+        dt.CopyRows();
 
     end;
 

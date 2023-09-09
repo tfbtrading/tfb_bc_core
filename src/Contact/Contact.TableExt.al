@@ -262,7 +262,7 @@ tableextension 50110 "TFB Contact" extends Contact
         ContactIndustryGroup.SetRange("Contact No.", Rec."No.");
         CountOfIndustries := ContactIndustryGroup.Count();
         if CountOfIndustries > 1 then
-            exit(ContactIndustryGroup."Industry Group Description" + StrSubstNo(' + %1 more', CountOfIndustries - 1))
+            exit(ContactIndustryGroup."Industry Group Description" + '...')
         else
             exit(ContactIndustryGroup."Industry Group Description");
 
@@ -285,7 +285,7 @@ tableextension 50110 "TFB Contact" extends Contact
         ContactJobResponsibility.SetRange("Contact No.", Rec."No.");
         CountOfJobResponsibilities := ContactJobResponsibility.Count();
         if CountOfJobResponsibilities > 1 then
-            exit(ContactJobResponsibility."Job Responsibility Description" + StrSubstNo(' + %1 more', CountOfJobResponsibilities - 1))
+            exit(ContactJobResponsibility."Job Responsibility Description" + '...')
         else
             exit(ContactJobResponsibility."Job Responsibility Description");
 
