@@ -47,7 +47,7 @@ table 50127 "TFB Item Costing Revised"
             var
                 Customer: Record Customer;
             begin
-                If Customer.Get(Rec."Customer No.") then
+                if Customer.Get(Rec."Customer No.") then
                     Rec."Customer Name" := Customer.Name
                 else
                     Rec."Customer Name" := '';
@@ -199,9 +199,6 @@ table 50127 "TFB Item Costing Revised"
 
                     "Days Financed" := LCProfile."Def. Days Financed";
 
-                    if LCScenario.get(LCProfile.Scenario) then
-                        "Exch. Rate" := LCScenario."Exchange Rate";
-
                     "Market Price Margin %" := LCScenario."Market Price Margin %";
                     "Pricing Margin %" := LCScenario."Pricing Margin %";
                     "Full Load Margin %" := LCScenario."Full Load Margin %";
@@ -268,6 +265,7 @@ table 50127 "TFB Item Costing Revised"
             trigger OnValidate()
             var
                 Vendor: Record Vendor;
+                Currency: Record Currency;
             begin
                 Vendor.Get("Vendor No.");
                 "Vendor Name" := Vendor.Name;
@@ -277,8 +275,13 @@ table 50127 "TFB Item Costing Revised"
                     Validate("Landed Cost Profile", Vendor."TFB Landed Cost Profile");
                     if CheckMandatoryFieldsValid() then CostingCU.GenerateCostingLines(rec) else DeleteCostings(rec);
                 end;
+                if Currency.Get(Vendor."Currency Code") then
+                    Rec."Exch. Rate" := Currency."TFB Costing Basis"
+                else
+                    Rec."Exch. Rate" := 1;
 
                 CalcFields("Vendor Currency");
+
 
             end;
         }

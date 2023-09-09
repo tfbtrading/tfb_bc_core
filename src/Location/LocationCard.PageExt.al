@@ -105,6 +105,21 @@ pageextension 50101 "TFB Location Card" extends "Location Card" //5703
                 ToolTip = 'Specifies the time after which an order lines earliest dispatch day will be extended by an additional day';
             }
         }
+        addafter("E-Mail")
+        {
+            group(ContainerHandling)
+            {
+                ShowCaption = false;
+                Visible = Rec."TFB Location Type" = Rec."TFB Location Type"::Standard;
+                field("TFB Inbound Shipment Email";
+                Rec."TFB Inbound Shipment Email")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the email to use for communication about inbound shipments';
+
+                }
+            }
+        }
 
         addbefore("Use As In-Transit")
         {

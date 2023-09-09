@@ -895,42 +895,41 @@ page 50210 "TFB Container Entry"
     local procedure SendWarehouseUpdateEmail(DocNo: Code[20]): Boolean;
 
     var
-        Doc: Record "TFB Container Entry";
+        ContainerEntry: Record "TFB Container Entry";
         Location: record Location;
         Purchase: record "Purchase Header";
         PurchaseReceiptLine: record "Purch. Rcpt. Line";
-        RepSel: Record "Report Selections";
         TransferRec: record "Transfer Header";
         ContainerMgmt: CodeUnit "TFB Container Mgmt";
-        DocMailing: codeunit "Document-Mailing";
+        Email: CodeUnit Email;
+        EmailMessage: Codeunit "Email Message";
         mgmt: codeunit "TFB Common Library";
-        TempBlob: CodeUnit "Temp Blob";
+
         TempBlobCOA: CodeUnit "Temp Blob";
         TempBlobHTML: CodeUnit "Temp Blob";
-        DocumentRef: RecordRef;
+
         RecordRef: RecordRef;
         InStreamCOA: Instream;
-        InStreamHTML: InStream;
-        InstreamReport: InStream;
         OutStreamHTML: OutStream;
-        OutStreamReport: OutStream;
+
         EmailID: Text[250];
         FileName: Text;
         FileNameCOA: Text;
         HTMLBuilder: TextBuilder;
         SubjectNameBuilder: TextBuilder;
 
+        FileType: Text;
     begin
-        Doc.get(DocNo);
-        RecordRef.GetTable(Doc);
-        Purchase.SetRange("No.", Doc."Order Reference");
+        ContainerEntry.get(DocNo);
+        RecordRef.GetTable(ContainerEntry);
+        Purchase.SetRange("No.", ContainerEntry."Order Reference");
         Purchase.SetRange("Document Type", Purchase."Document Type"::Order);
 
         if not Purchase.FindFirst() then begin
             TransferRec.SetRange("TFB Container Entry No.", Rec."No.");
             if not TransferRec.FindFirst() then begin
                 PurchaseReceiptLine.SetRange("TFB Container Entry No.", Rec."No.");
-                If not PurchaseReceiptLine.FindFirst() then
+                if not PurchaseReceiptLine.FindFirst() then
                     exit
                 else
                     Location.Get(PurchaseReceiptLine."Location Code");
@@ -943,35 +942,36 @@ page 50210 "TFB Container Entry"
 
         HTMLBuilder.Append(mgmt.GetHTMLTemplateActive('Container Details', 'Warehouse Instructions'));
         EmailID := Location."E-Mail";
-        SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', Doc."Container No."));
-        ContainerMgmt.GetContainerCoAStream(Doc, TempBlobCOA, FileNameCOA);
+        SubjectNameBuilder.Append(StrSubstNo('Container Entry %1 from TFB Trading', ContainerEntry."Container No."));
+        ContainerMgmt.GetContainerCoAStream(ContainerEntry, TempBlobCOA, FileNameCOA, FileType);
         TempBlobHTML.CreateOutStream(OutStreamHTML);
 
-        Rec.SetRecFilter();
-        DocumentRef.GetTable(Rec);
-        RepSel.SetRange(Usage, RepSel.Usage::"P.Inbound.Shipment.Warehouse");
-        RepSel.SetRange("Use for Email Attachment", true);
 
-        FileName := StrSubstNo('Container No. %1 Advice.pdf', Doc."Container No.");
-        TempBlob.CreateOutStream(OutStreamReport);
+
+        FileName := StrSubstNo('Container No. %1 Advice.pdf', ContainerEntry."Container No.");
+
         TempBlobCOA.CreateInStream(InStreamCOA);
 
-        GetNotificationContent(HTMLBuilder, Doc);
-        OutStreamHTML.WriteText(HTMLBuilder.ToText());
-        TempBlobHTML.CreateInStream(InStreamHTML);
-        if Dialog.Confirm('Send Report instead of CoA', false) then begin
-            if RepSel.FindFirst() then
-                if REPORT.SaveAs(RepSel."Report ID", '', ReportFormat::Pdf, OutStreamReport, DocumentRef) then begin
-                    TempBlob.CreateInStream(InstreamReport);
-                    DocMailing.EmailFileAndHtmlFromStream(InstreamReport, FileName, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
-                end;
-        end
-        else
-            DocMailing.EmailFileAndHtmlFromStream(InstreamCOA, FileNameCOA, InStreamHTML, EmailID, SubjectNameBuilder.ToText(), false, enum::"Report Selection Usage"::"P.Inbound.Shipment.Warehouse".AsInteger());
+        GetNotificationContent(HTMLBuilder, ContainerEntry);
+
+
+        EmailMessage.Create(EmailID, SubjectNameBuilder.ToText(), HTMLBuilder.ToText(), true);
+        if location."TFB Inbound Shipment Email" <> '' then
+            EmailMessage.AddRecipient(Enum::"Email Recipient Type"::Cc, Location."TFB Inbound Shipment Email");
+        EmailMessage.AddAttachment(FileNameCOA, FileType, InStreamCOA);
+
+
+        Email.AddRelation(EmailMessage, Database::"TFB Container Entry", Rec.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
+        OnBeforeSendEmailToWarehouse(SubjectNameBuilder, Email, EmailMessage, ContainerEntry);
+        if EmailMessage.GetSubject() <> SubjectNameBuilder.ToText() then
+            EmailMessage.SetSubject(SubjectNameBuilder.ToText());
+        Email.OpenInEditorModally(EmailMessage, Enum::"Email Scenario"::Logistics);
+
+
     end;
 
 
-    local procedure GetNotificationContent(var HTMLBuilder: TextBuilder; Doc: record "TFB Container Entry"): Boolean
+    local procedure GetNotificationContent(var HTMLBuilder: TextBuilder; ContainerEntry: record "TFB Container Entry"): Boolean
 
     var
         TempContainerContents: record "TFB ContainerContents" temporary;
@@ -997,13 +997,13 @@ page 50210 "TFB Container Entry"
         HTMLBuilder.Replace('%{DateCaption}', 'Updated On');
         HTMLBuilder.Replace('%{DateValue}', Format(Today(), 0, 4));
         HTMLBuilder.Replace('%{ReferenceCaption}', 'Order References');
-        ReferenceBuilder.Append(StrSubstNo('Our order %1', Doc."Order Reference"));
+        ReferenceBuilder.Append(StrSubstNo('Our order %1', ContainerEntry."Order Reference"));
 
-        if Doc."Container No." <> '' then
-            ReferenceBuilder.Append(StrSubstNo('<br>Container %1', Doc."Container No."));
+        if ContainerEntry."Container No." <> '' then
+            ReferenceBuilder.Append(StrSubstNo('<br>Container %1', ContainerEntry."Container No."));
 
-        if Doc."Quarantine Reference" <> '' then
-            ReferenceBuilder.Append(StrSubstNo('<br>AQIS Ref %1', Doc."Quarantine Reference"));
+        if ContainerEntry."Quarantine Reference" <> '' then
+            ReferenceBuilder.Append(StrSubstNo('<br>AQIS Ref %1', ContainerEntry."Quarantine Reference"));
 
         HTMLBuilder.Replace('%{ReferenceValue}', ReferenceBuilder.ToText());
 
@@ -1015,15 +1015,15 @@ page 50210 "TFB Container Entry"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="40%">Detail</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="60%">Current Info</th></thead>');
 
-        FieldList.Add(Doc.FieldNo("Vendor Name"));
-        FieldList.Add(Doc.FieldNo("Vendor Reference"));
-        FieldList.Add(Doc.FieldNo("Est. Arrival Date"));
-        FieldList.Add(Doc.FieldNo("Fumigation Req."));
-        FieldList.Add(Doc.FieldNo("Inspection Req."));
-        FieldList.Add(Doc.fieldNo("IFIP Req."));
-        FieldList.Add(Doc.fieldno("Heat Treat. Req."));
+        FieldList.Add(ContainerEntry.FieldNo("Vendor Name"));
+        FieldList.Add(ContainerEntry.FieldNo("Vendor Reference"));
+        FieldList.Add(ContainerEntry.FieldNo("Est. Arrival Date"));
+        FieldList.Add(ContainerEntry.FieldNo("Fumigation Req."));
+        FieldList.Add(ContainerEntry.FieldNo("Inspection Req."));
+        FieldList.Add(ContainerEntry.fieldNo("IFIP Req."));
+        FieldList.Add(ContainerEntry.fieldno("Heat Treat. Req."));
 
-        RecordRef.GetTable(Doc);
+        RecordRef.GetTable(ContainerEntry);
 
         foreach FieldNo in FieldList do begin
 
@@ -1054,7 +1054,7 @@ page 50210 "TFB Container Entry"
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="10%">Qty Sold</th>');
         BodyBuilder.Append('<th class="tfbdata" style="text-align:left" width="20%">Unit</th></thead>');
 
-        ContainerCU.GetContainerContents(TempContainerContents, Doc);
+        ContainerCU.GetContainerContents(TempContainerContents, ContainerEntry);
         if TempContainerContents.FindSet() then
             repeat
 
@@ -1072,6 +1072,8 @@ page 50210 "TFB Container Entry"
 
         BodyBuilder.AppendLine('</table>');
 
+        OnBeforeAddHTMLContentToWarehouseEmail(BodyBuilder, ContainerEntry);
+
         HTMLBuilder.Replace('%{EmailContent}', BodyBuilder.ToText());
         exit(true);
 
@@ -1083,5 +1085,16 @@ page 50210 "TFB Container Entry"
         ArrivalDateEnabled := (Rec."Arrival Date" = 0D);
         ClearDateEnabled := (Rec."Clear Date" = 0D);
         AvailToSellDateEnabled := (Rec."Warehouse Date" = 0D);
+    end;
+
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeSendEmailToWarehouse(var SubjectBuilder: TextBuilder; var Email: CodeUnit Email; var EmailMessage: CodeUnit "Email Message"; ContainerEntry: Record "TFB Container Entry")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeAddHTMLContentToWarehouseEmail(var BodyBuilder: TextBuilder; ContainerEntry: Record "TFB Container Entry")
+    begin
     end;
 }

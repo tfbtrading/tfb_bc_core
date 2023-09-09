@@ -260,7 +260,7 @@ pageextension 50108 "TFB Purchase Invoice" extends "Purchase Invoice"
 
             end;
 
-        If _AssigmentIsValid and ConfirmMgmt.GetResponse('Apply new charge assignment', true) then begin
+        if _AssigmentIsValid and ConfirmMgmt.GetResponse('Apply new charge assignment', true) then begin
 
             PurchInvLine.SetRange("Document No.", Rec."No.");
             PurchInvLine.SetRange("Document Type", Rec."Document Type");

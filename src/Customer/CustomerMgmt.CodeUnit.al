@@ -285,7 +285,7 @@ codeunit 50120 "TFB Customer Mgmt"
             exit(false);
 
         EmailID := Customer."E-Mail";
-        If Subject <> '' then
+        if Subject <> '' then
             SubjectNameBuilder.Append(Subject)
         else
             SubjectNameBuilder.Append(StrSubstNo(SubjectTxt, Customer.Name));
@@ -307,7 +307,7 @@ codeunit 50120 "TFB Customer Mgmt"
             if NoData then
                 exit(true);
 
-        If IgnoreIfEmpty and NoData then
+        if IgnoreIfEmpty and NoData then
             exit(true);
 
         IsHandled := false; // Reset the ishandled parameter
@@ -319,7 +319,7 @@ codeunit 50120 "TFB Customer Mgmt"
 
         Email.AddRelation(EmailMessage, Database::Customer, Customer.SystemId, Enum::"Email Relation Type"::"Related Entity", Enum::"Email Relation Origin"::"Compose Context");
 
-        If hideDialog then
+        if hideDialog then
             Email.Enqueue(EmailMessage, EmailScenEnum::Logistics)
         else
             Email.OpenInEditor(EmailMessage, EmailScenEnum::Logistics);
@@ -465,7 +465,7 @@ codeunit 50120 "TFB Customer Mgmt"
         else
             HTMLBuilder.Replace('%{AlertText}', '');
 
-        If Note <> '' then
+        if Note <> '' then
             HTMLBuilder.Replace('%{AlertText}', Note);
 
         if SalesLine.FindSet() then begin

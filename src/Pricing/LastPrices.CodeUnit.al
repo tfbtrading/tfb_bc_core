@@ -55,7 +55,7 @@ codeunit 50135 "TFB Last Prices"
 
             until (SalesInvoiceLine.Next() = 0) or (PricesExist);
 
-        Exit(PricesExist);
+        exit(PricesExist);
     end;
 
     procedure PopulateLastPrices(RelationshipType: Enum "TFB Last Prices Rel. Type"; CustomerVendorNo: Code[20]; ItemNo: Code[20]; MaxPricesCount: Integer; CalledByRecordId: RecordId; FilterByRelationship: Boolean; FilterByPriceGroup: Boolean; LinePriceGroup: Code[10])
@@ -121,7 +121,7 @@ codeunit 50135 "TFB Last Prices"
             SalesInvoiceLine.SetRange("Customer Price Group", LinePriceGroup);
         SalesInvoiceLine.SetRange("No.", ItemNo);
         SalesInvoiceLine.SetCurrentKey("Posting Date");
-        SalesInvoiceLine.SetAscending("Posting Date", False);
+        SalesInvoiceLine.SetAscending("Posting Date", false);
         SalesInvoiceLine.SetLoadFields("Document No.", "Sell-to Customer No.", "Line No.", "Unit Price", "Line Discount Amount", Quantity, "No.", "Quantity (Base)", "Unit of Measure Code", "Unit Price", "Net Weight", "Customer Price Group");
         SalesInvoiceLine.SetFilter(Quantity, '>0');
 

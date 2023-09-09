@@ -43,7 +43,7 @@ codeunit 50132 "TFB Activities Mgt."
         ItemLedgersQuery.SetFilter(Expiration_Date, 't..t+6m');
         ItemLedgersQuery.Open();
 
-        While ItemLedgersQuery.Read() do begin
+        while ItemLedgersQuery.Read() do begin
             TempLotExpiryBuffer.init();
             TempLotExpiryBuffer."Item No." := ItemLedgersQuery.Item_No_;
             TempLotExpiryBuffer.Description := ItemLedgersQuery.Description;
@@ -63,7 +63,7 @@ codeunit 50132 "TFB Activities Mgt."
         ItemLedgersQuery.SetFilter(Expiration_Date, '..t');
         ItemLedgersQuery.Open();
 
-        While ItemLedgersQuery.Read() do begin
+        while ItemLedgersQuery.Read() do begin
             TempLotExpiryBuffer.init();
             TempLotExpiryBuffer."Item No." := ItemLedgersQuery.Item_No_;
             TempLotExpiryBuffer.Description := ItemLedgersQuery.Description;

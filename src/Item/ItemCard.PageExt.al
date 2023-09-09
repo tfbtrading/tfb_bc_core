@@ -234,7 +234,7 @@ pageextension 50270 "TFB Item Card" extends "Item Card"
             begin
                 ShowOrderAddressOption := CheckIfOrderAddressExists();
 
-                If (Rec."Vendor No." <> xRec."Vendor No.") or (Rec."Vendor No." = '') then
+                if (Rec."Vendor No." <> xRec."Vendor No.") or (Rec."Vendor No." = '') then
                     Rec."TFB Vendor Order Address" := '';
             end;
         }

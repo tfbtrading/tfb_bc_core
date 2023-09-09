@@ -13,7 +13,7 @@ codeunit 50134 "TFB File Naming Mgmt"
     begin
 
         PstdInvoice.Get(DataRecRef.RecordId);
-        Exit(StrSubstNo(PreFileNameLbl, PstdInvoice."No.", PstdInvoice."Sell-to Customer Name", Extension))
+        exit(StrSubstNo(PreFileNameLbl, PstdInvoice."No.", PstdInvoice."Sell-to Customer Name", Extension))
 
     end;
 

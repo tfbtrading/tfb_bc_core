@@ -16,7 +16,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     trigger OnUpgradePerCompany()
 
     begin
-        If CheckIfUpgradeCodeRequired() then
+        if CheckIfUpgradeCodeRequired() then
             PerformUpgrades();
 
     end;

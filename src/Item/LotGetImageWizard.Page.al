@@ -390,7 +390,7 @@ page 50171 "TFB Lot Get Image Wizard"
         FileName: Text;
 
     begin
-        If LedgerEntry."Lot No." <> '' then
+        if LedgerEntry."Lot No." <> '' then
             TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Lot No.", LedgerEntry."Item No.")
         else
             TempBlobCU := CommonCU.GetLotImagesTempBlob('gridbowl', _BlobName, LedgerEntry."Item No.");
@@ -409,7 +409,7 @@ page 50171 "TFB Lot Get Image Wizard"
 
     begin
 
-        If LedgerEntry."Lot No." <> '' then
+        if LedgerEntry."Lot No." <> '' then
             exit(StrSubstNo('%1 %2 - lot %3.jpg', imagetype, LedgerEntry.Description, LedgerEntry."Lot No."))
         else
             exit(StrSubstNo('%1 %2.jpg', imagetype, LedgerEntry.Description));

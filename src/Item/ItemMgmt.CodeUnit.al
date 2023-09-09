@@ -290,10 +290,10 @@ codeunit 50107 "TFB Item Mgmt"
         SalesQuoteLine.SetRange("Document Type", SalesQuoteLine."Document Type"::Quote);
         SalesQuoteLine.SetRange("No.", Item."No.");
 
-        If not SalesQuoteLine.FindFirst() then exit;
+        if not SalesQuoteLine.FindFirst() then exit;
 
         QuoteDocumentNo := SalesQuoteLine."No.";
-        Exit(true);
+        exit(true);
 
     end;
 
