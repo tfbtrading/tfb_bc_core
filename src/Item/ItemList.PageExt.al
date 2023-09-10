@@ -118,7 +118,7 @@ pageextension 50117 "TFB Item List" extends "Item List"
 
             var
                 ItemLedgerEntry: Record "Item Ledger Entry";
-        
+
             begin
                 ItemLedgerEntry.FilterGroup(10);
                 ItemLedgerEntry.SetRange("Item No.", Rec."No.");
@@ -322,6 +322,22 @@ pageextension 50117 "TFB Item List" extends "Item List"
             }
         }
 
+    }
+
+    views
+    {
+        addlast
+        {
+
+
+            view(DropShipItems)
+            {
+                Caption = 'Drop Ship Items';
+                Filters = where("Purchasing Code" = const('DS'));
+                SharedLayout = true;
+            }
+
+        }
     }
 
     var
