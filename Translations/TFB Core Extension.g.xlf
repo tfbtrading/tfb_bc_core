@@ -16508,6 +16508,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - Control TFB Inventory - Excl. Transit - Property ToolTip</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1030615729 - View 234282495 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Drop Ship Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Item List - View DropShipItems - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 351986553 - Control 3088522385 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1460081465">
           <source>Specifies net weight of the product</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -18247,6 +18252,31 @@
           <source>Vendor Price Unit</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Purchase Quote Subform - Control TFB Price Unit Lookup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4242036098 - Control 3453853110 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Specifies delivery surcharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Req. Worksheet - Control TFB Delivery Surcharge - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4242036098 - Control 3453853110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Delivery Surcharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Req. Worksheet - Control TFB Delivery Surcharge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4242036098 - Control 1784036464 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Specifies total line weight</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Req. Worksheet - Control TFB Line Total Weight - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4242036098 - Control 1668582007 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Specifies price in vendors price unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Req. Worksheet - Control TFB Price By Price Unit - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4242036098 - Control 1777777299 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2459894850">
+          <source>Specifies price unit lookup</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Req. Worksheet - Control TFB Price Unit Lookup - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 2542292822 - Control 884537252 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 3868741142">
           <source>Specifies customer if applicable for reservation entry</source>
@@ -20247,6 +20277,36 @@
           <source>SalesPerson Filter</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Rel. Mgmt. Cue - Field TFB SalesPerson Filter - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 3453853110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Delivery Surcharge</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Delivery Surcharge - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 1784036464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Total Weight</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Line Total Weight - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 1668582007 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>TFB Price By Price Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Price By Price Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 1777777299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Pricing Unit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Price Unit Lookup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 500797110 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Sales Ext. Doc. No.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Sales External No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4269391414 - Field 1570599989 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3755718006">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Requisition Line - Field TFB Vendor Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3704753354 - Field 158516770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4145206282">
           <source>Brokerage Default %</source>

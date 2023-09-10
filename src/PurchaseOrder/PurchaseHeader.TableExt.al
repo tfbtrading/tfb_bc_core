@@ -146,6 +146,10 @@ tableextension 50115 "TFB Purchase Header" extends "Purchase Header"
             DataClassification = CustomerContent;
             Caption = 'Order Confirmed By Vendor';
         }
+        field(50102; "TFB Send Hold"; Boolean)
+        {
+            DataClassification = CustomerContent;
+        }
 
         modify("Sell-to Customer No.")
         {

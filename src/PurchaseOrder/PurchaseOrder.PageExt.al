@@ -5,6 +5,15 @@ pageextension 50121 "TFB Purchase Order" extends "Purchase Order"
     {
         addlast(General)
         {
+            field("TFB Send Hold"; rec."TFB Send Hold")
+            {
+                Caption = 'Send Hold';
+                ToolTip = 'Stops any automated email from being sent';
+                ApplicationArea = All;
+            }
+        }
+        addlast(General)
+        {
             field(Tasks; GetTaskStatus())
             {
                 ShowCaption = false;
