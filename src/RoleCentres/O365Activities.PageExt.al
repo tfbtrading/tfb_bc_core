@@ -85,6 +85,13 @@ pageextension 50450 "TFB O365 Activities" extends "O365 Activities" //MyTargetPa
                 DrillDownPageId = "TFB Pending Sales Lines";
                 ToolTip = 'Specifies number of ongoing sales lines';
             }
+            field("TFB No. Pending Assign."; Rec."TFB No. Pending Assign.")
+            {
+                ApplicationArea = All;
+                DrillDown = true;
+                DrillDownPageId = "Sales Lines";
+                ToolTip = 'Specifies the sales line where charge has not been assigned';
+            }
             field("TFB Ongoing Whse. Shipments"; Rec."TFB Ongoing Whse. Shipments")
             {
                 ApplicationArea = All;

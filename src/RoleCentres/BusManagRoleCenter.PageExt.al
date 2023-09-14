@@ -67,30 +67,47 @@ pageextension 50452 "TFB Bus. Manag. Role Center" extends "Business Manager Role
 
         addafter("Blanket Purchase Orders")
         {
-            action(TFBContainers)
-            {
-                RunObject = Page "TFB Container Entry List";
-                RunPageMode = View;
-                Image = Shipment;
-                ApplicationArea = All;
-                Caption = 'Containers';
-                Tooltip = 'Opens list of containers';
 
-            }
-            action(TFBTransfers)
-            {
-                RunObject = Page "Transfer Orders";
-                RunPageMode = View;
-                Image = TransferOrder;
-                ApplicationArea = All;
-                Caption = 'Transfers';
-                Tooltip = 'Opens list of transfer orders';
-            }
 
 
         }
+        addlast(sections)
+        {
+            group(Inventory)
+            {
+                action(TFBContainers)
+                {
+                    RunObject = Page "TFB Container Entry List";
+                    RunPageMode = View;
+                    Image = Shipment;
+                    ApplicationArea = All;
+                    Caption = 'Containers';
+                    Tooltip = 'Opens list of containers';
 
+                }
+                action(TFBTransfers)
+                {
+                    RunObject = Page "Transfer Orders";
+                    RunPageMode = View;
+                    Image = TransferOrder;
+                    ApplicationArea = All;
+                    Caption = 'Transfer Orders';
+                    Tooltip = 'Opens list of transfer orders';
+                }
+                action(TFBPostedTransferReceipt)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "Posted Transfer Receipt";
+                    RunPageMode = View;
+                    Caption = 'Posted Transfer Receipts';
+                    ToolTip = 'Opens list of transfer receipts';
+
+                }
+            }
+
+        }
+        movefirst(Inventory; Items)  
     }
 
-    
+
 }

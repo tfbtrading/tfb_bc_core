@@ -102,6 +102,12 @@ tableextension 50475 "TFB Activities Cue" extends "Activities Cue" //MyTargetTab
             Caption = 'No. Lots Expiring';
 
         }
+        field(50102; "TFB No. Pending Assign."; Integer)
+        {
+            Caption = 'No. Of Pending Assignments';
+            FieldClass = FlowField;
+            CalcFormula = count("Sales Line" where ("Document Type" = const(Order),Type = const("Charge (Item)"), "Item Charge Qty. to Handle" = filter('=0'), "Qty. to Assign"=filter('=0')));
+        }
 
 
 
