@@ -90,6 +90,14 @@ page 50169 "TFB APIV2 - Lot Images"
                     Caption = 'Generic Item ID';
 
                 }
+                field(defaultForItem; Rec."Default for Item")
+                {
+                    Caption = 'Default for Item';
+                }
+                field(defaultForGenericItem; Rec."Default for Generic Item")
+                {
+                    Caption = 'Default for Generic Item';
+                }
 
                 field(createdAt; Rec.SystemCreatedAt)
                 {

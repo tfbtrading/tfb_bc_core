@@ -9384,7 +9384,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item - Action Category_Home - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3921465668 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Image</source>
+          <source>Default Lot Image</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Property Caption</note>
         </trans-unit>
@@ -9402,6 +9402,16 @@
           <source>Export</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action ExportPicture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 1034293824 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opens the underlying lot image record</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action OpenLotImage - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3921465668 - Action 1034293824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open Lot Image Record</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Generic Item Picture - Action OpenLotImage - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2611313722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Selected Market Segments</source>
@@ -10888,6 +10898,26 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Get Image Wizard - Action ActionNext - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1325812688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lot Image</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Picture - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1325812688 - Method 3245603402 - NamedType 2544858639" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;html&gt;&lt;head&gt;&lt;style&gt; img { display:block; max-width: 100%; height: auto; margin: 0 auto;}&lt;/style&gt;&lt;body&gt;&lt;img src="%1" alt="generated lot image"&gt;&lt;/body&gt;&lt;/html&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Picture - Method OnAfterGetRecord - NamedType htmlTxt</note>
+        </trans-unit>
+        <trans-unit id="Page 1325812688 - Action 2003842020 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export a picture file.</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Picture - Action ExportPicture - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1325812688 - Action 2003842020 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Export</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Image Picture - Action ExportPicture - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2506474997 - Property 1968111052" size-unit="char" translate="yes" xml:space="preserve">
           <source>Used to view lot images</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -11007,6 +11037,26 @@
           <source>Variant Code</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Control Variant Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 444719713 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the item should be a default for the generic item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action SetAsGenericItemDefault - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 444719713 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set as Generic Item Default</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action SetAsGenericItemDefault - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 211904354 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Specifies that the item should be a default for the item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action SetAsItemDefault - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 2506474997 - Action 211904354 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set as Item Default</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB Lot Images - Action SetAsItemDefault - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2506474997 - Action 462433615 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Open lot image wizard</source>

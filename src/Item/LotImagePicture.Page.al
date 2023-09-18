@@ -69,7 +69,7 @@ page 50183 "TFB Lot Image Picture"
             url := CommonCU.GetLotImagesURL('gridbowl', Rec."Isol. Image Blob Name", Rec."Lot No.", Rec."Item No.")
         else
             url := CommonCU.GetLotImagesURL('gridbowl', Rec."Isol. Image Blob Name", Rec."Item No.");
-
+        CurrPage.WebViewer.SetContent(StrSubstNo(htmlTxt, url));
     end;
 
     trigger OnOpenPage()

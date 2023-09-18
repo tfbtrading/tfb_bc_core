@@ -150,7 +150,7 @@ page 50170 "TFB Lot Images"
             }
             action(SetAsGenericItemDefault)
             {
-                Image = Item;
+                Image = ItemGroup;
                 Caption = 'Set as Generic Item Default';
                 Enabled = not Rec."Default for Generic Item";
                 ApplicationArea = All;
