@@ -1,7 +1,7 @@
 page 50134 "TFB Generic Item Picture"
 {
 
-    Caption = 'Image';
+    Caption = 'Default Lot Image';
     PageType = CardPart;
     SourceTable = "TFB Generic Item";
     DeleteAllowed = false;
@@ -17,10 +17,19 @@ page 50134 "TFB Generic Item Picture"
             group(General)
             {
                 ShowCaption = false;
-                field(Picture; Rec.Picture)
+                usercontrol(WebViewer; "Microsoft.Dynamics.Nav.Client.WebPageViewer")
                 {
-                    ShowCaption = false;
-                    ToolTip = 'Specifies the picture that has been inserted for the item.';
+                    ApplicationArea = All;
+
+                    trigger ControlAddInReady(callbackUrl: Text)
+                    var
+
+                        url: text;
+
+                    begin
+
+                        webviewerready := true;
+                    end;
                 }
             }
         }
@@ -30,31 +39,6 @@ page 50134 "TFB Generic Item Picture"
     {
         area(processing)
         {
-            action(TakePicture)
-            {
-                Caption = 'Take';
-                Image = Camera;
-
-                ToolTip = 'Activate the camera on the device.';
-                Visible = CameraAvailable and (HideActions = false);
-
-                trigger OnAction()
-                begin
-                    TakeNewPicture();
-                end;
-            }
-            action(ImportPicture)
-            {
-                Caption = 'Import';
-                Image = Import;
-                ToolTip = 'Import a picture file.';
-                Visible = HideActions = false;
-
-                trigger OnAction()
-                begin
-                    ImportItemPicture();
-                end;
-            }
             action(ExportPicture)
             {
                 Caption = 'Export';
@@ -67,158 +51,112 @@ page 50134 "TFB Generic Item Picture"
                     ExportItemPicture();
                 end;
             }
-
-            action(DeletePicture)
+            action(OpenLotImage)
             {
-                Caption = 'Delete';
-                Enabled = DeleteExportEnabled;
-                Image = Delete;
-                ToolTip = 'Delete the record.';
+                Caption = 'Open Lot Image Record';
+                Image = Find;
+                ToolTip = 'Opens the underlying lot image record';
                 Visible = HideActions = false;
 
                 trigger OnAction()
                 begin
-                    DeleteItemPicture();
+                    OpenLotImageRecord();
                 end;
             }
+
         }
 
 
     }
 
-    trigger OnAfterGetCurrRecord()
+    trigger OnAfterGetRecord()
+    var
+        url: text;
+        htmlTxt: label '<html><head><style> img { display:block; max-width: 100%; height: auto; margin: 0 auto;}</style><body><img src="%1" alt="generated lot image"></body></html>';
     begin
-        SetEditableOnPictureActions();
+        CurrPage.WebViewer.SetContent('<html><body>');
+        LotImage.SetRange("Generic Item ID", Rec.SystemId);
+        LotImage.SetRange("Default for Generic Item", true);
+
+
+        if LotImage.FindFirst() then begin
+            if LotImage."Lot No." <> '' then
+                url := CommonCU.GetLotImagesURL('gridbowl', LotImage."Isol. Image Blob Name", LotImage."Lot No.", LotImage."Item No.")
+            else
+                url := CommonCU.GetLotImagesURL('gridbowl', LotImage."Isol. Image Blob Name", LotImage."Item No.");
+        end
+        else
+            url := 'https://tfbdata001.blob.core.windows.net/pubresources/images/imageplaceholder.webp';
+        CurrPage.WebViewer.SetContent(StrSubstNo(htmlTxt, url));
+
     end;
 
     trigger OnOpenPage()
     begin
-        CameraAvailable := Camera.IsAvailable();
+
     end;
 
     var
-        Camera: Codeunit Camera;
-
-        CameraAvailable: Boolean;
-        //OverrideImageQst: Label 'The existing picture will be replaced. Do you want to continue?';
-        //SelectPictureTxt: Label 'Select a picture to upload';
-        DeleteImageQst: Label 'Are you sure you want to delete the picture?';
-        DeleteExportEnabled: Boolean;
+        LotImageMediaTemp: Record "TFB Lot Image Media Temp";
+        LotImage: Record "TFB Lot Image";
+        LotImageMgmt: CodeUnit "TFB Lot Image Mgmt";
+        CommonCU: CodeUnit "TFB Common Library";
+        webviewerready: boolean;
         HideActions: Boolean;
     //MustSpecifyDescriptionErr: Label 'You must add a description to the item before you can import a picture.';
 
-    procedure TakeNewPicture()
-    var
-        TempBlob: CodeUnit "Temp Blob";
-        InStream: InStream;
-        PictureName: Text;
-    begin
-        Rec.Find();
-        Rec.TestField(Description);
-        TempBlob.CreateInStream();
-
-        Camera.GetPicture(InStream, PictureName);
-        Rec.Picture.ImportStream(InStream, PictureName);
-    end;
 
 
 
-    local procedure SetEditableOnPictureActions()
-    begin
-        DeleteExportEnabled := Rec.Picture.Count <> 0;
-    end;
-
-    local procedure ImportItemPicture()
-    var
-        FileManagement: CodeUnit "File Management";
-        TempBlob: CodeUnit "Temp Blob";
-        Instream: Instream;
-        ImgFileName: Text;
-        FileFilterTxt: Label 'Image file(*.png, *.jpg)|*.png;*.jpg';
-        ExtFilterTxt: Label 'jpg,jpeg,png';
-        ConfMsg: Label 'The existing picture will be overwritten, do you want to continue?';
 
 
-    begin
-        if Rec.Picture.count > 0 then
-            if not confirm(ConfMsg) then
-                exit;
 
-        ImgFileName := FileManagement.BLOBImportWithFilter(TempBlob, 'Import Image', ImgFileName, FileFilterTxt, ExtFilterTxt);
 
-        if TempBlob.HasValue() then begin
-
-            TempBlob.CreateInStream(Instream);
-            Clear(Rec.Picture);
-            Rec.Picture.ImportStream(Instream, ImgFileName);
-            Rec.Modify(true);
-
-        end;
-    end;
 
 
     local procedure ExportItemPicture()
 
     var
-        TenantMedia: Record "Tenant Media";
-        Instream: Instream;
-        ConfMsg: Label 'No picture stored';
-        Index: Integer;
+
         ImgFileName: Text;
-
+        TempBlob: CodeUnit "Temp Blob";
+        FileName: Text;
+        inStream: InStream;
 
     begin
-        if Rec.Picture.Count = 0 then
-            Error(ConfMsg);
 
-        for Index := 1 to Rec.Picture.count do
-            if TenantMedia.Get(Rec.Picture.Item(Index)) then begin
-                TenantMedia.CalcFields(content);
-                if TenantMedia.Content.HasValue then begin
-                    ImgFileName := ConvertStr(Rec.TableCaption + '_' + format(Rec.Description) + GetImgFileExt(TenantMedia), ' ', '_');
-                    TenantMedia.Content.CreateInStream(Instream);
-                    DownloadFromStream(Instream, '', '', '', ImgFileName);
 
-                end;
-            end;
+        if LotImage.FindFirst() then begin
+            if LotImage."Lot No." <> '' then
+                TempBlob := CommonCU.GetLotImagesTempBlob('gridbowl', LotImage."Isol. Image Blob Name", LotImage."Lot No.", LotImage."Item No.")
+            else
+                TempBlob := CommonCU.GetLotImagesTempBlob('gridbowl', LotImage."Isol. Image Blob Name", LotImage."Item No.");
+            TempBlob.CreateInStream(inStream);
+            FileName := StrSubstNo('GBI - %1 %2.jpg', LotImage."Lot No.", LotImage.Description);
+            DownloadFromStream(Instream, '', '', '', FileName);
+        end;
+
+
 
     end;
 
-    local procedure GetImgFileExt(var TenantMedia: Record "Tenant Media"): Text
-    begin
-        case TenantMedia."Mime Type" of
-            'image/jpeg':
-                exit('.jpeg');
-            'image/png':
-                exit('.png');
-            'image/bmp':
-                exit('.bmp');
-            'image/gif':
-                exit('.gif');
-            'image/tiff':
-                exit('.tiff');
 
-        end
+
+    local procedure OpenLotImageRecord()
+    var
+
+    begin
+        If LotImage.Count > 0 then
+            Page.Run(Page::"TFB Lot Images", LotImage);
     end;
 
-    procedure IsCameraAvailable(): Boolean
-    begin
-        exit(Camera.IsAvailable());
-    end;
+
+
 
     procedure SetHideActions()
     begin
         HideActions := true;
     end;
 
-    procedure DeleteItemPicture()
-    begin
-        Rec.TestField(Description);
 
-        if not Confirm(DeleteImageQst) then
-            exit;
-
-        Clear(Rec.Picture);
-        Rec.modify(true);
-    end;
 }

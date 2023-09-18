@@ -75,6 +75,15 @@ pageextension 50452 "TFB Bus. Manag. Role Center" extends "Business Manager Role
         {
             group(Inventory)
             {
+                action(TFBGenericItems)
+                {
+                    RunObject = Page "TFB Generic Items";
+                    RunPageMode = View;
+                    Image = ItemGroup;
+                    Caption = 'Generic Items';
+                    ToolTip = 'Opens list of generic items';
+                    ApplicationArea = All;
+                }
                 action(TFBContainers)
                 {
                     RunObject = Page "TFB Container Entry List";
@@ -103,10 +112,50 @@ pageextension 50452 "TFB Bus. Manag. Role Center" extends "Business Manager Role
                     ToolTip = 'Opens list of transfer receipts';
 
                 }
+                action(TFBLotInfo)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "Lot No. Information List";
+                    RunPageMode = View;
+                    Caption = 'Lot Info List';
+                    ToolTip = 'Open pages with list of lot no info entry records';
+                }
+                action(TFBLotImages)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "TFB Lot Images";
+                    RunPageMode = View;
+                    Caption = 'Lot Images';
+                    ToolTip = 'Open list of lot images that have been taken';
+                }
+                action(TFBItemLedgerEntries)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "Item Ledger Entries";
+                    RunPageMode = View;
+                    Caption = 'Item Ledger Entries';
+                    ToolTip = 'Open list of all item ledger entries';
+                }
+                action(TFBItemJournals)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "Item Journal";
+                    RunPageMode = Edit;
+                    Caption = 'Item Journals';
+                    ToolTip = 'Open up item journals';
+                }
+                action(TFBItemReclassJournal)
+                {
+                    ApplicationArea = All;
+                    RunObject = Page "Item Reclass. Journal";
+                    RunPageMode = Edit;
+                    Caption = 'Reclassification Journals';
+                    ToolTip = 'Opens up item reclassification journals';
+                }
             }
 
         }
-        movefirst(Inventory; Items)  
+        movefirst(Inventory; Items)
     }
 
 

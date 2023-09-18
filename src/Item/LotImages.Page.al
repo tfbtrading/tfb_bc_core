@@ -74,6 +74,19 @@ page 50170 "TFB Lot Images"
                     ToolTip = 'Specifies the name of the isolated blob image';
                     Visible = false;
                 }
+                field("Default for Generic Item"; Rec."Default for Generic Item")
+                {
+                    Caption = 'Def. for Generic Item';
+                    Visible = true;
+                    ToolTip = 'Indicates if lot image is default for a generic item';
+                }
+                field("Default for Item"; Rec."Default for Item")
+                {
+                    Caption = 'Def. for Item';
+                    Visible = true;
+                    ToolTip = 'Indicates if lot image is default for an item';
+                }
+
 
                 field(createdAt; getCreatedDateTime())
                 {
@@ -85,6 +98,14 @@ page 50170 "TFB Lot Images"
 
             }
 
+
+        }
+        area(FactBoxes)
+        {
+            part(Picture; "TFB Lot Image Picture")
+            {
+                SubPageLink = SystemId = field(SystemId);
+            }
 
         }
     }
@@ -112,6 +133,36 @@ page 50170 "TFB Lot Images"
 
                 end;
             }
+            action(SetAsItemDefault)
+            {
+                Image = Item;
+                Caption = 'Set as Item Default';
+                Enabled = not Rec."Default for Item";
+                ApplicationArea = All;
+                ToolTip = 'Specifies that the item should be a default for the item';
+
+                trigger OnAction()
+
+                begin
+                    Rec.Validate("Default for Item", true);
+                    Rec.Modify(false);
+                end;
+            }
+            action(SetAsGenericItemDefault)
+            {
+                Image = Item;
+                Caption = 'Set as Generic Item Default';
+                Enabled = not Rec."Default for Generic Item";
+                ApplicationArea = All;
+                ToolTip = 'Specifies that the item should be a default for the generic item';
+
+                trigger OnAction()
+
+                begin
+                    Rec.Validate("Default for Generic Item", true);
+                    Rec.Modify(false);
+                end;
+            }
         }
 
         area(Promoted)
@@ -120,7 +171,15 @@ page 50170 "TFB Lot Images"
             {
                 Caption = 'Home';
 
-                actionref(ActionRefName; "TFB Get Lot Image Wizard")
+                actionref(GetLotImageP; "TFB Get Lot Image Wizard")
+                {
+
+                }
+                actionref(SetItemDefaultP; SetAsItemDefault)
+                {
+
+                }
+                actionref(SetGenericDefaultP; SetAsGenericItemDefault)
                 {
 
                 }

@@ -109,6 +109,11 @@ table 50111 "TFB Generic Item"
             CalcFormula = exist(Item where("TFB Generic Item ID" = field(SystemId), Blocked = const(false)));
 
         }
+        field(9030; "Lot Image Exists"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = exist("TFB Lot Image" where("Generic Item ID" = field(SystemId), "Default for Generic Item" = const(true)));
+        }
 
 
     }

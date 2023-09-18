@@ -208,6 +208,11 @@ tableextension 50260 "TFB Item" extends Item
             FieldClass = FlowField;
             CalcFormula = lookup("Item Category"."TFB Catalogue Priority" where(Code = field("Item Category Code")));
         }
+        field(50420; "Lot Image Exists"; Boolean)
+        {
+            FieldClass = FlowField;
+            CalcFormula = exist("TFB Lot Image" where("Item No." = field("No."), "Default for Generic Item" = const(true)));
+        }
 
     }
     fieldgroups

@@ -24,7 +24,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
     local procedure PerformUpgrades()
 
     begin
-
+        UpdateLotImagesWithDefaults();
     end;
 
     procedure GetInstallingVersionNo(): Text
@@ -47,7 +47,7 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     var
     begin
-        exit((GetInstallingVersionNo() = '22.0.2.40'))
+        exit((GetInstallingVersionNo() = '22.0.2.46'))
     end;
 
 
@@ -90,6 +90,40 @@ codeunit 50103 "TFB Upgrade Mgmt"
 
     end;
 
+    procedure UpdateLotImagesWithDefaults()
+    var
+        LotImage: record "TFB Lot Image";
+        LotImage2: record "TFB Lot Image";
+        LotImage3: record "TFB Lot Image";
+    begin
+
+        LotImage.SetCurrentKey("Item No.", SystemCreatedAt);
+        LotImage.SetAscending(SystemCreatedAt, false);
+
+        if not LotImage.FindSet(true) then exit;
+        repeat
+
+            if LotImage."Item No." <> '' then begin
+                LotImage3.SetFilter("Item No.", '%1', LotImage."Item No.");
+                LotImage3.SetRange("Default for Item", true);
+                if LotImage3.IsEmpty then
+                    LotImage."Default for Item" := true;
+            end;
+            LotImage.CalcFields("Generic Item ID");
+
+            if not IsNullGuid(LotImage."Generic Item ID") then begin
+                LotImage2.SetFilter("Generic Item ID", '%1', LotImage."Generic Item ID");
+                LotImage2.SetRange("Default for Generic Item", true);
+                if LotImage2.IsEmpty then
+                    LotImage."Default for Generic Item" := true;
+            end;
+
+            LotImage.Modify(false);
+        until LotImage.Next() = 0;
+
+
+
+    end;
 
     procedure CopyCoAAttachToPersBlob()
 

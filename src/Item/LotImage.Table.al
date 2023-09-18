@@ -62,7 +62,65 @@ table 50124 "TFB Lot Image"
         {
 
         }
+        field(23; "Generic Item ID"; GUID)
+        {
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."TFB Generic Item ID" where("No." = field("Item No.")));
+        }
+        field(24; "Default for Item"; Boolean)
+        {
 
+            trigger OnValidate()
+            var
+                LotImage2: record "TFB Lot Image";
+                ConfirmMgmt: codeunit "Confirm Management";
+            begin
+                LotImage2.SetFilter("Item No.", '%1', Rec."Item No.");
+                LotImage2.SetRange("Default for Item", true);
+
+                if Rec."Default for Item" then begin
+                    if LotImage2.FindFirst() then
+                        if ConfirmMgmt.GetResponseOrDefault('Override existing default for this item?', true) then begin
+                            LotImage2."Default for Item" := false;
+                            LotImage2.modify(false);
+                        end
+                        else
+                            Rec."Default for Item" := false;
+                end
+                else
+                    if LotImage2.IsEmpty() then
+                        FieldError("Default for Item", 'Must be default for item as no other lot image exists');
+            end;
+
+
+        }
+        field(25; "Default for Generic Item"; Boolean)
+        {
+
+            trigger OnValidate()
+            var
+                LotImage2: record "TFB Lot Image";
+                ConfirmMgmt: codeunit "Confirm Management";
+            begin
+                Rec.CalcFields("Generic Item ID");
+                LotImage2.SetFilter("Generic Item ID", '%1', Rec."Generic Item ID");
+                LotImage2.SetRange("Default for Generic Item", true);
+
+                if Rec."Default for Generic Item" then begin
+                    if LotImage2.FindFirst() then
+                        if ConfirmMgmt.GetResponseOrDefault('Override existing default for this generic item?', true) then begin
+                            LotImage2."Default for Generic Item" := false;
+                            LotImage2.modify(false);
+                        end
+                        else
+                            Rec."Default for Generic Item" := false;
+                end
+                else
+                    if LotImage2.IsEmpty() then
+                        FieldError("Default for Generic Item", 'Cannot be non-primary, no other primary exists');
+            end;
+
+        }
 
 
     }
@@ -78,6 +136,7 @@ table 50124 "TFB Lot Image"
         {
 
         }
+
     }
 
 
@@ -144,7 +203,26 @@ table 50124 "TFB Lot Image"
     end;
 
     trigger OnInsert()
+    var
+        LotImage2: record "TFB Lot Image";
+        LotImage3: record "TFB Lot Image";
     begin
+
+
+        if "Item No." <> '' then begin
+            LotImage3.SetFilter("Item No.", '%1', Rec."Item No.");
+            LotImage3.SetRange("Default for Item", true);
+            if LotImage3.IsEmpty then
+                rec."Default for Item" := true;
+        end;
+        Rec.CalcFields("Generic Item ID");
+
+        if "Generic Item ID" <> '' then begin
+            LotImage2.SetFilter("Generic Item ID", '%1', Rec."Generic Item ID");
+            LotImage2.SetRange("Default for Generic Item", true);
+            if LotImage2.IsEmpty then
+                Rec."Default for Generic Item" := true;
+        end;
 
     end;
 
