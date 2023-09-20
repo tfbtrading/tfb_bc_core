@@ -4698,6 +4698,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control createdAt - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 3598726096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default for Generic Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control defaultForGenericItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2163087014 - Control 259114615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Default for Item</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page TFB APIV2 - Lot Images - Control defaultForItem - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 2163087014 - Control 460507951 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>DisplayName</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -22027,6 +22037,51 @@
           <source>Sample Packing Slip</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">EnumExtension TFB Report Selection Usage - EnumValue S.Sample.Request - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 3740735229 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core - Super</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 3603400704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core - Basic</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core - Basic - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2673334051 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Cost - Edit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Cost - Edit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2564355876 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Cost - View</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Cost - View - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 331288353 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core CRM</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core CRM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 3680485010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Logistics - Edit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Log - Edit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 651012993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Logistics - View</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Log - View - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 3199273877 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Quality - Edit</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Qual - Edit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PermissionSet 2037958998 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TFB Core Quality - VIEW</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PermissionSet TFB Core Qual - View - Property Caption</note>
         </trans-unit>
         <trans-unit id="ReportExtension 3112480377 - Change 1559977815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Report 535579449">
           <source>Deliver mail merge using template</source>
