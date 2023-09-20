@@ -83,6 +83,7 @@ table 50124 "TFB Lot Image"
                         if ConfirmMgmt.GetResponseOrDefault('Override existing default for this item?', true) then begin
                             LotImage2."Default for Item" := false;
                             LotImage2.modify(false);
+                            OnUpdateDefaultItemLotImage(Rec);
                         end
                         else
                             Rec."Default for Item" := false;
@@ -111,6 +112,7 @@ table 50124 "TFB Lot Image"
                         if ConfirmMgmt.GetResponseOrDefault('Override existing default for this generic item?', true) then begin
                             LotImage2."Default for Generic Item" := false;
                             LotImage2.modify(false);
+                            OnUpdateDefaultGenericItemLotImage(Rec);
                         end
                         else
                             Rec."Default for Generic Item" := false;
@@ -202,6 +204,8 @@ table 50124 "TFB Lot Image"
 
     end;
 
+
+
     trigger OnInsert()
     var
         LotImage2: record "TFB Lot Image";
@@ -212,16 +216,19 @@ table 50124 "TFB Lot Image"
         if "Item No." <> '' then begin
             LotImage3.SetFilter("Item No.", '%1', Rec."Item No.");
             LotImage3.SetRange("Default for Item", true);
-            if LotImage3.IsEmpty then
+            if LotImage3.IsEmpty then begin
                 rec."Default for Item" := true;
+                OnInsertNewDefaultItemLotImage(Rec);
+            end;
         end;
         Rec.CalcFields("Generic Item ID");
 
-        if "Generic Item ID" <> '' then begin
+        if not IsNullGuid("Generic Item ID") then begin
             LotImage2.SetFilter("Generic Item ID", '%1', Rec."Generic Item ID");
             LotImage2.SetRange("Default for Generic Item", true);
             if LotImage2.IsEmpty then
                 Rec."Default for Generic Item" := true;
+            OnInsertNewDefaultGenericItemLotImage(Rec);
         end;
 
     end;
@@ -239,6 +246,26 @@ table 50124 "TFB Lot Image"
     trigger OnRename()
     begin
 
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnInsertNewDefaultItemLotImage(Rec: Record "TFB Lot Image")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnInsertNewDefaultGenericItemLotImage(Rec: Record "TFB Lot Image")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnUpdateDefaultItemLotImage(Rec: Record "TFB Lot Image")
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnUpdateDefaultGenericItemLotImage(Rec: Record "TFB Lot Image")
+    begin
     end;
 
 }
