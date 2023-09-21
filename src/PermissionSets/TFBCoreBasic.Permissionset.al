@@ -9,6 +9,7 @@ permissionset 50108 "TFB Core - Basic"
         page "PDF Viewer" = X,
         page "PDF Viewer Part" = X,
         page "PDF Viewer Setup" = X,
-        tabledata "TFB Core Setup" = r;
+        tabledata "TFB Comm. Log Entry" = RI,
+        tabledata "TFB Core Setup" = R;
 
 }

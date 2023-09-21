@@ -75,6 +75,15 @@ pageextension 50452 "TFB Bus. Manag. Role Center" extends "Business Manager Role
         {
             group(Inventory)
             {
+                action(TFBItems)
+                {
+                    RunObject = Page "Item List";
+                    RunPageMode = View;
+                    Image = Item;
+                    Caption = 'Items';
+                    ToolTip = 'Open item list';
+                    ApplicationArea = All;
+                }
                 action(TFBGenericItems)
                 {
                     RunObject = Page "TFB Generic Items";
@@ -155,7 +164,7 @@ pageextension 50452 "TFB Bus. Manag. Role Center" extends "Business Manager Role
             }
 
         }
-        movefirst(Inventory; Items)
+
     }
 
 
