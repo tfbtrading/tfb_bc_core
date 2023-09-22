@@ -213,6 +213,10 @@ tableextension 50101 "TFB Customer" extends Customer
             Caption = 'Override Location Based Shipping';
 
         }
+        field(50280; "TFB Special Order Dropships"; Boolean)
+        {
+            Caption = 'Special Order for Dropships';
+        }
 
 
 

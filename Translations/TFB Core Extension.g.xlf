@@ -15358,6 +15358,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Action TFBItemReclassJournal - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2787322993 - Action 3853922858 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Open item list</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Action TFBItems - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2787322993 - Action 3853922858 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
+          <source>Items</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Bus. Manag. Role Center - Action TFBItems - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2787322993 - Action 757229533 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2458191494">
           <source>Open list of lot images that have been taken</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -15987,6 +15997,11 @@
           <source>Override Location Shipping</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Override Location Shipping - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 4115167540 - Control 1867220281 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
+          <source>Selects that where an item defaults to drop ship a special order will be selected instead</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension TFB Customer Card - Control TFB Special Order Dropships - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="PageExtension 4115167540 - Control 2421326477 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Specify the parent company to track consolidated sales for a group</source>
@@ -19777,6 +19792,11 @@
           <source>Per Kg Only on Documents</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Show Per Kg Only - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 392561952 - Field 1867220281 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
+          <source>Special Order for Dropships</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TFB Customer - Field TFB Special Order Dropships - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 392561952 - Field 3347019670 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1994964448">
           <source>Stock Update Recipient</source>

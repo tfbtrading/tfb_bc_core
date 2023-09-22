@@ -105,6 +105,11 @@ pageextension 50110 "TFB Customer Card" extends "Customer Card"
                 ApplicationArea = All;
                 ToolTip = 'Specifies that details used on customer form should supercede that of location';
             }
+            field("TFB Special Order Dropships"; Rec."TFB Special Order Dropships")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Selects that where an item defaults to drop ship a special order will be selected instead';
+            }
         }
         addafter("Bill-to Customer No.")
         {

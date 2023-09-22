@@ -389,17 +389,33 @@ codeunit 50122 "TFB Sales Mgmt"
     local procedure OnAfterCopyFromItem(var SalesLine: Record "Sales Line"; Item: Record Item; CurrentFieldNo: Integer);
     var
         SalesHeader: Record "Sales Header";
-        Purchasing: Record Purchasing;
-    begin
+        PurchasingDropShip: Record Purchasing;
+        PurchasingSpecialOrder: Record "Purchasing";
+        Customer: Record Customer;
+        ItemPurchasingDefault: Record Purchasing;
 
-        Purchasing.SetRange("Drop Shipment", true);
+    begin
+        //Check for if sales order overrides the default behaviour on dropshipping
+        PurchasingDropShip.SetRange("Drop Shipment", true);
 
         SalesHeader.get(SalesLine."Document Type", SalesLine."Document No.");
 
         if SalesHeader."TFB Direct to Customer" = true then
-            if Purchasing.FindFirst() then
-                SalesLine.validate("Purchasing Code", Purchasing.Code);
+            if PurchasingDropShip.FindFirst() then
+                SalesLine.validate("Purchasing Code", PurchasingDropShip.Code);
 
+        //Check if the customer overrides default drop ship behaviour and special orders instead
+        if not ItemPurchasingDefault.Get(Item."Purchasing Code") then exit;
+        if not ItemPurchasingDefault."Drop Shipment" then exit;
+        Customer.SetLoadFields("TFB Special Order Dropships");
+        Customer.Get(SalesLine."Sell-to Customer No.");
+        if not Customer."TFB Special Order Dropships" then exit;
+
+        PurchasingSpecialOrder.SetRange("Special Order", true);
+        if not PurchasingSpecialOrder.FindFirst() then exit;
+
+
+        SalesLine.validate("Purchasing Code", PurchasingSpecialOrder.Code);
 
     end;
 
